@@ -1,38 +1,113 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css?family=Lora|Open+Sans:300,400");
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: "Lora", serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  line-height: 2em;
+  text-indent: 1cm
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h2 {
+  margin-bottom: 70px;
+  font-size: 40px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+h3 {
+  font-size: 38px;
+  font-weight: 100;
 }
 
-.App-link {
-  color: #61dafb;
+h4 {
+  font-size: 26px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h5 {
+  font-size: 20px;
 }
+
+.section {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.section-content {
+  width: 100%;
+  max-width: 1100px;
+  margin: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/******** BOOTSTRAP ******/
+
+.main {
+  margin: auto;
+  width: 100% !important;
+  padding-left: 0;
+  padding-right: 0;
+  /* to keep footer at bottom of page*/
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 220px; /* Height of the footer element */
+}
+
+.row {
+  margin: auto;
+}
+
+a {
+  color: #337ab7;
+}
+
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */
+}
+
+.react-player {
+  position: relative;
+  top: 0;
+  left: 30%;
+}
+
+.about-us-page{
+  width: 100%;
+  height:min-content;
+  position: relative;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.fix-bar{
+  width: 100%;
+  height: 7vh;
+}
+
+.app-header {
+  position: fixed;
+  margin-top: 0%;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-radius: 2%;
+  padding-left: 2%;
+  padding-top: 2%;
+  padding-right: 2%;
+  padding-bottom: 2%;
+  border-style:hidden;
+}
+
+
+.div-test {
+  margin-left: 130px;
+}
+

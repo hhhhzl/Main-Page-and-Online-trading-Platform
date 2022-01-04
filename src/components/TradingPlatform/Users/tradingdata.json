@@ -1,0 +1,18 @@
+[
+    {"id":1,"symbol":"PLTR","tradingDate":2000,"tradingtype":"Buy","shares":40,"price":18.4},
+    {"id":1,"symbol":"PLTR","tradingDate":2001,"tradingtype":"Sell","shares":40,"price":18.4},
+    {"id":1,"symbol":"AAPL","tradingDate":2002,"tradingtype":"Buy","shares":40,"price":18.4},
+    {"id":1,"symbol":"PLTR","tradingDate":2003,"tradingtype":"Buy","shares":40,"price":18.4},
+    {"id":1,"symbol":"TSLA","tradingDate":2004,"tradingtype":"Buy","shares":40,"price":18.4},
+    {"id":1,"symbol":"PLTR","tradingDate":2005,"tradingtype":"Sell","shares":40,"price":18.4},
+    {"id":1,"symbol":"PYPL","tradingDate":2006,"tradingtype":"Buy","shares":40,"price":18.4},
+    {"id":1,"symbol":"AMZN","tradingDate":2007,"tradingtype":"Buy","shares":40,"price":18.4},
+    {"id":1,"symbol":"OPEN","tradingDate":2008,"tradingtype":"Buy","shares":40,"price":18.4},
+    {"id":1,"symbol":"PLTR","tradingDate":2009,"tradingtype":"Sell","shares":40,"price":18.4},
+    {"id":1,"symbol":"AMD","tradingDate":2010,"tradingtype":"Buy","shares":40,"price":18.4},
+    {"id":1,"symbol":"NIO","tradingDate":2011,"tradingtype":"Sell","shares":40,"price":18.4},
+    {"id":1,"symbol":"PLTR","tradingDate":2012,"tradingtype":"Buy","shares":40,"price":18.4},
+    {"id":1,"symbol":"XPEV","tradingDate":2013,"tradingtype":"Buy","shares":40,"price":18.4},
+    {"id":1,"symbol":"PLTR","tradingDate":2014,"tradingtype":"Buy","shares":40,"price":18.4},
+    {"id":1,"symbol":"NNDM","tradingDate":2015,"tradingtype":"Buy","shares":40,"price":18.4}
+]

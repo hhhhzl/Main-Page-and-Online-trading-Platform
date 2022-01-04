@@ -1,0 +1,160 @@
+.side-menu {
+    display: flex;
+    color: white;
+    flex-direction: column;
+    position: fixed;
+    left: 0px;
+    top: 0%;
+    width: 130px;
+    height: 100%;
+    background-color: #337ab7;
+}
+
+.side-menu-users {
+    display: flex;
+    color: white;
+    flex-direction: column;
+    position: fixed;
+    left: 0px;
+    top: 0%;
+    width: 60px;
+    height: 100%;
+    background-color: #337ab7;
+}
+
+.side-text:hover{
+    background-color: #555;
+    color: white;
+}
+
+.img-center{
+    margin:0px auto;
+  }
+
+.side-container{
+    height: 50%;
+    width:max-content;
+    margin-top: 7%;
+    position: fixed;
+    margin-left: 1%;
+
+}
+
+.side-container-users{
+    height: 50%;
+    width:max-content;
+    margin-top: 7%;
+    position: fixed;
+    margin-left: 0.7%;
+
+}
+
+.row-padding{
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+
+
+.image-contain{
+    width: 10%;
+    height: max-content;
+    position: relative;
+}
+
+#app-header {
+    background: #e3e3e3;
+    top: 0%;
+    bottom: 7vh;
+    margin-top: 0%;
+    margin-left: 2%;
+    margin-right: 2%;
+    border-radius: 2%;
+    padding-left: 2%;
+    padding-top: 2%;
+    padding-right: 2%;
+    padding-bottom: 2%;
+    position: fixed;
+    border-style:hidden;
+  }
+
+.padding-right{
+      margin-right: 0%;
+  }
+
+
+.supervisor-interface {
+    background: rgb(248, 248, 248);
+    margin-top: 6%;
+    margin-left: 10%;
+    margin-right: 2%;
+    border-radius: 2%;
+    padding-left: 2%;
+    padding-top: 2%;
+    padding-right: 2%;
+    padding-bottom: 7%;
+    border-style: outset;
+  }
+
+  .scroll{
+    max-height: 30rem;
+    overflow: auto;
+  }
+
+  .search-div {
+    margin-left:85%;
+}
+.balance{
+    width:98%;
+    height:fit-content;
+    margin-top: 3%;
+    margin-left: 3%;
+    border-radius: 2%;
+
+}
+
+.balance2{
+    width:98%;
+    height:fit-content;
+    margin-top: 1%;
+    margin-left: 3%;
+    border-radius: 2%;
+}
+
+
+.balance-layout {
+    background: rgb(248, 248, 248);
+    width:95%;
+    height:max-content;
+    margin-top: 6%;
+    margin-left: 4%;
+    border-radius: 2%;
+    border-style:groove;
+  }
+
+  .balance-layout2 {
+    background: rgb(248, 248, 248);
+    width:95%;
+    height:max-content;
+    margin-top: 8.6%;
+    margin-left: 0%;
+    border-radius: 2%;
+    border-style:groove;
+  }
+
+  .balance-layout3{
+    background: rgb(248, 248, 248);
+    width:94%;
+    height:max-content;
+    margin-top: 1%;
+    margin-left: 3%;
+    border-radius: 2%;
+    border-style:groove;
+  }
+
+  .scroll2{
+    max-height: 25rem;
+    overflow: auto;
+  }
+
+ 
