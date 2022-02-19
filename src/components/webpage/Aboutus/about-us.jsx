@@ -3,74 +3,95 @@ import "./about-us.css";
 import Image from 'react-bootstrap/Image';
 import { Button, Row, Col, Container } from "react-bootstrap";
 import Badge from 'react-bootstrap/Badge'
-import { SettingsPhoneTwoTone } from "@material-ui/icons";
 import ReactPlayer from 'react-player';
 import Carousel from 'react-bootstrap/Carousel';
 import Bottompicture from "./bottom-picture";
+import { Bookmark } from "@material-ui/icons";
 
 
 const Aboutus = ({ profileImg, hobbyImgs }) => {
-  const [show,setShow] = useState(false)
+
   return (
     <div className="section">
-      <h3 className="text-center" style={{color:"gray"}}>INTRODUCTION ASSOCIATION</h3>
-      <h4 className="text-center" style={{color:" #337ab7 "}}>协会介绍</h4>
+      <br/>
+      <h3 className="text-center" style={{color:"#969696"}}>INTRODUCTION OF UFA</h3>
+      <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI"}}><Bookmark/> 协会介绍</h5>
       <br/>
       <Container className ="content-center">
 
-            <p>
-              <strong>华金协会</strong>
-              Undergraduate Finance Association (简称"UFA") UFA针对<strong>美国排名前
-              30的、中国内地前30、中国香港四大高校的大学本科</strong>学生，建立首个跨学校，跨地区，跨文化的
-              非盈利性本科金融兴趣社团。我们的愿景是“助力祖国联合全球和华人金融精英，并共同建设祖国金融未来”。
+            <p style={{fontSize:"24px", fontFamily:"MicrosoftYaHei"}}>
+              <strong>UFA金融协会 </strong>
+               (英文缩写<strong>"UFA"</strong>) 是面向<strong>全球顶级高校</strong>（包括美国排名TOP30、中国内地TOP10、中国香港四大高校等）建立的首个<strong>跨学校，跨地区，跨文化</strong>的
+              非盈利性本科金融兴趣社团。我们的愿景是 <strong>“助力祖国联合全球和华人金融精英，并共同建设祖国金融未来” </strong>。
             </p>
             <br/>
-            <p>
-              自成立以来，华金协会与清华大学金融协会、海外超过20所高校等建立起合作关系，并联合策划了名家分享会，金融系列公益讲座、全球大学生
-              投资大赛等多个活动。“UFA杯:全球大学模拟投资大赛”是华金协会牵头发起的针对国内为顶尖高校大学生所举办的线上模拟投资比赛之一。
+            <p style={{fontSize:"24px", fontFamily:"MicrosoftYaHei"}}>
+              自成立以来，<strong>UFA金融协会</strong>与<strong>清华大学金融协会、海外超过20所高校</strong>等建立起合作关系，并联合策划了名家分享会，金融系列公益讲座、全球大学生
+              投资大赛等多个活动。<strong>“UFA杯: 全球大学模拟投资大赛”</strong>是UFA金融协会牵头发起的针对国内为顶尖高校大学生所举办的线上模拟投资比赛之一。
             </p>
             <br/>
 
             <h5 className ="text-center">
-           <Button className="round-Button" variant="outline-primary">具体详情</Button>
+           <Button className="round-Button" style={{color:"#FFFFF"}} variant="outline-primary">具体详情</Button>
            </h5>
            <br/>
         </Container>
 
 
         <div className="video">
-        <h3 className="text-center" style={{color:"gray"}}>LISTEN TO THE SOUND</h3>
-         <h4 className="text-center" style={{color:" #337ab7 "}}>快来听听他们都说了什么</h4>
+          <br/>
+        <h3 className="text-center" style={{color:"gray"}}>INTRODUCTION OF THE COMPETITION</h3>
+         <h5 className="text-center" style={{color:" #337ab7 "}}><Bookmark/>{' '}UFA杯赛事介绍</h5>
          <br/>
-         <Carousel>
-           <Carousel.Item>
+         <br/>
+         <br/>
+         
+         <div className='text-center decorate-border'>
+           <h6 style={{color:" #337ab7 ",padding:"10px 20px 0px 20px"}}>
+             快来听听他们都说了什么
+           </h6>
+           
+         </div>
+         <br/>
+         <br/>
+         <br/>
+         <Carousel className="video-container">
+         
+           <Carousel.Item className="player-wrapper"> 
+        
            <ReactPlayer
              className='react-player'
              controls ={true}
-             style={{left:"center"}}
+             width='100%'
+             height='100%'
              url={[
                 'https://www.youtube.com/watch?v=shDL1NNHCqw'
               ]} />
+              
               </Carousel.Item>
-              <Carousel.Item>
+              
+              <Carousel.Item className="player-wrapper">
            <ReactPlayer
              className='react-player'
              controls ={true}
-             style={{left:"center"}}
+             width='100%'
+             height='100%'
              url={[
                 'https://www.youtube.com/watch?v=BcgyPJWclEw'
               ]} />
               </Carousel.Item>
-              <Carousel.Item>
+              <Carousel.Item className="player-wrapper">
            <ReactPlayer
              className='react-player'
              controls ={true}
-             style={{left:"center"}}
+             width='100%'
+             height='100%'
              url={[
                 'https://www.youtube.com/watch?v=8cph2_Xvfbo'
               ]} />
               </Carousel.Item>
-              </Carousel>  
+              </Carousel> 
+              
         </div>
 
 
@@ -78,8 +99,8 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
         <div className="about-intro">
         
           <div className ="section">
-          <h3 className="text-center" style={{color:"gray"}}>ABOUT US</h3>
-         <h4 className="text-center" style={{color:" #337ab7 "}}>UFA能为你提供哪些价值</h4>
+          <h3 className="text-center" style={{color:"gray"}}>What You Can Achieve By Joining Us</h3>
+         <h5 className="text-center" style={{color:" #337ab7 "}}><Bookmark/>"UFA杯"能为大学生提供哪些价值</h5>
          <br/>
         <br/>
          

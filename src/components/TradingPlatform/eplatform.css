@@ -3,9 +3,9 @@
     color: white;
     flex-direction: column;
     position: fixed;
-    left: 0px;
+    left: 0%;
     top: 0%;
-    width: 130px;
+    width: 8%;
     height: 100%;
     background-color: #337ab7;
 }
@@ -17,9 +17,10 @@
     position: fixed;
     left: 0px;
     top: 0%;
-    width: 60px;
+    width: 4%;
     height: 100%;
     background-color: #337ab7;
+    z-index: 999;
 }
 
 .side-text:hover{
@@ -28,30 +29,37 @@
 }
 
 .img-center{
-    margin:0px auto;
+    width: 90%;
+    height: max-content;
+    margin-left: 5%;
   }
 
-.side-container{
-    height: 50%;
-    width:max-content;
-    margin-top: 7%;
-    position: fixed;
-    margin-left: 1%;
+
+.side-container{ 
+    width:90%;
+    height:max-content;
+    top: 20%;
+    position:relative;
+    margin-left: 10%;
+    margin-right: 10%;
 
 }
 
 .side-container-users{
-    height: 50%;
-    width:max-content;
-    margin-top: 7%;
-    position: fixed;
-    margin-left: 0.7%;
+    width:90%;
+    height:max-content;
+    top: 20%;
+    position:relative;
+    margin-left: 10%;
+    margin-right: 10%;
 
 }
 
 .row-padding{
-    padding-bottom: 20px;
-    padding-top: 20px;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 20%;
+    padding-top: 20%;
 }
 
 
@@ -66,9 +74,9 @@
     background: #e3e3e3;
     top: 0%;
     bottom: 7vh;
-    margin-top: 0%;
-    margin-left: 2%;
-    margin-right: 2%;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
     border-radius: 2%;
     padding-left: 2%;
     padding-top: 2%;
@@ -76,6 +84,7 @@
     padding-bottom: 2%;
     position: fixed;
     border-style:hidden;
+    z-index: 999;
   }
 
 .padding-right{
@@ -85,7 +94,7 @@
 
 .supervisor-interface {
     background: rgb(248, 248, 248);
-    margin-top: 6%;
+    margin-top: 80px;
     margin-left: 10%;
     margin-right: 2%;
     border-radius: 2%;
@@ -102,7 +111,7 @@
   }
 
   .search-div {
-    margin-left:85%;
+    margin-left:75%;
 }
 .balance{
     width:98%;
@@ -157,4 +166,135 @@
     overflow: auto;
   }
 
+
+  .icon-css{
+    width: 7vh;
+    height: 7vh;
+    align-items: center;
+    text-align: center;
+    padding-top: 0vh;
+    position:fixed;
+    top:0%;
+    left:0%;
+    z-index:999
+  }
+
+
+  @media screen and (max-width: 960px) and (min-width:600px) {
+    .side-container{ 
+      width:90%;
+      height:max-content;
+      align-items: center;
+      text-align: center;
+      top: 20%;
+      position:relative;
+      margin-left: 10%;
+  
+  }
+
+  .row-padding{
+    align-items: center;
+    text-align: center;
+    padding-bottom: 30%;
+    padding-top: 30%;
+}
+
+.search-div {
+  margin-left:55%;
+}
+  }
+
+  @media screen and (max-width: 600px){
+    .side-menu-users {
+      display: flex;
+      color: white;
+      flex-direction: column;
+      position: fixed;
+      left: 0;
+      top: 7vh;
+      width: 100%;
+      height: auto;
+      background-color: #337ab7;
+      opacity: 0.9;
+      z-index: 998;
+  }
+
+    .side-container-users{
+      width:90%;
+      height:max-content;
+      top: 55%;
+    
+      position:relative;
+      margin-left: 5%;
+  
+  }
+
+  .row-padding{
+    align-items: center;
+    text-align: center;
+    padding-bottom: 12%;
+    padding-top: 12%;
+}
+    
+  }
+
+  /* 
+    The out-most div in transaction platform 
+    Set the margin-left for side-bar
+    Set the margin-top for nav-bar 
+*/
+.balance-main {
+  margin-top: 5%;
+  margin-left: 5%;
+}
+
+/* 
+  Define the style of the div
+  Border
+  Background Color
+*/
+.balance-style {
+  border-radius: 2%;
+  border-style: groove;
+  background: rgb(248, 248, 248);
+}
+
+/* The parent of two parrellel divs */ 
+.balance-parent {
+  margin-top: 2%;
+  display: flex;
+}
+
+.balance-left {
+  margin-left: 2%;
+  margin-right: 2%;
+  width: 60%;
+}
+
+.balance-right {
+  width: 40%;
+  margin-right: 2%;
+}
+
+.assets-curve {
+  height: max-content;
+  margin-top: 5%;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-bottom: 2%;
+}
+
+.balance-bottom {
+  width: 100%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.balance-transaction {
+  margin-top: 1%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+ 
  

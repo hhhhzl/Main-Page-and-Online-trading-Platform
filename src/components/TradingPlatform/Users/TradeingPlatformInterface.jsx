@@ -4,6 +4,7 @@ import SideMenuUsers from "./sideMenuUsers";
 import NavBarTest from "../navBar";
 import { BrowserRouter, Switch, Route, Router, useRouteMatch } from "react-router-dom";
 import Userbalance from "./UserBalance";
+import UserMarket from "./market";
 
 
 export default function tradePusers(){
@@ -14,13 +15,11 @@ export default function tradePusers(){
             <SideMenuUsers/>
             <Switch>
             <Route path="/eplatform/:users">
-                <Userbalance/>
+                <UserMarket/>
             </Route>
-          <Route path='/institutions'>
-          </Route>
-          <Route path='/home'>
-    
-          </Route>
+            <Route path="/eplatform/:users/market">
+                <UserMarket/>
+            </Route>
         </Switch>
         </div>
     )

@@ -1,6 +1,6 @@
 .box {
   padding: 15px;
-  margin: 5px 0px 15px 380px;
+  margin: 1% 0 3% 30%;
   border-style: solid;
   border-color: rgba(51, 122, 183, 0.1);
   border-width: thin;
@@ -19,19 +19,19 @@
 }
 
 .content-center{
-  width: 61.8%;
-  margin-left: 19.1%;
+  width: 68.6%;
+  margin-left: 15.7%;
   height: max-content;
 }
 
 .round-Button{
-  border-radius: 15%;
+  border-radius: 20px;
 }
 
 .video{
   width: 100%;
   height: max-content;
-  background-color: #d3d3d3;
+  background-color:#F2F2F2;
   padding-top: 70px;
   padding-bottom: 70px;
 }
@@ -71,3 +71,67 @@
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
+
+.video-container{
+  width: 63.4%;
+  left: 18.3%;
+  max-height: max-content;
+  justify-content:center;
+  align-items:center;
+
+}
+
+.decorate-border{
+  position: relative;
+  margin:auto;
+  width:max-content;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  border-width: 2px;
+  border-color: #337ab7;
+  border-style:dashed;
+}
+
+@media screen and (max-width: 960px){
+  .video-container {
+    width:80%;
+    left:10%;
+    max-height: max-content;
+    justify-content:center;
+    align-items:center;
+  }
+
+  .content-center{
+    width: 80%;
+    margin-left: 10%;
+    height: max-content;
+  }
+
+  
+  
+  
+}
+
+@media screen and (max-width: 600px){
+  .video-container {
+    width:90%;
+    left:5%;
+    max-height: max-content;
+    justify-content:center;
+    align-items:center;
+  }
+
+  .content-center{
+    width: 90%;
+    margin-left: 5%;
+    height: max-content;
+  }
+
+
+  
+  
+  
+}
+
+

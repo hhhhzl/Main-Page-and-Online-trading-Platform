@@ -28,14 +28,25 @@ import {
 
 } from "react-financial-charts";
 import { initialData } from "./testdata";
+import useWindowDimensions from "../../../utils/sizewindow";
+  
 
 export default function UserBalanceSeries({props}){
+   const {height,width} = useWindowDimensions();
     const ScaleProvider = discontinuousTimeScaleProviderBuilder().inputDateAccessor(
         (d) => new Date(d.date)
       );
-      const height = 400;
-      const width = 870;
-      const margin = { left: 10, right: 48, top: 50, bottom: 24 };
+
+      // get the width and height of user's window
+      const width_window = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      const height_window = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+      const heightx = height * 0.5;
+      console.log(heightx)
+      const widthy = width * 0.5;
+      const margin = { left: widthy*0.05, right: widthy*0.1, top: 0, bottom: heightx*0.1 };
+      // const Window_height = height;
+      // const Window_width = width * 0.5;
+      // const margin = { left: width*0.01, right: width*0.05, top: 0, bottom: height*0.1 };
     
       const ema12 = ema()
         .id(1)
@@ -62,7 +73,7 @@ export default function UserBalanceSeries({props}){
       const min = xAccessor(data[Math.max(0, data.length - 100)]);
       const xExtents = [min, max + 5];
     
-      const gridHeight = height - margin.top - margin.bottom;
+      const gridHeight = heightx - margin.top - margin.bottom;
     
       const elderRayHeight = 100;
       const elderRayOrigin = (_, h) => [0, h - elderRayHeight];
@@ -88,14 +99,14 @@ export default function UserBalanceSeries({props}){
 
     return(
       <>
-      <div className="section">
+      <div className="assets-curve">
       <h5 style={{marginLeft:"3%"}}>资产曲线</h5>
             <hr/>
       
         <ChartCanvas
-        height={height}
-        ratio={3}
-        width={width}
+        height={heightx}
+        ratio={5}
+        width={widthy}
         margin={margin}
         data={data}
         seriesName="Data"

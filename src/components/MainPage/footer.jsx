@@ -6,7 +6,7 @@ const Footer = () => (
     <div>
     copy right <i className="fa fa-heart" aria-hidden="true" />
       <br />
-      @UFA视野全球
+      @UFA金融协会
     </div>
   </footer>
 );

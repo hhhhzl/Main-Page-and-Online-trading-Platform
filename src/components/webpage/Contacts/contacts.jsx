@@ -3,19 +3,24 @@ import "./contacts.css";
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
 import { Row,Container,Col, Form } from "react-bootstrap";
+import { Bookmark } from "@material-ui/icons";
+import useWindowDimensions from "../../../utils/sizewindow";
+
 
 const Contacts = () => {
   const [validated, setValidated] = useState(false);
+  const {width,height} = useWindowDimensions();
 
 
   return (
     <div className="section">
+      <br/>
       <h3 className="text-center" style={{color:"gray"}}>COOPERATION</h3>
-      <h4 className="text-center" style={{color:" #337ab7 "}}>如何加入UFA</h4>
+      <h5 className="text-center" style={{color:" #337ab7 "}}><Bookmark/>{" "}如何加入UFA</h5>
       <br/>
       <div className="bottom-cover-picture animated">
     <Image
-      src = "/home_page.jpg"
+      src = "/合作添加背景图.png"
       title="Cover image"
       alt="views in the World"     
       style={{
@@ -28,44 +33,188 @@ const Contacts = () => {
     />
     <div className="overlay" />
 
-    <div className ="contact-center">
-      <div className="text-center">
-        <h5>UFA核心团队也招贤纳士</h5>
+    
+      {/* <div className="text-center">
+        <h5 style={{color:"white"}}>UFA核心团队也招贤纳士</h5>
         <br/>
-        <p>
+        <p style={{color:"white"}}>
           我们欢迎有想法、有野心、有资源、有公众号排版技能的同学加入，成为合伙人，享受一切UFA资源，为你的简历增贴色彩！
         </p>
         <hr/>
-        </div>
+        </div> */}
        
-    <Row>
-      <Col xs ={6}>
-        yes
-      </Col>
-      <Col xs ={6}>
-        yes
-      </Col>
-      
-    </Row>
-    <br/>
-    <Row>
-      <Col xs ={6}>
-        yes
-      </Col>
-      <Col xs ={6}>
-        yes
-      </Col>
-      <br/>
-    </Row>
-    </div>
+    
+    
   </div>
 
   <div className='cover-corperation'>
     <br/>
     <div className="section">
     <h3 className="text-center" style={{color:"gray"}}>COOPERATION</h3>
-      <h4 className="text-center" style={{color:" #337ab7 "}}>合作伙伴</h4>
+      <h5 className="text-center" style={{color:" #337ab7 "}}><Bookmark/>{" "}合作伙伴</h5>
       <br/>
+
+      <div className="contact-center">
+        {width < 600 ? 
+
+        (<><Col>
+          <div className ="cooperation-box">
+          <Row>
+            <Col xs={4}>
+              <Image src = "/head.jpeg" title="head image" id="img-txz" alt="header" roundedCircle style={{position: "relative", width: "100%",height: "100%",}}/>
+              </Col>
+              <Col xs = {8}>
+                <div>
+                  <h6 style={{color:" #337ab7 "}}></h6><p>
+          “跨界UFA” （论坛小程序，这里人人都是自媒体）   </p>
+        </div>
+        </Col>
+        </Row>
+    
+        </div>
+        </Col>
+        <Col>
+          <div className ="cooperation-box">
+          <Row>
+            <Col xs={4}>
+              <Image src = "/head.jpeg" title="head image" id="img-txz" alt="header" roundedCircle style={{position: "relative", width: "100%",height: "100%",}}/>
+              </Col>
+              <Col xs = {8}>
+                <div>
+                <h6 style={{color:" #337ab7 "}}></h6>
+        <p>
+          “跨界UFA” （论坛小程序，这里人人都 
+        </p>
+        </div>
+        </Col>
+        </Row>
+    
+        </div>
+        </Col>
+        <Col>
+          <div className ="cooperation-box">
+          <Row>
+            <Col xs={4}>
+              <Image src = "/head.jpeg" title="head image" id="img-txz" alt="header" roundedCircle style={{position: "relative", width: "100%",height: "100%",}}/>
+              </Col>
+              <Col xs = {8}>
+                <div>
+                <h6 style={{color:" #337ab7 "}}></h6>
+        <p>
+          “跨界UFA” （论坛小程序，这里人人都 
+        </p>
+        </div>
+        </Col>
+        </Row>
+    
+        </div>
+        </Col>
+        <Col>
+          <div className ="cooperation-box">
+          <Row>
+            <Col xs={4}>
+              <Image src = "/head.jpeg" title="head image" id="img-txz" alt="header" roundedCircle style={{position: "relative", width: "100%",height: "100%",}}/>
+              </Col>
+              <Col xs = {8}>
+                <div>
+                <h6 style={{color:" #337ab7 "}}></h6>
+        <p>
+          “跨界UFA” （论坛小程序，这里人人都 
+        </p>
+        </div>
+        </Col>
+        </Row>
+    
+        </div>
+        </Col>
+        </>)
+        :
+        (<>
+        <Row>
+
+<Col>
+<div className ="cooperation-box">
+  <Row>
+  <Col xs={4}>
+<Image src = "/head.jpeg" title="head image" id="img-txz" alt="header" roundedCircle style={{position: "relative", width: "100%",height: "100%",}}/>
+</Col>
+<Col xs = {8}>
+  <div>
+  <h6 style={{color:" #337ab7 "}}></h6>
+        <p>
+          “跨界UFA” （论坛小程序，这里人人都 
+        </p>
+        </div>
+</Col>
+</Row>
+
+</div>
+</Col>
+<Col>
+<div className ="cooperation-box">
+<Row>
+  <Col xs={4}>
+<Image src = "/head.jpeg" title="head image" id="img-txz" alt="header" roundedCircle style={{position: "relative", width: "100%",height: "100%",}}/>
+</Col>
+<Col xs = {8}>
+  <div>
+  <h6 style={{color:" #337ab7 "}}></h6>
+        <p>
+          “跨界UFA” （论坛小程序，这里人人都 
+        </p>
+        </div>
+</Col>
+</Row>
+
+</div>
+</Col>
+</Row>
+
+<Row>
+
+<Col>
+<div className ="cooperation-box">
+<Row>
+  <Col xs={4}>
+<Image src = "/head.jpeg" title="head image" id="img-txz" alt="header" roundedCircle style={{position: "relative", width: "100%",height: "100%",}}/>
+</Col>
+<Col xs = {8}>
+  <div>
+        <h6 style={{color:" #337ab7 "}}></h6>
+        <p>
+          “跨界UFA” （论坛小程序，这里人人都 
+        </p>
+        </div>
+</Col>
+</Row>
+
+</div>
+</Col>
+<Col>
+<div className ="cooperation-box">
+<Row>
+  <Col xs={4}>
+<Image src = "/head.jpeg" title="head image" id="img-txz" alt="header" roundedCircle style={{position: "relative", width: "100%",height: "100%",}}/>
+</Col>
+<Col xs = {8}>
+  <div>
+  <h6 style={{color:" #337ab7 "}}></h6>
+        <p>
+          “跨界UFA” （论坛小程序，这里人人都 
+        </p>
+        </div>
+</Col>
+</Row>
+
+</div>
+</Col>
+</Row>
+        </>)
+        
+      }
+
+      
+    </div>
     </div>
   </div>
 
@@ -91,17 +240,14 @@ const Contacts = () => {
               value={''}
               placeholder='电话'
             ></Form.Control>
-          
           </Col>
-
           <Col xs={3}>
             <Form.Control
             required
               type="number"
               value={''}
               placeholder='留言'
-            ></Form.Control>
-          
+            ></Form.Control>    
           </Col>
           <Col xs={2}>
           <Button

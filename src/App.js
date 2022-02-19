@@ -15,14 +15,11 @@ import tradePusers from './components/TradingPlatform/Users/TradeingPlatformInte
 const MakeRouter = () => {
   return (
     <Switch>
-      <Route exact path="/eplatform/:users" component={tradePusers}/>
-      <Route exact path="/eplatform/:admin" component={tradePadmin}/>
+      <Route exact path="/eplatform/:Stock" component={tradePusers}/>
       <Route exact path="/register" component={RegisterForm} />
       <Route exact path="/login" component={LoginForm} />
       <Route exact path="/home" component={MainPage} />
-      <Route exact path="" component={MainPage} />
-      <Route exact path="/aboutus" component={Aboutus}/>
-      <Route exact path="/contactus" component={Contacts}/>    
+      <Route exact path="" component={MainPage} />  
       {/*<Route exact path="/profile" component={ProfilePage} />*/}
       {/*<Route exact path="/" component={MainPage} />*/}
     </Switch>
@@ -34,9 +31,9 @@ const MakeRouter = () => {
 
 function App() {
   return (
-    <div>
-        {MakeRouter()}
-    </div>
+    <>
+      {MakeRouter()}
+    </>
 
   );
 }

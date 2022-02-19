@@ -51,7 +51,7 @@ export default function Navigation(props) {
             <Link className={`${fontColor}`} style ={{fontSize:16,padding:20}} to="/team">团队介绍</Link>  {' '}
             <Link className={`${fontColor}`} style ={{fontSize:16,padding:20}} to="/previous">往届回顾</Link>{' '}  
             <Link className={`${fontColor}`} style ={{fontSize:16,padding:20}} to="/competition">赛事介绍</Link>{' '}    
-            <Link className={`${fontColor}`} style ={{fontSize:16,padding:20}} to="/eplatform/:users">交易平台</Link>{' '}
+            <Link className={`${fontColor}`} style ={{fontSize:16,padding:20}} to="/eplatform/:admin">交易平台</Link>{' '}
             <Link className={`${fontColor}`} style ={{fontSize:16,padding:20}} to="/contactus">联系我们</Link>{' '}
         </Nav.Item>
         

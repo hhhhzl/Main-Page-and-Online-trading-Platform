@@ -3,9 +3,9 @@ import { FormGroup, FormControl, Col,Row, Button} from "react-bootstrap";
 import Image from 'react-bootstrap/Image';
 import classNames from "classnames";
 import "./previousreview.css";
-import projectList from "../../../static/projects.json";
 import Collapse from 'react-bootstrap/Collapse'
 import Card from 'react-bootstrap/Card'
+import { Bookmark } from "@material-ui/icons";
 
 
 const Review = ({ projectImgs }) => {
@@ -34,8 +34,9 @@ const Review = ({ projectImgs }) => {
     <>
     <div className='review-title'>
       <div className="section">
+      <br/>
       <h3 className="text-center" style={{color:"gray"}}>REVIEW</h3>
-      <h4 className="text-center" style={{color:" #337ab7 "}}>往期回顾</h4>
+      <h5 className="text-center" style={{color:" #337ab7 "}}><Bookmark/>{" "}往期回顾</h5>
       </div>
     </div>
     <br/>

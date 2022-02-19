@@ -9,7 +9,7 @@ export default function Cover() {
   return (
   <div id="#top" className="cover animated">
     <Image
-      src = "/home_page.jpg"
+      src = "/background1.jpg"
       title="Cover image"
       alt="views in the World"     
       style={{
@@ -22,18 +22,19 @@ export default function Cover() {
     />
     <div className="overlay" />
        
-    <div className="center">
+    {/* <div className="center">
       <p className="greetings">
         <span><strong style={{color:"#FF4500"}}>U</strong> n d e r a d u a t e</span>{' '}{' '}
         <span><strong style={{color:"#FF4500"}}>F</strong> i n a n c e</span>{' '}
         <span><strong style={{color:"#FF4500"}}>A</strong> s s o i a t i o n</span>{' '}
 
         </p>
+        <br/>
       <h1 className="name">
-        华金协会
+         UFA金融协会
       </h1>
       
-    </div>
+    </div> */}
     <div className="arrow animated bounceInDown">
       <ArrowDropDownCircleIcon fontSize="large" style={{color:"#FF4500",left: "center"}}/>
     </div>
