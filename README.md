@@ -25,7 +25,7 @@ Docker-Compose up
    
    -Production:
    
-   #修改yml，使dockerfile指向dockerfile_dev
+   #修改 docker-compose.yml，使dockerfile指向dockerfile_prod
    
    docker-compose -f docker-compose.yml -f docker-compose-prod.yml up -d --build
    
