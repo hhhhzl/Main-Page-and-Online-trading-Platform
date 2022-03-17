@@ -3,9 +3,13 @@ import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button'
 import "./cover.css";
 import ArrowDropDownCircleIcon from '@material-ui/icons/ArrowDropDownCircle';
+import useWindowDimensions from "../../../utils/sizewindow";
 
+
+  
 
 export default function Cover() {
+  const {width,height} = useWindowDimensions();
   return (
   <div id="#top" className="cover animated">
     <Image
@@ -13,11 +17,11 @@ export default function Cover() {
       title="Cover image"
       alt="views in the World"     
       style={{
-        position: "absolute",
+        position: "relative",
         left: 0,
         top: 0,
-        width: "100%",
-        height: "100%"
+        width: width > 600 ? (width*0.94) : (width *0.96),
+        height: width > 600 ? (width*0.94)/2.186 : (width *0.96)/2.186
       }}
     />
     <div className="overlay" />
@@ -36,7 +40,8 @@ export default function Cover() {
       
     </div> */}
     <div className="arrow animated bounceInDown">
-      <ArrowDropDownCircleIcon fontSize="large" style={{color:"#FF4500",left: "center"}}/>
+    <Button className="round-Button" variant="primary" 
+    style={{backgroundColor:"#FF6347",color:"white",fontFamily:"MicrosoftYaHei",letterSpacing:"3px"}} size='sm'>报名赛事</Button>
     </div>
   </div>
   )

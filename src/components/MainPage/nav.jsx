@@ -6,8 +6,12 @@ import {Link} from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap';
 import { IconButton } from '@material-ui/core';
 import Image from 'react-bootstrap/Image';
+import useWindowDimensions from '../../utils/sizewindow';
+
+
 
 const NavbarCreate = ({toggle}) => {
+    const {width,height} = useWindowDimensions();
     const [scrolledDownEnough, setScrolledDownEnough] = useState(false);
     const [show, setShow] = useState(false);
 
@@ -46,8 +50,6 @@ const NavbarCreate = ({toggle}) => {
                 {scrolledDownEnough? 
                 <>
                 <NavLogo scrolledDownEnough={scrolledDownEnough} to ='home'>
-                <Image src = "/UFAlogo.jpg" title="head image" id="img-txz" alt="header"  roundedCircle  style={{ position: "relative", width: "7vh", height: "7vh",}}/>
-
                 </NavLogo>
                 <MobileIcon onClick ={() => toggle()}>
                 <ViewHeadlineTwoTone  fontSize='large'/>
@@ -66,32 +68,32 @@ const NavbarCreate = ({toggle}) => {
               
             <NavMenu>
                 <NavItem>
-                    <NavLinks scrolledDownEnough={scrolledDownEnough} activeClass="active-block" to="home" spy={true} smooth={true} duration={700}>首页</NavLinks>
+                    <NavLinks scrolledDownEnough={scrolledDownEnough} width ={width} activeClass="active-block" to="home" spy={true} smooth={true} duration={700}>首页</NavLinks>
                 </NavItem>
                 <NavItem>
-                    <NavLinks scrolledDownEnough={scrolledDownEnough} offset={-20} activeClass="active-block" to="aboutus" spy={true} smooth={true} duration={700}>协会介绍</NavLinks>
+                    <NavLinks scrolledDownEnough={scrolledDownEnough} width ={width} offset={-50} activeClass="active-block" to="aboutus" spy={true} smooth={true} duration={700}>协会介绍</NavLinks>
                 </NavItem>
                 <NavItem>
-                    <NavLinks scrolledDownEnough={scrolledDownEnough} offset={-20} activeClass="active-block" to ="team" spy={true} smooth={true} duration={700}>团队介绍</NavLinks>
+                    <NavLinks scrolledDownEnough={scrolledDownEnough} width ={width} offset={-20} activeClass="active-block" to ="team" spy={true} smooth={true} duration={700}>团队介绍</NavLinks>
                 </NavItem>
                 <NavItem>
-                    <NavLinks scrolledDownEnough={scrolledDownEnough} offset={-20} activeClass="active-block" to ="review" spy={true} smooth={true} duration={700} >往届回顾</NavLinks>
+                    <NavLinks scrolledDownEnough={scrolledDownEnough} width ={width} offset={-20} activeClass="active-block" to ="review" spy={true} smooth={true} duration={700} >往期回顾</NavLinks>
                 </NavItem>
                 <NavItem>
-                    <NavLinks scrolledDownEnough={scrolledDownEnough} offset={-20} onClick={handleShow} activeClass="active-block" to ="/competition" spy={true} smooth={true} duration={700}>赛事</NavLinks>
+                    <NavLinks scrolledDownEnough={scrolledDownEnough} width ={width} offset={-20} onClick={handleShow} activeClass="active-block" to ="/competition" spy={true} smooth={true} duration={700}>赛事</NavLinks>
                 </NavItem>
                 <NavItem>
-                    <NavLinks scrolledDownEnough={scrolledDownEnough} offset={-20} onClick={handleShow} activeClass="active-block" to ="/eplatform/:admin" spy={true} smooth={true} duration={700}>交易平台</NavLinks>
+                    <NavLinks scrolledDownEnough={scrolledDownEnough} width ={width} offset={-20} onClick={handleShow} activeClass="active-block" to ="/eplatform/:admin" spy={true} smooth={true} duration={700}>交易平台</NavLinks>
                 </NavItem>
 
                 <NavItem>
-                    <NavLinks scrolledDownEnough={scrolledDownEnough} offset={-20} activeClass="active-block" to ="contactus" spy={true} smooth={true} duration={700}>联系我们</NavLinks>
+                    <NavLinks scrolledDownEnough={scrolledDownEnough} width ={width} offset={-20} activeClass="active-block" to ="contactus" spy={true} smooth={true} duration={700}>联系我们</NavLinks>
                 </NavItem>
             </NavMenu>
             <NavBtn>
-                <NavBtnLink scrolledDownEnough={scrolledDownEnough} to = "/eplatform/:Stock">
+                {/* <NavBtnLink scrolledDownEnough={scrolledDownEnough} width ={width} to="/eplatform/:Stock">
                     登录
-                </NavBtnLink>
+                </NavBtnLink> */}
             </NavBtn>
             </NavbarContianer>   
           </NavOut>

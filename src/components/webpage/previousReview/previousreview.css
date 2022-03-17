@@ -9,3 +9,21 @@
   height:max-content;
   margin-left: 20%;
 }
+
+@media screen and (max-width: 960px){
+  .review-picture {
+    width: 80%;
+    height:max-content;
+    margin-left: 10%;
+  }
+
+}
+
+@media screen and (max-width: 650px){
+  .review-picture {
+    width: 95%;
+    height:max-content;
+    margin-left: 2.5%;
+  }
+
+}

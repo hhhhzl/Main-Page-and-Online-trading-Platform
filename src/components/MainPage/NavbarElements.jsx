@@ -2,22 +2,23 @@ import { Link as LinkR} from 'react-router-dom'
 import styled from 'styled-components'
 import {Link as LinkS} from 'react-scroll'
 
+
 export const NavOut = styled.nav`
    background:${props => props.scrolledDownEnough ? 'white' : "rgba(0,0,0,0)"};
-   height: 10vh;
+   height: 8vh;
    margin-left:${props => props.scrolledDownEnough ? '0%' : "0%"};
    width: ${props => props.scrolledDownEnough ? '100%' : "100%"};
    justify-content:center;
    align-items:center;
    font-size: 1rem;
-   position:fixed;
+   position: fixed;
    transition: all 1s ease;
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
   -o-transition: all 1s ease;
   -ms-transition: all 1s ease;
    border-bottom: ${props => props.scrolledDownEnough ? '2px solid #cccccc' : "none"};;
-   top:${props => props.scrolledDownEnough ? '0vh' : "7vh"};
+   top:${props => props.scrolledDownEnough ? '0vh' : "10vh"};
    z-index:10;
 
    @media screen and (max-width: 960px){
@@ -31,11 +32,11 @@ justify-content:space-between;
 height: 60px;
 z-index: 1;
 width: 100%;
-padding  0 24;
+padding: 0 ${props => props.width > 900 ? '7%' : "5%"};
 `
 
 export const NavLogo =styled(LinkS)`
-color:${props => props.scrolledDownEnough ? '#337ab7' : "#fff"};
+color:${props => props.scrolledDownEnough ? '#26409A' : "#fff"};
 justify-self: flex-start;
 cursor:pointer;
 font-size:1.5rem;
@@ -74,22 +75,24 @@ export const NavMenu =styled.ul`
 `
 
 export const NavItem = styled.li`
-   height:10px;
-   margin-top:2vh;
+   height:max-content;
+   margin-top:5vh;
    text-decoration:none;!important;
 `
 
 export const NavLinks = styled(LinkS)`
-   color: ${props => props.scrolledDownEnough ? '#337ab7' : "#fff"};
+   color: ${props => props.scrolledDownEnough ? '#26409A' : "#fff"};
    text-decoration:none;
    display:flex;
    align-item: center;
-   padding:0.3rem 1rem;
+   letter-spacing: 1px;
+   font-size: ${props => props.width > 900 ? "18px" : "15px"};
+   padding:0.3rem ${props => props.width > 900 ? props => props.width > 1130 ? "2rem" : "1rem" : "0.7rem"};
    height: 100%
    cursor: pointer;
 
    &.active{
-       border-bottom: 5px solid #337ab7;
+       border-bottom: 5px solid #26409A;
    }
 
 `
@@ -104,9 +107,9 @@ export const NavBtn = styled.nav`
 
 export const NavBtnLink = styled(LinkR)`
    white-space:nowrap;
-   padding: 10px 22px;
-   color:${props => props.scrolledDownEnough ? '#337ab7' : "#fff"};
-   font-size:16px;
+   padding: 45px 22px 22px 0;
+   color:${props => props.scrolledDownEnough ? '#26409A' : "#fff"};
+   font-size:${props => props.width > 900 ? "18px" : "15px"};
    outline:none;
    border: none;
    cursor: pointer;
@@ -115,8 +118,7 @@ export const NavBtnLink = styled(LinkR)`
 
    &:hover{
        transition: all 0.2 ease-in-out;
-       background: #fff;
-       color:white;
+       color:#26409A;
    }
 
 

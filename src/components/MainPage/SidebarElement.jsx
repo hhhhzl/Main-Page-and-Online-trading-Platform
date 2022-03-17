@@ -9,7 +9,7 @@ export const SidebarContainer = styled.aside`
   background-color:${props => props.scrolledDownEnough ? 'white' : "white"};
   display: grid;
   align-items: center;
-  top:${props => props.scrolledDownEnough ? '7vh' : "15vh"};
+  top:${props => props.scrolledDownEnough ? '7vh' : "17vh"};
   right:0;
   transition:0.3s ease-in-out;
   border-bottom: ${props => props.scrolledDownEnough ? '2px solid #cccccc' : "none"};;

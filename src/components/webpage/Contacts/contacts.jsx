@@ -15,22 +15,44 @@ const Contacts = () => {
   return (
     <div className="section">
       <br/>
-      <h3 className="text-center" style={{color:"gray"}}>COOPERATION</h3>
-      <h5 className="text-center" style={{color:" #337ab7 "}}><Bookmark/>{" "}如何加入UFA</h5>
+      <h3 className="text-center" style={{color:"#AEAEAE"}}>CONTACT US</h3>
+      <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"25px",letterSpacing:"3px"}}><Bookmark/>{" "}合作联系</h5>
+      <br/>
       <br/>
       <div className="bottom-cover-picture animated">
-    <Image
-      src = "/合作添加背景图.png"
+        {width > 700 ?
+        (<>
+        <Image
+      src = "/corpo.png"
       title="Cover image"
       alt="views in the World"     
       style={{
-        position: "absolute",
+        position: "relative",
         left: 0,
         top: 0,
-        width: "100%",
-        height: "100%"
+        width: width * 0.94,
+        height:  (width * 0.94)/2.876,
       }}
     />
+        </>)
+        :
+        (<>
+        <Image
+      src = "/corpo600.png"
+      title="Cover image"
+      alt="views in the World"     
+      style={{
+        position: "relative",
+        left: 0,
+        top: 0,
+        width: width * 0.96,
+        height:(width * 0.96)/1.435,
+      }}
+    />
+        </>
+        )
+        }
+    
     <div className="overlay" />
 
     
@@ -50,12 +72,12 @@ const Contacts = () => {
   <div className='cover-corperation'>
     <br/>
     <div className="section">
-    <h3 className="text-center" style={{color:"gray"}}>COOPERATION</h3>
-      <h5 className="text-center" style={{color:" #337ab7 "}}><Bookmark/>{" "}合作伙伴</h5>
+    <h3 className="text-center" style={{color:"#AEAEAE"}}>COOPERATION</h3>
+      <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"30px",letterSpacing:"3px"}}><Bookmark/>{" "}合作伙伴</h5>
       <br/>
 
       <div className="contact-center">
-        {width < 600 ? 
+        {width < 700 ? 
 
         (<><Col>
           <div className ="cooperation-box">
@@ -220,9 +242,10 @@ const Contacts = () => {
 
   <div>
     <br/>
+    <br/>
     <div className="section">
     <h3 className="text-center" style={{color:"black"}}>联系我们</h3>
-      <h4 className="text-center" style={{color:" #337ab7 "}}>—Contact Us—</h4>
+      <h4 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"25px",letterSpacing:"2px"}}>—Contact Us—</h4>
       <br/>
       <Form className= "contact-form" noValidate validated={validated} id="addProject">
         <Form.Group as={Row}>
@@ -260,7 +283,10 @@ const Contacts = () => {
         </Form.Group>
       </Form>
     </div>
-    <Image src = "/contact.jpg" title="head image" id="img-txz" alt="contact"  style={{position: "relative",marginLeft:"5%", width: "90%",height: "100%",}}/>
+    <br/>
+    <br/>
+    <br/>
+    <Image src = "/contact.jpg" title="head image" id="img-txz" alt="contact"  style={{position: "relative", width: "100%",height: "100%",zIndex:1}}/>
     </div>
 
 

@@ -30,8 +30,8 @@ export default function MainPage() {
     return (
         <> 
             <div id="home" className="fix-bar">
-                <div className="text-center">   
-               <Image src = "/UFAlogo.jpg" title="head image" id="img-txz" alt="header"  roundedCircle  style={{ position: "relative", width: "7vh", height: "7vh",}}/>
+             <div className="text-center">   
+               <Image src = "/UFAlogo.jpg" title="UFA Logo" id="img-txz" alt="header"  roundedCircle  style={{ position: "relative", marginTop:"0.8vh", width: "8vh", height: "8vh",}}/>
                </div>
             </div>  
 
