@@ -10,38 +10,41 @@ import ExitToAppIcon from '@material-ui/icons/ExitToAppTwoTone';
 
 
 export default function NavBarTest(props) {
-  
-    return (    
-        <Navbar bg="light" variant="info" id="app-header">
-            <Container className='padding-right' >
-                <Nav className="me-auto">
-                </Nav>
-                欢迎你，{props.usertype} {props.username}
-                <Nav className="ml-auto">
 
-                    <NavDropdown 
-                        title={
-                            <div >
-                                <Image
-                                    src="/head.jpeg"
-                                    width="100%"
-                                    height="40"
-                                    alt="无法显示图片"
-                                    style={{marginTop:"50%"}}
-                                    roundedCircle
-                                />
+    return (
+        <div className='navbar-height'>
+            <Navbar bg="light" variant="info" id="app-header">
+                <Container className='padding-right' >
+                    <Nav className="me-auto">
+                    </Nav>
+                    欢迎，{props.usertype} {props.username}
+                    <Nav className="ml-auto">
+
+                        <NavDropdown
+                            title={
+                                <div >
+                                    <Image
+                                        src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2231&q=80"
+                                        width="40"
+                                        height="40"
+                                        alt="无法显示图片"
+                                        style={{ marginTop: "50%", objectFit: "cover" }}
+                                        roundedCircle
+                                    />
+                                </div>
+                            }
+                            id="collasible-nav-dropdown"
+                        >
+                            <div className="dropdownleft;" >
+                                <NavDropdown.Item href="#action/3.1"><EditIcon style={{ color: "rgba(0, 0, 0, 0.54)" }} /> 修改密码</NavDropdown.Item>
+                                <NavDropdown.Item href="/" ><ExitToAppIcon style={{ color: "rgba(0, 0, 0, 0.54)" }} /> 退出</NavDropdown.Item>
                             </div>
-                        }
-                        id="collasible-nav-dropdown"
-                    >
-                        <div className="dropdownleft;" >
-                        <NavDropdown.Item href="#action/3.1"><EditIcon style={{color: "rgba(0, 0, 0, 0.54)"}}/> 修改密码</NavDropdown.Item>
-                        <NavDropdown.Item href="/" ><ExitToAppIcon  style={{color: "rgba(0, 0, 0, 0.54)"}}/> 退出</NavDropdown.Item>
-                        </div>
-                    </NavDropdown>
-                </Nav>
-            </Container>
-        </Navbar>
-       
+                        </NavDropdown>
+                    </Nav>
+                </Container>
+            </Navbar>
+        </div>
+
+
     );
 }

@@ -91,9 +91,12 @@ const NavbarCreate = ({toggle}) => {
                 </NavItem>
             </NavMenu>
             <NavBtn>
-                {/* <NavBtnLink scrolledDownEnough={scrolledDownEnough} width ={width} to="/eplatform/:Stock">
-                    登录
-                </NavBtnLink> */}
+                <NavBtnLink scrolledDownEnough={scrolledDownEnough} width ={width} to="/eplatform/:User">
+                    登录用户
+                </NavBtnLink>
+                <NavBtnLink scrolledDownEnough={scrolledDownEnough} width ={width} to="/admin">
+                    登录管理员
+                </NavBtnLink>
             </NavBtn>
             </NavbarContianer>   
           </NavOut>

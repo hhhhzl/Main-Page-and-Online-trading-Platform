@@ -2,12 +2,13 @@
     display: flex;
     color: white;
     flex-direction: column;
-    position: fixed;
+    position: absolute;
     left: 0%;
     top: 0%;
     width: 8%;
     height: 100%;
     background-color: #337ab7;
+    z-index: 9999;
 }
 
 .side-menu-users {
@@ -297,4 +298,13 @@
 }
 
  
- 
+ .navbar {
+   height: 8%;
+   max-height: 100px;
+   width: 100%;
+   position: relative;
+ }
+
+ .page {
+   margin-top: 8%;
+ }

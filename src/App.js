@@ -15,7 +15,9 @@ import tradePusers from './components/TradingPlatform/Users/TradeingPlatformInte
 const MakeRouter = () => {
   return (
     <Switch>
-      <Route exact path="/eplatform/:Stock" component={tradePusers}/>
+      <Route exact path="/admin" component={tradePadmin}/>
+      <Route exact path="/eplatform/:User" component={tradePusers}/>
+
       <Route exact path="/register" component={RegisterForm} />
       <Route exact path="/login" component={LoginForm} />
       <Route exact path="/home" component={MainPage} />
