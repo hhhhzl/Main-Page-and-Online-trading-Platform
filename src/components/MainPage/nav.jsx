@@ -80,20 +80,32 @@ const NavbarCreate = ({toggle}) => {
                     <NavLinks scrolledDownEnough={scrolledDownEnough} width ={width} offset={-20} activeClass="active-block" to ="review" spy={true} smooth={true} duration={700} >往期回顾</NavLinks>
                 </NavItem>
                 <NavItem>
-                    <NavLinks scrolledDownEnough={scrolledDownEnough} width ={width} offset={-20} onClick={handleShow} activeClass="active-block" to ="/competition" spy={true} smooth={true} duration={700}>赛事</NavLinks>
+                    <NavBtnLink scrolledDownEnough={scrolledDownEnough} width ={width} offset={-20} onClick={handleShow} activeClass="active-block" to ="/competition" spy={true} smooth={true} duration={700}>赛事</NavBtnLink>
                 </NavItem>
                 <NavItem>
-                    <NavLinks scrolledDownEnough={scrolledDownEnough} width ={width} offset={-20} onClick={handleShow} activeClass="active-block" to ="/eplatform/:admin" spy={true} smooth={true} duration={700}>交易平台</NavLinks>
+                    <NavBtnLink scrolledDownEnough={scrolledDownEnough} width ={width} offset={-20} onClick={handleShow} activeClass="active-block" to ="/stocks" spy={true} smooth={true} duration={700}>交易平台</NavBtnLink>
                 </NavItem>
 
                 <NavItem>
                     <NavLinks scrolledDownEnough={scrolledDownEnough} width ={width} offset={-20} activeClass="active-block" to ="contactus" spy={true} smooth={true} duration={700}>联系我们</NavLinks>
                 </NavItem>
+            
+            <NavItem>
+            <NavBtnLink scrolledDownEnough={scrolledDownEnough} width ={width} to="/register">
+                    注册
+                </NavBtnLink>
+            
+                
+            </NavItem>
+            <NavItem>
+            <NavBtnLink scrolledDownEnough={scrolledDownEnough} width ={width} to="/login">
+            <Button className="round-Button" variant="primary" 
+    style={{backgroundColor:"#26409A",color:"white",fontFamily:"MicrosoftYaHei",letterSpacing:"3px",paddingLeft:width > 1300 ? "50px" : "20px",paddingRight:width > 1300 ? "50px" : "20px", paddingBottom:"0"}} size='sm'><h5 style={{fontSize:width > 900 ? "18px" : "15px"}}>登录</h5></Button>
+                </NavBtnLink>
+                </NavItem>
             </NavMenu>
             <NavBtn>
-                {/* <NavBtnLink scrolledDownEnough={scrolledDownEnough} width ={width} to="/eplatform/:Stock">
-                    登录
-                </NavBtnLink> */}
+
             </NavBtn>
             </NavbarContianer>   
           </NavOut>

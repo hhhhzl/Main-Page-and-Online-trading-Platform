@@ -8,32 +8,28 @@ import StockManageTable from "./StockManageTable";
 
 
 export default function tradePadmin(){
-
     return(
-        <div>
-         
+      <div>  
             <NavBarTest username={'张三'} usertype={"管理员"}/>
             <SideMenuAdmin/>
             <Switch>
-            <Route  path='/eplatform/:Stock'>
+            {/* <Route  path='/eplatform/:Stock'>
           <div className='supervisor-interface'>
                 <h3>欢迎</h3>
                 <br />
                 <StockManageTable/>
                 </div>
-          </Route>
-            <Route path="/eplatform/:admin">
+          </Route> */}
+            <Route path="/eplatform/admin">
                 <div className='supervisor-interface'>
                 <h3>欢迎</h3>
                 <br />
                 <UsersManageTable/>
                 </div>
             </Route>
-          
           <Route path='/home'>
           </Route>
         </Switch>
-        </div>
+        </div>   
     )
-
 }

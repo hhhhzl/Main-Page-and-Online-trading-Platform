@@ -87,35 +87,31 @@ export const NavLinks = styled(LinkS)`
    align-item: center;
    letter-spacing: 1px;
    font-size: ${props => props.width > 900 ? "18px" : "15px"};
-   padding:0.3rem ${props => props.width > 900 ? props => props.width > 1130 ? "2rem" : "1rem" : "0.7rem"};
+   padding:0.3rem ${props => props.width > 1000 ? props => props.width > 1330 ? "1.8rem" : "1rem" : "0.5rem"};
    height: 100%
    cursor: pointer;
-
    &.active{
        border-bottom: 5px solid #26409A;
    }
 
 `
-
 export const NavBtn = styled.nav`
    display: flex;
    align-items: center;
+   margin-top:3vh;
    @media screen and (max-width:768px){
        display:none;
    }
 `
-
 export const NavBtnLink = styled(LinkR)`
    white-space:nowrap;
-   padding: 45px 22px 22px 0;
+   padding: 0.3rem ${props => props.width > 1000 ? props => props.width > 1330 ? "1.8rem" : "1rem" : "0.5rem"};
    color:${props => props.scrolledDownEnough ? '#26409A' : "#fff"};
    font-size:${props => props.width > 900 ? "18px" : "15px"};
-   outline:none;
-   border: none;
+   display:flex;
    cursor: pointer;
    transition: all 0.2s ease-in-out;
    text-decoration:none;
-
    &:hover{
        transition: all 0.2 ease-in-out;
        color:#26409A;

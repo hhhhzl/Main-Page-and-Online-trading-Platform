@@ -1,4 +1,4 @@
-import data from './tradingdata.json'
+import data from '../../../static/tradingdata.json'
 import React from "react";
 import { Button } from "react-bootstrap";
 import BootstrapTable from 'react-bootstrap-table-next';
@@ -55,6 +55,16 @@ export default function UserTradingHistory(){
         },
 
     ];
+
+
+    const indication =()=>{
+        return (
+            <>
+            <p style={{padding:"50px", textAlign:"center"}}>请先登录账号</p>
+            </>
+        )
+    }
+
     return (
         <ToolkitProvider
             bootstrap4
@@ -86,9 +96,10 @@ export default function UserTradingHistory(){
           
           <BootstrapTable
            { ...props.baseProps}
-           striped
             hover
+            bordered={ false }
             condensed 
+            noDataIndication={ indication }
             />
 
           
@@ -96,12 +107,12 @@ export default function UserTradingHistory(){
           </Collapse>
         
 
-<div className="search-div">
+{/* <div className="search-div">
 <ExportCSVButton 
     {...props.csvProps}>
       <Button>导出CSV</Button>
 </ExportCSVButton>
-</div>
+</div> */}
 </div>
 
         

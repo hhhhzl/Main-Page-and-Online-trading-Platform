@@ -88,6 +88,10 @@ a {
   background-color:rgba(0,0,0,0);
 }
 
+.show-bar{
+  height:max-content;
+}
+
 .app-header {
   position: fixed;
   margin-top: 0%;
@@ -131,7 +135,6 @@ a {
   background-color: rgba(0,0,0,0);
 }
 
- 
 
 ::-webkit-scrollbar{
     display:none;
