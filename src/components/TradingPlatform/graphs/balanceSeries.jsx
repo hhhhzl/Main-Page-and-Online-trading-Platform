@@ -27,22 +27,19 @@ import {
     
 
 } from "react-financial-charts";
-import { initialData } from "./testdata";
+import { initialData } from "../../../static/testdata";
 import useWindowDimensions from "../../../utils/sizewindow";
   
 
-export default function UserBalanceSeries({props}){
+export default function UserBalanceSeries({w,h}){
    const {height,width} = useWindowDimensions();
     const ScaleProvider = discontinuousTimeScaleProviderBuilder().inputDateAccessor(
         (d) => new Date(d.date)
       );
 
       // get the width and height of user's window
-      const width_window = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-      const height_window = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-      const heightx = height * 0.5;
-      console.log(heightx)
-      const widthy = width * 0.5;
+      const heightx = height * h;
+      const widthy = width * w;
       const margin = { left: widthy*0.05, right: widthy*0.1, top: 0, bottom: heightx*0.1 };
       // const Window_height = height;
       // const Window_width = width * 0.5;
@@ -99,10 +96,7 @@ export default function UserBalanceSeries({props}){
 
     return(
       <>
-      <div className="assets-curve">
-      <h5 style={{marginLeft:"3%"}}>资产曲线</h5>
-            <hr/>
-      
+      <div className="assets-curve">      
         <ChartCanvas
         height={heightx}
         ratio={5}

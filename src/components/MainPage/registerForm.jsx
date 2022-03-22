@@ -42,8 +42,7 @@ const [validated, setValidated] = useState(false);
   return (
     <div>
       <Image
-      src = "/home_page.jpg"
-      title="Cover image"
+      src = "/loginback.jpg"
       alt="views in the World"     
       style={{
         position: "absolute",
