@@ -105,16 +105,6 @@ const NavbarCreate = ({toggle}) => {
                 </NavItem>
             </NavMenu>
             <NavBtn>
-<<<<<<< HEAD
-                <NavBtnLink scrolledDownEnough={scrolledDownEnough} width ={width} to="/eplatform/:User">
-                    登录用户
-                </NavBtnLink>
-                <NavBtnLink scrolledDownEnough={scrolledDownEnough} width ={width} to="/admin">
-                    登录管理员
-                </NavBtnLink>
-=======
-
->>>>>>> 0320
             </NavBtn>
             </NavbarContianer>   
           </NavOut>

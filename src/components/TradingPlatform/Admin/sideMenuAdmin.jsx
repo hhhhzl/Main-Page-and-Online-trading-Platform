@@ -14,47 +14,44 @@ import useWindowDimensions from "../../../utils/sizewindow";
 
 
 export default function SideMenuAdmin() {
-  const {height,width} = useWindowDimensions();
+  const { height, width } = useWindowDimensions();
 
   return (
-    <div className='side-menu-users'style={{width: "12%"}}>
+    <div className='side-menu-users' style={{ width: "12%" }}>
       <Nav>
-      <div className='img-center'>
+        <div className='img-center'>
           <Link to="/home">
             <Image
               src="/UFAlogo.jpg"
               height="20%"
               width="20%"
-              style={{marginLeft:"17%", marginTop: "17%", padding:"0.5px 0.5px 0.5px 0.5px"}}
+              style={{ marginLeft: "17%", marginTop: "17%", padding: "0.5px 0.5px 0.5px 0.5px" }}
               alt="UFA_logo"
               roundedCircle
             />
           </Link>
-          </div>
+        </div>
         <br />
-          <Switch>
-          <Route path='/eplatform'>
+        <Switch>
+          <Route path='/eplatform/admin'>
             <div className='side-container-users'>
-            <Row className='row-padding'>
-              <Link style={{ color: "white", textDecoration:"none",letterSpacing:"5px",fontSize:"20px" }} to="/eplatform/admin"><AccountCircleOutlined fontSize={width>530?"large":"medium"}/>{width>960? (<>用户管理</>):(<></>)}</Link>
-            </Row>
-            <Row className='row-padding'>   
-              <Link style={{ color: "white",textDecoration:"none",letterSpacing:"5px",fontSize:"20px"  }} to="/eplatform/:Stock"><AssessmentIcon fontSize={width>530?"large":"medium"} />{width>960? (<>股票管理</>):(<></>)} </Link>
-            </Row>
-            <Row className='row-padding'>  
-              <Link style={{ color: "white",textDecoration:"none",letterSpacing:"5px",fontSize:"20px"  }} to="/eplatform/:News"><AssignmentIcon fontSize={width>530?"large":"medium"}/>{width>960? (<>新闻管理</>):(<></>)} </Link>
-            </Row>
-            <Row className='row-padding'>  
-              <Link style={{ color: "white", textDecoration:"none",letterSpacing:"5px",fontSize:"20px" }} to="/eplatform/:Message"><BallotIcon fontSize={width>530?"large":"medium"}/>{width>960? (<>消息管理</>):(<></>)} </Link>
-            </Row>
-            
+              <Row className='row-padding'>
+                <Link style={{ color: "white", textDecoration: "none", letterSpacing: "5px", fontSize: "20px" }} to="/eplatform/admin"><AccountCircleOutlined fontSize={width > 530 ? "large" : "medium"} />{width > 1600 ? (<>用户管理</>) : (<></>)}</Link>
+              </Row>
+              <Row className='row-padding'>
+                <Link style={{ color: "white", textDecoration: "none", letterSpacing: "5px", fontSize: "20px" }} to="/eplatform/:Stock"><AssessmentIcon fontSize={width > 530 ? "large" : "medium"} />{width > 1600 ? (<>股票管理</>) : (<></>)} </Link>
+              </Row>
+              <Row className='row-padding'>
+                <Link style={{ color: "white", textDecoration: "none", letterSpacing: "5px", fontSize: "20px" }} to="/eplatform/:News"><AssignmentIcon fontSize={width > 530 ? "large" : "medium"} />{width > 1600 ? (<>新闻管理</>) : (<></>)} </Link>
+              </Row>
+              <Row className='row-padding'>
+                <Link style={{ color: "white", textDecoration: "none", letterSpacing: "5px", fontSize: "20px" }} to="/eplatform/:Message"><BallotIcon fontSize={width > 530 ? "large" : "medium"} />{width > 1600 ? (<>消息管理</>) : (<></>)} </Link>
+              </Row>
+
             </div>
-
-
-
-       
+          </Route>
+        </Switch>
       </Nav>
-
     </div>
   )
 }

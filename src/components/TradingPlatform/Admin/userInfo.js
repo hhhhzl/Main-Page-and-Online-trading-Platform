@@ -131,7 +131,7 @@ export default function UserInfo(props) {
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="nomeaning">
-                            <Form.Label>学校</Form.Label>
+                            <Form.Label>学校</Form.Label>q
                             <Form.Control
                                 required
                                 size="lg"

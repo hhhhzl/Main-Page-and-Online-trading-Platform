@@ -22,7 +22,7 @@
     background-color:#AEAEAE;
     /* background-image: radial-gradient(farthest-side at 60%, #26409A,#AEAEAE); */
     opacity: 0.9;
-    z-index: 999;
+    z-index: 99999;
 }
 
 .side-text:hover{
