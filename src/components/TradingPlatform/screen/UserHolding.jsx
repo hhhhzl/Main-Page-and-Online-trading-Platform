@@ -12,7 +12,11 @@ import {MoneyOffOutlined} from '@material-ui/icons'
 const { SearchBar } = Search;
 const { ExportCSVButton } = CSVExport;
 
-export default function UserHolding(){
+export default function UserHolding(props){
+
+    // should pass the data to props
+    // Its parent component should fetch user holding by user id from the server
+
     const columns = [
         {
             dataField: 'symbol',

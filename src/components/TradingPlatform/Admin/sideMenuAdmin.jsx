@@ -21,11 +21,11 @@ export default function SideMenuAdmin() {
       <Nav>
         <div className='img-center'>
           <Link to="/home">
-            <Image
+          <Image
               src="/UFAlogo.jpg"
-              height="20%"
-              width="20%"
-              style={{ marginLeft: "17%", marginTop: "17%", padding: "0.5px 0.5px 0.5px 0.5px" }}
+              height="60%"
+              width="60%"
+              style={{marginLeft:"17%", marginTop: "17%", padding:"0.5px 0.5px 0.5px 0.5px"}}
               alt="UFA_logo"
               roundedCircle
             />

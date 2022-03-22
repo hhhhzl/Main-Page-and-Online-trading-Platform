@@ -27,6 +27,9 @@ export default function UserInfo(props) {
     // Set the default variables in table
     const [name, setName] = useState(props.value.username);
     const [school, setSchool] = useState(props.value.school);
+    const [area, setArea] = useState(props.value.area);
+    const [email, setEmail] = useState(props.value.email);
+    const [phoneNumber, setPhoneNumber] = useState(props.value.phone_number);
     // const [start_date_year, setStartDateYear] = useState(props.value.start_time.slice(0, 4));
     // const [start_date_month, setStartDateMonth] = useState(props.value.start_time.slice(5, 7));
     // const [start_date_day, setStartDateDay] = useState(props.value.start_time.slice(8,10));
@@ -36,7 +39,7 @@ export default function UserInfo(props) {
 
     // const [send_with, setSendWith] = useState(props.value.send_with);
     // const [will_mark, setWillMark] = useState(props.value.will_mark);
-    // const [is_active, setIsActive] = useState(props.value.is_active);
+    const [is_active, setIsActive] = useState(props.value.state);
 
     // functions to control Modal
     const handleClose = () => setShow(false);
@@ -121,7 +124,7 @@ export default function UserInfo(props) {
                                 required
                                 size="lg"
                                 type="text"
-                                placeholder="请输入项目名称"
+                                placeholder="请输入用户名称"
                                 value={name}
                                 onChange={e => {
                                     const name = e.target.value;
@@ -131,12 +134,12 @@ export default function UserInfo(props) {
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="nomeaning">
-                            <Form.Label>学校</Form.Label>q
+                            <Form.Label>学校</Form.Label>
                             <Form.Control
                                 required
                                 size="lg"
                                 type="text"
-                                placeholder="请输入项目名称"
+                                placeholder="请输入用户学校"
                                 value={school}
                                 onChange={e => {
                                     const school = e.target.value;
@@ -145,199 +148,51 @@ export default function UserInfo(props) {
                             />
                         </Form.Group>
 
-                        {/* <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Label>绑定机构</Form.Label>
-                            <Form.Control type="text" placeholder="待升级功能" />
-                            </Form.Group> 
-
-                        <Form.Group className="mb-3">
-                            <Form.Label>学校*</Form.Label>
-                            <Form.Select
+                        <Form.Group className="mb-3" controlId="nomeaning">
+                            <Form.Label>地区</Form.Label>
+                            <Form.Control
                                 required
-                                aria-label="选择管理员"
-                                value={school}
+                                size="lg"
+                                type="text"
+                                placeholder="请输入用户地区"
+                                value={area}
                                 onChange={e => {
-                                    const school = e.target.value;
-                                    setSchool(school);
+                                    const area = e.target.value;
+                                    setArea(area)
                                 }}
-                            >
-                                <option value="">请选择管理员</option>
-                                {admins.map((elem) => (
-                                    <option key={elem.id} value={elem.id}>
-                                        {elem.last_name + elem.first_name}
-                                    </option>
-                                ))}
-                            </Form.Select>
+                            />
                         </Form.Group>
 
-                        <Form.Group className="mb-3">
-                            <Form.Label>发放方式</Form.Label>
-                            <Form.Select aria-label="选择发放方式"
+                        <Form.Group className="mb-3" controlId="nomeaning">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control
                                 required
-                                value={send_with}
+                                size="lg"
+                                type="text"
+                                placeholder="请输入用户邮箱地址"
+                                value={email}
                                 onChange={e => {
-                                    const send_with = e.target.value;
-                                    setSendWith(send_with);
+                                    const email = e.target.value;
+                                    setEmail(email)
                                 }}
-                            >
-                                <option value="">请选择发放方式</option>
-                                <option value="L">登录系统</option>
-                                <option value="A">匿名邮件</option>
-                            </Form.Select>
+                            />
                         </Form.Group>
 
-                        <Form.Group className="mb-3">
-                            <Form.Label>是否记分</Form.Label>
-                            <Form.Select aria-label="选择是否计分"
+                        <Form.Group className="mb-3" controlId="nomeaning">
+                            <Form.Label>手机号码</Form.Label>
+                            <Form.Control
                                 required
-                                value={will_mark}
+                                size="lg"
+                                type="text"
+                                placeholder="请输入用户手机号码"
+                                value={phoneNumber}
                                 onChange={e => {
-                                    const will_mark = e.target.value;
-                                    setWillMark(will_mark);
+                                    const phoneNumber = e.target.value;
+                                    setPhoneNumber(phoneNumber)
                                 }}
-                            >
-                                <option value="">请选择是否计分</option>
-                                <option value="true">计分</option>
-                                <option value="false">不计分</option>
-                            </Form.Select>
+                            />
                         </Form.Group>
 
-
-
-                        <Form.Group as={Row} className="mb-3">
-                            <Form.Label>开始时间*</Form.Label>
-                            <Row>
-                                <Col>
-                                    <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
-                                        <Col sm={8}>
-                                            <Form.Control
-                                                required
-                                                type="number"
-                                                placeholder="YYYY"
-                                                value={start_date_year}
-                                                min={1950}
-                                                max={2050}
-                                                onChange={e => {
-                                                    const start_date_year = e.target.value;
-                                                    setStartDateYear(start_date_year);
-                                                }}
-                                            />
-                                        </Col>
-                                        <Form.Label column sm={2}>
-                                            年
-                                        </Form.Label>
-                                    </Form.Group>
-                                </Col>
-                                <Col>
-                                    <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
-
-                                        <Form.Control
-                                            required
-                                            type="number"
-                                            placeholder="MM"
-                                            value={start_date_month}
-                                            min={1}
-                                            max={12}
-                                            onChange={e => {
-                                                const start_date_month = e.target.value;
-                                                setStartDateMonth(start_date_month);
-                                            }}
-                                        />
-
-                                        <Form.Label column sm={2}>
-                                            月
-                                        </Form.Label>
-                                    </Form.Group>
-                                </Col>
-                                <Col>
-                                    <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
-
-                                        <Form.Control
-                                            required
-                                            type="number"
-                                            placeholder="DD"
-                                            value={start_date_day}
-                                            min={1}
-                                            max={31}
-                                            onChange={e => {
-                                                const start_date_day = e.target.value;
-                                                setStartDateDay(start_date_day);
-                                            }}
-                                        />
-
-                                        <Form.Label column sm={2}>
-                                            日
-                                        </Form.Label>
-                                    </Form.Group>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Form.Label>结束时间*</Form.Label>
-                                <Col>
-                                    <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
-                                        <Col sm={8}>
-                                            <Form.Control
-                                                required
-                                                type="number"
-                                                placeholder="YYYY"
-                                                value={end_date_year}
-                                                min={1950}
-                                                max={2100}
-                                                onChange={e => {
-                                                    const end_date_year = e.target.value;
-                                                    setEndDateYear(end_date_year);
-                                                }}
-                                            />
-                                        </Col>
-                                        <Form.Label column sm={2}>
-                                            年
-                                        </Form.Label>
-                                    </Form.Group>
-                                </Col>
-                                <Col>
-                                    <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
-                                        <Col sm={7}>
-                                            <Form.Control
-                                                required
-                                                type="number"
-                                                placeholder="MM"
-                                                value={end_date_month}
-                                                min={1}
-                                                max={12}
-                                                onChange={e => {
-                                                    const end_date_month = e.target.value;
-                                                    setEndDateMonth(end_date_month);
-                                                }}
-                                            />
-                                        </Col>
-                                        <Form.Label column sm={2}>
-                                            月
-                                        </Form.Label>
-                                    </Form.Group>
-                                </Col>
-                                <Col>
-                                    <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
-                                        <Col sm={7}>
-                                            <Form.Control
-                                                required
-                                                type="number"
-                                                placeholder="DD"
-                                                value={end_date_day}
-                                                min={1}
-                                                max={31}
-                                                onChange={e => {
-                                                    const end_date_day = e.target.value;
-                                                    setEndDateDay(end_date_day);
-                                                }}
-                                            />
-                                        </Col>
-                                        <Form.Label column sm={2}>
-                                            日
-                                        </Form.Label>
-                                    </Form.Group>
-                                </Col>
-                            </Row>
-                        </Form.Group>
 
 
                         <Form.Group className="mb-3">
@@ -352,10 +207,11 @@ export default function UserInfo(props) {
                                 }}
                             >
                                 <option value="">请选择状态</option>
-                                <option value="true">启用</option>
-                                <option value="false">停用</option>
+                                <option value="active">活跃</option>
+                                <option value="stop">停用</option>
                             </Form.Select>
-                        </Form.Group> */}
+                        </Form.Group>
+
 
                     </Form>
                 </Modal.Body>
@@ -371,45 +227,3 @@ export default function UserInfo(props) {
         </>
     );
 }
-
-
-
-
-
-// // Delete Button for supervisor project
-// export function SupervisorDeleteProject(props) {
-
-//     const [show, setShow] = useState(false);
-//     const handleClose = () => setShow(false);
-//     const handleShow = () => setShow(true);
-
-//     // note its parent copoment (ProjectTableRow) to delete this row
-//     const handleDelete = () => {
-//         props.callbackDelete();
-//         setShow(false);
-//     }
-
-//     return (
-//         <>
-//             <Button variant="danger" onClick={handleShow}>
-//                 删除
-//             </Button>
-
-//             <Modal show={show} onHide={handleClose}>
-//                 <Modal.Header closeButton>
-//                     <Modal.Title>提示</Modal.Title>
-//                 </Modal.Header>
-//                 <Modal.Body>该项目无法删除</Modal.Body>
-//                 <Modal.Footer>
-//                     <Button variant="secondary" onClick={handleClose}>
-//                         返回
-//                     </Button>
-
-//                     {/*<Button variant="danger" onClick={handleDelete}>
-//                         删除
-//                     </Button>*/}
-//                 </Modal.Footer>
-//             </Modal>
-//         </>
-//     );
-// }

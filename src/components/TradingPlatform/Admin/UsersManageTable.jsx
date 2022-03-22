@@ -7,6 +7,9 @@ import data from "./expertInfo.json";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Collapse } from "react-bootstrap";
 import UserInfo from "./userInfo";
+import CheckUserHoding from "./userHolding";
+import CheckUserTradingHistory from "./userTradingHistory";
+import UserStateManagement from "./userStateManagement";
 
 const { SearchBar } = Search;
 const { ExportCSVButton } = CSVExport;
@@ -41,6 +44,7 @@ export default function UsersManageTable(){
                       {/* <Button variant="outline-primary"  style={{width:"100%"}} size = 'sm'>
                           查看用户
                       </Button>{' '} */}
+                      {console.log(row)}
                       <UserInfo value={row} />
                   </div>
               )
@@ -53,18 +57,19 @@ export default function UsersManageTable(){
           }
           },
           {
-            text: "查看用户",
+            text: "查看收益",
             isDummyField: true,
             style: { width: '12%'},
-            formatter:() => {
+            formatter:(cell, row) => {
               return (
                   <div style={{margin: 0,
                       position: "relative",
                       textAlign: 'center',
                       transform: "-moz-initial"}} >
-                      <Button variant="outline-primary" style={{width:"100%"}} size = 'sm'>
+                      {/* <Button variant="outline-primary" style={{width:"100%"}} size = 'sm'>
                           查看收益
-                      </Button>{' '}
+                      </Button>{' '} */}
+                      <CheckUserHoding value={row.id}/>
                   </div>
               )
     
@@ -76,18 +81,19 @@ export default function UsersManageTable(){
           }
           },
           {
-            text: "查看用户",
+            text: "交易记录",
             isDummyField: true,
             style: { width: '12%'},
-            formatter:() => {
+            formatter:(cell, row) => {
               return (
                   <div style={{margin: 0,
                       position: "relative",
                       textAlign: 'center',
                       transform: "-moz-initial"}} >
-                      <Button variant="outline-primary" style={{width:"100%"}}  size = 'sm'>
-                          查看交易记录
-                      </Button>{' '}
+                      {/* <Button variant="outline-primary" style={{width:"100%"}}  size = 'sm'>
+                          交易记录
+                      </Button>{' '} */}
+                      <CheckUserTradingHistory value={row.id}/>
                   </div>
               )
     
@@ -99,18 +105,19 @@ export default function UsersManageTable(){
           }
           },
           {
-            text: "查看用户",
+            text: "状态管理",
             isDummyField: true,
             style: { width: '12%'},
-            formatter:() => {
+            formatter:(cell, row) => {
               return (
                   <div style={{margin: 0,
                       position: "relative",
                       textAlign: 'center',
                       transform: "-moz-initial"}} >
-                      <Button variant="outline-primary" style={{width:"100%"}} size = 'sm'>
+                      {/* <Button variant="outline-primary" style={{width:"100%"}} size = 'sm'>
                           状态管理
-                      </Button>{' '}
+                      </Button>{' '} */}
+                      <UserStateManagement value={row} />
                   </div>
               )
     
