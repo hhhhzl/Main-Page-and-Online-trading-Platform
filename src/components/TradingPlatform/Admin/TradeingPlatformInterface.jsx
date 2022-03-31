@@ -8,7 +8,6 @@ import StockManageTable from "./StockManageTable";
 
 export default function tradePadmin() {
 
-
   const username = "张三";
   const userType = "管理员"
 
@@ -18,19 +17,20 @@ export default function tradePadmin() {
       <NavBarTest username={username} usertype={userType} />
       <div className="page">
         <Switch>
-          {/* <Route path='/eplatform/:Stock'>
-          <div className='supervisor-interface'>
-            <h3>欢迎</h3>
-            <br />
-            <StockManageTable />
-          </div>
-        </Route> */}
-          <div className='supervisor-interface'>
-            <h3>欢迎</h3>
-            <br />
-            <UsersManageTable />
-          </div>
-
+          <Route path='/eplatform/stock'>
+            <div className='supervisor-interface'>
+              <h3>欢迎</h3>
+              <br />
+              <StockManageTable />
+            </div>
+          </Route>
+          <Route path='/eplatform/admin'>
+            <div className='supervisor-interface'>
+              <h3>欢迎</h3>
+              <br />
+              <UsersManageTable />
+            </div>
+          </Route>
           <Route path='/home'>
           </Route>
         </Switch>

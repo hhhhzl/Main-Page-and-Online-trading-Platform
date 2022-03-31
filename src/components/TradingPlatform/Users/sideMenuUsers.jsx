@@ -40,10 +40,10 @@ export default function SideMenuUsers() {
       <Nav>
       <div className='img-center'>
           <Link to="/home">
-          <Image
+            <Image
               src="/UFAlogo.jpg"
-              height="70%"
-              width="70%"
+              height="20%"
+              width="20%"
               style={{marginLeft:"17%", marginTop: "17%", padding:"0.5px 0.5px 0.5px 0.5px"}}
               alt="UFA_logo"
               roundedCircle

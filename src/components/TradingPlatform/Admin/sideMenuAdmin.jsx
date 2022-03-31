@@ -39,7 +39,7 @@ export default function SideMenuAdmin() {
                 <Link style={{ color: "white", textDecoration: "none", letterSpacing: "5px", fontSize: "20px" }} to="/eplatform/admin"><AccountCircleOutlined fontSize={width > 530 ? "large" : "medium"} />{width > 1600 ? (<>用户管理</>) : (<></>)}</Link>
               </Row>
               <Row className='row-padding'>
-                <Link style={{ color: "white", textDecoration: "none", letterSpacing: "5px", fontSize: "20px" }} to="/eplatform/:Stock"><AssessmentIcon fontSize={width > 530 ? "large" : "medium"} />{width > 1600 ? (<>股票管理</>) : (<></>)} </Link>
+                <Link style={{ color: "white", textDecoration: "none", letterSpacing: "5px", fontSize: "20px" }} to="/eplatform/stock"><AssessmentIcon fontSize={width > 530 ? "large" : "medium"} />{width > 1600 ? (<>股票管理</>) : (<></>)} </Link>
               </Row>
               <Row className='row-padding'>
                 <Link style={{ color: "white", textDecoration: "none", letterSpacing: "5px", fontSize: "20px" }} to="/eplatform/:News"><AssignmentIcon fontSize={width > 530 ? "large" : "medium"} />{width > 1600 ? (<>新闻管理</>) : (<></>)} </Link>
