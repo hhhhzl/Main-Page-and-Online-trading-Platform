@@ -1,20 +1,21 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Container, Navbar } from "react-bootstrap";
 import SideMenuUsers from "./sideMenuUsers";
 import NavBarTest from "../navBar";
 import { BrowserRouter, Switch, Route, Router, useRouteMatch } from "react-router-dom";
 import Userbalance from "./Portfolio/UserBalance";
 import UserMarket from "./Market/market";
-import UserStocks from "./Trade/UserTrade";
+import UserStocks from "./Stocks/UserStocks";
 import UserTrade from "./Trade/UserTrade";
+import AuthContext from "../../../context/AuthContext";
 
 
-export default function tradePusers(){
+
+export default function TradePusers(props){
+    
 
     return(
         <div>
-            <NavBarTest username={'张三'} usertype={"用户"}/>
-            <SideMenuUsers/>
             <Switch>
             <Route path="/eplatform/user">
                 <Userbalance/>

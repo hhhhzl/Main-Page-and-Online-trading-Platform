@@ -41,7 +41,7 @@ export default function GraphTemplate(props) {
                 <Badge style={{color:"black"}}>年K</Badge>
               </Card.Footer>
           <Card.Body>
-              <CandleChart w ={props.size} h={0.65}/>
+              <CandleChart w ={props.size} h={0.65} stockData = {props.data}/>
           </Card.Body>
  
         <Card.Header style={{backgroundColor:""}}>

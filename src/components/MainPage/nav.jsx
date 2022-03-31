@@ -50,6 +50,7 @@ const NavbarCreate = ({toggle}) => {
                 {scrolledDownEnough? 
                 <>
                 <NavLogo scrolledDownEnough={scrolledDownEnough} to ='home'>
+                <Image src = "/UFAlogo.jpg" roundedCircle  style={{position: "relative",left: 0,top: 0,width: "90%",height: "90%"}}/>
                 </NavLogo>
                 <MobileIcon onClick ={() => toggle()}>
                 <ViewHeadlineTwoTone  fontSize='large'/>
@@ -57,7 +58,9 @@ const NavbarCreate = ({toggle}) => {
                 </>
                 : 
                 (<>
-                <NavLogo scrolledDownEnough={scrolledDownEnough} to ='home'></NavLogo>
+                <NavLogo scrolledDownEnough={scrolledDownEnough} to ='home'>
+                <Image src = "/UFAlogo.jpg" roundedCircle  style={{position: "relative",left: 0,top: 0,width: "90%",height: "90%"}}/>
+                </NavLogo>
             <MobileIcon onClick ={() => toggle()}>
                 <ViewHeadlineTwoTone  fontSize='large'/>
             </MobileIcon>

@@ -1,19 +1,46 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import UserBalanceSeries from '../../graphs/balanceSeries';
 import UserBalancePorfolio from '../Portfolio/porfolio';
 import NavBarTest from '../../navBar';
 import SideMenuUsers from '../sideMenuUsers';
-import { Col, Row, Card, CardGroup } from "react-bootstrap";
+import { Col, Row, Card, CardGroup, Button } from "react-bootstrap";
 import StockShowBar from '../../screen/StockShowBar';
 import GraphTemplate from '../../screen/GraphTemplate';
 import WatchList from '../../screen/WatchList';
+import AuthContext from '../../../../context/AuthContext';
+import axios from 'axios';
+import { StockData } from '../../../../static/Stockdata';
 
-export default function UserStocks() {
-    return (
-        
+export default function UserStocks(props) {
+    let {user,logoutUser} = useContext(AuthContext)
+    const [kdata, setkdata] = useState(null)
+    
+    useEffect(()=>{
+        setInterval(()=>{
+            updataStockdata()
+        }, 1000)
+    })
+
+    const updataStockdata = () => {
+        return axios.post('http://59.110.238.142:8086/api/market/kline', {
+            stockCode: 'sh600036',
+            timeFrame: '1m'
+          })
+          .then(function (response) {
+            setkdata(response.data.data)
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
+    
+    
+    return (    
     <> 
-        <NavBarTest username={'张三'} usertype={"用户"}/>
+        <NavBarTest username ={user.username} logoutUser ={logoutUser}/>
+        
         <SideMenuUsers/>
+        
         <div 
         className="show-bar"
         style={{
@@ -37,7 +64,7 @@ export default function UserStocks() {
         style={{   
         borderStyle:"solid",
         borderColor:"#AEAEAE"}}>
-             <GraphTemplate size={0.513}/>
+             <GraphTemplate size={0.513} data = {kdata? kdata : StockData}/>
          </div>
          <div 
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { format } from "d3-format";
 import { timeFormat } from "d3-time-format";
@@ -29,13 +29,13 @@ import {
 } from "react-financial-charts";
 import { macd } from "react-financial-charts";
 
-import { initialData } from "../../../static/Stockdata";
+
 import useWindowDimensions from "../../../utils/sizewindow";
 
-export default function CandleChart({w,h}){
-    const {height,width} = useWindowDimensions();
+export default function CandleChart({w,h, stockData}){
+  const {height,width} = useWindowDimensions();
   const ScaleProvider = discontinuousTimeScaleProviderBuilder().inputDateAccessor(
-    (d) => new Date(d.date)
+    (d) => new Date(d.day)
   );
   const widthy = width * w;
   const heightx = height * h;
@@ -60,9 +60,9 @@ export default function CandleChart({w,h}){
 
   const elder = elderRay();
 
-  const calculatedData = elder(ema26(ema12(initialData)));
+  const calculatedData = elder(ema26(ema12(stockData)));
   const { data, xScale, xAccessor, displayXAccessor } = ScaleProvider(
-    initialData
+    stockData
   );
   const pricesDisplayFormat = format(".2f");
   const max = xAccessor(data[data.length - 1]);
@@ -107,6 +107,12 @@ export default function CandleChart({w,h}){
   const openCloseColor = (data) => {
     return data.close > data.open ? "#26a69a" : "#ef5350";
   };
+
+//   useEffect(()=>{
+//     setInterval(() => {
+//       setinitialData(stockData)
+//     },20000)
+//   },[initialData])
 
   return (
     <ChartCanvas

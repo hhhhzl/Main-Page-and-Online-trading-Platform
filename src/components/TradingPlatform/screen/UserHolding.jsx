@@ -12,13 +12,21 @@ import {MoneyOffOutlined} from '@material-ui/icons'
 const { SearchBar } = Search;
 const { ExportCSVButton } = CSVExport;
 
+function priceFormatter(column, colIndex) {
+    return (
+        <div style={{display:"fixed",flexDirection:"column"}}>{column.text}</div>
+      
+    );
+  }
+
 export default function UserHolding(){
     const columns = [
         {
             dataField: 'symbol',
             text: '股票代码',
             sort: true,
-            style: { width: '15%' }
+            style: { width: '15%', position:"relative",zIndex:"1"},
+            headerFormatter:priceFormatter
         },
         {
             dataField: 'holdingshares',
@@ -137,6 +145,7 @@ export default function UserHolding(){
              <div className ="scroll2">
           
           <BootstrapTable
+           style="table"
            { ...props.baseProps}
            bordered={ false }
             hover

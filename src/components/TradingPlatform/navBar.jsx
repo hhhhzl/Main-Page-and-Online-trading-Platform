@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Navbar from 'react-bootstrap/Navbar'
 import { Container } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
@@ -10,13 +10,18 @@ import ExitToAppIcon from '@material-ui/icons/ExitToAppTwoTone';
 
 
 export default function NavBarTest(props) {
+    const [user, setuser] =useState(props.username)
+    const [authorized, setauthorized] = useState(false)
+    console.log(user)
+    
+    
   
     return (    
         <Navbar bg="light" variant="info" id="app-header">
             <Container className='padding-right' >
                 <Nav className="me-auto">
                 </Nav>
-                欢迎你，{props.usertype} {props.username}
+                {!user? (<>未登录</>) : (<>欢迎你，{props.usertype} {props.username}</>)}
                 <Nav className="ml-auto">
 
                     <NavDropdown 
@@ -36,7 +41,7 @@ export default function NavBarTest(props) {
                     >
                         <div className="dropdownleft;" >
                         <NavDropdown.Item href="#action/3.1"><EditIcon style={{color: "rgba(0, 0, 0, 0.54)"}}/> 修改密码</NavDropdown.Item>
-                        <NavDropdown.Item href="/" ><ExitToAppIcon  style={{color: "rgba(0, 0, 0, 0.54)"}}/> 退出</NavDropdown.Item>
+                        <NavDropdown.Item onClick ={props.logoutUser} ><ExitToAppIcon  style={{color: "rgba(0, 0, 0, 0.54)"}}/> 退出</NavDropdown.Item>
                         </div>
                     </NavDropdown>
                 </Nav>

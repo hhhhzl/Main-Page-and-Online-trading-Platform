@@ -4,9 +4,9 @@ import "./footer.css";
 const Footer = () => (
   <footer>
     <div>
-    copy right <i className="fa fa-heart" aria-hidden="true" />
       <br />
-      @UFA金融协会
+      <br />
+      <h6>Copyright © 2022 UFA. All Rights Reserved. 上海资菩渡科技有限公司 版权所有</h6>
     </div>
   </footer>
 );

@@ -18,7 +18,7 @@ export const NavOut = styled.nav`
   -o-transition: all 1s ease;
   -ms-transition: all 1s ease;
    border-bottom: ${props => props.scrolledDownEnough ? '2px solid #cccccc' : "none"};;
-   top:${props => props.scrolledDownEnough ? '0vh' : "10vh"};
+   top:${props => props.scrolledDownEnough ? '0vh' : "0vh"};
    z-index:10;
 
    @media screen and (max-width: 960px){
@@ -42,7 +42,7 @@ cursor:pointer;
 font-size:1.5rem;
 display:flex;
 align-items:center;
-margin-left:24px;
+margin-left:-10px;
 font-weight:bold;
 text-decoration:none;
 `
@@ -64,10 +64,14 @@ export const MobileIcon =styled.div`
 
 export const NavMenu =styled.ul`
    display:flex;
+   position: absolute;
+   height:4vh;
+   right: 0px;
    align-items:center;
    list-style:none;
    text-align: center;
-   margin-right: -22px;
+   // margin-right: ${props => props.width > 1000 ? props => props.width > 1330 ? "-23%" : "-30%" : "-35%"};
+   
 
    @media screen and (max-width: 768px){
        display:none;
@@ -87,7 +91,7 @@ export const NavLinks = styled(LinkS)`
    align-item: center;
    letter-spacing: 1px;
    font-size: ${props => props.width > 900 ? "18px" : "15px"};
-   padding:0.3rem ${props => props.width > 1000 ? props => props.width > 1330 ? "1.8rem" : "1rem" : "0.5rem"};
+   padding:0.3rem ${props => props.width > 1000 ? props => props.width > 1330 ? "1.3rem" : "1rem" : "0.5rem"};
    height: 100%
    cursor: pointer;
    &.active{

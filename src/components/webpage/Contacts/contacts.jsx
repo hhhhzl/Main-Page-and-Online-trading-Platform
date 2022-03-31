@@ -30,8 +30,8 @@ const Contacts = () => {
         position: "relative",
         left: 0,
         top: 0,
-        width: width * 0.94,
-        height:  (width * 0.94)/2.876,
+        width: width,
+        height:  width/2.876,
       }}
     />
         </>)

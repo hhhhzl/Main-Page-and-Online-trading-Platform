@@ -1,5 +1,5 @@
 import { Opacity } from "@material-ui/icons";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Row, Col } from "react-bootstrap";
 import Image from 'react-bootstrap/Image';
 import Modal from 'react-bootstrap/Modal';
@@ -10,21 +10,15 @@ import { Nav } from 'react-bootstrap';
 import data from "../../static/users.json"
 import { Redirect, useHistory } from "react-router";
 import PropTypes from 'prop-types';
+import AuthContext from "../../context/AuthContext";
 
 
-async function loginUser(credentials) {
-  return fetch('http://localhost:3000/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(credentials)
-  })
-    .then(data => data.json())
- }
+
 
 
 export default function LoginForm({setToken}) {
+  let {loginUser} = useContext(AuthContext);
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [smShow, setSmShow] = useState(false);
@@ -32,16 +26,7 @@ export default function LoginForm({setToken}) {
   const [validated, setValidated] = useState(false);
   const [user, setuser]= useState(data)
   let history = useHistory();
-  
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    const token = await loginUser({
-      username,
-      password
-    });
-    setToken(token);
-  }
 
   const handleClick = (name,password) => {
       pushingforword(determinUser(name,password));
@@ -100,7 +85,7 @@ export default function LoginForm({setToken}) {
         <h2 style={{color:"white"}}><strong>登录平台</strong></h2>
         <hr/>
         <br/>
-        <Form noValidate validated={validated} id="addProject" onSubmit={handleSubmit}>
+        <Form noValidate validated={validated} id="addProject" onSubmit = {loginUser} >
         <Form.Group as={Row} className="loadingusername">
           <Form.Label column sm={3} >
             用户账号
@@ -108,6 +93,7 @@ export default function LoginForm({setToken}) {
             <Form.Control
             required
              className="loadinglogin"
+             name = 'username'
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             ></Form.Control>
@@ -119,6 +105,7 @@ export default function LoginForm({setToken}) {
             <Form.Control
             required
             className="loadinglogin"
+            name = 'password'
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -141,7 +128,9 @@ export default function LoginForm({setToken}) {
           <Form.Group as={Row} className="loadinglogin">
           <Button
               variant="outline-primary"
-              onClick ={() => handleClick(username,password)}
+              type="submit"
+         
+              // onClick ={loginUser}
             >
               登录
             </Button>

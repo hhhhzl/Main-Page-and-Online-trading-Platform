@@ -129,8 +129,8 @@ a {
 }
 
 .main-page-center{
-  margin-right: 3%;
-  margin-left: 3%;
+  margin-right: 0%;
+  margin-left: 0%;
   height: max-content;
   background-color: rgba(0,0,0,0);
 }
@@ -140,11 +140,18 @@ a {
     display:none;
 }
 
+.table{
+  overflow: auto;
+}
+
+.table-head{
+  position:fixed;
+}
 
 @media screen and (max-width: 600px){
   .main-page-center{
-    margin-right: 2%;
-    margin-left: 2%;
+    margin-right: 0%;
+    margin-left: 0%;
     height: max-content;
   }
   

@@ -8,9 +8,11 @@ import { BrowserRouter, Switch, Route, Router, useRouteMatch} from "react-router
 import RegisterForm from './components/MainPage/registerForm';
 import LoginForm from './components/MainPage/loginForm';
 import tradePadmin from './components/TradingPlatform/Admin/TradeingPlatformInterface';
-import tradePusers from './components/TradingPlatform/Users/TradeingPlatformInterface';
+import TradePusers from './components/TradingPlatform/Users/TradeingPlatformInterface';
 import data from "./static/users.json"
 import useToken from './useToken';
+import PrivateRoute from './utils/PrivateRoute'
+import { AuthProvider } from './context/AuthContext';
 
 import { selectAuthUserProfile, selectAuthToken, getTokenProfile } from "./state/slices/auth";
 
@@ -28,52 +30,36 @@ import UserTrade from './components/TradingPlatform/Users/Trade/UserTrade';
 
 
 
-const UserMainPage = () => {
-  return (
-    <div>
-         <NavBarTest username={'张三'} usertype={"用户"}/>
-            <SideMenuUsers/>
-            <Switch>
-            <Route path="/eplatform/user">
-                <Userbalance/>
-            </Route>
-            <Route path="/eplatform/user/market">
-                <UserMarket/>
-            </Route>
-        </Switch>
-        </div>
 
-  );
-};
 
-const AdminMainPage = () => {
+// const AdminMainPage = () => {
 
-  return (
-    <div>  
-            <NavBarTest username={'张三'} usertype={"管理员"}/>
-            <SideMenuAdmin/>
-            <Switch>
-            {/* <Route  path='/eplatform/:Stock'>
-          <div className='supervisor-interface'>
-                <h3>欢迎</h3>
-                <br />
-                <StockManageTable/>
-                </div>
-          </Route> */}
-            <Route path="/eplatform/admin">
-                <div className='supervisor-interface'>
-                <h3>欢迎</h3>
-                <br />
-                <UsersManageTable/>
-                </div>
-            </Route>
-          <Route path='/home'>
-          </Route>
-        </Switch>
-        </div>
+//   return (
+//     <div>  
+//             <NavBarTest username={'张三'} usertype={"管理员"}/>
+//             <SideMenuAdmin/>
+//             <Switch>
+//             {/* <Route  path='/eplatform/:Stock'>
+//           <div className='supervisor-interface'>
+//                 <h3>欢迎</h3>
+//                 <br />
+//                 <StockManageTable/>
+//                 </div>
+//           </Route> */}
+//             <Route path="/eplatform/admin">
+//                 <div className='supervisor-interface'>
+//                 <h3>欢迎</h3>
+//                 <br />
+//                 <UsersManageTable/>
+//                 </div>
+//             </Route>
+//           <Route path='/home'>
+//           </Route>
+//         </Switch>
+//         </div>
     
-  );
-};
+//   );
+// };
 
 
 const HomePage = () => {
@@ -105,10 +91,10 @@ const MakeRouter = () => {
   // }, [dispatch, token, userInfo])
   
 
-  let userRouteMap = {
-    A: <AdminMainPage />,
-    U: <UserMainPage />,
-  };
+  // let userRouteMap = {
+  //   A: <AdminMainPage />,
+  //   U: <UserMainPage />,
+  // };
 
   // console.log(userType);
   // let userRoute = userInfo ? userRouteMap[userType] : <Route path='/' component={MainPage} />;
@@ -117,14 +103,16 @@ const MakeRouter = () => {
   
   return (
     <Switch>
-      <Route exact path="/eplatform/user" component={tradePusers} />
+      <AuthProvider>
+      <Route exact path="/eplatform/user" component={TradePusers} />
       <Route exact path="/eplatform/user/trade" component={UserTrade} />
       <Route exact path="/eplatform/admin" component={tradePadmin} />
-      <Route exact path="/stocks" component={UserStocks} />
+      <PrivateRoute exact path="/stocks" component={UserStocks} />
       <Route exact path="/register" component={RegisterForm} />
       <Route exact path="/login" component={LoginForm} />
       <Route exact path="/home" component={MainPage} /> 
       <Route exact path="/" component={MainPage} /> 
+      </AuthProvider>
     </Switch>
   );
 };
