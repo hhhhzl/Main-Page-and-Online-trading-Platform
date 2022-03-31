@@ -3,12 +3,12 @@ import { Button } from "react-bootstrap";
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolkit';
-import data from "./stock.json";
+import data from "../stock.json";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Collapse } from "react-bootstrap";
-import useWindowDimensions from "../../../utils/sizewindow";
-import StockStateManagement from "./StockManagement/stockStateManagement";
-import StockSetting from "./StockManagement/stockSetting";
+import useWindowDimensions from "../../../../utils/sizewindow";
+import StockStateManagement from "./stockStateManagement";
+import StockSetting from "./stockSetting";
 
 const { SearchBar } = Search;
 const { ExportCSVButton } = CSVExport;
@@ -45,9 +45,6 @@ export default function StockManageTable(){
                       position: "relative",
                       textAlign: 'center',
                       transform: "-moz-initial"}} >
-                      {/* <Button variant="outline-primary"  style={{width:"100%"}} size = 'sm'>
-                          查看用户
-                      </Button>{' '} */}
                       <StockSetting value={row} />
                   </div>
               )
@@ -70,9 +67,6 @@ export default function StockManageTable(){
                       position: "relative",
                       textAlign: 'center',
                       transform: "-moz-initial"}} >
-                      {/* <Button variant="outline-primary" style={{width:"100%"}} size = 'sm'>
-                          状态管理
-                      </Button>{' '} */}
                       <StockStateManagement value={row} />
                   </div>
               )

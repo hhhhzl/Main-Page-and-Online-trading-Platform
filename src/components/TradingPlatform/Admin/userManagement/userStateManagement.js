@@ -21,6 +21,7 @@ export default function UserStateManagement(props) {
 
     // Fake handleSubmit
     const handleSubmit = (event) => {
+        setShow(false)
     }
 
     return (

@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import { useDispatch, useSelector } from 'react-redux';
-import UserHolding from '../screen/UserHolding';
+import UserTradingHistory from '../../screen/UserTradingHis';
 
 // Edit Button for Supervisor projects
-export default function CheckUserHoding(props) {
+export default function CheckUserTradingHistory(props) {
 
     // ===========================================
-    // Fetch User Holding from Server by User id (props.id)
-    // Pass the User Holding to component UserHolding as 'holding'
+    // Fetch User Transaction History from Server by User id (props.id)
+    // Pass the User Transaction History to component TradingHistory as 'history'
     const data = []
     // ===========================================
 
@@ -21,12 +21,13 @@ export default function CheckUserHoding(props) {
 
     // Fake handleSubmit
     const handleSubmit = (event) => {
+        setShow(false)
     }
 
     return (
         <> {/* Button appear at the right-end of each row of the table */}
             <Button variant="outline-primary" style={{ width: "100%" }} size='sm' onClick={handleShow} >
-                用户收益
+                交易记录
             </Button>
 
 
@@ -38,10 +39,10 @@ export default function CheckUserHoding(props) {
                 keyboard={false}
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>用户收益</Modal.Title>
+                    <Modal.Title>用户交易记录</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <UserHolding holding={data}/>
+                    <UserTradingHistory history={data}/>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>

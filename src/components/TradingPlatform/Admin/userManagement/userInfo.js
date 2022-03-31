@@ -3,9 +3,7 @@ import Form from 'react-bootstrap/Form'
 import { Button, Col, Row } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import { useDispatch, useSelector } from 'react-redux';
-// import { updateProject } from '../../../state/slices/projs';
-// import { fetchAllUsers, selectLastUpdatedAtUsers } from '../../../state/slices/users';
-// import { shouldRefetchList } from '../../../state/store';
+
 
 // Edit Button for Supervisor projects
 export default function UserInfo(props) {
@@ -54,33 +52,10 @@ export default function UserInfo(props) {
 
     // }, [props.value])
 
-    // // group the data into one object
-    // const testData = {
-    //     name: name,
-    //     school: parseInt(school),
-    //     send_with: send_with,
-    //     will_mark: will_mark,
-    //     start_time: start_date_year + "-" + startMonth + "-" + startDay + "T00:00:00",
-    //     end_time: end_date_year + "-" + endMonth + "-" + endDay + "T23:59:59",
-    //     is_active: is_active,
-    // };
 
-    // // Send to data to parents component (ProjectTableRow) when click submit
-    // const handleSubmit = (event) => {
-    //     const form = document.getElementById("addProject");
-    //     if (form.checkValidity() === false) {
-    //         event.preventDefault();
-    //         event.stopPropagation();
-    //     } else {
-    //         console.log(testData)
-    //         dispatch(updateProject({ projectID: props.value.id, data: testData }))
-    //         setShow(false);
-    //     }
-
-    //     setValidated(true);
-    // }
+    // Fake handleSubmit
     const handleSubmit = (event) => {
-
+        setShow(false)
     }
 
     return (
