@@ -29,11 +29,11 @@ export default function MainPage() {
     
     return (
         <> 
-            <div id="home" className="fix-bar">
+            {/* <div id="home" className="fix-bar">
              <div className="text-center">   
                <Image src = "/UFAlogo.jpg" title="UFA Logo" id="img-txz" alt="header"  roundedCircle  style={{ position: "relative", marginTop:"0.8vh", width: "8vh", height: "8vh",}}/>
                </div>
-            </div>  
+            </div>   */}
             <NavbarCreate toggle = {toggle} />
             {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>):(<></>)}
             <div className ="main-page-center">

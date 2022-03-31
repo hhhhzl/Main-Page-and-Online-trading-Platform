@@ -20,8 +20,8 @@ export default function Cover() {
         position: "relative",
         left: 0,
         top: 0,
-        width: width > 600 ? (width*0.94) : (width *0.96),
-        height: width > 600 ? (width*0.94)/2.186 : (width *0.96)/2.186
+        width: width > 600 ? (width) : (width),
+        height: width > 900 ? height : width/2.186
       }}
     />
     <div className="overlay" />

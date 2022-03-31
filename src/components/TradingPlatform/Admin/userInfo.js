@@ -30,15 +30,7 @@ export default function UserInfo(props) {
     const [area, setArea] = useState(props.value.area);
     const [email, setEmail] = useState(props.value.email);
     const [phoneNumber, setPhoneNumber] = useState(props.value.phone_number);
-    // const [start_date_year, setStartDateYear] = useState(props.value.start_time.slice(0, 4));
-    // const [start_date_month, setStartDateMonth] = useState(props.value.start_time.slice(5, 7));
-    // const [start_date_day, setStartDateDay] = useState(props.value.start_time.slice(8,10));
-    // const [end_date_year, setEndDateYear] = useState(props.value.end_time.slice(0, 4));
-    // const [end_date_month, setEndDateMonth] = useState(props.value.end_time.slice(5, 7));
-    // const [end_date_day, setEndDateDay] = useState(props.value.start_time.slice(8,10));
-
-    // const [send_with, setSendWith] = useState(props.value.send_with);
-    // const [will_mark, setWillMark] = useState(props.value.will_mark);
+    
     const [is_active, setIsActive] = useState(props.value.state);
 
     // functions to control Modal
@@ -61,12 +53,6 @@ export default function UserInfo(props) {
 
 
     // }, [props.value])
-
-    // // put '0' in front if 1-9 month or day
-    // const startMonth = String(start_date_month).padStart(2, '0');
-    // const startDay = String(start_date_day).padStart(2, '0');
-    // const endMonth = String(end_date_month).padStart(2, '0');
-    // const endDay = String(end_date_day).padStart(2, '0');
 
     // // group the data into one object
     // const testData = {

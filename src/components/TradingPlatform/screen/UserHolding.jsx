@@ -12,17 +12,26 @@ import {MoneyOffOutlined} from '@material-ui/icons'
 const { SearchBar } = Search;
 const { ExportCSVButton } = CSVExport;
 
-export default function UserHolding(props){
+function priceFormatter(column, colIndex) {
+    return (
+        <div style={{display:"fixed",flexDirection:"column"}}>{column.text}</div>
+      
+    );
+  }
 
+export default function UserHolding(){
+    // =========================================================================
     // should pass the data to props
     // Its parent component should fetch user holding by user id from the server
+    // =========================================================================
 
     const columns = [
         {
             dataField: 'symbol',
             text: '股票代码',
             sort: true,
-            style: { width: '15%' }
+            style: { width: '15%', position:"relative",zIndex:"1"},
+            headerFormatter:priceFormatter
         },
         {
             dataField: 'holdingshares',
@@ -141,6 +150,7 @@ export default function UserHolding(props){
              <div className ="scroll2">
           
           <BootstrapTable
+           style="table"
            { ...props.baseProps}
            bordered={ false }
             hover

@@ -3,7 +3,7 @@
   margin: 1% 0 0% 1%;
   height:210px;
   display: grid;
-  grid-template-columns: 3fr 17fr 4fr;
+  grid-template-columns: 17fr 4fr;
 }
 
 .box2{
@@ -22,8 +22,8 @@
 }
 
 .content-center{
-  width: 68.6%;
-  margin-left: 15.7%;
+  width: 70%;
+  margin-left: 15%;
   height: max-content;
 }
 
@@ -112,7 +112,7 @@
 
 .introduction-box{
   align-items: center;
-  margin: 3% 0 3% 0%;
+  margin: 3% 0 30px 0%;
   height:270px;
   transform: translate(0%, 0%);
   z-index: 2;
@@ -129,6 +129,7 @@
 .about-center{
   position:relative;
   width: 74.4%;
+  height:max-content;
   margin-top: 5%;
   align-items: center;
 }
@@ -172,7 +173,7 @@
 
   .introduction-box{
     align-items: center;
-    margin: 30% 0 0% 0%;
+    margin: 30% 0 -30px 0%;
     height: 370px;
     transform: translate(0%, 0%);
     z-index: 2;
@@ -218,8 +219,8 @@
   }
 
   .video-container {
-    width:80%;
-    left:10%;
+    width:85%;
+    left:7.5%;
     max-height: max-content;
     justify-content:center;
     align-items:center;
@@ -235,12 +236,13 @@
     position:relative;
     width: 90%;
     margin-top: 11%;
+    height:max-content;
     align-items: center;
   }
 
   .introduction-box{
     align-items: center;
-    margin: 3% 0 0% 0%;
+    margin: 3% 0 -30px 0%;
     height: 330px;
     transform: translate(0%, 0%);
     z-index: 2;
@@ -298,6 +300,7 @@
   .about-center{
     position:relative;
     width: 70%;
+    height:max-content;
     align-items: center;
     margin-top: 40%;
     margin-bottom: -30%;
@@ -306,7 +309,7 @@
 
   .introduction-box{
     align-items: center;
-    margin: 7% 0 3% 0%;
+    margin: 15% 0 -30px 0%;
     height: 200px;
     transform: translate(0%, 0%);
     z-index: 2;
