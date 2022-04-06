@@ -28,8 +28,6 @@ import {
   withSize
 } from "react-financial-charts";
 import { macd } from "react-financial-charts";
-
-
 import useWindowDimensions from "../../../utils/sizewindow";
 
 export default function CandleChart({w,h, stockData}){
@@ -108,11 +106,7 @@ export default function CandleChart({w,h, stockData}){
     return data.close > data.open ? "#26a69a" : "#ef5350";
   };
 
-//   useEffect(()=>{
-//     setInterval(() => {
-//       setinitialData(stockData)
-//     },20000)
-//   },[initialData])
+
 
   return (
     <ChartCanvas

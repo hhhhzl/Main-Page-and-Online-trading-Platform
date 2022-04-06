@@ -14,9 +14,10 @@ import useWindowDimensions from "../../../utils/sizewindow";
 import { CloseOutlined } from '@material-ui/icons'
 import { ViewHeadlineTwoTone } from '@material-ui/icons';
 import { IconButton } from "@material-ui/core";
+import userEvent from "@testing-library/user-event";
 
 
-export default function SideMenuUsers() {
+export default function SideMenuUsers({extendbar, extend}) {
   const {height,width} = useWindowDimensions();
   const [open, setopen] = useState(false);
 
@@ -29,49 +30,52 @@ export default function SideMenuUsers() {
   }
 
   useEffect(() => {
-    console.log(open)
     setopen(open)
   }, [open])
 
   return (
     <>
-    {width >= 600? (
-    <div className='side-menu-users' style={{width: "12%"}}>
-      <Nav>
+    {(width >= 600)? (
+    <div className='side-menu-users' style={{width: extend? "200px": "75px"}}>
+
       <div className='img-center'>
           <Link to="/home">
             <Image
               src="/UFAlogo.jpg"
-              height="20%"
-              width="20%"
-              style={{marginLeft:"17%", marginTop: "17%", padding:"0.5px 0.5px 0.5px 0.5px"}}
+              height="100%"
+              width="30%"
+              style={{marginLeft:"0%", marginTop: "17%", padding:"0.5px 0.5px 0.5px 0.5px"}}
               alt="UFA_logo"
               roundedCircle
             />
           </Link>
+          <IconButton style={{marginRight:"50%", marginTop: "17%", padding:"0.5px 0.5px 0.5px 0.5px"}} onClick ={() => extendbar()}>
+            <ViewHeadlineTwoTone fontSize="large"  />
+            </IconButton>          
           </div>
+          
         <br />    
         
         <Switch>
           <Route path='/eplatform/user'>
-            <div className='side-container-users' >
+            <div>
             <Row className='row-padding'>
-              <Link  style={{ color: "white",textDecoration:"none", letterSpacing:"5px",fontSize:"20px"}} to="/eplatform/user"><AccountBalanceWalletOutlined fontSize={width>1000?"large":"medium"}/>{" "}个人主页</Link>
+              <Link className = "link-row" style={{textDecoration:"none", letterSpacing:"5px",fontSize:"20px"}} to="/eplatform/user"><AccountBalanceWalletOutlined fontSize={width>1000?"large":"medium"}/>{" "} {extend? "个人主页" : null}</Link>
             </Row>
             <Row className='row-padding'>   
-              <Link  style={{ color: "white",textDecoration:"none", letterSpacing:"5px",fontSize:"20px" }} to="/market"><AssessmentIcon fontSize={width>1000?"large":"medium"} />{" "}市场行情</Link>
+              <Link className = "link-row"  style={{textDecoration:"none", letterSpacing:"5px",fontSize:"20px" }} to="/market"><AssessmentIcon fontSize={width>1000?"large":"medium"} />{" "}{extend? "市场行情": null}</Link>
             </Row>
             <Row className='row-padding'>   
-              <Link  style={{ color: "white",textDecoration:"none", letterSpacing:"5px",fontSize:"20px" }} to="/stocks"><AssessmentIcon fontSize={width>1000?"large":"medium"} />{" "}个股信息</Link>
+              <Link className = "link-row"  style={{textDecoration:"none", letterSpacing:"5px",fontSize:"20px" }} to="/stocks"><AssessmentIcon fontSize={width>1000?"large":"medium"} />{" "}{extend? "个股信息": null}</Link>
             </Row>
             <Row className='row-padding'>  
-              <Link  style={{ color: "white",textDecoration:"none", letterSpacing:"5px",fontSize:"20px" }} to="/eplatform/user/trade"><AccountBoxOutlined fontSize={width>1000?"large":"medium"}/>{" "}模拟交易</Link>
+              <Link className = "link-row" style={{textDecoration:"none", letterSpacing:"5px",fontSize:"20px" }} to="/eplatform/user/trade"><AccountBoxOutlined fontSize={width>1000?"large":"medium"}/>{" "}{extend? "模拟交易" :null}</Link>
             </Row>
             <Row className='row-padding'>  
-              <Link  style={{ color: "white",textDecoration:"none",letterSpacing:"5px",fontSize:"20px" }} to="/eplatform/user/News"><AssignmentIcon fontSize={width>1000?"large":"medium"}/>{" "}量化回测</Link>
+              <Link className = "link-row" style={{textDecoration:"none",letterSpacing:"5px",fontSize:"20px" }} to="/eplatform/user/News"><AssignmentIcon fontSize={width>1000?"large":"medium"}/>{" "}{extend? "量化回测":null}</Link>
             </Row>
             <Row className='row-padding'>  
-              <Link  style={{ color: "white",textDecoration:"none",letterSpacing:"5px",fontSize:"20px" }} to="/eplatform/user/Message"><BallotIcon fontSize={width>1000?"large":"medium"}/>{" "}账户分析</Link>
+              <Link className = "link-row" style={{textDecoration:"none",letterSpacing:"5px",fontSize:"20px" }} to="/eplatform/user/Message"><BallotIcon fontSize={width>1000?"large":"medium"}/>{" "}{extend? "账户分析":null}</Link>
             </Row>    
             </div>
           </Route>
@@ -79,34 +83,37 @@ export default function SideMenuUsers() {
 
         <Switch>
           <Route path='/stocks'>
-            <div className='side-container-users' >
+            <div>
             <Row className='row-padding'>
-              <Link  style={{ color: "white",textDecoration:"none", letterSpacing:"5px",fontSize:"20px"}} to="/eplatform/user"><AccountBalanceWalletOutlined fontSize={width>1000?"large":"medium"}/>{" "}个人主页</Link>
+              <Link className = "link-row" style={{textDecoration:"none", letterSpacing:"5px",fontSize:"20px"}} to="/eplatform/user"><AccountBalanceWalletOutlined fontSize={width>1000?"large":"medium"}/>{" "} {extend? "个人主页" : null}</Link>
             </Row>
             <Row className='row-padding'>   
-              <Link  style={{ color: "white",textDecoration:"none", letterSpacing:"5px",fontSize:"20px" }} to="/market"><AssessmentIcon fontSize={width>1000?"large":"medium"} />{" "}市场行情</Link>
+              <Link className = "link-row" style={{textDecoration:"none", letterSpacing:"5px",fontSize:"20px" }} to="/market"><AssessmentIcon fontSize={width>1000?"large":"medium"} />{" "}{extend? "市场行情": null}</Link>
             </Row>
             <Row className='row-padding'>   
-              <Link  style={{ color: "white",textDecoration:"none", letterSpacing:"5px",fontSize:"20px" }} to="/stocks"><AssessmentIcon fontSize={width>1000?"large":"medium"} />{" "}个股信息</Link>
+              <Link className = "link-row" style={{textDecoration:"none", letterSpacing:"5px",fontSize:"20px" }} to="/stocks"><AssessmentIcon fontSize={width>1000?"large":"medium"} />{" "}{extend? "个股信息": null}</Link>
             </Row>
             <Row className='row-padding'>  
-              <Link  style={{ color: "white",textDecoration:"none", letterSpacing:"5px",fontSize:"20px" }} to="/eplatform/user/trade"><AccountBoxOutlined fontSize={width>1000?"large":"medium"}/>{" "}模拟交易</Link>
+              <Link className = "link-row"  style={{textDecoration:"none", letterSpacing:"5px",fontSize:"20px" }} to="/eplatform/user/trade"><AccountBoxOutlined fontSize={width>1000?"large":"medium"}/>{" "}{extend? "模拟交易" :null}</Link>
             </Row>
             <Row className='row-padding'>  
-              <Link  style={{ color: "white",textDecoration:"none",letterSpacing:"5px",fontSize:"20px" }} to="/eplatform/user/News"><AssignmentIcon fontSize={width>1000?"large":"medium"}/>{" "}量化回测</Link>
+              <Link className = "link-row" style={{textDecoration:"none",letterSpacing:"5px",fontSize:"20px" }} to="/eplatform/user/News"><AssignmentIcon fontSize={width>1000?"large":"medium"}/>{" "}{extend? "量化回测":null}</Link>
             </Row>
             <Row className='row-padding'>  
-              <Link  style={{ color: "white",textDecoration:"none",letterSpacing:"5px",fontSize:"20px" }} to="/eplatform/user/Message"><BallotIcon fontSize={width>1000?"large":"medium"}/>{" "}账户分析</Link>
+              <Link className = "link-row" style={{textDecoration:"none",letterSpacing:"5px",fontSize:"20px" }} to="/eplatform/user/Message"><BallotIcon fontSize={width>1000?"large":"medium"}/>{" "}{extend? "账户分析":null}</Link>
             </Row>    
             </div>
           </Route>
         </Switch>
-      </Nav>
+  
 
     </div>
           
       ) :
+
     //when window width is smaller than 550px
+
+    
       (
      
           <>
@@ -131,19 +138,19 @@ export default function SideMenuUsers() {
           <Route path='/eplatform/:users'>
             <div className='side-container-users'>
             <Row className='row-padding'>
-              <Link  style={{ color: "white",textDecoration:"none" }} to="/eplatform/:users"><AccountBalanceWalletOutlined fontSize="large"/>主页</Link>
+              <Link  style={{textDecoration:"none" }} to="/eplatform/:users"><AccountBalanceWalletOutlined fontSize="large"/>主页</Link>
             </Row>
             <Row className='row-padding'>   
-              <Link  style={{ color: "white",textDecoration:"none" }} to="/eplatform/:users/market"><AssessmentIcon fontSize="large" />市场</Link>
+              <Link  style={{textDecoration:"none" }} to="/eplatform/:users/market"><AssessmentIcon fontSize="large" />市场</Link>
             </Row>
             <Row className='row-padding'>  
-              <Link  style={{ color: "white",textDecoration:"none" }} to="/eplatform/:users/AccountAnalyst"><AccountBoxOutlined fontSize="large"/>账户</Link>
+              <Link  style={{textDecoration:"none" }} to="/eplatform/:users/AccountAnalyst"><AccountBoxOutlined fontSize="large"/>账户</Link>
             </Row>
             <Row className='row-padding'>  
-              <Link  style={{ color: "white",textDecoration:"none" }} to="/eplatform/:users/News"><AssignmentIcon fontSize="large"/>量化平台</Link>
+              <Link  style={{textDecoration:"none" }} to="/eplatform/:users/News"><AssignmentIcon fontSize="large"/>量化平台</Link>
             </Row>
             <Row className='row-padding'>  
-              <Link  style={{ color: "white",textDecoration:"none" }} to="/eplatform/:users/Message"><BallotIcon fontSize="large"/>新闻消息</Link>
+              <Link  style={{textDecoration:"none" }} to="/eplatform/:users/Message"><BallotIcon fontSize="large"/>新闻消息</Link>
             </Row>
             
             </div>

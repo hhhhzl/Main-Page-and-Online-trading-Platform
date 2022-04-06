@@ -3,21 +3,28 @@ import UserBalanceSeries from '../../graphs/balanceSeries';
 import UserBalancePorfolio from '../Portfolio/porfolio';
 import NavBarTest from '../../navBar';
 import SideMenuUsers from '../sideMenuUsers';
-import { Col, Row, Card, CardGroup, Button } from "react-bootstrap";
+import { Col, Row, Card, CardGroup, Button} from "react-bootstrap";
 import StockShowBar from '../../screen/StockShowBar';
 import GraphTemplate from '../../screen/GraphTemplate';
 import WatchList from '../../screen/WatchList';
 import AuthContext from '../../../../context/AuthContext';
 import axios from 'axios';
-import { StockData } from '../../../../static/Stockdata';
+
+
 
 export default function UserStocks(props) {
     let {user,logoutUser} = useContext(AuthContext)
     const [kdata, setkdata] = useState(null)
+    const [extend, setExtend] = useState(true)
+
+    const extendbar = () => {
+        setExtend(!extend)
+      }
     
     useEffect(()=>{
         setInterval(()=>{
             updataStockdata()
+            
         }, 1000)
     })
 
@@ -27,6 +34,7 @@ export default function UserStocks(props) {
             timeFrame: '1m'
           })
           .then(function (response) {
+            console.log(response.data.data)
             setkdata(response.data.data)
           })
           .catch(function (error) {
@@ -38,9 +46,7 @@ export default function UserStocks(props) {
     return (    
     <> 
         <NavBarTest username ={user.username} logoutUser ={logoutUser}/>
-        
-        <SideMenuUsers/>
-        
+        <SideMenuUsers extendbar={extendbar} extend ={extend}/>
         <div 
         className="show-bar"
         style={{
@@ -64,7 +70,7 @@ export default function UserStocks(props) {
         style={{   
         borderStyle:"solid",
         borderColor:"#AEAEAE"}}>
-             <GraphTemplate size={0.513} data = {kdata? kdata : StockData}/>
+             <GraphTemplate size={0.513} data = {kdata}/>
          </div>
          <div 
 

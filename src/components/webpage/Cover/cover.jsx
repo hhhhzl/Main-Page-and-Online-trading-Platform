@@ -11,17 +11,14 @@ import useWindowDimensions from "../../../utils/sizewindow";
 export default function Cover() {
   const {width,height} = useWindowDimensions();
   return (
-  <div id="#top" className="cover animated">
+  <div id="home" className="cover animated">
     <Image
-      src = "/background1.jpg"
-      title="Cover image"
-      alt="views in the World"     
+      src = "/background1.jpg"   
       style={{
         position: "relative",
-        left: 0,
-        top: 0,
+        marginTop: width > 1000 ? "0vh" : "8vh",
         width: width > 600 ? (width) : (width),
-        height: width > 900 ? height : width/2.186
+        height: width/2.186
       }}
     />
     <div className="overlay" />

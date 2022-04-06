@@ -16,7 +16,7 @@ const Contacts = () => {
     <div className="section">
       <br/>
       <h3 className="text-center" style={{color:"#AEAEAE"}}>CONTACT US</h3>
-      <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"25px",letterSpacing:"3px"}}><Bookmark/>{" "}合作联系</h5>
+      <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"30px",letterSpacing:"3px"}}><Bookmark/>{" "}<strong>合作联系</strong></h5>
       <br/>
       <br/>
       <div className="bottom-cover-picture animated">
@@ -73,7 +73,7 @@ const Contacts = () => {
     <br/>
     <div className="section">
     <h3 className="text-center" style={{color:"#AEAEAE"}}>COOPERATION</h3>
-      <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"30px",letterSpacing:"3px"}}><Bookmark/>{" "}合作伙伴</h5>
+      <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"25px",letterSpacing:"3px"}}><Bookmark/>{" "}<strong>合作伙伴</strong></h5>
       <br/>
 
       <div className="contact-center">

@@ -1,4 +1,4 @@
-export let StockData = [
+export let SampleData = [
     {
       date: "2021-02-02 16:00:00",
       open: 134.9307,

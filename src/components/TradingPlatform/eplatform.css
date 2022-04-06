@@ -12,15 +12,15 @@
 
 .side-menu-users {
     display: flex;
-    color: white;
     flex-direction: column;
+    color: white;
     position:fixed;
     left: 0px;
-    top: 0%;
+    top: 0px;
     height: 100%;
     background-color:#AEAEAE;
     /* background-image: radial-gradient(farthest-side at 60%, #26409A,#AEAEAE); */
-    opacity: 0.9;
+    opacity: 1;
     z-index: 999;
 }
 
@@ -30,40 +30,38 @@
 }
 
 .img-center{
-    width: 90%;
-    height: max-content;
-    margin-left: 5%;
+    width: 100%;
+    height: 70px;
   }
 
 
-.side-container{ 
-    width:90%;
-    height:max-content;
-    top: 20%;
-    position:relative;
-    margin-left: 10%;
-    margin-right: 10%;
 
-}
-
-.side-container-users{
-    width:90%;
-    height:max-content;
-    top: 20%;
-    position:relative;
-    margin-left: 10%;
-    margin-right: 10%;
-
-}
-
-.row-padding{
+.row-padding {
+    display: flex;
     align-items: center;
     text-align: center;
-    padding-bottom: 15px;
-    padding-top: 15px;
+    height: 3.5rem;
+    width: max-content;
+    margin-top: 5px;
+    margin-left: 3px;
+    position: relative;
+    
+
 }
 
+.row-padding a.link-row{
+  color: white;
+}
 
+.row-padding a:hover{
+    margin-left: 0.7rem;
+    background-color:white;
+    color: #26409A;
+    border-radius: 25px;
+    border-style:double;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
 .image-contain{
     width: 10%;
@@ -74,7 +72,7 @@
 #app-header {
     background: #e3e3e3;
     top: 0%;
-    bottom: 7vh;
+    height: 90px;
     margin-top: 0;
     margin-left: 0;
     margin-right: 0;
@@ -96,25 +94,21 @@
 /* ////// 用户CSS///////////////////////////////////////////*/
 
 
-.balance-main {
-  margin-top: 7%;
-  margin-left: 12%;
-}
 
 
 .mybalance-container{
-  width:68%;
+  width:100%;
   margin-left: 0;
-  height:250px;
+  height:180px;
   display: grid;
-  grid-template-columns: 4fr 2fr 2fr;
-
+  grid-template-columns: 2fr 2fr 2fr 2fr;
 }
 
 .Card-css{
   width:100%;
+  position: relative;
   border-radius: 30px;
-  height: 250px;
+  height: 150px;
   border-style: solid;
   border-color: rgba(51, 122, 183, 0.1);
   border-width: thin;
@@ -124,6 +118,7 @@
 
 
 .balance-style {
+  position: relative;
   border-style: solid;
   border-color: rgba(51, 122, 183, 0.1);
   border-width: 0;
@@ -153,8 +148,8 @@
 
 .balance-left {
   margin-left: 0;
-  margin-top: 30px;
-  width: 66%;
+  width: 100%;
+  margin-top: -50px;
   
 }
 
@@ -172,17 +167,15 @@
 }
 
 .balance-bottom1 {
-  width: 28%;
-  position:absolute;
-  right:1%;
-  top:10%;
+  width: 95%;
+  position:relative;
+  top:5%;
 }
 
 .balance-bottom2 {
-  width: 28%;
-  position:absolute;
-  right:1%;
-  top:55%;
+  width: 95%;
+  position:relative;
+  margin-top: 80px;
 }
 
 .balance-transaction {
@@ -299,31 +292,45 @@
   }
 
 
-  @media screen and (max-width: 960px) and (min-width:600px) {
-    .side-container{ 
-      width:90%;
-      height:max-content;
-      align-items: center;
-      text-align: center;
-      top: 20%;
-      position:relative;
-      margin-left: 10%;
+  @media screen and (max-width: 1024px) and (min-width:600px) {
   
+  .mybalance-container{
+    position: relative;
+    margin-left: 0;
+    height:20%;
+    gap:2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
-  .row-padding{
-    align-items: center;
-    text-align: center;
-    padding-bottom: 30%;
-    padding-top: 30%;
+  .side-menu-users {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    position:fixed;
+    left: 0px;
+    top: 0px;
+    height: 100vh;
+    background-color:#AEAEAE;
+    /* background-image: radial-gradient(farthest-side at 60%, #26409A,#AEAEAE); */
+    opacity: 1;
+    z-index: 999;
 }
 
-.search-div {
-  margin-left:55%;
-}
+
+
   }
 
   @media screen and (max-width: 600px){
+    .mybalance-container{
+      width:100%;
+      margin-left: 0;
+      height:180px;
+      gap:2rem;
+      display: grid;
+      grid-template-columns: 1fr;
+    } 
+
     .side-menu-users {
       display: flex;
       color: white;
@@ -333,7 +340,7 @@
       top: 7vh;
       width: 100%;
       height: auto;
-      background-color: #337ab7;
+      background-color:#26409A;
       opacity: 0.9;
       z-index: 998;
   }

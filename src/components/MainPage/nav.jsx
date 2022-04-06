@@ -50,7 +50,7 @@ const NavbarCreate = ({toggle}) => {
                 {scrolledDownEnough? 
                 <>
                 <NavLogo scrolledDownEnough={scrolledDownEnough} to ='home'>
-                <Image src = "/UFAlogo.jpg" roundedCircle  style={{position: "relative",left: 0,top: 0,width: "90%",height: "90%"}}/>
+                <Image src = "/logo0.png" roundedCircle  style={{position: "relative",left: 0,top: "10px",width: "200%",height: "200%"}}/>
                 </NavLogo>
                 <MobileIcon onClick ={() => toggle()}>
                 <ViewHeadlineTwoTone  fontSize='large'/>
@@ -59,7 +59,7 @@ const NavbarCreate = ({toggle}) => {
                 : 
                 (<>
                 <NavLogo scrolledDownEnough={scrolledDownEnough} to ='home'>
-                <Image src = "/UFAlogo.jpg" roundedCircle  style={{position: "relative",left: 0,top: 0,width: "90%",height: "90%"}}/>
+                <Image src = "/logo0.png" roundedCircle  style={{position: "relative",left: 0,top: "10px",width: "200%",height: "200%"}}/>
                 </NavLogo>
             <MobileIcon onClick ={() => toggle()}>
                 <ViewHeadlineTwoTone  fontSize='large'/>
@@ -71,7 +71,7 @@ const NavbarCreate = ({toggle}) => {
               
             <NavMenu>
                 <NavItem>
-                    <NavLinks scrolledDownEnough={scrolledDownEnough} width ={width} activeClass="active-block" to="home" spy={true} smooth={true} duration={700}>首页</NavLinks>
+                    <NavLinks scrolledDownEnough={scrolledDownEnough} width ={width} offset={-50} activeClass="active-block" to="home" spy={true} smooth={true} duration={700}>首页</NavLinks>
                 </NavItem>
                 <NavItem>
                     <NavLinks scrolledDownEnough={scrolledDownEnough} width ={width} offset={-50} activeClass="active-block" to="aboutus" spy={true} smooth={true} duration={700}>协会介绍</NavLinks>

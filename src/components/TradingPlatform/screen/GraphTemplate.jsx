@@ -1,6 +1,6 @@
 import { color, width } from '@material-ui/system';
 import reaat, {useState} from 'react'
-import { Card, Collapse, Button, Row, Nav, Dropdown,DropdownButton, Badge } from 'react-bootstrap'
+import { Card, Collapse, Button, Row, Nav, Dropdown,DropdownButton, Badge, Spinner } from 'react-bootstrap'
 import '../../TradingPlatform/eplatform.css';
 import { StarBorder } from '@material-ui/icons';
 import { NotificationsNone, KeyboardArrowDown, ArrowDropUp, ArrowBack, ArrowForward, Edit, ShowChart, BarChart} from '@material-ui/icons';
@@ -9,6 +9,7 @@ import CandleChart from '../graphs/CandleChart';
 
 
 export default function GraphTemplate(props) {
+  console.log(props.data)
     const [displayrow1, setdisplayrow1] = useState(true);
     const [displayrow2, setdisplayrow2] = useState(true);
     const [displayVisible, setDisplayVisible] = useState(true);
@@ -40,9 +41,23 @@ export default function GraphTemplate(props) {
                 <Badge style={{color:"black"}}>月K</Badge>
                 <Badge style={{color:"black"}}>年K</Badge>
               </Card.Footer>
-          <Card.Body>
+
+          
+            {props.data == null? 
+               (
+                <Card.Body style={{width:"800px", height:"400px"}}>
+               <div>
+               <Spinner animation="border"  variant="primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+               </Spinner>
+             </div>
+             </Card.Body>)
+          :   
+              (
+                <Card.Body>
               <CandleChart w ={props.size} h={0.65} stockData = {props.data}/>
-          </Card.Body>
+              </Card.Body>)}
+          
  
         <Card.Header style={{backgroundColor:""}}>
             公司介绍

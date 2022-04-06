@@ -4,7 +4,8 @@ import {Link as LinkS} from 'react-scroll'
 
 
 export const NavOut = styled.nav`
-   background:${props => props.scrolledDownEnough ? 'white' : "rgba(0,0,0,0)"};
+   // background:${props => props.scrolledDownEnough ? 'white' : "rgba(0,0,0,0)"};
+   background:white;
    height: 8vh;
    margin-left:${props => props.scrolledDownEnough ? '0%' : "0%"};
    width: ${props => props.scrolledDownEnough ? '100%' : "100%"};
@@ -85,7 +86,8 @@ export const NavItem = styled.li`
 `
 
 export const NavLinks = styled(LinkS)`
-   color: ${props => props.scrolledDownEnough ? '#26409A' : "#fff"};
+   // color: ${props => props.scrolledDownEnough ? '#26409A' : "#fff"};
+   color:#26409A;
    text-decoration:none;
    display:flex;
    align-item: center;
@@ -110,7 +112,8 @@ export const NavBtn = styled.nav`
 export const NavBtnLink = styled(LinkR)`
    white-space:nowrap;
    padding: 0.3rem ${props => props.width > 1000 ? props => props.width > 1330 ? "1.8rem" : "1rem" : "0.5rem"};
-   color:${props => props.scrolledDownEnough ? '#26409A' : "#fff"};
+   // color:${props => props.scrolledDownEnough ? '#26409A' : "#fff"};
+   color:#26409A;
    font-size:${props => props.width > 900 ? "18px" : "15px"};
    display:flex;
    cursor: pointer;

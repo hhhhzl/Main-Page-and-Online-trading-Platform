@@ -36,8 +36,10 @@ export default function MainPage() {
             </div>   */}
             <NavbarCreate toggle = {toggle} />
             {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>):(<></>)}
-            <div className ="main-page-center">
-            <Cover />  
+            <div  className ="main-page-center">
+            
+                  <Cover /> 
+               
             <div className = "about-us-page"> 
              <div  id="aboutus">
              <Aboutus/>  

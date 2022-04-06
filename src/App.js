@@ -108,6 +108,7 @@ const MakeRouter = () => {
       <Route exact path="/eplatform/user/trade" component={UserTrade} />
       <Route exact path="/eplatform/admin" component={tradePadmin} />
       <PrivateRoute exact path="/stocks" component={UserStocks} />
+      <PrivateRoute exact path="/competition" component={null} />
       <Route exact path="/register" component={RegisterForm} />
       <Route exact path="/login" component={LoginForm} />
       <Route exact path="/home" component={MainPage} /> 

@@ -40,7 +40,8 @@ export default function NavBarTest(props) {
                         id="collasible-nav-dropdown"
                     >
                         <div className="dropdownleft;" >
-                        <NavDropdown.Item href="#action/3.1"><EditIcon style={{color: "rgba(0, 0, 0, 0.54)"}}/> 修改密码</NavDropdown.Item>
+                        <NavDropdown.Item href="stock"><EditIcon style={{color: "rgba(0, 0, 0, 0.54)"}}/> 设置</NavDropdown.Item>
+                        <NavDropdown.Item href="/stocks"><EditIcon style={{color: "rgba(0, 0, 0, 0.54)"}}/> 修改密码</NavDropdown.Item>
                         <NavDropdown.Item onClick ={props.logoutUser} ><ExitToAppIcon  style={{color: "rgba(0, 0, 0, 0.54)"}}/> 退出</NavDropdown.Item>
                         </div>
                     </NavDropdown>

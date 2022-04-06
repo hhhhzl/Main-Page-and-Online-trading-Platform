@@ -211,8 +211,8 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
         <div className="about-intro">
         
           <div className ="section">
-          <h3 className="text-center" style={{color:"#AEAEAE"}}>What You Can Achieve</h3>
-         <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"25px",letterSpacing:"2px"}}><Bookmark/>{" "}“UFA杯”能为大学生提供哪些价值</h5>
+          <h3 className="text-center" style={{color:"#AEAEAE"}}>WHAT YOU CAN ACHIEVE</h3>
+         <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"25px",letterSpacing:"2px"}}><Bookmark/>{" "}<strong>“UFA杯”能为大学生提供哪些价值</strong></h5>
          <br/>
         <br/>
 
