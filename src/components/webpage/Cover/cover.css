@@ -2,8 +2,6 @@
   width: 100%;
   height:max-content;
   top:0;
-  background-color:rgba(0,0,0,0);
-  background-size: cover;
   position:relative;
 }
 
@@ -86,9 +84,6 @@
   position: absolute;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  border-bottom-style: solid;
-  border-bottom-width: thin;
   top: 0;
   left: 0;
   opacity: 0.3;
@@ -98,9 +93,8 @@
 
 .arrow {
   position: absolute;
-  bottom: 22%;
+  bottom: 15%;
   display: block;
-  left: 45%;
   text-align: center;
   align-items: center;
   width:max-content;
@@ -132,11 +126,11 @@
     padding-left: 30px;
     padding-right: 30px;
   }
+
   .arrow {
     position: absolute;
-    bottom: 20%;
+    bottom: 0%;
     display: block;
-    left: 43%;
     text-align: center;
     align-items: center;
     width:max-content;
@@ -146,7 +140,7 @@
     -webkit-animation-delay: 0.5s;
   }
   .arrow .btn {
-    font-size: 18px;
+    font-size: 16px;
     padding-top: 4px;
     padding-bottom: 4px;
     width: 100%;
@@ -171,9 +165,7 @@
 
   .arrow {
     position: absolute;
-    bottom: 20%;
     display: block;
-    left: 39%;
     text-align: center;
     align-items: center;
     width:max-content;

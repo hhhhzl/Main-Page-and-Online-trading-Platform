@@ -17,7 +17,7 @@ export default function NavBarTest(props) {
     
   
     return (    
-        <Navbar bg="light" variant="info" id="app-header">
+        <Navbar id="app-header">
             <Container className='padding-right' >
                 <Nav className="me-auto">
                 </Nav>

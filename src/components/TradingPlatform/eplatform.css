@@ -18,8 +18,8 @@
     left: 0px;
     top: 0px;
     height: 100%;
-    background-color:#AEAEAE;
-    /* background-image: radial-gradient(farthest-side at 60%, #26409A,#AEAEAE); */
+    background-color:#13297b;
+    background-image: radial-gradient(farthest-side at 90% 90%, #284dd2,#13297b);
     opacity: 1;
     z-index: 999;
 }
@@ -70,7 +70,7 @@
 }
 
 #app-header {
-    background: #e3e3e3;
+    background: #f4f7fc;
     top: 0%;
     height: 90px;
     margin-top: 0;
@@ -104,7 +104,7 @@
   grid-template-columns: 2fr 2fr 2fr 2fr;
 }
 
-.Card-css{
+.Card-css1{
   width:100%;
   position: relative;
   border-radius: 30px;
@@ -112,10 +112,54 @@
   border-style: solid;
   border-color: rgba(51, 122, 183, 0.1);
   border-width: thin;
+  background-color: #13297b;
+  background-image: radial-gradient(farthest-side at 90% 90%, #93bff9,#1f72fa);
   box-shadow: 0 12px 20px 0 #AEAEAE;
   box-sizing: border-box;
 }
 
+.Card-css2{
+  width:100%;
+  position: relative;
+  border-radius: 30px;
+  height: 150px;
+  border-style: solid;
+  border-color: rgba(51, 122, 183, 0.1);
+  border-width: thin;
+  background-color: #13297b;
+  background-image: radial-gradient(farthest-side at 90% 90%, #f9ae93,#f46c29);
+  box-shadow: 0 12px 20px 0 #AEAEAE;
+  box-sizing: border-box;
+}
+
+.Card-css3{
+  width:100%;
+  position: relative;
+  border-radius: 30px;
+  height: 150px;
+  border-style: solid;
+  border-color: rgba(51, 122, 183, 0.1);
+  border-width: thin;
+  background-color: #13297b;
+  background-image: radial-gradient(farthest-side at 90% 90%, #8f91f9,#4144bd);
+  box-shadow: 0 12px 20px 0 #AEAEAE;
+  box-sizing: border-box;
+}
+
+
+.Card-css4{
+  width:100%;
+  position: relative;
+  border-radius: 30px;
+  height: 150px;
+  border-style: solid;
+  border-color: rgba(51, 122, 183, 0.1);
+  border-width: thin;
+  background-color: #13297b;
+  background-image: radial-gradient(farthest-side at 90% 90%, #4bc2cd,#1a958e);
+  box-shadow: 0 12px 20px 0 #AEAEAE;
+  box-sizing: border-box;
+}
 
 .balance-style {
   position: relative;
@@ -169,13 +213,15 @@
 .balance-bottom1 {
   width: 95%;
   position:relative;
-  top:5%;
+  margin-top: 30px;
+  left: 2.5%;
 }
 
 .balance-bottom2 {
   width: 95%;
+  left: 2.5%;
   position:relative;
-  margin-top: 80px;
+  margin-top: 30px;
 }
 
 .balance-transaction {
@@ -195,6 +241,27 @@
   width:100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.cardyes {
+  /*float: left;*/
+  max-width: 20%;
+  padding: .75rem;
+  margin-left: 20px;
+  border: 0;
+  flex-basis: 25%;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+/* /////market CSS/////////////////////////////////////////////*/
+.market-indicator{
+  width: 100%;
+  height: max-content;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+
 }
 
 /* /////管理员 CSS/////////////////////////////////////////////*/
@@ -278,6 +345,16 @@
     overflow: auto;
   }
 
+  .scroll3{
+    max-height: 190px;
+    overflow: auto;
+  }
+
+  .scroll4{
+    max-height: 300px;
+    overflow: auto;
+  }
+
 
   .icon-css{
     width: 7vh;
@@ -289,6 +366,14 @@
     top:0%;
     left:0%;
     z-index:999
+  }
+
+  .market-layout1 {
+    background: rgb(248, 248, 248);
+    margin-top: 0%;
+    margin-left: 0%;
+    border-radius: 0%;
+    border-style:double;
   }
 
 
@@ -323,13 +408,14 @@
 
   @media screen and (max-width: 600px){
     .mybalance-container{
-      width:100%;
-      margin-left: 0;
-      height:180px;
+      position: relative;
+      width: 95%;
+      margin-left: 2.5%;
+      height:20%;
       gap:2rem;
       display: grid;
-      grid-template-columns: 1fr;
-    } 
+      grid-template-columns: 1fr 1fr;
+    }
 
     .side-menu-users {
       display: flex;

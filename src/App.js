@@ -105,9 +105,11 @@ const MakeRouter = () => {
     <Switch>
       <AuthProvider>
       <Route exact path="/eplatform/user" component={TradePusers} />
+      <Route exact path="/eplatform/user/analytics" component={TradePusers} />
       <Route exact path="/eplatform/user/trade" component={UserTrade} />
       <Route exact path="/eplatform/admin" component={tradePadmin} />
       <PrivateRoute exact path="/stocks" component={UserStocks} />
+      <PrivateRoute exact path="/market" component={UserMarket} />
       <PrivateRoute exact path="/competition" component={null} />
       <Route exact path="/register" component={RegisterForm} />
       <Route exact path="/login" component={LoginForm} />

@@ -10,18 +10,14 @@ import {
     YAxis,
     MouseCoordinateX,
     TrendLine,
-    DrawingObjectSelector
-    
-
+    DrawingObjectSelector,
 } from "react-financial-charts";
+import { AreaSeries, AreaOnlySeries } from "@react-financial-charts/series";
 import { initialData } from "../../../static/testdata";
 import useWindowDimensions from "../../../utils/sizewindow";
-import { saveInteractiveNodes, getInteractiveNodes} from "./interactiveutils.js"
   
 
-export default function UserBalanceSeries({w,h}){
-  const [getInteractiveNode, setgetInteractiveNode] = useState()
-  const [saveInteractiveNode, setInteractiveNode] = useState()
+export default function AreaChart({w,h}){
    const {height,width} = useWindowDimensions();
     const ScaleProvider = discontinuousTimeScaleProviderBuilder().inputDateAccessor(
         (d) => new Date(d.date)
@@ -30,7 +26,7 @@ export default function UserBalanceSeries({w,h}){
       // get the width and height of user's window
       const heightx = height * h;
       const widthy = width * w;
-      const margin = { left: widthy*0.05, right: widthy*0.1, top: 0, bottom: heightx*0.1 };
+      const margin = { left: 0, right: widthy*0.1, top: 0, bottom: heightx*0.1 };
       // const Window_height = height;
       // const Window_width = width * 0.5;
       // const margin = { left: width*0.01, right: width*0.05, top: 0, bottom: height*0.1 };
@@ -41,14 +37,7 @@ export default function UserBalanceSeries({w,h}){
       const max = xAccessor(data[data.length - 1]);
       const min = xAccessor(data[Math.max(0, data.length - 100)]);
       const xExtents = [min, max + 5];
-    
       const gridHeight = heightx - margin.top - margin.bottom;
-      const elderRayHeight = 100;
-      const elderRayOrigin = (_, h) => [0, h - elderRayHeight];
-      const barChartHeight = gridHeight / 4;
-
-      const chartHeight = gridHeight - elderRayHeight;
-
       const dateTimeFormat = "%Y-%m-%d %H:%M:%S";
       const timeDisplayFormat = timeFormat(dateTimeFormat);
     
@@ -61,10 +50,6 @@ export default function UserBalanceSeries({w,h}){
         return data.open;
       };
     
-      const openCloseColor = (data) => {
-        return data.close > data.open ? "#26a69a" : "#ef5350";
-      };
-
     return(
       <>
       <div className="assets-curve">      
@@ -82,32 +67,15 @@ export default function UserBalanceSeries({w,h}){
         <Chart id={3} height={gridHeight} yExtents={candleChartExtents}>
           
           
-          <XAxis showGridLines showTickLabel axisAt="bottom" orient="bottom" displayFormat={timeDisplayFormat} />
-          <YAxis showGridLines showTicklabel={false}  tickFormat={pricesDisplayFormat} />
-          <AlternatingFillAreaSeries baseAt ={134.80} yAccessor={yEdgeIndicator} connectNulls ={true} strokeStyle ={{ top: '#26a69a', bottom: '#ef5350' }}/> 
+          <XAxis showGridLines={false} showDomain={false} showTickLabel={false} axisAt="bottom" orient="bottom" displayFormat={timeDisplayFormat} />
+          <YAxis showGridLines={false} showDomain={false} showTicklabel={true}  tickFormat={pricesDisplayFormat} />
+          <AreaSeries yAccessor={yEdgeIndicator} connectNulls ={true}/> 
           <MouseCoordinateX
             at="bottom"
             orient="bottom"
             displayFormat={timeDisplayFormat}
-          />
-          <TrendLine 
-          snap={true} 
-          enabled={true} 
-          // snapTo={d => [d.high, d.low]}
-          onStart={() => console.log("START")}
-          trends={[
-            {start: [timeDisplayFormat("2021-02-02 15:45:00"), 134.78], end: [timeDisplayFormat("2021-02-02 15:30:00"), 134.98],appearance: { stroke: "green" },
-            type: "XLINE"}
-          ]}/>
-          
+          />  
         </Chart>
-        {/* <DrawingObjectSelector
-          enabled={true}
-          getInteractiveNodes={setgetInteractiveNode}
-          drawingObjectMap={{
-            Trendline: "trends"
-          }}
-        /> */}
       </ChartCanvas>
       </div>
       </>

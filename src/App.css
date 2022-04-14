@@ -72,11 +72,15 @@ h6 {
 a {
   color: #337ab7;
 }
+.image-icon{
+  position: absolute;
+}
 
 .about-us-page{
   width: 100%;
   height:min-content;
   position: relative;
+  top:8vh;
   padding-left: 0;
   padding-right: 0;
 }
@@ -120,7 +124,6 @@ a {
   margin-right: 0%;
   margin-left: 0%;
   height: max-content;
-  background-color: rgba(0,0,0,0);
 }
 
 
@@ -138,14 +141,54 @@ a {
 
 .auto-main-page{
   display: grid;
-  margin-top:100px;
   position: relative;
-  background-color:aliceblue;
+  background-color: #ebf2fc;;
   top:90px;
   gap: 2rem;
-  margin: 1rem auto 4rem;
   grid-template-columns: 12rem auto 31rem;
 }
+
+.auto-main-market{
+  display: grid;
+  position: fixed;
+  left: 200px;
+  background-color:#ebf2fc;
+  top:90px;
+  grid-template-rows: 2fr 3fr 2fr;
+}
+
+.auto-main-market1{
+  display: grid;
+  position: relative;
+  background-color:black;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.auto-main-market2{
+  display: grid;
+  background-color:#ebf2fc;
+  grid-template-columns: 2fr 5fr;
+}
+
+.auto-main-market1{
+  display: grid;
+  position: relative;
+  background-color:black;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.auto-main-market3{
+  max-width: 93%;
+  align-items: stretch;
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+
 
 
 .progress-bar{
@@ -159,13 +202,14 @@ a {
 @media screen and (max-width: 1024px){
   .auto-main-page{
     display: grid;
-    margin-top:100px;
+    margin-top:0px;
     position: relative;
     background-color:aliceblue;
     gap: 2rem;
-    margin: 1rem;
     grid-template-columns: 1fr;
   }
+
+
   
   
 }

@@ -12,15 +12,26 @@ export default function Cover() {
   const {width,height} = useWindowDimensions();
   return (
   <div id="home" className="cover animated">
+    {width > 600 ? <Image
+      src = "/background2.jpg"   
+      style={{
+        position: "relative",
+        top: width > 1000 ? "9vh" : "9vh",
+        width: width > 600 ? (width) : (width),
+        height: width/2.7
+      }}
+    /> : 
     <Image
       src = "/background1.jpg"   
       style={{
         position: "relative",
-        marginTop: width > 1000 ? "0vh" : "8vh",
+        top: width > 1000 ? "9vh" : "9vh",
         width: width > 600 ? (width) : (width),
-        height: width/2.186
+        height: width/2.18
       }}
     />
+    }
+    
     <div className="overlay" />
        
     {/* <div className="center">
@@ -36,9 +47,10 @@ export default function Cover() {
       </h1>
       
     </div> */}
-    <div className="arrow animated bounceInDown">
+    <div className="arrow animated bounceInDown" style={{top:width > 600 ? width/3.7 + height*0.08 : width/2.9 + height*0.08, left:width/2-85}}>
+
     <Button className="round-Button" variant="primary" 
-    style={{backgroundColor:"#FF6347",color:"white",fontFamily:"MicrosoftYaHei",letterSpacing:"3px"}} size='sm'>报名赛事</Button>
+    style={{backgroundColor:"#FF6347",fontSize:"18px",paddingLeft:"30px",paddingRight:"30px",color:"white",fontFamily:"MicrosoftYaHei",letterSpacing:"3px"}} size='sm'>报名赛事</Button>
     </div>
   </div>
   )

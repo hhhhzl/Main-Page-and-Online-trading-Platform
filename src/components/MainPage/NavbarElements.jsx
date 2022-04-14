@@ -6,7 +6,7 @@ import {Link as LinkS} from 'react-scroll'
 export const NavOut = styled.nav`
    // background:${props => props.scrolledDownEnough ? 'white' : "rgba(0,0,0,0)"};
    background:white;
-   height: 8vh;
+   height: 9vh;
    margin-left:${props => props.scrolledDownEnough ? '0%' : "0%"};
    width: ${props => props.scrolledDownEnough ? '100%' : "100%"};
    justify-content:center;

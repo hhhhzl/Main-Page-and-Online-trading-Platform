@@ -25,7 +25,9 @@ import {
   MouseCoordinateY,
   ZoomButtons,
   withDeviceRatio,
-  withSize
+  withSize,
+  TrendLine,
+  DrawingObjectSelector
 } from "react-financial-charts";
 import { macd } from "react-financial-charts";
 import useWindowDimensions from "../../../utils/sizewindow";
@@ -133,6 +135,14 @@ export default function CandleChart({w,h, stockData}){
       <Chart id={3} height={chartHeight} yExtents={candleChartExtents}>
         <XAxis showGridLines showTickLabel={true} />
         <YAxis showGridLines tickFormat={pricesDisplayFormat} />
+        <TrendLine 
+          snap={true} 
+          enabled={true} 
+          // snapTo={d => [d.high, d.low]}
+          onStart={() => console.log("START")}
+          trends={[
+            { start: ["14 Apr", 47.18], end: ["14 Apr", 47.18]}
+          ]}/>
         <CandlestickSeries />
         <LineSeries yAccessor={ema26.accessor()} strokeStyle={ema26.stroke()} />
         <CurrentCoordinate
@@ -144,6 +154,11 @@ export default function CandleChart({w,h, stockData}){
           yAccessor={ema12.accessor()}
           fillStyle={ema12.stroke()}
         />
+        <MouseCoordinateX
+            at="bottom"
+            orient="bottom"
+            displayFormat={timeFormat("%Y-%m-%d")}
+          />
         <MouseCoordinateY
           rectWidth={margin.right}
           displayFormat={pricesDisplayFormat}
@@ -184,6 +199,7 @@ export default function CandleChart({w,h, stockData}){
         origin={elderRayOrigin}
         padding={{ top: 8, bottom: 8 }}
       >
+        
         <XAxis showGridLines gridLinesStrokeStyle="#e0e3eb" />
         <YAxis ticks={4} tickFormat={pricesDisplayFormat} />
 
@@ -192,6 +208,8 @@ export default function CandleChart({w,h, stockData}){
           rectWidth={margin.right}
           displayFormat={pricesDisplayFormat}
         />
+         
+        
 
         <ElderRaySeries yAccessor={elder.accessor()} />
 

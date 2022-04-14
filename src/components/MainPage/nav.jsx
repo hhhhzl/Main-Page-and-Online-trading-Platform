@@ -14,6 +14,7 @@ const NavbarCreate = ({toggle}) => {
     const {width,height} = useWindowDimensions();
     const [scrolledDownEnough, setScrolledDownEnough] = useState(false);
     const [show, setShow] = useState(false);
+    const [box,setbox] = useState(height*0.09)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -47,20 +48,18 @@ const NavbarCreate = ({toggle}) => {
 
           <NavOut scrolledDownEnough={scrolledDownEnough}>  
             <NavbarContianer>
+                <div className="image-icon" style={{height:box,width:box,top:0}}>
+            <Image src = "/logo0.png" style={{width: "110%",height: "110%"}}/>
+            </div>
+
                 {scrolledDownEnough? 
                 <>
-                <NavLogo scrolledDownEnough={scrolledDownEnough} to ='home'>
-                <Image src = "/logo0.png" roundedCircle  style={{position: "relative",left: 0,top: "10px",width: "200%",height: "200%"}}/>
-                </NavLogo>
                 <MobileIcon onClick ={() => toggle()}>
                 <ViewHeadlineTwoTone  fontSize='large'/>
                 </MobileIcon>
                 </>
                 : 
                 (<>
-                <NavLogo scrolledDownEnough={scrolledDownEnough} to ='home'>
-                <Image src = "/logo0.png" roundedCircle  style={{position: "relative",left: 0,top: "10px",width: "200%",height: "200%"}}/>
-                </NavLogo>
             <MobileIcon onClick ={() => toggle()}>
                 <ViewHeadlineTwoTone  fontSize='large'/>
             </MobileIcon>

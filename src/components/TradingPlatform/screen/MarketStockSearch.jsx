@@ -1,51 +1,61 @@
-import data from '../../../static/holdingdata.json'
+import data from '../../../static/tradingdata.json'
 import React from "react";
 import { Button } from "react-bootstrap";
 import BootstrapTable from 'react-bootstrap-table-next';
+import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolkit';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Collapse } from "react-bootstrap";
 import { red } from '@material-ui/core/colors';
-import {MoneyOffOutlined} from '@material-ui/icons'
-
 
 const { SearchBar } = Search;
 const { ExportCSVButton } = CSVExport;
 
-export default function WatchListTable(){
+export default function MarketStockSearch(){
     const columns = [
         {
             dataField: 'symbol',
-            text: '名称',
+            text: '股票代码',
             sort: true,
-            style: { width: '15%' }
         },
-       
-        {   
-            dataField:'price',
-            text: "价格/涨跌",
+        {
+            dataField: 'tradingDate',
+            text: "交易时间",
             sort: true,
-            style: { width: '16%' },
-            headerAlign: (column, colIndex) => 'right',
-    
-            formatter:(value,row) => {
-                let balance = ((value-row.avgprice) * row.holdingshares).toFixed(2);
-                let pl = (((value) / (row.avgprice) -1)*100).toFixed(2);
+        },
+        {
+            dataField: 'tradingtype',
+            text: "方向",
+            sort: true,
+            formatter:(value) => {
                 return(
                     <div>
-                        { balance < 0  ? (<>
-                            <h6 style={{fontSize:"16px",textAlign:"right",color:"red"}}>{balance}</h6>
-                            <h6 style={{textAlign:"right",opacity:0.7,color:"red"}}>{pl}%</h6></>
-                        ) : (<><h6 style={{fontSize:"16px",textAlign:"right",color:"green"}}>{balance}</h6>
-                        <h6 style={{textAlign:"right",opacity:0.7,color:"green"}}>{pl}%</h6></>)}
+                        {value.toLowerCase() ==="sell" ? (
+                            <h6 style={{color:"red"}}>{value}</h6>
+                        ) : (<h6 style={{color:"green"}}>{value}</h6>)}
                     </div>
                 )
+                
+            
+      
             },
         },
-       
+        {
+            dataField: 'shares',
+            text: "股数",
+            sort: true,
+            
 
+            
+        },
+        {
+            dataField: 'price',
+            text: "价格",
+            sort: true,
+        },
 
     ];
+
 
     const indication =()=>{
         return (
@@ -61,10 +71,9 @@ export default function WatchListTable(){
             keyField="id"
             data={ data }
             columns={ columns }
-            
             search
             exportCSV={ {
-                fileName: '自选股票.csv',
+                fileName: '用户信息.csv',
                 separator: '|',
                 ignoreHeader: true,
                 noAutoBOM: false
@@ -73,23 +82,20 @@ export default function WatchListTable(){
     {
       props =>(
         <div>
-       
-          <hr />
-  
+          <Collapse in= {true}>
+             <div className ="scroll4">
           
           <BootstrapTable
            { ...props.baseProps}
-           bordered={ false }
-            
+            hover
+            bordered={ false }
             condensed 
-            bootstrap4={true}
-            hover={true}
-            noDataIndication={indication}
-
+            noDataIndication={ indication }
             />
 
           
-      
+          </div>
+          </Collapse>
         
 
 {/* <div className="search-div">
