@@ -40,7 +40,7 @@ export default function CandleChart({w,h, stockData}){
   const widthy = width * w;
   const heightx = height * h;
       
-      const margin = { left: 3, right: 48, top: 0, bottom:0 };
+  const margin = { left: 3, right: 48, top: 0, bottom:0 };
 
   const ema12 = ema()
     .id(1)

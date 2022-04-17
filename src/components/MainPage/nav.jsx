@@ -85,6 +85,9 @@ const NavbarCreate = ({toggle}) => {
                     <NavBtnLink scrolledDownEnough={scrolledDownEnough} width ={width} offset={-20} onClick={handleShow} activeClass="active-block" to ="/competition" spy={true} smooth={true} duration={700}>赛事</NavBtnLink>
                 </NavItem>
                 <NavItem>
+                    <NavBtnLink scrolledDownEnough={scrolledDownEnough} width ={width} offset={-20} onClick={handleShow} activeClass="active-block" to ="/ideas" spy={true} smooth={true} duration={700}>论坛</NavBtnLink>
+                </NavItem>
+                <NavItem>
                     <NavBtnLink scrolledDownEnough={scrolledDownEnough} width ={width} offset={-20} onClick={handleShow} activeClass="active-block" to ="/stocks" spy={true} smooth={true} duration={700}>交易平台</NavBtnLink>
                 </NavItem>
 

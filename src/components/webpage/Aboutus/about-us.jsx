@@ -18,7 +18,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
   return (
     <div className="section">
       <br/>
-      <h3 className="text-center" style={{color:"#AEAEAE"}}>WHO WE ARE</h3>
+      <h3 className="text-center" style={{color:"#AEAEAE",fontFamily:"MicrosoftYaHeiUI",fontSize:"30px"}}>WHO WE ARE</h3>
       <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"30px",letterSpacing:"0.8px"}}><Bookmark/> <strong>协{" "}会{" "}介{" "}绍</strong></h5>
       <br/>
       <br/>
@@ -52,7 +52,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
 
         <div className="video">
           <br/>
-        <h3 className="text-center" style={{color:"#AEAEAE"}}>ABOUT UFA TRADING CHALLENGE</h3>
+        <h3 className="text-center" style={{color:"#AEAEAE",fontSize:"30px"}}>ABOUT UFA TRADING CHALLENGE</h3>
          <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"30px",letterSpacing:"4px"}}><Bookmark/>{' '}<strong>UFA杯赛事介绍</strong></h5>
          <br/>
          <br/>
@@ -211,7 +211,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
         <div className="about-intro">
         
           <div className ="section">
-          <h3 className="text-center" style={{color:"#AEAEAE"}}>WHAT YOU CAN ACHIEVE</h3>
+          <h3 className="text-center" style={{color:"#AEAEAE",fontSize:"30px"}}>WHAT YOU CAN ACHIEVE</h3>
          <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"25px",letterSpacing:"2px"}}><Bookmark/>{" "}<strong>“UFA杯”能为大学生提供哪些价值</strong></h5>
          <br/>
         <br/>

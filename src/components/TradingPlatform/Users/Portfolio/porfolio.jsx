@@ -3,28 +3,27 @@ import { Row,Col,Card,Container, Form} from "react-bootstrap";
 import { Bookmark } from "@material-ui/icons";
 import UserBalanceSeries from "../../graphs/balanceSeries";
 import useWindowDimensions from "../../../../utils/sizewindow";
+import AreaChartTest from "../../graphs/AreaChartTest";
 
 export default function UserBalancePorfolio({props}){
     const {width,height} = useWindowDimensions();
     return(
         <>
-        <h5 style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"20px",letterSpacing:"3px"}}><Bookmark/>{" "}<strong>账户信息</strong></h5>
-        <Form>
+        <h5 style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"20px",letterSpacing:"3px",marginTop:height*0.05}}><Bookmark/>{" "}<strong>账户信息</strong></h5>
+        <Form style={{marginTop:"30px"}}>
             <Form.Control type="date"></Form.Control> 
         </Form>
         <br/>
         <div className="mybalance-container">
                <div style={{paddingRight:"30px"}}>
                 <Card className="Card-css1" >
-                    <Card.Header style={{fontSize:"20px"}}>我的资产</Card.Header>
                     <Card.Body>   
-                        <Card.Text style={{fontSize:"30px"}}>￥1,000</Card.Text>
+                        <Card.Text style={{fontSize:"30px"}}>￥1,000{width}</Card.Text>
                         </Card.Body>
                 </Card>
                </div>
                <div style={{paddingRight:"30px"}}>
                 <Card className="Card-css2" >
-                    <Card.Header style={{fontSize:"20px"}}>持仓市值</Card.Header>
                     <Card.Body>   
                         <Card.Text style={{fontSize:"25px"}}>￥1,000,000</Card.Text>   
 
@@ -34,7 +33,7 @@ export default function UserBalancePorfolio({props}){
                </div>
                <div style={{paddingRight:"30px"}}>
                 <Card className="Card-css3">
-                    <Card.Header style={{fontSize:"20px"}}>净盈利</Card.Header>
+        
                     <Card.Body>   
                         <Card.Text style={{fontSize:"20px"}}>￥0</Card.Text>
                         </Card.Body>
@@ -42,7 +41,6 @@ export default function UserBalancePorfolio({props}){
                 </div>
                 <div style={{paddingRight:"30px"}}>
                 <Card className="Card-css4">
-                    <Card.Header style={{fontSize:"20px"}}>净盈利</Card.Header>
                     <Card.Body>   
                         <Card.Text style={{fontSize:"20px"}}>￥0</Card.Text>
                         </Card.Body>
@@ -50,10 +48,10 @@ export default function UserBalancePorfolio({props}){
                 </div>
         </div>
             <br/>
-            <div style={{position:"relative", marginTop:width > 1024? null :(width<600? "25%" : "15%")}}>
+            <div style={{position:"relative", marginTop:width > 900? null :(width<600? "6%" : "15%"), marginRight:"20px"}}>
             <h5 style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"20px",letterSpacing:"3px"}}><Bookmark/>{" "}<strong>资产曲线</strong></h5>
                 <Card className='balance-style'>
-                    <UserBalanceSeries w={0.56} h ={0.5} />
+                    <AreaChartTest width={width>900? 900 : width-60}/>
                 </Card>
             </div>
             </>

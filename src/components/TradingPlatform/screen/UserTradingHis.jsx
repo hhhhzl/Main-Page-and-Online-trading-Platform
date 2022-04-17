@@ -36,8 +36,6 @@ export default function UserTradingHistory(){
                     </div>
                 )
                 
-            
-      
             },
         },
         {
@@ -73,7 +71,7 @@ export default function UserTradingHistory(){
             columns={ columns }
             search
             exportCSV={ {
-                fileName: '用户信息.csv',
+                fileName: '交易记录.csv',
                 separator: '|',
                 ignoreHeader: true,
                 noAutoBOM: false
@@ -81,7 +79,7 @@ export default function UserTradingHistory(){
     >
     {
       props =>(
-        <div>
+        <div >
           <div className="search-div">
             <SearchBar
                 {...props.searchProps}
@@ -97,6 +95,7 @@ export default function UserTradingHistory(){
           <BootstrapTable
            { ...props.baseProps}
             hover
+            striped
             bordered={ false }
             condensed 
             noDataIndication={ indication }

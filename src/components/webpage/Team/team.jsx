@@ -14,7 +14,7 @@ export default function Team(){
     return (
         <div className="section colored-team">
             <br/>
-            <h3 className="text-center" style={{color:"#AEAEAE"}}>ABOUT THE TEAM</h3>
+            <h3 className="text-center" style={{color:"#AEAEAE",fontSize:"30px"}}>ABOUT THE TEAM</h3>
              <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"30px",letterSpacing:"3px"}}><Bookmark/>{" "}<strong>关于我们</strong></h5>
          <br/>
          <br/>

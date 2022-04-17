@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import UserBalanceSeries from '../../graphs/balanceSeries';
 import UserBalancePorfolio from '../Portfolio/porfolio';
 import NavBarTest from '../../navBar';
@@ -10,11 +10,18 @@ import WatchList from '../../screen/WatchList';
 import StockTradeBar from '../../screen/StockTradeBar';
 
 export default function UserTrade() {
+    const [extend, setExtend] = useState(true)
+
+    const extendbar = () => {
+        setExtend(!extend)
+      }
     return (
         
     <> 
         <NavBarTest username={'张三'} usertype={"用户"}/>
-        <SideMenuUsers/>
+        <div>
+            <SideMenuUsers extendbar={extendbar} extend ={extend}/>
+        </div>
         <div 
         className="show-bar"
         style={{

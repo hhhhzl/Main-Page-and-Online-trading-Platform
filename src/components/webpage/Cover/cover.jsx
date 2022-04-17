@@ -18,7 +18,7 @@ export default function Cover() {
         position: "relative",
         top: width > 1000 ? "9vh" : "9vh",
         width: width > 600 ? (width) : (width),
-        height: width/2.7
+        height: width/2.72
       }}
     /> : 
     <Image

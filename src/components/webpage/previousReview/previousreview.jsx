@@ -37,7 +37,7 @@ const Review = ({ projectImgs }) => {
     <div className='review-title'>
       <div className="section">
       <br/>
-      <h3 className="text-center" style={{color:"#AEAEAE"}}>REVIEW</h3>
+      <h3 className="text-center" style={{color:"#AEAEAE",fontSize:"30px"}}>REVIEW</h3>
       <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"30px",letterSpacing:"3px"}}><Bookmark/>{" "}<strong>往期回顾</strong></h5>
       </div>
     </div>

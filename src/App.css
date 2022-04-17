@@ -143,9 +143,7 @@ a {
   display: grid;
   position: relative;
   background-color: #ebf2fc;;
-  top:90px;
-  gap: 2rem;
-  grid-template-columns: 12rem auto 31rem;
+  gap: 0rem;
 }
 
 .auto-main-market{
@@ -210,7 +208,7 @@ a {
   }
 
 
-  
+ 
   
 }
 
