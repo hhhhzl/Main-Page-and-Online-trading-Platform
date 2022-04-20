@@ -17,15 +17,12 @@ export default function NavBarTest(props) {
     const [user, setuser] =useState(props.username)
     const [authorized, setauthorized] = useState(false)
     const [news, setnews] =useState(true)
-    
-    
-  
     return (    
         <Navbar id="app-header" style={{height:height*0.1}}>
             <Container className='padding-right' >
                 <Nav className="me-auto">
                     <Form>
-                        <Form.Control style={{borderRadius:"25px", width:"300px"}} placeholder={"搜索关键字"}></Form.Control>
+                        <Form.Control style={{position:"fixed",top:height*0.03,left: width > 1068? "250px" :"50px", borderRadius:"25px", width: width > 800? "300px" :"250px"}} placeholder={"搜索关键字"}></Form.Control>
                     </Form>
                 </Nav>
                 <div style={{marginRight:"20px"}}>
@@ -40,12 +37,10 @@ export default function NavBarTest(props) {
                     : 
                     <IconButton>
                     <NotificationsNoneOutlined/>
-                    </IconButton> }
-                
-                
+                    </IconButton> } 
                 </div>
                 <div>   
-                {!user? (<>未登录</>) : (<>{props.usertype} {props.username}</>)}
+                {!user? (<>未登录</>) : width> 800 ? <> {props.usertype} {props.username}</> : null}
                 </div>
                 <Nav className="ml-auto">
                     <NavDropdown 

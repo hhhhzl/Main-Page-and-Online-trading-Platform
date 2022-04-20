@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from "react";
-import { Row,Col,Card,Container, Form} from "react-bootstrap";
+import { Row,Col,Card,Container, Form, Image} from "react-bootstrap";
 import { Bookmark } from "@material-ui/icons";
 import UserBalanceSeries from "../../graphs/balanceSeries";
 import useWindowDimensions from "../../../../utils/sizewindow";
@@ -15,35 +15,115 @@ export default function UserBalancePorfolio({props}){
         </Form>
         <br/>
         <div className="mybalance-container">
-               <div style={{paddingRight:"30px"}}>
-                <Card className="Card-css1" >
-                    <Card.Body>   
-                        <Card.Text style={{fontSize:"30px"}}>￥1,000{width}</Card.Text>
-                        </Card.Body>
+               <div style={{paddingRight:"15px"}}>
+                <Card className="Card-css1" >  
+                        <Row style={{width:"100%",height:"100%"}}>
+                            <Col style={{}} xs ={4}>
+                                <div style={{marginTop:"20px", marginLeft:"20%",width:"55px",height:"55px",backgroundColor:"#f4f7fc",borderRadius:"50px"}}>
+                                <Image
+                                src = "/portfolioIcon1.png"
+                                style={{
+                                    marginLeft:"25%",
+                                    marginTop:"25%",
+                                    width:"50%",
+                                    height:"50%",
+                                }} 
+                                />
+                                </div>
+                            </Col>
+                            <Col xs ={8}>
+                                <div style={{marginTop:"10px"}}>
+                                <h6 style={{color:"#f4f7fc",fontSize:"14px"}}>我的资产</h6>
+                                <h4 style={{color:"#f4f7fc",fontSize:"22px"}}>{" "}￥1000000</h4>
+                                <h6 style={{color:"#f4f7fc",fontSize:"14px"}}>较上日: {-1000}</h6>
+                                </div>
+                               
+                            </Col>
+                        </Row>
+                        
                 </Card>
                </div>
-               <div style={{paddingRight:"30px"}}>
+               <div style={{paddingRight:"15px"}}>
                 <Card className="Card-css2" >
-                    <Card.Body>   
-                        <Card.Text style={{fontSize:"25px"}}>￥1,000,000</Card.Text>   
-
-                        </Card.Body>
+                <Row style={{width:"100%",height:"100%"}}>
+                            <Col style={{}} xs ={4}>
+                                <div style={{marginTop:"20px", marginLeft:"30%",width:"55px",height:"55px",backgroundColor:"#f4f7fc",borderRadius:"50px"}}>
+                                <Image
+                                src = "/portfolioIcon2.png"
+                                style={{
+                                    marginLeft:"25%",
+                                    marginTop:"25%",
+                                    width:"50%",
+                                    height:"50%",
+                                }} 
+                                />
+                                </div>
+                            </Col>
+                            <Col xs ={8}>
+                                <div style={{marginTop:"10px"}}>
+                                <h6 style={{color:"#f4f7fc",fontSize:"14px"}}>持仓市值</h6>
+                                <h4 style={{color:"#f4f7fc",fontSize:"20px"}}>{" "}￥{100}万</h4>
+                                <h6 style={{color:"#f4f7fc",fontSize:"14px"}}>较上日: {-1000}</h6>
+                                </div>
+                               
+                            </Col>
+                        </Row>
     
                 </Card>
                </div>
-               <div style={{paddingRight:"30px"}}>
+               <div style={{paddingRight:"15px"}}>
                 <Card className="Card-css3">
         
-                    <Card.Body>   
-                        <Card.Text style={{fontSize:"20px"}}>￥0</Card.Text>
-                        </Card.Body>
+                <Row style={{width:"100%",height:"100%"}}>
+                            <Col style={{}} xs ={4}>
+                                <div style={{marginTop:"20px", marginLeft:"30%",width:"55px",height:"55px",backgroundColor:"#f4f7fc",borderRadius:"50px"}}>
+                                <Image
+                                src = "/portfolioIcon3.png"
+                                style={{
+                                    marginLeft:"25%",
+                                    marginTop:"25%",
+                                    width:"50%",
+                                    height:"50%",
+                                }} 
+                                />
+                                </div>
+                            </Col>
+                            <Col xs ={8}>
+                                <div style={{marginTop:"10px", marginLeft:"10px"}}>
+                                <h6 style={{color:"#f4f7fc",fontSize:"14px"}}>总收益</h6>
+                                <h4 style={{color:"#f4f7fc",fontSize:"22px"}}>{" "}{56.6}%</h4>
+                                <h6 style={{color:"#f4f7fc",fontSize:"14px"}}>较上日: {-10}%</h6>
+                                </div>
+                               
+                            </Col>
+                        </Row>
                 </Card>
                 </div>
-                <div style={{paddingRight:"30px"}}>
+                <div style={{paddingRight:"15px"}}>
                 <Card className="Card-css4">
-                    <Card.Body>   
-                        <Card.Text style={{fontSize:"20px"}}>￥0</Card.Text>
-                        </Card.Body>
+                <Row style={{width:"100%",height:"100%"}}>
+                            <Col style={{}} xs ={4}>
+                                <div style={{marginTop:"20px", marginLeft:"35%",width:"55px",height:"55px",backgroundColor:"#f4f7fc",borderRadius:"50px"}}>
+                                <Image
+                                src = "/portfolioIcon4.png"
+                                style={{
+                                    marginLeft:"25%",
+                                    marginTop:"25%",
+                                    width:"50%",
+                                    height:"50%",
+                                }} 
+                                />
+                                </div>
+                            </Col>
+                            <Col xs ={8}>
+                                <div style={{marginTop:"10px"}}>
+                                <h6 style={{color:"#f4f7fc",fontSize:"14px"}}>净盈利</h6>
+                                <h4 style={{color:"#f4f7fc",fontSize:"22px"}}>{" "}￥1000000</h4>
+                                <h6 style={{color:"#f4f7fc",fontSize:"14px"}}>较上日: {-1000}</h6>
+                                </div>
+                               
+                            </Col>
+                        </Row>
                 </Card>
                 </div>
         </div>

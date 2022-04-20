@@ -3,7 +3,9 @@ import { Card, Collapse, Button, Row, Nav, Form, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import '../../TradingPlatform/eplatform.css';
 
-export default function StockTradeComponet(props){
+export default function StockTradeComponet({
+  vertify
+}){
   const [validated, setValidated] = useState(false);
   
   const [buyin,setbuyin] = useState(false);
@@ -252,13 +254,17 @@ orderType == "present_price" ? (<>
 </Form.Group>
 <hr/>
 <Form.Group className="loadingusername" as={Row}>
-
-    <Button
+{vertify? <Button
       variant="outline-primary"
       type ="submit"
     >
       下单
-    </Button>
+    </Button>  : 
+            (<>
+            <Button style={{width:"80%",marginLeft:"10%"}} >登录</Button> 
+            </>) }  
+
+    
 </Form.Group>
 </Form>
         </>

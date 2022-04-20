@@ -93,7 +93,7 @@ a {
 }
 
 .show-bar{
-  height:max-content;
+  height: auto;
 }
 
 

@@ -11,11 +11,12 @@ export default function StockShowBar(props) {
     const [displayrow1, setdisplayrow1] = useState(true);
     const [displayrow2, setdisplayrow2] = useState(true);
     const [displayVisible, setDisplayVisible] = useState(true);
+    const [vertify, setvertify] = useState(true);
     return (
  
         <div  style={{width:"100%"}}>
         <div>
-      <Card >
+      <Card style={{width:"100%",borderRadius:"10px 10px 0px 0px"}} >
           <Card.Body>
             <span><h6>APPL NASDAQ</h6>{' '}</span>
             <h6>苹果公司</h6>
@@ -117,7 +118,11 @@ export default function StockShowBar(props) {
         </Card.Header>
         <Collapse in={displayrow1}>
           <Card.Body>
-            <UserHolding/>     
+            {vertify? <UserHolding/> : 
+            (<>
+            <Button style={{width:"80%",marginLeft:"10%"}} >登录</Button> 
+            </>) }
+             
           </Card.Body>
         </Collapse>
         <Card.Footer>

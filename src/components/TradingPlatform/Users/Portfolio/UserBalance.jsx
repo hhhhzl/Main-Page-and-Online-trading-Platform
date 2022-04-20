@@ -7,7 +7,6 @@ import useWindowDimensions from "../../../../utils/sizewindow";
 import UserHolding from '../../screen/UserHolding';
 import NavBarTest from '../../navBar';
 import SideMenuUsers from '../sideMenuUsers';
-import { Bookmark } from "@material-ui/icons";
 
 export default function UserBalance() {
     const {width,height} = useWindowDimensions();
@@ -23,7 +22,7 @@ export default function UserBalance() {
         <div className="auto-main-page" 
         style={{minWidth: width>1600? width : width>1068? "max-content":null ,
         minHeight:height, top: height*0.1,
-        gridTemplateColumns: width > 1068? extend? "13rem auto 30rem": "6rem auto 33rem" :"1fr"}}>
+        gridTemplateColumns: width > 1068? extend? "13rem auto 32rem": "6rem auto 35rem" :"1fr"}}>
         <div >
         <SideMenuUsers extendbar={extendbar} extend ={extend}/>
         </div>
