@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Navbar from 'react-bootstrap/Navbar'
 import { Container, Form, Badge } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
@@ -47,11 +47,11 @@ export default function NavBarTest(props) {
                         title={
                             <div >
                                 <Image
-                                    src="/head.jpeg"
-                                    width="100%"
+                                    src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2231&q=80"
+                                    width="40"
                                     height="40"
                                     alt="无法显示图片"
-                                    style={{marginTop:"50%"}}
+                                    style={{ marginTop: "50%", objectFit: "cover" }}
                                     roundedCircle
                                 />
                             </div>
@@ -67,6 +67,5 @@ export default function NavBarTest(props) {
                 </Nav>
             </Container>
         </Navbar>
-       
     );
 }

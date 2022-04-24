@@ -1,13 +1,13 @@
 import './App.css';
 import "./index.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useEffect,useState } from "react";
-import { useDispatch, useSelector} from 'react-redux';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import MainPage from './components/MainPage/MainPage';
-import { BrowserRouter, Switch, Route, Router, useRouteMatch} from "react-router-dom";
+import { BrowserRouter, Switch, Route, Router, useRouteMatch } from "react-router-dom";
 import RegisterForm from './components/MainPage/registerForm';
 import LoginForm from './components/MainPage/loginForm';
-import tradePadmin from './components/TradingPlatform/Admin/TradeingPlatformInterface';
+import TradePadmin from './components/TradingPlatform/Admin/TradeingPlatformInterface';
 import TradePusers from './components/TradingPlatform/Users/TradeingPlatformInterface';
 import data from "./static/users.json"
 import useToken from './useToken';
@@ -22,11 +22,12 @@ import Userbalance from './components/TradingPlatform/Users/Portfolio/UserBalanc
 import UserMarket from './components/TradingPlatform/Users/Market/market';
 
 /*Admin*/
-import UsersManageTable from './components/TradingPlatform/Admin/UsersManageTable';
+import UsersManageTable from './components/TradingPlatform/Admin/userManagement/UsersManageTable';
 import NavBarTest from './components/TradingPlatform/navBar';
 import SideMenuAdmin from './components/TradingPlatform/Admin/sideMenuAdmin';
 import UserStocks from './components/TradingPlatform/Users/Stocks/UserStocks';
 import UserTrade from './components/TradingPlatform/Users/Trade/UserTrade';
+import StockManageTable from './components/TradingPlatform/Admin/StockManagement/StockManageTable';
 
 
 
@@ -65,10 +66,10 @@ import UserTrade from './components/TradingPlatform/Users/Trade/UserTrade';
 const HomePage = () => {
   return (
     <Switch>
-    <Route path="/">
-       <HomePage/>
-    </Route>
-</Switch>
+      <Route path="/">
+        <HomePage />
+      </Route>
+    </Switch>
   )
 }
 
@@ -89,7 +90,7 @@ const MakeRouter = () => {
   //     dispatch(getTokenProfile())
   //   }
   // }, [dispatch, token, userInfo])
-  
+
 
   // let userRouteMap = {
   //   A: <AdminMainPage />,
@@ -100,14 +101,14 @@ const MakeRouter = () => {
   // let userRoute = userInfo ? userRouteMap[userType] : <Route path='/' component={MainPage} />;
   // console.log(userRoute);
 
-  
+
   return (
     <Switch>
       <AuthProvider>
       <Route exact path="/eplatform/user" component={TradePusers} />
       <Route exact path="/eplatform/user/analytics" component={TradePusers} />
       <Route exact path="/eplatform/user/trade" component={UserTrade} />
-      <Route exact path="/eplatform/admin" component={tradePadmin} />
+      <Route path="/eplat" component={TradePadmin} />
       <PrivateRoute exact path="/stocks" component={UserStocks} />
       <PrivateRoute exact path="/market" component={UserMarket} />
       <PrivateRoute exact path="/competition" component={null} />
