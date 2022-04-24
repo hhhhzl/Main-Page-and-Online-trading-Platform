@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import UserBalanceSeries from '../../graphs/balanceSeries';
 import UserBalancePorfolio from '../Portfolio/porfolio';
 import NavBarTest from '../../navBar';
 import { Bookmark } from "@material-ui/icons";
@@ -7,10 +6,10 @@ import SideMenuUsers from '../sideMenuUsers';
 import useWindowDimensions from "../../../../utils/sizewindow";
 import { Col, Row, Card, CardGroup, Collapse, Button, Form , Accordion} from "react-bootstrap";
 import '../../eplatform.css'
-import AreaChart from '../../graphs/areaChart';
 import UserHolding from '../../screen/UserHolding';
 import MarketTopGains from '../../screen/MarketTopGainStocks';
 import MarketStockSearch from '../../screen/MarketStockSearch';
+import AreaChart from '../../graphs/AreaChart';
 
 export default function UserMarket() {
     const {width,height} = useWindowDimensions();
@@ -41,7 +40,7 @@ export default function UserMarket() {
                         <Button variant="outline-primary">沪深</Button>
                     </Card>
                     <Card>
-                        <AreaChart w={0.2} h={0.2}/>
+                        <AreaChart w={0.1} h={0.2}/>
                     </Card>
 
                    </div>

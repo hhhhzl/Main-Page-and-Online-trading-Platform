@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import UserBalancePorfolio from "./porfolio";
-import UserBalanceSeries from "../../graphs/balanceSeries";
 import UserTradingHistory from "../../screen/UserTradingHis";
 import { Col, Row, Card, CardGroup, Container, Image } from "react-bootstrap";
 import useWindowDimensions from "../../../../utils/sizewindow";
