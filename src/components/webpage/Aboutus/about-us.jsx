@@ -18,8 +18,8 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
   return (
     <div className="section">
       <br/>
-      <h3 className="text-center" style={{color:"#AEAEAE"}}>INTRODUCTION OF UFA</h3>
-      <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"30px",letterSpacing:"0.8px"}}><Bookmark/> 协{" "}会{" "}介{" "}绍</h5>
+      <h3 className="text-center" style={{color:"#AEAEAE",fontFamily:"MicrosoftYaHeiUI",fontSize:"30px"}}>WHO WE ARE</h3>
+      <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"30px",letterSpacing:"0.8px"}}><Bookmark/> <strong>协{" "}会{" "}介{" "}绍</strong></h5>
       <br/>
       <br/>
       <Container className ="content-center">
@@ -33,12 +33,12 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               投资大赛等多个活动。<strong>“UFA杯: 全球大学模拟投资大赛”</strong>是UFA金融协会牵头发起的针对国内为顶尖高校大学生所举办的线上模拟投资比赛之一。
             </p> */}
             <p style={{color:"black", textIndent:"0",fontSize:"24px", fontFamily:"MicrosoftYaHei", lineHeight:"50px", letterSpacing:"0.2px"}}>
-              UFA金融协会 
-               (英文缩写"UFA") 是面向全球顶级高校（包括美国排名TOP30、中国内地TOP10、中国香港四大高校等）建立的首个跨学校，跨地区，跨文化的大学生金融协会。我们的愿景是“助力祖国联合全球和华人金融精英，并共同建设祖国金融未来”。
+             <strong> UFA金融协会 </strong>
+               (英文缩写"UFA") 是面向全球顶级高校（包括美国排名TOP30、中国内地TOP10、中国香港四大高校等）建立的首个跨学校，跨地区，跨文化的大学生金融协会。我们的愿景是“<strong>助力祖国联合全球和华人金融精英，并共同建设祖国金融未来</strong>”。
             </p>
             <br/>
             <p style={{color:"black",fontSize:"24px",textIndent:"0", fontFamily:"MicrosoftYaHei",lineHeight:"50px", letterSpacing:"0.2px"}}>
-              自成立以来，UFA金融协会与中信证券、清华大学金融协会、海外超过100所高校等建立起合作关系，并联合策划了名家分享会，金融系列公益讲座、全球大学生投资大赛等多个活动。“UFA杯: 全球大学模拟投资大赛”是UFA金融协会牵头发起的针对国内为顶尖高校大学生所举办的线上模拟投资比赛之一。
+              自成立以来，UFA金融协会与<strong>中信证券、清华大学金融协会</strong>、海外超过100所高校等建立起合作关系，并联合策划了名家分享会，金融系列公益讲座、全球大学生投资大赛等多个活动。<strong>“UFA杯: 全球大学模拟投资大赛”</strong>是由 UFA ⾦融协会牵头发起的首个汇聚全球顶尖高校大学生的大型线上模拟投资比赛。
             </p>
             <br/>
             <br/>
@@ -52,8 +52,8 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
 
         <div className="video">
           <br/>
-        <h3 className="text-center" style={{color:"#AEAEAE"}}>INTRODUCTION OF THE COMPETITION</h3>
-         <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"30px",letterSpacing:"4px"}}><Bookmark/>{' '}UFA杯赛事介绍</h5>
+        <h3 className="text-center" style={{color:"#AEAEAE",fontSize:"30px"}}>ABOUT UFA TRADING CHALLENGE</h3>
+         <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"30px",letterSpacing:"4px"}}><Bookmark/>{' '}<strong>UFA杯赛事介绍</strong></h5>
          <br/>
          <br/>
          <br/>
@@ -122,11 +122,11 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               <br/><br/><br/><br/><br/><br/><br/>
 
         <div className="about-center">
-        {width < 600 ? 
+        {width < 650 ? 
 
         (<><Col>
           <div className ="introduction-box">
-          <div className="title"><h4 style={{color:"white",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "20px" : "15px",letterSpacing:"0.31px",textIndent:"0"}}>权威性</h4> </div>
+          <div className="title"><h4 style={{color:"white",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "22px" : "17px",letterSpacing:"0.31px",textIndent:"0"}}>权威性</h4> </div>
             <div>
                 <p style={{color:"black",fontFamily:"MicrosoftYaHeiUI",fontSize:"18px",letterSpacing:"0.3px",textIndent:"0",paddingTop:"16px",paddingLeft:"10px",paddingRight:"10px"}}>“UFA杯” 由UFA与中信证券、清华大学金融协会等联合举办，旨在打造最具权威的大学生金融赛事 </p>
               </div>
@@ -135,7 +135,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
         </Col>
         <Col>
           <div className ="introduction-box">
-          <div className="title"><h4 style={{color:"white",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "20px" : "15px",letterSpacing:"0.1px",textIndent:"0"}}>影响力</h4></div>
+          <div className="title"><h4 style={{color:"white",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "22px" : "17px",letterSpacing:"0.1px",textIndent:"0"}}>影响力</h4></div>
           <div>
                     <p style = {{color:"black",fontFamily:"MicrosoftYaHeiUI",fontSize:"18px",letterSpacing:"0.3px",textIndent:"0",paddingTop:"16px",paddingLeft:"10px",paddingRight:"10px"}}>“UFA杯” 荣幸邀请各界金融大咖全程参与并与参赛选手进行高效、深度沟通互动，将在线上线下同步举办大型交流、展示活动 </p>
                   </div>
@@ -146,7 +146,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
    
         <Col>
           <div className ="introduction-box">
-          <div className="title"><h4 style={{color:"white",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "20px" : "15px",letterSpacing:"0.1px",textIndent:"0"}}>规模力</h4></div>
+          <div className="title"><h4 style={{color:"white",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "22px" : "17px",letterSpacing:"0.1px",textIndent:"0"}}>规模力</h4></div>
           <div>
                     <h6 style={{color:" #337ab7 "}}></h6>
                     <p style = {{color:"black",fontFamily:"MicrosoftYaHeiUI",fontSize:"18px",letterSpacing:"0.3px",textIndent:"0",paddingTop:"16px",paddingLeft:"10px",paddingRight:"10px"}}>“UFA杯” 将面向海内外100+所大学开放赛事，旨在打造万人规模金融赛事，成为海内外金融大学生的首要聚集地</p>
@@ -211,21 +211,21 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
         <div className="about-intro">
         
           <div className ="section">
-          <h3 className="text-center" style={{color:"#AEAEAE"}}>What You Can Achieve</h3>
-         <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"25px",letterSpacing:"2px"}}><Bookmark/>{" "}“UFA杯”能为大学生提供哪些价值</h5>
+          <h3 className="text-center" style={{color:"#AEAEAE",fontSize:"30px"}}>WHAT YOU CAN ACHIEVE</h3>
+         <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"25px",letterSpacing:"2px"}}><Bookmark/>{" "}<strong>“UFA杯”能为大学生提供哪些价值</strong></h5>
          <br/>
         <br/>
 
         {width > 800? 
         (<>
         <div className="box">
-              <div className = "number">
+              {/* <div className = "number">
               <Image src = "/1.@2x.png" id="img-txz" alt="header"  style={{position: "relative",marginLeft:"5px", width: "50%",height: "50%",}}/>
-              </div>
+              </div> */}
               <div className = "text">
-              <h6 style={{color:" #26409A ",fontSize: width>960 ? "20px" : "18px"}}>“权威金融竞赛证书”为你加强背景与竞争力</h6>
-              <p style = {{color:"black",lineHeight:"27px",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "16px" : "16px",letterSpacing:"0.3px",textIndent:"0",paddingTop:width > 1000? "20px" : "15px",paddingLeft:width>750 ? "7px" : "5px",paddingRight:width>750 ? "10px" : "5px"}}>
-              赛事证书由UFA，中信证券，以及清华大学联合签署。表现优异的前30%参赛选手将收获主办方颁发的官方证书，帮助你从同龄人中脱引而出。        
+              <h6 style={{color:" #26409A ",fontSize: width>960 ? "22px" : "20px"}}><strong>1、“权威金融竞赛证书”，为你提升核心竞争力</strong></h6>
+              <p style = {{color:"black",lineHeight:"27px",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "20px" : "16px",letterSpacing:"0.3px",textIndent:"0",paddingTop:width > 1000? "20px" : "15px",paddingLeft:width>750 ? "7px" : "5px",paddingRight:width>750 ? "10px" : "5px"}}>
+              赛事证书由 UFA，中信证券，以及清华大学联合签署。表现优异的前 30%参赛选手将收获主办方颁发的官方证书，为你的简历增添亮点，丰富金融专业背景，帮助你从同龄人中迅速脱颖而出！      
               </p>
                 
               </div>
@@ -237,15 +237,13 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
             </div>
 
             <div className="box">
-              <div className = "number">
-              <Image src = "/2.@2x.png" id="img-txz" alt="header"  style={{position: "relative", width: "50%",height: "50%",}}/>
-              </div>
+              {/* <div className = "number">
+              <Image src = "/2.@2x.png" id="img-txz" alt="header"  style={{position: "relative", width: "50%",height: "50%",}}/> 
+              </div> */}
               <div className = "text">
-              <h6 style={{color:" #26409A ",fontSize: width>960 ? "20px" : "18px"}}>“0门槛”参与要求，帮助小白完成自我提升</h6>
-              <p style = {{color:"black",lineHeight:"27px",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "16px" : "16px",letterSpacing:"0.3px",textIndent:"0",paddingTop:width > 1000? "20px" : "15px",paddingLeft:width>750 ? "7px" : "5px",paddingRight:width>750 ? "10px" : "5px"}}>
-              赛事进行过程中，UFA将帮助并指导参赛选手攥写投资笔记。比赛结束后，UFA将为你定制生成一份属于自己的投资报告。
-              <br/>UFA研究小组将与金融专家将定期发布行业深度研究报告，帮你提升行业敏锐力与结构化思维能力。
-              <br/>UFA微信社群将连接全球名校金融大学生，实现金融话题的跨国界交流，开拓金融思维的全球化视野。
+              <h6 style={{color:" #26409A ",fontSize: width>960 ? "22px" : "20px"}}><strong>2、“0 门槛参与要求”，帮助小白完成自我提升</strong></h6>
+              <p style = {{color:"black",lineHeight:"27px",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "20px" : "16px",letterSpacing:"0.3px",textIndent:"0",paddingTop:width > 1000? "20px" : "15px",paddingLeft:width>750 ? "7px" : "5px",paddingRight:width>750 ? "10px" : "5px"}}>
+              就算是没有经验的投资小白也不用担心，UFA 将在比赛全程陪伴你，无论是指导撰写投资笔记并生成属于自己的投资报告，还是定期邀请金融专家深度解析市场走向，我们将会全力为你的成长助力，帮你实现人生新高度！
               </p>
                 
               </div>
@@ -257,14 +255,13 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
             </div>
 
             <div className="box">
-              <div className = "number">
+              {/* <div className = "number">
               <Image src = "/3.@2x.png" id="img-txz" alt="header"  style={{position: "relative", width: "60%",height: "50%",}}/>
-              </div>
+              </div> */}
               <div className = "text">
-              <h6 style={{color:" #26409A ",fontSize: width>960 ? "20px" : "18px"}}>免费求职指导，清晰金融职业目标与规划</h6>
-              <p style = {{color:"black",lineHeight:"27px",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "16px" : "16px",letterSpacing:"0.3px",textIndent:"0",paddingTop:width > 1000? "20px" : "15px",paddingLeft:width>750 ? "7px" : "5px",paddingRight:width>750 ? "10px" : "5px"}}>
-              UFA求职讲座力邀优秀金融前辈、名校校友定期为参赛选手开展非盈利性讲座，通过分享优质求学/求职经验，给予指导建议。
-              <br/>UFA校友汇聚全球顶尖高校的金融精英，为投行，对冲基金，投资行业的各位候选人牵线搭桥。    
+              <h6 style={{color:" #26409A ",fontSize: width>960 ? "22px" : "20px"}}><strong>3、“汇聚顶尖金融精英”，助你迅速拓展人脉圈</strong></h6>
+              <p style = {{color:"black",lineHeight:"27px",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "20px" : "16px",letterSpacing:"0.3px",textIndent:"0",paddingTop:width > 1000? "20px" : "15px",paddingLeft:width>750 ? "7px" : "5px",paddingRight:width>750 ? "10px" : "5px"}}>
+              相遇即机遇，我们联结了来自全球最顶尖大学的华人金融精英，他们可能是你未来并肩作战的同事，或是雇主，或是可靠的商业伙伴，亦或是投资人。我们丰富的线上/线下活动将为选手间进行深度交流提供绝佳机会，帮助你快速提升软技能！    
               </p>    
               </div>
               <div>
@@ -292,7 +289,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
           <div className = "text">
               <h6 style={{color:" #26409A ",fontSize:"22px",textAlign:"center",alignItems:"center"}}>“权威金融竞赛证书”为你加强背景与竞争力</h6>
               <p style = {{color:"black",fontFamily:"MicrosoftYaHeiUI",fontSize: "20px",letterSpacing:"0.3px",textIndent:"0",paddingTop:width > 1000? "30px" : "20px",paddingLeft:width>750 ? "10px" : "5px",paddingRight:width>750 ? "10px" : "5px"}}>
-              赛事证书由UFA，中信证券，以及清华大学联合签署。表现优异的前30%参赛选手将收获主办方颁发的官方证书，帮助你从同龄人中脱引而出。     
+              赛事证书由 UFA，中信证券，以及清华大学联合签署。表现优异的前 30%参赛选手将收获主办方颁发的官方证书，为你的简历增添亮点，丰富金融专业背景，帮助你从同龄人中迅速脱颖而出！     
               </p>
                 
               </div>
@@ -314,9 +311,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
           <div className = "text">
               <h6 style={{color:" #26409A ",fontSize:"22px",textAlign:"center",alignItems:"center"}}>“0门槛”参与要求，帮助小白完成自我提升</h6>
               <p style = {{color:"black",fontFamily:"MicrosoftYaHeiUI",fontSize: "20px",letterSpacing:"0.3px",textIndent:"0",paddingTop:width > 1000? "30px" : "20px",paddingLeft:width>750 ? "10px" : "5px",paddingRight:width>750 ? "10px" : "5px"}}>
-              赛事进行过程中，UFA将帮助并指导参赛选手攥写投资笔记。比赛结束后，UFA将为你定制生成一份属于自己的投资报告。
-              <br/>UFA研究小组将与金融专家将定期发布行业深度研究报告，帮你提升行业敏锐力与结构化思维能力。
-              <br/>UFA微信社群将连接全球名校金融大学生，实现金融话题的跨国界交流，开拓金融思维的全球化视野。    
+              就算是没有经验的投资小白也不用担心，UFA 将在比赛全程陪伴你，无论是指导撰写投资笔记并生成属于自己的投资报告，还是定期邀请金融专家深度解析市场走向，我们将会全力为你的成长助力，帮你实现人生新高度！   
               </p>
                 
               </div>
@@ -339,8 +334,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
           <div className = "text">
               <h6 style={{color:" #26409A ",fontSize:"22px",textAlign:"center",alignItems:"center"}}>免费求职指导，清晰金融职业目标与规划</h6>
               <p style = {{color:"black",fontFamily:"MicrosoftYaHeiUI",fontSize: "20px",letterSpacing:"0.3px",textIndent:"0",paddingTop:width > 1000? "30px" : "20px",paddingLeft:width>750 ? "10px" : "5px",paddingRight:width>750 ? "10px" : "5px"}}>
-              UFA求职讲座力邀优秀金融前辈、名校校友定期为参赛选手开展非盈利性讲座，通过分享优质求学/求职经验，给予指导建议。
-              <br/>UFA校友汇聚全球顶尖高校的金融精英，为投行，对冲基金，投资行业的各位候选人牵线搭桥。
+              相遇即机遇，我们联结了来自全球最顶尖大学的华人金融精英，他们可能是你未来并肩作战的同事，或是雇主，或是可靠的商业伙伴，亦或是投资人。我们丰富的线上/线下活动将为选手间进行深度交流提供绝佳机会，帮助你快速提升软技能！
               </p>
                 
               </div>

@@ -1,0 +1,18 @@
+[
+    {
+      "name": "zhilinhe",
+      "password":"123456",
+      "type": "A"
+    },
+    {
+      "name": "bolinchen",
+      "password":"123456",
+      "type": "U"
+
+    },
+    {
+      "name": "qianliwu",
+      "password":"123456",
+      "type": "A"
+    }
+  ]

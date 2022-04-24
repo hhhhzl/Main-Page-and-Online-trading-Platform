@@ -1,5 +1,5 @@
 import { Opacity } from "@material-ui/icons";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Row, Col } from "react-bootstrap";
 import Image from 'react-bootstrap/Image';
 import Modal from 'react-bootstrap/Modal';
@@ -7,19 +7,65 @@ import './loginpage.css';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
+import data from "../../static/users.json"
+import { Redirect, useHistory } from "react-router";
+import PropTypes from 'prop-types';
+import AuthContext from "../../context/AuthContext";
 
 
-export default function LoginForm() {
+
+
+
+export default function LoginForm({setToken}) {
+  let {loginUser} = useContext(AuthContext);
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [smShow, setSmShow] = useState(false);
   const [lgShow, setLgShow] = useState(false);
   const [validated, setValidated] = useState(false);
+  const [user, setuser]= useState(data)
+  let history = useHistory();
+
+
+  const handleClick = (name,password) => {
+      pushingforword(determinUser(name,password));
+  }
+
+  const pushingforword =(type) =>{
+    console.log(type)
+    if (!type){
+      setUsername("")
+      setPassword("")
+      
+    }else if (type == "A"){
+      history.push("/eplatform/admin")
+    }else if (type == "U"){
+      history.push("/eplatform/user")
+    }
+
+  }
+
+
+
+  const determinUser = (name, password) =>{
+    console.log(name)
+    console.log(password)
+    let yes = 0;
+    let type = "";
+    for (let i =0; i < user.length;i++){ 
+      if (user[i].name === name && user[i].password === password){
+        return user[i].type;
+      }
+    }
+    return false
+  }
+  
 
   return (
     <div>
       <Image
-      src = "/home_page.jpg"
+      src = "/loginback.jpg"
       title="Cover image"
       alt="views in the World"     
       style={{
@@ -39,7 +85,7 @@ export default function LoginForm() {
         <h2 style={{color:"white"}}><strong>登录平台</strong></h2>
         <hr/>
         <br/>
-        <Form noValidate validated={validated} id="addProject">
+        <Form noValidate validated={validated} id="addProject" onSubmit = {loginUser} >
         <Form.Group as={Row} className="loadingusername">
           <Form.Label column sm={3} >
             用户账号
@@ -47,6 +93,7 @@ export default function LoginForm() {
             <Form.Control
             required
              className="loadinglogin"
+             name = 'username'
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             ></Form.Control>
@@ -58,6 +105,7 @@ export default function LoginForm() {
             <Form.Control
             required
             className="loadinglogin"
+            name = 'password'
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -80,13 +128,12 @@ export default function LoginForm() {
           <Form.Group as={Row} className="loadinglogin">
           <Button
               variant="outline-primary"
+              type="submit"
+         
+              // onClick ={loginUser}
             >
               登录
             </Button>
-            
-            
-            
-            
         </Form.Group>
       </Form>
       
@@ -95,3 +142,7 @@ export default function LoginForm() {
     </div>
   );
 }
+
+LoginForm.propTypes = {
+  setToken: PropTypes.func.isRequired
+};

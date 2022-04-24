@@ -1,0 +1,14 @@
+[
+    {"id":1,"symbol":"PLTR","holdingshares":20,"price":12.8,"avgprice":10,"position":7},
+    {"id":1,"symbol":"AAPL","holdingshares":20,"price":160,"avgprice":120,"position":7},
+    {"id":1,"symbol":"TSLA","holdingshares":20,"price":900,"avgprice":200,"position":7},
+    {"id":1,"symbol":"PYPL","holdingshares":20,"price":120,"avgprice":500,"position":7},
+    {"id":1,"symbol":"AMZN","holdingshares":20,"price":3200,"avgprice":3200,"position":7},
+    {"id":1,"symbol":"OPEN","holdingshares":20,"price":10,"avgprice":13,"position":7},
+    {"id":1,"symbol":"AMD","holdingshares":20,"price":120,"avgprice":80,"position":7},
+    {"id":1,"symbol":"NIO","holdingshares":20,"price":10,"avgprice":65,"position":7},
+    {"id":1,"symbol":"XPEV","holdingshares":23,"price":25,"avgprice":30,"position":7},
+    {"id":1,"symbol":"AMD","holdingshares":20,"price":120,"avgprice":80,"position":7},
+    {"id":1,"symbol":"NIO","holdingshares":20,"price":10,"avgprice":65,"position":7},
+    {"id":1,"symbol":"XPEV","holdingshares":23,"price":25,"avgprice":30,"position":7}
+]

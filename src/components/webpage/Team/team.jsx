@@ -14,14 +14,14 @@ export default function Team(){
     return (
         <div className="section colored-team">
             <br/>
-            <h3 className="text-center" style={{color:"#AEAEAE"}}>ABOUT US</h3>
-             <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"25px",letterSpacing:"3px"}}><Bookmark/>{" "}关于我们</h5>
+            <h3 className="text-center" style={{color:"#AEAEAE",fontSize:"30px"}}>ABOUT THE TEAM</h3>
+             <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"30px",letterSpacing:"3px"}}><Bookmark/>{" "}<strong>关于我们</strong></h5>
          <br/>
          <br/>
          <hr/>
          <div className='text-center'>
              <Button className="round-Button"  
-    style={{marginTop:"-60px",backgroundColor:"#26409A",color:"white",fontFamily:"MicrosoftYaHei",letterSpacing:"3px",opacity:"100%",zIndex:999}} size='sm'>ADVISOR/导师</Button>
+    style={{marginTop:"-60px",backgroundColor:"#26409A",color:"white",fontFamily:"MicrosoftYaHei",fontSize:"16px",letterSpacing:"3px",opacity:"100%",zIndex:999}} size='sm'>ADVISOR 导师团队</Button>
              </div>
              <br/>
              <br/>
@@ -157,7 +157,7 @@ export default function Team(){
              <hr/>
          <div className='text-center'>
          <Button className="round-Button"  
-    style={{marginTop:"-60px",backgroundColor:"#26409A",color:"white",fontFamily:"MicrosoftYaHei",letterSpacing:"3px",opacity:"100%",zIndex:999}} size='sm'>Team Introduction/团队介绍</Button>
+    style={{marginTop:"-60px",backgroundColor:"#26409A",color:"white",fontFamily:"MicrosoftYaHei",fontSize:"16px",letterSpacing:"3px",opacity:"100%",zIndex:999}} size='sm'>Executive Board 执行委员会</Button>
              </div>
              <br/>
 

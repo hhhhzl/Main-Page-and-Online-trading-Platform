@@ -6,6 +6,7 @@ import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolk
 import data from "./expertInfo.json";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Collapse } from "react-bootstrap";
+import UserInfo from "./userInfo";
 
 const { SearchBar } = Search;
 const { ExportCSVButton } = CSVExport;
@@ -23,7 +24,7 @@ export default function UsersManageTable(){
             sort: true
         },
         {
-            dataField: 'institute',
+            dataField: 'school',
             text: "所在大学",
             sort: true,
         },
@@ -31,15 +32,16 @@ export default function UsersManageTable(){
             text: "查看用户",
             isDummyField: true,
             style: { width: '12%'},
-            formatter:() => {
+            formatter:(cell, row) => {
               return (
                   <div style={{margin: 0,
                       position: "relative",
                       textAlign: 'center',
                       transform: "-moz-initial"}} >
-                      <Button variant="outline-primary"  style={{width:"100%"}} size = 'sm'>
+                      {/* <Button variant="outline-primary"  style={{width:"100%"}} size = 'sm'>
                           查看用户
-                      </Button>{' '}
+                      </Button>{' '} */}
+                      <UserInfo value={row} />
                   </div>
               )
     

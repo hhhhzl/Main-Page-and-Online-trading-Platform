@@ -72,11 +72,15 @@ h6 {
 a {
   color: #337ab7;
 }
+.image-icon{
+  position: absolute;
+}
 
 .about-us-page{
   width: 100%;
   height:min-content;
   position: relative;
+  top:8vh;
   padding-left: 0;
   padding-right: 0;
 }
@@ -88,18 +92,10 @@ a {
   background-color:rgba(0,0,0,0);
 }
 
-.app-header {
-  position: fixed;
-  margin-top: 0%;
-  margin-left: 0%;
-  margin-right: 0%;
-  border-radius: 2%;
-  padding-left: 0%;
-  padding-top: 0%;
-  padding-right: 0%;
-  padding-bottom: 2%;
-  border-style:hidden;
+.show-bar{
+  height: auto;
 }
+
 
 
 .div-test {
@@ -125,27 +121,103 @@ a {
 }
 
 .main-page-center{
-  margin-right: 3%;
-  margin-left: 3%;
+  margin-right: 0%;
+  margin-left: 0%;
   height: max-content;
-  background-color: rgba(0,0,0,0);
 }
 
- 
 
 ::-webkit-scrollbar{
     display:none;
 }
 
+.table{
+  overflow: auto;
+}
+
+.table-head{
+  position:fixed;
+}
+
+.auto-main-page{
+  display: grid;
+  position: relative;
+  background-color: #ebf2fc;;
+  gap: 0rem;
+}
+
+.auto-main-market{
+  display: grid;
+  position: fixed;
+  left: 200px;
+  background-color:#ebf2fc;
+  top:90px;
+  grid-template-rows: 2fr 3fr 2fr;
+}
+
+.auto-main-market1{
+  display: grid;
+  position: relative;
+  background-color:black;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.auto-main-market2{
+  display: grid;
+  background-color:#ebf2fc;
+  grid-template-columns: 2fr 5fr;
+}
+
+.auto-main-market1{
+  display: grid;
+  position: relative;
+  background-color:black;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.auto-main-market3{
+  max-width: 93%;
+  align-items: stretch;
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+
+
+
+.progress-bar{
+    width: 100%;
+    height: calc(100vh - 96px); /* navbar height 96px */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 1024px){
+  .auto-main-page{
+    display: grid;
+    margin-top:0px;
+    position: relative;
+    background-color:aliceblue;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+  }
+
+
+ 
+  
+}
 
 @media screen and (max-width: 600px){
   .main-page-center{
-    margin-right: 2%;
-    margin-left: 2%;
+    margin-right: 0%;
+    margin-left: 0%;
     height: max-content;
   }
-  
-  
   
 }
 
