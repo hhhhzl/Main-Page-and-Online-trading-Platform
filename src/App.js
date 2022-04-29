@@ -10,7 +10,6 @@ import LoginForm from './components/MainPage/loginForm';
 import tradePadmin from './components/TradingPlatform/Admin/TradeingPlatformInterface';
 import TradePusers from './components/TradingPlatform/Users/TradeingPlatformInterface';
 import data from "./static/users.json"
-import useToken from './useToken';
 import PrivateRoute from './utils/PrivateRoute'
 import { AuthProvider } from './context/AuthContext';
 

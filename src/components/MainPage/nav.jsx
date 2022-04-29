@@ -96,16 +96,16 @@ const NavbarCreate = ({toggle}) => {
                 </NavItem>
             
             <NavItem>
-            <NavBtnLink scrolledDownEnough={scrolledDownEnough} width ={width} to="/register">
+            {/* <NavBtnLink scrolledDownEnough={scrolledDownEnough} width ={width} to="/register">
                     注册
-                </NavBtnLink>
+                </NavBtnLink> */}
             
                 
             </NavItem>
             <NavItem>
             <NavBtnLink scrolledDownEnough={scrolledDownEnough} width ={width} to="/login">
             <Button className="round-Button" variant="primary" 
-    style={{backgroundColor:"#26409A",color:"white",fontFamily:"MicrosoftYaHei",letterSpacing:"3px",paddingLeft:width > 1300 ? "50px" : "20px",paddingRight:width > 1300 ? "50px" : "20px", paddingBottom:"0"}} size='sm'><h5 style={{fontSize:width > 900 ? "18px" : "15px"}}>登录</h5></Button>
+    style={{backgroundColor:"#26409A",color:"white",fontFamily:"MicrosoftYaHei",letterSpacing:"3px",paddingLeft:width > 1300 ? "30px" : "15px",paddingRight:width > 1300 ? "30px" : "15px", paddingBottom:"0"}} size='sm'><h5 style={{fontSize:width > 900 ? "18px" : "15px"}}>登录/注册</h5></Button>
                 </NavBtnLink>
                 </NavItem>
             </NavMenu>

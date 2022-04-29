@@ -22,7 +22,7 @@ export default function NavBarTest(props) {
             <Container className='padding-right' >
                 <Nav className="me-auto">
                     <Form>
-                        <Form.Control style={{position:"fixed",top:height*0.03,left: width > 1068? "250px" :"50px", borderRadius:"25px", width: width > 800? "300px" :"250px"}} placeholder={"搜索关键字"}></Form.Control>
+                        <Form.Control style={{position:"fixed",top:height*0.03,left: width > 1068? "250px" :"50px", borderRadius:"25px", width: width > 800? "300px" :"250px"}} placeholder={"搜索股票"}></Form.Control>
                     </Form>
                 </Nav>
                 <div style={{marginRight:"20px"}}>
@@ -42,7 +42,7 @@ export default function NavBarTest(props) {
                 <div>   
                 {!user? (<>未登录</>) : width> 800 ? <> {props.usertype} {props.username}</> : null}
                 </div>
-                <Nav className="ml-auto">
+                <Nav >
                     <NavDropdown 
                         title={
                             <div >
@@ -58,7 +58,7 @@ export default function NavBarTest(props) {
                         }
                         id="collasible-nav-dropdown"
                     >
-                        <div className="dropdownleft;" >
+                        <div>
                         <NavDropdown.Item href="stocks"><EditIcon style={{color: "rgba(0, 0, 0, 0.54)"}}/> 设置</NavDropdown.Item>
                         <NavDropdown.Item href="/stocks"><EditIcon style={{color: "rgba(0, 0, 0, 0.54)"}}/> 修改密码</NavDropdown.Item>
                         <NavDropdown.Item onClick ={props.logoutUser} ><ExitToAppIcon  style={{color: "rgba(0, 0, 0, 0.54)"}}/> 退出</NavDropdown.Item>

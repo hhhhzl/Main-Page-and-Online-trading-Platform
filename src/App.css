@@ -148,31 +148,21 @@ a {
 
 .auto-main-market{
   display: grid;
-  position: fixed;
-  left: 200px;
   background-color:#ebf2fc;
-  top:90px;
-  grid-template-rows: 2fr 3fr 2fr;
 }
 
 .auto-main-market1{
   display: grid;
   position: relative;
-  background-color:black;
   grid-template-columns: 1fr 1fr 1fr;
+  gap:1rem;
+  
 }
 
 .auto-main-market2{
   display: grid;
   background-color:#ebf2fc;
   grid-template-columns: 2fr 5fr;
-}
-
-.auto-main-market1{
-  display: grid;
-  position: relative;
-  background-color:black;
-  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .auto-main-market3{
