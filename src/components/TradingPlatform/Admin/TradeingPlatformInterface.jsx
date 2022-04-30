@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Container, Navbar } from "react-bootstrap";
 import SideMenuAdmin from "./sideMenuAdmin";
 import NavBarTest from "../navBar";
-import UsersManageTable from "./userManagement/UsersManageTable";
 import { Switch, Route, Router, useRouteMatch } from "react-router-dom";
 import StockManageTable from "./StockManagement/StockManageTable";
-
+import Admin from "./pages/admin";
+import Competition from "./pages/competition";
+import Stock from "./pages/stock";
+import TeamTable from "./competitionManagement/teamTable";
 
 export default function TradePadmin() {
 
@@ -21,20 +23,16 @@ export default function TradePadmin() {
       <div className="page">
         <Switch>
           <Route path={`${match.path}/stock`}>
-            <div className='supervisor-interface'>
-              <h3>欢迎</h3>
-              <br />
-              <StockManageTable />
-            </div>
+            <Stock />
+          </Route>
+          <Route path={`${match.path}/competition`}>
+            <Competition />
+          </Route>
+          <Route path={`/:id`}>
+            <TeamTable />
           </Route>
           <Route path='/eplat/admin'>
-            <div className='supervisor-interface'>
-              <h3>欢迎</h3>
-              <br />
-              <UsersManageTable />
-            </div>
-          </Route>
-          <Route path='/home'>
+            <Admin />
           </Route>
         </Switch>
       </div>

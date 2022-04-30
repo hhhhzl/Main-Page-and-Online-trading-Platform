@@ -3,17 +3,15 @@ import { Button } from "react-bootstrap";
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolkit';
-import data from "../stock.json";
+import data from "../competition.json";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Collapse } from "react-bootstrap";
 import useWindowDimensions from "../../../../utils/sizewindow";
-import StockStateManagement from "./stockStateManagement";
-import StockSetting from "./stockSetting";
 
-const { SearchBar } = Search;
-const { ExportCSVButton } = CSVExport;
+// const { SearchBar } = Search;
+// const { ExportCSVButton } = CSVExport;
 
-export default function StockManageTable() {
+export default function CompetitionManageTable() {
     const { height, width } = useWindowDimensions();
     const columns = [
         {
@@ -24,21 +22,33 @@ export default function StockManageTable() {
         },
 
         {
-            dataField: 'stockname',
-            text: '股票名',
+            dataField: 'name',
+            text: '赛事名称',
             style: { width: '15%' },
             sort: true
         },
         {
-            dataField: 'symbol',
-            text: "股票代码",
+            dataField: 'registration_time',
+            text: "报名开始时间",
             style: { width: '15%' },
             sort: true,
         },
         {
-            text: "设置购买比例",
+            dataField: 'start_time',
+            text: "赛事开始时间",
+            style: { width: '15%' },
+            sort: true,
+        },
+        {
+            dataField: 'end_time',
+            text: "赛事结束时间",
+            style: { width: '15%' },
+            sort: true,
+        },
+        {
+            text: "报名团队信息",
             isDummyField: true,
-            style: { width: '20%' },
+            style: { width: '15%' },
             formatter: (cell, row) => {
                 return (
                     <div style={{
@@ -47,15 +57,15 @@ export default function StockManageTable() {
                         textAlign: 'center',
                         transform: "-moz-initial"
                     }} >
-                        <StockSetting value={row} />
+                    <Button>查看团队</Button>
                     </div>
                 )
             },
         },
         {
-            text: "管理股票状态",
+            text: "更改赛事信息",
             isDummyField: true,
-            style: { width: '20%' },
+            style: { width: '15%' },
             formatter: (cell, row) => {
                 return (
                     <div style={{
@@ -64,7 +74,7 @@ export default function StockManageTable() {
                         textAlign: 'center',
                         transform: "-moz-initial"
                     }} >
-                        <StockStateManagement value={row} />
+                    <Button>修改赛事信息</Button>
                     </div>
                 )
             },
@@ -74,7 +84,7 @@ export default function StockManageTable() {
 
     return (
         <div>
-            <h2><Button size='lg'>添加股票</Button></h2>
+            <h2><Button size='lg'>添加赛事</Button></h2>
             <ToolkitProvider
                 bootstrap4
                 keyField="id"
@@ -82,7 +92,7 @@ export default function StockManageTable() {
                 columns={columns}
                 search
                 exportCSV={{
-                    fileName: '用户信息.csv',
+                    fileName: '赛事信息.csv',
                     separator: '|',
                     ignoreHeader: true,
                     noAutoBOM: false
@@ -91,11 +101,14 @@ export default function StockManageTable() {
                 {
                     props => (
                         <div>
-                            <SearchBar
-                                {...props.searchProps}
-                                srText={false}
-                                placeholder="搜索股票"
-                            />
+                            {/* ========================= */}
+                            {/* 因赛事数量较少，默认不需要搜索 */}
+                            {/* ========================= */}
+                            {/* <SearchBar
+                {...props.searchProps}
+                      srText={false}
+                      placeholder="搜索赛事"
+            /> */}
 
 
                             <hr />
@@ -113,13 +126,6 @@ export default function StockManageTable() {
                                 </div>
                             </Collapse>
 
-
-                            {/* <div className="search-div">
-<ExportCSVButton 
-    {...props.csvProps}>
-      <Button>导出CSV</Button>
-</ExportCSVButton>
-</div> */}
                         </div>
                     )
                 }

@@ -54,9 +54,21 @@ export default function SideMenuAdmin() {
             >
               <AssessmentIcon
                 fontSize={width > 530 ? "large" : "medium"}
-                color={window.location.pathname === `${match.url}/stock`? "secondary" : console.log(window.location.pathname)}
+                color={window.location.pathname === `${match.url}/stock` ? "secondary" : console.log(window.location.pathname)}
               />
               {width > 1600 ? (<>股票管理</>) : (<></>)}
+            </Link>
+          </Row>
+          <Row className='row-padding'>
+            <Link
+              style={{ color: "white" }}
+              to={`${match.url}/competition`}
+            >
+              <AssessmentIcon
+                fontSize={width > 530 ? "large" : "medium"}
+                color={window.location.pathname === `${match.url}/competition` ? "secondary" : console.log(window.location.pathname)}
+              />
+              {width > 1600 ? (<>赛事管理</>) : (<></>)}
             </Link>
           </Row>
           <Row className='row-padding'>
