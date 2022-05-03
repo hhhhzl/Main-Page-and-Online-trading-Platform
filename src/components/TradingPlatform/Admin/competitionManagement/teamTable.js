@@ -17,8 +17,8 @@ const { ExportCSVButton } = CSVExport;
 
 export default function TeamTable() {
 
-    let {id} = useParams();
-    console.log(id); 
+    // Need to change after route changed (may or may not)
+    let id = window.location.pathname.substring(window.location.pathname.lastIndexOf('/')+1);
 
     const columns = [
         {
@@ -51,7 +51,6 @@ export default function TeamTable() {
                         {/* <Button variant="outline-primary"  style={{width:"100%"}} size = 'sm'>
                           查看用户
                       </Button>{' '} */}
-                        {console.log(row)}
                         <UserInfo value={row} />
                     </div>
                 )
@@ -70,9 +69,6 @@ export default function TeamTable() {
                         textAlign: 'center',
                         transform: "-moz-initial"
                     }} >
-                        {/* <Button variant="outline-primary" style={{width:"100%"}} size = 'sm'>
-                          查看收益
-                      </Button>{' '} */}
                         <CheckUserHoding value={row.id} />
                     </div>
                 )
@@ -91,9 +87,6 @@ export default function TeamTable() {
                         textAlign: 'center',
                         transform: "-moz-initial"
                     }} >
-                        {/* <Button variant="outline-primary" style={{width:"100%"}}  size = 'sm'>
-                          交易记录
-                      </Button>{' '} */}
                         <CheckUserTradingHistory value={row.id} />
                     </div>
                 )
@@ -131,7 +124,6 @@ export default function TeamTable() {
 
     return (
         <div>
-            <h2><Button size='lg'>添加用户/管理员</Button></h2>
             <ToolkitProvider
                 bootstrap4
                 keyField="id"

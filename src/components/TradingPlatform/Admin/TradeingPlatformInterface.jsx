@@ -7,7 +7,7 @@ import StockManageTable from "./StockManagement/StockManageTable";
 import Admin from "./pages/admin";
 import Competition from "./pages/competition";
 import Stock from "./pages/stock";
-import TeamTable from "./competitionManagement/teamTable";
+import Team from "./pages/team";
 
 export default function TradePadmin() {
 
@@ -22,17 +22,17 @@ export default function TradePadmin() {
       <NavBarTest username={username} usertype={userType} />
       <div className="page">
         <Switch>
+          <Route path={`${match.path}/admin`}>
+            <Admin />
+          </Route>
           <Route path={`${match.path}/stock`}>
             <Stock />
           </Route>
+          <Route path="/eplat/competition/:id">
+            <Team />
+          </Route>
           <Route path={`${match.path}/competition`}>
             <Competition />
-          </Route>
-          <Route path={`/:id`}>
-            <TeamTable />
-          </Route>
-          <Route path='/eplat/admin'>
-            <Admin />
           </Route>
         </Switch>
       </div>

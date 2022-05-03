@@ -42,7 +42,7 @@ export default function SideMenuAdmin() {
             >
               <AccountCircleOutlined
                 fontSize={width > 530 ? "large" : "medium"}
-                color={window.location.pathname === `${match.url}/admin` ? "secondary" : console.log(window.location.pathname)}
+                color={window.location.pathname === `${match.url}/admin` ? "secondary" : ""}
               />
               {width > 1600 ? (<>用户管理</>) : (<></>)}
             </Link>
@@ -54,7 +54,7 @@ export default function SideMenuAdmin() {
             >
               <AssessmentIcon
                 fontSize={width > 530 ? "large" : "medium"}
-                color={window.location.pathname === `${match.url}/stock` ? "secondary" : console.log(window.location.pathname)}
+                color={window.location.pathname === `${match.url}/stock` ? "secondary" : ""}
               />
               {width > 1600 ? (<>股票管理</>) : (<></>)}
             </Link>

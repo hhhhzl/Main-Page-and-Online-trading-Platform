@@ -2,16 +2,20 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
+import { Switch, Route, Router, useRouteMatch } from "react-router-dom";
 import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolkit';
 import data from "../competition.json";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Collapse } from "react-bootstrap";
 import useWindowDimensions from "../../../../utils/sizewindow";
+import CompetitionInfo from "./competitionInfo";
+import { Link } from "react-router-dom";
 
 // const { SearchBar } = Search;
 // const { ExportCSVButton } = CSVExport;
 
 export default function CompetitionManageTable() {
+    let match = useRouteMatch();
     const { height, width } = useWindowDimensions();
     const columns = [
         {
@@ -57,7 +61,11 @@ export default function CompetitionManageTable() {
                         textAlign: 'center',
                         transform: "-moz-initial"
                     }} >
-                    <Button>查看团队</Button>
+                        <Link to={`${match.path}/${row.id}`}>
+                            <Button variant="outline-primary" style={{ width: "100%" }} size='sm'>
+                                团队信息
+                            </Button>
+                        </Link>
                     </div>
                 )
             },
@@ -74,7 +82,7 @@ export default function CompetitionManageTable() {
                         textAlign: 'center',
                         transform: "-moz-initial"
                     }} >
-                    <Button>修改赛事信息</Button>
+                        <CompetitionInfo value={row} />
                     </div>
                 )
             },
