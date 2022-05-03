@@ -17,7 +17,7 @@ const { ExportCSVButton } = CSVExport;
 
 export default function TeamTable() {
 
-    // Need to change after route changed (may or may not)
+    // id: The id for each competition
     let id = window.location.pathname.substring(window.location.pathname.lastIndexOf('/')+1);
 
     const columns = [
@@ -58,7 +58,7 @@ export default function TeamTable() {
             },
         },
         {
-            text: "查看收益",
+            text: "团队收益",
             isDummyField: true,
             style: { width: '12%' },
             formatter: (cell, row) => {
