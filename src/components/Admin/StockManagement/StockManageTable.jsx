@@ -6,7 +6,7 @@ import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolk
 import data from "../stock.json";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Collapse } from "react-bootstrap";
-import useWindowDimensions from "../../../../utils/sizewindow";
+import useWindowDimensions from "../../../utils/sizewindow";
 import StockStateManagement from "./stockStateManagement";
 import StockSetting from "./stockSetting";
 

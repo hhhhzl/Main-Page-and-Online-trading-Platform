@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import { useDispatch, useSelector } from 'react-redux';
-import UserHolding from '../../screen/UserHolding';
+import UserHolding from '../../TradingPlatform/screen/UserHolding';
 
 // Edit Button for Supervisor projects
 export default function CheckUserHoding(props) {

@@ -7,7 +7,7 @@ import MainPage from './components/MainPage/MainPage';
 import { BrowserRouter, Switch, Route, Router, useRouteMatch } from "react-router-dom";
 import RegisterForm from './components/MainPage/registerForm';
 import LoginForm from './components/MainPage/loginForm';
-import TradePadmin from './components/TradingPlatform/Admin/TradeingPlatformInterface';
+import TradePadmin from './components/Admin/TradeingPlatformInterface';
 import TradePusers from './components/TradingPlatform/Users/TradeingPlatformInterface';
 import data from "./static/users.json"
 import useToken from './useToken';
@@ -22,12 +22,9 @@ import Userbalance from './components/TradingPlatform/Users/Portfolio/UserBalanc
 import UserMarket from './components/TradingPlatform/Users/Market/market';
 
 /*Admin*/
-import UsersManageTable from './components/TradingPlatform/Admin/userManagement/UsersManageTable';
 import NavBarTest from './components/TradingPlatform/navBar';
-import SideMenuAdmin from './components/TradingPlatform/Admin/sideMenuAdmin';
 import UserStocks from './components/TradingPlatform/Users/Stocks/UserStocks';
 import UserTrade from './components/TradingPlatform/Users/Trade/UserTrade';
-import StockManageTable from './components/TradingPlatform/Admin/StockManagement/StockManageTable';
 
 
 

@@ -144,7 +144,7 @@ export default function TeamTable() {
                                 <SearchBar
                                     {...props.searchProps}
                                     srText={false}
-                                    placeholder="搜索用户"
+                                    placeholder="搜索团队"
                                 />
 
                             </div>

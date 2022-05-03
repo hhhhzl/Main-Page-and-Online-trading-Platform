@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container, Navbar } from "react-bootstrap";
 import SideMenuAdmin from "./sideMenuAdmin";
-import NavBarTest from "../navBar";
+import NavBarTest from "../TradingPlatform/navBar";
 import { Switch, Route, Router, useRouteMatch } from "react-router-dom";
 import StockManageTable from "./StockManagement/StockManageTable";
 import Admin from "./pages/admin";

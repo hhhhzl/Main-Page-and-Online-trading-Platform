@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import { useDispatch, useSelector } from 'react-redux';
-import UserTradingHistory from '../../screen/UserTradingHis';
+import UserTradingHistory from '../../TradingPlatform/screen/UserTradingHis';
 
 // Edit Button for Supervisor projects
 export default function CheckUserTradingHistory(props) {

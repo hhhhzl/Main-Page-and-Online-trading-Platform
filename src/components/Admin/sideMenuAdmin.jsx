@@ -9,8 +9,8 @@ import BallotIcon from '@material-ui/icons/BallotOutlined';
 import { Nav } from 'react-bootstrap';
 import { Switch, Route, Link, BrowserRouter, useRouteMatch } from "react-router-dom";
 import { Row } from "react-bootstrap";
-import '../eplatform.css'
-import useWindowDimensions from "../../../utils/sizewindow";
+import '../TradingPlatform/eplatform.css'
+import useWindowDimensions from "../../utils/sizewindow";
 
 
 export default function SideMenuAdmin() {
