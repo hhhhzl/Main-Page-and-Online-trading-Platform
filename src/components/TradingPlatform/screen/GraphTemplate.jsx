@@ -8,6 +8,7 @@ import UserHolding from './UserHolding';
 import CandleChart from '../graphs/CandleChart';
 import useWindowDimensions from '../../../utils/sizewindow';
 import { IconButton } from '@material-ui/core';
+import CandleStickChart from '../graphs/CandlestickChart';
 
 
 export default function GraphTemplate({
@@ -139,7 +140,7 @@ export default function GraphTemplate({
           :   
               (
                 <Card.Body>
-              <CandleChart w ={size} h={0.65} stockData = {data}/>
+              <CandleStickChart w ={size} stockdata = {data}/>
               </Card.Body>)}
           
  

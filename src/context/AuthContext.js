@@ -18,7 +18,7 @@ export const AuthProvider = ({children}) => {
         e.preventDefault();
         
     
-        let response = await fetch("http://127.0.0.1:8000/api/token/", {
+        let response = await fetch("http://59.110.238.142:8000/api/users/token/", {
             method:'POST',
             headers:{
                 'Content-Type':"application/json"
@@ -32,7 +32,6 @@ export const AuthProvider = ({children}) => {
             setuser(jwt_decode(data.access))
             localStorage.setItem('authTokens',JSON.stringify(data))
             history.push('/stocks')
-
         }else{
             alert("Something Went Wrong!")
         }
@@ -49,7 +48,7 @@ export const AuthProvider = ({children}) => {
 
     let updataToken = async () =>{
         console.log("update")
-        let response = await fetch("http://127.0.0.1:8000/api/token/refresh", {
+        let response = await fetch("http://59.110.238.142:8000/api/users/token/", {
             method:'POST',
             headers:{
                 'Content-Type':"application/json"

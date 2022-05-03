@@ -1,84 +1,93 @@
-import React,{useState, useEffect} from "react";
+import React from "react";
+import * as d3 from "d3";
 import { format } from "d3-format";
-import { timeFormat } from "d3-time-format";
+import { curveMonotoneX } from "d3-shape";
+import { ChartCanvas, Chart } from "react-stockcharts";
+import { AreaSeries } from "react-stockcharts/lib/series";
+import { XAxis, YAxis } from "react-stockcharts/lib/axes";
+import { fitWidth } from "react-stockcharts/lib/helper";
+import { last } from "react-stockcharts/lib/utils";
 import {
-    AlternatingFillAreaSeries,
-    discontinuousTimeScaleProviderBuilder,
-    Chart,
-    ChartCanvas,
-    XAxis,
-    YAxis,
-    MouseCoordinateX,
-    TrendLine,
-    DrawingObjectSelector,
-} from "react-financial-charts";
-import { AreaSeries, AreaOnlySeries } from "@react-financial-charts/series";
-import { initialData } from "../../../static/testdata";
+  createVerticalLinearGradient,
+  hexToRGBA
+} from "react-stockcharts/lib/utils";
+import { discontinuousTimeScaleProviderBuilder } from "react-stockcharts/lib/scale";
+import { SampleData } from "../../../static/Stockdata";
 import useWindowDimensions from "../../../utils/sizewindow";
+
+const canvasGradient = createVerticalLinearGradient([
+  { stop: 0, color: hexToRGBA("#b5d0ff", 0.2) },
+  { stop: 0.7, color: hexToRGBA("#6fa4fc", 0.4) },
+  { stop: 1, color: hexToRGBA("#4286f4", 0.8) }
+]);
+
+class AreaChart extends React.Component {
   
-
-export default function AreaChart({w,h}){
-   const {height,width} = useWindowDimensions();
+  render() {
+    const {width} = this.props;
+    const dateTimeFormat = "%Y-%m-%d %H:%M:%S";
+    const parseDate = d3.timeParse(dateTimeFormat);
     const ScaleProvider = discontinuousTimeScaleProviderBuilder().inputDateAccessor(
-        (d) => new Date(d.date)
+        (d) => parseDate(d.date)
       );
+    const { data, xScale, xAccessor, displayXAccessor } = ScaleProvider(
+        SampleData
+      );
+    
+    const pricesDisplayFormat = format(".2f");
+    const start = xAccessor(last(data));
+    const end = xAccessor(data[Math.max(0, data.length - 150)]);
+    const xExtents = [start, end];
+    
+    const candleChartExtents = (data) => {
+      return data.open;
+    };
+    
+    const yEdgeIndicator = (data) => {
+      return data.open;
+    };
 
-      // get the width and height of user's window
-      const heightx = height * h;
-      const widthy = width * w;
-      const margin = { left: 0, right: widthy*0.1, top: 0, bottom: heightx*0.1 };
-      // const Window_height = height;
-      // const Window_width = width * 0.5;
-      // const margin = { left: width*0.01, right: width*0.05, top: 0, bottom: height*0.1 };
-      const { data, xScale, xAccessor, displayXAccessor } = ScaleProvider(
-        initialData
-      );
-      const pricesDisplayFormat = format(".2f");
-      const max = xAccessor(data[data.length - 1]);
-      const min = xAccessor(data[Math.max(0, data.length - 100)]);
-      const xExtents = [min, max + 5];
-      const gridHeight = heightx - margin.top - margin.bottom;
-      const dateTimeFormat = "%Y-%m-%d %H:%M:%S";
-      const timeDisplayFormat = timeFormat(dateTimeFormat);
-    
-    
-      const candleChartExtents = (data) => {
-        return data.open;
-      };
-    
-      const yEdgeIndicator = (data) => {
-        return data.open;
-      };
-    
-    return(
-      <>
-      <div className="assets-curve">      
-        <ChartCanvas
-        height={heightx}
-        ratio={5}
-        width={widthy}
-        margin={margin}
+    return (
+      <ChartCanvas
+        ratio={1}
+        width={width}
+        height={width/1.8}
+        margin={{ left: 50, right: 0, top: 10, bottom: 30 }}
+        type={"hybrid"}
         data={data}
-        seriesName="Data"
         xScale={xScale}
-        displayXAccessor={displayXAccessor}
         xAccessor={xAccessor}
+        displayXAccessor={displayXAccessor}
+        xExtents={xExtents}
       >
-        <Chart id={3} height={gridHeight} yExtents={candleChartExtents}>
-          
-          
-          <XAxis showGridLines={false} showDomain={false} showTickLabel={false} axisAt="bottom" orient="bottom" displayFormat={timeDisplayFormat} />
-          <YAxis showGridLines={false} showDomain={false} showTicklabel={true}  tickFormat={pricesDisplayFormat} />
-          <AreaSeries yAccessor={yEdgeIndicator} connectNulls ={true}/> 
-          <MouseCoordinateX
-            at="bottom"
-            orient="bottom"
-            displayFormat={timeDisplayFormat}
-          />  
+        <Chart id={0} yExtents={(d) => d.open}>
+          <defs>
+            <linearGradient id="MyGradient" x1="0" y1="100%" x2="0" y2="0%">
+              <stop offset="0%" stopColor="#b5d0ff" stopOpacity={0.2} />
+              <stop offset="70%" stopColor="#6fa4fc" stopOpacity={0.4} />
+              <stop offset="100%" stopColor="#4286f4" stopOpacity={0.8} />
+            </linearGradient>
+          </defs>
+          <XAxis axisAt="bottom" orient="bottom" ticks={6} />
+          <YAxis axisAt="left" orient="left" />
+          <AreaSeries
+            yAccessor={(d) => d.open}
+            fill="url(#MyGradient)"
+            strokeWidth={2}
+            interpolation={curveMonotoneX}
+            canvasGradient={canvasGradient}
+          />
         </Chart>
       </ChartCanvas>
-      </div>
-      </>
-    )
-
+    );
+  }
 }
+
+
+
+AreaChart.defaultProps = {
+  type: "svg"
+};
+AreaChart = fitWidth(AreaChart);
+
+export default AreaChart;

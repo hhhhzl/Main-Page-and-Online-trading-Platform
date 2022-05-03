@@ -153,7 +153,7 @@ export default function UserStocks(props) {
         marginTop:"30px",
         }}>
              <GraphTemplate 
-             size={0.45} 
+             size={0.5} 
              data = {kdata} 
              setchartextendleft ={setchartextendleft} 
              setchartextendright={setchartextendright}

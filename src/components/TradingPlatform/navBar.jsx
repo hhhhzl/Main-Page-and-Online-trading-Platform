@@ -14,9 +14,9 @@ import { IconButton } from '@material-ui/core';
 
 export default function NavBarTest(props) {
     const {height,width} = useWindowDimensions();
-    const [user, setuser] =useState(props.username)
+    const [user, setuser] = useState(props.username)
     const [authorized, setauthorized] = useState(false)
-    const [news, setnews] =useState(true)
+    const [news, setnews] = useState(true)
     return (    
         <Navbar id="app-header" style={{height:height*0.1}}>
             <Container className='padding-right' >
