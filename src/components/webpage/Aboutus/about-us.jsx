@@ -1,97 +1,183 @@
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import "./about-us.css";
-import Image from 'react-bootstrap/Image';
+import Image from "react-bootstrap/Image";
 import { Button, Row, Col, Container } from "react-bootstrap";
-import Badge from 'react-bootstrap/Badge'
-import ReactPlayer from 'react-player';
-import Carousel from 'react-bootstrap/Carousel';
+import Badge from "react-bootstrap/Badge";
+import ReactPlayer from "react-player";
+import Carousel from "react-bootstrap/Carousel";
 import Bottompicture from "./bottom-picture";
 import { Bookmark } from "@material-ui/icons";
 import useWindowDimensions from "../../../utils/sizewindow";
 
-
 const Aboutus = ({ profileImg, hobbyImgs }) => {
-  const {width,height} = useWindowDimensions();
-  const React = require('react')
-  const { BilibiliVideo } = require('react-bilibili-video')
+  const { width, height } = useWindowDimensions();
+  const React = require("react");
+  const { BilibiliVideo } = require("react-bilibili-video");
 
   return (
-    <div className="section">
-      <br/>
-      <h3 className="text-center" style={{color:"#AEAEAE",fontFamily:"MicrosoftYaHeiUI",fontSize:"30px"}}>WHO WE ARE</h3>
-      <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"30px",letterSpacing:"0.8px"}}><Bookmark/> <strong>协{" "}会{" "}介{" "}绍</strong></h5>
-      <br/>
-      <br/>
-      <Container className ="content-center">
-            {/* <p style={{color:"#4D4D4D", textIndent:"0",fontSize:"24px", fontFamily:"MicrosoftYaHei", lineHeight:"50px", letterSpacing:"0.2px"}}>
-              <strong>UFA金融协会 </strong>
-               (英文缩写<strong>"UFA"</strong>) 是面向<strong>全球顶级高校</strong>（包括美国排名TOP30、中国内地TOP10、中国香港四大高校等）建立的首个<strong>跨学校，跨地区，跨文化</strong>的大学生金融协会。我们的愿景是<strong>“助力祖国联合全球和华人金融精英，并共同建设祖国金融未来”</strong>。
-            </p>
-            <br/>
-            <p style={{color:"#4D4D4D",fontSize:"24px",textIndent:"0", fontFamily:"MicrosoftYaHei",lineHeight:"50px", letterSpacing:"0.2px"}}>
-              自成立以来，<strong>UFA金融协会</strong>与<strong>中信证券、清华大学金融协会、海外超过20所高校</strong>等建立起合作关系，并联合策划了名家分享会，金融系列公益讲座、全球大学生
-              投资大赛等多个活动。<strong>“UFA杯: 全球大学模拟投资大赛”</strong>是UFA金融协会牵头发起的针对国内为顶尖高校大学生所举办的线上模拟投资比赛之一。
-            </p> */}
-            <p style={{color:"black", textIndent:"0",fontSize:"24px", fontFamily:"MicrosoftYaHei", lineHeight:"50px", letterSpacing:"0.2px"}}>
-             <strong> UFA金融协会 </strong>
-               (英文缩写"UFA") 是面向全球顶级高校（包括美国排名TOP30、中国内地TOP10、中国香港四大高校等）建立的首个跨学校，跨地区，跨文化的大学生金融协会。我们的愿景是“<strong>助力祖国联合全球和华人金融精英，并共同建设祖国金融未来</strong>”。
-            </p>
-            <br/>
-            <p style={{color:"black",fontSize:"24px",textIndent:"0", fontFamily:"MicrosoftYaHei",lineHeight:"50px", letterSpacing:"0.2px"}}>
-              自成立以来，UFA金融协会与<strong>中信证券、清华大学金融协会</strong>、海外超过100所高校等建立起合作关系，并联合策划了名家分享会，金融系列公益讲座、全球大学生投资大赛等多个活动。<strong>“UFA杯: 全球大学模拟投资大赛”</strong>是由 UFA ⾦融协会牵头发起的首个汇聚全球顶尖高校大学生的大型线上模拟投资比赛。
-            </p>
-            <br/>
-            <br/>
-            <br/>
+    <div className="section" style={{ paddingTop: "40px",paddingBottom: "90px" }}>
+      <div className="text-center">
+        <Image
+          src="/homeCutout/Group174.png"
+          style={{ width: "248px", height: "79px" }}
+        />
+      </div>
+      {/* <br />
+      <h3
+        className="text-center"
+        style={{
+          color: "#C0C3CE",
+          fontFamily: "Futura-Medium, Futura",
+          fontSize: "24px",
+          fontWeight: "500",
+          lineHeight: "28px",
+        }}
+      >
+        WHO WE ARE
+      </h3>
+      <h5
+        className="text-center"
+        style={{
+          color: "#2A2B30",
+          fontFamily: "MicrosoftYaHeiUI-Bold, MicrosoftYaHeiUI",
+          fontSize: "32px",
+          letterSpacing: "6px",
+          fontWeight: "bold",
+        }}
+      >
+        <Bookmark style={{ color: "#1442ED" }} /> <span>协会介绍</span>{" "}
+        <Bookmark style={{ color: "#1442ED" }} />
+      </h5> */}
+      <br />
+      <br />
+      <br />
 
-            <h5 className ="text-center">
-           </h5>
-           <br/>
-        </Container>
+      <Container
+        className="content-center"
+        style={{ marginLeft: "17.18%", padding: "20px 20px 0px" }}
+      >
+        <div className="left-icon">
+          <Image
+            src="/homeCutout/Group 110.png"
+            style={{ width: "36px", height: "36px" }}
+          />
+        </div>
+        <p
+          style={{
+            color: "#3D3F4E",
+            textIndent: "0",
+            fontSize: "24px",
+            fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+            lineHeight: "50px",
+            letterSpacing: "0.2px",
+          }}
+        >
+          UFA金融协会 (英文缩写"UFA")
+          是面向全球顶级高校（包括美国排名TOP30、中国内地TOP10、中国香港四大高校等）建立的首个跨学校，跨地区，跨文化的大学生金融协会。我们的愿景是“
+          助力祖国联合全球和华人金融精英，并共同建设祖国金融未来 ”。
+        </p>
+        <br />
+        <p
+          className="bottom-angle"
+          style={{
+            color: "#3D3F4E",
+            fontSize: "24px",
+            textIndent: "0",
+            fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+            lineHeight: "48px",
+            letterSpacing: "1px",
+          }}
+        >
+          自成立以来，UFA金融协会与中信证券、清华大学金融协会
+          、海外超过100所高校等建立起合作关系，并联合策划了名家分享会，金融系列公益讲座、全球大学生投资大赛等多个活动。
+          “UFA杯: 全球大学模拟投资大赛”是由 UFA
+          ⾦融协会牵头发起的首个汇聚全球顶尖高校大学生的大型线上模拟投资比赛。
+        </p>
+        <div className="right-icon">
+          <Image
+            src="/homeCutout/Group 172.png"
+            style={{ width: "36px", height: "36px" }}
+          />
+        </div>
+        <br />
+        <br />
+        <br />
 
+        <h5 className="text-center"></h5>
+        <br />
+      </Container>
 
-        <div className="video">
-          <br/>
-        <h3 className="text-center" style={{color:"#AEAEAE",fontSize:"30px"}}>ABOUT UFA TRADING CHALLENGE</h3>
-         <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"30px",letterSpacing:"4px"}}><Bookmark/>{' '}<strong>UFA杯赛事介绍</strong></h5>
-         <br/>
-         <br/>
-         <br/>
-         <br/>
-         
-         <div className='text-center decorate-border'>
-           <h4 style={{color:" #26409A ",padding:"10px 20px 0px 30px",letterSpacing:"4px"}}>
-             快来听听他们都说了什么
-           </h4>
-           
-         </div>
-         <br/>
-         <br/>
-         
-         <Carousel fade className="video-container">
-         
-           <Carousel.Item className="player-wrapper">
-              <BilibiliVideo
+      <div className="video">
+        <div className="text-center">
+          <Image
+            src="/homeCutout/Group 175.png"
+            style={{ width: "427px", height: "79px" }}
+          />
+        </div>
+        {/* <br />
+        <h3
+          className="text-center"
+          style={{ color: "#AEAEAE", fontSize: "30px" }}
+        >
+          ABOUT UFA TRADING CHALLENGE
+        </h3>
+        <h5
+          className="text-center"
+          style={{
+            color: " #26409A ",
+            fontFamily: "MicrosoftYaHeiUI",
+            fontSize: "30px",
+            letterSpacing: "4px",
+          }}
+        >
+          <Bookmark /> <strong>UFA杯赛事介绍</strong>
+        </h5>
+        <br />
+        <br />
+        <br />
+        <br /> */}
+
+        {/* <div className="text-center decorate-border">
+          <h4
+            style={{
+              color: " #26409A ",
+              padding: "10px 20px 0px 30px",
+              letterSpacing: "4px",
+            }}
+          >
+            快来听听他们都说了什么
+          </h4>
+        </div>
+        <br />
+        <br /> */}
+        <div className="video-icon-wrapper">
+          <div className="video-icon">
+            <Image
+              src="/homeCutout/Group 143.png"
+              style={{ width: "108px", height: "108px" }}
+            />
+          </div>
+        </div>
+        <Carousel fade className="video-container">
+          <Carousel.Item className="player-wrapper">
+            <BilibiliVideo
               cid="548193318"
               aid="382170523"
               asWide
               highQuality
-              danmaku = {0}
-               />
-          
-              
-              
-              </Carousel.Item>
-              
-              <Carousel.Item className="player-wrapper">
-              <BilibiliVideo
+              danmaku={0}
+            />
+          </Carousel.Item>
+
+          <Carousel.Item className="player-wrapper">
+            <BilibiliVideo
               cid="548193318"
               aid="382170523"
               asWide
               highQuality
-              danmaku = {0}
-               />
-           {/* <ReactPlayer
+              danmaku={0}
+            />
+            {/* <ReactPlayer
              className='react-player'
              controls ={true}
              width='100%'
@@ -99,9 +185,9 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
              url={[
                 'https://www.youtube.com/watch?v=BcgyPJWclEw'
               ]} /> */}
-              </Carousel.Item>
-              <Carousel.Item className="player-wrapper">
-           {/* <ReactPlayer
+          </Carousel.Item>
+          <Carousel.Item className="player-wrapper">
+            {/* <ReactPlayer
              className='react-player'
              controls ={true}
              width='100%'
@@ -109,243 +195,689 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
              url={[
                 'https://www.youtube.com/watch?v=8cph2_Xvfbo'
               ]} /> */}
-              <BilibiliVideo
+            <BilibiliVideo
               cid="548193318"
               aid="382170523"
               asWide
               highQuality
-              danmaku = {0}
-               />
-              </Carousel.Item>
-              </Carousel> 
+              danmaku={0}
+            />
+          </Carousel.Item>
+        </Carousel>
+        <div className="video-icon-wrapper-bottom">
+          <div className="video-icon-bottom">
+            <Image
+              src="/homeCutout/Group 27.png"
+              style={{ width: "108px", height: "108px" }}
+            />
+          </div>
+        </div>
 
-              <br/><br/><br/><br/><br/><br/><br/>
+        <br />
+        <br />
+        <br />
+        <br />
 
         <div className="about-center">
-        {width < 650 ? 
-
-        (<><Col>
-          <div className ="introduction-box">
-          <div className="title"><h4 style={{color:"white",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "22px" : "17px",letterSpacing:"0.31px",textIndent:"0"}}>权威性</h4> </div>
-            <div>
-                <p style={{color:"black",fontFamily:"MicrosoftYaHeiUI",fontSize:"18px",letterSpacing:"0.3px",textIndent:"0",paddingTop:"16px",paddingLeft:"10px",paddingRight:"10px"}}>“UFA杯” 由UFA与中信证券、清华大学金融协会等联合举办，旨在打造最具权威的大学生金融赛事 </p>
-              </div>
-    
-        </div>
-        </Col>
-        <Col>
-          <div className ="introduction-box">
-          <div className="title"><h4 style={{color:"white",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "22px" : "17px",letterSpacing:"0.1px",textIndent:"0"}}>影响力</h4></div>
-          <div>
-                    <p style = {{color:"black",fontFamily:"MicrosoftYaHeiUI",fontSize:"18px",letterSpacing:"0.3px",textIndent:"0",paddingTop:"16px",paddingLeft:"10px",paddingRight:"10px"}}>“UFA杯” 荣幸邀请各界金融大咖全程参与并与参赛选手进行高效、深度沟通互动，将在线上线下同步举办大型交流、展示活动 </p>
+          {width < 650 ? (
+            <>
+              {/* 屏幕宽度小于650的时候 */}
+              <Col>
+                <div className="introduction-box">
+                  <div className="title">
+                    <h4
+                      style={{
+                        color: "white",
+                        fontFamily: "MicrosoftYaHeiUI",
+                        fontSize: width > 960 ? "22px" : "17px",
+                        letterSpacing: "0.31px",
+                        textIndent: "0",
+                      }}
+                    >
+                      权威性
+                    </h4>{" "}
                   </div>
-
-    
-        </div>
-        </Col>
-   
-        <Col>
-          <div className ="introduction-box">
-          <div className="title"><h4 style={{color:"white",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "22px" : "17px",letterSpacing:"0.1px",textIndent:"0"}}>规模力</h4></div>
-          <div>
-                    <h6 style={{color:" #337ab7 "}}></h6>
-                    <p style = {{color:"black",fontFamily:"MicrosoftYaHeiUI",fontSize:"18px",letterSpacing:"0.3px",textIndent:"0",paddingTop:"16px",paddingLeft:"10px",paddingRight:"10px"}}>“UFA杯” 将面向海内外100+所大学开放赛事，旨在打造万人规模金融赛事，成为海内外金融大学生的首要聚集地</p>
-                  </div>
-        </div>
-        </Col>
-        </>)
-        :
-        (<>
-        <Row>
-          <Col>
-          <div className ="introduction-box">
-            <Row>
-                  <div className="title"><h4 style={{color:"white",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "20px" : "15px",letterSpacing:"0.31px",textIndent:"0"}}>权威性</h4> </div>
                   <div>
-                    <p style={{color:"black",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "20px" : "16px",letterSpacing:"0.3px",textIndent:"0",paddingTop: width > 1000? "30px" : "20px",paddingLeft:width>750 ? "10px" : "5px",paddingRight:width>750 ? "10px" : "5px"}}>“UFA杯” 由UFA与中信证券、清华大学金融协会等联合举办，旨在打造最具权威的大学生金融赛事 </p>
+                    <p
+                      style={{
+                        color: "black",
+                        fontFamily: "MicrosoftYaHeiUI",
+                        fontSize: "18px",
+                        letterSpacing: "0.3px",
+                        textIndent: "0",
+                        paddingTop: "16px",
+                        paddingLeft: "10px",
+                        paddingRight: "10px",
+                      }}
+                    >
+                      “UFA杯”
+                      由UFA与中信证券、清华大学金融协会等联合举办，旨在打造最具权威的大学生金融赛事{" "}
+                    </p>
                   </div>
-          
-            </Row>
-          </div>
-        </Col>
-        <Col>
-          <div className ="introduction-box">
-            <Row> 
-            <div className="title"><h4 style={{color:"white",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "20px" : "15px",letterSpacing:"0.1px",textIndent:"0"}}>影响力</h4></div>
+                </div>
+              </Col>
+              <Col>
+                <div className="introduction-box">
+                  <div className="title">
+                    <h4
+                      style={{
+                        color: "white",
+                        fontFamily: "MicrosoftYaHeiUI",
+                        fontSize: width > 960 ? "22px" : "17px",
+                        letterSpacing: "0.1px",
+                        textIndent: "0",
+                      }}
+                    >
+                      影响力
+                    </h4>
+                  </div>
                   <div>
-                    <p style = {{color:"black",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "20px" : "16px",letterSpacing:"0.3px",textIndent:"0",paddingTop:width > 1000? "30px" : "18px",paddingLeft:width>750 ? "10px" : "5px",paddingRight:width>750 ? "10px" : "5px"}}>“UFA杯” 荣幸邀请各界金融大咖全程参与并与参赛选手进行高效、深度沟通互动，将在线上线下同步举办大型交流、展示活动 </p>
+                    <p
+                      style={{
+                        color: "black",
+                        fontFamily: "MicrosoftYaHeiUI",
+                        fontSize: "18px",
+                        letterSpacing: "0.3px",
+                        textIndent: "0",
+                        paddingTop: "16px",
+                        paddingLeft: "10px",
+                        paddingRight: "10px",
+                      }}
+                    >
+                      “UFA杯”
+                      荣幸邀请各界金融大咖全程参与并与参赛选手进行高效、深度沟通互动，将在线上线下同步举办大型交流、展示活动{" "}
+                    </p>
                   </div>
-          
-            </Row>
-          </div>
-        </Col>
-        <Col>
-          <div className ="introduction-box">
-            <Row>
-            <div className="title"><h4 style={{color:"white",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "20px" : "15px",letterSpacing:"0.1px",textIndent:"0"}}>规模力</h4></div>
+                </div>
+              </Col>
+
+              <Col>
+                <div className="introduction-box">
+                  <div className="title">
+                    <h4
+                      style={{
+                        color: "white",
+                        fontFamily: "MicrosoftYaHeiUI",
+                        fontSize: width > 960 ? "22px" : "17px",
+                        letterSpacing: "0.1px",
+                        textIndent: "0",
+                      }}
+                    >
+                      规模力
+                    </h4>
+                  </div>
                   <div>
-                    <p style = {{color:"black",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "20px" : "16px",letterSpacing:"0.3px",textIndent:"0",paddingTop:width > 1000? "30px" : "20px",paddingLeft:width>750 ? "10px" : "5px",paddingRight:width>750 ? "10px" : "5px"}}>“UFA杯” 将面向海内外100+所大学开放赛事，旨在打造万人规模金融赛事，成为海内外金融大学生的首要聚集地</p>
+                    <h6 style={{ color: " #337ab7 " }}></h6>
+                    <p
+                      style={{
+                        color: "black",
+                        fontFamily: "MicrosoftYaHeiUI",
+                        fontSize: "18px",
+                        letterSpacing: "0.3px",
+                        textIndent: "0",
+                        paddingTop: "16px",
+                        paddingLeft: "10px",
+                        paddingRight: "10px",
+                      }}
+                    >
+                      “UFA杯”
+                      将面向海内外100+所大学开放赛事，旨在打造万人规模金融赛事，成为海内外金融大学生的首要聚集地
+                    </p>
                   </div>
-          
-            </Row>
+                </div>
+              </Col>
+            </>
+          ) : (
+            <>
+              <Row>
+                <Col className="flex-center">
+                  <div className="introduction-box">
+                    <Row>
+                      <div className="box-image flex-center">
+                        <Image
+                          src="/homeCutout/Group 101.png"
+                          style={{
+                            width:
+                              width > 1350
+                                ? "160px"
+                                : width > 960
+                                ? "130px"
+                                : "100px",
+                            height:
+                              width > 1350
+                                ? "160px"
+                                : width > 960
+                                ? "130px"
+                                : "100px",
+                          }}
+                        />
+                      </div>
+                      <div className="title">
+                        <h4
+                          style={{
+                            fontFamily: "MicrosoftYaHeiUI",
+                            fontSize: width > 960 ? "24px" : "18px",
+                            textIndent: "0",
+                            fontWeight: "bold",
+                            margin: "0px",
+                          }}
+                        >
+                          权威性
+                        </h4>
+                      </div>
+                      <div>
+                        <div
+                          style={{
+                            color: "#6E7184",
+                            fontWeight: "400",
+                            fontFamily:
+                              "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                            fontSize: width > 960 ? "16px" : "14px",
+                            paddingTop: width > 1000 ? "20px" : "10px",
+                            lineHeight: "28px",
+                          }}
+                        >
+                          “UFA杯”
+                          由UFA与中信证券、清华大学金融协会等联合举办，旨在打造最具权威的大学生金融赛事
+                        </div>
+                      </div>
+                    </Row>
+                  </div>
+                </Col>
+                <Col className="flex-center">
+                  <div className="introduction-box">
+                    <Row>
+                      <div className="box-image flex-center">
+                        <Image
+                          src="/homeCutout/Group 102.png"
+                          style={{
+                            width:
+                              width > 1350
+                                ? "160px"
+                                : width > 960
+                                ? "130px"
+                                : "100px",
+                            height:
+                              width > 1350
+                                ? "160px"
+                                : width > 960
+                                ? "130px"
+                                : "100px",
+                          }}
+                        />
+                      </div>
+                      <div className="title">
+                        <h4
+                          style={{
+                            fontFamily: "MicrosoftYaHeiUI",
+                            fontSize: width > 960 ? "24px" : "18px",
+                            textIndent: "0",
+                            fontWeight: "bold",
+                            margin: "0px",
+                          }}
+                        >
+                          影响力
+                        </h4>
+                      </div>
+                      <div>
+                        <div
+                          style={{
+                            color: "#6E7184",
+                            fontWeight: "400",
+                            fontFamily:
+                              "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                            fontSize: width > 960 ? "16px" : "14px",
+                            paddingTop: width > 1000 ? "20px" : "10px",
+                            lineHeight: "28px",
+                          }}
+                        >
+                          “UFA杯”
+                          荣幸邀请各界金融大咖全程参与并与参赛选手进行高效、深度沟通互动，将在线上线下同步举办大型交流、展示活动
+                        </div>
+                      </div>
+                    </Row>
+                  </div>
+                </Col>
+                <Col className="flex-center">
+                  <div className="introduction-box">
+                    <Row>
+                      <div className="box-image flex-center">
+                        <Image
+                          src="/homeCutout/Group 103.png"
+                          style={{
+                            width:
+                              width > 1350
+                                ? "160px"
+                                : width > 960
+                                ? "130px"
+                                : "100px",
+                            height:
+                              width > 1350
+                                ? "160px"
+                                : width > 960
+                                ? "130px"
+                                : "100px",
+                          }}
+                        />
+                      </div>
+                      <div className="title">
+                        <h4
+                          style={{
+                            fontFamily: "MicrosoftYaHeiUI",
+                            fontSize: width > 960 ? "24px" : "18px",
+                            textIndent: "0",
+                            fontWeight: "bold",
+                            margin: "0px",
+                          }}
+                        >
+                          规模力
+                        </h4>
+                      </div>
+                      <div>
+                        <div
+                          style={{
+                            color: "#6E7184",
+                            fontWeight: "400",
+                            fontFamily:
+                              "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                            fontSize: width > 960 ? "16px" : "14px",
+                            paddingTop: width > 1000 ? "20px" : "10px",
+                            lineHeight: "28px",
+                          }}
+                        >
+                          “UFA杯”
+                          将面向海内外100+所大学开放赛事，旨在打造万人规模金融赛事，成为海内外金融大学生的首要聚集地
+                        </div>
+                      </div>
+                    </Row>
+                  </div>
+                </Col>
+              </Row>
+            </>
+          )}
+        </div>
+
+        <h5 className="text-center">
+          <Button
+            className="video-btn"
+            style={{
+              color: "#FFFFF",
+              padding: "12px 32px",
+              fontSize: "14px",
+              fontWeight: "600",
+              lineHeight: "16px",
+              fontFamily: "PingFang SC-Semibold, PingFang SC",
+            }}
+            variant="outline-primary"
+            size="lg"
+          >
+            了解赛事
+          </Button>
+        </h5>
+      </div>
+
+      <div className="about-intro">
+        <div className="section" style={{ paddingTop: "120px",paddingBottom: "90px" }}>
+          <div className="text-center">
+            <Image
+              src="/homeCutout/Group 58.png"
+              style={{ width: "685px", height: "79px" }}
+            />
           </div>
-        </Col>
 
-</Row>
-        </>)
-        
-      }
-
-      
-    </div>
-
-
-    <h5 className ="text-center">
-           <Button className="round-Button" style={{color:"#FFFFF",paddingLeft:"30px",paddingRight:"30px"}} variant="outline-primary" size="lg">了解赛事</Button>
-           </h5>
-
-    </div>
-
-
-
-        <div className="about-intro">
-        
-          <div className ="section">
-          <h3 className="text-center" style={{color:"#AEAEAE",fontSize:"30px"}}>WHAT YOU CAN ACHIEVE</h3>
-         <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"25px",letterSpacing:"2px"}}><Bookmark/>{" "}<strong>“UFA杯”能为大学生提供哪些价值</strong></h5>
-         <br/>
-        <br/>
-
-        {width > 800? 
-        (<>
-        <div className="box">
-              {/* <div className = "number">
+          {width > 800 ? (
+            <>
+              <div className="message-box">
+                <div className="flex-between">
+                  <div className=" message-left">
+                    <div className="message-title">
+                      “权威金融竞赛证书”，为你提升核心竞争力
+                    </div>
+                    <span className="message-icon">
+                      <Image
+                        src="/homeCutout/Group 21.png"
+                        style={{ width: "49px", height: "3px" }}
+                      />
+                    </span>
+                    <div className="message-content">
+                      赛事证书由
+                      UFA，中信证券，以及清华大学联合签署。表现优异的前
+                      30%参赛选手将收获主办方颁发的官方证书，为你的简历增添亮点，丰富金融专业背景，帮助你从同龄人中迅速脱颖而出！
+                    </div>
+                  </div>
+                  <div className="flex-center image-right">
+                    <div className="image-right-icon-top">
+                      <Image
+                        src="/homeCutout/Rectangle 21.png"
+                        style={{ width: "12px", height: "12px" }}
+                      />
+                    </div>
+                    <div
+                      style={{
+                        width: "600px",
+                        height: "480px",
+                        border: "1px solid #3C5E78",
+                      }}
+                    ></div>
+                    <div className="image-right-icon-bottom">
+                      <Image
+                        src="/homeCutout/Group 25.png"
+                        style={{ width: "108px", height: "108px" }}
+                      />
+                    </div>
+                  </div>
+                </div>
+                {/* <div className = "number">
               <Image src = "/1.@2x.png" id="img-txz" alt="header"  style={{position: "relative",marginLeft:"5px", width: "50%",height: "50%",}}/>
               </div> */}
-              <div className = "text">
-              <h6 style={{color:" #26409A ",fontSize: width>960 ? "22px" : "20px"}}><strong>1、“权威金融竞赛证书”，为你提升核心竞争力</strong></h6>
-              <p style = {{color:"black",lineHeight:"27px",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "20px" : "16px",letterSpacing:"0.3px",textIndent:"0",paddingTop:width > 1000? "20px" : "15px",paddingLeft:width>750 ? "7px" : "5px",paddingRight:width>750 ? "10px" : "5px"}}>
-              赛事证书由 UFA，中信证券，以及清华大学联合签署。表现优异的前 30%参赛选手将收获主办方颁发的官方证书，为你的简历增添亮点，丰富金融专业背景，帮助你从同龄人中迅速脱颖而出！      
-              </p>
-                
+                {/* <div className="text">
+                  <h6
+                    style={{
+                      color: " #26409A ",
+                      fontSize: width > 960 ? "22px" : "20px",
+                    }}
+                  >
+                    <strong>1、“权威金融竞赛证书”，为你提升核心竞争力</strong>
+                  </h6>
+                  <p
+                    style={{
+                      color: "black",
+                      lineHeight: "27px",
+                      fontFamily: "MicrosoftYaHeiUI",
+                      fontSize: width > 960 ? "20px" : "16px",
+                      letterSpacing: "0.3px",
+                      textIndent: "0",
+                      paddingTop: width > 1000 ? "20px" : "15px",
+                      paddingLeft: width > 750 ? "7px" : "5px",
+                      paddingRight: width > 750 ? "10px" : "5px",
+                    }}
+                  >
+                    赛事证书由 UFA，中信证券，以及清华大学联合签署。表现优异的前
+                    30%参赛选手将收获主办方颁发的官方证书，为你的简历增添亮点，丰富金融专业背景，帮助你从同龄人中迅速脱颖而出！
+                  </p>
+                </div>
+                <div>
+                  <Image
+                    src="组 50@2x(1).png"
+                    id="img-txz"
+                    alt="header"
+                    style={{
+                      position: "relative",
+                      marginLeft: "20%",
+                      width: "60%",
+                      height: "90%",
+                    }}
+                  />
+                </div> */}
               </div>
-              <div>
-              
-              <Image src = "组 50@2x(1).png" id="img-txz" alt="header"  style={{position: "relative",marginLeft:"20%", width: "60%",height: "90%",}}/>
-              </div>
-              
-            </div>
 
-            <div className="box">
-              {/* <div className = "number">
-              <Image src = "/2.@2x.png" id="img-txz" alt="header"  style={{position: "relative", width: "50%",height: "50%",}}/> 
-              </div> */}
-              <div className = "text">
-              <h6 style={{color:" #26409A ",fontSize: width>960 ? "22px" : "20px"}}><strong>2、“0 门槛参与要求”，帮助小白完成自我提升</strong></h6>
-              <p style = {{color:"black",lineHeight:"27px",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "20px" : "16px",letterSpacing:"0.3px",textIndent:"0",paddingTop:width > 1000? "20px" : "15px",paddingLeft:width>750 ? "7px" : "5px",paddingRight:width>750 ? "10px" : "5px"}}>
-              就算是没有经验的投资小白也不用担心，UFA 将在比赛全程陪伴你，无论是指导撰写投资笔记并生成属于自己的投资报告，还是定期邀请金融专家深度解析市场走向，我们将会全力为你的成长助力，帮你实现人生新高度！
-              </p>
-                
-              </div>
-              <div>
-              <Image src = "组 50(3).png" id="img-txz" alt="header"  style={{position: "relative",marginLeft:"10px",marginTop:"20px", width: "115%",height: "70%",}}/>
-              
-              </div>
-              
-            </div>
+              <div style={{ marginTop: "200px" }}>
+                <div className="flex-between">
+                  <div className="image-left">
+                    <div className="image-left-icon-bottom">
+                      <Image
+                        src="/homeCutout/Group 61.png"
+                        style={{ width: "108px", height: "108px" }}
+                      />
+                    </div>
 
-            <div className="box">
-              {/* <div className = "number">
-              <Image src = "/3.@2x.png" id="img-txz" alt="header"  style={{position: "relative", width: "60%",height: "50%",}}/>
-              </div> */}
-              <div className = "text">
-              <h6 style={{color:" #26409A ",fontSize: width>960 ? "22px" : "20px"}}><strong>3、“汇聚顶尖金融精英”，助你迅速拓展人脉圈</strong></h6>
-              <p style = {{color:"black",lineHeight:"27px",fontFamily:"MicrosoftYaHeiUI",fontSize: width>960 ? "20px" : "16px",letterSpacing:"0.3px",textIndent:"0",paddingTop:width > 1000? "20px" : "15px",paddingLeft:width>750 ? "7px" : "5px",paddingRight:width>750 ? "10px" : "5px"}}>
-              相遇即机遇，我们联结了来自全球最顶尖大学的华人金融精英，他们可能是你未来并肩作战的同事，或是雇主，或是可靠的商业伙伴，亦或是投资人。我们丰富的线上/线下活动将为选手间进行深度交流提供绝佳机会，帮助你快速提升软技能！    
-              </p>    
+                    <div
+                      style={{
+                        width: "600px",
+                        height: "480px",
+                        border: "1px solid #3C5E78",
+                      }}
+                    ></div>
+                    <div className="image-left-icon-top">
+                      <Image
+                        src="/homeCutout/Rectangle 21.png"
+                        style={{ width: "12px", height: "12px" }}
+                      />
+                    </div>
+                  </div>
+                  <div className=" message-right">
+                    <div className="message-title">
+                      “0 门槛参与要求”，帮助小白完成自我提升
+                    </div>
+                    <span className="message-icon">
+                      <Image
+                        src="/homeCutout/Group 21.png"
+                        style={{ width: "49px", height: "3px" }}
+                      />
+                    </span>
+                    <div className="message-content">
+                      就算是没有经验的投资小白也不用担心，UFA
+                      将在比赛全程陪伴你，无论是指导撰写投资笔记并生成属于自己的投资报告，还是定期邀请金融专家深度解析市场走向，我们将会全力为你的成长助力，帮你实现人生新高度！
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div>
-              <Image src = "组 50(2).png" id="img-txz" alt="header"  style={{position: "relative",marginLeft:"10px",marginTop:"10px", width: "100%",height: "65%",}}/>
-              
-              </div>
-              
-            </div>
 
-            
-
-        </>)
-        :
-        (<>
-        <div className ="box2">
-          <Row>
-          <Col xs ={6}>
-          <Image src = "/1.@2x.png" id="img-txz" alt="header"  style={{position: "relative", left:"70%", top:"25%",  width: "30%",height: "40%",}}/>
-          </Col>
-        
-          <Col xs ={6}>
-          <Image src = "组 50@2x(1).png" id="img-txz" alt="header"  style={{position: "relative", width: "50%",height: "85%",}}/>
-          </Col>
-          </Row>
-          <div className = "text">
-              <h6 style={{color:" #26409A ",fontSize:"22px",textAlign:"center",alignItems:"center"}}>“权威金融竞赛证书”为你加强背景与竞争力</h6>
-              <p style = {{color:"black",fontFamily:"MicrosoftYaHeiUI",fontSize: "20px",letterSpacing:"0.3px",textIndent:"0",paddingTop:width > 1000? "30px" : "20px",paddingLeft:width>750 ? "10px" : "5px",paddingRight:width>750 ? "10px" : "5px"}}>
-              赛事证书由 UFA，中信证券，以及清华大学联合签署。表现优异的前 30%参赛选手将收获主办方颁发的官方证书，为你的简历增添亮点，丰富金融专业背景，帮助你从同龄人中迅速脱颖而出！     
-              </p>
-                
+              <div style={{ marginTop: "200px" }}>
+                <div className="flex-between">
+                  <div className=" message-left">
+                    <div className="message-title">
+                      “汇聚顶尖金融精英”，助你迅速拓展人脉圈
+                    </div>
+                    <span className="message-icon">
+                      <Image
+                        src="/homeCutout/Group 21.png"
+                        style={{ width: "49px", height: "3px" }}
+                      />
+                    </span>
+                    <div className="message-content">
+                      相遇即机遇，我们联结了来自全球最顶尖大学的华人金融精英，他们可能是你未来并肩作战的同事，或是雇主，或是可靠的商业伙伴，亦或是投资人。我们丰富的线上/线下活动将为选手间进行深度交流提供绝佳机会，帮助你快速提升软技能！
+                    </div>
+                  </div>
+                  <div className="flex-center image-right">
+                    <div className="image-right-icon-top">
+                      <Image
+                        src="/homeCutout/Rectangle 21.png"
+                        style={{ width: "12px", height: "12px" }}
+                      />
+                    </div>
+                    <div
+                      style={{
+                        width: "600px",
+                        height: "480px",
+                        border: "1px solid #3C5E78",
+                      }}
+                    ></div>
+                    <div className="image-right-icon-bottom">
+                      <Image
+                        src="/homeCutout/Group 25.png"
+                        style={{ width: "108px", height: "108px" }}
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
+            </>
+          ) : (
+            <>
+              <div className="box2">
+                <Row>
+                  <Col xs={6}>
+                    <Image
+                      src="/1.@2x.png"
+                      id="img-txz"
+                      alt="header"
+                      style={{
+                        position: "relative",
+                        left: "70%",
+                        top: "25%",
+                        width: "30%",
+                        height: "40%",
+                      }}
+                    />
+                  </Col>
+
+                  <Col xs={6}>
+                    <Image
+                      src="组 50@2x(1).png"
+                      id="img-txz"
+                      alt="header"
+                      style={{
+                        position: "relative",
+                        width: "50%",
+                        height: "85%",
+                      }}
+                    />
+                  </Col>
+                </Row>
+                <div className="text">
+                  <h6
+                    style={{
+                      color: " #26409A ",
+                      fontSize: "22px",
+                      textAlign: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    “权威金融竞赛证书”为你加强背景与竞争力
+                  </h6>
+                  <p
+                    style={{
+                      color: "black",
+                      fontFamily: "MicrosoftYaHeiUI",
+                      fontSize: "20px",
+                      letterSpacing: "0.3px",
+                      textIndent: "0",
+                      paddingTop: width > 1000 ? "30px" : "20px",
+                      paddingLeft: width > 750 ? "10px" : "5px",
+                      paddingRight: width > 750 ? "10px" : "5px",
+                    }}
+                  >
+                    赛事证书由 UFA，中信证券，以及清华大学联合签署。表现优异的前
+                    30%参赛选手将收获主办方颁发的官方证书，为你的简历增添亮点，丰富金融专业背景，帮助你从同龄人中迅速脱颖而出！
+                  </p>
+                </div>
+              </div>
+              <hr />
+
+              <div className="box2">
+                <Row>
+                  <Col xs={6}>
+                    <Image
+                      src="/2.@2x.png"
+                      id="img-txz"
+                      alt="header"
+                      style={{
+                        position: "relative",
+                        left: "70%",
+                        top: "25%",
+                        width: "30%",
+                        height: "70%",
+                      }}
+                    />
+                  </Col>
+
+                  <Col xs={6}>
+                    <Image
+                      src="组 50(3).png"
+                      id="img-txz"
+                      alt="header"
+                      style={{
+                        position: "relative",
+                        width: "70%",
+                        height: "100%",
+                      }}
+                    />
+                  </Col>
+                </Row>
+                <br />
+                <div className="text">
+                  <h6
+                    style={{
+                      color: " #26409A ",
+                      fontSize: "22px",
+                      textAlign: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    “0门槛”参与要求，帮助小白完成自我提升
+                  </h6>
+                  <p
+                    style={{
+                      color: "black",
+                      fontFamily: "MicrosoftYaHeiUI",
+                      fontSize: "20px",
+                      letterSpacing: "0.3px",
+                      textIndent: "0",
+                      paddingTop: width > 1000 ? "30px" : "20px",
+                      paddingLeft: width > 750 ? "10px" : "5px",
+                      paddingRight: width > 750 ? "10px" : "5px",
+                    }}
+                  >
+                    就算是没有经验的投资小白也不用担心，UFA
+                    将在比赛全程陪伴你，无论是指导撰写投资笔记并生成属于自己的投资报告，还是定期邀请金融专家深度解析市场走向，我们将会全力为你的成长助力，帮你实现人生新高度！
+                  </p>
+                </div>
+              </div>
+              <hr />
+
+              <div className="box2">
+                <Row>
+                  <Col xs={6}>
+                    <Image
+                      src="/3.@2x.png"
+                      id="img-txz"
+                      alt="header"
+                      style={{
+                        position: "relative",
+                        left: "70%",
+                        top: "25%",
+                        width: "30%",
+                        height: "60%",
+                      }}
+                    />
+                  </Col>
+
+                  <Col xs={6}>
+                    <Image
+                      src="组 50(2).png"
+                      id="img-txz"
+                      alt="header"
+                      style={{
+                        position: "relative",
+                        width: "80%",
+                        height: "90%",
+                      }}
+                    />
+                  </Col>
+                </Row>
+                <br />
+                <div className="text">
+                  <h6
+                    style={{
+                      color: " #26409A ",
+                      fontSize: "22px",
+                      textAlign: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    免费求职指导，清晰金融职业目标与规划
+                  </h6>
+                  <p
+                    style={{
+                      color: "black",
+                      fontFamily: "MicrosoftYaHeiUI",
+                      fontSize: "20px",
+                      letterSpacing: "0.3px",
+                      textIndent: "0",
+                      paddingTop: width > 1000 ? "30px" : "20px",
+                      paddingLeft: width > 750 ? "10px" : "5px",
+                      paddingRight: width > 750 ? "10px" : "5px",
+                    }}
+                  >
+                    相遇即机遇，我们联结了来自全球最顶尖大学的华人金融精英，他们可能是你未来并肩作战的同事，或是雇主，或是可靠的商业伙伴，亦或是投资人。我们丰富的线上/线下活动将为选手间进行深度交流提供绝佳机会，帮助你快速提升软技能！
+                  </p>
+                </div>
+              </div>
+            </>
+          )}
         </div>
-        <hr/>
-
-        <div className ="box2">
-          <Row>
-          <Col xs ={6}>
-          <Image src = "/2.@2x.png" id="img-txz" alt="header"  style={{position: "relative", left:"70%", top:"25%",  width: "30%",height: "70%",}}/>
-          
-          </Col>
-        
-          <Col xs ={6}>
-          <Image src = "组 50(3).png" id="img-txz" alt="header"  style={{position: "relative", width: "70%",height: "100%",}}/>
-          </Col>
-          </Row>
-          <br/>
-          <div className = "text">
-              <h6 style={{color:" #26409A ",fontSize:"22px",textAlign:"center",alignItems:"center"}}>“0门槛”参与要求，帮助小白完成自我提升</h6>
-              <p style = {{color:"black",fontFamily:"MicrosoftYaHeiUI",fontSize: "20px",letterSpacing:"0.3px",textIndent:"0",paddingTop:width > 1000? "30px" : "20px",paddingLeft:width>750 ? "10px" : "5px",paddingRight:width>750 ? "10px" : "5px"}}>
-              就算是没有经验的投资小白也不用担心，UFA 将在比赛全程陪伴你，无论是指导撰写投资笔记并生成属于自己的投资报告，还是定期邀请金融专家深度解析市场走向，我们将会全力为你的成长助力，帮你实现人生新高度！   
-              </p>
-                
-              </div>
-        </div>
-        <hr/>
-
-
-        <div className ="box2">
-          <Row>
-          <Col xs ={6}>
-          <Image src = "/3.@2x.png" id="img-txz" alt="header"  style={{position: "relative", left:"70%", top:"25%",  width: "30%",height: "60%",}}/>
-          </Col>
-        
-          <Col xs ={6}>
-          <Image src = "组 50(2).png" id="img-txz" alt="header"  style={{position: "relative", width: "80%",height: "90%",}}/>
-          
-          </Col>
-          </Row>
-          <br/>
-          <div className = "text">
-              <h6 style={{color:" #26409A ",fontSize:"22px",textAlign:"center",alignItems:"center"}}>免费求职指导，清晰金融职业目标与规划</h6>
-              <p style = {{color:"black",fontFamily:"MicrosoftYaHeiUI",fontSize: "20px",letterSpacing:"0.3px",textIndent:"0",paddingTop:width > 1000? "30px" : "20px",paddingLeft:width>750 ? "10px" : "5px",paddingRight:width>750 ? "10px" : "5px"}}>
-              相遇即机遇，我们联结了来自全球最顶尖大学的华人金融精英，他们可能是你未来并肩作战的同事，或是雇主，或是可靠的商业伙伴，亦或是投资人。我们丰富的线上/线下活动将为选手间进行深度交流提供绝佳机会，帮助你快速提升软技能！
-              </p>
-                
-              </div>
-        </div>
-        </>)
-      }
-        </div>
-        </div>
-
-
-
+      </div>
     </div>
   );
 };

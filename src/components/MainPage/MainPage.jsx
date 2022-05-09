@@ -6,6 +6,7 @@ import Aboutus from "../webpage/Aboutus/about-us";
 import Contacts from "../webpage/Contacts/contacts";
 import Footer from "./footer";
 import Review from "../webpage/previousReview/previousreview";
+import Executive from "../webpage/Executive/executive";
 import ReactPlayer from 'react-player';
 import Image from 'react-bootstrap/Image';
 import Team from "../webpage/Team/team";
@@ -34,9 +35,11 @@ export default function MainPage() {
                <Image src = "/UFAlogo.jpg" title="UFA Logo" id="img-txz" alt="header"  roundedCircle  style={{ position: "relative", marginTop:"0.8vh", width: "8vh", height: "8vh",}}/>
                </div>
             </div>   */}
-            <NavbarCreate toggle = {toggle} />
-            {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>):(<></>)}
+            {/* 隐藏头部导航 */}
+            {/* <NavbarCreate toggle = {toggle} /> */}
+            {/* {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>):(<></>)} */}
             <div  className ="main-page-center">
+            
             
                   <Cover /> 
                
@@ -47,7 +50,10 @@ export default function MainPage() {
              <div  id ="team">
                 <Team />
              </div>
-             <div id ="review">
+             <div  id ="executive">
+                <Executive />
+             </div>
+             <div id ="review" style={{background:"#F5F6F8"}}>
                <Review/> 
              </div>
              <div id ="contactus">

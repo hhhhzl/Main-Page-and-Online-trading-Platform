@@ -2,7 +2,7 @@ import React,{useState, useEffect} from "react";
 import { Row,Col,Card,Container, Form, Image} from "react-bootstrap";
 import { Bookmark } from "@material-ui/icons";
 import useWindowDimensions from "../../../../utils/sizewindow";
-import AreaChart from "../../graphs/AreaChart";
+import AreaChart from "../../graphs/areaChart";
 
 export default function UserBalancePorfolio({props}){
     const {width,height} = useWindowDimensions();
