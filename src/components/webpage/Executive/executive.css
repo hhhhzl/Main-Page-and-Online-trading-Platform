@@ -1,0 +1,187 @@
+.team-center-block {
+  width: 70%;
+  height: max-content;
+  margin-left: 15%;
+
+}
+
+
+.team-intro-block {
+  /* width: 61.8%; */
+  height: max-content;
+  margin: 0px 18.75%;
+
+}
+
+.image-wrapper {
+  width: 79.091%;
+  height: 92.329%;
+  position: relative;
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
+}
+
+.bottom-shadow {
+  padding: 41px 0px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: absolute;
+  /* top: 0px; */
+  left: 10%;
+  bottom: 0px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.school {
+  font-size: 14px;
+  font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+  font-weight: 400;
+  color: #FFFFFF;
+  line-height: 16px;
+}
+
+.name {
+  font-size: 20px;
+  font-family: Microsoft YaHei UI-Bold, Microsoft YaHei UI;
+  font-weight: bold;
+  color: #FFFFFF;
+  line-height: 23px;
+  padding-top: 12px;
+}
+
+.colored-team {
+  background: #F5F6F8;
+}
+
+.advisor-box {
+  background-color: #24557E;
+  text-align: center;
+  width: 94%;
+  margin-left: 3%;
+  height: 180px;
+}
+
+.position {
+  margin-top: -30px;
+}
+
+.ad-box {
+  align-items: center;
+  margin: 3% 0 3% 0%;
+  height: max-content;
+  transform: translate(0%, 0%);
+  z-index: 2;
+  padding: 15px;
+
+}
+
+@media screen and (max-width: 1500px) {
+
+  .bottom-shadow {
+    padding: 0px 0px 15px 15px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+
+  .team-intro-block {
+    width: 70%;
+    height: max-content;
+    margin-left: 15%;
+  }
+
+  .name {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .team-center-block {
+    width: 80%;
+    height: max-content;
+    margin-left: 10%;
+
+  }
+
+  .team-intro-block {
+    width: 80%;
+    height: max-content;
+    margin-left: 10%;
+
+  }
+
+  .name {
+    padding-top: 8px;
+    font-size: 16px;
+  }
+
+  .school {
+    font-size: 12px;
+  }
+
+}
+
+@media screen and (max-width: 800px) {
+  .advisor-box {
+    background-color: #24557E;
+    text-align: center;
+    width: 95%;
+    margin-left: 5%;
+    height: max-content;
+  }
+
+  .team-intro-block {
+    width: 90%;
+    height: max-content;
+    margin-left: 5%;
+
+  }
+
+  .name {
+    padding-top: 4px;
+    font-size: 14px;
+  }
+
+  .school {
+    font-size: 12px;
+  }
+
+  .bottom-shadow {
+    padding: 0px 0px 8px 8px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .team-center-block {
+    width: 92%;
+    height: max-content;
+    margin-left: 4%;
+
+  }
+
+  .team-intro-block {
+    width: 92%;
+    height: max-content;
+    margin-left: 4%;
+
+  }
+
+
+  .name {
+    padding-top: 2px;
+    font-size: 12px;
+  }
+
+  .school {
+    font-size: 12px;
+  }
+
+  .bottom-shadow {
+    padding: 0px 0px 4px 4px;
+  }
+
+
+}

@@ -3,6 +3,7 @@ import "./footer.css";
 
 const Footer = () => (
   <footer>
+    {/* <div className="line"></div> */}
     <div>
       <br />
       <br />

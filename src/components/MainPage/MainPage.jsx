@@ -1,4 +1,4 @@
-import {React,useState, useEffect} from "react";
+import { React, useState, useEffect } from "react";
 import { Navbar } from "react-bootstrap";
 import Cover from "../webpage/Cover/cover";
 import Navigation from "./navigation";
@@ -6,56 +6,96 @@ import Aboutus from "../webpage/Aboutus/about-us";
 import Contacts from "../webpage/Contacts/contacts";
 import Footer from "./footer";
 import Review from "../webpage/previousReview/previousreview";
-import ReactPlayer from 'react-player';
-import Image from 'react-bootstrap/Image';
+import Executive from "../webpage/Executive/executive";
+import ReactPlayer from "react-player";
+import Image from "react-bootstrap/Image";
 import Team from "../webpage/Team/team";
 import NavbarCreate from "./nav";
 import Sidebar from "./Sidebar";
 import { ClassNames } from "@emotion/react";
-
-
+import Fade from "react-reveal/Fade";
 
 export default function MainPage() {
-    const [isOpen, setIsOpen] = useState(false)
+  const [show, setShow] = useState(false);
 
-    const toggle = () => {
-        setIsOpen(!isOpen)
-    }
+  const [isOpen, setIsOpen] = useState(false);
 
-    useEffect(() => {
-        console.log(isOpen)
-        setIsOpen(isOpen)
-    }, [isOpen])
-    
-    return (
-        <> 
-            {/* <div id="home" className="fix-bar">
+  const [scrolledDownEnough, setScrolledDownEnough] = useState(false);
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const delay = () => {
+    setTimeout(() => {
+      !show && setShow(!show);
+    }, 500);
+  };
+  delay();
+  useEffect(() => {
+    const handleScroll = () => {
+      const bodyScrollTop =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      const scrolledDownEnough = 85 < bodyScrollTop ? true : false;
+      setScrolledDownEnough(scrolledDownEnough);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [scrolledDownEnough]);
+
+  useEffect(() => {
+    console.log(isOpen);
+    setIsOpen(isOpen);
+  }, [isOpen]);
+
+  return (
+    <>
+      {/* <div id="home" className="fix-bar">
              <div className="text-center">   
                <Image src = "/UFAlogo.jpg" title="UFA Logo" id="img-txz" alt="header"  roundedCircle  style={{ position: "relative", marginTop:"0.8vh", width: "8vh", height: "8vh",}}/>
                </div>
             </div>   */}
-            <NavbarCreate toggle = {toggle} />
-            {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>):(<></>)}
-            <div  className ="main-page-center">
-            
-                  <Cover /> 
-               
-            <div className = "about-us-page"> 
-             <div  id="aboutus">
-             <Aboutus/>  
-             </div>
-             <div  id ="team">
-                <Team />
-             </div>
-             <div id ="review">
-               <Review/> 
-             </div>
-             <div id ="contactus">
-                <Contacts/>  
-             </div>                
+      {/* 隐藏头部导航 */}
+      {/* <NavbarCreate toggle = {toggle} /> */}
+      {/* {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>):(<></>)} */}
+      <div className="main-page-center">
+        <Cover />
+        <div className="about-us-page">
+          <Fade bottom when={show}>
+            <div id="aboutus">
+              <Aboutus />
             </div>
+          </Fade>
+
+          <Fade bottom when={scrolledDownEnough}>
+            <div id="team">
+              <Team />
             </div>
-            <Footer/>
-        </>
-    );
+          </Fade>
+
+          <Fade bottom when={scrolledDownEnough}>
+            <div id="executive">
+              <Executive />
+            </div>
+          </Fade>
+
+          <Fade bottom when={scrolledDownEnough}>
+            <div id="review" style={{ background: "#F5F6F8" }}>
+              <Review />
+            </div>
+          </Fade>
+
+          <Fade bottom when={scrolledDownEnough}>
+            <div id="contactus">
+              <Contacts />
+            </div>
+          </Fade>
+        </div>
+      </div>
+      <Fade bottom when={scrolledDownEnough}>
+        <Footer />
+      </Fade>
+    </>
+  );
 }

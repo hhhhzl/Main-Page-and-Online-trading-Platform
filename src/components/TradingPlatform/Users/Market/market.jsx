@@ -9,7 +9,7 @@ import '../../eplatform.css'
 import UserHolding from '../../screen/UserHolding';
 import MarketTopGains from '../../screen/MarketTopGainStocks';
 import MarketStockSearch from '../../screen/MarketStockSearch';
-import AreaChart from '../../graphs/AreaChart';
+import AreaChart from '../../graphs/areaChart';
 
 export default function UserMarket() {
     const {width,height} = useWindowDimensions();

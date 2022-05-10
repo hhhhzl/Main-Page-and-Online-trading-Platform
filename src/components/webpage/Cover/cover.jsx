@@ -1,18 +1,31 @@
 import React from "react";
-import Image from 'react-bootstrap/Image';
-import Button from 'react-bootstrap/Button'
+import Image from "react-bootstrap/Image";
+import Button from "react-bootstrap/Button";
 import "./cover.css";
-import ArrowDropDownCircleIcon from '@material-ui/icons/ArrowDropDownCircle';
+import ArrowDropDownCircleIcon from "@material-ui/icons/ArrowDropDownCircle";
 import useWindowDimensions from "../../../utils/sizewindow";
+import { Link } from "react-router-dom";
 
-
-  
+import HeaderCreate from "../../MainPage/header";
 
 export default function Cover() {
-  const {width,height} = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   return (
-  <div id="home" className="cover animated">
-    {width > 600 ? <Image
+    <div
+      id="home"
+      className="cover animated"
+      style={{
+        background:
+          width > 1920
+            ? "url('/Banner@2x.png') center center / 100% no-repeat"
+            : "url('/Banner.png') center center / 100%  no-repeat",
+        width: width,
+        height: width / 2.67,
+      }}
+    >
+      <HeaderCreate />
+
+      {/* {width > 600 ? <Image
       src = "/background2.jpg"   
       style={{
         position: "relative",
@@ -30,28 +43,76 @@ export default function Cover() {
         height: width/2.18
       }}
     />
-    }
-    
-    <div className="overlay" />
-       
-    {/* <div className="center">
-      <p className="greetings">
-        <span><strong style={{color:"#FF4500"}}>U</strong> n d e r a d u a t e</span>{' '}{' '}
-        <span><strong style={{color:"#FF4500"}}>F</strong> i n a n c e</span>{' '}
-        <span><strong style={{color:"#FF4500"}}>A</strong> s s o i a t i o n</span>{' '}
+    } */}
 
-        </p>
-        <br/>
-      <h1 className="name">
-         UFA金融协会
-      </h1>
-      
-    </div> */}
-    <div className="arrow animated bounceInDown" style={{top:width > 600 ? width/3.7 + height*0.08 : width/2.9 + height*0.08, left:width/2-85}}>
+      <div className="overlay" />
 
-    <Button className="round-Button" variant="primary" 
-    style={{backgroundColor:"#FF6347",fontSize:"18px",paddingLeft:"30px",paddingRight:"30px",color:"white",fontFamily:"MicrosoftYaHei",letterSpacing:"3px"}} size='sm'>报名赛事</Button>
+      {/* <div className="center">
+        <div
+          className="greetings"
+          style={{
+            fontSize: width * 0.01458,
+          }}
+        >
+          <div className="left-angle"></div>
+          <div className="wrapper">
+            <span>
+              <strong style={{ color: "#FFFFFF" }}>U</strong>NDERGRADUATE
+            </span>
+            <span>
+              <strong style={{ color: "#FFFFFF", marginLeft: "10px" }}>
+                F
+              </strong>
+              INANCE
+            </span>
+            <span>
+              <strong style={{ color: "#FFFFFF", marginLeft: "10px" }}>
+                A
+              </strong>
+              SSOCIATION
+            </span>
+          </div>
+          <div className="right-angle"></div>
+        </div>
+
+        <div
+          className="name"
+          style={{
+            letterSpacing: width * 0.0083 + "px",
+          }}
+        >
+          <span
+            style={{
+              fontSize: width * 0.0869,
+              lineHeight: width * 0.102 + "px",
+            }}
+          >
+            UFA
+          </span>
+          <span
+            style={{
+              marginLeft: "30px",
+              fontSize: width * 0.0729,
+              lineHeight: width * 0.0854 + "px",
+              fontFamily: "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+            }}
+          >
+            金融协会
+          </span>
+        </div>
+      </div> */}
+
+      <div
+        className="arrow animated bounceInDown"
+        style={{
+          bottom: width * 0.0963,
+          // left:width * 0.4854
+        }}
+      >
+        <Button className="join-match-btn" variant="primary" size="sm">
+          报名参赛
+        </Button>
+      </div>
     </div>
-  </div>
-  )
-};
+  );
+}
