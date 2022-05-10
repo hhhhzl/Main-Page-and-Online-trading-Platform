@@ -11,7 +11,7 @@ export default function Executive() {
   const { width, height } = useWindowDimensions();
 
   return (
-    <div className="section" style={{ paddingTop: "120px" }}>
+    <div className="section" style={{ padding: "120px 0px" }}>
       <div className="text-center">
         <Image
           src="/homeCutout/Group 71.png"

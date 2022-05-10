@@ -21,14 +21,19 @@ const HeaderCreate = ({ toggle }) => {
   const [show, setShow] = useState(false);
   const [box, setbox] = useState(height * 0.09);
 
+  const [hover, setHover] = useState(false);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handleMouseOver = () => setHover(true);
+  const handleMouseLeave = () => setHover(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const bodyScrollTop =
         document.documentElement.scrollTop || document.body.scrollTop;
-      const scrolledDownEnough = bodyScrollTop > 85 ? true : false;
+      const scrolledDownEnough = 85 < bodyScrollTop ? true : false;
       setScrolledDownEnough(scrolledDownEnough);
     };
 
@@ -47,21 +52,41 @@ const HeaderCreate = ({ toggle }) => {
           </Modal.Body>
         </Modal>
       </div>
-      <HeaderOut scrolledDownEnough={scrolledDownEnough}>
+      <HeaderOut
+        scrolledDownEnough={scrolledDownEnough}
+        onMouseOver={handleMouseOver}
+        onMouseLeave={handleMouseLeave}
+      >
         <HeaderContianer>
           <div
             className="image-icon"
             style={{ height: "64px", width: "64px", top: 0 }}
           >
-            <Image src={scrolledDownEnough ? "/homeCutout/UFA-LOGO-RED.png" : "/UFA-LOGO.png" } style={{ width: "64px", height: "64px" }} />
+            <Image
+              src={
+                scrolledDownEnough || hover
+                  ? "/homeCutout/UFA-LOGO-RED.png"
+                  : "/UFA-LOGO.png"
+              }
+              style={{ width: "64px", height: "64px" }}
+            />
           </div>
           <HeaderMenu>
             <HeaderItem>
               <HeaderLinks
+                style={{
+                  color: hover || scrolledDownEnough ? "#1442ED" : "#FFFFFF",
+                  borderBottom:
+                    hover || scrolledDownEnough
+                      ? "3px solid #1442ED"
+                      : "3px solid #FFFFFF",
+                }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
                 offset={-50}
-                activeClass={scrolledDownEnough ? 'active-block-scroll' : 'active-block'}
+                activeClass={
+                  scrolledDownEnough ? "active-block-scroll" : "active-block"
+                }
                 to="home"
                 spy={true}
                 smooth={true}
@@ -73,11 +98,16 @@ const HeaderCreate = ({ toggle }) => {
 
             <HeaderItem>
               <HeaderLinks
+                style={{
+                  color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
                 offset={-20}
                 // onClick={handleShow}
-                activeClass={scrolledDownEnough ? 'active-block-scroll' : 'active-block'}
+                activeClass={
+                  scrolledDownEnough ? "active-block-scroll" : "active-block"
+                }
                 // to="aboutus"
                 spy={true}
                 smooth={true}
@@ -88,12 +118,17 @@ const HeaderCreate = ({ toggle }) => {
             </HeaderItem>
             <HeaderItem>
               <HeaderLinks
+                style={{
+                  color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
                 offset={-20}
                 // onClick={handleShow}
-                activeClass={scrolledDownEnough ? 'active-block-scroll' : 'active-block'}
-                to="team"
+                activeClass={
+                  scrolledDownEnough ? "active-block-scroll" : "active-block"
+                }
+                // to="team"
                 spy={true}
                 smooth={true}
                 duration={700}
@@ -103,12 +138,17 @@ const HeaderCreate = ({ toggle }) => {
             </HeaderItem>
             <HeaderItem>
               <HeaderLinks
+                style={{
+                  color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
                 offset={-20}
                 // onClick={handleShow}
-                activeClass={scrolledDownEnough ? 'active-block-scroll' : 'active-block'}
-                to="review"
+                activeClass={
+                  scrolledDownEnough ? "active-block-scroll" : "active-block"
+                }
+                // to="review"
                 spy={true}
                 smooth={true}
                 duration={700}
@@ -116,13 +156,14 @@ const HeaderCreate = ({ toggle }) => {
                 交易平台
               </HeaderLinks>
             </HeaderItem>
-
-            
           </HeaderMenu>
 
           <HeaderBtn>
-          <HeaderItem>
+            <HeaderItem>
               <HeaderBtnLink
+                style={{
+                  color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
                 to="/register"
@@ -140,19 +181,27 @@ const HeaderCreate = ({ toggle }) => {
                   className="round-Button"
                   variant="primary"
                   style={{
-                    background: "#FFFFFF",
-                    border:"none",
-                    color: "#2A2B30",
+                    background:
+                      hover || scrolledDownEnough
+                        ? "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)"
+                        : "#FFFFFF",
+                    border: "none",
+                    color: hover || scrolledDownEnough ? "#FFFFFF" : "#2A2B30",
                     fontFamily: "PingFang SC-Medium, PingFang SC",
                     letterSpacing: "3px",
                     paddingBottom: "0",
-                    padding:"10px 32px",
+                    padding: "10px 32px",
                     fontWeight: "600",
                   }}
                   size="sm"
                 >
-                  <h5 style={{ fontSize: width > 900 ? "14px" : "12px",margin:'0px' }}>
-                    登录
+                  <h5
+                    style={{
+                      fontSize: width > 900 ? "14px" : "12px",
+                      margin: "0px",
+                    }}
+                  >
+                    登陆
                   </h5>
                 </Button>
               </HeaderBtnLink>
