@@ -1,295 +1,329 @@
-import React,{ useState} from "react";
+import React, { useState } from "react";
 import "./contacts.css";
-import Image from 'react-bootstrap/Image';
-import Button from 'react-bootstrap/Button';
-import { Row,Container,Col, Form } from "react-bootstrap";
+import Image from "react-bootstrap/Image";
+import Button from "react-bootstrap/Button";
+import { Row, Container, Col, Form } from "react-bootstrap";
 import { Bookmark } from "@material-ui/icons";
 import useWindowDimensions from "../../../utils/sizewindow";
 
-
 const Contacts = () => {
   const [validated, setValidated] = useState(false);
-  const {width,height} = useWindowDimensions();
-
+  const { width, height } = useWindowDimensions();
 
   return (
-    <div className="section">
-      <br/>
-      <h3 className="text-center" style={{color:"#AEAEAE",fontSize:"30px"}}>CONTACT US</h3>
-      <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"30px",letterSpacing:"3px"}}><Bookmark/>{" "}<strong>合作联系</strong></h5>
-      <br/>
-      <br/>
+    <div className="section" style={{ padding: "120px 0px 0px 0px" }}>
+      <div className="text-center">
+        <Image
+          src="/homeCutout/Group 81.png"
+          style={{ width: "248px", height: "79px" }}
+        />
+      </div>
       <div className="bottom-cover-picture animated">
-        {width > 700 ?
-        (<>
-        <Image
-      src = "/corpo.png"
-      title="Cover image"
-      alt="views in the World"     
-      style={{
-        position: "relative",
-        left: 0,
-        top: 0,
-        width: width,
-        height:  width/2.876,
-      }}
-    />
-        </>)
-        :
-        (<>
-        <Image
-      src = "/corpo600.png"
-      title="Cover image"
-      alt="views in the World"     
-      style={{
-        position: "relative",
-        left: 0,
-        top: 0,
-        width: width * 0.96,
-        height:(width * 0.96)/1.435,
-      }}
-    />
-        </>
-        )
-        }
-    
-    <div className="overlay" />
-
-    
-      {/* <div className="text-center">
-        <h5 style={{color:"white"}}>UFA核心团队也招贤纳士</h5>
-        <br/>
-        <p style={{color:"white"}}>
-          我们欢迎有想法、有野心、有资源、有公众号排版技能的同学加入，成为合伙人，享受一切UFA资源，为你的简历增贴色彩！
-        </p>
-        <hr/>
-        </div> */}
-       
-    
-    
-  </div>
-
-  <div className='cover-corperation'>
-    <br/>
-    <div className="section">
-    <h3 className="text-center" style={{color:"#AEAEAE"}}>COOPERATION</h3>
-      <h5 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"25px",letterSpacing:"3px"}}><Bookmark/>{" "}<strong>合作伙伴</strong></h5>
-      <br/>
-
-      <div className="contact-center">
-        {width < 700 ? 
-
-        (<><Col>
-          <div className ="cooperation-box">
-          <Row>
-            <Col xs={4}>
-              <Image src = "/head.jpeg" title="head image" id="img-txz" alt="header" roundedCircle style={{position: "relative", width: "100%",height: "100%",}}/>
-              </Col>
-              <Col xs = {8}>
-                <div>
-                  <h6 style={{color:" #337ab7 "}}></h6><p>
-          “跨界UFA” （论坛小程序，这里人人都是自媒体）   </p>
-        </div>
-        </Col>
-        </Row>
-    
-        </div>
-        </Col>
-        <Col>
-          <div className ="cooperation-box">
-          <Row>
-            <Col xs={4}>
-              <Image src = "/head.jpeg" title="head image" id="img-txz" alt="header" roundedCircle style={{position: "relative", width: "100%",height: "100%",}}/>
-              </Col>
-              <Col xs = {8}>
-                <div>
-                <h6 style={{color:" #337ab7 "}}></h6>
-        <p>
-          “跨界UFA” （论坛小程序，这里人人都 
-        </p>
-        </div>
-        </Col>
-        </Row>
-    
-        </div>
-        </Col>
-        <Col>
-          <div className ="cooperation-box">
-          <Row>
-            <Col xs={4}>
-              <Image src = "/head.jpeg" title="head image" id="img-txz" alt="header" roundedCircle style={{position: "relative", width: "100%",height: "100%",}}/>
-              </Col>
-              <Col xs = {8}>
-                <div>
-                <h6 style={{color:" #337ab7 "}}></h6>
-        <p>
-          “跨界UFA” （论坛小程序，这里人人都 
-        </p>
-        </div>
-        </Col>
-        </Row>
-    
-        </div>
-        </Col>
-        <Col>
-          <div className ="cooperation-box">
-          <Row>
-            <Col xs={4}>
-              <Image src = "/head.jpeg" title="head image" id="img-txz" alt="header" roundedCircle style={{position: "relative", width: "100%",height: "100%",}}/>
-              </Col>
-              <Col xs = {8}>
-                <div>
-                <h6 style={{color:" #337ab7 "}}></h6>
-        <p>
-          “跨界UFA” （论坛小程序，这里人人都 
-        </p>
-        </div>
-        </Col>
-        </Row>
-    
-        </div>
-        </Col>
-        </>)
-        :
-        (<>
         <Row>
+          <Col className="flex-center">
+            <div className="introduction-box">
+              <Row>
+                <div className="box-image flex-center">
+                  <Image
+                    src="/homeCutout/Group 1010.png"
+                    style={{
+                      width:
+                        width > 1500
+                          ? "160px"
+                          : width > 1350
+                          ? "140px"
+                          : width > 960
+                          ? "120px"
+                          : "100px",
+                      height:
+                        width > 1500
+                          ? "160px"
+                          : width > 1350
+                          ? "140px"
+                          : width > 960
+                          ? "120px"
+                          : "100px",
+                    }}
+                  />
+                </div>
 
-<Col>
-<div className ="cooperation-box">
-  <Row>
-  <Col xs={4}>
-<Image src = "/head.jpeg" title="head image" id="img-txz" alt="header" roundedCircle style={{position: "relative", width: "100%",height: "100%",}}/>
-</Col>
-<Col xs = {8}>
-  <div>
-  <h6 style={{color:" #337ab7 "}}></h6>
-        <p>
-          “跨界UFA” （论坛小程序，这里人人都 
-        </p>
-        </div>
-</Col>
-</Row>
-
-</div>
-</Col>
-<Col>
-<div className ="cooperation-box">
-<Row>
-  <Col xs={4}>
-<Image src = "/head.jpeg" title="head image" id="img-txz" alt="header" roundedCircle style={{position: "relative", width: "100%",height: "100%",}}/>
-</Col>
-<Col xs = {8}>
-  <div>
-  <h6 style={{color:" #337ab7 "}}></h6>
-        <p>
-          “跨界UFA” （论坛小程序，这里人人都 
-        </p>
-        </div>
-</Col>
-</Row>
-
-</div>
-</Col>
-</Row>
-
-<Row>
-
-<Col>
-<div className ="cooperation-box">
-<Row>
-  <Col xs={4}>
-<Image src = "/head.jpeg" title="head image" id="img-txz" alt="header" roundedCircle style={{position: "relative", width: "100%",height: "100%",}}/>
-</Col>
-<Col xs = {8}>
-  <div>
-        <h6 style={{color:" #337ab7 "}}></h6>
-        <p>
-          “跨界UFA” （论坛小程序，这里人人都 
-        </p>
-        </div>
-</Col>
-</Row>
-
-</div>
-</Col>
-<Col>
-<div className ="cooperation-box">
-<Row>
-  <Col xs={4}>
-<Image src = "/head.jpeg" title="head image" id="img-txz" alt="header" roundedCircle style={{position: "relative", width: "100%",height: "100%",}}/>
-</Col>
-<Col xs = {8}>
-  <div>
-  <h6 style={{color:" #337ab7 "}}></h6>
-        <p>
-          “跨界UFA” （论坛小程序，这里人人都 
-        </p>
-        </div>
-</Col>
-</Row>
-
-</div>
-</Col>
-</Row>
-        </>)
-        
-      }
-
-      
-    </div>
-    </div>
-  </div>
-
-  <div>
-    <br/>
-    <br/>
-    <div className="section">
-    <h3 className="text-center" style={{color:"black"}}>联系我们</h3>
-      <h4 className="text-center" style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"25px",letterSpacing:"2px"}}>—Contact Us—</h4>
-      <br/>
-      <Form className= "contact-form" noValidate validated={validated} id="addProject">
-        <Form.Group as={Row}>
-          <Col xs={3}>
-            <Form.Control
-              required
-              value={''}
-              placeholder='姓名'
-            ></Form.Control>
-            </Col>
-            <Col xs={3}>
-            <Form.Control
-            required
-              type="number"
-              value={''}
-              placeholder='电话'
-            ></Form.Control>
+                <div>
+                  <div
+                    style={{
+                      color: "#6E7184",
+                      fontWeight: "400",
+                      fontFamily:
+                        "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontSize: width > 960 ? "16px" : "14px",
+                      paddingTop: width > 1000 ? "92px" : "70px",
+                      lineHeight: "28px",
+                    }}
+                  >
+                    “UFA杯” 由UFA与中信证券、清华大学金融协会等联合举办
+                  </div>
+                </div>
+              </Row>
+            </div>
           </Col>
-          <Col xs={3}>
-            <Form.Control
-            required
-              type="number"
-              value={''}
-              placeholder='留言'
-            ></Form.Control>    
+          <Col
+            className="flex-center"
+            style={{ padding: width > 1600 ? "0px 3.91%" : "0px" }}
+          >
+            <div className="introduction-box">
+              <Row>
+                <div className="box-image flex-center">
+                  <Image
+                    src="/homeCutout/Group 1020.png"
+                    style={{
+                      width:
+                        width > 1500
+                          ? "160px"
+                          : width > 1350
+                          ? "140px"
+                          : width > 960
+                          ? "120px"
+                          : "100px",
+                      height:
+                        width > 1500
+                          ? "160px"
+                          : width > 1350
+                          ? "140px"
+                          : width > 960
+                          ? "120px"
+                          : "100px",
+                    }}
+                  />
+                </div>
+                <div className="title"></div>
+                <div>
+                  <div
+                    style={{
+                      color: "#6E7184",
+                      fontWeight: "400",
+                      fontFamily:
+                        "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontSize: width > 960 ? "16px" : "14px",
+                      paddingTop: width > 1000 ? "92px" : "70px",
+                      lineHeight: "28px",
+                    }}
+                  >
+                    “UFA杯” 由UFA与中信证券、清华大学金融协会等联合举办
+                  </div>
+                </div>
+              </Row>
+            </div>
           </Col>
-          <Col xs={2}>
-          <Button
-              variant="danger"
-              style={{width:"100%"}}
-            >
-              提交
-            </Button> 
-            </Col>
-        </Form.Group>
-      </Form>
-    </div>
-    <br/>
-    <br/>
-    <br/>
-    <Image src = "/contact.jpg" title="head image" id="img-txz" alt="contact"  style={{position: "relative", width: "100%",height: "100%",zIndex:1}}/>
-    </div>
+          <Col className="flex-center">
+            <div className="introduction-box">
+              <Row>
+                <div className="box-image flex-center">
+                  <Image
+                    src="/homeCutout/Group 1003.png"
+                    style={{
+                      width:
+                        width > 1500
+                          ? "160px"
+                          : width > 1350
+                          ? "140px"
+                          : width > 960
+                          ? "120px"
+                          : "100px",
+                      height:
+                        width > 1500
+                          ? "160px"
+                          : width > 1350
+                          ? "140px"
+                          : width > 960
+                          ? "120px"
+                          : "100px",
+                    }}
+                  />
+                </div>
 
+                <div>
+                  <div
+                    style={{
+                      color: "#6E7184",
+                      fontWeight: "400",
+                      fontFamily:
+                        "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontSize: width > 960 ? "16px" : "14px",
+                      paddingTop: width > 1000 ? "92px" : "70px",
+                      lineHeight: "28px",
+                    }}
+                  >
+                    “UFA杯” 由UFA与中信证券、清华大学金融协会等联合举办
+                  </div>
+                </div>
+              </Row>
+            </div>
+          </Col>
+        </Row>
+        <Row style={{ marginTop: width > 800 ? "120px" : "0px" }}>
+          <Col className="flex-center">
+            <div className="introduction-box">
+              <Row>
+                <div className="box-image flex-center">
+                  <Image
+                    src="/homeCutout/Group 1001.png"
+                    style={{
+                      width:
+                        width > 1500
+                          ? "160px"
+                          : width > 1350
+                          ? "140px"
+                          : width > 960
+                          ? "120px"
+                          : "100px",
+                      height:
+                        width > 1500
+                          ? "160px"
+                          : width > 1350
+                          ? "140px"
+                          : width > 960
+                          ? "120px"
+                          : "100px",
+                    }}
+                  />
+                </div>
 
+                <div>
+                  <div
+                    style={{
+                      color: "#6E7184",
+                      fontWeight: "400",
+                      fontFamily:
+                        "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontSize: width > 960 ? "16px" : "14px",
+                      paddingTop: width > 1000 ? "92px" : "70px",
+                      lineHeight: "28px",
+                    }}
+                  >
+                    “UFA杯” 由UFA与中信证券、清华大学金融协会等联合举办
+                  </div>
+                </div>
+              </Row>
+            </div>
+          </Col>
+          <Col
+            className="flex-center"
+            style={{ padding: width > 800 ? "0px 75px" : "0px" }}
+          >
+            <div className="introduction-box">
+              <Row>
+                <div className="box-image flex-center">
+                  <Image
+                    src="/homeCutout/Group 1002.png"
+                    style={{
+                      width:
+                        width > 1500
+                          ? "160px"
+                          : width > 1350
+                          ? "140px"
+                          : width > 960
+                          ? "120px"
+                          : "100px",
+                      height:
+                        width > 1500
+                          ? "160px"
+                          : width > 1350
+                          ? "140px"
+                          : width > 960
+                          ? "120px"
+                          : "100px",
+                    }}
+                  />
+                </div>
+                <div className="title"></div>
+                <div>
+                  <div
+                    style={{
+                      color: "#6E7184",
+                      fontWeight: "400",
+                      fontFamily:
+                        "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontSize: width > 960 ? "16px" : "14px",
+                      paddingTop: width > 1000 ? "92px" : "70px",
+                      lineHeight: "28px",
+                    }}
+                  >
+                    “UFA杯” 由UFA与中信证券、清华大学金融协会等联合举办
+                  </div>
+                </div>
+              </Row>
+            </div>
+          </Col>
+          <Col className="flex-center">
+            <div className="introduction-box">
+              <Row>
+                <div className="box-image flex-center">
+                  <Image
+                    src="/homeCutout/Group 1003.png"
+                    style={{
+                      width:
+                        width > 1500
+                          ? "160px"
+                          : width > 1350
+                          ? "140px"
+                          : width > 960
+                          ? "120px"
+                          : "100px",
+                      height:
+                        width > 1500
+                          ? "160px"
+                          : width > 1350
+                          ? "140px"
+                          : width > 960
+                          ? "120px"
+                          : "100px",
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <div
+                    style={{
+                      color: "#6E7184",
+                      fontWeight: "400",
+                      fontFamily:
+                        "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontSize: width > 960 ? "16px" : "14px",
+                      paddingTop: width > 1000 ? "92px" : "70px",
+                      lineHeight: "28px",
+                    }}
+                  >
+                    “UFA杯” 由UFA与中信证券、清华大学金融协会等联合举办
+                  </div>
+                </div>
+              </Row>
+            </div>
+          </Col>
+        </Row>
+      </div>
+
+      <div style={{ background: "#F5F6F8" }}>
+        <div className="section" style={{ padding: " 120px 0px" }}>
+          <div className="text-center">
+            <Image
+              src="/homeCutout/Group 127.png"
+              style={{ width: "248px", height: "79px" }}
+            />
+          </div>
+
+          <div className="text-center" style={{ paddingTop: "80px" }}>
+            <div>
+              <Image
+                src="/homeCutout/Group 8100.png"
+                style={{ width: "160px", height: "160px", marginRight: "40px" }}
+              />
+              <Image
+                src="/homeCutout/Group 8100.png"
+                style={{ width: "160px", height: "160px", marginLeft: "40px" }}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

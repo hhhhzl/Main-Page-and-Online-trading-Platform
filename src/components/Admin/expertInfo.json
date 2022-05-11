@@ -1,0 +1,21 @@
+[
+{"id":1,"username":"张三","school":"北京大学","state":"active","email":"10", "phone_number": "12345678923", "type": "U"},
+{"id":2,"username":"里斯","school":"上海大学","state":"active","email":"100", "phone_number": "12345678923", "type": "U"},
+{"id":3,"username":"王五","school":"巴黎大学","state":"active","email":"80", "phone_number": "12345678923", "type": "U"},
+{"id":4,"username":"何","school":"南京大学","state":"active","email":"70", "phone_number": "12345678923", "type": "U"},
+{"id":5,"username":"测试姓名","school":"香港大学","state":"active","email":"40", "phone_number": "12345678923", "type": "U"},
+{"id":6,"username":"yes","school":"北京大学","state":"active","email":"15", "phone_number": "12345678923", "type": "U"},
+{"id":7,"username":"no","school":"北京大学","state":"active","email":"16", "phone_number": "12345678923", "type": "U"},
+{"id":8,"username":"adsdjkh","school":"北京大学","state":"active","email":"10", "phone_number": "12345678923", "type": "U"},
+{"id":9,"username":"啊是","school":"上海大学","state":"active","email":"30", "phone_number": "12345678923", "type": "U"},
+{"id":10,"username":"阿斯顿姐姐哦","school":"巴黎大学","state":"active","email":"80", "phone_number": "12345678923", "type": "U"},
+{"id":11,"username":"擦拭","school":"重庆大学","state":"active","email":"88", "phone_number": "12345678923", "type": "U"},
+{"id":12,"username":"adsdjkh","school":"纽约大学","state":"active","email":"50", "phone_number": "12345678923", "type": "U"},
+{"id":13,"username":"上岛咖啡","school":"北京大学","state":"active","email":"65", "phone_number": "12345678923", "type": "U"},
+{"id":14,"username":"阿斯u的hi","school":"北京大学","state":"active","email":"26", "phone_number": "12345678923", "type": "U"},
+{"id":15,"username":"丁俊晖","school":"重庆大学","state":"active","email":"26", "phone_number": "12345678923", "type": "U"}
+
+
+]
+
+

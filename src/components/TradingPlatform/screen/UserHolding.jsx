@@ -20,6 +20,11 @@ function priceFormatter(column, colIndex) {
   }
 
 export default function UserHolding(){
+    // =========================================================================
+    // should pass the data to props
+    // Its parent component should fetch user holding by user id from the server
+    // =========================================================================
+
     const columns = [
         {
             dataField: 'symbol',

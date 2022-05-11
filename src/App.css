@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Lora|Open+Sans:300,400");
+
 body {
   width: 100%;
   height: 100vh;
@@ -62,7 +63,8 @@ h6 {
   /* to keep footer at bottom of page*/
   position: relative;
   min-height: 100%;
-  padding-bottom: 220px; /* Height of the footer element */
+  padding-bottom: 220px;
+  /* Height of the footer element */
 }
 
 .row {
@@ -72,27 +74,28 @@ h6 {
 a {
   color: #337ab7;
 }
-.image-icon{
+
+.image-icon {
   position: absolute;
 }
 
-.about-us-page{
+.about-us-page {
   width: 100%;
-  height:min-content;
+  height: min-content;
   position: relative;
-  top:8vh;
+  top: 8vh;
   padding-left: 0;
   padding-right: 0;
 }
 
-.fix-bar{
-  display:grid;
+.fix-bar {
+  display: grid;
   width: 100%;
   height: 10vh;
-  background-color:rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
 }
 
-.show-bar{
+.show-bar {
   height: auto;
 }
 
@@ -112,60 +115,104 @@ a {
 
 .player-wrapper {
   position: relative;
-  
-  padding-top: 0% /* Player ratio: 100 / (1280 / 720) */
+
+  padding-top: 0%
+    /* Player ratio: 100 / (1280 / 720) */
 }
 
-.active-block{
-  border-bottom: 5px solid #337ab7;
+.active-block-scroll {
+  border-bottom: 3px solid #1442ED;
+  color: #1442ED !important;
 }
 
-.main-page-center{
+.no-border{
+  border: none;
+}
+
+.active-block-scroll-white {
+  border-bottom: 3px solid #fff;
+  color: #2A2B30 !important;
+}
+
+.active-block-scroll-btn {
+  background: linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%);
+  color: #FFFFFF;
+}
+
+.active-block {
+  border-bottom: 3px solid #fff;
+}
+
+.main-page-center {
   margin-right: 0%;
   margin-left: 0%;
   height: max-content;
 }
 
 
-::-webkit-scrollbar{
-    display:none;
+::-webkit-scrollbar {
+  display: none;
 }
 
-.table{
+.table {
   overflow: auto;
 }
 
-.table-head{
-  position:fixed;
+.table-head {
+  position: fixed;
 }
 
-.auto-main-page{
+.auto-main-page {
   display: grid;
   position: relative;
-  background-color: #ebf2fc;;
+  background-color: #ebf2fc;
+  ;
   gap: 0rem;
 }
 
-.auto-main-market{
+.auto-main-market {
   display: grid;
+<<<<<<< HEAD
   background-color:#ebf2fc;
+=======
+  position: fixed;
+  left: 200px;
+  background-color: #ebf2fc;
+  top: 90px;
+  grid-template-rows: 2fr 3fr 2fr;
+>>>>>>> origin/main
 }
 
-.auto-main-market1{
+.auto-main-market1 {
   display: grid;
   position: relative;
+<<<<<<< HEAD
+=======
+  background-color: black;
+>>>>>>> origin/main
   grid-template-columns: 1fr 1fr 1fr;
   gap:1rem;
   
 }
 
-.auto-main-market2{
+.auto-main-market2 {
   display: grid;
-  background-color:#ebf2fc;
+  background-color: #ebf2fc;
   grid-template-columns: 2fr 5fr;
 }
 
+<<<<<<< HEAD
 .auto-main-market3{
+=======
+.auto-main-market1 {
+  display: grid;
+  position: relative;
+  background-color: black;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.auto-main-market3 {
+>>>>>>> origin/main
   max-width: 93%;
   align-items: stretch;
   height: 80%;
@@ -179,35 +226,35 @@ a {
 
 
 
-.progress-bar{
-    width: 100%;
-    height: calc(100vh - 96px); /* navbar height 96px */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.progress-bar {
+  width: 100%;
+  height: calc(100vh - 96px);
+  /* navbar height 96px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@media screen and (max-width: 1024px){
-  .auto-main-page{
+@media screen and (max-width: 1024px) {
+  .auto-main-page {
     display: grid;
-    margin-top:0px;
+    margin-top: 0px;
     position: relative;
-    background-color:aliceblue;
+    background-color: aliceblue;
     gap: 2rem;
     grid-template-columns: 1fr;
   }
 
 
- 
-  
+
+
 }
 
-@media screen and (max-width: 600px){
-  .main-page-center{
+@media screen and (max-width: 600px) {
+  .main-page-center {
     margin-right: 0%;
     margin-left: 0%;
     height: max-content;
   }
-  
-}
 
+}
