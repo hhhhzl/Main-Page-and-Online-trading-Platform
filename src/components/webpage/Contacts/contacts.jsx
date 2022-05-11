@@ -61,7 +61,7 @@ const Contacts = () => {
               </Row>
             </div>
           </Col>
-          <Col className="flex-center" style={{ padding: "0px 75px" }}>
+          <Col className="flex-center" style={{ padding: width > 800 ? "0px 75px" : '0px' }}>
             <div className="introduction-box">
               <Row>
                 <div className="box-image flex-center">
@@ -144,7 +144,7 @@ const Contacts = () => {
             </div>
           </Col>
         </Row>
-        <Row style={{ marginTop: "120px" }}>
+        <Row style={{ marginTop: width > 800  ?  "120px" : '0px' }}>
           <Col className="flex-center">
             <div className="introduction-box">
               <Row>
@@ -186,7 +186,7 @@ const Contacts = () => {
               </Row>
             </div>
           </Col>
-          <Col className="flex-center" style={{ padding: "0px 75px" }}>
+          <Col className="flex-center" style={{ padding: width > 800 ? "0px 75px" : '0px' }}>
             <div className="introduction-box">
               <Row>
                 <div className="box-image flex-center">
