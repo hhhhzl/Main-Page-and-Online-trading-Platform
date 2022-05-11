@@ -34,7 +34,7 @@ export default function LoginMainLayout({setToken}) {
       src = "/loginback.jpg"    
       style={{
         position: "absolute",
-        left: -500,
+        left: -450,
         top: 0,
         width:width,
         height:"100%"
