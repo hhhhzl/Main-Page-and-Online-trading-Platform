@@ -68,19 +68,19 @@ export default function MainPage() {
             </div>
           </Fade>
 
-          <Fade bottom when={scrolledDownEnough}>
+          <Fade  bottom when={scrolledDownEnough}>
             <div id="team">
               <Team />
             </div>
           </Fade>
 
-          <Fade bottom when={scrolledDownEnough}>
+          <Fade  bottom when={scrolledDownEnough}>
             <div id="executive">
               <Executive />
             </div>
           </Fade>
 
-          <Fade bottom when={scrolledDownEnough}>
+          <Fade  bottom when={scrolledDownEnough}>
             <div id="review" style={{ background: "#F5F6F8" }}>
               <Review />
             </div>

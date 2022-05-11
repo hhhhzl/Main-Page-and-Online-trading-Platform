@@ -29,8 +29,8 @@
   flex-direction: column;
   width: 50%;
   right: 50%;
-  padding-right: 8.33%;
-  padding-left: 5.83%;
+  padding-right: 11.912%;
+  padding-left: 8.785%;
 }
 
 .message-title {
@@ -114,7 +114,7 @@
 
 .content-center {
   width: 70%;
-  margin-left: 15%;
+  margin-left: 17.18%;
   height: max-content;
   position: relative;
 }
@@ -282,7 +282,7 @@
 
 .video-icon {
   position: relative;
-  left: 48px;
+  left: 60px;
 }
 
 .decorate-border {
@@ -304,7 +304,7 @@
   height: 400px;
   transform: translate(0%, 0%);
   z-index: 2;
-  padding: 36px;
+  padding: 30px 36px 36px;
   box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02);
   box-sizing: border-box;
   background: #FFFFFF;
@@ -320,7 +320,7 @@
   position: relative;
   width: 74.4%;
   height: max-content;
-  margin-top: 5%;
+  margin-top: 140px;
   align-items: center;
 }
 
@@ -454,6 +454,11 @@
     max-height: max-content;
     justify-content: center;
     align-items: center;
+    margin-top: 30px;
+  }
+
+  .video-wrapper{
+    height: 400px;
   }
 
   .video-icon-wrapper {
@@ -479,10 +484,16 @@
     margin-left: 5%;
     height: max-content;
   }
+  
+  .center-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 80%;
+  }
 
   .about-center {
     position: relative;
-    width: 70%;
+    
     height: max-content;
     align-items: center;
     margin-top: 40%;
@@ -492,7 +503,7 @@
 
   .introduction-box {
     align-items: center;
-    width: 180px;
+    width: 240px;
     height: 320px;
     transform: translate(0%, 0%);
     z-index: 2;
@@ -509,6 +520,11 @@
     line-height: 28px;
     color: #2A2B30;
     margin-top: 8px;
+  }
+
+
+  .flex-center{
+    margin-top: 20px;
   }
 
 

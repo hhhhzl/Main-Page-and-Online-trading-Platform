@@ -1,0 +1,21 @@
+.header-menu {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #FFFFFF;
+  color: #6E7184;
+  border-radius: 0px 0px 4px 4px;
+}
+
+.menu-item {
+  font-size: 14px;
+  font-family: "Microsoft YaHei UI-Regular, Microsoft YaHei UI";
+  font-weight: 400;
+  line-height: 24px;
+  padding: 12px 24px;
+}
+
+.menu-item:hover {
+  background: #EEF0F4;
+  color: #2A2B30;
+}

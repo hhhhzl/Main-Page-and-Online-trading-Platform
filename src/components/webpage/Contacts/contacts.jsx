@@ -28,16 +28,20 @@ const Contacts = () => {
                     src="/homeCutout/Group 1010.png"
                     style={{
                       width:
-                        width > 1350
+                        width > 1500
                           ? "160px"
+                          : width > 1350
+                          ? "140px"
                           : width > 960
-                          ? "130px"
+                          ? "120px"
                           : "100px",
                       height:
-                        width > 1350
+                        width > 1500
                           ? "160px"
+                          : width > 1350
+                          ? "140px"
                           : width > 960
-                          ? "130px"
+                          ? "120px"
                           : "100px",
                     }}
                   />
@@ -61,7 +65,10 @@ const Contacts = () => {
               </Row>
             </div>
           </Col>
-          <Col className="flex-center" style={{ padding: "0px 75px" }}>
+          <Col
+            className="flex-center"
+            style={{ padding: width > 1600 ? "0px 3.91%" : "0px" }}
+          >
             <div className="introduction-box">
               <Row>
                 <div className="box-image flex-center">
@@ -69,16 +76,20 @@ const Contacts = () => {
                     src="/homeCutout/Group 1020.png"
                     style={{
                       width:
-                        width > 1350
+                        width > 1500
                           ? "160px"
+                          : width > 1350
+                          ? "140px"
                           : width > 960
-                          ? "130px"
+                          ? "120px"
                           : "100px",
                       height:
-                        width > 1350
+                        width > 1500
                           ? "160px"
+                          : width > 1350
+                          ? "140px"
                           : width > 960
-                          ? "130px"
+                          ? "120px"
                           : "100px",
                     }}
                   />
@@ -110,16 +121,20 @@ const Contacts = () => {
                     src="/homeCutout/Group 1003.png"
                     style={{
                       width:
-                        width > 1350
+                        width > 1500
                           ? "160px"
+                          : width > 1350
+                          ? "140px"
                           : width > 960
-                          ? "130px"
+                          ? "120px"
                           : "100px",
                       height:
-                        width > 1350
+                        width > 1500
                           ? "160px"
+                          : width > 1350
+                          ? "140px"
                           : width > 960
-                          ? "130px"
+                          ? "120px"
                           : "100px",
                     }}
                   />
@@ -144,7 +159,7 @@ const Contacts = () => {
             </div>
           </Col>
         </Row>
-        <Row style={{ marginTop: "120px" }}>
+        <Row style={{ marginTop: width > 800 ? "120px" : "0px" }}>
           <Col className="flex-center">
             <div className="introduction-box">
               <Row>
@@ -153,16 +168,20 @@ const Contacts = () => {
                     src="/homeCutout/Group 1001.png"
                     style={{
                       width:
-                        width > 1350
+                        width > 1500
                           ? "160px"
+                          : width > 1350
+                          ? "140px"
                           : width > 960
-                          ? "130px"
+                          ? "120px"
                           : "100px",
                       height:
-                        width > 1350
+                        width > 1500
                           ? "160px"
+                          : width > 1350
+                          ? "140px"
                           : width > 960
-                          ? "130px"
+                          ? "120px"
                           : "100px",
                     }}
                   />
@@ -186,7 +205,10 @@ const Contacts = () => {
               </Row>
             </div>
           </Col>
-          <Col className="flex-center" style={{ padding: "0px 75px" }}>
+          <Col
+            className="flex-center"
+            style={{ padding: width > 800 ? "0px 75px" : "0px" }}
+          >
             <div className="introduction-box">
               <Row>
                 <div className="box-image flex-center">
@@ -194,16 +216,20 @@ const Contacts = () => {
                     src="/homeCutout/Group 1002.png"
                     style={{
                       width:
-                        width > 1350
+                        width > 1500
                           ? "160px"
+                          : width > 1350
+                          ? "140px"
                           : width > 960
-                          ? "130px"
+                          ? "120px"
                           : "100px",
                       height:
-                        width > 1350
+                        width > 1500
                           ? "160px"
+                          : width > 1350
+                          ? "140px"
                           : width > 960
-                          ? "130px"
+                          ? "120px"
                           : "100px",
                     }}
                   />
@@ -235,16 +261,20 @@ const Contacts = () => {
                     src="/homeCutout/Group 1003.png"
                     style={{
                       width:
-                        width > 1350
+                        width > 1500
                           ? "160px"
+                          : width > 1350
+                          ? "140px"
                           : width > 960
-                          ? "130px"
+                          ? "120px"
                           : "100px",
                       height:
-                        width > 1350
+                        width > 1500
                           ? "160px"
+                          : width > 1350
+                          ? "140px"
                           : width > 960
-                          ? "130px"
+                          ? "120px"
                           : "100px",
                     }}
                   />
@@ -284,14 +314,13 @@ const Contacts = () => {
             <div>
               <Image
                 src="/homeCutout/Group 8100.png"
-                style={{ width: "160px", height: "160px",marginRight:"40px" }}
+                style={{ width: "160px", height: "160px", marginRight: "40px" }}
               />
               <Image
                 src="/homeCutout/Group 8100.png"
-                style={{ width: "160px", height: "160px",marginLeft:"40px" }}
+                style={{ width: "160px", height: "160px", marginLeft: "40px" }}
               />
             </div>
-            
           </div>
         </div>
       </div>

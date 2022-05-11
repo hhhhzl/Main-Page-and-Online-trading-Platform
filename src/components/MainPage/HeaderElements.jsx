@@ -5,7 +5,7 @@ import { Link as LinkS } from "react-scroll";
 export const HeaderOut = styled.nav`
   background: ${(props) =>
     props.scrolledDownEnough
-      ? "rgba(255,255,255,0.7)"
+      ? "#FFFFFF"
       : "linear-gradient(180deg,rgba(0, 0, 0, 0.2) 0%,rgba(0, 0, 0, 0) 100%)"};
   height: 64px;
   margin-left: ${(props) => (props.scrolledDownEnough ? "0%" : "0%")};
@@ -28,7 +28,7 @@ export const HeaderOut = styled.nav`
     border: none;
   }
   &:hover {
-    background: rgba(255, 255, 255, 0.7);
+    background: #FFFFFF;
   }
 `;
 
@@ -54,7 +54,7 @@ export const HeaderMenu = styled.div`
   font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
   font-size: 14px;
   font-weight: 500;
-  line-height: 16px;
+  line-height: 17px;
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -73,8 +73,6 @@ export const HeaderLinks = styled(LinkS)`
    display:flex;
    align-item: center;
    letter-spacing: 1px;
-  //  font-size: ;
-  //  padding: 22px 20px ;
    padding:22px ${(props) =>
      props.width > 1000
        ? (props) => (props.width > 1330 ? "20px" : "0.8rem")
@@ -83,8 +81,29 @@ export const HeaderLinks = styled(LinkS)`
    height: 100%
    cursor: pointer;
    &.hover{
-    color:#ffffff !important
+    color:#1442ED !important
+    font-weight:bold !important
 }
+&:active {
+  font-weight: bold !important;
+}
+`;
+export const MenuItemLinks = styled(LinkS)`
+  color: #6e7184;
+  &.hover {
+    background: #eef0f4;
+    color: #eef0f4 !important;
+  }
+  &:active {
+    border: none !important;
+  }
+  @media screen and (max-width: 1330px) {
+    padding: 8px 20px;
+  }
+  @media screen and (max-width: 1000px) {
+    padding: 4px 8px;
+    font-size:12px
+  }
 `;
 export const HeaderBtn = styled.nav`
   display: flex;
@@ -108,6 +127,7 @@ export const HeaderBtnLink = styled(LinkR)`
   height: 100%
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
   text-decoration: none;
   font-weight: 500;
   &:hover {

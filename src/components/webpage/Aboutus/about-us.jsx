@@ -39,7 +39,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
   return (
     <div
       className="section"
-      style={{ paddingTop: "40px", paddingBottom: "90px" }}
+      style={{ paddingTop: "20px", paddingBottom: "90px" }}
     >
       <Fade bottom when={show}>
         <div className="text-center">
@@ -49,13 +49,13 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
           />
         </div>
 
+        {/* <br />
         <br />
-        <br />
-        <br />
+        <br /> */}
 
         <Container
           className="content-center"
-          style={{ marginLeft: "17.18%", padding: "20px 20px 0px" }}
+          style={{ padding: "44px 20px 0px" }}
         >
           <div className="left-icon">
             <Image
@@ -67,32 +67,28 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
             style={{
               color: "#3D3F4E",
               textIndent: "0",
-              fontSize: "24px",
+              fontSize: width > 1300 ? "24px" : width > 960 ? "20px" : "16px",
               fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
               lineHeight: "50px",
               letterSpacing: "0.2px",
             }}
           >
-            UFA金融协会 (英文缩写"UFA")
-            是面向全球顶级高校（包括美国排名TOP30、中国内地TOP10、中国香港四大高校等）建立的首个跨学校，跨地区，跨文化的大学生金融协会。我们的愿景是“
-            助力祖国联合全球和华人金融精英，并共同建设祖国金融未来 ”。
+            UFA金融协会是面向全球顶级高校（包括美国排名TOP30、中国内地TOP10、中国香港四大高校等）建立的首个跨学校，跨地区，跨文化的大学生金融协会。自成立以来，UFA金融协会与中信证券、海内外超过100所高校等建立起合作关系，并联合策划了名家分享会、金融系列公益讲座、全球华人大学生投资大赛等多个活动
           </p>
           <br />
           <p
             className="bottom-angle"
             style={{
               color: "#3D3F4E",
-              fontSize: "24px",
+              fontSize: width > 1300 ? "24px" : width > 960 ? "20px" : "16px",
               textIndent: "0",
               fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
               lineHeight: "48px",
               letterSpacing: "1px",
             }}
           >
-            自成立以来，UFA金融协会与中信证券、清华大学金融协会
-            、海外超过100所高校等建立起合作关系，并联合策划了名家分享会，金融系列公益讲座、全球大学生投资大赛等多个活动。
-            “UFA杯: 全球大学模拟投资大赛”是由 UFA
-            ⾦融协会牵头发起的首个汇聚全球顶尖高校大学生的大型线上模拟投资比赛。
+            “UFA金融杯”是由
+            UFA⾦融协会牵头发起的首个大型线上模拟投资比赛。“UFA金融杯”为非盈利性赛事，大赛旨在为全球华人大学生提供知识实践以及投资学习的平台支持，鼓励大学生以知促行，以行促知，培养创新精神与实践能力，推动金融创新人才培养机制的建立。大赛愿景希望联结全球未来华人精英，共同建设祖国金融未来。
           </p>
           <div className="right-icon">
             <Image
@@ -125,58 +121,44 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               />
             </div>
           </div>
-          <Carousel fade className="video-container">
-            <Carousel.Item className="player-wrapper">
-              <BilibiliVideo
-                cid="548193318"
-                aid="382170523"
-                asWide
-                highQuality
-                danmaku={0}
-              />
-            </Carousel.Item>
+          <div className="video-wrapper">
+            <Carousel fade className="video-container">
+              <Carousel.Item className="player-wrapper">
+                <BilibiliVideo
+                  cid="548193318"
+                  aid="382170523"
+                  asWide
+                  highQuality
+                  danmaku={0}
+                />
+              </Carousel.Item>
 
-            <Carousel.Item className="player-wrapper">
-              <BilibiliVideo
-                cid="548193318"
-                aid="382170523"
-                asWide
-                highQuality
-                danmaku={0}
-              />
-              {/* <ReactPlayer
-             className='react-player'
-             controls ={true}
-             width='100%'
-             height='100%'
-             url={[
-                'https://www.youtube.com/watch?v=BcgyPJWclEw'
-              ]} /> */}
-            </Carousel.Item>
-            <Carousel.Item className="player-wrapper">
-              {/* <ReactPlayer
-             className='react-player'
-             controls ={true}
-             width='100%'
-             height='100%'
-             url={[
-                'https://www.youtube.com/watch?v=8cph2_Xvfbo'
-              ]} /> */}
-              <BilibiliVideo
-                cid="548193318"
-                aid="382170523"
-                asWide
-                highQuality
-                danmaku={0}
-              />
-            </Carousel.Item>
-          </Carousel>
-          <div className="video-icon-wrapper-bottom">
-            <div className="video-icon-bottom">
-              <Image
-                src="/homeCutout/Group 27.png"
-                style={{ width: "108px", height: "108px" }}
-              />
+              <Carousel.Item className="player-wrapper">
+                <BilibiliVideo
+                  cid="548193318"
+                  aid="382170523"
+                  asWide
+                  highQuality
+                  danmaku={0}
+                />
+              </Carousel.Item>
+              <Carousel.Item className="player-wrapper">
+                <BilibiliVideo
+                  cid="548193318"
+                  aid="382170523"
+                  asWide
+                  highQuality
+                  danmaku={0}
+                />
+              </Carousel.Item>
+            </Carousel>
+            <div className="video-icon-wrapper-bottom">
+              <div className="video-icon-bottom">
+                <Image
+                  src="/homeCutout/Group 27.png"
+                  style={{ width: "108px", height: "108px" }}
+                />
+              </div>
             </div>
           </div>
 
@@ -186,113 +168,174 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
           <br />
 
           <div className="about-center">
-            {width < 650 ? (
+            {width < 680 ? (
               <>
-                {/* 屏幕宽度小于650的时候 */}
-                <Col>
-                  <div className="introduction-box">
-                    <div className="title">
-                      <h4
-                        style={{
-                          color: "white",
-                          fontFamily: "MicrosoftYaHeiUI",
-                          fontSize: width > 960 ? "22px" : "17px",
-                          letterSpacing: "0.31px",
-                          textIndent: "0",
-                        }}
-                      >
-                        权威性
-                      </h4>{" "}
+                <Row className="center-container">
+                  <Col className="flex-center">
+                    <div className="introduction-box">
+                      <Row>
+                        <div className="box-image flex-center">
+                          <Image
+                            src="/homeCutout/Group 101.png"
+                            style={{
+                              width:
+                                width > 1350
+                                  ? "160px"
+                                  : width > 960
+                                  ? "130px"
+                                  : "100px",
+                              height:
+                                width > 1350
+                                  ? "160px"
+                                  : width > 960
+                                  ? "130px"
+                                  : "100px",
+                            }}
+                          />
+                        </div>
+                        <div className="title">
+                          <h4
+                            style={{
+                              fontFamily: "MicrosoftYaHeiUI",
+                              fontSize: width > 960 ? "24px" : "18px",
+                              textIndent: "0",
+                              fontWeight: "bold",
+                              margin: "0px",
+                            }}
+                          >
+                            权威性
+                          </h4>
+                        </div>
+                        <div>
+                          <div
+                            style={{
+                              color: "#6E7184",
+                              fontWeight: "400",
+                              fontFamily:
+                                "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                              fontSize: width > 960 ? "16px" : "14px",
+                              paddingTop: width > 1000 ? "20px" : "10px",
+                              lineHeight: "28px",
+                            }}
+                          >
+                            “UFA杯”
+                            由UFA与中信证券、清华大学金融协会等联合举办，旨在打造最具权威的大学生金融赛事
+                          </div>
+                        </div>
+                      </Row>
                     </div>
-                    <div>
-                      <p
-                        style={{
-                          color: "black",
-                          fontFamily: "MicrosoftYaHeiUI",
-                          fontSize: "18px",
-                          letterSpacing: "0.3px",
-                          textIndent: "0",
-                          paddingTop: "16px",
-                          paddingLeft: "10px",
-                          paddingRight: "10px",
-                        }}
-                      >
-                        “UFA杯”
-                        由UFA与中信证券、清华大学金融协会等联合举办，旨在打造最具权威的大学生金融赛事{" "}
-                      </p>
-                    </div>
-                  </div>
-                </Col>
-                <Col>
-                  <div className="introduction-box">
-                    <div className="title">
-                      <h4
-                        style={{
-                          color: "white",
-                          fontFamily: "MicrosoftYaHeiUI",
-                          fontSize: width > 960 ? "22px" : "17px",
-                          letterSpacing: "0.1px",
-                          textIndent: "0",
-                        }}
-                      >
-                        影响力
-                      </h4>
-                    </div>
-                    <div>
-                      <p
-                        style={{
-                          color: "black",
-                          fontFamily: "MicrosoftYaHeiUI",
-                          fontSize: "18px",
-                          letterSpacing: "0.3px",
-                          textIndent: "0",
-                          paddingTop: "16px",
-                          paddingLeft: "10px",
-                          paddingRight: "10px",
-                        }}
-                      >
-                        “UFA杯”
-                        荣幸邀请各界金融大咖全程参与并与参赛选手进行高效、深度沟通互动，将在线上线下同步举办大型交流、展示活动{" "}
-                      </p>
-                    </div>
-                  </div>
-                </Col>
+                  </Col>
 
-                <Col>
-                  <div className="introduction-box">
-                    <div className="title">
-                      <h4
-                        style={{
-                          color: "white",
-                          fontFamily: "MicrosoftYaHeiUI",
-                          fontSize: width > 960 ? "22px" : "17px",
-                          letterSpacing: "0.1px",
-                          textIndent: "0",
-                        }}
-                      >
-                        规模力
-                      </h4>
+                  <Col className="flex-center">
+                    <div className="introduction-box">
+                      <Row>
+                        <div className="box-image flex-center">
+                          <Image
+                            src="/homeCutout/Group 102.png"
+                            style={{
+                              width:
+                                width > 1350
+                                  ? "160px"
+                                  : width > 960
+                                  ? "130px"
+                                  : "100px",
+                              height:
+                                width > 1350
+                                  ? "160px"
+                                  : width > 960
+                                  ? "130px"
+                                  : "100px",
+                            }}
+                          />
+                        </div>
+                        <div className="title">
+                          <h4
+                            style={{
+                              fontFamily: "MicrosoftYaHeiUI",
+                              fontSize: width > 960 ? "24px" : "18px",
+                              textIndent: "0",
+                              fontWeight: "bold",
+                              margin: "0px",
+                            }}
+                          >
+                            影响力
+                          </h4>
+                        </div>
+                        <div>
+                          <div
+                            style={{
+                              color: "#6E7184",
+                              fontWeight: "400",
+                              fontFamily:
+                                "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                              fontSize: width > 960 ? "16px" : "14px",
+                              paddingTop: width > 1000 ? "20px" : "10px",
+                              lineHeight: "28px",
+                            }}
+                          >
+                            “UFA杯”
+                            荣幸邀请各界金融大咖全程参与并与参赛选手进行高效、深度沟通互动，将在线上线下同步举办大型交流、展示活动
+                          </div>
+                        </div>
+                      </Row>
                     </div>
-                    <div>
-                      <h6 style={{ color: " #337ab7 " }}></h6>
-                      <p
-                        style={{
-                          color: "black",
-                          fontFamily: "MicrosoftYaHeiUI",
-                          fontSize: "18px",
-                          letterSpacing: "0.3px",
-                          textIndent: "0",
-                          paddingTop: "16px",
-                          paddingLeft: "10px",
-                          paddingRight: "10px",
-                        }}
-                      >
-                        “UFA杯”
-                        将面向海内外100+所大学开放赛事，旨在打造万人规模金融赛事，成为海内外金融大学生的首要聚集地
-                      </p>
+                  </Col>
+
+                  <Col className="flex-center">
+                    <div className="introduction-box">
+                      <Row>
+                        <div className="box-image flex-center">
+                          <Image
+                            src="/homeCutout/Group 103.png"
+                            style={{
+                              width:
+                                width > 1350
+                                  ? "160px"
+                                  : width > 960
+                                  ? "130px"
+                                  : "100px",
+                              height:
+                                width > 1350
+                                  ? "160px"
+                                  : width > 960
+                                  ? "130px"
+                                  : "100px",
+                            }}
+                          />
+                        </div>
+                        <div className="title">
+                          <h4
+                            style={{
+                              fontFamily: "MicrosoftYaHeiUI",
+                              fontSize: width > 960 ? "24px" : "18px",
+                              textIndent: "0",
+                              fontWeight: "bold",
+                              margin: "0px",
+                            }}
+                          >
+                            规模力
+                          </h4>
+                        </div>
+                        <div>
+                          <div
+                            style={{
+                              color: "#6E7184",
+                              fontWeight: "400",
+                              fontFamily:
+                                "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                              fontSize: width > 960 ? "16px" : "14px",
+                              paddingTop: width > 1000 ? "20px" : "10px",
+                              lineHeight: "28px",
+                            }}
+                          >
+                            “UFA杯”
+                            将面向海内外100+所大学开放赛事，旨在打造万人规模金融赛事，成为海内外金融大学生的首要聚集地
+                          </div>
+                        </div>
+                      </Row>
                     </div>
-                  </div>
-                </Col>
+                  </Col>
+                </Row>
               </>
             ) : (
               <>
@@ -463,8 +506,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               </>
             )}
           </div>
-
-          <h5 className="text-center">
+          <h5 className="text-center" style={{ marginTop: "-80px" }}>
             <Button
               className="video-btn"
               style={{

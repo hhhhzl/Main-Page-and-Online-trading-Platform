@@ -37,59 +37,63 @@ const Review = ({ projectImgs }) => {
           style={{ width: "248px", height: "79px" }}
         />
       </div>
-      <div className="flex-center " style={{marginTop:"80px"}}>
-          <div className="btn-groups">
-            <Button
+      <div className="flex-center " style={{ marginTop: "80px" }}>
+        <div className="btn-groups">
+          <Button
+            style={{
+              // borderBlockEndWidth: "5px",
+              // borderBlockEndColor: video ? "#26409A" : "white",
+              padding: "8px 32px",
+              borderRadius: " 24px",
+              background: video
+                ? "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)"
+                : "#FFFFFF",
+              border: "none",
+              fontFamily: "MicrosoftYaHei",
+            }}
+            onClick={Openvideo}
+          >
+            <span
               style={{
-                // borderBlockEndWidth: "5px",
-                // borderBlockEndColor: video ? "#26409A" : "white",
-                padding: "8px 32px",
-                borderRadius: " 24px",
-                background: video
-                  ? "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)"
-                  : "#FFFFFF",
-                border: "none",
+                margin: "0px",
+                fontSize: "14px",
+                fontWeight: "bold",
+                lineHeight: "24px",
+                color: video ? "#FFFFFF" : "#9C9EAC",
+                fontWeight: video ? "bold" : "400",
               }}
-              onClick={Openvideo}
             >
-              <span
-                style={{
-                  margin: "0px",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  lineHeight: "24px",
-                  color: video ? "#FFFFFF" : "#9C9EAC",
-                }}
-              >
-                活动视频
-              </span>
-            </Button>
-            <Button
+              活动视频
+            </span>
+          </Button>
+          <Button
+            style={{
+              padding: "8px 32px",
+              borderRadius: " 24px",
+              background: image
+                ? "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)"
+                : "#FFFFFF",
+              border: "none",
+              fontFamily: "MicrosoftYaHei",
+              // borderBlockEndWidth: "5px",
+              // borderBlockEndColor: image ? "#26409A" : "white",
+            }}
+            onClick={Openimage}
+          >
+            <span
               style={{
-                padding: "8px 32px",
-                borderRadius: " 24px",
-                background: image
-                  ? "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)"
-                  : "#FFFFFF",
-                border: "none",
-                // borderBlockEndWidth: "5px",
-                // borderBlockEndColor: image ? "#26409A" : "white",
+                margin: "0px",
+                fontSize: "14px",
+                fontWeight: "bold",
+                lineHeight: "24px",
+                color: image ? "#FFFFFF" : "#9C9EAC",
+                fontWeight: image ? "bold" : "400",
               }}
-              onClick={Openimage}
             >
-              <span
-                style={{
-                  margin: "0px",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  lineHeight: "24px",
-                  color: image ? "#FFFFFF" : "#9C9EAC",
-                }}
-              >
-                赛事图集
-              </span>
-            </Button>
-          </div>
+              赛事图集
+            </span>
+          </Button>
+        </div>
       </div>
 
       <div className="review-picture">
@@ -114,10 +118,7 @@ const Review = ({ projectImgs }) => {
             </div>
           </Collapse>
           <Collapse in={image} dimension="width">
-          
-            <div id="example-collapse-text" className="image-banner">
-              
-            </div>
+            <div id="example-collapse-text" className="image-banner"></div>
           </Collapse>
         </div>
         <div className="review-icon-wrapper-bottom">

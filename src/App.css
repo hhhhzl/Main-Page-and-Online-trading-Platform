@@ -125,6 +125,10 @@ a {
   color: #1442ED !important;
 }
 
+.no-border{
+  border: none;
+}
+
 .active-block-scroll-white {
   border-bottom: 3px solid #fff;
   color: #2A2B30 !important;
