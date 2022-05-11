@@ -37,7 +37,7 @@ a {
 
 a:active {
   border-bottom: 3px solid #1442ED;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 

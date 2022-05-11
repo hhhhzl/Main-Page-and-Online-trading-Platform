@@ -28,6 +28,7 @@ import UserTrade from './components/TradingPlatform/Users/Trade/UserTrade';
 
 
 
+import Tournament from './components/Tournament/tournament';
 
 
 // const AdminMainPage = () => {
@@ -113,6 +114,7 @@ const MakeRouter = () => {
       <Route exact path="/login" component={LoginForm} />
       <Route exact path="/home" component={MainPage} /> 
       <Route exact path="/" component={MainPage} /> 
+      <Route exact path="/tournament" component={Tournament} />
       </AuthProvider>
     </Switch>
   );

@@ -24,7 +24,7 @@ const HeaderCreate = ({ toggle }) => {
   const [showUFA, setShowUFA] = useState(false);
   const [showTransaction, setShowTransaction] = useState(false);
   const [box, setbox] = useState(height * 0.09);
-  
+
   const [hover, setHover] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -92,11 +92,11 @@ const HeaderCreate = ({ toggle }) => {
             <HeaderItem>
               <HeaderLinks
                 style={{
-                  color: hover || scrolledDownEnough ? "#1442ED" : "#FFFFFF",
                   borderBottom:
                     hover || scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
+                  color: hover || scrolledDownEnough ? "#1442ED" : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -163,7 +163,7 @@ const HeaderCreate = ({ toggle }) => {
             </HeaderItem>
 
             <HeaderItem>
-              <HeaderLinks
+              <HeaderBtnLink
                 style={{
                   color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
                 }}
@@ -180,13 +180,13 @@ const HeaderCreate = ({ toggle }) => {
                 duration={700}
               >
                 论坛
-              </HeaderLinks>
+              </HeaderBtnLink>
             </HeaderItem>
             <HeaderItem>
-              <HeaderLinks
-                style={{
-                  color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
-                }}
+              <HeaderBtnLink
+               style={{
+                color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+              }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
                 offset={-20}
@@ -195,17 +195,18 @@ const HeaderCreate = ({ toggle }) => {
                   scrolledDownEnough ? "active-block-scroll" : "active-block"
                 }
                 spy={true}
+                to="/tournament"
                 smooth={true}
                 duration={700}
               >
                 赛事介绍
-              </HeaderLinks>
+              </HeaderBtnLink>
             </HeaderItem>
             <HeaderItem>
-              <HeaderLinks
-                style={{
-                  color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
-                }}
+              <HeaderBtnLink
+               style={{
+                color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+              }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
                 offset={-20}
@@ -220,33 +221,22 @@ const HeaderCreate = ({ toggle }) => {
                 onMouseEnter={handleShowTransaction}
               >
                 交易平台
-              </HeaderLinks>
+              </HeaderBtnLink>
               <div
                 className="header-menu"
                 style={{ display: showTransaction ? "flex" : "none" }}
                 onMouseEnter={handleMouseLeave}
                 onMouseLeave={handleCloseTransaction}
               >
-                <MenuItemLinks
-                  
-                  className="menu-item"
-                >
-                  个人账户
-                </MenuItemLinks>
-                <MenuItemLinks
-                  
-                  className="menu-item"
-                >
-                  赛事账户
-                </MenuItemLinks>
+                <MenuItemLinks className="menu-item">个人账户</MenuItemLinks>
+                <MenuItemLinks className="menu-item">赛事账户</MenuItemLinks>
               </div>
             </HeaderItem>
           </HeaderMenu>
 
           <HeaderBtn>
             <HeaderItem>
-              <HeaderBtnLink
-                style={{
+              <HeaderBtnLink style={{
                   color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
@@ -271,7 +261,8 @@ const HeaderCreate = ({ toggle }) => {
                         ? "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)"
                         : "#FFFFFF",
                     border: "none",
-                    boxShadow:"0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)",
+                    boxShadow:
+                      "0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)",
                     color: hover || scrolledDownEnough ? "#FFFFFF" : "#2A2B30",
                     fontFamily: "PingFang SC-Medium, PingFang SC",
                     letterSpacing: "3px",
