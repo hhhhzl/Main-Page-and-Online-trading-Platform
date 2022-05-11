@@ -58,7 +58,6 @@ const NavbarCreate = ({ toggle }) => {
           >
             <Image src="/logo0.png" style={{ width: "110%", height: "110%" }} />
           </div>
-
           {scrolledDownEnough ? (
             <>
               <MobileIcon onClick={() => toggle()}>
