@@ -64,7 +64,7 @@ const HeaderCreate = ({ toggle }) => {
           >
             <Image
               src={
-                scrolledDownEnough || hover
+                scrolledDownEnough
                   ? "/homeCutout/UFA-LOGO-RED.png"
                   : "/UFA-LOGO.png"
               }
@@ -75,9 +75,9 @@ const HeaderCreate = ({ toggle }) => {
             <HeaderItem>
               <HeaderLinks
                 style={{
-                  color: hover || scrolledDownEnough ? "#1442ED" : "#FFFFFF",
+                  color: scrolledDownEnough ? "#1442ED" : "#FFFFFF",
                   borderBottom:
-                    hover || scrolledDownEnough
+                     scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
                 }}
@@ -99,7 +99,7 @@ const HeaderCreate = ({ toggle }) => {
             <HeaderItem>
               <HeaderLinks
                 style={{
-                  color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                  color:  scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -119,7 +119,7 @@ const HeaderCreate = ({ toggle }) => {
             <HeaderItem>
               <HeaderLinks
                 style={{
-                  color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                  color: scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -139,7 +139,7 @@ const HeaderCreate = ({ toggle }) => {
             <HeaderItem>
               <HeaderLinks
                 style={{
-                  color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                  color:  scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -162,7 +162,7 @@ const HeaderCreate = ({ toggle }) => {
             <HeaderItem>
               <HeaderBtnLink
                 style={{
-                  color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                  color:  scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}

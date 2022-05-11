@@ -27,9 +27,9 @@ export const HeaderOut = styled.nav`
   @media screen and (max-width: 768px) {
     border: none;
   }
-  &:hover {
-    background: rgba(255, 255, 255, 0.7);
-  }
+  // &:hover {
+  //   background: rgba(255, 255, 255, 0.7);
+  // }
 `;
 
 export const HeaderContianer = styled.div`
