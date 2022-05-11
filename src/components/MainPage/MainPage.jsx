@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { Navbar } from "react-bootstrap";
 import Cover from "../webpage/Cover/cover";
-import Navigation from "./navigation";
 import Aboutus from "../webpage/Aboutus/about-us";
 import Contacts from "../webpage/Contacts/contacts";
 import Footer from "./footer";

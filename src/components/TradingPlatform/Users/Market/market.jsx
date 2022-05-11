@@ -24,15 +24,26 @@ export default function UserMarket() {
         <NavBarTest username={'张三'} usertype={"用户"}/>
         
 
+        
+
+        <div className="auto-main-page" style={{
+        minWidth: width>1600? width : width>1068? "max-content":null ,
+        minHeight:height, top: height*0.1,
+        gridTemplateColumns:width > 1068? extend? "14rem  auto": "6rem auto" :"1fr",
+        gap:"0.3rem",
+        }} >
+
         <div>
             <SideMenuUsers extendbar={extendbar} extend ={extend}/>
         </div>
 
-        <div style ={{height:height-90, width:width-200}} className="auto-main-market" >
 
-        <div className="auto-main-market1">
+
+        <div className = "auto-main-market" style ={{gridTemplateRows: "17rem 19rem 18rem",gap: "2rem"}}>
+        <div className="auto-main-market1" style={{  
+        marginTop:"30px"}}>
                 <div className='market-layout1'>
-                <h5 style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"20px",letterSpacing:"3px"}}>{" "}<strong>指数</strong></h5>
+                <h5 style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"20px",letterSpacing:"3px", padding:"5px"}}><Bookmark/>{" "}<strong>指数</strong></h5>
                    <div className="market-indicator">
                    <Card>
 
@@ -40,18 +51,18 @@ export default function UserMarket() {
                         <Button variant="outline-primary">沪深</Button>
                     </Card>
                     <Card>
-                        <AreaChart w={0.1} h={0.2}/>
+                        <AreaChart width={width>900? 330 : width-60}/>
                     </Card>
 
                    </div>
                     
                     
                 </div>
-                <div className='market-layout1'>
-                <h5 style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"20px",letterSpacing:"3px"}}>{" "}<strong>上涨/下跌</strong></h5>
+                <div className='market-layout2'>
+                <h5 style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"20px",letterSpacing:"3px",padding:"5px"}}><Bookmark/>{" "}<strong>上涨/下跌</strong></h5>
                 </div>
-                <div className='market-layout1'>
-                <h5 style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"20px",letterSpacing:"3px"}}>{" "}<strong>TOP GAINS</strong></h5>
+                <div className='market-layout2'>
+                <h5 style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"20px",letterSpacing:"3px",padding:"5px"}}><Bookmark/>{" "}<strong>TOP GAINS</strong></h5>
 
                 <Card style={{width:"100%",borderRadius:"10px"}}>   
                     <Card.Body>
@@ -65,7 +76,7 @@ export default function UserMarket() {
 
                 <div className="auto-main-market2">
                 <div  className='market-layout1'>
-                <h5 style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"20px",letterSpacing:"3px"}}>{" "}<strong>股票搜索</strong></h5>
+                <h5 style={{color:" #26409A ",fontFamily:"MicrosoftYaHeiUI",fontSize:"20px",letterSpacing:"3px",padding:"5px"}}><Bookmark/>{" "}<strong>股票搜索</strong></h5>
             
                     <div className="scroll4">
                     <Accordion alwaysOpen defaultActiveKey='0'>
@@ -232,8 +243,8 @@ export default function UserMarket() {
 
                     
                 </div>
-                <div className='market-layout1'>
-                <Card style={{width:"100%",borderRadius:"25px"}}>   
+                <div className='market-layout2'>
+                <Card style={{width:"100%",borderRadius:"0px"}}>   
                     <Card.Body>
                     <MarketStockSearch/>  
                         </Card.Body>           
@@ -282,6 +293,7 @@ export default function UserMarket() {
                     
                 </div>
    
+        </div>
         </div>
 
 

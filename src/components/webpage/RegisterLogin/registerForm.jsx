@@ -41,34 +41,11 @@ const [validated, setValidated] = useState(false);
 
   return (
     <div>
-      <Image
-      src = "/loginback.jpg"
-      alt="views in the World"     
-      style={{
-        position: "absolute",
-        left: 0,
-        top: 0,
-        width: "100%",
-        height: "100%",
-      }}
-    />
-
       <div className ="login-interface">
       <div className="container-fluid main">
         <Row>
           <Col xs ={2}>
           <div className = 'image-layout'>
-      <Image
-      src = "/UFAlogo.jpg"
-      title="head image"
-      id="img-txz"
-      alt="header"  
-      roundedCircle   
-      style={{
-        position: "relative",    
-        width: "90%",
-        height: "40",
-      }}/>
       </div>
             
           </Col>    

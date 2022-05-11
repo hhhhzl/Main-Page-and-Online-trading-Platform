@@ -5,12 +5,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import MainPage from './components/MainPage/MainPage';
 import { BrowserRouter, Switch, Route, Router, useRouteMatch } from "react-router-dom";
-import RegisterForm from './components/MainPage/registerForm';
-import LoginForm from './components/MainPage/loginForm';
+import RegisterForm from './components/webpage/RegisterLogin/registerForm';
+import LoginForm from './components/webpage/RegisterLogin/loginForm';
 import TradePadmin from './components/Admin/TradeingPlatformInterface';
 import TradePusers from './components/TradingPlatform/Users/TradeingPlatformInterface';
 import data from "./static/users.json"
-import useToken from './useToken';
 import PrivateRoute from './utils/PrivateRoute'
 import { AuthProvider } from './context/AuthContext';
 
@@ -25,6 +24,7 @@ import UserMarket from './components/TradingPlatform/Users/Market/market';
 import NavBarTest from './components/TradingPlatform/navBar';
 import UserStocks from './components/TradingPlatform/Users/Stocks/UserStocks';
 import UserTrade from './components/TradingPlatform/Users/Trade/UserTrade';
+import LoginMainLayout from './components/webpage/RegisterLogin/mainLayout';
 
 
 
@@ -110,7 +110,10 @@ const MakeRouter = () => {
       <PrivateRoute exact path="/market" component={UserMarket} />
       <PrivateRoute exact path="/competition" component={null} />
       <Route exact path="/register" component={RegisterForm} />
-      <Route exact path="/login" component={LoginForm} />
+      <Route exact path="/login" component={LoginMainLayout} />
+      <Route exact path="/Vlogin" component={LoginMainLayout} />
+      <Route exact path="/forgetpassword" component={LoginMainLayout} />
+      <Route exact path="/changepassword" component={LoginMainLayout} />
       <Route exact path="/home" component={MainPage} /> 
       <Route exact path="/" component={MainPage} /> 
       </AuthProvider>
