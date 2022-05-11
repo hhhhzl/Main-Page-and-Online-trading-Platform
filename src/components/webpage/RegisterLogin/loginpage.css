@@ -16,6 +16,11 @@
     
 }
 
+.login-container{
+    background-color: white;
+    width: 420px;
+}
+
 .set-form {
     width: 30%;
     left: 70%;
@@ -32,12 +37,10 @@
 
 
 .login-interface {
-    background-color: rgba(0, 0, 0, .25);
+    background-color:white;
     position: fixed;
     margin-top: 0%;
-    width:38.2%;
     height:100%;
-    margin-left: 61.8%;
     margin-right: 0%;
     padding-left: 2%;
     padding-top: 2%;
@@ -48,16 +51,15 @@
 }
 
 .loadingusername{
-    color:aliceblue;
+    color:white;
     margin-bottom: 1rem!important;
 }
 .loadinguserpassword{
-    color:aliceblue;
+    color:white;
     margin-bottom: 1rem!important;
 }
 .loadinglogin{
     color:aliceblue;
-    background-color: rgba(0, 0, 0, .25);
     margin-bottom: 1rem!important;
 }
 

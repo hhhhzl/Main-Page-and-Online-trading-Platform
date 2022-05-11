@@ -172,27 +172,18 @@ a {
 
 .auto-main-market {
   display: grid;
-<<<<<<< HEAD
-  background-color:#ebf2fc;
-=======
   position: fixed;
   left: 200px;
   background-color: #ebf2fc;
   top: 90px;
   grid-template-rows: 2fr 3fr 2fr;
->>>>>>> origin/main
 }
 
 .auto-main-market1 {
   display: grid;
   position: relative;
-<<<<<<< HEAD
-=======
   background-color: black;
->>>>>>> origin/main
   grid-template-columns: 1fr 1fr 1fr;
-  gap:1rem;
-  
 }
 
 .auto-main-market2 {
@@ -201,9 +192,6 @@ a {
   grid-template-columns: 2fr 5fr;
 }
 
-<<<<<<< HEAD
-.auto-main-market3{
-=======
 .auto-main-market1 {
   display: grid;
   position: relative;
@@ -212,7 +200,6 @@ a {
 }
 
 .auto-main-market3 {
->>>>>>> origin/main
   max-width: 93%;
   align-items: stretch;
   height: 80%;

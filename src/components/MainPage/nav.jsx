@@ -58,7 +58,6 @@ const NavbarCreate = ({ toggle }) => {
           >
             <Image src="/logo0.png" style={{ width: "110%", height: "110%" }} />
           </div>
-
           {scrolledDownEnough ? (
             <>
               <MobileIcon onClick={() => toggle()}>
@@ -75,22 +74,6 @@ const NavbarCreate = ({ toggle }) => {
 
           <NavMenu>
             <NavItem>
-<<<<<<< HEAD
-            {/* <NavBtnLink scrolledDownEnough={scrolledDownEnough} width ={width} to="/register">
-                    注册
-                </NavBtnLink> */}
-            
-                
-            </NavItem>
-            <NavItem>
-            <NavBtnLink scrolledDownEnough={scrolledDownEnough} width ={width} to="/login">
-            <Button className="round-Button" variant="primary" 
-    style={{backgroundColor:"#26409A",color:"white",fontFamily:"MicrosoftYaHei",letterSpacing:"3px",paddingLeft:width > 1300 ? "30px" : "15px",paddingRight:width > 1300 ? "30px" : "15px", paddingBottom:"0"}} size='sm'><h5 style={{fontSize:width > 900 ? "18px" : "15px"}}>登录/注册</h5></Button>
-                </NavBtnLink>
-                </NavItem>
-            </NavMenu>
-            <NavBtn>
-=======
               <NavLinks
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -158,7 +141,6 @@ const NavbarCreate = ({ toggle }) => {
                 交易平台
               </NavBtnLink>
             </NavItem>
->>>>>>> origin/main
 
             {/* <NavItem>
                     <NavLinks scrolledDownEnough={scrolledDownEnough} width ={width} offset={-20} activeClass="active-block" to ="contactus" spy={true} smooth={true} duration={700}>联系我们</NavLinks>
