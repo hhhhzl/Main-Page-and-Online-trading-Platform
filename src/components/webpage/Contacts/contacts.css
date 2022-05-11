@@ -85,9 +85,19 @@
 }
 
 
+@media screen and (max-width: 1500px) {
+  .bottom-cover-picture {
+    width: 85%;
+    margin-left: 10%;
+  }
+}
+
+
+
+
 @media screen and (max-width: 1300px) {
   .bottom-cover-picture {
-    width: 80%;
+    width: 85%;
     margin-left: 10%;
   }
 }
