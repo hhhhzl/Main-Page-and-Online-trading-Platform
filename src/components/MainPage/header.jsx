@@ -24,7 +24,8 @@ const HeaderCreate = ({ toggle }) => {
   const [showUFA, setShowUFA] = useState(false);
   const [showTransaction, setShowTransaction] = useState(false);
   const [box, setbox] = useState(height * 0.09);
-  
+  const [current, setCurrent] = useState(1);
+
   const [hover, setHover] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -38,6 +39,11 @@ const HeaderCreate = ({ toggle }) => {
 
   const handleMouseOver = () => setHover(true);
   const handleMouseLeave = () => setHover(false);
+
+  const changeCurrent = (item) => {
+    
+    setCurrent(item);
+  };
 
   // const handleMouseLeave = () => {
   //   // if (isOpen) {
@@ -90,32 +96,42 @@ const HeaderCreate = ({ toggle }) => {
           </div>
           <HeaderMenu>
             <HeaderItem>
-              <HeaderLinks
+              <HeaderBtnLink
                 style={{
-                  color: hover || scrolledDownEnough ? "#1442ED" : "#FFFFFF",
                   borderBottom:
-                    hover || scrolledDownEnough
+                    current != 1
+                      ? "none"
+                      : hover || scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
+                  color: scrolledDownEnough
+                    ? "#2A2B30"
+                    : hover && current == 1
+                    ? "#1442ED"
+                    : hover && current != 1 && !scrolledDownEnough
+                    ? "#2A2B30"
+                    : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
                 offset={-50}
                 activeClass={
-                  scrolledDownEnough ? "active-block-scroll" : "active-block"
+                  scrolledDownEnough && current == 1
+                    ? "active-block-scroll"
+                    : "active-block"
                 }
-                to="home"
+                to="/"
                 spy={true}
                 smooth={true}
                 duration={700}
                 onMouseEnter={handleShowUFA}
+                onClick={() => changeCurrent(1)}
               >
                 UFA介绍
-              </HeaderLinks>
-
+              </HeaderBtnLink>
               <div
                 className="header-menu"
-                style={{ display: showUFA ? "flex" : "none" }}
+                style={{ display: showUFA && current == 1 ? "flex" : "none" }}
                 onMouseEnter={handleMouseLeave}
                 onMouseLeave={handleCloseUFA}
               >
@@ -163,53 +179,89 @@ const HeaderCreate = ({ toggle }) => {
             </HeaderItem>
 
             <HeaderItem>
-              <HeaderLinks
+              <HeaderBtnLink
                 style={{
-                  color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                  borderBottom:
+                    current != 2
+                      ? "none"
+                      : hover || scrolledDownEnough
+                      ? "3px solid #1442ED"
+                      : "3px solid #FFFFFF",
+                  color: scrolledDownEnough
+                    ? "#2A2B30"
+                    : hover && current == 2
+                    ? "#1442ED"
+                    : hover && current != 2 && !scrolledDownEnough
+                    ? "#2A2B30"
+                    : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
                 offset={-20}
-                // onClick={handleShow}
+                onClick={() => changeCurrent(2)}
                 activeClass={
                   scrolledDownEnough ? "active-block-scroll" : "active-block"
                 }
-                // to="aboutus"
                 spy={true}
                 smooth={true}
                 duration={700}
               >
                 论坛
-              </HeaderLinks>
+              </HeaderBtnLink>
             </HeaderItem>
             <HeaderItem>
-              <HeaderLinks
+              <HeaderBtnLink
                 style={{
-                  color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                  borderBottom:
+                    current != 3
+                      ? "none"
+                      : hover || scrolledDownEnough
+                      ? "3px solid #1442ED"
+                      : "3px solid #FFFFFF",
+                  color: scrolledDownEnough
+                    ? "#2A2B30"
+                    : hover && current == 3
+                    ? "#1442ED"
+                    : hover && current != 3 && !scrolledDownEnough
+                    ? "#2A2B30"
+                    : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
                 offset={-20}
-                // onClick={handleShow}
                 activeClass={
                   scrolledDownEnough ? "active-block-scroll" : "active-block"
                 }
                 spy={true}
                 smooth={true}
                 duration={700}
+                onClick={() => changeCurrent(3)}
+                to="/tournament"
               >
                 赛事介绍
-              </HeaderLinks>
+              </HeaderBtnLink>
             </HeaderItem>
             <HeaderItem>
-              <HeaderLinks
+              <HeaderBtnLink
                 style={{
-                  color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                  borderBottom:
+                    current != 4
+                      ? "none"
+                      : hover || scrolledDownEnough
+                      ? "3px solid #1442ED"
+                      : "3px solid #FFFFFF",
+                  color: scrolledDownEnough
+                    ? "#2A2B30"
+                    : hover && current == 4
+                    ? "#1442ED"
+                    : hover && current != 4 && !scrolledDownEnough
+                    ? "#2A2B30"
+                    : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
                 offset={-20}
-                // onClick={handleShow}
+                onClick={() => changeCurrent(4)}
                 activeClass={
                   scrolledDownEnough ? "active-block-scroll" : "active-block"
                 }
@@ -220,25 +272,15 @@ const HeaderCreate = ({ toggle }) => {
                 onMouseEnter={handleShowTransaction}
               >
                 交易平台
-              </HeaderLinks>
+              </HeaderBtnLink>
               <div
                 className="header-menu"
                 style={{ display: showTransaction ? "flex" : "none" }}
                 onMouseEnter={handleMouseLeave}
                 onMouseLeave={handleCloseTransaction}
               >
-                <MenuItemLinks
-                  
-                  className="menu-item"
-                >
-                  个人账户
-                </MenuItemLinks>
-                <MenuItemLinks
-                  
-                  className="menu-item"
-                >
-                  赛事账户
-                </MenuItemLinks>
+                <MenuItemLinks className="menu-item">个人账户</MenuItemLinks>
+                <MenuItemLinks className="menu-item">赛事账户</MenuItemLinks>
               </div>
             </HeaderItem>
           </HeaderMenu>
@@ -271,7 +313,8 @@ const HeaderCreate = ({ toggle }) => {
                         ? "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)"
                         : "#FFFFFF",
                     border: "none",
-                    boxShadow:"0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)",
+                    boxShadow:
+                      "0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)",
                     color: hover || scrolledDownEnough ? "#FFFFFF" : "#2A2B30",
                     fontFamily: "PingFang SC-Medium, PingFang SC",
                     letterSpacing: "3px",

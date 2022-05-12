@@ -12,6 +12,7 @@ import Team from "../webpage/Team/team";
 import NavbarCreate from "./nav";
 import Sidebar from "./Sidebar";
 import { ClassNames } from "@emotion/react";
+import HeaderCreate from './header'
 import Fade from "react-reveal/Fade";
 
 export default function MainPage() {
@@ -57,6 +58,7 @@ export default function MainPage() {
             </div>   */}
       {/* 隐藏头部导航 */}
       {/* <NavbarCreate toggle = {toggle} /> */}
+      <HeaderCreate />
       {/* {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>):(<></>)} */}
       <div className="main-page-center">
         <Cover />

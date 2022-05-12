@@ -23,7 +23,7 @@ export default function Cover() {
         height: width / 2.67,
       }}
     >
-      <HeaderCreate />
+      {/* <HeaderCreate /> */}
 
       {/* {width > 600 ? <Image
       src = "/background2.jpg"   

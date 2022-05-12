@@ -28,6 +28,7 @@ import LoginMainLayout from './components/webpage/RegisterLogin/mainLayout';
 
 
 
+import Tournament from './components/Tournament/tournament';
 
 
 // const AdminMainPage = () => {
@@ -116,6 +117,7 @@ const MakeRouter = () => {
       <Route exact path="/changepassword" component={LoginMainLayout} />
       <Route exact path="/home" component={MainPage} /> 
       <Route exact path="/" component={MainPage} /> 
+      <Route exact path="/tournament" component={Tournament} />
       </AuthProvider>
     </Switch>
   );
