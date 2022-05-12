@@ -29,7 +29,7 @@ export default function Introduce() {
           </div>
         </div>
       </div>
-
+      {/* 比赛流程 */}
       <div className="match white-bg">
         <div className="left">
           <div className="match-text">比赛流程</div>
@@ -84,7 +84,7 @@ export default function Introduce() {
             </div>
           </div>
 
-          <div className="match-end" style={{marginTop:"161px"}}>
+          <div className="match-end" style={{ marginTop: "161px" }}>
             <div className="match-end-text">决赛（全网直播）</div>
             <div className="match-end-content">
               <div>
@@ -146,7 +146,7 @@ export default function Introduce() {
             <div className="match-begin-text">UFA评委评选决赛</div>
           </div>
 
-          <div className="flex-start" style={{marginTop:"143px"}}>
+          <div className="flex-start" style={{ marginTop: "143px" }}>
             <div className="icon-wrapper-left">
               <Image
                 src="/tournament/Group 142.png"
@@ -156,12 +156,177 @@ export default function Introduce() {
             <div className="right-line bg"></div>
             <div className="left-round" style={{ marginTop: "0px" }}>
               <div className="round">
-                <div className="time-wrapper" style={{padding:"80px 20px"}}>
+                <div className="time-wrapper" style={{ padding: width > 1350 ? "80px 20px" : width > 900 ? '70px 10px' : '60px 15px' }}>
                   <div className="month">9.17</div>
                   <div className="year">2022</div>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 比赛奖项 */}
+
+      <div className="match-awards-container gray-bg">
+        <div className="awards-content">
+          <div className="awards-title-wrapper">
+            <div className="awards-title">比赛奖项</div>
+            <div className="awards-text">
+              量化赛道与主观多头赛道分开进行排名和奖励
+            </div>
+          </div>
+
+          <div className="awards-card-wrapper">
+            <div className="awards-card-container">
+              <div className="awards-card">
+                <div className="ranking awards-center">第一名</div>
+                <div className="awards-pic awards-center">
+                  <Image
+                    src="/homeCutout/10086.png"
+                    style={{ width: "220px", height: "220px" }}
+                  />
+                </div>
+
+                <div className="award-content awards-center">
+                  <div>团队获得10000元人民币</div>
+                  <div>每位团员获得官方制定的冠军证书 </div>
+                  <div>中信证券实习机会</div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="awards-card-container"
+              style={{ margin:  width > 1400 ? "0px 60px" : "0px 50px" }}
+            >
+              <div className="awards-card">
+                <div className="ranking awards-center">第二名</div>
+                <div className="awards-pic awards-center">
+                  <Image
+                    src="/homeCutout/10086.png"
+                    style={{ width: "220px", height: "220px" }}
+                  />
+                </div>
+
+                <div className="award-content awards-center">
+                  <div>团队获得8500元人民币</div>
+                  <div>每位团员获得官方制定的冠军证书 </div>
+                  <div>中信证券实习机会</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="awards-card-container">
+              <div className="awards-card">
+                <div className="ranking awards-center">第三名</div>
+                <div className="awards-pic awards-center">
+                  <Image
+                    src="/homeCutout/10086.png"
+                    style={{ width: "220px", height: "220px" }}
+                  />
+                </div>
+
+                <div className="award-content awards-center">
+                  <div>团队获得7000元人民币</div>
+                  <div>每位团员获得官方制定的冠军证书 </div>
+                  <div>中信证券实习机会</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            className="awards-center flex-center"
+            style={{ marginTop: "60px" }}
+          >
+            <div className="awards-card-container">
+              <div className="awards-card">
+                <div className="ranking awards-center">第五至十名</div>
+                <div className="awards-pic awards-center">
+                  <Image
+                    src="/homeCutout/10086.png"
+                    style={{ width: "220px", height: "220px" }}
+                  />
+                </div>
+
+                <div className="award-content awards-center">
+                  <div>团队获得6000元人民币</div>
+                  <div>每位团员获得官方制定的冠军证书 </div>
+                  <div>中信证券实习机会</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="other-awards">
+            <Image
+              src="/tournament/Group 208.png"
+              style={{ width: "1040px", height: "168px" }}
+            />
+          </div>
+
+          <div className="awards-card-wrapper">
+            <div className="awards-card-container">
+              <div className="awards-card">
+                <div className="ranking awards-center">UFA优秀投资笔记奖</div>
+                <div className="awards-pic awards-center">
+                  <Image
+                    src="/homeCutout/10086.png"
+                    style={{ width: "220px", height: "220px" }}
+                  />
+                </div>
+
+                <div className="award-content awards-center">
+                  <div>团队获得5000元人民币</div>
+                  <div>每位团员获得官方制定的冠军证书 </div>
+                  <div>中信证券实习机会</div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="awards-card-container"
+              style={{ margin: "0px 60px" }}
+            >
+              <div className="awards-card">
+                <div className="ranking awards-center">UFA优秀研报奖</div>
+                <div className="awards-pic awards-center">
+                  <Image
+                    src="/homeCutout/10086.png"
+                    style={{ width: "220px", height: "220px" }}
+                  />
+                </div>
+
+                <div className="award-content awards-center">
+                  <div>团队获得5000元人民币</div>
+                  <div>每位团员获得官方制定的冠军证书 </div>
+                  <div>中信证券实习机会</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="awards-card-container">
+              <div className="awards-card">
+                <div className="ranking awards-center">UFA未来优秀投资者</div>
+                <div className="awards-pic awards-center">
+                  <Image
+                    src="/homeCutout/10086.png"
+                    style={{ width: "220px", height: "220px" }}
+                  />
+                </div>
+
+                <div className="award-content awards-center">
+                  <div>团队获得5000元人民币</div>
+                  <div>每位团员获得官方制定的冠军证书 </div>
+                  <div>中信证券实习机会</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="tips">
+            注：所有奖项由UFA与中信证券官方签署制定，旨在为参赛选手提供背景提升，学习成长的机会。
           </div>
         </div>
       </div>
