@@ -1,0 +1,35 @@
+.gray-bg {
+  background: #F5F6F8;
+}
+
+.introduce-content {
+  height: max-content;
+}
+
+.introduce-mark {
+  margin: 0px 25%;
+  padding: 94px 0px;
+  position: relative;
+}
+
+.top-image {
+  position: relative;
+  left: -36px;
+  top: 20px;
+}
+
+.bottom-image{
+  text-align: end;
+  position: relative;
+  left: 36px;
+  top: -20px;
+}
+
+.center-content {
+  font-size: 28px;
+  font-family: Songti SC-Regular, Songti SC;
+  font-weight: 400;
+  color: #3D3F4E;
+  line-height: 60px;
+  letter-spacing: 2px;
+}

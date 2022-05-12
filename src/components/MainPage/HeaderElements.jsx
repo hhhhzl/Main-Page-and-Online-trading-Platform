@@ -132,7 +132,7 @@ export const HeaderBtnLink = styled(LinkR)`
   font-weight: 500;
   &:hover {
     transition: all 0.2 ease-in-out;
-    color: #1442ED;
-    font-weight:bold
+    color: #ffffff;
+    font-weight:600
   }
 `;

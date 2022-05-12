@@ -24,6 +24,7 @@ const HeaderCreate = ({ toggle }) => {
   const [showUFA, setShowUFA] = useState(false);
   const [showTransaction, setShowTransaction] = useState(false);
   const [box, setbox] = useState(height * 0.09);
+  const [current, setCurrent] = useState(1);
 
   const [hover, setHover] = useState(false);
 
@@ -38,6 +39,11 @@ const HeaderCreate = ({ toggle }) => {
 
   const handleMouseOver = () => setHover(true);
   const handleMouseLeave = () => setHover(false);
+
+  const changeCurrent = (item) => {
+    
+    setCurrent(item);
+  };
 
   // const handleMouseLeave = () => {
   //   // if (isOpen) {
@@ -90,32 +96,42 @@ const HeaderCreate = ({ toggle }) => {
           </div>
           <HeaderMenu>
             <HeaderItem>
-              <HeaderLinks
+              <HeaderBtnLink
                 style={{
                   borderBottom:
-                    hover || scrolledDownEnough
+                    current != 1
+                      ? "none"
+                      : hover || scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
-                  color: hover || scrolledDownEnough ? "#1442ED" : "#FFFFFF",
+                  color: scrolledDownEnough
+                    ? "#2A2B30"
+                    : hover && current == 1
+                    ? "#1442ED"
+                    : hover && current != 1 && !scrolledDownEnough
+                    ? "#2A2B30"
+                    : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
                 offset={-50}
                 activeClass={
-                  scrolledDownEnough ? "active-block-scroll" : "active-block"
+                  scrolledDownEnough && current == 1
+                    ? "active-block-scroll"
+                    : "active-block"
                 }
-                to="home"
+                to="/"
                 spy={true}
                 smooth={true}
                 duration={700}
                 onMouseEnter={handleShowUFA}
+                onClick={() => changeCurrent(1)}
               >
                 UFA介绍
-              </HeaderLinks>
-
+              </HeaderBtnLink>
               <div
                 className="header-menu"
-                style={{ display: showUFA ? "flex" : "none" }}
+                style={{ display: showUFA && current == 1 ? "flex" : "none" }}
                 onMouseEnter={handleMouseLeave}
                 onMouseLeave={handleCloseUFA}
               >
@@ -165,16 +181,27 @@ const HeaderCreate = ({ toggle }) => {
             <HeaderItem>
               <HeaderBtnLink
                 style={{
-                  color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                  borderBottom:
+                    current != 2
+                      ? "none"
+                      : hover || scrolledDownEnough
+                      ? "3px solid #1442ED"
+                      : "3px solid #FFFFFF",
+                  color: scrolledDownEnough
+                    ? "#2A2B30"
+                    : hover && current == 2
+                    ? "#1442ED"
+                    : hover && current != 2 && !scrolledDownEnough
+                    ? "#2A2B30"
+                    : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
                 offset={-20}
-                // onClick={handleShow}
+                onClick={() => changeCurrent(2)}
                 activeClass={
                   scrolledDownEnough ? "active-block-scroll" : "active-block"
                 }
-                // to="aboutus"
                 spy={true}
                 smooth={true}
                 duration={700}
@@ -184,33 +211,57 @@ const HeaderCreate = ({ toggle }) => {
             </HeaderItem>
             <HeaderItem>
               <HeaderBtnLink
-               style={{
-                color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
-              }}
+                style={{
+                  borderBottom:
+                    current != 3
+                      ? "none"
+                      : hover || scrolledDownEnough
+                      ? "3px solid #1442ED"
+                      : "3px solid #FFFFFF",
+                  color: scrolledDownEnough
+                    ? "#2A2B30"
+                    : hover && current == 3
+                    ? "#1442ED"
+                    : hover && current != 3 && !scrolledDownEnough
+                    ? "#2A2B30"
+                    : "#FFFFFF",
+                }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
                 offset={-20}
-                // onClick={handleShow}
                 activeClass={
                   scrolledDownEnough ? "active-block-scroll" : "active-block"
                 }
                 spy={true}
-                to="/tournament"
                 smooth={true}
                 duration={700}
+                onClick={() => changeCurrent(3)}
+                to="/tournament"
               >
                 赛事介绍
               </HeaderBtnLink>
             </HeaderItem>
             <HeaderItem>
               <HeaderBtnLink
-               style={{
-                color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
-              }}
+                style={{
+                  borderBottom:
+                    current != 4
+                      ? "none"
+                      : hover || scrolledDownEnough
+                      ? "3px solid #1442ED"
+                      : "3px solid #FFFFFF",
+                  color: scrolledDownEnough
+                    ? "#2A2B30"
+                    : hover && current == 4
+                    ? "#1442ED"
+                    : hover && current != 4 && !scrolledDownEnough
+                    ? "#2A2B30"
+                    : "#FFFFFF",
+                }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
                 offset={-20}
-                // onClick={handleShow}
+                onClick={() => changeCurrent(4)}
                 activeClass={
                   scrolledDownEnough ? "active-block-scroll" : "active-block"
                 }
@@ -236,7 +287,8 @@ const HeaderCreate = ({ toggle }) => {
 
           <HeaderBtn>
             <HeaderItem>
-              <HeaderBtnLink style={{
+              <HeaderBtnLink
+                style={{
                   color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}

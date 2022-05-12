@@ -46,9 +46,7 @@ export default function MainPage() {
 
   return (
     <>
-      {/* 隐藏头部导航 */}
       <HeaderCreate />
-      {/* {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>):(<></>)} */}
       <div className="main-page-center">
         <TournamentBg />
         <div className="tourament-page">
