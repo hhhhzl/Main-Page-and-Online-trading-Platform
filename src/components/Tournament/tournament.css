@@ -39,3 +39,9 @@
   border-top: 1px solid #E5E8EE;
   margin-top: 1px;
 }
+
+@media screen and (max-width: 600px) {
+  .tabs-wrapper{
+    padding-left: 10px;
+  }
+}

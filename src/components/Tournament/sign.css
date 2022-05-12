@@ -1,0 +1,119 @@
+.sign {
+  background: #FFFFFF;
+  height: max-content;
+}
+
+.sign-container {
+  display: flex;
+}
+
+.sign-left {
+  border-right: 1px solid #E5E8EE;
+  width: 50%;
+  padding: 120px 0px 80px 0px;
+}
+
+.sign-right {
+  /* padding-bottom: 120px 0px; */
+  width: 50%;
+}
+
+.number-container {
+  text-align: end;
+  margin-right: 15.417%;
+}
+
+.padding120 {
+  padding-top: 120px;
+}
+
+.number {
+  font-size: 60px;
+  font-family: Futura-Medium, Futura;
+  font-weight: 500;
+  color: #2A2B30;
+  line-height: 70px;
+  letter-spacing: 3px;
+}
+
+.sign-line {
+  width: 144px;
+  height: 1px;
+  background: #E5E8EE;
+}
+
+.sign-icon-wrapper {
+  position: absolute;
+  left: -12px;
+}
+
+.step-text {
+  margin-left: -18px;
+  font-size: 24px;
+  font-family: Songti SC-Bold, Songti SC;
+  font-weight: bold;
+  color: #2A2B30;
+  line-height: 28px;
+  letter-spacing: 2px;
+}
+
+.step-icon{
+  position: relative;
+  top: 16px;
+}
+
+.footer-btn-container{
+  padding-bottom: 120px;
+}
+
+.footer-btn{
+  text-align: center;
+  margin-top: 48px;
+}
+
+.sign-join-match-btn{
+  background: linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%);
+  padding: 10px 32px;
+  font-family:"MicrosoftYaHei ";
+  color: #FFFFFF;
+  line-height: 24px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 24px 24px 24px 24px;
+  box-shadow: 0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08);
+
+}
+
+@media screen and (max-width: 1200px) {
+  .step-text{
+    font-size: 18px;
+  }
+  .number{
+    font-size: 50px;
+  }
+  .sign-left{
+    width:30%;
+    margin-left: 10%;
+  }
+  .sign-line{
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .step-text{
+    font-size: 16px;
+  }
+  .number{
+    font-size: 40px;
+  }
+  .sign-left{
+    width:20%;
+    margin-left: 15%;
+  }
+
+  .sign-line{
+    width: 80px;
+  }
+}
