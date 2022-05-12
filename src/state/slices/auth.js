@@ -3,7 +3,7 @@ import {
   apiLoginUser,
   apiRegisterUser,
   apiUpdateUser,
-  apiGetTokenProfile,
+  apiGetRefreshToken,
 } from "../../api/users";
 import { TOKEN_LOCAL_STORAGE_KEY } from "../../constants/values";
 
@@ -43,9 +43,9 @@ export const register = createAsyncThunk("auth/register", async ({ data }) => {
 //   }
 // )
 export const getTokenProfile = createAsyncThunk(
-  "auth/getTokenProfile",
+  "auth/getRefreshToken",
   async () => {
-    const response = await apiGetTokenProfile();
+    const response = await apiGetRefreshToken();
     return response.data;
   }
 );

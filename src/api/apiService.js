@@ -2,7 +2,7 @@ import axios from "axios";
 import { TOKEN_LOCAL_STORAGE_KEY } from "../constants/values";
 
 const apiService = axios.create({
-  baseURL: "http://localhost:80/api/",
+  baseURL: "http://59.110.238.142:8000/api/",
   timeout: 3000,
   headers: {
     "Content-Type": "application/json",

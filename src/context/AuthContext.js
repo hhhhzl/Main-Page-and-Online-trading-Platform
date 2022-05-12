@@ -16,8 +16,6 @@ export const AuthProvider = ({children}) => {
 
     let loginUser = async (e) => {
         e.preventDefault();
-        
-    
         let response = await fetch("http://59.110.238.142:8000/api/users/token/", {
             method:'POST',
             headers:{
@@ -81,7 +79,6 @@ export const AuthProvider = ({children}) => {
     //         }
     //     }, fourMinutes)
     //     return () => clearInterval(interval)
-
     // },[authTokens,loading])
 
     return (
