@@ -37,7 +37,7 @@
 
 .login-interface {
     background-color:white;
-    position: fixed;
+    position: relative;
     margin-top: 0%;
     height:100%;
     margin-right: 0%;
@@ -48,16 +48,16 @@
 }
 
 .loadingusername{
-    color:white;
-    margin-bottom: 1rem!important;
+    color:black;
+    margin-bottom: 0.5rem!important;
 }
 .loadinguserpassword{
     color:white;
     margin-bottom: 1rem!important;
 }
 .loadinglogin{
-    color:aliceblue;
-    margin-bottom: 1rem!important;
+    color:#6E7184;
+    margin-bottom: 0.7rem!important;
 }
 
 .image-layout{

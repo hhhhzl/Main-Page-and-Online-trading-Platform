@@ -33,10 +33,8 @@ export const AuthProvider = ({children}) => {
         }else{
             alert("Something Went Wrong!")
         }
-
-
     }
-
+    
     let logoutUser = () =>{
         setAuthTokens(null)
         setuser(null)

@@ -110,7 +110,7 @@ const MakeRouter = () => {
       <PrivateRoute exact path="/stocks" component={UserStocks} />
       <PrivateRoute exact path="/market" component={UserMarket} />
       <PrivateRoute exact path="/competition" component={null} />
-      <Route exact path="/register" component={RegisterForm} />
+      <Route exact path="/register" component={LoginMainLayout} />
       <Route exact path="/login" component={LoginMainLayout} />
       <Route exact path="/Vlogin" component={LoginMainLayout} />
       <Route exact path="/forgetpassword" component={LoginMainLayout} />

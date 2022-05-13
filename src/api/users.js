@@ -16,7 +16,7 @@ export const apiRegisterUser = (data) =>
 export const apiRegisterAdmin = (data) =>
     apiService.post(`users/register_admin/`, data);
 
-//token
+//auth
 export const apiLoginUser = (username, password) =>
     apiService.post(`users/token/`, { username, password });
 export const apiGetRefreshToken = () =>

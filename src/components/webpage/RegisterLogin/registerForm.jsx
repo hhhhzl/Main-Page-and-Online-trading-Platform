@@ -5,10 +5,14 @@ import { SentimentSatisfiedAlt } from "@material-ui/icons";
 import './loginpage.css';
 import Image from 'react-bootstrap/Image';
 import { Link } from 'react-router-dom';
+import useWindowDimensions from "../../../utils/sizewindow";
 import { Nav } from 'react-bootstrap';
+import { ArrowBack } from "@material-ui/icons";
 
 export default function RegisterForm() {
+  const [userState, setUserState] = useState({})
   const [show, setShow]=useState(false);
+  const {width, height} = useWindowDimensions();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -20,6 +24,7 @@ export default function RegisterForm() {
   const [mobileNumber, setMobileNumber] = useState("");
   const [degree, setDegree] = useState("1");
   const [org, setOrg] = useState("1");
+  const [regin, setRegin] = useState("")
   const [userType, setUserType] = useState("U");
 
   const handleClose=()=>setShow(false);
@@ -41,21 +46,62 @@ const [validated, setValidated] = useState(false);
 
   return (
     <div>
-      <div className ="login-interface">
-      <div className="container-fluid main">
-        <Row>
-          <Col xs ={2}>
-          <div className = 'image-layout'>
+     
+      <div className="login-container" style={{marginLeft: width > 800? "18.75%": "10%", marginTop: height *0.1}}>
+      <Link style ={{color:"black",textDecoration:"none"}} to="/home"><ArrowBack/></Link>
+      <Row style={{width:"100%"}}><Col xs = {7}>
+      <h2 style={{
+        width:"250px",
+        height:"80px",
+        fontSize:"40px",
+        fontFamily:"Microsoft YaHei UI-Bold",
+        fontWeight:"bold",
+        color:"#2A2B30",
+        lineHeight:"80px",
+        letterSpacing:"5px",
+        }}>欢迎注册</h2>
+
+      </Col>
+      <Col xs = {6} style={{marginLeft:"0px",width:"110px",marginTop:"35px" }}>
+      </Col></Row>
+      <Row>
+        <Col xs={3}>
+        <div style={{
+        width:"88px",
+        height:"24px",
+        }}>
+      <h6 style={{ fontSize:"14px",
+        fontFamily:"Microsoft YaHei UI-Bold",
+        color:"#2A2B30",
+        lineHeight:"24px"}}>已有账户？</h6>
       </div>
-            
-          </Col>    
-          <Col xs={10}>
-          <h2 style={{color:"white",marginTop:"1%"}}><strong>注册账号</strong></h2>
-          </Col>
+        </Col>
+        <Col xs={3}>
+        <Nav.Item>
+        <div style={{
+        width:"88px",
+        height:"24px",
+        marginLeft:"-20px",
+        marginTop:"-1px",
+        }}>
+              <Link style ={{height:"28px",
+        fontSize:"14px",
+        fontFamily:"Microsoft YaHei UI-Bold",
+        fontWeight:"400",
+        color:"#6E7184",
+        lineHeight:"24px",
+        }} to="/login">去登录
+
+        </Link></div>
+            </Nav.Item>
+        </Col>
       </Row>
-        <hr/>
         <br/>
-      <Form  id="addProject">
+        <br/>
+      <Form  noValidate validated={validated} id="addProject" onSubmit={(event) => {
+        event.preventDefault();
+        console.log(userState)
+      }}>
 
         {/*
         <div className = 'image-layout'>
@@ -73,20 +119,26 @@ const [validated, setValidated] = useState(false);
       </div>
     */}
 
-        <Form.Group className="loadingusername" as={Row}>
+        <Form.Group className="loadingusername">
           <Form.Label column>
-            用户名*
+            用户名
           </Form.Label>
   
             <Form.Control
               className="loadinglogin"
               required
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) =>{
+                const name = e.target.value
+                setUsername(e.target.value)
+                setUserState({...userState, ...{ name }});
+
+              }
+              }
             ></Form.Control>
 
-          <Form.Label column sm={2}>
-            邮箱*
+          {/* <Form.Label column sm={2}>
+            邮箱
           </Form.Label>
 
             <Form.Control
@@ -94,10 +146,10 @@ const [validated, setValidated] = useState(false);
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-            ></Form.Control>
+            ></Form.Control> */}
  
           <Form.Label column>
-            密码*
+            密码
           </Form.Label>
  
             <Form.Control
@@ -105,10 +157,14 @@ const [validated, setValidated] = useState(false);
               required
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                const password = e.target.value;
+                setPassword(e.target.value)
+                setUserState({...userState, ...{ password }});
+              }}
             ></Form.Control>
-          <Form.Label column>
-            手机号码*
+          {/* <Form.Label column>
+            手机号
           </Form.Label>
 
             <Form.Control
@@ -116,14 +172,15 @@ const [validated, setValidated] = useState(false);
               required
               value={mobileNumber}
               onChange={(e) => setMobileNumber(e.target.value)}
-            ></Form.Control>
+            ></Form.Control> */}
         </Form.Group>
 
-        <Form.Group className="loadingusername" as={Row}>
-          <Form.Label column sm={2}>
-            姓*
+        {/* <Form.Group className="loadingusername" as={Row}>
+        <Col sm={6}>
+          <Form.Label column >
+            姓
           </Form.Label>
-          <Col sm={3}>
+         
             <Form.Control
             className="loadinglogin"
               required
@@ -131,10 +188,11 @@ const [validated, setValidated] = useState(false);
               onChange={(e) => setLastName(e.target.value)}
             ></Form.Control>
           </Col>
-          <Form.Label column sm={2}>
-            名*
+          <Col sm={6}>
+          <Form.Label column>
+            名
           </Form.Label>
-          <Col sm={5}>
+          
             <Form.Control
             className="loadinglogin"
               required
@@ -142,13 +200,14 @@ const [validated, setValidated] = useState(false);
               onChange={(e) => setFirstName(e.target.value)}
             ></Form.Control>
           </Col>
-        </Form.Group>
+        </Form.Group> */}
 
-        <Form.Group as={Row}>
+        {/* <Form.Group as={Row}>
+        <Col sm={6}>
           <Form.Label className="loadingusername" column sm={2}>
-            性别*
+            性别
           </Form.Label>
-          <Col sm={3}>
+          
             
             <Form.Select className="loadinglogin" required value={sex} onChange={(e) => setSex(e.target.value)}>
               <option value="">选择性别</option>
@@ -158,10 +217,11 @@ const [validated, setValidated] = useState(false);
               
             </Form.Select>
           </Col>
-          <Form.Label className="loadingusername" column sm={2}>
-            学历*
+          <Col sm={6}>
+          <Form.Label className="loadingusername" column>
+            学历
           </Form.Label>
-          <Col sm={3}>
+         
             <Form.Select
             className="loadinglogin"
               required
@@ -176,42 +236,58 @@ const [validated, setValidated] = useState(false);
               <option value="after">已毕业</option>
             </Form.Select>
           </Col>
-        </Form.Group>
+        </Form.Group> */}
 
-        <Form.Group className="loadingusername" as={Row}>
+        {/* <Form.Group className="loadingusername">
 
           <Form.Label column>
-            院校/单位*
+            院校/单位
           </Form.Label>
  
             <Form.Control
              className="loadinglogin"
               required
-              type="password"
               value={password}
               onChange={(e) => setOrg(e.target.value)}
             ></Form.Control>
 
-        </Form.Group>
-        <hr/>
-        <Row>
+        </Form.Group> */}
+
+        {/* <Form.Group className="loadingusername">
+
+          <Form.Label column>
+            地区
+          </Form.Label>
+ 
+            <Form.Control
+             className="loadinglogin"
+              required  
+              value={password}
+              onChange={(e) => setRegin(e.target.value)}
+            ></Form.Control>
+
+        </Form.Group> */}
+
+        {/* <Row>
             <Col xs={8}>
-            <Link style ={{color:"white",fontSize:16,padding:25}} to="/login">去登陆</Link>
+            <Link style ={{color:"black",fontSize:16,padding:25}} to="/login">去登陆</Link>
             </Col>
             <Col xs ={4}>
               <Nav.Item>
-                <Link style ={{color:"white",fontSize:16,padding:25}} to="/home">回到主页</Link>
+                <Link style ={{color:"black",fontSize:16,padding:25}} to="/home">回到主页</Link>
               </Nav.Item>
 
             </Col>
-            </Row>
+            </Row> */}
         <br/>
 
 
-        <Form.Group className="loadingusername" as={Row}>
+        <Form.Group as={Row} className="loadinglogin" style={{background:"linear-gradient(135deg,#2B8CFF 0%, #2346FF 100%)", borderRadius:"4px 4px 4px 4px"}}>
  
             <Button
               variant="outline-primary"
+              type="submit"
+              style={{color:"white"}}
               // onClick={() => {
               //   const data = {
               //     username,
@@ -232,7 +308,6 @@ const [validated, setValidated] = useState(false);
             </Button>
         </Form.Group>
       </Form>
-      </div>
       </div>
     </div>
   );
