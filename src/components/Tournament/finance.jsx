@@ -35,7 +35,7 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 				<div className="finance-title-top">
 					<Image
 						src="/tournament/Group 797.png"
-						style={{width:"62.7%",height:"183px"}}
+						style={{width:"1204px",height:"183px"}}
 					/>
 				</div>
 				<div className="finance-title-top">

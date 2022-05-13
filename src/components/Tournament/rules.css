@@ -16,7 +16,6 @@
 	color: #2A2B30;
 	line-height: 60px;
 	letter-spacing: 1px;
-	-webkit-background-clip: text;
 }
 
 .rules-title-two {
@@ -27,7 +26,6 @@
 	color: #2A2B30;
 	line-height: 36px;
 	letter-spacing: 1px;
-	-webkit-background-clip: text;
 }
 
 .rules-centent {
@@ -38,8 +36,6 @@
 	font-weight: 400;
 	color: #C0C3CE;
 	line-height: 21px;
-	-webkit-background-clip: text;
-	/* -webkit-text-fill-color: transparent; */
 }
 
 .rules-top-30 {
