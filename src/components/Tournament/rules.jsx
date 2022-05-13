@@ -114,6 +114,18 @@ const Rules = () => {
 					<div className="rules-slash-bg rules-slash-left"></div>
 					<div className="rules-slash-bg rules-slash-right"></div>
 				</div>
+				<div style={{display: "flex",marginTop:"23px"}}>
+					<div style={{marginLeft:"40.4%"}}>
+						<Image
+							src="/tournament/Group 142.png"
+							style={{width:"24px",height:"24px"}}></Image>
+					</div>
+					<div style={{marginLeft:"18.08%"}}>
+						<Image
+							src="/tournament/Group 142.png"
+							style={{width:"24px",height:"24px"}}></Image>
+					</div>
+				</div>
 				
 				<div style={{paddingTop:"80px",display: "flex"}}>
 					<div style={{marginLeft:"29.16%",width: "200px"}}>

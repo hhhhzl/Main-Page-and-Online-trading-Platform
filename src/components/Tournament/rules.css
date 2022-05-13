@@ -160,20 +160,14 @@
 }
 
 .rules-slash-bg{
-/* 	width: 80px;
-	height: 2px;
-	border-bottom: 2px solid #cdcdcd;
-	 */
 	width: 80px;
 	height: 1px;
-	background: #E5E8EE;
-	border-radius: 0px 0px 0px 0px;
-	opacity: 1;
+	border-bottom: 1px solid #d1d1d1
 }
 
 .rules-slash-left {
 	margin-left: 40.72%;
-	transform:rotateZ(120deg) ;
+	transform:rotateZ(135deg) ;
 }
 
 .rules-slash-right {
