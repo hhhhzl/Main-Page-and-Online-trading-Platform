@@ -7,7 +7,7 @@ import "./finance.css"
 const Finance = ({ profileImg, hobbyImgs }) => {
   const { width, height } = useWindowDimensions();	
   return (
-	  <div style={{width:"1920px"}}>
+	  <div>
 		<div className="gray-bg">
 			<div className="introduce-mark">
 				<div className="top-image">
@@ -35,7 +35,7 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 				<div className="finance-title-top">
 					<Image
 						src="/tournament/Group 797.png"
-						style={{width:"1204px",height:"183px"}}
+						style={{width:" 77.208%",height:"20%"}}
 					/>
 				</div>
 				<div className="finance-title-top">
