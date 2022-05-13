@@ -33,20 +33,20 @@ export default function LoginMainLayout({setToken}) {
       <Image
       src = "/loginback.jpg"    
       style={{
-        position: "absolute",
+        position: "fixed",
         left: -450,
         top: 0,
         width:width,
         height:"100%"
       }}
     /></> : null}      
-    <div className ="login-interface" style={{width: width > 800? "50%": "100%", marginLeft:width > 800 ? "50%": null}}>
-          <Switch>
-            <Route path="/register">
-                <RegisterForm/>
-            </Route>
+    <div className ="login-interface" style={{width: width > 800? "50%": "100%",minHeight:height, marginLeft:width > 800 ? "50%": null}}>
+          <Switch>        
             <Route path="/login">
                 <LoginForm/>
+            </Route>
+            <Route path="/register">
+                <RegisterForm/>
             </Route>
             <Route path="/changepassword">
                 <ChangePassword/>

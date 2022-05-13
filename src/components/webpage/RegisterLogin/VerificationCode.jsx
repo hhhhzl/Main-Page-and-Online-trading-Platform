@@ -25,8 +25,6 @@ export default function VertificationCode() {
   const [user, setuser]= useState(data)
   let history = useHistory();
 
-  
-
   return (
     <div>
       <div className="login-container" style={{marginLeft: width > 800? "15%": "10%", marginTop: height *0.1}}>

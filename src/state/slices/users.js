@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
 import { apiGetAllUsers, apiUpdateUser } from "../../api/users";
 
 /* initial state */
@@ -69,7 +68,6 @@ const usersSlice = createSlice({
 export default usersSlice.reducer;
 
 /* selectors */
-
 export const selectAllUsers = (state) => state.users.items;
 export const selectUserById = (state, id) =>
   state.users.items.find((item) => item.id === id);
