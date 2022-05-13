@@ -77,8 +77,8 @@ const Rules = () => {
 			<div className="rules-top-120">
 				<div>
 					<Image
-						src="/tournament/Group 208.png"
-						style={{width:" 62.5%",height:"210px"}}
+						src="/tournament/Group 209.png"
+						style={{width:" 1200px",height:"210px"}}
 					  />
 				</div>
 			</div>
@@ -110,7 +110,7 @@ const Rules = () => {
 						</div>
 					</div>
 				</div>
-				<div style={{display: "flex"}}>
+				<div>
 					<div className="rules-slash-bg rules-slash-left"></div>
 					<div className="rules-slash-bg rules-slash-right"></div>
 				</div>
