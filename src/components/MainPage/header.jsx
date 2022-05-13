@@ -104,13 +104,13 @@ const HeaderCreate = ({ toggle }) => {
                       : hover || scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
-                  color: scrolledDownEnough
+                  color: scrolledDownEnough && current != 1
                     ? "#2A2B30"
                     : hover && current == 1
                     ? "#1442ED"
                     : hover && current != 1 && !scrolledDownEnough
                     ? "#2A2B30"
-                    : "#FFFFFF",
+                    : scrolledDownEnough && current == 1 ? "#1442ED" : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -187,13 +187,13 @@ const HeaderCreate = ({ toggle }) => {
                       : hover || scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
-                  color: scrolledDownEnough
+                  color: scrolledDownEnough && current != 2
                     ? "#2A2B30"
                     : hover && current == 2
                     ? "#1442ED"
                     : hover && current != 2 && !scrolledDownEnough
                     ? "#2A2B30"
-                    : "#FFFFFF",
+                    : scrolledDownEnough && current == 2 ? "#1442ED" : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -218,13 +218,13 @@ const HeaderCreate = ({ toggle }) => {
                       : hover || scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
-                  color: scrolledDownEnough
+                  color: scrolledDownEnough && current != 3
                     ? "#2A2B30"
                     : hover && current == 3
                     ? "#1442ED"
                     : hover && current != 3 && !scrolledDownEnough
                     ? "#2A2B30"
-                    : "#FFFFFF",
+                    : scrolledDownEnough && current == 3 ? "#1442ED" : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -250,13 +250,13 @@ const HeaderCreate = ({ toggle }) => {
                       : hover || scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
-                  color: scrolledDownEnough
+                  color: scrolledDownEnough && current != 4
                     ? "#2A2B30"
                     : hover && current == 4
                     ? "#1442ED"
                     : hover && current != 4 && !scrolledDownEnough
                     ? "#2A2B30"
-                    : "#FFFFFF",
+                    : scrolledDownEnough && current == 4 ? "#1442ED" : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
