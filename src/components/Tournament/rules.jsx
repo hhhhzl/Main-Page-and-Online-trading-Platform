@@ -75,10 +75,10 @@ const Rules = () => {
 		<div className="rules-p-two">
 			<div className="rules-title">评判规则</div>
 			<div className="rules-top-120">
-				<div>
+				<div style={{width:"62.5%"}}>
 					<Image
-						src="/tournament/Group 208.png"
-						style={{width:" 62.5%",height:"210px"}}
+						src="/tournament/Group 209.png"
+						style={{width:" 76.951%",height:"20%"}}
 					  />
 				</div>
 			</div>
@@ -110,7 +110,7 @@ const Rules = () => {
 						</div>
 					</div>
 				</div>
-				<div style={{display: "flex"}}>
+				<div>
 					<div className="rules-slash-bg rules-slash-left"></div>
 					<div className="rules-slash-bg rules-slash-right"></div>
 				</div>
