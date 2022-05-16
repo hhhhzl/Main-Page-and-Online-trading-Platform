@@ -16,6 +16,7 @@ import { Modal, Button } from "react-bootstrap";
 import useWindowDimensions from "../../utils/sizewindow";
 import Image from "react-bootstrap/Image";
 import "./header.css";
+import { MobileIcon } from "./NavbarElements";
 
 const HeaderCreate = ({ toggle }) => {
   const { width, height } = useWindowDimensions();
@@ -76,11 +77,12 @@ const HeaderCreate = ({ toggle }) => {
         </Modal>
       </div>
       <HeaderOut
+        style={{width:width}}
         scrolledDownEnough={scrolledDownEnough}
         onMouseOver={handleMouseOver}
         onMouseLeave={handleMouseLeave}
       >
-        <HeaderContianer>
+        <HeaderContianer>        
           <div
             className="image-icon"
             style={{ height: "64px", width: "64px", top: 0 }}
@@ -94,6 +96,21 @@ const HeaderCreate = ({ toggle }) => {
               style={{ width: "64px", height: "64px" }}
             />
           </div>
+          {scrolledDownEnough ? (
+            <>
+              <MobileIcon onClick={() => toggle()}>
+                <ViewHeadlineTwoTone style={{color:"black"}} fontSize="large" />
+              </MobileIcon>
+            </>
+          ) : (
+            <>
+              <MobileIcon onClick={() => toggle()}>
+                <ViewHeadlineTwoTone fontSize="large" />
+              </MobileIcon>
+            </>
+          )}
+
+
           <HeaderMenu>
             <HeaderItem>
               <HeaderBtnLink
@@ -330,7 +347,7 @@ const HeaderCreate = ({ toggle }) => {
                       margin: "0px",
                     }}
                   >
-                    登陆
+                    登录
                   </h5>
                 </Button>
               </HeaderBtnLink>

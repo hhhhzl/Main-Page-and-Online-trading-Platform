@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import NavBarTest from '../../navBar';
 import SideMenuUsers from '../sideMenuUsers';
-import StockTradeBar from '../../screen/StockTradeBar';
-import GraphTemplate from '../../screen/GraphTemplate';
-import WatchList from '../../screen/WatchList';
+
 import AuthContext from '../../../../context/AuthContext';
 import axios from 'axios';
 import useWindowDimensions from "../../../../utils/sizewindow";
+import StockTradeBar from '../../../screen/StockTradeBar';
+import GraphTemplate from '../../../screen/GraphTemplate';
+import WatchList from '../../../screen/WatchList';
 
 
 

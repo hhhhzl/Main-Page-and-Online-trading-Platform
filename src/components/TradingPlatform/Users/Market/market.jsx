@@ -1,15 +1,13 @@
 import React, {useState} from 'react';
-import UserBalancePorfolio from '../Portfolio/porfolio';
 import NavBarTest from '../../navBar';
 import { Bookmark } from "@material-ui/icons";
 import SideMenuUsers from '../sideMenuUsers';
 import useWindowDimensions from "../../../../utils/sizewindow";
 import { Col, Row, Card, CardGroup, Collapse, Button, Form , Accordion} from "react-bootstrap";
 import '../../eplatform.css'
-import UserHolding from '../../screen/UserHolding';
-import MarketTopGains from '../../screen/MarketTopGainStocks';
-import MarketStockSearch from '../../screen/MarketStockSearch';
-import AreaChart from '../../graphs/areaChart';
+import MarketTopGains from '../../../screen/MarketTopGainStocks';
+import MarketStockSearch from '../../../screen/MarketStockSearch';
+import AreaChart from '../../../graphs/areaChart';
 
 export default function UserMarket() {
     const {width,height} = useWindowDimensions();

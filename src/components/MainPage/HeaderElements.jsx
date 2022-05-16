@@ -40,8 +40,14 @@ export const HeaderContianer = styled.div`
   height: 64px;
   align-items: center;
   cursor: pointer;
-  @media screen and (max-width: 768px) {
-    display: none;
+  @media screen and (max-width: 800px) {
+    margin-left: 10.75%;
+  display: flex;
+  // justify-content: space-between;
+  color: #ffffff;
+  height: 64px;
+  align-items: center;
+  cursor: pointer;
   }
 `;
 
@@ -55,7 +61,7 @@ export const HeaderMenu = styled.div`
   font-size: 14px;
   font-weight: 500;
   line-height: 17px;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 800px) {
     display: none;
   }
 `;
@@ -111,7 +117,7 @@ export const HeaderBtn = styled.nav`
   // margin-top: 3vh;
   margin-left: 13%;
   height: 64px;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 800px) {
     display: none;
   }
 `;

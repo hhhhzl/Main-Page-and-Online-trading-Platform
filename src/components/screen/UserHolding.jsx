@@ -1,9 +1,8 @@
-import data from '../../../static/holdingdata.json'
+import data from '../../static/holdingdata.json'
 import React from "react";
 import { Button } from "react-bootstrap";
 import BootstrapTable from 'react-bootstrap-table-next';
 import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolkit';
-import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Collapse } from "react-bootstrap";
 import { red } from '@material-ui/core/colors';
 import {MoneyOffOutlined} from '@material-ui/icons'

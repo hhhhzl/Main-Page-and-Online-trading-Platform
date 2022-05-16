@@ -50,9 +50,9 @@ const NavbarCreate = ({ toggle }) => {
         </Modal>
       </div>
 
-      <NavOut scrolledDownEnough={scrolledDownEnough}>
+      <NavOut style={{width:width}} scrolledDownEnough={scrolledDownEnough}>
         <NavbarContianer>
-          {/* <div
+          <div
             className="image-icon"
             style={{ height: box, width: box, top: 0 }}
           >
@@ -70,7 +70,7 @@ const NavbarCreate = ({ toggle }) => {
                 <ViewHeadlineTwoTone fontSize="large" />
               </MobileIcon>
             </>
-          )} */}
+          )}
 
           <NavMenu>
             <NavItem>

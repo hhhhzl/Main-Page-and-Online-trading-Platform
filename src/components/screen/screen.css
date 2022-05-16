@@ -1,0 +1,20 @@
+.select-Button{
+    background-color: white;
+    
+
+    
+    
+}
+
+.hover-fontcolor{
+    color: "#2A2B30";
+}
+
+.select-Button:hover{
+    background:linear-gradient(135deg,#2B8CFF 0%, #2346FF 100%);
+}
+
+.hover-fontcolor:hover{
+    color: "white";
+}
+

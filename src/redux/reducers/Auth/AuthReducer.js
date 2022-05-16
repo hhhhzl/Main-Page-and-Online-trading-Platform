@@ -1,15 +1,26 @@
+import { AuthActionType } from "../../actions/AuthAction";
 
 const authState = {
     isLoggedIn: false,
-    user :{
+    user:{
         username:"",
         expires_at: "",
         jwttoken: "",
-        authorities: [""]
+        authorities: []
     }
 }
 const authreducer = (state = authState, action) => {
-    return state;
+    switch (action.type) {
+        case AuthActionType.REGISTER_SUCCESS:
+            return {
+                isLoggedIn: true,
+                user:action.payload,
+            };
+        case AuthActionType.RGISTER_FAIL:
+                return state
+        default:
+            return state;
+    }
 }
 
 export default authreducer;

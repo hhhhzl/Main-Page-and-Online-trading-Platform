@@ -10,6 +10,7 @@ import HeaderCreate from "../../MainPage/header";
 
 export default function Cover() {
   const { width, height } = useWindowDimensions();
+  console.log(width,height,13)
   return (
     <div
       id="home"

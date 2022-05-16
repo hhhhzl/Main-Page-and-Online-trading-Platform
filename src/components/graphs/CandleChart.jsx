@@ -30,7 +30,7 @@ import {
   DrawingObjectSelector
 } from "react-financial-charts";
 import { macd } from "react-financial-charts";
-import useWindowDimensions from "../../../utils/sizewindow";
+import useWindowDimensions from "../../utils/sizewindow";
 
 export default function CandleChart({w,h, stockData}){
   const {height,width} = useWindowDimensions();

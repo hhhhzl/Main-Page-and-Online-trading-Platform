@@ -1,12 +1,10 @@
 import { color, width } from '@material-ui/system';
 import reaat, {useState} from 'react'
 import { Card, Collapse, Button, Row, Nav, Dropdown,DropdownButton, Badge, Spinner,Col, Form } from 'react-bootstrap'
-import '../../TradingPlatform/eplatform.css';
+import '../TradingPlatform/eplatform.css';
 import { StarBorder } from '@material-ui/icons';
 import { NotificationsNone, KeyboardArrowDown, ArrowDropUp, ArrowBack, ArrowForward, Edit, ShowChart, BarChart} from '@material-ui/icons';
-import UserHolding from './UserHolding';
-import CandleChart from '../graphs/CandleChart';
-import useWindowDimensions from '../../../utils/sizewindow';
+import useWindowDimensions from '../../utils/sizewindow';
 import { IconButton } from '@material-ui/core';
 import CandleStickChart from '../graphs/CandlestickChart';
 
