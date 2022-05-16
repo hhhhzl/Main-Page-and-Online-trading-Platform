@@ -58,8 +58,8 @@ export default function MainPage() {
             </div>   */}
       {/* 隐藏头部导航 */}
       {/* <NavbarCreate toggle = {toggle} /> */}
-      <HeaderCreate />
-      {/* {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>):(<></>)} */}
+      <HeaderCreate toggle = {toggle} />
+      {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>) : null}
       <div className="main-page-center">
         <Cover />
         <div className="about-us-page">

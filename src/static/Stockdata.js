@@ -8,7 +8,7 @@ export let SampleData = [
       volume: 73591581
     },
     {
-      date: "2021-02-02 15:45:00",
+      date: "2021-02-03 15:45:00",
       open: 134.9707,
       low: 134.9307,
       high: 134.9707,
@@ -16,7 +16,7 @@ export let SampleData = [
       volume: 67639193
     },
     {
-      date: "2021-02-02 15:30:00",
+      date: "2021-02-04 15:30:00",
       open: 134.6608,
       low: 134.6608,
       high: 134.975,
@@ -24,7 +24,7 @@ export let SampleData = [
       volume: 64815258
     },
     {
-      date: "2021-02-02 15:15:00",
+      date: "2021-02-05 15:15:00",
       open: 134.8585,
       low: 134.6237,
       high: 134.9716,
@@ -32,7 +32,7 @@ export let SampleData = [
       volume: 62892896
     },
     {
-      date: "2021-02-02 15:00:00",
+      date: "2021-02-06 15:00:00",
       open: 134.985,
       low: 134.78,
       high: 135.0,
@@ -40,7 +40,7 @@ export let SampleData = [
       volume: 60880828
     },
     {
-      date: "2021-02-02 14:45:00",
+      date: "2021-02-06 14:45:00",
       open: 135.0361,
       low: 134.895,
       high: 135.07,
@@ -48,7 +48,7 @@ export let SampleData = [
       volume: 58154799
     },
     {
-      date: "2021-02-02 14:30:00",
+      date: "2021-02-08 14:30:00",
       open: 135.065,
       low: 134.965,
       high: 135.0799,
@@ -56,7 +56,7 @@ export let SampleData = [
       volume: 56547384
     },
     {
-      date: "2021-02-02 14:15:00",
+      date: "2021-02-09 14:15:00",
       open: 134.97,
       low: 134.86,
       high: 135.04,
@@ -64,7 +64,7 @@ export let SampleData = [
       volume: 55064426
     },
     {
-      date: "2021-02-02 14:00:00",
+      date: "2021-02-10 14:00:00",
       open: 135.1,
       low: 134.9501,
       high: 135.19,
@@ -72,7 +72,7 @@ export let SampleData = [
       volume: 53781369
     },
     {
-      date: "2021-02-02 13:45:00",
+      date: "2021-02-11 13:45:00",
       open: 134.76,
       low: 134.725,
       high: 135.1001,
@@ -80,7 +80,7 @@ export let SampleData = [
       volume: 52259221
     },
     {
-      date: "2021-02-02 13:30:00",
+      date: "2021-02-12 13:30:00",
       open: 134.8993,
       low: 134.63,
       high: 134.96,
@@ -88,7 +88,7 @@ export let SampleData = [
       volume: 49705143
     },
     {
-      date: "2021-02-02 13:15:00",
+      date: "2021-02-13 13:15:00",
       open: 134.98,
       low: 134.8593,
       high: 135.0799,
@@ -96,7 +96,7 @@ export let SampleData = [
       volume: 47910633
     },
     {
-      date: "2021-02-02 13:00:00",
+      date: "2021-02-14 13:00:00",
       open: 135.2338,
       low: 134.94,
       high: 135.2593,
@@ -104,7 +104,7 @@ export let SampleData = [
       volume: 46217357
     },
     {
-      date: "2021-02-02 12:45:00",
+      date: "2021-02-15 12:45:00",
       open: 135.275,
       low: 135.14,
       high: 135.4692,
@@ -112,7 +112,7 @@ export let SampleData = [
       volume: 44569949
     },
     {
-      date: "2021-02-02 12:30:00",
+      date: "2021-02-16 12:30:00",
       open: 135.095,
       low: 134.96,
       high: 135.275,
@@ -120,7 +120,7 @@ export let SampleData = [
       volume: 42806818
     },
     {
-      date: "2021-02-02 12:15:00",
+      date: "2021-02-17 12:15:00",
       open: 135.07,
       low: 135.03,
       high: 135.23,
@@ -128,7 +128,7 @@ export let SampleData = [
       volume: 41098062
     },
     {
-      date: "2021-02-02 12:00:00",
+      date: "2021-02-18 12:00:00",
       open: 134.985,
       low: 134.91,
       high: 135.1573,
@@ -136,7 +136,7 @@ export let SampleData = [
       volume: 39155809
     },
     {
-      date: "2021-02-02 11:45:00",
+      date: "2021-02-19 11:45:00",
       open: 135.24,
       low: 134.889,
       high: 135.285,
@@ -144,7 +144,7 @@ export let SampleData = [
       volume: 36999582
     },
     {
-      date: "2021-02-02 11:30:00",
+      date: "2021-02-20 11:30:00",
       open: 135.4,
       low: 135.235,
       high: 135.6321,
@@ -152,7 +152,7 @@ export let SampleData = [
       volume: 34086377
     },
     {
-      date: "2021-02-02 11:15:00",
+      date: "2021-02-21 11:15:00",
       open: 135.57,
       low: 135.1485,
       high: 135.57,
@@ -160,7 +160,7 @@ export let SampleData = [
       volume: 32048146
     },
     {
-      date: "2021-02-02 11:00:00",
+      date: "2021-02-22 11:00:00",
       open: 135.2099,
       low: 135.085,
       high: 135.69,
@@ -168,7 +168,7 @@ export let SampleData = [
       volume: 30026663
     },
     {
-      date: "2021-02-02 10:45:00",
+      date: "2021-02-23 10:45:00",
       open: 135.26,
       low: 135.0608,
       high: 135.38,
@@ -176,7 +176,7 @@ export let SampleData = [
       volume: 26982389
     },
     {
-      date: "2021-02-02 10:30:00",
+      date: "2021-02-24 10:30:00",
       open: 135.4193,
       low: 135.26,
       high: 135.53,
@@ -184,7 +184,7 @@ export let SampleData = [
       volume: 23752063
     },
     {
-      date: "2021-02-02 10:15:00",
+      date: "2021-02-25 10:15:00",
       open: 135.43,
       low: 135.14,
       high: 135.87,
@@ -192,7 +192,7 @@ export let SampleData = [
       volume: 19673745
     },
     {
-      date: "2021-02-02 10:00:00",
+      date: "2021-02-26 10:00:00",
       open: 135.4399,
       low: 135.04,
       high: 135.825,
@@ -200,7 +200,7 @@ export let SampleData = [
       volume: 15909299
     },
     {
-      date: "2021-02-02 09:45:00",
+      date: "2021-02-27 09:45:00",
       open: 134.14,
       low: 134.14,
       high: 136.22,
@@ -208,7 +208,7 @@ export let SampleData = [
       volume: 10820024
     },
     {
-      date: "2021-02-02 09:30:00",
+      date: "2021-02-28 09:30:00",
       open: 134.14,
       low: 134.14,
       high: 134.14,
@@ -216,7 +216,7 @@ export let SampleData = [
       volume: 104212352
     },
     {
-      date: "2021-02-01 16:00:00",
+      date: "2021-03-01 16:00:00",
       open: 134.8,
       low: 134.085,
       high: 134.82,
@@ -224,7 +224,7 @@ export let SampleData = [
       volume: 97173319
     },
     {
-      date: "2021-02-01 15:45:00",
+      date: "2021-03-02 15:45:00",
       open: 134.36,
       low: 134.31,
       high: 134.8314,
@@ -232,7 +232,7 @@ export let SampleData = [
       volume: 91194914
     },
     {
-      date: "2021-02-01 15:30:00",
+      date: "2021-03-03 15:30:00",
       open: 134.34,
       low: 134.2393,
       high: 134.4999,
@@ -240,7 +240,7 @@ export let SampleData = [
       volume: 88193616
     },
     {
-      date: "2021-02-01 15:15:00",
+      date: "2021-03-04 15:15:00",
       open: 134.1785,
       low: 134.1785,
       high: 134.5401,
@@ -248,7 +248,7 @@ export let SampleData = [
       volume: 86187092
     },
     {
-      date: "2021-02-01 15:00:00",
+      date: "2021-03-05 15:00:00",
       open: 134.33,
       low: 134.1301,
       high: 134.5473,

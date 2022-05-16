@@ -170,8 +170,14 @@
 }
 
 .stock-trade-form{
-  color:black;
-  margin-bottom: 0.2rem
+  margin-bottom: 0.2rem;
+  font-size: 14px;
+  font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+  font-weight: 400;
+  color: #2A2B30;
+  line-height: 24px;
+  /* -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent; */
 }
 
 .stock-trade-form2{

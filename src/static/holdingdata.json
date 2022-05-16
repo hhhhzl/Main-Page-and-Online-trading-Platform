@@ -1,5 +1,5 @@
 [
-    {"id":1,"symbol":"PLTR","holdingshares":20,"price":12.8,"avgprice":10,"position":7},
+    {"id":1,"symbol":"恒瑞医药","holdingshares":20,"price":12.8,"avgprice":10,"position":7},
     {"id":1,"symbol":"AAPL","holdingshares":20,"price":160,"avgprice":120,"position":7},
     {"id":1,"symbol":"TSLA","holdingshares":20,"price":900,"avgprice":200,"position":7},
     {"id":1,"symbol":"PYPL","holdingshares":20,"price":120,"avgprice":500,"position":7},

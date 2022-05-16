@@ -14,7 +14,6 @@ import useWindowDimensions from "../../../utils/sizewindow";
 import { CloseOutlined } from '@material-ui/icons'
 import { ViewHeadlineTwoTone } from '@material-ui/icons';
 import { IconButton } from "@material-ui/core";
-import userEvent from "@testing-library/user-event";
 
 
 export default function SideMenuUsers({extendbar, extend}) {

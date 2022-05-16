@@ -73,7 +73,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               letterSpacing: "0.2px",
             }}
           >
-            UFA金融协会是面向全球顶级高校（包括美国排名TOP30、中国内地TOP10、中国香港四大高校等）建立的首个跨学校，跨地区，跨文化的大学生金融协会。自成立以来，UFA金融协会与中信证券、海内外超过100所高校等建立起合作关系，并联合策划了名家分享会、金融系列公益讲座、全球华人大学生投资大赛等多个活动
+          UFA金融协会是面向全球顶级高校（包括美国排名TOP30、中国内地TOP10、中国香港四大高校等）建立的首个跨学校，跨地区，跨文化的大学生金融协会。自成立以来，UFA金融协会与中信证券、海内外超过100所高校等建立起合作关系，并联合策划了名家分享会、金融系列公益讲座、全球华人大学生投资大赛等多个活动
           </p>
           <br />
           <p
@@ -88,7 +88,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
             }}
           >
             “UFA金融杯”是由
-            UFA⾦融协会牵头发起的首个大型线上模拟投资比赛。“UFA金融杯”为非盈利性赛事，大赛旨在为全球华人大学生提供知识实践以及投资学习的平台支持，鼓励大学生以知促行，以行促知，培养创新精神与实践能力，推动金融创新人才培养机制的建立。大赛愿景希望联结全球未来华人精英，共同建设祖国金融未来。
+            UFA⾦融协会牵头发起的首个大型线上模拟投资比赛。“UFA金融杯”为非盈利性赛事，大赛旨在为全球华人大学生提供知识实践以及投资学习的平台支持，鼓励大学生以知促行，以行促知，培养创新精神与实践能力，推动金融创新人才培养机制的建立。大赛愿景希望联结全球未来华人精英，共同建设祖国金融未来
           </p>
           <div className="right-icon">
             <Image
@@ -533,13 +533,17 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
             style={{ paddingTop: "120px", paddingBottom: "90px" }}
           >
             <div className="text-center">
-              <Image
+              {width > 700? <><Image
                 src="/homeCutout/Group 58.png"
                 style={{ width: "685px", height: "79px" }}
-              />
+              /></> : <><Image
+              src="/homeCutout/Group 58.png"
+              style={{ width: width-10, height: "79px" }}
+            /></>  }
+              
             </div>
 
-            {width > 800 ? (
+            {width > 1100 ? (
               <>
                 <div className="message-box">
                   <div className="flex-between">
@@ -706,7 +710,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                         alignItems: "center",
                       }}
                     >
-                      “权威金融竞赛证书”为你加强背景与竞争力
+                      “权威金融竞赛证书”为你加强背景与竞争力{width}
                     </h6>
                     <p
                       style={{

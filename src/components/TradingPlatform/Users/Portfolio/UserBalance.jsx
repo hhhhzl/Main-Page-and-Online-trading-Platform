@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import UserBalancePorfolio from "./porfolio";
-import UserTradingHistory from "../../screen/UserTradingHis";
+import UserTradingHistory from "../../../screen/UserTradingHis";
 import { Col, Row, Card, CardGroup, Container, Image } from "react-bootstrap";
 import useWindowDimensions from "../../../../utils/sizewindow";
-import UserHolding from '../../screen/UserHolding';
+
 import NavBarTest from '../../navBar';
 import SideMenuUsers from '../sideMenuUsers';
+import UserHolding from '../../../screen/UserHolding';
 
 export default function UserBalance() {
     const {width,height} = useWindowDimensions();

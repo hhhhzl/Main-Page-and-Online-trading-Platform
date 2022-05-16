@@ -1,7 +1,7 @@
 import { color, width } from '@material-ui/system';
 import reaat, {useState} from 'react'
 import { Card, Collapse, Button, Row, Nav } from 'react-bootstrap'
-import '../../TradingPlatform/eplatform.css';
+import '../TradingPlatform/eplatform.css';
 import { StarBorder } from '@material-ui/icons';
 import { NotificationsNone, KeyboardArrowDown, ArrowDropUp} from '@material-ui/icons';
 import UserHolding from './UserHolding';
@@ -29,24 +29,7 @@ export default function StockTradeBar(props) {
             </Card.Footer>
       </Card>
     </div>
-        <div style={{width:"100%"}}>
-      <Card>
-        <Card.Header style={{backgroundColor:""}}>
-          模拟交易
-
-            {displayVisible ? <ArrowDropUp style = {{position:"relative"}}
-            onClick={() => setDisplayVisible(!displayVisible)}/> : <KeyboardArrowDown style = {{position:"relative"}}
-            onClick={() => setDisplayVisible(!displayVisible)}/>}
-       
-          
-        </Card.Header>
-        <Collapse in={displayVisible}>
-          <Card.Body>      
-            <StockTradeComponet vertify={vertify}/>
-          </Card.Body>
-        </Collapse>
-      </Card>
-    </div>
+        <StockTradeComponet/>
 
     <div style={{width:"100%"}}>
       <Card>

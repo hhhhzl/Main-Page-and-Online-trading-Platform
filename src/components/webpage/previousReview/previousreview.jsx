@@ -6,8 +6,10 @@ import "./previousreview.css";
 import Collapse from "react-bootstrap/Collapse";
 import Card from "react-bootstrap/Card";
 import { Bookmark } from "@material-ui/icons";
+import useWindowDimensions from "../../../utils/sizewindow";
 
 const Review = ({ projectImgs }) => {
+  const { width, height } = useWindowDimensions();
   const React = require("react");
   const { BilibiliVideo } = require("react-bilibili-video");
   const [type, setType] = useState("front-end");
@@ -99,10 +101,11 @@ const Review = ({ projectImgs }) => {
       <div className="review-picture">
         <div className="review-icon-wrapper">
           <div className="review-icon">
-            <Image
+            {width > 700 ? <Image
               src="/homeCutout/Group 143.png"
               style={{ width: "108px", height: "108px" }}
-            />
+            /> : <><br/><br/></> }
+            
           </div>
         </div>
         <div style={{ minHeight: "150px" }}>
@@ -123,10 +126,11 @@ const Review = ({ projectImgs }) => {
         </div>
         <div className="review-icon-wrapper-bottom">
           <div className="review-icon-bottom">
-            <Image
+            {width>700? <Image
               src="/homeCutout/Group 27.png"
               style={{ width: "108px", height: "108px" }}
-            />
+            /> :null}
+            
           </div>
         </div>
         <br />

@@ -37,7 +37,9 @@ const Sidebar = ({isOpen,toggle}) => {
                     <SidebarLink scrolledDownEnough={scrolledDownEnough} offset={-20} activeClass="active-block-side" to ="contactus" spy={true} smooth={true} onClick={toggle}>联系我们</SidebarLink>
                 </SidebarMenu>
                 <SideBtnWrap>
-                    <SidebarRoute to="/eplatform/:Stock" >
+                
+                    
+                    <SidebarRoute to="/register" >
                         登录
                     </SidebarRoute>
                 </SideBtnWrap>

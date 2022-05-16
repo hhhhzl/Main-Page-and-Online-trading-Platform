@@ -23,7 +23,7 @@ import {
 	MouseCoordinateX,
 	MouseCoordinateY,
 } from "react-stockcharts/lib/coordinates";
-import { SampleData } from "../../../static/Stockdata";
+import { SampleData } from "../../static/Stockdata";
 
 import { discontinuousTimeScaleProvider, discontinuousTimeScaleProviderBuilder } from "react-stockcharts/lib/scale";
 import {

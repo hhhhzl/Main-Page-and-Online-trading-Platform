@@ -12,8 +12,8 @@ import {
   hexToRGBA
 } from "react-stockcharts/lib/utils";
 import { discontinuousTimeScaleProviderBuilder } from "react-stockcharts/lib/scale";
-import { SampleData } from "../../../static/Stockdata";
-import useWindowDimensions from "../../../utils/sizewindow";
+import { SampleData } from "../../static/Stockdata";
+import useWindowDimensions from "../../utils/sizewindow";
 
 const canvasGradient = createVerticalLinearGradient([
   { stop: 0, color: hexToRGBA("#b5d0ff", 0.2) },
@@ -52,7 +52,7 @@ class AreaChart extends React.Component {
         ratio={1}
         width={width}
         height={width/1.8}
-        margin={{ left: 50, right: 0, top: 10, bottom: 30 }}
+        margin={{ left: 0, right: 0, top: 10, bottom: 30 }}
         type={"hybrid"}
         data={data}
         xScale={xScale}
@@ -68,8 +68,8 @@ class AreaChart extends React.Component {
               <stop offset="100%" stopColor="#4286f4" stopOpacity={0.8} />
             </linearGradient>
           </defs>
-          <XAxis axisAt="bottom" orient="bottom" ticks={6} />
-          <YAxis axisAt="left" orient="left" />
+          <XAxis axisAt="bottom" orient="bottom" ticks={4} />
+          <YAxis axisAt="right" orient="right"/>
           <AreaSeries
             yAccessor={(d) => d.open}
             fill="url(#MyGradient)"

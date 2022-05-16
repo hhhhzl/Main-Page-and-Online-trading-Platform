@@ -8,8 +8,14 @@ import { Link } from 'react-router-dom';
 import useWindowDimensions from "../../../utils/sizewindow";
 import { Nav } from 'react-bootstrap';
 import { ArrowBack } from "@material-ui/icons";
+import { connect } from "react-redux";
+import { RegisterAuthAction } from "../../../redux/actions/AuthAction";
 
-export default function RegisterForm() {
+function RegisterForm(props) {
+  const {
+    user, 
+    register
+   } = props;
   const [userState, setUserState] = useState({})
   const [show, setShow]=useState(false);
   const {width, height} = useWindowDimensions();
@@ -100,7 +106,7 @@ const [validated, setValidated] = useState(false);
         <br/>
       <Form  noValidate validated={validated} id="addProject" onSubmit={(event) => {
         event.preventDefault();
-        console.log(userState)
+        register(userState)
       }}>
 
         {/*
@@ -129,9 +135,9 @@ const [validated, setValidated] = useState(false);
               required
               value={username}
               onChange={(e) =>{
-                const name = e.target.value
+                const username = e.target.value
                 setUsername(e.target.value)
-                setUserState({...userState, ...{ name }});
+                setUserState({...userState, ...{ username }});
 
               }
               }
@@ -312,3 +318,22 @@ const [validated, setValidated] = useState(false);
     </div>
   );
 }
+
+const mapStateToProps = (state) =>{
+  return {
+    user: state,
+
+  }
+}
+
+const mapDispatchToProps = (dispatch) =>{
+  return {
+    register: (userState) => {
+      dispatch(RegisterAuthAction(userState));
+      console.log(userState,335)
+    },
+    
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm)

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import {Link as LinkS} from 'react-scroll'
 
 
-export const NavOut = styled.nav`
+export const NavOut = styled.div`
    // background:${props => props.scrolledDownEnough ? 'white' : "rgba(0,0,0,0)"};
    background:white;
    height: 9vh;
@@ -23,7 +23,7 @@ export const NavOut = styled.nav`
    z-index:10;
 
    @media screen and (max-width: 960px){
-       transition: 1s all ease;
+       transition: 0s all ease;
    }
 `
 
@@ -52,7 +52,7 @@ export const MobileIcon =styled.div`
   display:none;
   margin-top:-1vh;
 
-  @media screen and (max-width: 760px){
+  @media screen and (max-width: 800px){
     display:block;
     position:absolute;
     top:0;

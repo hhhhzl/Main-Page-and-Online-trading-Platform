@@ -1,17 +1,13 @@
-import data from '../../../static/tradingdata.json'
+import data from '../../static/tradingdata.json'
 import React from "react";
-import { Button } from "react-bootstrap";
 import BootstrapTable from 'react-bootstrap-table-next';
-import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolkit';
-import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Collapse } from "react-bootstrap";
-import { red } from '@material-ui/core/colors';
 
 const { SearchBar } = Search;
 const { ExportCSVButton } = CSVExport;
 
-export default function MarketTopGains(){
+export default function UserTradingHistory(){
     const columns = [
         {
             dataField: 'symbol',
@@ -36,8 +32,6 @@ export default function MarketTopGains(){
                     </div>
                 )
                 
-            
-      
             },
         },
         {
@@ -73,7 +67,7 @@ export default function MarketTopGains(){
             columns={ columns }
             search
             exportCSV={ {
-                fileName: '用户信息.csv',
+                fileName: '交易记录.csv',
                 separator: '|',
                 ignoreHeader: true,
                 noAutoBOM: false
@@ -81,13 +75,23 @@ export default function MarketTopGains(){
     >
     {
       props =>(
-        <div>
+        <div >
+          <div className="search-div">
+            <SearchBar
+                {...props.searchProps}
+                      srText={false}
+                      placeholder="搜索交易记录"
+            />
+
+            </div>
+          <hr />
           <Collapse in= {true}>
-             <div className ="scroll3">
+             <div className ="scroll2">
           
           <BootstrapTable
            { ...props.baseProps}
             hover
+            striped
             bordered={ false }
             condensed 
             noDataIndication={ indication }
