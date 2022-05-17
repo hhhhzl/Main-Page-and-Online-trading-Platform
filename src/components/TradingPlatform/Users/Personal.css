@@ -1,0 +1,69 @@
+.personal-homepage {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	margin-left: 33.073%;
+	text-align: center;
+}
+
+.top-48 {
+	margin-top: 48px;
+}
+
+.personal-username {
+	height: 60px;
+	font-size: 36px;
+	font-family: Microsoft YaHei UI-Bold, Microsoft YaHei UI;
+	font-weight: bold;
+	color: #2A2B30;
+	line-height: 60px;
+	letter-spacing: 4px;
+}
+
+.personal-other-text {
+	font-size: 14px;
+	font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+	font-weight: 400;
+	color: #6E7184;
+	line-height: 24px;
+}
+
+.edit-title {
+	height: 40px;
+	font-size: 24px;
+	font-family: Microsoft YaHei UI-Bold, Microsoft YaHei UI;
+	font-weight: bold;
+	color: #2A2B30;
+	line-height: 40px;
+	letter-spacing: 1px;
+}
+
+
+.edit-data-button {
+	width: 120px;
+	height: 44px;
+	border-radius: 24px 24px 24px 24px;
+	opacity: 1;
+	border: 1px solid #2A2B30;
+}
+
+
+.information {
+    height: 40px;
+    font-size: 20px;
+    font-family: Microsoft YaHei UI-Bold, Microsoft YaHei UI;
+    font-weight: bold;
+    color: #2A2B30;
+    line-height: 40px;
+    letter-spacing: 1px;	
+}
+
+
+
+.add-internship {
+	width: 26.668%;
+	height: 48px;
+	background:#F2F2F2;
+}
+
+
