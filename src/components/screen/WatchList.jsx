@@ -40,10 +40,7 @@ opacity: 1}}>
         }}>自选股</h2>
         </div>
         </Card.Header>
-
-        
-    
-         
+       
     <WatchListTable/> 
    
     </Card>
