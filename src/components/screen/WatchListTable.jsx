@@ -127,7 +127,7 @@ export default function WatchListTable(){
 
        
 
-            <div style= {{maxHeight:height*0.6,overflow:"auto",marginTop:"12px",marginBottom:"0px",borderRadius: "4px 4px 4px 4px",opacity: "1"}}>
+            <div style= {{height:height*0.8,overflow:"auto",marginTop:"12px",marginBottom:"0px",borderRadius: "4px 4px 4px 4px",opacity: "1"}}>
             <BootstrapTable
            { ...props.baseProps}
            bordered={ false }

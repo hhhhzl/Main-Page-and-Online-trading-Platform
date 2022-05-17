@@ -313,7 +313,7 @@ const Contacts = () => {
           <div className="text-center" style={{ paddingTop: "80px" }}>
             <div>
               <Image
-                src="/homeCutout/Group 8100.png"
+                src="/corpo.png"
                 style={{ width: "160px", height: "160px", marginRight: "40px" }}
               />
               <Image
