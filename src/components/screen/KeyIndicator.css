@@ -1,0 +1,103 @@
+.indicator-simple {
+	margin-top: 37px;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.indicator-simple-title {
+	height: 40px;
+	font-size: 24px;
+	font-family: Microsoft YaHei UI-Bold, Microsoft YaHei UI;
+	font-weight: bold;
+	color: #2A2B30;
+	line-height: 40px;
+	letter-spacing: 1px;
+}
+
+
+.indicator-simple-div {
+	padding: 0 12px;
+	width: 25%;
+	height: 84px;
+}
+
+.indicator-simple-key {
+	height: 28px;
+	font-size: 16px;
+	font-family: Microsoft YaHei UI-Bold, Microsoft YaHei UI;
+	font-weight: bold;
+	color: #2A2B30;
+	line-height: 28px;
+	padding: 16px 12px;
+}
+
+.indicator-simple-value {
+	height: 24px;
+	font-size: 14px;
+	font-family: Futura-Medium, Futura;
+	font-weight: 500;
+	color: #6E7184;
+	line-height: 24px;
+	padding: 5px 12px;
+}
+
+.indicator-professional {
+	width: 15.625%;
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+}
+
+.indicator-professional-title {
+	height: 28px;
+	font-size: 16px;
+	font-family: Microsoft YaHei UI-Bold, Microsoft YaHei UI;
+	font-weight: bold;
+	color: #2A2B30;
+	line-height: 28px;
+	padding-left: 39%;
+}
+
+.professional-line {
+	width: 100%;
+	height: 2px;
+	background-color: aliceblue;
+}
+
+.simple-line{
+	width: 100%;
+	height: 2px;
+	background-color: aliceblue;
+	margin-top: 24px;
+}
+
+
+.indicator-professional-div {
+	display: flex;
+	width: 100%;
+	height: 60px;
+	align-items: center;
+}
+
+
+.indicator-professional-key {
+	width: 75%;
+	height: 28px;
+	font-size: 16px;
+	font-family: Microsoft YaHei UI-Bold, Microsoft YaHei UI;
+	font-weight: bold;
+	color: #2A2B30;
+	line-height: 28px;
+	padding-left: 12%;
+}
+
+.indicator-professional-value {
+	width: 25%;
+	height: 24px;
+	font-size: 14px;
+	font-family: Futura-Medium, Futura;
+	font-weight: 500;
+	color: #6E7184;
+	line-height: 24px;
+}
