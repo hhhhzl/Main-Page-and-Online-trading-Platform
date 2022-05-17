@@ -29,6 +29,7 @@ import LoginMainLayout from './components/webpage/RegisterLogin/mainLayout';
 
 
 import Tournament from './components/Tournament/tournament';
+import PageHeader from './components/screen/PageHeader';
 
 
 // const AdminMainPage = () => {
@@ -118,6 +119,8 @@ const MakeRouter = () => {
       <Route exact path="/home" component={MainPage} /> 
       <Route exact path="/" component={MainPage} /> 
       <Route exact path="/tournament" component={Tournament} />
+
+      <Route exact path="/pageHeader" component={PageHeader} />
       </AuthProvider>
     </Switch>
   );
