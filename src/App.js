@@ -33,6 +33,10 @@ import PageHeader from './components/screen/PageHeader';
 import UserPortfolio from './components/TradingPlatform/Users/Portfolio/UserPortforlio';
 import StockTrade from './components/TradingPlatform/Users/Stocks/StockTrade';
 import StockPriceGraphProfessional from './components/screen/StockPriceGraphProfessional';
+import EditData from './components/TradingPlatform/Users/EditData'
+import PersonalHomepage from './components/TradingPlatform/Users/PersonalHomepage'
+import KeyIndicatorSimple from './components/screen/KeyIndicatorSimple'
+import KeyIndicatorProfessional from './components/screen/KeyIndicatorProfessional'
 
 
 
@@ -94,6 +98,10 @@ const MakeRouter = () => {
       <Route exact path="/" component={MainPage} /> 
       <Route exact path="/tournament" component={Tournament} />
       <Route exact path="/pageHeader" component={PageHeader} />
+      <Route exact path="/editData" component={EditData}/>
+	    <Route exact path="/personalHomepage" component={PersonalHomepage}/>
+	    <Route exact path="/keyIndicatorSimple" component={KeyIndicatorSimple}/>
+	    <Route exact path="/keyIndicatorProfessional" component={KeyIndicatorProfessional}/>
       </AuthProvider>
     </Switch>
   );

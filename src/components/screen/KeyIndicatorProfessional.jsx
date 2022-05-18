@@ -1,4 +1,5 @@
 import './KeyIndicator.css'
+import data from '../../static/indicator.json'
 
 export default function KeyIndicators(){
 	return(
