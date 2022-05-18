@@ -1,5 +1,5 @@
 import reaat, {useEffect, useState} from 'react'
-import { Card, Collapse, Button, Row, Nav, Col, Badge, InputGroup, Form, Image } from 'react-bootstrap'
+import { Card, Collapse, Button, Row, Nav, Col, Badge, InputGroup, Form, Image,Modal } from 'react-bootstrap'
 import './screen.css';
 import { Add, ArrowForward, Check, Edit, Forward, StarBorder } from '@material-ui/icons';
 import { NotificationsNone, KeyboardArrowDown, ArrowDropUp} from '@material-ui/icons';
@@ -22,9 +22,10 @@ import {
 } from "react-stockcharts/lib/utils";
 import { discontinuousTimeScaleProviderBuilder } from "react-stockcharts/lib/scale";
 import { SampleData } from "../../static/Stockdata";
+import { Link } from 'react-router-dom';
 
 
-export default function StockPriceGraphSimplify(props) {
+export default function StockPriceGraphSimplify({widthratio}) {
   const {width,height} = useWindowDimensions();
   const [timeP,setTimeP] = useState(7);
   const [id,setID] = useState(0)
@@ -36,6 +37,12 @@ export default function StockPriceGraphSimplify(props) {
   const handleMouseLeave1 = () => setHover1(false);
   const handleMouseOver2 = () => setHover2(true);
   const handleMouseLeave2 = () => setHover2(false);
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  
   
   
 
@@ -86,9 +93,18 @@ export default function StockPriceGraphSimplify(props) {
     return (
       <>
       {vertify? ( <>
+        <div>
+        <Modal size="lg"
+      aria-labelledby="contained-modal-title-vcenter" show={show} onHide={handleClose} centered>
+          <Modal.Header closeButton></Modal.Header>
+          <Modal.Body>
+            <h5 className="text-center">您手机尺寸暂不支持专业版，请使用大尺寸设备</h5>
+          </Modal.Body>
+        </Modal>
+      </div>
 
       <div>
-      <Card style={{width:"100%", borderColor:"white"}} > 
+      <Card style={{width:widthratio, borderColor:"white"}} > 
 
           <Row style={{ height:"124px" }}>
               <Col xs ={7} style={{height:"124px"}} >
@@ -121,20 +137,21 @@ export default function StockPriceGraphSimplify(props) {
 
 
         <Row>
-            <Col xs ={5} style={{height:"28px"}}>
+            <Col xs ={7} style={{height:"28px"}}>
         <div style={{
         fontSize:"16px",
         fontFamily:"Microsoft YaHei UI-Bold",
         fontWeight:"500",
         padding:"0px",
-        color:"#2A2B30",
+        color:updown? "#42E083" : "#FF3541",
         lineHeight:"28px",
-        }}>¥30608.26(+2.03%)</div>
+        }}>+¥30608.26(+2.03%)</div>
 
         
-        </Col><Col xs ={7} style={{height:"28px"}}>
+        </Col><Col xs ={5} style={{height:"28px"}}>
         <div style={{
         fontSize:"16px",
+        marginLeft:"-40%",
         fontFamily:"Microsoft YaHei UI-Bold",
         fontWeight:"400",
         padding:"0px",
@@ -153,7 +170,7 @@ export default function StockPriceGraphSimplify(props) {
             
               
               <Col xs ={5} style={{height:"124px"}}>
-                  <div style={{display:"flex",justifyContent:"space-between",padding:"13% 0% 10% 13%"}}>
+                  <div style={{display:"flex",justifyContent:"space-between",padding:"13% 0% 10% 5%"}}>
 
 
                       {add? <><div>
@@ -198,7 +215,14 @@ export default function StockPriceGraphSimplify(props) {
                           variant="outline-secondary"
                           onMouseOver={handleMouseOver2}
                           onMouseLeave={handleMouseLeave2}
+                          onClick={() => {
+                            if (width < 1200){
+                              handleShow()
+                            }
+                          } }
                           >
+                            {width > 1200? <>
+                              <Link to='user/pro'>
                           <div className ="hover-fontcolor" style={{
                               display:"flex",justifyContent:"space-between",
                               fontSize:"14px",
@@ -207,11 +231,29 @@ export default function StockPriceGraphSimplify(props) {
                               fontWeight:"bold",
                               padding:"5% 13% 10% 10%",
                               lineHeight:"24px",
-                              }}>专业版{" "}
+                              }}>  专业版{" "}
                               <ArrowForward className ="hover-fontcolor" style={{
                               padding:"0px",
                               }}
-                              /></div>           
+                              /> </div> </Link> 
+
+                            </> : <>
+                            <div className ="hover-fontcolor" style={{
+                              display:"flex",justifyContent:"space-between",
+                              fontSize:"14px",
+                              fontFamily:"Microsoft YaHei UI-Bold",
+                              color: hover2? "white" : "#2A2B30" ,
+                              fontWeight:"bold",
+                              padding:"5% 13% 10% 10%",
+                              lineHeight:"24px",
+                              }}>  专业版{" "}
+                              <ArrowForward className ="hover-fontcolor" style={{
+                              padding:"0px",
+                              }}
+                              /> </div>
+                            </>}
+                            
+                                     
                           </Button>
                      </div>
                   </div>
@@ -221,7 +263,7 @@ export default function StockPriceGraphSimplify(props) {
 
     
               <div style={{marginTop:"8px",width:"100%", borderColor:"white"}}>
-              <AreaSeriesForStockPrice width={760} 
+              <AreaSeriesForStockPrice width={widthratio} 
               timeperiod = {timeP} 
               start={start}
               end = {end}

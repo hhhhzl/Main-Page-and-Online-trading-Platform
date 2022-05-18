@@ -12,6 +12,7 @@ import Team from "./pages/team";
 export default function TradePadmin() {
 
   let match = useRouteMatch();
+  console.log(match)
 
   const username = "张三";
   const userType = "管理员"

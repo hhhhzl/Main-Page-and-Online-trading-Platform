@@ -29,6 +29,7 @@ import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolk
 import BootstrapTable from 'react-bootstrap-table-next';
 import { IconButton } from '@material-ui/core';
 import CandleStickChart from '../graphs/CandlestickChart';
+import KeyIndicators from './KeyIndicatorProfessional';
 
 const { SearchBar, ClearSearchButton } = Search;
 
@@ -170,7 +171,7 @@ const searchSwitch = () => {
         <div style={{width:"100%",minHeight:"6.2%", display:"flex",justifyContent:"left",borderBottom:"1px solid #E5E8EE"}}>
 
             <div style={{marginLeft:"2.5%" ,width:"37.7%",display:"flex",justifyContent:"left"}}>
-                <Link style ={{color:"black", paddingTop:"24px", textDecoration:"none"}} to="/home"><ArrowBack/></Link>
+                <Link style ={{color:"black", paddingTop:"24px", textDecoration:"none"}} to="../user"><ArrowBack/></Link>
                 <div style={{
                       height:"28px",
                       paddingTop:"24px", 
@@ -225,13 +226,9 @@ const searchSwitch = () => {
                       lineHeight:"24px",
                       }}>关键指标</div>
               </Dropdown.Toggle>
-              <Dropdown.Menu style={{marginLeft:"-20%",height:"200px",
-                      width:"100px",
-                      backgroundColor:"red",
-                      marginLeft:"16px"}}>
-                <Card style={{
-                      
-                      }}></Card>
+              <Dropdown.Menu align="end" style={{position:'fixed',
+                      width:"300px", border:"0px",Left:"10%"}}>
+                     <KeyIndicators/>
                 
                 </Dropdown.Menu>
               </Dropdown>
@@ -262,7 +259,7 @@ const searchSwitch = () => {
                                 />   
                                 </InputGroup>          
                                 <Collapse in= {scrollswitch}>
-                                 <div className ="scroll">
+                                 <div className ="scroll" style={{position:"absolute",marginLeft:"3%",zIndex:999, width:"300px",background: "white"}}>
                                 <BootstrapTable 
                                 { ...props.baseProps}
                                  hover = {true}

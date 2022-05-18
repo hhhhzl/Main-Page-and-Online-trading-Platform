@@ -8,17 +8,23 @@ import UserMarket from "./Market/market";
 import UserStocks from "./Stocks/UserStocks";
 import UserTrade from "./Trade/UserTrade";
 import AuthContext from "../../../context/AuthContext";
+import userPortfolio from "./Portfolio/UserPortforlio";
+import StockTrade from "./Stocks/StockTrade";
+import StockPriceGraphProfessional from "../../screen/StockPriceGraphProfessional";
 
 
 
 export default function TradePusers(props){
-    
 
     return(
         <div>
             <Switch>
-            <Route path="/eplatform/user">
+            <Route path="/eplatform/:username">
                 <Userbalance/>
+            </Route>
+
+            <Route path="/eplatform/user/pro">
+                <StockPriceGraphProfessional/>
             </Route>
             <Route path="/market">
                 <UserMarket/>

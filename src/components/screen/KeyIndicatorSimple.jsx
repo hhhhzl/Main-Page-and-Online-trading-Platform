@@ -5,7 +5,7 @@ import './KeyIndicator.css'
 export default function KeyIndicators(){
 	return(
 		<div>
-			<div style={{width:"39.584%"}}>
+			<div style={{width:"100%"}}>
 				<div className="indicator-simple-title">关键指标</div>
 				<div className="simple-line"></div>
 				<div className="indicator-simple">

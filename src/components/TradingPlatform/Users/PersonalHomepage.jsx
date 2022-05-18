@@ -23,7 +23,7 @@ export default function  PersonalHomepage(){
 					</div>
 				</div>
 				<div style={{marginTop:"32px"}}>
-					<Button className="edit-data-button" size="sm" style={{width:"120px",height:"44px",borderRadius:"24px 24px 24px 24px",border:"1px solid #2A2B30",background:"white"}}>编辑资料</Button>
+					<Button className="edit-data-button" size="sm" style={{width:"120px",height:"44px",borderRadius:"24px 24px 24px 24px",border:"1px solid #2A2B30",background:"white",color:"black"}}>编辑资料</Button>
 				</div>
 			</div>
 		</div>

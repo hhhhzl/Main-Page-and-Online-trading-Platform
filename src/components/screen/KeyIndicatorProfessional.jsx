@@ -1,10 +1,8 @@
-
-
 import './KeyIndicator.css'
 
 export default function KeyIndicators(){
 	return(
-		<div>
+		<>
 			<div className="indicator-professional">
 				<div className="indicator-professional-div">
 					<div className="indicator-professional-title">关键指标</div>
@@ -49,6 +47,6 @@ export default function KeyIndicators(){
 					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	)
 }
