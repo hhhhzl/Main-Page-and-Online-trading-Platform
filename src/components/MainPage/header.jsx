@@ -18,6 +18,7 @@ import Image from "react-bootstrap/Image";
 import "./header.css";
 import { MobileIcon } from "./NavbarElements";
 
+
 const HeaderCreate = ({ toggle }) => {
   const { width, height } = useWindowDimensions();
   const [scrolledDownEnough, setScrolledDownEnough] = useState(false);

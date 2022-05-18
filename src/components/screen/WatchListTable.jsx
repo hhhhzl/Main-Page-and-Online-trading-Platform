@@ -9,7 +9,7 @@ import AreaChartWatchList from '../graphs/AreaTableForWatchList';
 const { SearchBar } = Search;
 const { ExportCSVButton } = CSVExport;
 
-export default function WatchListTable(){
+export default function WatchListTable({heightratio,searchwidth}){
     const {width,height} = useWindowDimensions();
     const columns = [
         {
@@ -84,7 +84,7 @@ export default function WatchListTable(){
     const indication =()=>{
         return (
             <>
-            <p style={{padding:"50px", textAlign:"center"}}>无数据</p>
+            <p style={{textAlign:"center"}}>无数据</p>
             </>
         )
     }
@@ -108,16 +108,14 @@ export default function WatchListTable(){
     {
       props =>(
         <>
-             <div style= {{height:"36px",marginTop:"12px",marginBottom:"12px",borderRadius: "4px 4px 4px 4px",opacity: "1"}}>
+             <div style= {{width:"80%",marginLeft:"10%",height:"36px",marginTop:"12px",marginBottom:"12px",borderRadius: "4px 4px 4px 4px",opacity: "1"}}>
             <SearchBar
-
                 {...props.searchProps}
-                style={{background:"#F5F6F8", width:"288px",marginLeft:"11%",height:"36px",borderRadius: "4px 4px 4px 4px",opacity: "1",fontSize:"14px"
+                style={{background:"#F5F6F8", width:searchwidth*0.8,height:"36px",borderRadius: "4px 4px 4px 4px",opacity: "1",fontSize:"14px"
                 ,fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
                           fontWeight: "400",
                           color: "#C0C3CE",
                           lineHeight: "24px"}}
-                      
                       srText={false}
                       placeholder="代码/名称/拼音"
                       
@@ -127,7 +125,7 @@ export default function WatchListTable(){
 
        
 
-            <div style= {{height:height*0.8,overflow:"auto",marginTop:"12px",marginBottom:"0px",borderRadius: "4px 4px 4px 4px",opacity: "1"}}>
+            <div style= {{height:height*heightratio,overflow:"auto",marginTop:"12px",marginBottom:"0px",borderRadius: "4px 4px 4px 4px",opacity: "1"}}>
             <BootstrapTable
            { ...props.baseProps}
            bordered={ false }
@@ -135,7 +133,7 @@ export default function WatchListTable(){
             condensed 
             bootstrap4={true}
             hover={true}
-            noDataIndication={indication}
+            // noDataIndication={indication}
             rowStyle={ rowStyle }
             />
 

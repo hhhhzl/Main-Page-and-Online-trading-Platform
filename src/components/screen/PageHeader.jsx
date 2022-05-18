@@ -53,7 +53,7 @@ export default function PageHeader(toggle) {
         </Modal.Footer>
       </Modal>
 
-      <Navbar bg="FFFFFF" expand="sm" sticky="top" className="header-nav">
+      <Navbar bg="#FFFFFF" expand="sm" sticky="top" className="header-nav">
         <Container fluid className="header-container">
           <Navbar.Brand href="#">
             <Image

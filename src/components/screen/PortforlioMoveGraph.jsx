@@ -9,7 +9,8 @@ import useWindowDimensions from '../../utils/sizewindow';
 import LineSeriesForPorfolio from '../graphs/LineSeriesForPorfolio';
 
 
-export default function PorforlioMoveGraph(props) {
+export default function PorforlioMoveGraph({widthratio}) {
+  
   const {width,height} = useWindowDimensions();
   const [timeP,setTimeP] = useState(7);
   const [id,setID] = useState(0)
@@ -46,7 +47,7 @@ export default function PorforlioMoveGraph(props) {
         }}>¥4,151,986.32</div>
 
 
-        <Row><Col xs ={5} style={{height:"28px"}}>
+        <Row><Col xs ={6} style={{height:"28px"}}>
         <div style={{
         fontSize:"16px",
         fontFamily:"Microsoft YaHei UI-Bold",
@@ -57,7 +58,7 @@ export default function PorforlioMoveGraph(props) {
         }}>¥30608.26{" "}(+2.03%)</div>
 
         
-        </Col><Col xs ={7} style={{height:"28px"}}>
+        </Col><Col xs ={6} style={{height:"28px"}}>
         <div style={{
         fontSize:"16px",
         fontFamily:"Microsoft YaHei UI-Bold",
@@ -149,7 +150,7 @@ export default function PorforlioMoveGraph(props) {
 
     
               <div style={{marginTop:"48px",width:"100%", borderColor:"white"}}>
-              <LineSeriesForPorfolio width={760} timeperiod = {timeP}/>
+              <LineSeriesForPorfolio width={widthratio} timeperiod = {timeP}/>
               </div>
 
 

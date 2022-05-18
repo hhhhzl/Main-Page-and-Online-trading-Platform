@@ -43,10 +43,13 @@
 }
 
 .indicator-professional {
-	width: 15.625%;
+	width: 100%;
 	display: flex;
+	background: "white";
 	flex-direction: column;
-	position: absolute;
+	box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02);
+    border-radius: 4px 4px 4px 4px;
+    opacity: 1;
 }
 
 .indicator-professional-title {

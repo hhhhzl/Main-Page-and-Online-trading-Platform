@@ -7,7 +7,7 @@ import AssessmentIcon from '@material-ui/icons/AssessmentOutlined';
 import { AccessAlarmOutlined, AccountBalanceWallet, AccountBalanceWalletOutlined, AccountBoxOutlined, AccountCircleOutlined, AccountTreeOutlined, ArrowBackIosOutlined } from "@material-ui/icons";
 import BallotIcon from '@material-ui/icons/BallotOutlined';
 import { Nav, Button } from 'react-bootstrap';
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, useParams } from "react-router-dom";
 import { Row } from "react-bootstrap";
 import '../eplatform.css'
 import useWindowDimensions from "../../../utils/sizewindow";
@@ -19,6 +19,7 @@ import { IconButton } from "@material-ui/core";
 export default function SideMenuUsers({extendbar, extend}) {
   const {height,width} = useWindowDimensions();
   const [open, setopen] = useState(false);
+  const {username} = useParams();
 
   const handleClose = () => {
     setopen(false)
@@ -82,10 +83,10 @@ export default function SideMenuUsers({extendbar, extend}) {
         <br />    
         
         <Switch>
-          <Route path='/eplatform/user'>
+          <Route path='/eplatform/:username'>
             <div>
             <Row className='row-padding'>
-              <Link className = "link-row" style={{textDecoration:"none", letterSpacing:"5px",fontSize:"20px"}} to="/eplatform/user"><AccountBalanceWalletOutlined fontSize={width>1000?"large":"medium"}/>{" "} {extend? "个人主页" : null}</Link>
+              <Link className = "link-row" style={{textDecoration:"none", letterSpacing:"5px",fontSize:"20px"}} to={`/eplatform/${username}`}><AccountBalanceWalletOutlined fontSize={width>1000?"large":"medium"}/>{" "} {extend? "个人主页" : null}</Link>
             </Row>
             <Row className='row-padding'>   
               <Link className = "link-row"  style={{textDecoration:"none", letterSpacing:"5px",fontSize:"20px" }} to="/market"><AssessmentIcon fontSize={width>1000?"large":"medium"} />{" "}{extend? "市场行情": null}</Link>
@@ -110,7 +111,7 @@ export default function SideMenuUsers({extendbar, extend}) {
           <Route path='/stocks'>
             <div>
             <Row className='row-padding'>
-              <Link className = "link-row" style={{textDecoration:"none", letterSpacing:"5px",fontSize:"20px"}} to="/eplatform/user"><AccountBalanceWalletOutlined fontSize={width>1000?"large":"medium"}/>{" "} {extend? "个人主页" : null}</Link>
+              <Link className = "link-row" style={{textDecoration:"none", letterSpacing:"5px",fontSize:"20px"}} to={`/eplatform/${username}`}><AccountBalanceWalletOutlined fontSize={width>1000?"large":"medium"}/>{" "} {extend? "个人主页" : null}</Link>
             </Row>
             <Row className='row-padding'>   
               <Link className = "link-row" style={{textDecoration:"none", letterSpacing:"5px",fontSize:"20px" }} to="/market"><AssessmentIcon fontSize={width>1000?"large":"medium"} />{" "}{extend? "市场行情": null}</Link>
@@ -135,7 +136,7 @@ export default function SideMenuUsers({extendbar, extend}) {
           <Route path='/market'>
             <div>
             <Row className='row-padding'>
-              <Link className = "link-row" style={{textDecoration:"none", letterSpacing:"5px",fontSize:"20px"}} to="/eplatform/user"><AccountBalanceWalletOutlined fontSize={width>1000?"large":"medium"}/>{" "} {extend? "个人主页" : null}</Link>
+              <Link className = "link-row" style={{textDecoration:"none", letterSpacing:"5px",fontSize:"20px"}} to={`/eplatform/${username}`}><AccountBalanceWalletOutlined fontSize={width>1000?"large":"medium"}/>{" "} {extend? "个人主页" : null}</Link>
             </Row>
             <Row className='row-padding'>   
               <Link className = "link-row" style={{textDecoration:"none", letterSpacing:"5px",fontSize:"20px" }} to="/market"><AssessmentIcon fontSize={width>1000?"large":"medium"} />{" "}{extend? "市场行情": null}</Link>
