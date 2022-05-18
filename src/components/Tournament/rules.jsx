@@ -75,10 +75,10 @@ const Rules = () => {
 		<div className="rules-p-two">
 			<div className="rules-title">评判规则</div>
 			<div className="rules-top-120">
-				<div style={{width:"62.5%"}}>
+				<div style={{width:"76.951%"}}>
 					<Image
 						src="/tournament/Group 209.png"
-						style={{width:" 76.951%",height:"20%"}}
+						style={{width:" 100%",height:"210px"}}
 					  />
 				</div>
 			</div>
@@ -101,11 +101,15 @@ const Rules = () => {
 								marginLeft:"-2.9%",
 								display:current==1?'flex':'none'
 							}}>
-							<div style={{padding:"36px 48px 12px 48px"}}>
-								<span className="pop-up-text">初赛开始时间：</span>2022年6月6日早晨 9:30
+							<div >
+								<div style={{paddingTop:"36px"}}>
+									<span className="pop-up-text">初赛开始时间：</span>2022年6月6日早晨 9:30
+								</div>
 							</div>
-							<div style={{padding:"0 48px 36px 48px"}}>
-								<span className="pop-up-text">初赛结束时间：</span>2020年9月2日下午 3:30
+							<div >
+								<div style={{padding: "12px 0 36px 0"}}>
+									<span className="pop-up-text">初赛结束时间：</span>2020年9月2日下午 3:30
+								</div>
 							</div>
 						</div>
 					</div>
@@ -139,7 +143,7 @@ const Rules = () => {
 								style={{width:"24px",height:"24px"}}></Image>
 						</div>
 					</div>
-					<div style={{marginLeft:"400px"}}>
+					<div style={{marginLeft:"20.834%"}}>
 						<div className="rules-flow-children"  >
 							<div className="rules-flow-children-text">第二轮筛选</div>
 						</div>

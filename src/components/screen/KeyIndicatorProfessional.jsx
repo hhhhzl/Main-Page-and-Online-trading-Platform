@@ -1,5 +1,5 @@
-import './KeyIndicator.css'
 import data from '../../static/indicator.json'
+import './KeyIndicator.css'
 
 export default function KeyIndicators(){
 	return(
@@ -10,42 +10,13 @@ export default function KeyIndicators(){
 				</div>
 				<div className="professional-line"></div>
 				<div>
-					<div className="indicator-professional-div">
-						<div className="indicator-professional-key">开盘</div>
-						<div className="indicator-professional-value">46.25</div>
-					</div>
-					<div className="indicator-professional-div">
-						<div className="indicator-professional-key">昨收</div>
-						<div className="indicator-professional-value">46.25</div>
-					</div>
-					<div className="indicator-professional-div">
-						<div className="indicator-professional-key">最高</div>
-						<div className="indicator-professional-value">46.25</div>
-					</div>
-					<div className="indicator-professional-div">
-						<div className="indicator-professional-key">最低</div>
-						<div className="indicator-professional-value">46.25</div>
-					</div>
-					<div className="indicator-professional-div">
-						<div className="indicator-professional-key">成交额</div>
-						<div className="indicator-professional-value">1.17亿</div>
-					</div>
-					<div className="indicator-professional-div">
-						<div className="indicator-professional-key">成交均量（三月）</div>
-						<div className="indicator-professional-value">35.91万</div>
-					</div>
-					<div className="indicator-professional-div">
-						<div className="indicator-professional-key">振幅</div>
-						<div className="indicator-professional-value">46.25%</div>
-					</div>
-					<div className="indicator-professional-div">
-						<div className="indicator-professional-key">52周最高</div>
-						<div className="indicator-professional-value">46.25</div>
-					</div>
-					<div className="indicator-professional-div">
-						<div className="indicator-professional-key">52周最低</div>
-						<div className="indicator-professional-value">46.25</div>
-					</div>
+					{Object.keys(data).map((obj,idx)=>(
+						<div className="indicator-professional-div" key={idx}>
+							<div className="indicator-professional-key">{obj}</div>
+							<div className="indicator-professional-value">{data[obj]}</div>
+						</div>
+					))
+					}
 				</div>
 			</div>
 		</>
