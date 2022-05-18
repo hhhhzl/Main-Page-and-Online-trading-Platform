@@ -1,3 +1,15 @@
+.form-control {
+    background: #ffffff;
+    border-radius: 4px 4px 4px 4px;
+    font-size: 14px;
+    font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+    font-weight: 400;
+    color: #C0C3CE;
+    line-height: 24px;
+    border: 1px solid #F5F6F8;
+}
+
+
 .personal-homepage {
 	display: flex;
 	flex-direction: column;
@@ -37,16 +49,6 @@
 	line-height: 40px;
 	letter-spacing: 1px;
 }
-
-
-.edit-data-button {
-	width: 120px;
-	height: 44px;
-	border-radius: 24px 24px 24px 24px;
-	opacity: 1;
-	border: 1px solid #2A2B30;
-}
-
 
 .information {
     height: 40px;
