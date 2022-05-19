@@ -1,0 +1,19 @@
+[{
+    "id": 1,
+    "type": 1,
+    "symbol": ["恒瑞医药", "003158"],
+    "price":1203.73,
+    "orderCount": 13,
+    "positionDate": "05/06",
+    "positionHour": "16:00:10"
+  },
+  {
+    "id": 2,
+    "type": 2,
+    "symbol": ["AAPL", "003158"],
+    "price":1203.73,
+    "orderCount": 27,
+    "positionDate": "05/06",
+    "positionHour": "16:00:10"
+  }
+]

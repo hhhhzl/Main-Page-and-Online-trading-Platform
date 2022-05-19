@@ -29,7 +29,9 @@ import LoginMainLayout from './components/webpage/RegisterLogin/mainLayout';
 
 
 import Tournament from './components/Tournament/tournament';
+
 import PageHeader from './components/screen/PageHeader';
+import PendingOrder from './components/screen/PendingOrder';
 
 import UserPortfolio from './components/TradingPlatform/Users/Portfolio/UserPortforlio';
 import StockTrade from './components/TradingPlatform/Users/Stocks/StockTrade';
@@ -99,11 +101,17 @@ const MakeRouter = () => {
       <Route exact path="/" component={MainPage} /> 
       <Route exact path="/tournament" component={Tournament} />
       <Route exact path="/pageHeader" component={PageHeader} />
-
-      <Route exact path="/editData" component={EditData}/>
-	    <Route exact path="/personalHomepage" component={PersonalHomepage}/>
-	    <Route exact path="/keyIndicatorSimple" component={KeyIndicatorSimple}/>
-	    <Route exact path="/keyIndicatorProfessional" component={KeyIndicatorProfessional}/>
+      <Route exact path="/pendingOrder" component={PendingOrder} />
+	  
+	  
+	  <Route exact path="/editData" component={EditData}/>
+	  <Route exact path="/personalHomepage" component={PersonalHomepage}/>
+	  <Route exact path="/keyIndicatorSimple" component={KeyIndicatorSimple}/>
+	  <Route exact path="/keyIndicatorProfessional" component={KeyIndicatorProfessional}/>
+	  
+	  
+	  
+	  
       </AuthProvider>
     </Switch>
   );
