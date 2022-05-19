@@ -86,7 +86,7 @@ export default function SideMenuUsers({extendbar, extend}) {
           <Route path='/eplatform/:username'>
             <div>
             <Row className='row-padding'>
-              <Link className = "link-row" style={{textDecoration:"none", letterSpacing:"5px",fontSize:"20px"}} to={`/eplatform/${username}`}><AccountBalanceWalletOutlined fontSize={width>1000?"large":"medium"}/>{" "} {extend? "个人主页" : null}</Link>
+              <Link className = "link-row" style={{textDecoration:"none", letterSpacing:"5px",fontSize:"20px"}} to={`/eplatform/${username}`} target="_blank"><AccountBalanceWalletOutlined fontSize={width>1000?"large":"medium"}/>{" "} {extend? "个人主页" : null}</Link>
             </Row>
             <Row className='row-padding'>   
               <Link className = "link-row"  style={{textDecoration:"none", letterSpacing:"5px",fontSize:"20px" }} to="/market"><AssessmentIcon fontSize={width>1000?"large":"medium"} />{" "}{extend? "市场行情": null}</Link>
