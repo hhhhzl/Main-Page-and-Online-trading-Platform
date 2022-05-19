@@ -1,0 +1,80 @@
+.pending-order-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pending-order-tabs {
+  display: flex;
+  cursor: pointer;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.active-font {
+  font-size: 24px;
+  font-family: "MicrosoftYaHeiUI";
+  font-weight: bold;
+  color: #2A2B30;
+  line-height: 40px;
+  letter-spacing: 1px;
+}
+
+.normal-font {
+  font-size: 16px;
+  font-family: "MicrosoftYaHeiUI";
+  font-weight: 400;
+  color: #6E7184;
+  line-height: 28px;
+  letter-spacing: 1px;
+}
+
+
+.pending-order-table>.react-bootstrap-table>table>thead>tr>th {
+  font-family: "MicrosoftYaHeiUI";
+  font-size: 14px;
+  font-weight: 400;
+  color: #6E7184;
+  line-height: 24px;
+  padding: 24px 0px;
+  border: none;
+  padding-left: 10px;
+  text-align: right;
+}
+
+.pending-order-table>.react-bootstrap-table>table>thead>tr>th:first-child {
+  text-align: left;
+}
+
+.pending-order-table>.react-bootstrap-table>table>thead>tr>th:last-child {
+  padding-right: 12px;
+}
+
+.simple-font {
+  font-size: 14px;
+  font-family: "Futura-Medium, Futura";
+  font-weight: 500;
+  color: #2A2B30;
+  line-height: 24px;
+  text-align: right;
+}
+
+.order-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.all-order-text {
+  font-size: 14px;
+  font-family: "MicrosoftYaHeiUI";
+  font-weight: 400;
+  color: #6E7184;
+  line-height: 24px;
+}
+
+.all-order-icon{
+  color: #6E7184;
+  font-size: 14px !important;
+  margin-left: 5px;
+}

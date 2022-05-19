@@ -99,6 +99,11 @@ export default function PageHeader(toggle) {
                   排行榜
                 </Nav.Link>
               </Nav.Item>
+              <Nav.Item className={selectKey == 6 ? "border-bottom1" : ""}>
+                <Nav.Link eventKey="6" href="#action6" className="header-link">
+                  财经洞悉
+                </Nav.Link>
+              </Nav.Item>
             </Nav>
             <Form className="d-flex">
               <FormControl

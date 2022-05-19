@@ -29,7 +29,9 @@ import LoginMainLayout from './components/webpage/RegisterLogin/mainLayout';
 
 
 import Tournament from './components/Tournament/tournament';
+
 import PageHeader from './components/screen/PageHeader';
+import PendingOrder from './components/screen/PendingOrder';
 
 
 // const AdminMainPage = () => {
@@ -121,6 +123,7 @@ const MakeRouter = () => {
       <Route exact path="/tournament" component={Tournament} />
 
       <Route exact path="/pageHeader" component={PageHeader} />
+      <Route exact path="/pendingOrder" component={PendingOrder} />
       </AuthProvider>
     </Switch>
   );
