@@ -28,8 +28,9 @@ export const AuthProvider = ({children}) => {
         if (response.status === 200) {
             setAuthTokens(data)
             setuser(jwt_decode(data.access))
+            console.log(user)
             localStorage.setItem('authTokens',JSON.stringify(data))
-            history.push('/stocks')
+            history.push(`/eplatform/${jwt_decode(data.access).username}`)
         }else{
             alert("Something Went Wrong!")
         }

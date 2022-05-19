@@ -30,6 +30,7 @@ export const HeaderOut = styled.nav`
   &:hover {
     background: #FFFFFF;
   }
+
 `;
 
 export const HeaderContianer = styled.div`

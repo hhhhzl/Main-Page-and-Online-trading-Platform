@@ -8,6 +8,9 @@ import useWindowDimensions from "../../../../utils/sizewindow";
 import StockTradeBar from '../../../screen/StockTradeBar';
 import GraphTemplate from '../../../screen/GraphTemplate';
 import WatchList from '../../../screen/WatchList';
+import PersonalHomepage from '../PersonalHomepage';
+import KeyIndicators from '../../../screen/KeyIndicatorProfessional'
+import StockPriceGraphProfessional from '../../../screen/StockPriceGraphProfessional'
 
 
 
@@ -23,34 +26,33 @@ export default function UserStocks(props) {
         setExtend(!extend)
       }
     
-    useEffect(()=>{
-        setInterval(()=>{
-            updataStockdata()
+    // useEffect(()=>{
+    //     setInterval(()=>{
+    //         updataStockdata()
             
-        }, 10000)
-    })
+    //     }, 10000)
+    // })
 
-    const updataStockdata = () => {
-        return axios.post('http://59.110.238.142:8086/api/market/kline', {
-            stockCode: 'sh600036',
-            timeFrame: '1m'
-          })
-          .then(function (response) {
-            console.log(response.data.data)
-            setkdata(response.data.data)
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-    }
+    // const updataStockdata = () => {
+    //     return axios.post('http://59.110.238.142:8086/api/market/kline', {
+    //         stockCode: 'sh600036',
+    //         timeFrame: '1m'
+    //       })
+    //       .then(function (response) {
+    //         console.log(response.data.data)
+    //         setkdata(response.data.data)
+    //       })
+    //       .catch(function (error) {
+    //         console.log(error);
+    //       });
+    // }
     
     
     return (    
     <> 
-        <NavBarTest username ={user.username} logoutUser ={logoutUser}/>
-
-
-        {(!chartextendleft && !chartextendright)? (<>
+        {/* <NavBarTest username ={user.username} logoutUser ={logoutUser}/> */}
+        <StockPriceGraphProfessional/>
+        {/* {(!chartextendleft && !chartextendright)? (<>
           <div 
         className="auto-main-page"
         style={{
@@ -197,7 +199,7 @@ export default function UserStocks(props) {
           
 
         </>) }
-       
+        */}
         
      </>
 

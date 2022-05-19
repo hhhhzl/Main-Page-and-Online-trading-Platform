@@ -11,6 +11,7 @@ import WatchList from '../../../screen/WatchList';
 import StockPriceGraphSimplify from '../../../screen/StockPriceGraphSimplify';
 import TeamModelIntro from '../../../Competition/team/teamModelIntro';
 import MarketOverview from '../../../screen/MarketOverView';
+import StockPriceGraphProfessional from '../../../screen/StockPriceGraphProfessional';
 
 
 
@@ -52,9 +53,9 @@ export default function UserStocks(props) {
     <> 
         <NavBarTest username ={user.username} logoutUser ={logoutUser}/>
         {/* <div 
-        style={{width:"960px",height:"655px",
-        marginTop:"64px",marginLeft:"0%",borderRight:"1px",borderColor:"black"}}>
-             <MarketOverview/>
+        style={{width:width,height:height,
+        marginTop:"0px",marginLeft:"0%",borderRight:"1px",borderColor:"black"}}>
+             <StockPriceGraphProfessional/>
          </div> */}
          
 

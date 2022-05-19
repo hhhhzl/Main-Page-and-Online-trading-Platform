@@ -32,41 +32,15 @@ import Tournament from './components/Tournament/tournament';
 
 import PageHeader from './components/screen/PageHeader';
 import PendingOrder from './components/screen/PendingOrder';
+
+import UserPortfolio from './components/TradingPlatform/Users/Portfolio/UserPortforlio';
+import StockTrade from './components/TradingPlatform/Users/Stocks/StockTrade';
+import StockPriceGraphProfessional from './components/screen/StockPriceGraphProfessional';
+
 import EditData from './components/TradingPlatform/Users/EditData'
 import PersonalHomepage from './components/TradingPlatform/Users/PersonalHomepage'
 import KeyIndicatorSimple from './components/screen/KeyIndicatorSimple'
 import KeyIndicatorProfessional from './components/screen/KeyIndicatorProfessional'
-
-
-
-// const AdminMainPage = () => {
-
-//   return (
-//     <div>  
-//             <NavBarTest username={'张三'} usertype={"管理员"}/>
-//             <SideMenuAdmin/>
-//             <Switch>
-//             {/* <Route  path='/eplatform/:Stock'>
-//           <div className='supervisor-interface'>
-//                 <h3>欢迎</h3>
-//                 <br />
-//                 <StockManageTable/>
-//                 </div>
-//           </Route> */}
-//             <Route path="/eplatform/admin">
-//                 <div className='supervisor-interface'>
-//                 <h3>欢迎</h3>
-//                 <br />
-//                 <UsersManageTable/>
-//                 </div>
-//             </Route>
-//           <Route path='/home'>
-//           </Route>
-//         </Switch>
-//         </div>
-    
-//   );
-// };
 
 
 const HomePage = () => {
@@ -111,10 +85,10 @@ const MakeRouter = () => {
   return (
     <Switch>
       <AuthProvider>
-      <Route exact path="/eplatform/user" component={TradePusers} />
-      <Route exact path="/eplatform/user/analytics" component={TradePusers} />
+      <PrivateRoute exact path="/eplatform/:username" component={Userbalance} />
+      <Route exact path="/eplatform/user/pro" component={StockPriceGraphProfessional} />
       <Route exact path="/eplatform/user/trade" component={UserTrade} />
-      <Route path="/eplat" component={TradePadmin} />
+      <Route exact path="/eplat" component={TradePadmin} />
       <PrivateRoute exact path="/stocks" component={UserStocks} />
       <PrivateRoute exact path="/market" component={UserMarket} />
       <PrivateRoute exact path="/competition" component={null} />
@@ -126,7 +100,6 @@ const MakeRouter = () => {
       <Route exact path="/home" component={MainPage} /> 
       <Route exact path="/" component={MainPage} /> 
       <Route exact path="/tournament" component={Tournament} />
-
       <Route exact path="/pageHeader" component={PageHeader} />
       <Route exact path="/pendingOrder" component={PendingOrder} />
 	  
@@ -139,13 +112,15 @@ const MakeRouter = () => {
 	  
 	  
 	  
+
+      <Route exact path="/editData" component={EditData}/>
+	    <Route exact path="/personalHomepage" component={PersonalHomepage}/>
+	    <Route exact path="/keyIndicatorSimple" component={KeyIndicatorSimple}/>
+	    <Route exact path="/keyIndicatorProfessional" component={KeyIndicatorProfessional}/>
       </AuthProvider>
     </Switch>
   );
 };
-
-
-
 
 function App() {
   return (

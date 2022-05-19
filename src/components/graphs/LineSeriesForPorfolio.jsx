@@ -81,7 +81,7 @@ class LineSeriesForPorfolio extends React.Component {
         ratio={1}
         width={width}
         height={width * 0.381}
-        margin={{ left: 0, right: 2, top: 33, bottom: 34}}
+        margin={{ left: 0, right: 0, top: 33, bottom: 34}}
         type={"svg"}
         data={data}
         xScale={xScale}
