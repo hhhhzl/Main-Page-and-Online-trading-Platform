@@ -136,7 +136,7 @@ export default function PendingOrder() {
       formatter: (value, row) => {
         return (
           <div>
-            <h6 className="simple-font">{value}</h6>
+            <h6 className="simple-font" style={{marginBottom:"0px"}}>{value}</h6>
             <h6 className="simple-font" style={{ color: "#9C9EAC" }}>
               {row.positionHour}
             </h6>
@@ -268,7 +268,7 @@ export default function PendingOrder() {
       formatter: (value) => {
         return (
           <div>
-            <h6 className="simple-font">{value}%</h6>
+            <h6 style={{ marginTop: "15px" }} className="simple-font">{value}%</h6>
           </div>
         );
       },
@@ -397,7 +397,7 @@ export default function PendingOrder() {
       formatter: (value, row) => {
         return (
           <div>
-            <h6 className="simple-font">{value}</h6>
+            <h6 className="simple-font" style={{ marginBottom: "0px" }}>{value}</h6>
             <h6 className="simple-font" style={{ color: "#9C9EAC" }}>
               {row.positionHour}
             </h6>
