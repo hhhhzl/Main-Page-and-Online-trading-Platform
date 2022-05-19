@@ -32,6 +32,11 @@ import Tournament from './components/Tournament/tournament';
 
 import PageHeader from './components/screen/PageHeader';
 import PendingOrder from './components/screen/PendingOrder';
+import EditData from './components/TradingPlatform/Users/EditData'
+import PersonalHomepage from './components/TradingPlatform/Users/PersonalHomepage'
+import KeyIndicatorSimple from './components/screen/KeyIndicatorSimple'
+import KeyIndicatorProfessional from './components/screen/KeyIndicatorProfessional'
+
 
 
 // const AdminMainPage = () => {
@@ -124,6 +129,16 @@ const MakeRouter = () => {
 
       <Route exact path="/pageHeader" component={PageHeader} />
       <Route exact path="/pendingOrder" component={PendingOrder} />
+	  
+	  
+	  <Route exact path="/editData" component={EditData}/>
+	  <Route exact path="/personalHomepage" component={PersonalHomepage}/>
+	  <Route exact path="/keyIndicatorSimple" component={KeyIndicatorSimple}/>
+	  <Route exact path="/keyIndicatorProfessional" component={KeyIndicatorProfessional}/>
+	  
+	  
+	  
+	  
       </AuthProvider>
     </Switch>
   );
