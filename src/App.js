@@ -112,11 +112,6 @@ const MakeRouter = () => {
 	  
 	  
 	  
-
-      <Route exact path="/editData" component={EditData}/>
-	    <Route exact path="/personalHomepage" component={PersonalHomepage}/>
-	    <Route exact path="/keyIndicatorSimple" component={KeyIndicatorSimple}/>
-	    <Route exact path="/keyIndicatorProfessional" component={KeyIndicatorProfessional}/>
       </AuthProvider>
     </Switch>
   );
