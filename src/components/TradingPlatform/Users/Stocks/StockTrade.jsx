@@ -5,6 +5,8 @@ import StockPriceGraphSimplify from "../../../screen/StockPriceGraphSimplify";
 import StockTradeBar from "../../../screen/StockTradeBar";
 import StockTradeComponet from "../../../screen/StockTradeComponet";
 import WatchList from "../../../screen/WatchList";
+import PendingOrder from "../../../screen/PendingOrder";
+import KeyIndicators from "../../../screen/KeyIndicatorSimple";
 
 
 export default function StockTrade(props) {
@@ -42,7 +44,10 @@ export default function StockTrade(props) {
         <div style={{width:"1200px",minHeight:"700px",minWidth:"fix-content",display:"flex",justifyContent:"space-between"}} ref={listRef}>
             <div style={{width:"63.3%"}}>
             
-                <StockPriceGraphSimplify widthratio = {1200 * 0.63}/>             
+                <StockPriceGraphSimplify widthratio = {1200 * 0.63}/>  
+                <div style={{marginTop:"60px"}}>
+                    <KeyIndicators/>
+                </div>           
             </div>
             <div style={{width:"30%"}}>       
                 <StockTradeComponet/>

@@ -11,6 +11,7 @@ import AuthContext from "../../../context/AuthContext";
 import userPortfolio from "./Portfolio/UserPortforlio";
 import StockTrade from "./Stocks/StockTrade";
 import StockPriceGraphProfessional from "../../screen/StockPriceGraphProfessional";
+import UserPortfolio from "./Portfolio/UserPortforlio";
 
 
 
@@ -20,7 +21,7 @@ export default function TradePusers(props){
         <div>
             <Switch>
             <Route path="/eplatform/:username">
-                <Userbalance/>
+                <UserPortfolio/>
             </Route>
 
             <Route path="/eplatform/user/pro">

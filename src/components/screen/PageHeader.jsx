@@ -75,7 +75,7 @@ export default function PageHeader(toggle) {
               onSelect={handleSelect}
             >
               <Nav.Item className={selectKey == 1 ? "border-bottom1" : ""}>
-                <Nav.Link eventKey="1" href="#action1" className="header-link">
+                <Nav.Link eventKey="1" href="./user2" className="header-link">
                   账户总览
                 </Nav.Link>
               </Nav.Item>
