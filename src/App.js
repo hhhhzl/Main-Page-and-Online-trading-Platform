@@ -94,7 +94,7 @@ const MakeRouter = () => {
   return (
     <Switch>
       <AuthProvider>
-      <PrivateRoute exact path="/eplatform/:username" component={StockTrade} />
+      <PrivateRoute exact path="/eplatform/:username" component={UserPortfolio} />
       <Route exact path="/eplatform/user/pro" component={StockPriceGraphProfessional} />
       <Route exact path="/eplatform/user/trade" component={UserTrade} />
       <Route exact path="/eplat" component={TradePadmin} />

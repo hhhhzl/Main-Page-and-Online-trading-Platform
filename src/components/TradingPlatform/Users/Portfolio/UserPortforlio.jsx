@@ -4,6 +4,7 @@ import useWindowDimensions from "../../../../utils/sizewindow";
 import PorforlioMoveGraph from "../../../screen/PortforlioMoveGraph";
 import WatchList from "../../../screen/WatchList";
 import KeyIndicators from "../../../screen/KeyIndicatorSimple";
+import PendingOrder from "../../../screen/PendingOrder";
 
 
 export default function UserPortfolio(props) {
@@ -43,7 +44,7 @@ export default function UserPortfolio(props) {
             <div style={{width:"63.3%"}}>
                 <PorforlioMoveGraph  widthratio ={1200 * 0.633}/>
                 <div style={{marginTop:height*0.0564}}>
-                  <KeyIndicators/>
+                  <PendingOrder/>
                 </div>   
             </div>
 
