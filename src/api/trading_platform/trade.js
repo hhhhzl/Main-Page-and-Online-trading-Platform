@@ -14,6 +14,6 @@ export const apiMakeOrder = ({ API_KEY, symbol, side, amount, order_price }) =>
 
 // account
 export const apiAccountPositions = ({ API_KEY }) =>
-    apiService.get(`/trade/orders`, { params: { API_KEY } });
+    apiService.get(`/account/positions`, { params: { API_KEY } });
 export const apiAccountCash = ({ API_KEY }) =>
-    apiService.get(`/trade/cash`, { params: { API_KEY } });
+    apiService.get(`/account/cash`, { params: { API_KEY } });
