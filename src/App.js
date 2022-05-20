@@ -41,6 +41,10 @@ import EditData from './components/TradingPlatform/Users/EditData'
 import PersonalHomepage from './components/TradingPlatform/Users/PersonalHomepage'
 import KeyIndicatorSimple from './components/screen/KeyIndicatorSimple'
 import KeyIndicatorProfessional from './components/screen/KeyIndicatorProfessional'
+import MarketQuotation from './components/screen/MarketQuotation'
+import RankingPang from './components/Competition/RankingPang'
+import StockSelectionDeviceList from './components/screen/StockSelectionDeviceList'
+
 
 import LeadingIndustry from './components/screen/LeadingIndustry'
 import AllIndustry from './components/screen/AllIndustry'
@@ -111,6 +115,10 @@ const MakeRouter = () => {
 	  <Route exact path="/personalHomepage" component={PersonalHomepage}/>
 	  <Route exact path="/keyIndicatorSimple" component={KeyIndicatorSimple}/>
 	  <Route exact path="/keyIndicatorProfessional" component={KeyIndicatorProfessional}/>
+	  <Route exact path="/marketQuotation" component={MarketQuotation}/>
+	  <Route exact path="/rankingPang" component={RankingPang}/>
+	  <Route exact path="/stockSelectionDevice" component={StockSelectionDeviceList}/>
+
 
 
     <Route exact path="/leadingIndustry" component={LeadingIndustry}/>
