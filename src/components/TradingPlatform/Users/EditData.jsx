@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import {FormGroup,FormLabel,FormControl,Button,Image} from "react-bootstrap";
 import './Personal.css'
 
 export default function EditData(){
+	const [userState, setUserState] = useState({})
 	const [username, setUsername] = useState("管理员");
 	const [school, setSchool] = useState("密歇根大学");
 	const [personalProfile,setPersonalProfile] = useState("实习经历实习经历实习经历实习经历实习经历实习经历实习经历实习经历实习经历实习经历实习经历实习经历");
-	const [company,setCompany] = useState("密歇根大学");
-	const [experience,setExperience] = useState("实习经历实习经历实习经历实习经历实习经历实习");
+	const [experienceList,setExperienceList] = useState([
+		{company:"密歇根大学",experience:"实习经历实习经历实习经历实习经历实习经历实习"}
+	])
+	
+	const addExperience=()=>{
+		let obj ={company:"密歇根大学",experience:"实习经历实习经历实习经历实习经历实习经历实习"};
+		experienceList.push(obj);
+		console.log(experienceList);
+		setExperienceList([...experienceList]);
+	}
 	return(
 		<div style={{backgroundColor: "#F5F6F8"}}>
 			<div style={{marginLeft:"18.75%"}}>
@@ -34,6 +43,11 @@ export default function EditData(){
 								value={username}
 								style={{width:"100%",height:"48px"}}
 								placeholder="请输入文字"
+								onChange={(e) => {
+								  const username = e.target.value;
+								  setUsername(e.target.value)
+								  setUserState({...userState, ...{ username }});
+								}}
 							  />
 							</FormGroup>
 							<FormGroup style={{width: "44%",marginLeft:"4%"}}>
@@ -43,6 +57,11 @@ export default function EditData(){
 								value={school}
 								style={{width:"100%",height:"48px"}}
 								placeholder="请输入文字"
+								onChange={(e) => {
+								  const school = e.target.value;
+								  setSchool(e.target.value)
+								  setUserState({...userState, ...{ school }});
+								}}
 							  />
 							</FormGroup>
 						</div>
@@ -54,34 +73,54 @@ export default function EditData(){
 								value={personalProfile}
 								style={{width:"100%",height:"96px"}}
 								placeholder="请输入文字"
+								onChange={(e) => {
+								  const personalProfile = e.target.value;
+								  setPersonalProfile(e.target.value)
+								  setUserState({...userState, ...{ personalProfile }});
+								}}
 							  />
 							</FormGroup>
 						</div>
 					</div>
 					<div style={{margin:" 60px 4%"}}>
 						<div className="information">学习经历</div>
-						<div style={{marginTop:"35px",display: "flex"}}>
-							<FormGroup style={{width: "44%"}}>
-							  <FormLabel className="edit-form-label">实习公司</FormLabel>
-							  <FormControl
-								type="text"
-								value={company}
-								style={{width:"100%",height:"48px"}}
-								placeholder="请输入文字"
-							  />
-							</FormGroup>
-							<FormGroup style={{width: "44%",marginLeft:"4%"}}>
-							  <FormLabel className="edit-form-label">实习职位</FormLabel>
-							  <FormControl
-								type="text"
-								value={experience}
-								style={{width:"100%",height:"48px"}}
-								placeholder="请输入文字"
-							  />
-							</FormGroup>
-						</div>
+						{
+							experienceList.map((item,idx)=>(
+								<div key={idx} style={{marginTop:"35px",display: "flex"}}>
+									<FormGroup style={{width: "44%"}}>
+									  <FormLabel className="edit-form-label">实习公司</FormLabel>
+									  <FormControl
+										type="text"
+										value={item.company}
+										style={{width:"100%",height:"48px"}}
+										placeholder="请输入文字"
+										onChange={(e) => {
+										  experienceList[idx].company = e.target.value;
+										  setExperienceList(experienceList);
+										  setUserState({...userState, ...{ setExperienceList }});
+										}}
+									  />
+									</FormGroup>
+									<FormGroup style={{width: "44%",marginLeft:"4%"}}>
+									  <FormLabel className="edit-form-label">实习职位</FormLabel>
+									  <FormControl
+										type="text"
+										value={experienceList[idx].experience}
+										style={{width:"100%",height:"48px"}}
+										placeholder="请输入文字"
+										onChange={(e) => {
+										  experienceList[idx].experience = e.target.value;
+										  setExperienceList(experienceList);
+										  setUserState({...userState, ...{ setExperienceList }});
+										}}
+									  />
+									</FormGroup>
+								</div>
+							))
+						}
 						<FormGroup style={{marginTop:"36px"}}>
 							<Button 
+								onClick={addExperience}
 								style={{width:"26.668%",height:"48px",backgroundColor: "#F5F6F8",border:0,color:"black"}}>
 								<Image
 								  src="/homeCutout/Group 864.png"
