@@ -1,0 +1,111 @@
+.plate-card-container {
+  width: 24%;
+  background: #FFFFFF;
+  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02);
+  border-radius: 4px 4px 4px 4px;
+  opacity: 1;
+  margin-left: 15px;
+  margin-top: 24px;
+}
+
+/* .plate-card-container:first-child {
+  margin-left: 0px;
+} */
+
+.plate-name-container {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plate-name-text {
+  font-size: 16px;
+  font-family: "MicrosoftYaHeiUI-Bold, MicrosoftYaHeiUI";
+  font-weight: bold;
+  color: #2A2B30;
+  line-height: 28px;
+}
+
+.plate-name-right {
+  font-size: 16px;
+  font-family: "Futura-Medium, Futura";
+  font-weight: 500;
+  line-height: 28px;
+}
+
+.plate-line {
+  display: flex;
+  padding: 0px 16px
+}
+
+.plate-line-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.plate-line-down {
+  height: 8px;
+  border-top: 8px solid #42E083;
+  border-right: 4px solid transparent;
+}
+
+.plate-line-center {
+  height: 8px;
+  /* background: #C0C3CE; */
+  /* border-top: 8px solid #C0C3CE;
+  border-right: 4px solid transparent; */
+  background-color: #C0C3CE;
+  transform: skew(160deg);
+
+}
+
+.plate-line-up {
+  height: 8px;
+  /* background: #FF3541; */
+  border-bottom: 8px solid #FF3541;
+  border-left: 4px solid transparent;
+}
+
+.plate-line-text {
+  margin-top: 6px;
+  font-size: 14px;
+  font-family: Futura-Medium, Futura;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.stock-text {
+  font-size: 14px;
+  font-family: "MicrosoftYaHeiUI-Bold, MicrosoftYaHeiUI";
+  font-weight: bold;
+  color: #2A2B30;
+  line-height: 24px;
+  text-align: end;
+}
+
+.stock-table>.react-bootstrap-table>table>thead>tr>th {
+  font-family: "MicrosoftYaHeiUI";
+  font-size: 14px;
+  font-weight: 400;
+  color: #6E7184;
+  line-height: 24px;
+  padding: 24px 0px;
+  border: none;
+  padding-left: 10px;
+  text-align: right;
+  padding-bottom: 8px;
+  padding-top: 16px;
+}
+
+.stock-table>.react-bootstrap-table>table>thead>tr>th:first-child {
+  text-align: left;
+}
+
+.stock-table>.react-bootstrap-table>table>thead>tr>th:nth-child(2) {
+  text-align: left;
+}
+
+.stock-table>.react-bootstrap-table>table>thead>tr>th:last-child {
+  padding-right: 12px;
+}
