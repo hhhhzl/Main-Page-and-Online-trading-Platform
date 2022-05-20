@@ -1,0 +1,22 @@
+.leading-industry-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leading-industry-text {
+  font-size: 24px;
+  font-family: "MicrosoftYaHeiUI";
+  font-weight: bold;
+  color: #2A2B30;
+  line-height: 40px;
+  letter-spacing: 1px;
+}
+
+.one-day{
+  /* margin-top: 24px; */
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px 48px 0px 33px;
+  justify-content: space-between;
+}

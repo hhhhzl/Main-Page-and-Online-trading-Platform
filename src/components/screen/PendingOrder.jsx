@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BootstrapTable from "react-bootstrap-table-next";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
 import { Collapse } from "react-bootstrap";
 import data from "../../static/pendingOrder.json";
 import data1 from "../../static/pendingOrder1.json";
 import { ArrowForwardIos } from "@material-ui/icons";
+import useWindowDimensions from "../../utils/sizewindow";
 
 import "./pendingOrder.css";
 
-export default function PendingOrder() {
+export default function PendingOrder(heightProp) {
+  const { width, height } = useWindowDimensions();
   const [current, setCurrent] = useState(0);
   const changeCurrent = (index) => {
     setCurrent(index);
@@ -136,7 +138,9 @@ export default function PendingOrder() {
       formatter: (value, row) => {
         return (
           <div>
-            <h6 className="simple-font">{value}</h6>
+            <h6 className="simple-font" style={{ marginBottom: "0px" }}>
+              {value}
+            </h6>
             <h6 className="simple-font" style={{ color: "#9C9EAC" }}>
               {row.positionHour}
             </h6>
@@ -268,7 +272,9 @@ export default function PendingOrder() {
       formatter: (value) => {
         return (
           <div>
-            <h6 className="simple-font">{value}%</h6>
+            <h6 style={{ marginTop: "15px" }} className="simple-font">
+              {value}%
+            </h6>
           </div>
         );
       },
@@ -397,7 +403,9 @@ export default function PendingOrder() {
       formatter: (value, row) => {
         return (
           <div>
-            <h6 className="simple-font">{value}</h6>
+            <h6 className="simple-font" style={{ marginBottom: "0px" }}>
+              {value}
+            </h6>
             <h6 className="simple-font" style={{ color: "#9C9EAC" }}>
               {row.positionHour}
             </h6>
@@ -406,6 +414,8 @@ export default function PendingOrder() {
       },
     },
   ];
+
+  useEffect(() => {});
 
   return (
     <div className="pending-container">
@@ -432,7 +442,10 @@ export default function PendingOrder() {
           </div>
         </div>
 
-        <div className="order-flex" style={{display:current == 2 ? 'flex' : 'none'}}>
+        <div
+          className="order-flex"
+          style={{ display: current == 2 ? "flex" : "none" }}
+        >
           <div className="all-order-text">全部</div>
           <div className="order-flex">
             <ArrowForwardIos className="all-order-icon"></ArrowForwardIos>
@@ -455,7 +468,16 @@ export default function PendingOrder() {
                 <div>
                   <hr style={{ marginBottom: "0px" }} />
                   <Collapse in={true}>
-                    <div className="pending-order-table">
+                    <div
+                      className="pending-order-table"
+                      style={{
+                        height: height * heightProp.heightProp,
+                        overflow: "auto",
+                        marginBottom: "0px",
+                        borderRadius: "4px 4px 4px 4px",
+                        opacity: "1",
+                      }}
+                    >
                       <BootstrapTable
                         style="table"
                         {...props.baseProps}
@@ -485,7 +507,16 @@ export default function PendingOrder() {
                 <div>
                   <hr style={{ marginBottom: "0px" }} />
                   <Collapse in={true}>
-                    <div className="pending-order-table">
+                    <div
+                      className="pending-order-table"
+                      style={{
+                        height: height * heightProp.heightProp,
+                        overflow: "auto",
+                        marginBottom: "0px",
+                        borderRadius: "4px 4px 4px 4px",
+                        opacity: "1",
+                      }}
+                    >
                       <BootstrapTable
                         style="table"
                         {...props.baseProps}
@@ -513,7 +544,16 @@ export default function PendingOrder() {
                 <div>
                   <hr style={{ marginBottom: "0px" }} />
                   <Collapse in={true}>
-                    <div className="pending-order-table">
+                    <div
+                      className="pending-order-table"
+                      style={{
+                        height: height * heightProp.heightProp,
+                        overflow: "auto",
+                        marginBottom: "0px",
+                        borderRadius: "4px 4px 4px 4px",
+                        opacity: "1",
+                      }}
+                    >
                       <BootstrapTable
                         style="table"
                         {...props.baseProps}

@@ -30,8 +30,8 @@ import LoginMainLayout from './components/webpage/RegisterLogin/mainLayout';
 
 import Tournament from './components/Tournament/tournament';
 
-import PageHeader from './components/screen/PageHeader';
-import PendingOrder from './components/screen/PendingOrder';
+// import PageHeader from './components/screen/PageHeader';
+// import PendingOrder from './components/screen/PendingOrder';
 
 import UserPortfolio from './components/TradingPlatform/Users/Portfolio/UserPortforlio';
 import StockTrade from './components/TradingPlatform/Users/Stocks/StockTrade';
@@ -41,6 +41,15 @@ import EditData from './components/TradingPlatform/Users/EditData'
 import PersonalHomepage from './components/TradingPlatform/Users/PersonalHomepage'
 import KeyIndicatorSimple from './components/screen/KeyIndicatorSimple'
 import KeyIndicatorProfessional from './components/screen/KeyIndicatorProfessional'
+import MarketQuotation from './components/screen/MarketQuotation'
+import RankingPang from './components/Competition/RankingPang'
+import StockSelectionDeviceList from './components/screen/StockSelectionDeviceList'
+
+
+import LeadingIndustry from './components/screen/LeadingIndustry'
+import AllIndustry from './components/screen/AllIndustry'
+
+
 
 
 const HomePage = () => {
@@ -100,14 +109,20 @@ const MakeRouter = () => {
       <Route exact path="/home" component={MainPage} /> 
       <Route exact path="/" component={MainPage} /> 
       <Route exact path="/tournament" component={Tournament} />
-      <Route exact path="/pageHeader" component={PageHeader} />
-      <Route exact path="/pendingOrder" component={PendingOrder} />
 	  
-	  
+      
 	  <Route exact path="/editData" component={EditData}/>
 	  <Route exact path="/personalHomepage" component={PersonalHomepage}/>
 	  <Route exact path="/keyIndicatorSimple" component={KeyIndicatorSimple}/>
 	  <Route exact path="/keyIndicatorProfessional" component={KeyIndicatorProfessional}/>
+	  <Route exact path="/marketQuotation" component={MarketQuotation}/>
+	  <Route exact path="/rankingPang" component={RankingPang}/>
+	  <Route exact path="/stockSelectionDevice" component={StockSelectionDeviceList}/>
+
+
+
+    <Route exact path="/leadingIndustry" component={LeadingIndustry}/>
+    <Route exact path="/leadingIndustry/allIndustry" component={AllIndustry}/>
 	  
 	  
 	  

@@ -1,0 +1,92 @@
+.market-quotation-title {
+	display: flex;
+	margin: 19px 0 0 48px;
+}
+
+.market-quotation-genre {
+	height: 28px;
+	font-size: 16px;
+	font-family: Microsoft YaHei UI-Bold, Microsoft YaHei UI;
+	font-weight: bold;
+	color: #2A2B30;
+	line-height: 28px;
+}
+
+.market-quotation-text {
+	font-size: 14px;
+	font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+	font-weight: 400;
+	color: #9C9EAC;
+	align-items: center;
+	line-height: 24px;
+}
+
+
+.market-quotation-table>.react-bootstrap-table>table>thead>tr>th {
+	font-size: 14px;
+	font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+	font-weight: 400;
+	color: #6E7184;
+	line-height: 24px;
+	background: #F5F6F8;
+	border-radius: 0px 0px 0px 0px;
+	padding: 16px 0px;
+}
+
+.market-quotation-table>.react-bootstrap-table>table>tbody>tr{
+	height: 56px;
+	border-color: inherit;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.market-quotation-table>.react-bootstrap-table>table>thead>tr>th:first-child {
+  text-align: center;
+}
+
+.market-quotation-table>.react-bootstrap-table>table>thead>tr>th:nth-child(4) {
+ text-align: right;
+}
+.market-quotation-table>.react-bootstrap-table>table>thead>tr>th:nth-child(5) {
+  text-align: right;
+}
+.market-quotation-table>.react-bootstrap-table>table>thead>tr>th:nth-child(6) {
+ text-align: right;
+}
+.market-quotation-table>.react-bootstrap-table>table>thead>tr>th:nth-child(7) {
+ text-align: right;
+}
+.market-quotation-table>.react-bootstrap-table>table>thead>tr>th:nth-child(8) {
+  text-align: right;
+}
+.market-quotation-table>.react-bootstrap-table>table>thead>tr>th:nth-child(9) {
+  text-align: right;
+}
+.market-quotation-table>.react-bootstrap-table>table>thead>tr>th:nth-child(10) {
+ text-align: right;
+}
+.market-quotation-table>.react-bootstrap-table>table>thead>tr>th:nth-child(11) {
+   text-align: right;
+}
+.market-quotation-table>.react-bootstrap-table>table>thead>tr>th:nth-child(12) {
+  text-align: right;
+}
+.market-quotation-table>.react-bootstrap-table>table>thead>tr>th:nth-child(13) {
+  text-align: right;
+}
+.market-quotation-table>.react-bootstrap-table>table>thead>tr>th:nth-child(14) {
+ text-align: right;
+}
+.market-quotation-table>.react-bootstrap-table>table>thead>tr>th:nth-child(15) {
+  text-align: right;
+}
+.market-quotation-table>.react-bootstrap-table>table>thead>tr>th:nth-child(16) {
+	text-align: right;
+}
+.market-quotation-table>.react-bootstrap-table>table>thead>tr>th:nth-child(17) {
+   text-align: right;
+}
+
+
+
+
