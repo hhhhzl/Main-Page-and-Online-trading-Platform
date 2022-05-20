@@ -1,0 +1,83 @@
+.choose-text {
+	font-size: 14px;
+	font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+	font-weight: 400;
+	color: #9C9EAC;
+	align-items: center;
+	line-height: 24px;
+}
+
+.choose-table>.react-bootstrap-table>table>thead>tr>th {
+	font-size: 14px;
+	font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+	font-weight: 400;
+	color: #6E7184;
+	line-height: 24px;
+	background: #F5F6F8;
+	border-radius: 0px 0px 0px 0px;
+	padding: 16px 0px;
+}
+
+.choose-table>.react-bootstrap-table>table>tbody>tr{
+	height: 56px;
+	border-color: inherit;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.table-tr-yahei {
+	font-size: 14px;
+	font-family: Microsoft YaHei UI-Bold, Microsoft YaHei UI;
+	font-weight: bold;
+	color: #2A2B30;
+	line-height: 24px;
+}
+
+.table-tr-futura {
+	font-size: 14px;
+	font-family: Futura-Medium, Futura;
+	font-weight: 500;
+	color: #2A2B30;
+	line-height: 24px;
+}
+
+
+.table-tr-increase {
+	font-size: 14px;
+	font-family: Futura-Medium, Futura;
+	font-weight: 500;
+	color: #EC1421;
+	line-height: 24px;
+}
+
+.choose-table>.react-bootstrap-table>table>thead>tr>th:nth-child(1) {
+  text-align: center;
+}
+.choose-table>.react-bootstrap-table>table>thead>tr>th:nth-child(4) {
+  text-align: right;
+}
+.choose-table>.react-bootstrap-table>table>thead>tr>th:nth-child(5) {
+  text-align: right;
+}
+.choose-table>.react-bootstrap-table>table>thead>tr>th:nth-child(6) {
+  text-align: right;
+}
+.choose-table>.react-bootstrap-table>table>thead>tr>th:nth-child(7) {
+  text-align: right;
+}
+.choose-table>.react-bootstrap-table>table>thead>tr>th:nth-child(8) {
+  text-align: right;
+}
+.choose-table>.react-bootstrap-table>table>thead>tr>th:nth-child(9) {
+  text-align: right;
+}
+.choose-table>.react-bootstrap-table>table>thead>tr>th:nth-child(10) {
+  text-align: right;
+}
+.choose-table>.react-bootstrap-table>table>thead>tr>th:nth-child(11) {
+  text-align: right;
+}
+.choose-table>.react-bootstrap-table>table>thead>tr>th:nth-child(12) {
+  text-align: right;
+}
+
