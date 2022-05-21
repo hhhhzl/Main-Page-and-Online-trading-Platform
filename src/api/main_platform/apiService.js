@@ -1,5 +1,5 @@
 import axios from "axios";
-import { TOKEN_LOCAL_STORAGE_KEY } from "../constants/values";
+import { TOKEN_LOCAL_STORAGE_KEY } from "../../constants/values";
 
 const apiService = axios.create({
   baseURL: "http://59.110.238.142:8000/api/",

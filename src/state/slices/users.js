@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { apiGetAllUsers, apiUpdateUser } from "../../api/users";
+import { apiGetAllUsers } from "../../api/main_platform/users";
 
 /* initial state */
 

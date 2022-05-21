@@ -43,6 +43,8 @@
 
 .header-user {
   display: flex;
+  padding-top: 16px;
+  height: 100%;
   flex-direction: column;
   position: relative;
   cursor: pointer;
@@ -73,7 +75,7 @@
   background: #FFFFFF;
   color: #6E7184;
   border-radius: 0px 0px 4px 4px;
-
+  z-index: 999;
   box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02);
 }
 

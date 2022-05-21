@@ -50,7 +50,7 @@ const macdAppearance = {
 		signal: "blue",
 	},
 	fill: {
-		divergence: "#42E083"
+		divergence: "#4682B4"
 	},
 };
 
@@ -69,14 +69,8 @@ const candlesAppearance = {
     opacity: 1,
   }
 
-  const bbStroke = {
-	top: "#964B00",
-	middle: "#000000",
-	bottom: "#964B00",
-};
 
-
-class CandlestickChart extends React.Component {
+class HeikinAshichart extends React.Component {
 	constructor(props) {
 		super(props);
 		this.onKeyPressTrendLine = this.onKeyPressTrendLine.bind(this);
@@ -248,6 +242,8 @@ class CandlestickChart extends React.Component {
 
 	render() {
 		/////////////////////////////////indicators//////////////////////////////////////
+
+		const ha = heikinAshi();
         const bb = bollingerBand()
 			.merge((d, c) => {d.bb = c;})
 			.accessor(d => d.bb);
@@ -338,7 +334,7 @@ class CandlestickChart extends React.Component {
 		console.log(emafunc,333)
 		console.log( emafunc.map((elem) => elem.accessor()))
 		
-		const calculatedtest = macdCalculator(dataprepareMa(SampleData,emafuncreal))
+		const calculatedtest = macdCalculator(dataprepareMa(ha(SampleData),emafuncreal))
 		
 
 		// const calculatedData = ema50(ema12(SampleData));
@@ -391,13 +387,11 @@ class CandlestickChart extends React.Component {
 			return (
 				<>
 			
-			    {[ema12,ema50].map((elem) => {
+			    {/* {[ema12,ema50].map((elem) => {
 					<LineSeries yAccessor={elem.accessor()} stroke={elem.stroke()}/>
-				})}
-				
-
-               
-           
+				})} */}
+                <LineSeries yAccessor={ema12.accessor()} stroke={ema12.stroke()}/>
+                <LineSeries yAccessor={ema50.accessor()} stroke={ema50.stroke()}/>
 				</>
 			)
 		}
@@ -584,9 +578,9 @@ class CandlestickChart extends React.Component {
 
 
 
-				<Chart id={2} height={chartheight *0.1}
+				<Chart id={2} height={chartheight *0.2}
 					yExtents={volumeSeries}
-					origin={(w, h) => [0, h - chartheight * 0.41]}
+					origin={(w, h) => [0, h - chartheight * 0.32 - 150]}
 				>
 					<YAxis axisAt="left" orient="left" ticks={5} tickFormat={format(".2s")}/>
 
@@ -621,11 +615,6 @@ class CandlestickChart extends React.Component {
 						{...macdAppearance} />
 					<MACDTooltip
 						origin={[0, 40]}
-						className="tool-tip"
-					fontFamily={"Microsoft YaHei UI-Bold, Microsoft YaHei UI"}
-					fontSize={14}
-					textFill={"#2A2B30"}
-					labelFill={"#2A2B30"}
 						yAccessor={d => d.macd}
 						options={macdCalculator.options()}
 						appearance={macdAppearance}
@@ -649,10 +638,10 @@ class CandlestickChart extends React.Component {
 }
 
 
-CandlestickChart.defaultProps = {
+HeikinAshichart.defaultProps = {
 	type: "svg",
 };
 
-const CandleStickChart = fitWidth(CandlestickChart);
+const HeikinAshiChart = fitWidth(HeikinAshichart);
 
-export default CandleStickChart;
+export default HeikinAshiChart;

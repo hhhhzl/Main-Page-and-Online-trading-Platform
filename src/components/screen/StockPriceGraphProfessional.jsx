@@ -30,6 +30,10 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import { IconButton } from '@material-ui/core';
 import CandleStickChart from '../graphs/CandlestickChart';
 import KeyIndicators from './KeyIndicatorProfessional';
+import HeikinAshiChart from '../graphs/heikinAshiGraph';
+import KagiGraphChart from '../graphs/KagiGraph';
+import Renkochart from '../graphs/RenkoChart';
+import PointFigurechart from '../graphs/PointFigureChart';
 
 const { SearchBar, ClearSearchButton } = Search;
 
@@ -168,10 +172,10 @@ const searchSwitch = () => {
 
 
 {/* /////HEADER/////////////////////////////////////////////////////////////////////////////////// */}
-        <div style={{width:"100%",minHeight:"6.2%", display:"flex",justifyContent:"left",borderBottom:"1px solid #E5E8EE"}}>
+        <div style={{width:openself? width-348 : "100%",minHeight:"6.2%", display:"flex",justifyContent:"left",borderBottom:"1px solid #E5E8EE"}}>
 
             <div style={{marginLeft:"2.5%" ,width:"37.7%",display:"flex",justifyContent:"left"}}>
-                <Link style ={{color:"black", paddingTop:"24px", textDecoration:"none"}} to="../user"><ArrowBack/></Link>
+                <Link style ={{color:"black", paddingTop:"24px", textDecoration:"none"}} to="../trade"><ArrowBack/></Link>
                 <div style={{
                       height:"28px",
                       paddingTop:"24px", 
@@ -280,11 +284,12 @@ const searchSwitch = () => {
 
             </div>
 
-            <div style={{width:"38.125%",display:"flex",justifyContent:"right"}}>
+            <div style={{width:"37%",display:"flex",justifyContent:"right"}}>
             <div style={{
                       height:"28px",
                       marginLeft:"16px",
                       marginTop:"12px", 
+                      marginRight:"20px",
                       }}>
             <Dropdown style={{marginTop:"5px"}} drop={"down"} >
               <Dropdown.Toggle size="sm" style={{
@@ -312,9 +317,25 @@ const searchSwitch = () => {
                 </Dropdown.Menu>
 
               </Dropdown>
+
+              
               </div>
+              <IconButton onClick={() => setopenself(!openself)}>
+                  {openself? 
+                    <FormatIndentIncrease/> 
+                  : <FormatIndentDecrease/>   
+                }    
+              </IconButton>
+              
 
             </div>
+            
+            
+
+              {openself? (<div style={{width:"348px",height:"100%",borderBottom:"1px solid #E5E8EE",backgroundColor:"yellow"}}>
+                <WatchList heightratio={(height-200)/height}/>
+            </div>   ) : null}
+            
         </div>
 
 
@@ -399,11 +420,11 @@ const searchSwitch = () => {
                       </Dropdown.Toggle>
               <Dropdown.Menu style={{marginLeft:"0%"}}>
                 均线指标：
-                <Dropdown.Item >MA</Dropdown.Item>
+                {/* <Dropdown.Item >MA</Dropdown.Item> */}
                 <Dropdown.Item >EMA</Dropdown.Item>
-                <Dropdown.Item >SMA</Dropdown.Item>
+                {/* <Dropdown.Item >SMA</Dropdown.Item>
                 <Dropdown.Item >TMA</Dropdown.Item>
-                <Dropdown.Item >WMA</Dropdown.Item>
+                <Dropdown.Item >WMA</Dropdown.Item> */}
                 <Dropdown.Item >布林线</Dropdown.Item>
                 <hr/>
                 超买超卖指标:
@@ -429,7 +450,6 @@ const searchSwitch = () => {
                       </Dropdown.Toggle>
               <Dropdown.Menu style={{marginLeft:"0%"}}>
                 <Dropdown.Item >蜡烛图</Dropdown.Item>
-                <Dropdown.Item >面积图</Dropdown.Item>
                 <Dropdown.Item>平均K线图（Heikin-Ashi）</Dropdown.Item>
                 <Dropdown.Item>卡吉图（Kagi）</Dropdown.Item>
                 <Dropdown.Item>点数图</Dropdown.Item>
@@ -437,31 +457,28 @@ const searchSwitch = () => {
                 </Dropdown.Menu>
               </Dropdown>
 
-              <IconButton onClick={() => setopenself(!openself)}>
-                  {openself? 
-                    <FormatIndentIncrease/> 
-                  : <FormatIndentDecrease/>   
-                }    
-              </IconButton>
+             
             </div>
             </div>
 
 
             <div style={{width:openself? width-348 : "100%",maxWidth:"100%"}}>
-            <CandleStickChart width ={openself? width-348: width} choice = {"Trendline"}/>
+            <CandleStickChart width ={openself? width-348: width} choice = {"Trendline"} ma ={[12,50]}/>
             </div>
 
 
     </div>
+
+    {openself? (<div style={{width:"348px",height:"100%",borderBottom:"1px solid #E5E8EE",backgroundColor:"yellow"}}>
+                
+            </div>   ) : null}
         
 
             
 
 
 
-            {openself? (<div style={{width:"348px",height:"100%",borderBottom:"1px solid #E5E8EE",backgroundColor:"yellow"}}>
-                <WatchList/>
-            </div>   ) : null}
+           
 
         </div>
     </div>

@@ -24,7 +24,7 @@ import { SampleData } from "../../static/Stockdata";
 import AreaChart from '../graphs/areaChart';
 import AreaChartForMarketView from '../graphs/AreaChartForMarketView';
 
-export default function MarketOverview(props) {
+export default function MarketOverview({widthRatio}) {
 
     const [selected, setselected] = useState(0)
     const [upDown, setUpdown] = useState(false)
@@ -100,7 +100,6 @@ export default function MarketOverview(props) {
         }}>
                     <div style={{
                 position:"relative",
-                height:"100%",
                 width:"20.83%",
                 }}
                 >
@@ -194,7 +193,7 @@ export default function MarketOverview(props) {
                 width:"79.17%",
                 }}
                 >
-                    <AreaChartForMarketView width={721} upDown ={upDown}/>
+                    <AreaChartForMarketView width={widthRatio * 0.7518} upDown ={upDown}/>
                     <div style={{width:"85%",height:"20px",marginTop:"2.33%",display:"flex",justifyContent:"space-between"}}>
                                     <div style={{
                                     // marginLeft:"-65%",

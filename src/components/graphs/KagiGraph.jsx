@@ -50,33 +50,12 @@ const macdAppearance = {
 		signal: "blue",
 	},
 	fill: {
-		divergence: "#42E083"
+		divergence: "#4682B4"
 	},
 };
 
-const candlesAppearance = {
-    wickStroke: function fill(d) {
-        return d.close > d.open ? "#42E083" : "#FF3541";
-      },
-    fill: function fill(d) {
-      return d.close > d.open ? "#42E083" : "#FF3541";
-    },
-    stroke: function fill(d) {
-        return d.close > d.open ? "#42E083" : "#FF3541";
-      },
-    candleStrokeWidth: 1,
-    widthRatio: 0.8,
-    opacity: 1,
-  }
 
-  const bbStroke = {
-	top: "#964B00",
-	middle: "#000000",
-	bottom: "#964B00",
-};
-
-
-class CandlestickChart extends React.Component {
+class KagiGraphchart extends React.Component {
 	constructor(props) {
 		super(props);
 		this.onKeyPressTrendLine = this.onKeyPressTrendLine.bind(this);
@@ -248,6 +227,10 @@ class CandlestickChart extends React.Component {
 
 	render() {
 		/////////////////////////////////indicators//////////////////////////////////////
+
+        const kagiCalculator = kagi();
+
+
         const bb = bollingerBand()
 			.merge((d, c) => {d.bb = c;})
 			.accessor(d => d.bb);
@@ -337,8 +320,10 @@ class CandlestickChart extends React.Component {
 		})
 		console.log(emafunc,333)
 		console.log( emafunc.map((elem) => elem.accessor()))
+
+        const kagidata = kagiCalculator(SampleData)
 		
-		const calculatedtest = macdCalculator(dataprepareMa(SampleData,emafuncreal))
+		const calculatedtest = macdCalculator(dataprepareMa(kagidata,emafuncreal))
 		
 
 		// const calculatedData = ema50(ema12(SampleData));
@@ -500,7 +485,10 @@ class CandlestickChart extends React.Component {
 						orient="right"
 						displayFormat={format(".2f")} />
 
-					<CandlestickSeries  {...candlesAppearance} />
+					<KagiSeries stroke={{
+                        yang: "#42E083",
+                        yin: "#FF3541"
+                        }} />
 
                     {/* <BollingerSeries yAccessor={d => d.bb}
 						stroke={bbStroke}
@@ -584,9 +572,9 @@ class CandlestickChart extends React.Component {
 
 
 
-				<Chart id={2} height={chartheight *0.1}
+				<Chart id={2} height={chartheight *0.2}
 					yExtents={volumeSeries}
-					origin={(w, h) => [0, h - chartheight * 0.41]}
+					origin={(w, h) => [0, h - chartheight * 0.32 - 150]}
 				>
 					<YAxis axisAt="left" orient="left" ticks={5} tickFormat={format(".2s")}/>
 
@@ -594,7 +582,7 @@ class CandlestickChart extends React.Component {
 						at="left"
 						orient="left"
 						displayFormat={format(".4s")} />
-					<BarSeries yAccessor={volumeSeries} stroke = {true} fill={d => d.close > d.open ? "#42E083" : "#FF3541"} opacity={0.5}/>
+					<BarSeries yAccessor={volumeSeries} fill={d => d.close > d.open ? "rgba(38, 166, 154, 0.3)" : "rgba(239, 83, 80, 0.3)"} />
 				</Chart>
 				<div style={{height:"1px",width:chartwidth, backgroundColor:"black"}} > </div>
 
@@ -616,16 +604,11 @@ class CandlestickChart extends React.Component {
 					<MouseCoordinateY
 						at="right"
 						orient="right"
-						displayFormat={format(".2f")} />e
+						displayFormat={format(".2f")} />
 					<MACDSeries yAccessor={d => d.macd}
 						{...macdAppearance} />
 					<MACDTooltip
 						origin={[0, 40]}
-						className="tool-tip"
-					fontFamily={"Microsoft YaHei UI-Bold, Microsoft YaHei UI"}
-					fontSize={14}
-					textFill={"#2A2B30"}
-					labelFill={"#2A2B30"}
 						yAccessor={d => d.macd}
 						options={macdCalculator.options()}
 						appearance={macdAppearance}
@@ -649,10 +632,10 @@ class CandlestickChart extends React.Component {
 }
 
 
-CandlestickChart.defaultProps = {
+KagiGraphchart.defaultProps = {
 	type: "svg",
 };
 
-const CandleStickChart = fitWidth(CandlestickChart);
+const KagiGraphChart = fitWidth(KagiGraphchart);
 
-export default CandleStickChart;
+export default KagiGraphChart;
