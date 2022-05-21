@@ -206,55 +206,32 @@ export default function RankingPang(){
 			<div className="ranking-pang-table-div">
 				{
 					current==0?(
-						<ToolkitProvider
-						  bootstrap4
-						  keyField="id"
-						  data={data}
-						  columns={columns}
-						  search
-						  key={0}
-						>
-						  {(props) => (
-							<div>
-							  <Collapse in={true}>
-								<div className="ranking-pang-table">
-								  <BootstrapTable
-									style="table"
-									{...props.baseProps}
-									bordered={false}
-									hover
-									condensed
-								  />
-								</div>
-							  </Collapse>
+						<div>
+							<div className="ranking-pang-table">
+							  <BootstrapTable
+								style="table"
+								bordered={false}
+								hover
+								condensed
+								keyField="id"
+								data={data}
+								columns={columns}
+							  />
 							</div>
-						  )}
-						</ToolkitProvider>
+						</div>
 					):(
-						<ToolkitProvider
-						  bootstrap4
-						  keyField="id"
-						  data={data1}
-						  columns={columns}
-						  search
-						  key={0}
-						>
-						  {(props) => (
-							<div>
-							  <Collapse in={true}>
-								<div className="ranking-pang-table">
-								  <BootstrapTable
-									style="table"
-									{...props.baseProps}
-									bordered={false}
-									hover
-									condensed
-								  />
-								</div>
-							  </Collapse>
+						<div>
+							<div className="ranking-pang-table">
+							  <BootstrapTable
+								style="table"
+								bordered={false}
+								hover
+								condensedkeyField="id"
+								data={data1}
+								columns={columns}
+							  />
 							</div>
-						  )}
-						</ToolkitProvider>
+						</div>
 					)
 				}
 			

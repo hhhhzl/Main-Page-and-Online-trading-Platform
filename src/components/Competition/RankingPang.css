@@ -35,8 +35,12 @@
 	margin: 0px 18.75%;
 }
 
-.table>tbody {
+.ranking-pang-table>.react-bootstrap-table>.table>tbody {
     vertical-align: middle;
+}
+
+.ranking-pang-table>.react-bootstrap-table>.table>:not(:last-child)>:last-child>* {
+    border-bottom-color: aliceblue;
 }
 
 .ranking-pang-table>.react-bootstrap-table>tbody, td, tfoot,  thead, tr {

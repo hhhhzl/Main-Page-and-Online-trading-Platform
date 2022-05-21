@@ -44,6 +44,8 @@ import KeyIndicatorProfessional from './components/screen/KeyIndicatorProfession
 import MarketQuotation from './components/screen/MarketQuotation'
 import RankingPang from './components/Competition/RankingPang'
 import StockSelectionDeviceList from './components/screen/StockSelectionDeviceList'
+import StockSelectionDevice from './components/screen/StockSelectionDevice'
+
 
 
 import LeadingIndustry from './components/screen/LeadingIndustry'
@@ -117,7 +119,8 @@ const MakeRouter = () => {
 	  <Route exact path="/keyIndicatorProfessional" component={KeyIndicatorProfessional}/>
 	  <Route exact path="/marketQuotation" component={MarketQuotation}/>
 	  <Route exact path="/rankingPang" component={RankingPang}/>
-	  <Route exact path="/stockSelectionDevice" component={StockSelectionDeviceList}/>
+	  <Route exact path="/stockSelectionDeviceList" component={StockSelectionDeviceList}/>
+	  <Route exact path="/stockSelectionDevice" component={StockSelectionDevice}/>
 
 
 

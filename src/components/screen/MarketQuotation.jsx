@@ -12,7 +12,6 @@ export default function MarketQuotation(){
 						{
 							dataField:"No",
 							text:"No",
-							sort:true,
 							style: {
 								textAlign:"center"
 							},
@@ -28,7 +27,6 @@ export default function MarketQuotation(){
 						},{
 							dataField:"代码",
 							text:"代码",
-							sort:true,
 							style: {},
 							formatter: (value, row) => {
 							  return (
@@ -42,7 +40,6 @@ export default function MarketQuotation(){
 						},{
 							dataField:"名称",
 							text:"名称",
-							sort:true,
 							style: {},
 							formatter: (value, row) => {
 							  return (
@@ -295,32 +292,20 @@ export default function MarketQuotation(){
 				</div>
 			</div>
 			<div>
-				<ToolkitProvider
-					bootstrap4
-					keyField="id"
-					data={data}
-					columns={columns}
-					search
-					key={0}
-				>
-					{(props) => (
-					  <div>
-					    <hr style={{ marginBottom: "0px" }} />
-					    <Collapse in={true}>
-					      <div className="market-quotation-table">
-					        <BootstrapTable
-					          style="table"
-					          {...props.baseProps}
-					          bordered={false}
-					          hover
-					          condensed
-					          // noDataIndication={indication}
-					        />
-					      </div>
-					    </Collapse>
+				  <div>
+					<hr style={{ marginBottom: "0px" }} />
+					  <div className="market-quotation-table">
+						<BootstrapTable
+						  style="table"
+						  bordered={false}
+						  hover
+						  condensed
+						  keyField="id"
+						  data={data}
+						  columns={columns}
+						/>
 					  </div>
-					)}
-				</ToolkitProvider>
+				  </div>
 				
 			</div>
 		</div>

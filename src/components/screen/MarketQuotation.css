@@ -31,6 +31,7 @@
 	background: #F5F6F8;
 	border-radius: 0px 0px 0px 0px;
 	padding: 16px 0px;
+	border: 0;
 }
 
 .market-quotation-table>.react-bootstrap-table>table>tbody>tr{
@@ -87,6 +88,38 @@
    text-align: right;
 }
 
+.dropdown, .dropup {
+    position: relative;
+}
 
+.react-bootstrap-table th .order > .dropdown > .caret {
+    margin: 10px 0 10px 5px;
+    color: #cccccc;
+}
+
+.react-bootstrap-table th .order > .dropup > .caret {
+    margin: 10px 0;
+    color: #cccccc;
+}
+
+.dropup .caret, .navbar-fixed-bottom .dropdown .caret {
+    content: "";
+    border-top: 0;
+    border-bottom: 4px dashed;
+    border-bottom: 4px solid\9;
+}
+
+
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-top: 4px solid\9;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
 
 
