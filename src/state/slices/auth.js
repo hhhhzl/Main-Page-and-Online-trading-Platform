@@ -4,7 +4,7 @@ import {
   apiRegisterUser,
   apiUpdateUser,
   apiGetRefreshToken,
-} from "../../api/users";
+} from "../../api/main_platform/users";
 import { TOKEN_LOCAL_STORAGE_KEY } from "../../constants/values";
 
 /* initial state */

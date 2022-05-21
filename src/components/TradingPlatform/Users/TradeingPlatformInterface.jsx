@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import { Container, Navbar } from "react-bootstrap";
 import SideMenuUsers from "./sideMenuUsers";
 import NavBarTest from "../navBar";
-import { BrowserRouter, Switch, Route, Router, useRouteMatch } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Router, useRouteMatch, useParams } from "react-router-dom";
 import Userbalance from "./Portfolio/UserBalance";
 import UserMarket from "./Market/market";
 import UserStocks from "./Stocks/UserStocks";
@@ -12,31 +12,39 @@ import userPortfolio from "./Portfolio/UserPortforlio";
 import StockTrade from "./Stocks/StockTrade";
 import StockPriceGraphProfessional from "../../screen/StockPriceGraphProfessional";
 import UserPortfolio from "./Portfolio/UserPortforlio";
+import PageHeader from "../../screen/PageHeader";
 
 
 
 export default function TradePusers(props){
+const {username} = useParams();
+const {path, url} = useRouteMatch();
+
 
     return(
         <div>
-            <Switch>
-            <Route path="/eplatform/:username">
-                <UserPortfolio/>
+            <PageHeader/> 
+            <Switch>    
+            <Route path={`${path}/trade`}>
+                <StockTrade/>
+            </Route>  
+            <Route path={`${path}`}>
+                <StockTrade/>
             </Route>
-
-            <Route path="/eplatform/user/pro">
+            <Route path="/eplatform/:username/trade/pro">
                 <StockPriceGraphProfessional/>
             </Route>
-            <Route path="/market">
+            <Route path="/eplatform/:username/market">
                 <UserMarket/>
             </Route>
-            <Route path="/stocks">
-                <UserStocks/>
-            </Route>
-            <Route path="/eplatform/user/trade">
-                <UserTrade/>
-            </Route>
-        </Switch>
+            </Switch>
+            {/* <Route path="/trade">
+                <StockTrade/>
+            </Route> */}
+
+        
+
+         
         </div>
     )
 

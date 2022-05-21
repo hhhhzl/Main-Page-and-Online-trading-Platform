@@ -6,6 +6,7 @@ import StockTradeBar from "../../../screen/StockTradeBar";
 import StockTradeComponet from "../../../screen/StockTradeComponet";
 import WatchList from "../../../screen/WatchList";
 import PendingOrder from "../../../screen/PendingOrder";
+import KeyIndicators from "../../../screen/KeyIndicatorSimple";
 
 export default function StockTrade(props) {
   const { width, height } = useWindowDimensions();
@@ -28,8 +29,6 @@ export default function StockTrade(props) {
 
   return (
     <>
-      <PageHeader />
-
       <div
         style={{
           marginTop: height * 0.075,
@@ -56,7 +55,7 @@ export default function StockTrade(props) {
           <div style={{ width: "63.3%" }}>
             <StockPriceGraphSimplify widthratio={1200 * 0.63} />
             <div style={{ marginTop: "40px" }}>
-              <PendingOrder heightProp={0.23} />
+              <KeyIndicators heightProp={0.23} />
             </div>
           </div>
           <div style={{ width: "30%" }}>

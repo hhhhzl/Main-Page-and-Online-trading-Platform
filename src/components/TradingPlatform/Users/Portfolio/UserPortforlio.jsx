@@ -5,6 +5,7 @@ import PorforlioMoveGraph from "../../../screen/PortforlioMoveGraph";
 import WatchList from "../../../screen/WatchList";
 import KeyIndicators from "../../../screen/KeyIndicatorSimple";
 import PendingOrder from "../../../screen/PendingOrder";
+import LeadingIndustry from "../../../screen/AllIndustry";
 
 
 export default function UserPortfolio(props) {
@@ -33,10 +34,19 @@ export default function UserPortfolio(props) {
 
     return (
         <>
-        <PageHeader/>
+        <div  style={{marginTop:height*0.075,width:"100%",display:"flex",justifyContent:"space-between"}}>
 
-        <div  style={{marginTop:height*0.075,width:"100%",minHeight:"500px",display:"flex",justifyContent:"space-between"}}>
+            <div style={{width:"auto",maxWidth:"18.75%",backgroundColor:"blue"}}></div>
+        <div style={{width:"1200px",minWidth:"fix-content",display:"flex",justifyContent:"right"}} ref={listRef}>
+        </div>
+        <div style={{width:"auto",maxWidth:"18.75%",backgroundColor:"blue"}}></div>
+        </div>
 
+
+
+
+
+        <div  style={{marginTop:0,width:"100%",minHeight:"500px",display:"flex",justifyContent:"space-between"}}>
             <div style={{width:"auto",minHeight:"500px",maxWidth:"18.75%",backgroundColor:"blue"}}></div>
 
 
@@ -44,7 +54,7 @@ export default function UserPortfolio(props) {
             <div style={{width:"63.3%"}}>
                 <PorforlioMoveGraph  widthratio ={1200 * 0.633}/>
                 <div style={{marginTop:height*0.0564}}>
-                  <PendingOrder/>
+                  <PendingOrder heightProp={0.23}/>
                 </div>   
             </div>
 

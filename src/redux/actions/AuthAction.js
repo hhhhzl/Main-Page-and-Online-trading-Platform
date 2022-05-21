@@ -1,4 +1,4 @@
-import { apiRegisterUser } from "../../api/users";
+import { apiRegisterUser } from "../../api/main_platform/users";
 
 const AuthActionType ={
     RGISTER_SUCCESS: "RGISTER_SUCCESS",
