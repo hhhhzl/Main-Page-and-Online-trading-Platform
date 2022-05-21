@@ -21,7 +21,7 @@ export default function EditData(){
 		<div style={{backgroundColor: "#F5F6F8"}}>
 			<div style={{marginLeft:"18.75%"}}>
 				<div className="edit-title">编辑资料</div>
-				<div style={{width:"76.924%",backgroundColor:"#FFFFFF",marginTop:"24px"}}>
+				<div className="edit-user-person" style={{width:"76.924%",backgroundColor:"#FFFFFF",marginTop:"24px"}}>
 					<div style={{textAlign:"center"}}>
 						<div style={{padding: "60px 0 51px"}}>
 							<Image

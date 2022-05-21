@@ -14,6 +14,7 @@
 	color: #6E7184;
 	line-height: 24px;
 	background: #F5F6F8;
+	border: 0;
 	border-radius: 0px 0px 0px 0px;
 	padding: 16px 0px;
 }
@@ -81,3 +82,76 @@
   text-align: right;
 }
 
+
+
+.stock-selection-device-tabs{
+	display: flex;
+	align-items: center;
+	margin: 13px 48px 12px;
+}
+
+.stock-selection-device-active-font{
+	font-size: 24px;
+	font-family: Microsoft YaHei UI-Bold, Microsoft YaHei UI;
+	font-weight: bold;
+	color: #2A2B30;
+	line-height: 40px;
+	letter-spacing: 1px;
+}
+
+.stock-selection-device-normal-font{
+	font-size: 16px;
+	font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+	font-weight: 400;
+	color: #6E7184;
+	line-height: 28px;
+	letter-spacing: 1px;
+}
+
+.stock-selection-device-title {
+	font-size: 16px;
+	font-family: Microsoft YaHei UI-Bold, Microsoft YaHei UI;
+	font-weight: bold;
+	color: #2A2B30;
+	line-height: 28px;
+}
+
+
+.market{
+	display: flex;
+	align-items: center;
+}
+
+.stock-selection-device-label {
+	width: 56px;
+	font-size: 14px;
+	font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+	font-weight: 400;
+	color: #6E7184;
+	line-height: 24px;
+}
+
+
+
+.stock-selection-device-select{
+	margin-left: 50%;
+	width: 100%;
+	height: 36px;
+	border-radius: 4px 4px 4px 4px;
+	opacity: 1;
+	border: 1px solid #C0C3CE;
+	font-size: 14px;
+	font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+	font-weight: 400;
+	color: #2A2B30;
+	line-height: 24px;
+}
+
+.list-label{
+	padding: 24px 48px;
+	border-bottom: 1px solid #E5E8EE;
+}
+
+.list-label:hover{
+	background: #E5E8EE;
+}
