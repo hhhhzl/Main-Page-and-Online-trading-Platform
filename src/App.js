@@ -50,6 +50,9 @@ import StockSelectionDevice from './components/screen/StockSelectionDevice'
 
 import LeadingIndustry from './components/screen/LeadingIndustry'
 import AllIndustry from './components/screen/AllIndustry'
+import Ranking from './components/TradingPlatform/Users/Ranking/Ranking';
+import TeamModelIntro from './components/Competition/team/teamModelIntro';
+import Screener from './components/TradingPlatform/Users/screener/screener';
 
 
 
@@ -105,11 +108,11 @@ const MakeRouter = () => {
       <Route exact path="/changepassword" component={LoginMainLayout} />
 
       <Route exact path= "/eplatform/:username" component ={UserPortfolio}/>
-      <Route exact path= "/eplatform/:username/trade" component ={StockTrade}/>
-      <Route exact path= "/eplatform/:username/market" component ={UserMarket}/>
-      <Route exact path= "/eplatform/:username/screener" component ={null}/>
-      <Route exact path= "/eplatform/:username/ranking" component ={RankingPang}/>
-      <Route exact path= "/eplatform/:username/invest_notes" component ={RankingPang}/>
+      <Route exact path= "/trade" component ={StockTrade}/>
+      <Route exact path= "/market" component ={UserMarket}/>
+      <Route exact path= "/screener" component ={Screener}/>
+      <Route exact path= "/ranking" component ={Ranking}/>
+      <Route exact path= "/invest_notes" component ={RankingPang}/>
       <Route exact path="/eplat" component={TradePadmin} />
 
       <Route exact path="/home" component={MainPage} /> 
@@ -119,30 +122,27 @@ const MakeRouter = () => {
 
 
 
-       {/* <PrivateRoute exact path="/stocks" component={UserStocks} />
-      <PrivateRoute exact path="/market" component={UserMarket} />
+
+
+
+
+
+{/* 以下为测试URL */}
+       <PrivateRoute exact path="/stocks" component={UserStocks} />
       <PrivateRoute exact path="/competition" component={null} />
-
-
-      <Route exact path="/tournament" component={Tournament} />
-	  
-      
+      <Route exact path="/tournament" component={Tournament} /> 
 	  <Route exact path="/editData" component={EditData}/>
 	  <Route exact path="/personalHomepage" component={PersonalHomepage}/>
 	  <Route exact path="/keyIndicatorSimple" component={KeyIndicatorSimple}/>
 	  <Route exact path="/keyIndicatorProfessional" component={KeyIndicatorProfessional}/>
 	  <Route exact path="/marketQuotation" component={MarketQuotation}/>
 	  <Route exact path="/rankingPang" component={RankingPang}/>
-	  <Route exact path="/stockSelectionDeviceList" component={StockSelectionDeviceList}/>
-	  <Route exact path="/stockSelectionDevice" component={StockSelectionDevice}/>
-
-
-
+	  <Route exact path="/stockSelectionDeviceList" component={StockSelectionDevice}/>
     <Route exact path="/leadingIndustry" component={LeadingIndustry}/>
-    <Route exact path="/leadingIndustry/allIndustry" component={AllIndustry}/>  */}
-	  
-	  
-	  
+    <Route exact path="/leadingIndustry/allIndustry" component={AllIndustry}/> 
+    <Route exact path="/team" component={PersonalHomepage}/>
+    <Route exact path="/trade/pro" component={StockPriceGraphProfessional} />
+    
 	  
       </AuthProvider>
     </Switch>

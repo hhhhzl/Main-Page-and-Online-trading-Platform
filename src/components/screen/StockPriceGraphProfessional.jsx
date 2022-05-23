@@ -1,7 +1,7 @@
 import reaat, {useEffect, useState} from 'react'
-import { Card, Collapse, Button, Row, Nav, Col, Badge, InputGroup, Form, Image,Dropdown} from 'react-bootstrap'
+import { Card, Collapse, Button, Row, Nav, Col, Badge, InputGroup, Form, Image,Dropdown, Modal} from 'react-bootstrap'
 import './screen.css';
-import { Add, ArrowBack, ArrowForward, Check, Edit, Forward, StarBorder,Search as Seachimage, SearchOutlined, ShowChart,BarChart,FormatIndentDecrease, FormatIndentIncrease } from '@material-ui/icons';
+import { Add, ArrowBack, ArrowForward, Check, Edit, Forward, StarBorder,Search as Seachimage, SearchOutlined, ShowChart,BarChart,FormatIndentDecrease, FormatIndentIncrease, FlareSharp } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import UserHolding from './UserHolding';
 import WatchList from './WatchList';
@@ -34,6 +34,9 @@ import HeikinAshiChart from '../graphs/heikinAshiGraph';
 import KagiGraphChart from '../graphs/KagiGraph';
 import Renkochart from '../graphs/RenkoChart';
 import PointFigurechart from '../graphs/PointFigureChart';
+import CandleStickChartHollow from '../graphs/CandleStickChartHollow';
+import LineSeriesChart from '../graphs/LineSeriesChart';
+import AreaSeriesChart from '../graphs/AreaSeriesChart';
 
 const { SearchBar, ClearSearchButton } = Search;
 
@@ -51,6 +54,30 @@ export default function StockPriceGraphProfessional(props) {
   const handleMouseLeave1 = () => setHover1(false);
   const handleMouseOver2 = () => setHover2(true);
   const handleMouseLeave2 = () => setHover2(false);
+  const [chooseChartType, setchooseChartType] = useState(0)
+
+
+  const [show, setshow] = useState(false)
+  const handleShow = () => {setshow(true)}
+  const handleClose = () => {setshow(false)};
+
+
+
+
+////////////////////////////指标//////////////////////////////
+   const [volumeshow, setvolumeshow] = useState(false)
+
+
+
+   
+
+  
+  
+
+
+
+  ///////////////choosing logic///////////////////////////
+ 
 
   const [scrollswitch, setScrollswitch] = useState(false);
   const [linkedInstitution, setLinkedInstitution] = useState("")
@@ -158,23 +185,111 @@ const searchSwitch = () => {
 ]
 
 
+
+/////////////////////////////////////////////////////////////////////////Type/////////////////////////////////////////////////////
+  const CandleChart = () => {
+      return(
+        <CandleStickChart width ={openself? width-348: width} choice = {"Trendline"} ma ={[12,50]} open = {openself} volumeshow = {volumeshow}/>
+      )
+  }
+
+  const LineChart = () => {
+    return (
+        <LineSeriesChart width ={openself? width-348: width} choice = {"Trendline"} ma ={[12,50]} open = {openself} volumeshow = {volumeshow}/>
+    )
+}
+
+  const HeikinChart = () => {
+      return (
+          <HeikinAshiChart width ={openself? width-348: width} choice = {"Trendline"} ma ={[12,50]} open = {openself} volumeshow = {volumeshow}/>
+      )
+  }
+
+  const AreaChart = () => {
+    return (
+        <AreaSeriesChart width ={openself? width-348: width} choice = {"Trendline"} ma ={[12,50]} open = {openself} volumeshow = {volumeshow}/>
+    )
+}
+
+const CandleHollow = () => {
+    return (
+        <CandleStickChartHollow width ={openself? width-348: width} choice = {"Trendline"} ma ={[12,50]} open = {openself} volumeshow = {volumeshow}/>
+    )
+}
+
+const KagiChart= () => {
+    return (
+        <KagiGraphChart width ={openself? width-348: width} choice = {"Trendline"} ma ={[12,50]} open = {openself} volumeshow = {volumeshow}/>
+    )
+}
+
+const RendoChart= () => {
+    return (
+        <RendoChart width ={openself? width-348: width} choice = {"Trendline"} ma ={[12,50]} open = {openself} volumeshow = {volumeshow}/>
+    )
+}
+
+const PointFigure = () => {
+    return (
+        <PointFigurechart width ={openself? width-348: width} choice = {"Trendline"} ma ={[12,50]} open = {openself} volumeshow = {volumeshow}/>
+    )
+}
+
+
+
+  const chartChooseType ={
+        0: CandleChart,
+        1: LineChart,
+        2: AreaChart,
+        3: CandleHollow,
+        4: HeikinChart,
+        5: KagiChart,
+        6: RendoChart,
+        7: PointFigure,
+  }
+
+let ChartChoice = chartChooseType[chooseChartType]
+
+
+
    useEffect(()=>{
        setopenself(openself)
    },[openself])
+
+   useEffect(()=>{
+    setvolumeshow(volumeshow)
+},[volumeshow])
+
+   
 
     
 
     return (
     <>
-    <div style={{minWidth:"700px",width:"auto",height:"100%"}}>
+    <Modal show={show} onHide={handleClose} centered>
+        <Modal.Header closeButton>
+          {/* <Modal.Title>Modal heading</Modal.Title> */}
+        </Modal.Header>
+        <Modal.Body style ={{textAlign:"center"}}><div style={{
+                      height:"24px",
+                      fontSize:"20px",
+                      paddingTop:"4px",
+                      textAlign:"center",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"bold",
+                      color:"#2A2B30",
+                      lineHeight:"24px",
+                      }}>功能暂未开放</div></Modal.Body>
+      </Modal>
 
-
+    <div style={{width:"100%",height:"100%", minHeight:"1000px",minWidth:"1200px", display:"flex", justifyContent:"left"}}>
 
 
 {/* /////HEADER/////////////////////////////////////////////////////////////////////////////////// */}
-        <div style={{width:openself? width-348 : "100%",minHeight:"6.2%", display:"flex",justifyContent:"left",borderBottom:"1px solid #E5E8EE"}}>
 
-            <div style={{marginLeft:"2.5%" ,width:"37.7%",display:"flex",justifyContent:"left"}}>
+    <div>
+    <div style={{width:openself? width-348 : "100%",minHeight:"6.2%", display:"flex",justifyContent:"left",borderBottom:"1px solid #E5E8EE"}}>
+    <div style={{marginLeft:"2.5%" ,width:"37.7%",display:"flex",justifyContent:"left"}}>
                 <Link style ={{color:"black", paddingTop:"24px", textDecoration:"none"}} to="../trade"><ArrowBack/></Link>
                 <div style={{
                       height:"28px",
@@ -328,21 +443,13 @@ const searchSwitch = () => {
               </IconButton>
               
 
-            </div>
-            
-            
+            </div>   
 
-              {openself? (<div style={{width:"348px",height:"100%",borderBottom:"1px solid #E5E8EE",backgroundColor:"yellow"}}>
-                <WatchList heightratio={(height-200)/height}/>
-            </div>   ) : null}
-            
         </div>
 
 
-
-
-{/* /////Timer/////////////////////////////////////////////////////////////////////////////////// */}
-<div style={{width:"100%",height:"100%",display:"flex",justifyContent:"space-between"}}>
+        <div style={{width:openself? width-348 : "100%",minHeight:"6.2%", display:"flex",justifyContent:"left",borderBottom:"1px solid #E5E8EE"}}>
+            <div style={{width:"100%",height:"100%",display:"flex",justifyContent:"space-between"}}>
     <div style={{width:openself? width-348 : "100%",maxWidth:"100%",height:"100%"}}>
     <div style={{width:openself? width-348 : "100%",maxWidth:"100%",minHeight:"4.81%",height:"55px",borderBottom:"1px solid #E5E8EE",display:"flex",justifyContent:"space-between"}}>
             <div style={{width:"453px",marginLeft:"2.5%",display:"flex",justifyContent:"space-between"}}>
@@ -375,8 +482,11 @@ const searchSwitch = () => {
             })}
             </div>
 
-            <div style={{width:"320px",marginRight:"2.5%",height:"53px",marginLeft:"2.5%",display:"flex",justifyContent:"space-between"}}>
-            <Dropdown style={{marginTop:"8px"}} >
+            <div style={{width:"300px",marginRight:"2.5%",height:"53px",marginLeft:"2.5%",display:"flex",justifyContent:"right"}}>
+
+
+                {chooseChartType == 0? <>
+                    <Dropdown style={{marginTop:"8px", marginRight:"20px",marginLeft:"20px"}} >
               <Dropdown.Toggle size="sm" style={{borderRadius:"4px 4px 4px 4px",background: "#F5F6F8",height:"36px",width:"72px",paddingLeft:"1px",paddingTop:0, border:"0"}} variant="primary" id="dropdown-basic">
                   
                   <div style={{
@@ -391,21 +501,87 @@ const searchSwitch = () => {
                       }}>画线</div>
                   
                   </Dropdown.Toggle>
-              <Dropdown.Menu style={{marginLeft:"0%"}}>
-                <Dropdown.Item >趋势线</Dropdown.Item>
-                <Dropdown.Item >直线</Dropdown.Item>
-                <Dropdown.Item>射线</Dropdown.Item>
-                <Dropdown.Item>斐波那契回撤</Dropdown.Item>
-                <Dropdown.Item>矩形</Dropdown.Item>
-                <Dropdown.Item>趋势通道</Dropdown.Item>
+              <Dropdown.Menu >
+                <Dropdown.Item onClick={() => setchooseChartType(6)} ><div style={{
+                      height:"24px",
+                      fontSize:"14px",
+                      paddingTop:"4px",
+                      textAlign:"center",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"400",
+                      color:"#2A2B30",
+                      lineHeight:"24px",
+                      }}>趋势线</div></Dropdown.Item>
+                <Dropdown.Item ><div style={{
+                      height:"24px",
+                      fontSize:"14px",
+                      paddingTop:"4px",
+                      textAlign:"center",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"400",
+                      color:"#2A2B30",
+                      lineHeight:"24px",
+                      }}>直线</div></Dropdown.Item>
+                <Dropdown.Item><div style={{
+                      height:"24px",
+                      fontSize:"14px",
+                      paddingTop:"4px",
+                      textAlign:"center",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"400",
+                      color:"#2A2B30",
+                      lineHeight:"24px",
+                      }}>射线</div></Dropdown.Item>
+                <Dropdown.Item onClick = {() => handleShow()}><div style={{
+                      height:"24px",
+                      fontSize:"14px",
+                      paddingTop:"4px",
+                      textAlign:"center",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"400",
+                      color:"#2A2B30",
+                      lineHeight:"24px",
+                      }}>斐波那契回撤</div></Dropdown.Item>
+                <Dropdown.Item onClick = {() => handleShow()}><div style={{
+                      height:"24px",
+                      fontSize:"14px",
+                      paddingTop:"4px",
+                      textAlign:"center",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"400",
+                      color:"#2A2B30",
+                      lineHeight:"24px",
+                      }}>矩形</div></Dropdown.Item>
+                <Dropdown.Item onClick = {() => handleShow()}><div style={{
+                      height:"24px",
+                      fontSize:"14px",
+                      paddingTop:"4px",
+                      textAlign:"center",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"400",
+                      color:"#2A2B30",
+                      lineHeight:"24px",
+                      }}>趋势通道</div></Dropdown.Item>
                 <hr/>
-                <Dropdown.Item>删除所有画线</Dropdown.Item>
+                <Dropdown.Item><div style={{
+                      height:"24px",
+                      fontSize:"14px",
+                      paddingTop:"4px",
+                      textAlign:"center",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"400",
+                      color:"#2A2B30",
+                      lineHeight:"24px",
+                      }}>删除所有画线</div></Dropdown.Item>
                 
                 </Dropdown.Menu>
               </Dropdown>
+                </>
+                 : null }
+           
 
-              <Dropdown style={{marginTop:"8px"}}>
-              <Dropdown.Toggle size="sm" style={{borderRadius:"4px 4px 4px 4px",background: "#F5F6F8",height:"36px",width:"72px",paddingLeft:"1px",paddingTop:0, border:"0"}} variant="primary" id="dropdown-basic">
+              <Dropdown style={{marginTop:"8px", marginRight:"20px",marginLeft:"20px"}}>
+              <Dropdown.Toggle size="sm" style={{borderRadius:"4px 4px 4px 4px",background: "#F5F6F8",height:"36px",width:"72px",paddingLeft:"0px",paddingTop:0, border:"0"}} variant="primary" id="dropdown-basic">
                   
                   <div style={{
                       height:"24px",
@@ -418,23 +594,101 @@ const searchSwitch = () => {
                       lineHeight:"24px",
                       }}>指标</div>
                       </Dropdown.Toggle>
-              <Dropdown.Menu style={{marginLeft:"0%"}}>
-                均线指标：
+              <Dropdown.Menu style={{marginLeft:"0%", padding:"0"}}>
+              {/* <div style={{
+                      height:"24px",
+                      fontSize:"14px",
+                      paddingTop:"4px",
+                      textAlign:"left",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"400",
+                      color:"#2A2B30",
+                      lineHeight:"24px",
+                      }}>均线指标：</div> */}
                 {/* <Dropdown.Item >MA</Dropdown.Item> */}
-                <Dropdown.Item >EMA</Dropdown.Item>
+                <Dropdown.Item onClick={() => setvolumeshow(!volumeshow)} ><div style={{
+                      height:"24px",
+                      width:"100%",
+                      fontSize:"14px",
+                      paddingTop:"4px",
+                      paddingBottom:"4px",
+                      textAlign:"center",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"400",
+                      color:volumeshow? "white" : "#2A2B30",
+                      background:volumeshow? "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)" : "white",
+                      lineHeight:"24px",
+                      display:"flex",
+                      justifyContent:"space-evenly",
+                      }}>成交量</div></Dropdown.Item>
+                <Dropdown.Item ><div style={{
+                      height:"24px",
+                      fontSize:"14px",
+                      paddingTop:"4px",
+                      textAlign:"center",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"400",
+                      color:"#2A2B30",
+                      lineHeight:"24px",
+                      display:"flex",
+                      justifyContent:"space-evenly",
+                      }}><Form><Form.Check></Form.Check></Form>EMA</div></Dropdown.Item>
                 {/* <Dropdown.Item >SMA</Dropdown.Item>
                 <Dropdown.Item >TMA</Dropdown.Item>
                 <Dropdown.Item >WMA</Dropdown.Item> */}
-                <Dropdown.Item >布林线</Dropdown.Item>
+                <Dropdown.Item ><div style={{
+                      height:"24px",
+                      fontSize:"14px",
+                      paddingTop:"4px",
+                      textAlign:"center",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"400",
+                      color:"#2A2B30",
+                      lineHeight:"24px",
+                      display:"flex",
+                      justifyContent:"space-evenly",
+                      }}><Form><Form.Check></Form.Check></Form>布林线</div></Dropdown.Item>
                 <hr/>
-                超买超卖指标:
-                <Dropdown.Item>MACD</Dropdown.Item>
-                <Dropdown.Item>RSI</Dropdown.Item>
-                <Dropdown.Item>ATR</Dropdown.Item>
+                <Dropdown.Item><div style={{
+                      height:"24px",
+                      fontSize:"14px",
+                      paddingTop:"4px",
+                      textAlign:"center",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"400",
+                      color:"#2A2B30",
+                      lineHeight:"24px",
+                      display:"flex",
+                      justifyContent:"space-evenly",
+                      }}><Form><Form.Check></Form.Check></Form>MACD</div></Dropdown.Item>
+                <Dropdown.Item><div style={{
+                      height:"24px",
+                      fontSize:"14px",
+                      paddingTop:"4px",
+                      textAlign:"center",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"400",
+                      color:"#2A2B30",
+                      lineHeight:"24px",
+                      display:"flex",
+                      justifyContent:"space-evenly",
+                      }}><Form><Form.Check></Form.Check></Form>RSI</div></Dropdown.Item>
+                <Dropdown.Item><div style={{
+                      height:"24px",
+                      fontSize:"14px",
+                      paddingTop:"4px",
+                      textAlign:"center",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"400",
+                      color:"#2A2B30",
+                      lineHeight:"24px",
+                      display:"flex",
+                      justifyContent:"space-evenly",
+                      }}><Form><Form.Check></Form.Check></Form>ATR</div></Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
        
-              <Dropdown style={{marginTop:"8px"}}>
+              <Dropdown style={{marginTop:"8px", marginRight:"20px",marginLeft:"20px"}}>
               <Dropdown.Toggle size="sm" style={{borderRadius:"4px 4px 4px 4px",background: "#F5F6F8",height:"36px",width:"72px",paddingLeft:"1px",paddingTop:0, border:"0"}} variant="primary" id="dropdown-basic">
                   
                   <div style={{
@@ -449,11 +703,70 @@ const searchSwitch = () => {
                       }}>K线</div>
                       </Dropdown.Toggle>
               <Dropdown.Menu style={{marginLeft:"0%"}}>
-                <Dropdown.Item >蜡烛图</Dropdown.Item>
-                <Dropdown.Item>平均K线图（Heikin-Ashi）</Dropdown.Item>
-                <Dropdown.Item>卡吉图（Kagi）</Dropdown.Item>
-                <Dropdown.Item>点数图</Dropdown.Item>
-                <Dropdown.Item>砖型图（Renko）</Dropdown.Item>
+                <Dropdown.Item onClick={() => setchooseChartType(0) }> <div style={{
+                      height:"24px",
+                      fontSize:"14px",
+                      paddingTop:"4px",
+                      textAlign:"center",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"400",
+                      color:"#2A2B30",
+                      lineHeight:"24px",
+                      }}>蜡烛图</div></Dropdown.Item>
+                      <Dropdown.Item  onClick={() => setchooseChartType(1)}><div style={{
+                      height:"24px",
+                      fontSize:"14px",
+                      paddingTop:"4px",
+                      textAlign:"center",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"400",
+                      color:"#2A2B30",
+                      lineHeight:"24px",
+                      }}>折线图</div></Dropdown.Item>
+                      <Dropdown.Item  onClick={() => setchooseChartType(2)}><div style={{
+                      height:"24px",
+                      fontSize:"14px",
+                      paddingTop:"4px",
+                      textAlign:"center",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"400",
+                      color:"#2A2B30",
+                      lineHeight:"24px",
+                      }}>面积图</div></Dropdown.Item>
+                <Dropdown.Item onClick={() => setchooseChartType(3)}><div style={{
+                      height:"24px",
+                      fontSize:"14px",
+                      paddingTop:"4px",
+                      textAlign:"center",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"400",
+                      color:"#2A2B30",
+                      lineHeight:"24px",
+                      }}>平均K线图</div></Dropdown.Item>
+
+
+                      
+                     <Dropdown.Item  onClick={() => setchooseChartType(4)}><div style={{
+                      height:"24px",
+                      fontSize:"14px",
+                      paddingTop:"4px",
+                      textAlign:"center",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"400",
+                      color:"#2A2B30",
+                      lineHeight:"24px",
+                      }}>卡吉图(Kagi)</div></Dropdown.Item>
+
+                     <Dropdown.Item onClick={() => setchooseChartType(6)}><div style={{
+                      height:"24px",
+                      fontSize:"14px",
+                      paddingTop:"4px",
+                      textAlign:"center",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"400",
+                      color:"#2A2B30",
+                      lineHeight:"24px",
+                      }}>点数图</div></Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
 
@@ -463,7 +776,7 @@ const searchSwitch = () => {
 
 
             <div style={{width:openself? width-348 : "100%",maxWidth:"100%"}}>
-            <CandleStickChart width ={openself? width-348: width} choice = {"Trendline"} ma ={[12,50]}/>
+                <ChartChoice/>
             </div>
 
 
@@ -473,17 +786,18 @@ const searchSwitch = () => {
                 
             </div>   ) : null}
         
-
-            
-
-
-
-           
-
+        </div>            
         </div>
     </div>
-      
-     
+
+    {openself? (<div style={{width:"348px",height:"100%",borderBottom:"1px solid #E5E8EE",backgroundColor:"yellow"}}>
+                <WatchList heightratio={(height-138)/height}/>
+            </div>   ) : null}
+
+
+
+    </div>
+
     
     </>
 

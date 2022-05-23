@@ -46,8 +46,8 @@ import { EmojiFoodBeverageTwoTone } from "@material-ui/icons";
 
 const macdAppearance = {
 	stroke: {
-		macd: "#FFAB04",
-		signal: "#035BFE",
+		macd: "orange",
+		signal: "blue",
 	},
 	fill: {
 		divergence: "#42E083"
@@ -76,7 +76,7 @@ const candlesAppearance = {
 };
 
 
-class CandlestickChart extends React.Component {
+class CandlestickCharthollow extends React.Component {
 	constructor(props) {
 		super(props);
 		this.onKeyPressTrendLine = this.onKeyPressTrendLine.bind(this);
@@ -320,7 +320,7 @@ class CandlestickChart extends React.Component {
 
 
 
-		const { width, choice, ma, open, volumeshow} = this.props;
+		const { width, choice, ma, open} = this.props;
         const dateTimeFormat = "%Y-%m-%d %H:%M:%S";
         const parseDate = d3.timeParse(dateTimeFormat);
 
@@ -583,13 +583,12 @@ class CandlestickChart extends React.Component {
 				</Chart>
 
 
-                
-					<Chart id={2} height={chartheight *0.1}
+
+
+				<Chart id={2} height={chartheight *0.1}
 					yExtents={volumeSeries}
 					origin={(w, h) => [0, h - chartheight * 0.41]}
-				    >
-				{volumeshow? 
-				<>
+				>
 					<YAxis axisAt="left" orient="left" ticks={5} tickFormat={format(".2s")}/>
 
 					<MouseCoordinateY
@@ -597,12 +596,8 @@ class CandlestickChart extends React.Component {
 						orient="left"
 						displayFormat={format(".4s")} />
 					<BarSeries yAccessor={volumeSeries} stroke = {true} fill={d => d.close > d.open ? "#42E083" : "#FF3541"} opacity={0.5}/>
-					</> : null}
 				</Chart>
-
-				
-
-				
+				<div style={{height:"1px",width:chartwidth, backgroundColor:"black"}} > </div>
 
 
 
@@ -655,10 +650,10 @@ class CandlestickChart extends React.Component {
 }
 
 
-CandlestickChart.defaultProps = {
+CandlestickCharthollow.defaultProps = {
 	type: "svg",
 };
 
-const CandleStickChart = fitWidth(CandlestickChart);
+const CandleStickChartHollow = fitWidth(CandlestickCharthollow);
 
-export default CandleStickChart;
+export default CandleStickChartHollow;

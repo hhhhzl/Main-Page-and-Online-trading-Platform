@@ -76,27 +76,27 @@ const searchSwitch = () => {
     {
       "id": 1,
       "title":"个股交易",
-      "link":`${url}/trade`
+      "link":`/trade`
     },
     {
       "id": 2,
       "title":"市场行情",
-      "link":`${url}/market` 
+      "link":`/market` 
     },
     {
       "id": 3,
       "title":"选股神器",
-      "link":`${url}/screener`
+      "link":`/screener`
     },
     {
       "id": 4,
       "title":"排行榜",
-      "link":`${url}/ranking`
+      "link":`/ranking`
     },
     {
       "id": 5,
       "title":"财经洞悉",
-      "link":`${url}/invest_notes`
+      "link":`/invest_notes`
     },
 
   ]

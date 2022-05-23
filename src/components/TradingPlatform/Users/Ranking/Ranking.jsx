@@ -7,10 +7,13 @@ import StockTradeComponet from "../../../screen/StockTradeComponet";
 import WatchList from "../../../screen/WatchList";
 import PendingOrder from "../../../screen/PendingOrder";
 import KeyIndicators from "../../../screen/KeyIndicatorSimple";
+import RankingPang from "../../../Competition/RankingPang";
+import TeamModelIntro from "../../../Competition/team/teamModelIntro";
 
-export default function StockTrade(props) {
+export default function Ranking(props) {
   const { width, height } = useWindowDimensions();
   const listRef = useRef();
+  
 
   // const [porforliowidth, setporforliowidth] = useState(1200);
   // const [porforlioheight, setporforlioheight] = useState(800);
@@ -29,16 +32,25 @@ export default function StockTrade(props) {
 
   return (
     <>
+
+    
+    
      <PageHeader/>
-      <div
+     
+
+     
+
+     <div
         style={{
-          marginTop: height * 0.075,
+          marginTop: 0,
           width: "100%",
           minHeight: "500px",
           display: "flex",
+          backgroundColor:"#F5F6F8",
           justifyContent: "space-between",
         }}
       >
+          <TeamModelIntro/>
         <div
           style={{ width: "auto", minHeight: "500px", maxWidth: "18.75%" }}
         ></div>
@@ -51,20 +63,9 @@ export default function StockTrade(props) {
             display: "flex",
             justifyContent: "space-between",
           }}
-          ref={listRef}
         >
-          <div style={{ width: "63.3%" }}>
-            <StockPriceGraphSimplify widthratio={1200 * 0.63} />
-            <div style={{ marginTop: "40px" }}>
-              <KeyIndicators heightProp={0.23} />
-            </div>
-          </div>
-          <div style={{ width: "30%" }}>
-            <StockTradeComponet />
-            <div style={{ marginTop: "24px" }}>
-              <WatchList heightratio={0.2} searchwidth={1200 * 0.3} />
-            </div>
-          </div>
+            <RankingPang/>
+
         </div>
         <div
           style={{
@@ -75,6 +76,8 @@ export default function StockTrade(props) {
           }}
         ></div>
       </div>
+
+      
     </>
   );
 }
