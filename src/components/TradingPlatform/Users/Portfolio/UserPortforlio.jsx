@@ -14,30 +14,14 @@ export default function UserPortfolio(props) {
 
     // The size of the list
     // It will be updated later
-    const [porforliowidth, setporforliowidth] = useState();
-    const [porforlioheight, setporforlioheight] = useState();
-
-
-    const getListSize = () => {
-        const newWidth = listRef.current.clientWidth;
-        setporforliowidth(newWidth);
-    
-        const newHeight = listRef.current.clientHeight;
-        setporforlioheight(newHeight);
-      };
-
-      useEffect(() => {
-        window.addEventListener("resize", getListSize);
-      }, []);
-
-
 
     return (
         <>
+        <PageHeader/>
         <div  style={{marginTop:height*0.075,width:"100%",display:"flex",justifyContent:"space-between"}}>
 
             <div style={{width:"auto",maxWidth:"18.75%",backgroundColor:"blue"}}></div>
-        <div style={{width:"1200px",minWidth:"fix-content",display:"flex",justifyContent:"right"}} ref={listRef}>
+        <div style={{width:"1200px",minWidth:"fix-content",display:"flex",justifyContent:"right"}}>
         </div>
         <div style={{width:"auto",maxWidth:"18.75%",backgroundColor:"blue"}}></div>
         </div>
@@ -50,7 +34,7 @@ export default function UserPortfolio(props) {
             <div style={{width:"auto",minHeight:"500px",maxWidth:"18.75%",backgroundColor:"blue"}}></div>
 
 
-        <div style={{width:"1200px",minHeight:"500px",minWidth:"fix-content",display:"flex",justifyContent:"space-between"}} ref={listRef}>
+        <div style={{width:"1200px",minHeight:"500px",minWidth:"fix-content",display:"flex",justifyContent:"space-between"}}>
             <div style={{width:"63.3%"}}>
                 <PorforlioMoveGraph  widthratio ={1200 * 0.633}/>
                 <div style={{marginTop:height*0.0564}}>

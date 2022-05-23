@@ -52,7 +52,7 @@ class AreaChartForMarketView extends React.Component {
       <ChartCanvas
         ratio={1}
         width={width}
-        height={width/1.379}
+        height={width/1.51153}
         margin={{ left: 0, right: width*0.143, top: width*0.046, bottom: 0}}
         type={"hybrid"}
         data={data}

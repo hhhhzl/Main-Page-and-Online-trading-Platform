@@ -11,6 +11,8 @@ import AreaChart from '../../../graphs/areaChart';
 import MarketOverview from '../../../screen/MarketOverView';
 import { flexbox } from '@material-ui/system';
 import LeadingIndustry from '../../../screen/LeadingIndustry';
+import PageHeader from '../../../screen/PageHeader';
+import MarketUpdownDistribute from '../../../screen/MarkeUpdownDistribute';
 
 export default function UserMarket() {
     const {width,height} = useWindowDimensions();
@@ -22,22 +24,23 @@ export default function UserMarket() {
     return (
         
     <> 
+    <PageHeader/>
     {width>700? <>
         <div style={{width:"100%",minWidth:"920px",minHeight:"300px",display:"flex",justifyContent:"space-between"}}>
-        <div style={{width:"50%", height:height*0.6}}>
+        <div style={{width:"50%", height:height*0.52}}>
             <MarketOverview widthRatio = {width>920? width/2 : 920/2}/>
         </div>
-        <div style={{width:"1px",height:height*0.6,backgroundColor:"#E5E8EE"}}></div>
-        <div style={{width:"50%",height:height*0.6}}>
-            <MarketOverview widthRatio = {width>920? width/2 : 920/2}/>
+        <div style={{width:"1px",height:height*0.52,backgroundColor:"#E5E8EE"}}></div>
+        <div style={{width:"50%",height:height*0.52}}>
+            <MarketUpdownDistribute widthRatio = {width>920? width/2 : 920/2}/>
         </div> 
     </div>
     </> : <>
-        <div style={{width:"100%", height:height*0.6, minHeight:"300px"}}>
+        <div style={{width:"100%", height:height*0.52, minHeight:"300px"}}>
             <MarketOverview widthRatio = {width}/>
         </div>
-        <div style={{width:"100%",height:height*0.6}}>
-            <MarketOverview widthRatio = {width}/>
+        <div style={{width:"100%",height:height*0.52}}>
+            <MarketUpdownDistribute widthRatio = {width}/>
         </div> 
     
     </>}

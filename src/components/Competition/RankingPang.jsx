@@ -8,12 +8,23 @@ import { Collapse } from "react-bootstrap";
 import data from "../../static/subjectivityRanking.json";
 import data1 from "../../static/quantitativeRanking.json";
 import AreaTableForWatchListBlue from '../graphs/AreaTableForWatchListBlue';
+import PorforlioMoveGraph from "../screen/PortforlioMoveGraph";
+import LineSeriesForPorfolio from "../graphs/LineSeriesForPorfolio";
+import LineSeriesPorfolioRanking from "../graphs/LineSeriesPorfolioRank";
+import TeamModelIntro from "./team/teamModelIntro";
 
 export default function RankingPang(){
 	const [current, setCurrent] = useState(0);
 	const changeCurrent = (index) => {
 	  setCurrent(index);
 	};
+
+	const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+
+	
+
+
 	const columns=[
 		{
 			dataField:"团队",
@@ -61,11 +72,8 @@ export default function RankingPang(){
 			},
 			formatter: (value, row) => {
 				 return (
-				 <div style={{
-					  textAlign:"center",
-					  paddingTop:"23px",
-				  }}> 
-					<AreaTableForWatchListBlue width={100}/>
+				 <div style={{textAlign:"center", justifyContent:"center"}}> 
+					<LineSeriesPorfolioRanking width={100} timeperiod = {90}/>
 				 </div>
 				 );
 			},
@@ -189,10 +197,22 @@ export default function RankingPang(){
 			},
 		}
 	]
+
+
+	const rowEvents = {
+		onClick: (e, row, rowIndex) => {
+			setShow(true)
+		  
+		},
+	  };
 	
 	return(
+		<>
+		{show?  <TeamModelIntro show ={show} handleClose={handleClose} />  : null}
+		
+		
 		<div className="bg">
-			<div className="ranking-pang-tabs">
+			<div className="ranking-pang-tabs" style={{backgroundColor:"#F5F6F8"}}>
 				<div 
 					onClick={() => changeCurrent(0)}
 					className={current == 0 ? "active-font" : "normal-font"}
@@ -216,6 +236,7 @@ export default function RankingPang(){
 								keyField="id"
 								data={data}
 								columns={columns}
+								rowEvents={ rowEvents }
 							  />
 							</div>
 						</div>
@@ -238,5 +259,6 @@ export default function RankingPang(){
 				
 			</div>
 		</div>
+		</>
 	)
 }
