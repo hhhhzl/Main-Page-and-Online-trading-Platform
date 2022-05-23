@@ -116,14 +116,11 @@
 	line-height: 28px;
 }
 
-
-.market{
-	display: flex;
-	align-items: center;
+.stock-selection-device-label{
+	width: 67px;
 }
 
-.stock-selection-device-label {
-	width: 56px;
+.label-text {
 	font-size: 14px;
 	font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
 	font-weight: 400;
@@ -131,11 +128,16 @@
 	line-height: 24px;
 }
 
+.stock-selection-device-group{
+	display: flex;
+	align-items: center;
+	padding-top: 16px;
+}
 
 
 .stock-selection-device-select{
-	margin-left: 50%;
-	width: 100%;
+	margin-left: 21.25%;
+	width: 55.557%;
 	height: 36px;
 	border-radius: 4px 4px 4px 4px;
 	opacity: 1;
@@ -147,6 +149,29 @@
 	line-height: 24px;
 }
 
+
+.fixed {
+	width: 25%;
+	position: fixed;
+	height: 144px;
+	padding: 24px 0 36px 48px;
+	background: #ffffff;
+	box-shadow: 0px -1px 2px 1px rgb(0 0 0 / 2%), 0px -2px 4px 1px rgb(0 0 0 / 2%), 0px -4px 8px 1px rgb(0 0 0 / 2%), 0px -8px 16px 1px rgb(0 0 0 / 2%), 0px -16px 32px 1px rgb(0 0 0 / 2%), 0px -32px 64px 1px rgb(0 0 0 / 2%);
+	border-radius: 0px 0px 0px 0px;
+}
+
+
+
+
+
+
+
+.market{
+	display: flex;
+	align-items: center;
+}
+
+
 .list-label{
 	padding: 24px 48px;
 	border-bottom: 1px solid #E5E8EE;
@@ -154,4 +179,14 @@
 
 .list-label:hover{
 	background: #E5E8EE;
+}
+
+.strategy-label{
+	width: 36.46%;
+	height: 24px;
+	font-size: 14px;
+	font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+	font-weight: 400;
+	color: #6E7184;
+	line-height: 24px;
 }
