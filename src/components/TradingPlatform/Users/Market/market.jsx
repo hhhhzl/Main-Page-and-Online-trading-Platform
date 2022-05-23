@@ -26,6 +26,9 @@ export default function UserMarket() {
     return (
         
     <> 
+    {/* <div style={{width:width,height:height,position:"fixed",backgroundColor:"#000000",zIndex:1001,opacity:0.8}}>
+
+    </div> */}
     <PageHeader/>
     <Card style={{padding:0, borderColor:"white"}}>
         <Collapse in={switchClose}>

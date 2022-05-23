@@ -53,6 +53,10 @@ import AllIndustry from './components/screen/AllIndustry'
 import Ranking from './components/TradingPlatform/Users/Ranking/Ranking';
 import TeamModelIntro from './components/Competition/team/teamModelIntro';
 import Screener from './components/TradingPlatform/Users/screener/screener';
+import TeamRegister from './components/Competition/TeamRegister/TeamRegister';
+import TeamAgreeProcessCreate from './components/Competition/TeamRegister/TeamAgreeProcessCreate';
+import TeamEntry from './components/Competition/TeamRegister/TeamEntry';
+import TeamSearch from './components/Competition/TeamRegister/TeamSearch';
 
 
 
@@ -142,6 +146,12 @@ const MakeRouter = () => {
     <Route exact path="/leadingIndustry/allIndustry" component={AllIndustry}/> 
     <Route exact path="/team" component={PersonalHomepage}/>
     <Route exact path="/trade/pro" component={StockPriceGraphProfessional} />
+    <Route exact path="/team/register" component={TeamEntry} />
+    <Route exact path="/team/create" component={TeamRegister} />
+    <Route exact path="/team/join" component={TeamSearch} />
+    <Route exact path="/team/create/read" component={TeamAgreeProcessCreate}/>
+    <Route exact path="/team/join/read" component={TeamAgreeProcessCreate} />
+
     
 	  
       </AuthProvider>

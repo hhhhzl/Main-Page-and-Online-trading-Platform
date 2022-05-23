@@ -115,7 +115,7 @@ export default function Executive() {
                 }}
               />
               <div className="bottom-shadow" style={{left:"24%"}}>
-                <div className="school">香港大学 大四</div>
+                <div className="school">密歇根大学 大三</div>
                 <div className="name">陈昊楠 Norman</div>
               </div>
             </div>

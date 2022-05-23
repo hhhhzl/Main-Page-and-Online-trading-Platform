@@ -5,12 +5,14 @@ import "./cover.css";
 import ArrowDropDownCircleIcon from "@material-ui/icons/ArrowDropDownCircle";
 import useWindowDimensions from "../../../utils/sizewindow";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 
 import HeaderCreate from "../../MainPage/header";
+  
 
 export default function Cover() {
   const { width, height } = useWindowDimensions();
-  console.log(width,height,13)
+  const history = useHistory();
   return (
     <div
       id="home"
@@ -110,7 +112,9 @@ export default function Cover() {
           // left:width * 0.4854
         }}
       >
-        <Button className="join-match-btn" variant="primary" size="sm">
+        <Button className="join-match-btn" variant="primary" size="sm"
+        onClick ={() => history.push("/team/register")}
+        >
           报名参赛
         </Button>
       </div>
