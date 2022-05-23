@@ -52,8 +52,8 @@ class AreaChartForMarketView extends React.Component {
       <ChartCanvas
         ratio={1}
         width={width}
-        height={width/1.4}
-        margin={{ left: 0, right: 103, top: 33, bottom: 0}}
+        height={width/1.379}
+        margin={{ left: 0, right: width*0.143, top: width*0.046, bottom: 0}}
         type={"hybrid"}
         data={data}
         xScale={xScale}
@@ -90,8 +90,7 @@ class AreaChartForMarketView extends React.Component {
           fontSize={12}
           fontFamily ={"Futura-Medium, Futura"}
           fontWeight ={500}
-          tickPadding = {31}
-          
+          tickPadding = {width*0.0458}
           />
           
 

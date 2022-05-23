@@ -96,20 +96,34 @@ const MakeRouter = () => {
   return (
     <Switch>
       <AuthProvider>
-      <PrivateRoute exact path="/eplatform/:username" component={StockTrade} />
-      <Route exact path="/eplatform/user/pro" component={StockPriceGraphProfessional} />
-      <Route exact path="/eplatform/user/trade" component={UserTrade} />
-      <Route exact path="/eplat" component={TradePadmin} />
-      <PrivateRoute exact path="/stocks" component={UserStocks} />
-      <PrivateRoute exact path="/market" component={UserMarket} />
-      <PrivateRoute exact path="/competition" component={null} />
+      <Route exact path="/eplatform/:username/trade/pro" component={StockPriceGraphProfessional} />
+      {/* <Route exact path="/eplatform/:username/trade" component={StockTrade} /> */}
       <Route exact path="/register" component={LoginMainLayout} />
       <Route exact path="/login" component={LoginMainLayout} />
       <Route exact path="/Vlogin" component={LoginMainLayout} />
       <Route exact path="/forgetpassword" component={LoginMainLayout} />
       <Route exact path="/changepassword" component={LoginMainLayout} />
+
+      <Route exact path= "/eplatform/:username" component ={UserPortfolio}/>
+      <Route exact path= "/eplatform/:username/trade" component ={StockTrade}/>
+      <Route exact path= "/eplatform/:username/market" component ={UserMarket}/>
+      <Route exact path= "/eplatform/:username/screener" component ={null}/>
+      <Route exact path= "/eplatform/:username/ranking" component ={RankingPang}/>
+      <Route exact path= "/eplatform/:username/invest_notes" component ={RankingPang}/>
+      <Route exact path="/eplat" component={TradePadmin} />
+
       <Route exact path="/home" component={MainPage} /> 
       <Route exact path="/" component={MainPage} /> 
+
+
+
+
+
+       {/* <PrivateRoute exact path="/stocks" component={UserStocks} />
+      <PrivateRoute exact path="/market" component={UserMarket} />
+      <PrivateRoute exact path="/competition" component={null} />
+
+
       <Route exact path="/tournament" component={Tournament} />
 	  
       
@@ -125,7 +139,7 @@ const MakeRouter = () => {
 
 
     <Route exact path="/leadingIndustry" component={LeadingIndustry}/>
-    <Route exact path="/leadingIndustry/allIndustry" component={AllIndustry}/>
+    <Route exact path="/leadingIndustry/allIndustry" component={AllIndustry}/>  */}
 	  
 	  
 	  

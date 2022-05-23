@@ -222,7 +222,7 @@ export default function StockPriceGraphSimplify({widthratio}) {
                           } }
                           >
                             {width > 1200? <>
-                              <Link to='user/pro' target="_blank">
+                              <Link to='trade/pro'>
                           <div className ="hover-fontcolor" style={{
                               display:"flex",justifyContent:"space-between",
                               fontSize:"14px",
