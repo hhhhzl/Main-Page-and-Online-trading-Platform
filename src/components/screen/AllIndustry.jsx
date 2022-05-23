@@ -17,8 +17,9 @@ import axios from "axios";
 import PlateCard from "./PlateCard";
 
 import "./leadingIndustry.css";
+import { IconButton } from "@material-ui/core";
 
-export default function LeadingIndustry() {
+export default function LeadingIndustryAll({setswitchClose}) {
   const [data, setData] = useState([]);
   const [stockData, setstockData] = useState([]);
   const [extend, setExtend] = useState(true);
@@ -75,7 +76,10 @@ export default function LeadingIndustry() {
           paddingLeft: "48px",
         }}
       >
+        <IconButton onClick ={() => setswitchClose(true)}>
         <ArrowBack style={{color:"#2A2B30",fontSize:"18px"}}></ArrowBack>
+        </IconButton>
+        
         <Button
           style={{
             marginLeft:"12px",

@@ -1,5 +1,5 @@
 .bg {
-	background: #F5F6F8;
+	width: 100%;
 }
 
 .ranking-pang-tabs {
@@ -7,7 +7,8 @@
 	cursor: pointer;
 	justify-content: flex-start;
 	align-items: center;
-	padding: 48px 18.75% 24px;
+	background-color:"white";
+	padding: 48px 0% 24px;
 }
 
 .active-font{
@@ -30,9 +31,8 @@
 
 .ranking-pang-table-div{
 	background: white;
-	width: 62.5%;
+	width: 100%;
 	height: 1000px;
-	margin: 0px 18.75%;
 }
 
 .ranking-pang-table>.react-bootstrap-table>.table>tbody {

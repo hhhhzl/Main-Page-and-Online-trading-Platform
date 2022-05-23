@@ -3,9 +3,9 @@ import { Modal, Button, Card, Image } from "react-bootstrap";
 import PorforlioMoveGraph from "../../screen/PortforlioMoveGraph";
 import './competition.css'
 
-export default function TeamModelIntro() {
-    const [show, setShow] = useState(true);
-    const handleClose = () => setShow(false);
+export default function TeamModelIntro({show, handleClose}) {
+    // const [show, setShow] = useState(true);
+    // const handleClose = () => setShow(false);
 
 
     const data = [
@@ -30,19 +30,22 @@ export default function TeamModelIntro() {
 
     return (
         <>
-        <Modal show={show}
-        onHide={handleClose}
-        // dialogClassName="modal-90w"
-        // className="custom-modal-style"
-        size = 'lg'
-        aria-labelledby="example-custom-modal-styling-title"
-        backdrop="static"
-        keyboard={false}
-        centered
-           >
-          <Modal.Header closeButton></Modal.Header>
-          <Modal.Body>
-              <Card style ={{borderWidth:"0"}}> 
+        
+           <Modal 
+           show={show}
+            onHide={handleClose} 
+            dialogClassName="modal-container"
+           centered 
+           backdrop="static"
+        //    size ="lg"
+        fullscreen={true}
+          keyboard={false} >
+            
+          <Modal.Header closeButton>
+
+          </Modal.Header>
+          <Modal.Body style ={{borderWidth:"0", width:"800px", height:"900px", zIndex:999}}>
+              {/* <Card > 
                   <Card.Body>
           <div style={{
         marginTop:"-10px",
@@ -56,7 +59,11 @@ export default function TeamModelIntro() {
         letterSpacing:"1px",
         }}>团队名称</div>
 
-        <PorforlioMoveGraph/>
+        <div>
+        <PorforlioMoveGraph widthratio ={800}/>
+        </div>
+
+        
 
 
 
@@ -107,11 +114,12 @@ export default function TeamModelIntro() {
         </div>
         </Card.Body>
 
-        </Card>
+        </Card> */}
 
            
           </Modal.Body>
-        </Modal>
+          </Modal>
+       
 
 
 

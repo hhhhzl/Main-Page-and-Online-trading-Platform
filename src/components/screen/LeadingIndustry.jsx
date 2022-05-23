@@ -17,8 +17,9 @@ import axios from "axios";
 import PlateCard from "./PlateCard";
 
 import "./leadingIndustry.css";
+import { IconButton } from "@material-ui/core";
 
-export default function LeadingIndustry() {
+export default function LeadingIndustry({setswitchClose}) {
   const [data, setData] = useState([]);
   const [stockData, setStockData] = useState([]);
   const [extend, setExtend] = useState(true);
@@ -68,10 +69,14 @@ export default function LeadingIndustry() {
       <div className="leading-industry-title">
         <div className="leading-industry-text">领涨行业</div>
         <div className="order-flex">
-          <div className="all-order-text">全部</div>
+        <IconButton onClick={() => setswitchClose(false)}>
+          <div className="all-order-text"> 
+            全部      
+            </div>      
           <div className="order-flex">
             <ArrowForwardIos className="all-order-icon"></ArrowForwardIos>
           </div>
+          </IconButton>
         </div>
       </div>
 
