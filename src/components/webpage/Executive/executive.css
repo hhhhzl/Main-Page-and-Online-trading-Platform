@@ -22,15 +22,20 @@
   flex-direction: column;
 }
 
+.bottom-shadow-image {
+  position: relative;
+  top: -120px;
+}
+
 .bottom-shadow {
   padding: 41px 0px 24px 24px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   position: absolute;
-  /* top: 0px; */
+  bottom: 120px;
   left: 10%;
-  bottom: 0px;
+  /*bottom: 0px;*/
   display: flex;
   align-items: flex-start;
 }

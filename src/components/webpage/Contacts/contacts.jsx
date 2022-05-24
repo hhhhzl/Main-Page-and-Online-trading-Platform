@@ -165,7 +165,7 @@ const Contacts = () => {
               <Row>
                 <div className="box-image flex-center">
                   <Image
-                    src="/homeCutout/Group 1001.png"
+                    src="/homeCutout/Group 1010.png"
                     style={{
                       width:
                         width > 1500
@@ -207,13 +207,13 @@ const Contacts = () => {
           </Col>
           <Col
             className="flex-center"
-            style={{ padding: width > 800 ? "0px 75px" : "0px" }}
+            style={{ padding: width > 1600 ? "0px 3.91%" : "0px" }}
           >
             <div className="introduction-box">
               <Row>
                 <div className="box-image flex-center">
                   <Image
-                    src="/homeCutout/Group 1002.png"
+                    src="/homeCutout/Group 1020.png"
                     style={{
                       width:
                         width > 1500

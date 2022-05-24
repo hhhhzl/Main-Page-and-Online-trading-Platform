@@ -60,6 +60,7 @@ const Review = ({ projectImgs }) => {
                 margin: "0px",
                 fontSize: "14px",
                 fontWeight: "bold",
+                fontFamily: 'Microsoft YaHei UI-Regular, Microsoft YaHei UI',
                 lineHeight: "24px",
                 color: video ? "#FFFFFF" : "#9C9EAC",
                 fontWeight: video ? "bold" : "400",
@@ -87,6 +88,7 @@ const Review = ({ projectImgs }) => {
                 margin: "0px",
                 fontSize: "14px",
                 fontWeight: "bold",
+                fontFamily: 'Microsoft YaHei UI-Regular, Microsoft YaHei UI',
                 lineHeight: "24px",
                 color: image ? "#FFFFFF" : "#9C9EAC",
                 fontWeight: image ? "bold" : "400",
@@ -105,7 +107,7 @@ const Review = ({ projectImgs }) => {
               src="/homeCutout/Group 143.png"
               style={{ width: "108px", height: "108px" }}
             /> : <><br/><br/></> }
-            
+
           </div>
         </div>
         <div style={{ minHeight: "150px" }}>
@@ -130,7 +132,7 @@ const Review = ({ projectImgs }) => {
               src="/homeCutout/Group 27.png"
               style={{ width: "108px", height: "108px" }}
             /> :null}
-            
+
           </div>
         </div>
         <br />
