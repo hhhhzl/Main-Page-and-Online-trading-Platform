@@ -3,6 +3,7 @@ import PageHeader from "../../screen/PageHeader";
 import useWindowDimensions from "../../../utils/sizewindow";
 import { Form, Button, Image } from "react-bootstrap";
 import GoodToShare from "./GoodToShare";
+import CommitRecord from './CommitRecord'
 import "./InvestNotes.css";
 // import StockPriceGraphSimplify from "../../../screen/StockPriceGraphSimplify";
 // import StockTradeBar from "../../../screen/StockTradeBar";
@@ -262,7 +263,9 @@ export default function InvestNotes(props) {
                 </div>
               </>
             ) : current == 1 ? (
-              <></>
+              <>
+				<CommitRecord></CommitRecord>
+			  </>
             ) : (
               <>
                 <GoodToShare></GoodToShare>

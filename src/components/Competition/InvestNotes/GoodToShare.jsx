@@ -10,12 +10,12 @@ export default function GoodToShare() {
     <div>
       <div className="share">
         {data.map((item, idx) => (
-          <div key="idx" className="share-div">
+          <div key={idx} className="share-div">
             <div style={{ padding: "24px 0 0 36px" }}>
               <div className="share-div-title">{item.title}</div>
               <div style={{ paddingTop: "24px" }}>
                 {item.files.map((file, idf) => (
-                  <div key="idf" className="share-div-centent">
+                  <div key={idf} className="share-div-centent">
                     <div style={{ paddingLeft: "12px" }}>
                       <Image
                         src={file.imgUrl}

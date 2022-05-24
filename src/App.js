@@ -46,6 +46,7 @@ import RankingPang from './components/Competition/RankingPang'
 import InvestNotes from './components/Competition/InvestNotes/InvestNotes'
 import StockSelectionDeviceList from './components/screen/StockSelectionDeviceList'
 import StockSelectionDevice from './components/screen/StockSelectionDevice'
+import CommitRecord from './components/Competition/InvestNotes/CommitRecord'
 
 
 
@@ -120,7 +121,7 @@ const MakeRouter = () => {
 
       <Route exact path="/home" component={MainPage} /> 
       <Route exact path="/" component={MainPage} /> 
-
+	  <Route exact path="/commitRecord" component={CommitRecord}></Route>
 
 
 
