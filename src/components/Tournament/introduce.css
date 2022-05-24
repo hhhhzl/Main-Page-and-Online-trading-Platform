@@ -121,12 +121,12 @@ height: 32px; */
 }
 
 .match-begin-text {
-  font-size: 24px;
-  font-family: Songti SC-Bold, Songti SC;
-  font-weight: bold;
-  color: #2A2B30;
-  line-height: 28px;
-  letter-spacing: 1px;
+	font-size: 24px;
+	font-family: Songti SC-Bold, Songti SC;
+	font-weight: bold;
+	color: #2A2B30;
+	line-height: 28px;
+	letter-spacing: 1px;
 }
 
 .match-begin {
@@ -143,7 +143,7 @@ height: 32px; */
   display: flex;
   flex-direction: column;
   margin-right: 150px;
-  margin-top: 120px;
+  margin-top: 143px;
 }
 
 .match-end-text {
@@ -194,7 +194,7 @@ height: 32px; */
 
 .finals-name {
   display: flex;
-  margin-top: 145px;
+  margin-top: 120px;
 }
 
 .finals-name-container {
@@ -227,6 +227,7 @@ height: 32px; */
 .awards-card-wrapper {
   margin-top: 80px;
   display: flex;
+  justify-content: center;
 }
 
 .awards-card-container {

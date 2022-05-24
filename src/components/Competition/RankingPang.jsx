@@ -211,7 +211,7 @@ export default function RankingPang(){
 		{show?  <TeamModelIntro show ={show} handleClose={handleClose} />  : null}
 		
 		
-		<div className="bg">
+		<div style={{width: "100%"}}>
 			<div className="ranking-pang-tabs" style={{backgroundColor:"#F5F6F8"}}>
 				<div 
 					onClick={() => changeCurrent(0)}

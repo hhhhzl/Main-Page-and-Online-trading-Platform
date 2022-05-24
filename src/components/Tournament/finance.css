@@ -14,8 +14,7 @@
 }
 
 .finance-date-div-first {
-	width: 32.25%;
-	height: 240px;
+	width: 100%;
 	background: rgba(255, 255, 255, 0);
 	border-radius: 0px 0px 0px 0px;
 	opacity: 1;
@@ -29,7 +28,6 @@
 	color: #2A2B30;
 	line-height: 35px;
 	letter-spacing: 1px;
-	padding-top: 20px;
 }
 
 .finance-title-span-two {
@@ -43,7 +41,6 @@
 
 .finance-title-imgage {
 	padding-top: 36px;
-	padding-bottom: 108px;
 }
 
 .finance-title-imgage-div-first {
@@ -53,7 +50,7 @@
 	color: #2A2B30;
 	line-height: 40px;
 	letter-spacing: 1px;
-	padding-top: 52px;
+	margin-top: 16px;
 }
 
 .finance-title-imgage-div-two {
@@ -62,23 +59,20 @@
 	font-weight: 400;
 	color: #6E7184;
 	line-height: 28px;
-	padding-top: 12px;
+	margin-top: 12px;
 }
 
 .finance-note {
-	height: 28px;
 	font-size: 16px;
 	font-family: Songti SC-Regular, Songti SC;
 	font-weight: 400;
 	color: #9C9FB0;
 	line-height: 28px;
 	-webkit-background-clip: text;
-	padding-left: 37.23%;
-	padding-top: 120px;
+	text-align: end;
 }
 
 .finance-title-two {
-	height: 60px;
 	font-size: 36px;
 	font-family: Songti SC-Bold, Songti SC;
 	font-weight: bold;
@@ -88,16 +82,9 @@
 	-webkit-background-clip: text;
 }
 
-.finance-title-top-two {
-	padding-top: 80px;
-	padding-left: 18.78%;
-	padding-bottom: 240px;
-}
-
 
 
 .finance-bottom-text {
-	height: 30px;
 	font-size: 18px;
 	font-family: Songti SC-Regular, Songti SC;
 	font-weight: 400;
@@ -105,9 +92,3 @@
 	line-height: 30px;
 }
 
-.finance-bottom-text-fist {
-	padding-top: 30px;
-}
-.finance-bottom-text-two {
-	padding-top: 35px;
-}
