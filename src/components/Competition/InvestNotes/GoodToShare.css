@@ -1,0 +1,70 @@
+
+.share{
+	padding: 60px 48px;
+	width: 100%;
+	height: 84.617%;
+	display: flex;
+	flex-wrap:wrap;
+}
+
+.share-div{
+	width: 32.61%;
+	height: 324px;
+	background: #F5F6F8;
+	border-radius: 4px 4px 4px 4px;
+	opacity: 1;
+}
+
+.share-div:nth-child(2){
+	margin-left: 12px;
+}
+.share-div:nth-child(3){
+	margin-left: 12px;
+}
+
+.share-div:nth-child(n+4){
+	margin-top: 12px;
+}
+
+.share-div:nth-child(5){
+	margin-left: 12px;
+}
+.share-div:nth-child(6){
+	margin-left: 12px;
+}
+
+.share-div-title {
+	font-size: 20px;
+	font-family: Microsoft YaHei UI-Bold, Microsoft YaHei UI;
+	font-weight: bold;
+	color: #2A2B30;
+	line-height: 36px;
+	letter-spacing: 1px;
+}
+
+.share-div-centent {
+	display: flex;
+	align-items: center;
+	width: 74.078%;
+	height: 60px;
+	border-radius: 4px 4px 4px 4px;
+	opacity: 1;
+	border: 1px solid #C0C3CE;
+	margin-bottom: 12px
+}
+
+.share-div-filename {
+	font-size: 14px;
+	font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+	font-weight: 400;
+	color: #2A2B30;
+	line-height: 24px;
+}
+
+.share-dive-filesize {
+	font-size: 12px;
+	font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+	font-weight: 400;
+	color: #9C9EAC;
+	line-height: 20px;
+}
