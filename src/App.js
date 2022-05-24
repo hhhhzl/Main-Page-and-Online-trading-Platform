@@ -43,6 +43,7 @@ import KeyIndicatorSimple from './components/screen/KeyIndicatorSimple'
 import KeyIndicatorProfessional from './components/screen/KeyIndicatorProfessional'
 import MarketQuotation from './components/screen/MarketQuotation'
 import RankingPang from './components/Competition/RankingPang'
+import InvestNotes from './components/Competition/InvestNotes/InvestNotes'
 import StockSelectionDeviceList from './components/screen/StockSelectionDeviceList'
 import StockSelectionDevice from './components/screen/StockSelectionDevice'
 
@@ -112,7 +113,7 @@ const MakeRouter = () => {
       <Route exact path= "/market" component ={UserMarket}/>
       <Route exact path= "/screener" component ={Screener}/>
       <Route exact path= "/ranking" component ={Ranking}/>
-      <Route exact path= "/invest_notes" component ={RankingPang}/>
+      <Route exact path= "/invest_notes" component ={InvestNotes}/>
       <Route exact path="/eplat" component={TradePadmin} />
 
       <Route exact path="/home" component={MainPage} /> 
