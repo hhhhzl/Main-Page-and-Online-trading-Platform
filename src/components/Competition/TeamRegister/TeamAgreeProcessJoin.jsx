@@ -4,22 +4,24 @@ import useWindowDimensions from '../../../utils/sizewindow';
 import Sidebar from '../../MainPage/Sidebar';
 import { IconButton } from '@material-ui/core';
 import { ArrowBack, ArrowForward } from '@material-ui/icons';
-import { Button, Form, Image, Modal } from 'react-bootstrap';
+import { Button, Form, Image,Modal } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import TeamReister from './TeamRegister'
+import TeamSearch from './TeamSearch';
 
-export default function TeamAgreeProcessCreate(){
+export default function TeamAgreeProcessJoin(){
     const {width,height} = useWindowDimensions();
     const [page, setpage] = useState(0)
     const [disable, setdisable] = useState(true)
+    
     const history= useHistory()
 
     const Pageprocess = () => {if (page!= 6){setpage(page + 1)}   }
     const Pagereduce = () => {setpage(page - 1)}
     const sendUserhome = () => {history.push("/home")}
 
-
     const [successSendtoC, setsuccessSendtoC] = useState(false)
+
 
     const process =[
         {
@@ -58,6 +60,21 @@ export default function TeamAgreeProcessCreate(){
         },
     ]
 
+    const user = [
+        {
+            username:"user1",
+            school:"密歇根大学"
+        },
+
+        {
+            username:"user2",
+            school:"密歇根大学"
+        },
+        {
+            username:"user3",
+            school:"密歇根大学"
+        },
+    ]
 
 
     return (
@@ -70,7 +87,7 @@ export default function TeamAgreeProcessCreate(){
         centered
         >
           <Modal.Header></Modal.Header>
-          <Modal.Body style={{marginLeft:"50px"}}>团队已成功创建 </Modal.Body>
+          <Modal.Body style={{marginLeft:"-10px"}}>请求已发送至队长，请耐心等待通过，首页点击团队信息查看进入团队状态 </Modal.Body>
         <Modal.Footer style={{marginLeft:0}} >
             <div style={{width:"100%",display:"flex",justifyContent:"left"}}>
             <Button className="modal-btn modal-btn-submit"  style={{marginLeft:"50px"}} variant="primary" onClick ={() => sendUserhome()}>
@@ -84,8 +101,7 @@ export default function TeamAgreeProcessCreate(){
 
       {page == 0 ? 
       <>
-      <TeamReister Pageprocess = {Pageprocess}/>
-      
+      <TeamSearch Pageprocess = {Pageprocess}/> 
       </> :
 
             <div  style={{marginTop:height*0,width:"100%",display:"flex",justifyContent:"space-between", backgroundColor:"#F5F6F8"}}>
@@ -122,28 +138,58 @@ export default function TeamAgreeProcessCreate(){
                         </div>
 
                         <div style={{marginTop:"36px",display:"flex", justifyContent:"center"}}>
+                            <div style={{width:"250px",display:"flex", justifyContent:"left"}}>
                             <div style={{
+                                width:"125px",
+                                textAlign:"center",
                             fontSize:"20px",
                             fontFamily:"Microsoft YaHei UI-Bold, Microsoft YaHei UI;",
                             fontWeight:"bold",
                             color:"#2A2B30",
                             lineHeight:"40px",
                             letterSpacing:"1px",
-                        }}>
-                                团队名称
+                        }}>团队名称</div>
 
+                            <div style={{
+                            width:"125px",
+                            textAlign:"center",
+                            fontSize:"20px",
+                            fontFamily:"Microsoft YaHei UI-Bold, Microsoft YaHei UI;",
+                            fontWeight:"bold",
+                            color:"#2A2B30",
+                            lineHeight:"40px",
+                            letterSpacing:"1px",
+                        }}>赛道选择</div>
                             </div>
                         </div>
 
+                        
+
                         <div style={{marginTop:"12px",display:"flex", justifyContent:"center"}}>
+                            <div style={{width:"250px",display:"flex", justifyContent:"left"}}>
                             <div style={{
+                                width:"125px",
+                                textAlign:"center",
                                 fontSize:"14px",
                                 fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI;",
                                 fontWeight:"400",
                                 color:"#2A2B30",
                                 lineHeight:"24px",
-                            }}>对短时间的好看好看</div>
+                            }}>对asdsjhsadkhdh</div>
+
+                            <div style={{
+                                width:"125px",
+                                textAlign:"center",
+                                fontSize:"14px",
+                                fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI;",
+                                fontWeight:"400",
+                                color:"#2A2B30",
+                                lineHeight:"24px",
+                            }}>主观赛道</div>   
+                            </div>
                         </div>
+
+
 
                         <div style={{marginTop:"36px",display:"flex", justifyContent:"center"}}>
                             <div style={{
@@ -154,23 +200,63 @@ export default function TeamAgreeProcessCreate(){
                             lineHeight:"40px",
                             letterSpacing:"1px",
                         }}>
-                                赛道选择
-
+                                团队成员
                             </div>
                         </div>
 
+
                         <div style={{marginTop:"12px",display:"flex", justifyContent:"center"}}>
-                        <div style={{
-                                fontSize:"14px",
-                                fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI;",
-                                fontWeight:"400",
-                                color:"#2A2B30",
-                                lineHeight:"24px",
-                            }}>主观赛道</div>    
+
+                        <div style={{height:"84px", display:"flex",justifyContent:"left"}}>
+
+                                    {user.map((elem) => {
+                                        return (
+                                    <div style ={{width:"63px",marginRight:"24px",textAlign:"center",}}>
+                                    <Image
+                                    src="/homeCutout/Mask group.png"
+                                    roundedCircle
+                                    style={{
+                                    position: "relative",
+                                    width: "36px",
+                                    height: "36px",
+                                    }}
+                                    />
+                                    <div style={{
+                                    marginTop:"8px",
+                                    height:"24px",
+                                    fontSize:"14px",
+                                    fontFamily:"Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+                                    fontWeight:"400",
+                                    color:"#2A2B30",
+                                    lineHeight:"24px",
+                                    }}>{elem.username}</div>
+
+                                    <div style={{marginTop:"0px",
+                                    height:"24px",
+                                    fontSize:"12px",
+                                    fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                                    fontWeight:"400",
+                                    color:"#6E7184",
+                                    lineHeight:"24px",
+                                    }}>{elem.school}</div>
+
+
+
+                                    </div>
+                                        )
+
+                                    })}
+
+
+
+
+                                    </div>
+
+                            
                         </div>
                         
 
-                        <div style={{marginTop:"112px",display:"flex", justifyContent:"center"}}>
+                        <div style={{marginTop:"52px",display:"flex", justifyContent:"center"}}>
                             <div style={{display:"flex", justifyContent:"left"}}>         
                                 <Form.Check type ="radio" onChange={() => setdisable(false)}/> 
                             <div style={{
@@ -206,7 +292,7 @@ export default function TeamAgreeProcessCreate(){
                                     color: disable?"#C0C3CE" : "white",
                                     lineHeight:"24px",
                                     }}>
-                                创建团队
+                                确认参赛
                                 </div>
                     
                                 

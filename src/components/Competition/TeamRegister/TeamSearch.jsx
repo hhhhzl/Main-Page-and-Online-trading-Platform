@@ -7,25 +7,17 @@ import { ArrowBack, ArrowForward, SearchOutlined } from '@material-ui/icons';
 import { Button, Form, Image, InputGroup, Modal } from 'react-bootstrap';
 import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolkit';
 import BootstrapTable from 'react-bootstrap-table-next';
-import  SearchData  from "../../../static/SearchStock.json"
 import { useHistory } from 'react-router';
+import  SearchData  from "../../../static/SearchStock.json"
 
 const { SearchBar, ClearSearchButton } = Search;
 
-export default function TeamSearch(){
+export default function TeamSearch({Pageprocess}){
     const {width,height} = useWindowDimensions();
     const [disable, setdisable] = useState(false)
     const history= useHistory()
+    const sendUserback = () => {history.push("/team/register")}
 
-
-
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const sendUserhome =() =>{
-      history.push("/home")
-  }
 
     const [scrollswitch, setScrollswitch] = useState(false);
   const [linkedInstitution, setLinkedInstitution] = useState("")
@@ -62,23 +54,6 @@ const searchSwitch = () => {
         {/* <HeaderCreate toggle = {toggle} />
       {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>) : null} */}
 
-        <Modal 
-        show={show} 
-        onHide={handleClose}
-        centered
-        >
-          <Modal.Header closeButton></Modal.Header>
-          <Modal.Body>请求已发送至队长，等待通过</Modal.Body>
-        <Modal.Footer style={{marginLeft:0}} >
-            <div style={{width:"100%",display:"flex",justifyContent:"left"}}>
-            <Button className="modal-btn modal-btn-submit"  style={{marginLeft:"50px"}} variant="primary" onClick={handleClose} onClick ={() => sendUserhome()}>
-            确认
-          </Button>
-        </div>
-         
-          </Modal.Footer>
-        </Modal>
-
          <div  style={{marginTop:height*0,width:"100%",display:"flex",justifyContent:"space-between", backgroundColor:"#F5F6F8"}}>
 
         <div style={{width:"48px",maxWidth:"18.75%"}}></div>
@@ -94,7 +69,7 @@ const searchSwitch = () => {
                 <div style={{height:"700px",width:"100%", backgroundColor:"white"}}>
 
                     <div style={{marginLeft:"24px", height:"8.57%"}}>
-                        <IconButton style={{paddingTop:"24px", paddingBottom:"16px"}}>
+                        <IconButton onClick={() => sendUserback()} style={{paddingTop:"24px", paddingBottom:"16px"}}>
                             <ArrowBack/>
                         </IconButton>
                     </div>
@@ -169,7 +144,9 @@ const searchSwitch = () => {
                     <Button disabled={disable} style ={{width:"288px",height:"48px", backgroundColor:disable? "#F5F6F8" : "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)", 
                         border:"1px solid #F5F6F8", borderRadius:"4px 4px 4px 4px",
                         boxShadow:disable? null : "0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08)",
-                        }}>
+                        }}
+                        onClick={() => Pageprocess()}
+                        >
                             <div style={{display:"flex",justifyContent:"right"}}>
                             <div style={{
                                 fontSize:"14px",

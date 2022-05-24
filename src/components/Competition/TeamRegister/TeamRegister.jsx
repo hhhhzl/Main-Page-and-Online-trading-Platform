@@ -7,10 +7,13 @@ import { ArrowBack, ArrowForward } from '@material-ui/icons';
 import { Button, Form, Image } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 
-export default function TeamRegister(){
+
+export default function TeamRegister({Pageprocess}){
     const {width,height} = useWindowDimensions();
     const [disable, setdisable] = useState(true)
-    const history = useHistory()
+    const history= useHistory()
+    const sendUserback = () => {history.push("/team/register")}
+
 
     return (
         <>
@@ -32,7 +35,7 @@ export default function TeamRegister(){
                 <div style={{height:"700px",width:"100%", backgroundColor:"white"}}>
 
                     <div style={{marginLeft:"24px", height:"8.57%"}}>
-                        <IconButton style={{paddingTop:"24px", paddingBottom:"16px"}}>
+                        <IconButton onClick={() => sendUserback()} style={{paddingTop:"24px", paddingBottom:"16px"}}>
                             <ArrowBack/>
                         </IconButton>
                     </div>
@@ -114,7 +117,7 @@ export default function TeamRegister(){
                         border:"1px solid #F5F6F8", borderRadius:"4px 4px 4px 4px",
                         boxShadow:disable? null : "0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08)",
                         }}
-                        onClick={() => history.push("/team/create/read")}
+                        onClick={() => Pageprocess()}
                         >
                             <div style={{display:"flex",justifyContent:"right"}}>
                             <div style={{
@@ -138,6 +141,11 @@ export default function TeamRegister(){
         </div>
         <div style={{width:"48px",maxWidth:"18.75%"}}></div>
         </div>
+
+
+
+
+
 
         </>
         

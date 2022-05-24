@@ -57,6 +57,8 @@ import TeamRegister from './components/Competition/TeamRegister/TeamRegister';
 import TeamAgreeProcessCreate from './components/Competition/TeamRegister/TeamAgreeProcessCreate';
 import TeamEntry from './components/Competition/TeamRegister/TeamEntry';
 import TeamSearch from './components/Competition/TeamRegister/TeamSearch';
+import TeamAgreeProcessJoin from './components/Competition/TeamRegister/TeamAgreeProcessJoin';
+
 
 
 
@@ -111,12 +113,12 @@ const MakeRouter = () => {
       <Route exact path="/forgetpassword" component={LoginMainLayout} />
       <Route exact path="/changepassword" component={LoginMainLayout} />
 
-      <Route exact path= "/eplatform/:username" component ={UserPortfolio}/>
-      <Route exact path= "/trade" component ={StockTrade}/>
-      <Route exact path= "/market" component ={UserMarket}/>
-      <Route exact path= "/screener" component ={Screener}/>
-      <Route exact path= "/ranking" component ={Ranking}/>
-      <Route exact path= "/invest_notes" component ={RankingPang}/>
+      <Route exact path= "/eplatform" component ={UserPortfolio}/>
+      <Route exact path= "/eplatform/trade" component ={StockTrade}/>
+      <Route exact path= "/eplatform/market" component ={UserMarket}/>
+      <Route exact path= "/eplatform/screener" component ={null}/>
+      <Route exact path= "/eplatform/ranking" component ={RankingPang}/>
+      <Route exact path= "/eplatform/invest_notes" component ={RankingPang}/>
       <Route exact path="/eplat" component={TradePadmin} />
 
       <Route exact path="/home" component={MainPage} /> 
@@ -126,33 +128,35 @@ const MakeRouter = () => {
 
 
 
-
-
-
-
-
-{/* 以下为测试URL */}
-       <PrivateRoute exact path="/stocks" component={UserStocks} />
+       {/* <PrivateRoute exact path="/stocks" component={UserStocks} />
+      <PrivateRoute exact path="/market" component={UserMarket} />
       <PrivateRoute exact path="/competition" component={null} />
-      <Route exact path="/tournament" component={Tournament} /> 
+
+
+      <Route exact path="/tournament" component={Tournament} />
+	  
+      
 	  <Route exact path="/editData" component={EditData}/>
 	  <Route exact path="/personalHomepage" component={PersonalHomepage}/>
 	  <Route exact path="/keyIndicatorSimple" component={KeyIndicatorSimple}/>
 	  <Route exact path="/keyIndicatorProfessional" component={KeyIndicatorProfessional}/>
 	  <Route exact path="/marketQuotation" component={MarketQuotation}/>
 	  <Route exact path="/rankingPang" component={RankingPang}/>
-	  <Route exact path="/stockSelectionDeviceList" component={StockSelectionDevice}/>
-    <Route exact path="/leadingIndustry" component={LeadingIndustry}/>
-    <Route exact path="/leadingIndustry/allIndustry" component={AllIndustry}/> 
-    <Route exact path="/team" component={PersonalHomepage}/>
-    <Route exact path="/trade/pro" component={StockPriceGraphProfessional} />
-    <Route exact path="/team/register" component={TeamEntry} />
-    <Route exact path="/team/create" component={TeamRegister} />
-    <Route exact path="/team/join" component={TeamSearch} />
-    <Route exact path="/team/create/read" component={TeamAgreeProcessCreate}/>
-    <Route exact path="/team/join/read" component={TeamAgreeProcessCreate} />
-
+	  <Route exact path="/stockSelectionDeviceList" component={StockSelectionDeviceList}/>
+	  <Route exact path="/stockSelectionDevice" component={StockSelectionDevice}/>
+    <Route exact path="/trade/pro" component={StockPriceGraphProfessional} /> */}
     
+    {/* <Route exact path="/leadingIndustry" component={LeadingIndustry}/>
+
+    <Route exact path="/leadingIndustry/allIndustry" component={AllIndustry}/>  */}
+    <Route exact path="/team" component={PersonalHomepage}/>
+
+    <Route exact path="/team/register" component={TeamEntry} />
+    <Route exact path="/team/create" component={TeamAgreeProcessCreate} />
+    <Route exact path="/team/join" component={TeamAgreeProcessJoin} />
+    <Route exact path="/leadingIndustry/allIndustry" component={AllIndustry}/> 
+
+	  
 	  
       </AuthProvider>
     </Switch>

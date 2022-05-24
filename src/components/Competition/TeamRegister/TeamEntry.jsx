@@ -17,6 +17,7 @@ export default function TeamEntry(){
     const [hoverjoin, setHoverjoin] = useState(false);
     const [createshow, setcreatshow] = useState(false);
     const [joinshow, setjoinshow] = useState(false);
+    const sendUserhome = () => {history.push("/home")}
 
     const handleMouseOverC = () => {
         setHovercreate(true);
@@ -58,7 +59,7 @@ export default function TeamEntry(){
                 <div style={{height:"111px", width:"100%"}}>
                 
                     <div style={{paddingBottom:"24px",paddingTop:"48px", fontSize:"24px", fontFamily:"Microsoft YaHei U-Bold, Microsoft YaHei UI", fontWeight:"bold", color:"#2A2B30", lineHeight:"40px",letterSpacing:"1px"}}>
-                    <IconButton >
+                    <IconButton onClick={() => sendUserhome()} >
                             <ArrowBack/>
                         </IconButton>选择参赛方式
                     </div>

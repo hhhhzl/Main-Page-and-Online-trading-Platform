@@ -157,6 +157,7 @@ opacity: "1",
       value={amount}
       onChange={(e) => setamount(e.target.value)}
     ></Form.Control> */}
+	
      <InputGroup  style={{height:"48px"}}>
      <InputGroup.Text style={{backgroundColor:"white"}}>$</InputGroup.Text>
     <Form.Control style={{borderLeftColor:"white"}} 
