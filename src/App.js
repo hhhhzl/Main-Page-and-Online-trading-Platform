@@ -128,8 +128,6 @@ const MakeRouter = () => {
        {/* <PrivateRoute exact path="/stocks" component={UserStocks} />
       <PrivateRoute exact path="/market" component={UserMarket} />
       <PrivateRoute exact path="/competition" component={null} />
-
-
       <Route exact path="/tournament" component={Tournament} />
 	  
       
@@ -141,9 +139,6 @@ const MakeRouter = () => {
 	  <Route exact path="/rankingPang" component={RankingPang}/>
 	  <Route exact path="/stockSelectionDeviceList" component={StockSelectionDeviceList}/>
 	  <Route exact path="/stockSelectionDevice" component={StockSelectionDevice}/>
-
-
-
     <Route exact path="/leadingIndustry" component={LeadingIndustry}/>
     <Route exact path="/leadingIndustry/allIndustry" component={AllIndustry}/>  */}
 	  

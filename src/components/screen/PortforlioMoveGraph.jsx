@@ -9,12 +9,22 @@ import useWindowDimensions from '../../utils/sizewindow';
 import LineSeriesForPorfolio from '../graphs/LineSeriesForPorfolio';
 
 
-export default function PorforlioMoveGraph({widthratio}) {
+export default function PorforlioMoveGraph({
+  widthratio, 
+  userSummary, 
+  profitLineData,
+  XiaoPu,
+  Score,
+}) {
   
   const {width,height} = useWindowDimensions();
   const [timeP,setTimeP] = useState(7);
   const [id,setID] = useState(0)
   const [vertify, setvertify] = useState(true);
+
+
+  const [usersummary,setusersummary] = useState(200000.00)
+
 
   const arrays = ["一周","一个月","三个月","六个月","一年","全部"]
 
@@ -44,21 +54,22 @@ export default function PorforlioMoveGraph({widthratio}) {
         color:"#2A2B30",
         lineHeight:"56px",
         letterSpacing:"1px",
-        }}>¥4,151,986.32</div>
+        }}>¥{usersummary}</div>
 
 
-        <Row><Col xs ={6} style={{height:"28px"}}>
+        <div style={{height:"28px",display:"flex",justifyContent:"left"}}>
         <div style={{
         fontSize:"16px",
         fontFamily:"Microsoft YaHei UI-Bold",
         fontWeight:"500",
         padding:"0px",
         color:"#2A2B30",
+        marginRight:"20px",
         lineHeight:"28px",
         }}>¥30608.26{" "}(+2.03%)</div>
 
         
-        </Col><Col xs ={6} style={{height:"28px"}}>
+       
         <div style={{
         fontSize:"16px",
         fontFamily:"Microsoft YaHei UI-Bold",
@@ -71,8 +82,9 @@ export default function PorforlioMoveGraph({widthratio}) {
         {arrays[id] == "全部"? "全部" : <>近{arrays[id]}</> }
         
         </div>
+        </div>
     
-            </Col></Row>
+          
         
                   </div>
               </Col>
