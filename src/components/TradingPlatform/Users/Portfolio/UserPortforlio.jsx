@@ -38,7 +38,7 @@ export default function UserPortfolio(props) {
             <div style={{width:"63.3%"}}>
                 <PorforlioMoveGraph  widthratio ={1200 * 0.633}/>
                 <div style={{marginTop:height*0.0564}}>
-                  <PendingOrder heightProp={0.23}/>
+                  <PendingOrder heightProp={0.23} modalHeight={0.7}/>
                 </div>   
             </div>
 

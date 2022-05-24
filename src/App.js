@@ -123,14 +123,14 @@ const MakeRouter = () => {
 
 
 
-
+      <Route exact path="/tournament" component={Tournament} />
 
        {/* <PrivateRoute exact path="/stocks" component={UserStocks} />
       <PrivateRoute exact path="/market" component={UserMarket} />
       <PrivateRoute exact path="/competition" component={null} />
 
 
-      <Route exact path="/tournament" component={Tournament} />
+      
 	  
       
 	  <Route exact path="/editData" component={EditData}/>

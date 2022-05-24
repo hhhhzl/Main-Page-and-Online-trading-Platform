@@ -3,6 +3,7 @@ import PageHeader from "../../screen/PageHeader";
 import useWindowDimensions from "../../../utils/sizewindow";
 import { Form, Button, Image } from "react-bootstrap";
 import GoodToShare from "./GoodToShare";
+import CommitRecord from "./CommitRecord";
 import "./InvestNotes.css";
 // import StockPriceGraphSimplify from "../../../screen/StockPriceGraphSimplify";
 // import StockTradeBar from "../../../screen/StockTradeBar";
@@ -14,7 +15,6 @@ import "./InvestNotes.css";
 export default function InvestNotes(props) {
   const { width, height } = useWindowDimensions();
   const [fileList, setFileList] = useState([]);
-  const [hasFile, setHasFile] = useState(0);
   const uploadFile = React.createRef();
   const listRef = useRef();
   const [current, setCurrent] = useState(0);
@@ -26,48 +26,41 @@ export default function InvestNotes(props) {
     uploadFile.current.click();
   };
 
+  const uuid = () => {
+    let s = [];
+    let hexDigits = "0123456789abcdef";
+    for (let i = 0; i < 36; i++) {
+      s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+    }
+    s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
+    s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
+    s[8] = s[13] = s[18] = s[23] = "-";
+    let uuid = s.join("");
+    return uuid;
+  };
+
   const fileChange = (e) => {
     let file = e.target.files;
-    console.log(uploadFile);
-    console.log(e.target.files);
-
-    let formData = new FormData();
     if (file.length != 0) {
       for (let i = 0; i < file.length; i++) {
-        // console.log();
         let suffixArr = file[i].name.split(".");
         let suffix = suffixArr[suffixArr.length - 1];
         console.log(suffix);
         if (suffix == "pdf" || suffix == "docx" || suffix == "doc") {
+          // file
+          // let id = 
+          file[i].id = uuid()
           fileList.push(file[i]);
         } else {
           alert("文件格式错误");
         }
       }
-    } else {
-      formData.append("file", "");
+      console.log(fileList)
     }
     setFileList([...fileList]);
-    console.log(fileList);
-    // fetch("/notice/send", {
-    //   method: "POST",
-    //   headers: new Headers({
-    //     "Access-Control-Allow-Origin": "*",
-    //   }),
-    //   contentType: false,
-    //   processData: false,
-    //   body: formData,
-    // })
-    //   .then((res) => {
-    //     return res.json().then((response) => {
-    //       console.log(response);
-    //     });
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
   };
 
+  //size大小转换为kb形式
   const fileSizeByteToM = (size) => {
     let data = "";
     if (size < 0.1 * 1024) {
@@ -93,35 +86,11 @@ export default function InvestNotes(props) {
     return sizestr;
   };
 
-  // const publish = () => {
-  //   var file = document.getElementById("file");
-  //   var formData = new FormData();
-  //   if (file.files.length != 0) {
-  //     for (var i = 0; i < file.files.length; i++) {
-  //       formData.append("image", file.files[i]);
-  //     }
-  //   } else {
-  //     formData.append("image", "");
-  //   }
-  //   fetch("/notice/send", {
-  //     method: "POST",
-  //     headers: new Headers({
-  //       "Access-Control-Allow-Origin": "*",
-  //       "User-Token": this.state.token,
-  //     }),
-  //     contentType: false,
-  //     processData: false,
-  //     body: formData,
-  //   })
-  //     .then((res) => {
-  //       return res.json().then((response) => {
-  //         console.log(response);
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // };
+  const handleDelete = (id) => {
+    let item = fileList.filter(v => v.id != id);
+    console.log(item)
+    setFileList(item)
+  };
 
   return (
     <>
@@ -218,7 +187,7 @@ export default function InvestNotes(props) {
                   </div>
 
                   {fileList.map((item, index) => (
-                    <div className="upload-list">
+                    <div className="upload-list" key={item.id}>
                       <div className="flie-list">
                         <div className="file-icon">
                           <Image
@@ -233,7 +202,10 @@ export default function InvestNotes(props) {
                           </div>
                         </div>
 
-                        <div className="delete-wrapper">
+                        <div
+                          className="delete-wrapper"
+                          onClick={() => handleDelete(item.id)}
+                        >
                           <Image
                             src="/Frame-delete.png"
                             style={{ width: "22px", height: "22px" }}
@@ -262,7 +234,9 @@ export default function InvestNotes(props) {
                 </div>
               </>
             ) : current == 1 ? (
-              <></>
+              <>
+              <CommitRecord></CommitRecord>
+              </>
             ) : (
               <>
                 <GoodToShare></GoodToShare>
