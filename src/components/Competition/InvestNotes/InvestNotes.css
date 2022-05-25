@@ -13,10 +13,107 @@
   line-height: 24px;
 }
 
-.upload-btn{
+.upload-btn {
   margin-top: 36px;
 }
 
-.file-submit-btn{
+.file-submit-btn {
   margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.publish-upload-file {
+  background: #F5F6F8;
+  border-radius: 4px 4px 4px 4px;
+  opacity: 1;
+  border: none;
+  padding: 12px 15px;
+}
+
+.publish-upload-file-text {
+  font-size: 14px;
+  font-family: "MicrosoftYaHeiUI-Bold, MicrosoftYaHeiUI";
+  font-weight: bold;
+  color: #2A2B30;
+  line-height: 24px;
+  margin-left: 6px;
+}
+
+.publish-upload-file:hover {
+  background: #F5F6F8;
+}
+
+.publish-upload-file:active {
+  background: #F5F6F8;
+  border: none;
+}
+
+.publish-upload-file:focus {
+  background: #F5F6F8;
+  border: none;
+}
+
+.upload-list {
+  cursor: pointer;
+}
+
+.flie-list {
+  border-radius: 4px;
+  padding: 8px 16px 8px 12px;
+  border: 1px solid #C0C3CE;
+  width: max-content;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.file-name {
+  font-size: 14px;
+  font-family: "MicrosoftYaHeiUI-Regular, MicrosoftYaHeiUI";
+  font-weight: 400;
+  color: #2A2B30;
+  line-height: 24px;
+}
+
+.file-message {
+  display: flex;
+  flex-direction: column;
+  margin-left: 8px;
+
+}
+
+.file-size {
+  font-size: 12px;
+  font-family: "MicrosoftYaHeiUI-Regular, MicrosoftYaHeiUI";
+  font-weight: 400;
+  color: #9C9EAC;
+  line-height: 20px;
+}
+
+.upload-file-submit-btn {
+  width: 288px;
+  height: 48px;
+  background: linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%);
+  box-shadow: 0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08);
+  border-radius: 4px 4px 4px 4px;
+  opacity: 1;
+  border: none;
+}
+
+.upload-file-submit-btn:active {
+  border: none;
+  background: linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%);
+  box-shadow: 0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08);
+}
+
+.delete-wrapper{
+  padding-left: 60px;
+  /* display: none; */
+  opacity: 0;
+}
+
+.flie-list:hover .delete-wrapper{
+  opacity: 1;
 }

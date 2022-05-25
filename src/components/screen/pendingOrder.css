@@ -50,6 +50,40 @@
   padding-right: 12px;
 }
 
+.pending-order-table-modal>.react-bootstrap-table>table>thead>tr>th {
+  font-family: "MicrosoftYaHeiUI";
+  font-size: 14px;
+  font-weight: 400;
+  color: #6E7184;
+  line-height: 24px;
+  padding: 24px 0px;
+  padding-left: 48px;
+  border: none;
+  text-align: right;
+}
+
+.pending-order-table-modal>.react-bootstrap-table>table>thead>tr>th:first-child {
+  text-align: left;
+}
+
+.pending-order-table-modal>.react-bootstrap-table>table>thead>tr>th:nth-child(2) {
+  text-align: left;
+  padding-left: 2px;
+}
+.pending-order-table-modal>.react-bootstrap-table>table>thead>tr>th:nth-child(3) {
+  padding-right: 12px;
+}
+.pending-order-table-modal>.react-bootstrap-table>table>thead>tr>th:nth-child(4) {
+  padding-right: 12px;
+}
+.pending-order-table-modal>.react-bootstrap-table>table>thead>tr>th:last-child {
+  padding-right: 48px;
+}
+
+.pending-order-table-modal > .react-bootstrap-table > table > thead {
+  background:#F5F6F8;
+}
+
 .simple-font {
   font-size: 14px;
   font-family: "Futura-Medium, Futura";
@@ -74,8 +108,25 @@
   line-height: 24px;
 }
 
-.all-order-icon{
+.all-order-icon {
   color: #6E7184;
   font-size: 14px !important;
   margin-left: 5px;
+}
+
+.pending-order-modal>.modal-dialog {
+  max-width: 856px;
+}
+
+.record-modal-title {
+  font-size: 24px;
+  font-family: "MicrosoftYaHeiUI-Bold, MicrosoftYaHeiUI";
+  font-weight: bold;
+  color: #2A2B30;
+  line-height: 40px;
+  letter-spacing: 1px;
+}
+
+.pending-order-modal > .modal-dialog > .modal-content > .modal-header{
+  padding-bottom: 0px;
 }

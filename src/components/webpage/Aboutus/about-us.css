@@ -14,7 +14,7 @@
 }
 
 .message-box {
-  margin-top: 80px;
+  margin-top: 120px;
 }
 
 .flex-between {
@@ -134,25 +134,25 @@
 }
 
 /* .content-center::before{
-  content: ''; 
+  content: '';
   display: block;
   width: 9px;
   height: 48px;
   position: absolute;
   top: 0px;
-  left: -9px;  
+  left: -9px;
   background: #F5F6F8;
 }
 
 
 .content-center::after{
-  content: ''; 
+  content: '';
   display: block;
   width: 48px;
   height: 9px;
   position: absolute;
   top: 0px;
-  left: -9px;  
+  left: -9px;
   background: #F5F6F8;
 } */
 
@@ -161,25 +161,25 @@
 }
 
 /* .bottom-angle::before{
-  content: ''; 
+  content: '';
   display: block;
   width: 9px;
   height: 48px;
   position: absolute;
   bottom: -11px;
-  right: -30px;  
+  right: -30px;
   background: #F5F6F8;
 }
 
 
 .bottom-angle::after{
-  content: ''; 
+  content: '';
   display: block;
   width: 48px;
   height: 9px;
   position: absolute;
   bottom: -11px;
-  right: -30px;  
+  right: -30px;
   background: #F5F6F8;
 } */
 
@@ -320,7 +320,7 @@
   position: relative;
   width: 74.4%;
   height: max-content;
-  margin-top: 140px;
+  margin-top: 134px;
   align-items: center;
 }
 
@@ -484,7 +484,7 @@
     margin-left: 5%;
     height: max-content;
   }
-  
+
   .center-container{
     display: flex;
     flex-direction: column;
@@ -493,7 +493,7 @@
 
   .about-center {
     position: relative;
-    
+
     height: max-content;
     align-items: center;
     margin-top: 40%;

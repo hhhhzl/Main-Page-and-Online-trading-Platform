@@ -36,7 +36,7 @@ export default function Introduce() {
           <div className="left-round">
             <div className="round">
               <div className="time-wrapper">
-                <div className="month">6.6</div>
+                <div className="month">6.8</div>
                 <div className="year">2022</div>
               </div>
             </div>
@@ -50,16 +50,11 @@ export default function Introduce() {
           </div>
 
           <div className="match-end">
-            <div className="match-end-text">初赛结束</div>
-            <div className="match-end-content">
-              <div>第一轮：指标分数（权重60%）</div>
-              <div>综合分数 = 0.6*年化收益率（标准化后）+ 0.4*夏普比例</div>
-              <div>（标准化后）</div>
-            </div>
+            <div className="match-end-text">团队组建截止</div>
           </div>
 
           <div className="flex-end" style={{ marginTop: "145px" }}>
-            <div className="month">9.7</div>
+            <div className="month">6.20</div>
             <div className="right-line bg"></div>
             <div className="icon-wrapper">
               <Image
@@ -69,12 +64,18 @@ export default function Introduce() {
             </div>
           </div>
 
-          <div className="match-end" style={{ marginTop: "168px" }}>
-            <div className="match-end-text">投资报告提交截止</div>
+          <div className="match-end" style={{ marginTop: "131px" }}>
+            <div className="match-end-text">初赛结束，复赛开始</div>
+			<div className="match-end-content">
+			  <div>
+			    指标分数排名前100名的选手进入复赛，并提交一份逻辑报告(逻辑报告模版将于复赛开始时公布)
+			  </div>
+			</div>
           </div>
+		  
 
           <div className="flex-end" style={{ marginTop: "143px" }}>
-            <div className="month">9.12</div>
+            <div className="month">9.16</div>
             <div className="right-line bg"></div>
             <div className="icon-wrapper">
               <Image
@@ -97,10 +98,10 @@ export default function Introduce() {
         <div className="right">
           <div className="match-begin">
             <div className="right-line"></div>
-            <div className="match-begin-text">比赛开始</div>
+            <div className="match-begin-text">赛事报名通道开放</div>
           </div>
 
-          <div className="flex-start" style={{ marginTop: "247px" }}>
+          <div className="flex-start" style={{ marginTop: "222px" }}>
             <div className="icon-wrapper-left">
               <Image
                 src="/tournament/Group 142.png"
@@ -109,7 +110,7 @@ export default function Introduce() {
             </div>
             <div className="right-line bg"></div>
             <div className="month" style={{ paddingLeft: "16px" }}>
-              9.2
+              6.18
             </div>
           </div>
 
@@ -117,12 +118,11 @@ export default function Introduce() {
             <div className="right-line"></div>
             <div className="finals-name-container">
               <div className="match-end-text" style={{ textAlign: "left" }}>
-                公布决赛名单
+                初赛开始：指标分数
               </div>
               <div className="match-end-content" style={{ textAlign: "left" }}>
-                <div>第二轮：投资报告（权重40%）</div>
                 <div>
-                  由综合分数排名前100名的选手提交一份逻辑报告。UFA评委综合逻辑报告，以及各项指标筛选出15名入围决赛选手。
+					指标分数将根据3个月的“综合收益率”以及“夏普比率”两个指标进行打分
                 </div>
               </div>
             </div>
@@ -137,14 +137,25 @@ export default function Introduce() {
             </div>
             <div className="right-line bg"></div>
             <div className="month" style={{ paddingLeft: "16px" }}>
-              9.10
+              9.9
             </div>
           </div>
 
-          <div className="flex-start" style={{ marginTop: "143px" }}>
-            <div className="right-line"></div>
-            <div className="match-begin-text">UFA评委评选决赛</div>
-          </div>
+		  <div className="finals-name" style={{marginTop: "131px"}}>
+		    <div className="right-line"></div>
+		    <div className="finals-name-container">
+		      <div className="match-end-text" style={{ textAlign: "left" }}>
+		        复赛结束，公布决赛候选名单
+		      </div>
+		      <div className="match-end-content" style={{ textAlign: "left" }}>
+		        <div>
+					UFA评委将综合逻辑报告，以及指标分数筛选出15名入围决赛选手。
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		  
+		  
 
           <div className="flex-start" style={{ marginTop: "143px" }}>
             <div className="icon-wrapper-left">
@@ -157,7 +168,7 @@ export default function Introduce() {
             <div className="left-round" style={{ marginTop: "0px" }}>
               <div className="round">
                 <div className="time-wrapper" style={{ padding: width > 1350 ? "80px 20px" : width > 900 ? '70px 10px' : '60px 15px' }}>
-                  <div className="month">9.17</div>
+                  <div className="month">9.24</div>
                   <div className="year">2022</div>
                 </div>
               </div>
@@ -267,30 +278,12 @@ export default function Introduce() {
           </div>
 
           <div className="awards-card-wrapper">
-            <div className="awards-card-container">
-              <div className="awards-card">
-                <div className="ranking awards-center">UFA优秀投资笔记奖</div>
-                <div className="awards-pic awards-center">
-                  <Image
-                    src="/homeCutout/10086.png"
-                    style={{ width: "220px", height: "220px" }}
-                  />
-                </div>
-
-                <div className="award-content awards-center">
-                  <div>团队获得5000元人民币</div>
-                  <div>每位团员获得官方制定的冠军证书 </div>
-                  <div>中信证券实习机会</div>
-                </div>
-              </div>
-            </div>
-
             <div
               className="awards-card-container"
               style={{ margin: "0px 60px" }}
             >
               <div className="awards-card">
-                <div className="ranking awards-center">UFA优秀研报奖</div>
+                <div className="ranking awards-center">模范经纪人</div>
                 <div className="awards-pic awards-center">
                   <Image
                     src="/homeCutout/10086.png"
@@ -306,23 +299,6 @@ export default function Introduce() {
               </div>
             </div>
 
-            <div className="awards-card-container">
-              <div className="awards-card">
-                <div className="ranking awards-center">UFA未来优秀投资者</div>
-                <div className="awards-pic awards-center">
-                  <Image
-                    src="/homeCutout/10086.png"
-                    style={{ width: "220px", height: "220px" }}
-                  />
-                </div>
-
-                <div className="award-content awards-center">
-                  <div>团队获得5000元人民币</div>
-                  <div>每位团员获得官方制定的冠军证书 </div>
-                  <div>中信证券实习机会</div>
-                </div>
-              </div>
-            </div>
           </div>
 
           <div className="tips">

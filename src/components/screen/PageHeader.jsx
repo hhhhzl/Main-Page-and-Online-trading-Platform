@@ -124,7 +124,7 @@ useEffect(() => {
   
   return (
     <>
-      <Modal show={showLoginOutModal} onHide={handleClose} centered>
+      <Modal show={showLoginOutModal} onHide={handleClose} centered className="page-header-modal">
         <Modal.Header closeButton>
           {/* <Modal.Title>Modal heading</Modal.Title> */}
         </Modal.Header>

@@ -150,7 +150,7 @@
   }
 }
 
-.modal-content {
+.page-header-modal > .modal-dialog > .modal-content {
   border: none;
   padding-left: 48px;
   width: 348px;
