@@ -23,16 +23,32 @@ import useWindowDimensions from "../../utils/sizewindow";
 import BootstrapTable from 'react-bootstrap-table-next';
 import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolkit';
 import { SearchOutlined } from "@material-ui/icons";
-import  SearchData  from "../../static/SearchStock.json"
 import { Switch, Route, Link, useParams, useRouteMatch } from "react-router-dom";
-
-
+import { apiSymbols, apiSymbolsAllForSearch } from "../../api/trading_platform/market";
+import { borderRadius } from "@material-ui/system";
 
 const { SearchBar, ClearSearchButton } = Search;
 
-
 export default function PageHeader(toggle) {
   const {width, height} = useWindowDimensions();
+  const [searchData, setsearcnData] = useState([])
+
+
+        useEffect(() => {
+          getSearchData()
+        },[])
+
+      const getSearchData = async (props) => {
+        try{
+          const response = await apiSymbolsAllForSearch()
+          let Searchdata = response.data.data
+          setsearcnData(Searchdata)
+        }catch (err) {
+          console.log(err)
+        }
+      };
+
+
   const [selectKey, setSelectKey] = useState(0);
   const [showMenu, setHhowMenu] = useState(false);
   const [showLoginOutModal, setShowLoginOutModal] = useState(false);
@@ -65,6 +81,26 @@ const searchSwitch = () => {
 
   const handleClose = () => {
     setShowLoginOutModal(false);
+  };
+
+
+
+
+
+  const selectRow = {
+    mode: 'radio',
+    clickToSelect: true,
+    hideSelectAll:true,
+    hideSelectColumn: true,
+    style:{background:"#E7ECFD"},
+    onSelect: (row, isSelect, rowIndex, e) => {
+      if (isSelect){
+          console.log(row)
+      }else{     
+        
+      }
+    },
+    
   };
 
   const column = [
@@ -103,25 +139,103 @@ const searchSwitch = () => {
 
   const columns = [
     {
-        dataField:'id',
-        text:'ID',
-        hidden: true
+        dataField:'代码',
+        text:'代码',
+        sort: true,
+        headerAttrs: {
+          hidden: true
+        },
+        style: { width: "45%" },
+        formatter: (cell) => {
+          return (
+            <div
+              style={{
+                paddingTop: "6px",
+                paddingBottom: "6px",
+                paddingLeft: "12px",
+                fontSize: "14px",
+                fontFamily: " Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                fontWeight: "400",
+                color: "#2A2B30",
+                lineHeight: "24px",
+              }}
+            >
+              {cell}
+            </div>
+          )
+      }
     },
     {
-        dataField: 'name',
-        text: '机构(升/降)',
+        dataField: '名称',
+        text: '名称',
         sort: true,
         headerAttrs: {
             hidden: true
           },
+        formatter: (cell) => {
+          return (
+            <div
+              style={{
+                paddingTop: "6px",
+                paddingBottom: "6px",
+                paddingLeft: "12px",
+                fontSize: "14px",
+                fontFamily: " Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                fontWeight: "400",
+                color: "#2A2B30",
+                lineHeight: "24px",
+              }}
+            >
+              {cell}
+            </div>
+          )
+      }
     },
+    {
+      dataField: '涨跌幅',
+      text: '涨跌幅',
+      // sort: true,
+      headerAttrs: {
+          hidden: true
+        },
+        formatter: (cell) => {
+          return (
+            <>
+            {cell > 0?
+             <>
+             <div
+              style={{
+                paddingTop: "6px",
+                paddingBottom: "6px",
+                paddingLeft: "12px",
+                fontSize: "14px",
+                fontFamily: " Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                fontWeight: "400",
+                color: "#FF3541",
+                lineHeight: "24px",
+              }}
+            > +{cell}%</div>
+
+            </> : <>
+            <div
+              style={{
+                paddingTop: "6px",
+                paddingBottom: "6px",
+                paddingLeft: "12px",
+                fontSize: "14px",
+                fontFamily: " Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                fontWeight: "400",
+                color: "#42E083",
+                lineHeight: "24px",
+              }}
+            > {cell}%</div>
+            </>}
+            </>
+          )
+      }
+  },
 ]
 
-useEffect(() => {
-  setSelectKey(selectKey)
-},[selectKey])
-
-  
   return (
     <>
       <Modal show={showLoginOutModal} onHide={handleClose} centered className="page-header-modal">
@@ -198,8 +312,9 @@ useEffect(() => {
           }}
         ><Form >
         <ToolkitProvider  
-                      keyField="id"
-                      data={ SearchData }
+                      bootstrap4
+                      keyField="代码"
+                      data={ searchData }
                       columns={ columns }  
                       search
                     >
@@ -219,13 +334,21 @@ useEffect(() => {
                         />   
                         </InputGroup>          
                         <Collapse in= {scrollswitch}>
-                         <div className ="scroll" style={{position:"absolute",marginLeft:"3%",zIndex:999, width:"300px",background: "white"}}>
+                         <div className ="scroll" 
+                         style={{position:"absolute",
+                         marginLeft:"-1%",
+                         zIndex:996, 
+                         width:"308px",
+                         background: "white",
+                         boxShadow: "0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02)",
+                         borderRadius:"4px 4px 4px 4px",
+                         opacity:1,
+                         }}>
                         <BootstrapTable 
                         { ...props.baseProps}
                          hover = {true}
                          condensed ={true}
-                         sort={ { dataField: 'label', order: 'asc' } }       
-                         classes ="custom-row-class"
+                         selectRow={ selectRow }
                         />  
                         </div>
                        </Collapse>  

@@ -12,6 +12,9 @@ export const apiIndustryBoard = () =>
 export const apiSymbols = (type) =>
     apiService.get(`/general/symbols`, { params: { type } });
 
+export const apiSymbolsAllForSearch = () =>
+    apiService.get(`/general/symbols?type=a`);
+
 // history
 export const apiKLine = ({ symbol, start, end, tf }) =>
     apiService.post(`/hist/kline`, { symbol, start, end, tf });

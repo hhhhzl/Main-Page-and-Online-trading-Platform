@@ -53,6 +53,10 @@ import LeadingIndustry from './components/screen/LeadingIndustry'
 import AllIndustry from './components/screen/AllIndustry'
 import GoodToShare from './components/Competition/InvestNotes/GoodToShare';
 
+import TeamEntry from './components/Competition/TeamRegister/TeamEntry';
+import TeamAgreeProcessCreate from './components/Competition/TeamRegister/TeamAgreeProcessCreate'
+import TeamAgreeProcessJoin from './components/Competition/TeamRegister/TeamAgreeProcessJoin'
+
 
 
 
@@ -98,7 +102,7 @@ const MakeRouter = () => {
   return (
     <Switch>
       <AuthProvider>
-      <Route exact path="/eplatform/:username/trade/pro" component={StockPriceGraphProfessional} />
+      <Route exact path="/trade/pro" component={StockPriceGraphProfessional} />
       {/* <Route exact path="/eplatform/:username/trade" component={StockTrade} /> */}
       <Route exact path="/register" component={LoginMainLayout} />
       <Route exact path="/login" component={LoginMainLayout} />
@@ -143,10 +147,10 @@ const MakeRouter = () => {
     <Route exact path="/leadingIndustry" component={LeadingIndustry}/>
     <Route exact path="/leadingIndustry/allIndustry" component={AllIndustry}/>  */}
 
-	  
-	  
-	  
-	  
+     <Route exact path="/team/register" component={TeamEntry}/>
+     <Route exact path="/team/create" component={TeamAgreeProcessCreate}/>
+     <Route exact path="/team/join" component={TeamAgreeProcessJoin}/>
+
       </AuthProvider>
     </Switch>
   );

@@ -25,11 +25,6 @@ export default function UserPortfolio(props) {
         </div>
         <div style={{width:"auto",maxWidth:"18.75%",backgroundColor:"blue"}}></div>
         </div>
-
-
-
-
-
         <div  style={{marginTop:0,width:"100%",minHeight:"500px",display:"flex",justifyContent:"space-between"}}>
             <div style={{width:"auto",minHeight:"500px",maxWidth:"18.75%",backgroundColor:"blue"}}></div>
 
@@ -43,7 +38,7 @@ export default function UserPortfolio(props) {
             </div>
 
             <div style={{width:"30%"}}>
-                <WatchList heightratio = {0.63} />
+                <WatchList heightratio = {0.63} searchwidth={1200 * 0.3} />
             </div>
 
         </div>

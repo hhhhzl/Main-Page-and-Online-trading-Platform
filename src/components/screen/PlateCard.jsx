@@ -77,17 +77,17 @@ export default function PlateCard({dataSource, heightProp,stockData,index}) {
       formatter: (value, row) => {
         return (
           <div>
-            {value < 0 ? (
+            {value > 0 ? (
               <>
                 <h6
                   className="stock-text"
                   style={{
                     fontFamily: "Futura-Medium, Futura",
                     fontWeight: "500",
-                    color: "#EC1421",
+                    color: "#EC1421", //红涨
                   }}
                 >
-                  +{value}
+                  +{value}%
                 </h6>
               </>
             ) : (
@@ -97,10 +97,10 @@ export default function PlateCard({dataSource, heightProp,stockData,index}) {
                   style={{
                     fontFamily: "Futura-Medium, Futura",
                     fontWeight: "500",
-                    color: "#16CE62",
+                    color: "#16CE62", //绿跌
                   }}
                 >
-                  -{value}
+                  {value}%
                 </h6>
               </>
             )}
@@ -114,14 +114,31 @@ export default function PlateCard({dataSource, heightProp,stockData,index}) {
     <div className="plate-card-container" style={{marginLeft:index == 0 ? '0px' : ''}}>
       <div className="plate-name-container">
         <div className="plate-name-text">{dataSource.板块名称}</div>
+        {dataSource.涨跌幅 > 0? 
+        <>
         <div
           className="plate-name-right"
           style={{
-            color: dataSource.换手率 > 0 ? "#EC1421" : "#16CE62",
+            color:"#EC1421",
           }}
         >
-          {dataSource.换手率}
+          +{dataSource.涨跌幅}%
         </div>
+
+        </> 
+        :
+        <>
+        <div
+          className="plate-name-right"
+          style={{
+            color:"#16CE62",
+          }}
+        >
+          {dataSource.涨跌幅}%
+        </div>
+        </>
+        }
+        
       </div>
 
       {/* 中线 */}
