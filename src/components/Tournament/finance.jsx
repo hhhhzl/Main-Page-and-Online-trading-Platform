@@ -40,7 +40,7 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 				<div style={{marginTop:"80px"}}>
 					<Image
 						src="/tournament/Group 797.png"
-						style={{width:" 100%",height:"183px"}}
+						style={{width:" 100%",height:"100%"}}
 					/>
 				</div>
 				<div style={{marginTop:"140px"}}>
@@ -64,7 +64,7 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 											marginTop:"-12px"
 										}}></div>
 										<div style={{
-											height: "72px",
+											height: "48px",
 											borderRight: "2px solid #f5f6f8",
 											width:"50%"
 										}}></div>
@@ -91,7 +91,7 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 									marginTop:"-12px"
 								}}></div>
 								<div style={{
-									height: "72px",
+									height: "48px",
 									borderRight: "2px solid #f5f6f8",
 									width:"50%"
 								}}></div>
