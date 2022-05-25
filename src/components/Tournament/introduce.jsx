@@ -31,7 +31,10 @@ export default function Introduce() {
       </div>
       {/* 比赛流程 */}
       <div className="match white-bg">
-        <div className="left">
+		<div style={{display:"flex"}}>
+		
+		
+		<div className="left">
           <div className="match-text">比赛流程</div>
           <div className="left-round">
             <div className="round">
@@ -93,14 +96,7 @@ export default function Introduce() {
               </div>
             </div>
           </div>
-		  
-		  <div style={{
-			  marginTop:"129px"
-		  }}>
-			<div className="match-bottom-details">详情请见</div>
-		  </div>
         </div>
-
         <div className="right">
           <div className="match-begin">
             <div className="right-line"></div>
@@ -180,13 +176,13 @@ export default function Introduce() {
               </div>
             </div>
           </div>
-		  <div style={{
-			  marginTop:"70.4px"
-		  }}>
-			<div className="match-bottom-rules">赛事规则</div>
-		  </div>
         </div>
-      </div>
+		</div>
+		<div className="match-bottom-wrapper">
+			<span className="match-bottom-details">详情请见</span>
+			<span className="match-bottom-rules">赛事规则</span>
+		</div>
+	  </div>
 
       {/* 比赛奖项 */}
 
@@ -295,7 +291,7 @@ export default function Introduce() {
           <div className="other-awards">
             <Image
               src="/tournament/Group 208.png"
-              style={{ width: "86.667%", height: "100%" }}
+              style={{ width: "86.667%%", height: "100%" }}
             />
           </div>
 

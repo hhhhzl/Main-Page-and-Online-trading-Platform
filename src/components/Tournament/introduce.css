@@ -43,6 +43,14 @@
   margin: 0px 18.75%;
   /* padding-bottom: 120px; */
   display: flex;
+  flex-direction: column;
+}
+
+.match-bottom-wrapper{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 120px;
 }
 
 
@@ -176,6 +184,7 @@ height: 32px; */
 	color: #2A2B30;
 	line-height: 28px;
 	text-align: end;
+	letter-spacing:2px;
 }
 
 .match-bottom-rules{
@@ -184,6 +193,7 @@ height: 32px; */
 	font-weight: 400;
 	color: #1442ED;
 	line-height: 28px;
+	letter-spacing:2px;
 }
 
 .bg {
