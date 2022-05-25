@@ -169,6 +169,23 @@ height: 32px; */
   letter-spacing: 1px;
 }
 
+.match-bottom-details {
+	font-size: 16px;
+	font-family: Songti SC-Regular, Songti SC;
+	font-weight: 400;
+	color: #2A2B30;
+	line-height: 28px;
+	text-align: end;
+}
+
+.match-bottom-rules{
+	font-size: 16px;
+	font-family: Songti SC-Regular, Songti SC;
+	font-weight: 400;
+	color: #1442ED;
+	line-height: 28px;
+}
+
 .bg {
   background-color: #E5E8EE;
 }
@@ -240,6 +257,8 @@ height: 32px; */
   height: max-content;
 }
 
+
+
 .awards-card-container-small{
 	flex: 0.9;
 	margin-top: 60px;
@@ -270,6 +289,8 @@ height: 32px; */
   line-height: 28px;
   letter-spacing: 1px;
 }
+
+
 
 .awards-pic {
   margin-top: 35px;
@@ -525,3 +546,5 @@ height: 32px; */
     font-size: 18px;
   }
 }
+
+

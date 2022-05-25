@@ -93,6 +93,12 @@ export default function Introduce() {
               </div>
             </div>
           </div>
+		  
+		  <div style={{
+			  marginTop:"129px"
+		  }}>
+			<div className="match-bottom-details">详情请见</div>
+		  </div>
         </div>
 
         <div className="right">
@@ -174,6 +180,11 @@ export default function Introduce() {
               </div>
             </div>
           </div>
+		  <div style={{
+			  marginTop:"70.4px"
+		  }}>
+			<div className="match-bottom-rules">赛事规则</div>
+		  </div>
         </div>
       </div>
 
@@ -284,14 +295,13 @@ export default function Introduce() {
           <div className="other-awards">
             <Image
               src="/tournament/Group 208.png"
-              style={{ width: "87%", height: "100%" }}
+              style={{ width: "86.667%", height: "100%" }}
             />
           </div>
 
           <div className="awards-card-wrapper" style={{marginTop: "60px",justifyContent:"center"}}>
             <div
-              className="awards-card-container"
-              style={{ margin: "0px 60px" }}
+			  className= {width < 559 ? "awards-card-container-small":"awards-card-container"}
             >
               <div className="awards-card">
                 <div className="ranking awards-center">模范经纪人</div>

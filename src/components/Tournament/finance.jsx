@@ -132,8 +132,7 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 				
 				<div className="awards-card-wrapper" style={{marginTop:"80px",justifyContent: "center"}}>
 				  <div
-				    className="awards-card-container"
-				    style={{ margin: "0px 60px" }}
+					className= {width < 559 ? "awards-card-container-small":"awards-card-container"}
 				  >
 				    <div className="awards-card">
 				      <div className="ranking awards-center">模范经纪人</div>

@@ -48,7 +48,7 @@ const Rules = () => {
 				</div>
 				<div className="rules-top-20">
 					<div className="rules-title-two">六、操作平台：</div>
-					<div className="rules-centent">赛事报名成功后，个人/团队参赛者将在“交易平台”获得一份赛事账户，所有操作均在“交易平台”完成。</div>
+					<div className="rules-centent">赛事报名成功后，个人/团队参赛者将在“交易平台”获得一份赛事账户，所有操作均在“ <span style={{color: "blue"}}>交易平台</span>”完成。</div>
 				</div>
 			</div>
 			<div className="rules-p-two">
