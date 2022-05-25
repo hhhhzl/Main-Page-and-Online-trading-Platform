@@ -46,12 +46,12 @@ import RankingPang from './components/Competition/RankingPang'
 import InvestNotes from './components/Competition/InvestNotes/InvestNotes'
 import StockSelectionDeviceList from './components/screen/StockSelectionDeviceList'
 import StockSelectionDevice from './components/screen/StockSelectionDevice'
-import CommitRecord from './components/Competition/InvestNotes/CommitRecord'
 
 
 
 import LeadingIndustry from './components/screen/LeadingIndustry'
 import AllIndustry from './components/screen/AllIndustry'
+import GoodToShare from './components/Competition/InvestNotes/GoodToShare';
 
 
 
@@ -121,17 +121,15 @@ const MakeRouter = () => {
 
       <Route exact path="/home" component={MainPage} /> 
       <Route exact path="/" component={MainPage} /> 
-	  <Route exact path="/commitRecord" component={CommitRecord}></Route>
 
 
-      <Route exact path="/tournament" component={Tournament} />
+
+
 
        {/* <PrivateRoute exact path="/stocks" component={UserStocks} />
       <PrivateRoute exact path="/market" component={UserMarket} />
       <PrivateRoute exact path="/competition" component={null} />
-
-
-      
+      <Route exact path="/tournament" component={Tournament} />
 	  
       
 	  <Route exact path="/editData" component={EditData}/>
@@ -142,11 +140,9 @@ const MakeRouter = () => {
 	  <Route exact path="/rankingPang" component={RankingPang}/>
 	  <Route exact path="/stockSelectionDeviceList" component={StockSelectionDeviceList}/>
 	  <Route exact path="/stockSelectionDevice" component={StockSelectionDevice}/>
-
-
-
     <Route exact path="/leadingIndustry" component={LeadingIndustry}/>
     <Route exact path="/leadingIndustry/allIndustry" component={AllIndustry}/>  */}
+
 	  
 	  
 	  
