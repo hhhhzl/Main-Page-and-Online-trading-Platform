@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import { Modal, Button, Card, Image } from "react-bootstrap";
-import PorforlioMoveGraph from "../../screen/PortforlioMoveGraph";
+import PorforlioMoveGraph from "../PortforlioMoveGraph";
 import './competition.css'
 
 export default function TeamModelIntro({show, handleClose}) {

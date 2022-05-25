@@ -11,7 +11,7 @@ import AreaTableForWatchListBlue from '../graphs/AreaTableForWatchListBlue';
 import PorforlioMoveGraph from "../screen/PortforlioMoveGraph";
 import LineSeriesForPorfolio from "../graphs/LineSeriesForPorfolio";
 import LineSeriesPorfolioRanking from "../graphs/LineSeriesPorfolioRank";
-import TeamModelIntro from "./team/teamModelIntro";
+import TeamModelIntro from "../screen/modal/teamModelIntro";
 
 export default function RankingPang(){
 	const [current, setCurrent] = useState(0);
