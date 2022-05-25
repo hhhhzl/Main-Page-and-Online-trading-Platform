@@ -51,6 +51,7 @@ import StockSelectionDevice from './components/screen/StockSelectionDevice'
 
 import LeadingIndustry from './components/screen/LeadingIndustry'
 import AllIndustry from './components/screen/AllIndustry'
+import GoodToShare from './components/Competition/InvestNotes/GoodToShare';
 
 
 
@@ -141,6 +142,7 @@ const MakeRouter = () => {
 	  <Route exact path="/stockSelectionDevice" component={StockSelectionDevice}/>
     <Route exact path="/leadingIndustry" component={LeadingIndustry}/>
     <Route exact path="/leadingIndustry/allIndustry" component={AllIndustry}/>  */}
+
 	  
 	  
 	  
