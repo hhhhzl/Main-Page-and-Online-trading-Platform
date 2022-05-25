@@ -40,11 +40,16 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 				<div style={{marginTop:"80px"}}>
 					<Image
 						src="/tournament/Group 797.png"
-						style={{width:" 100%",height:"20%"}}
+						style={{width:" 100%",height:"183px"}}
 					/>
 				</div>
 				<div style={{marginTop:"140px"}}>
-					<div style={{display: "flex",justifyContent:"center"}}>
+					<div 
+						style={{
+							display: "flex",
+							justifyContent:"center",
+							flexDirection:width < 791 ?"column":"inherit"
+						}}>
 						<div className="finance-date-div-first">
 							<div className="finance-title-span-first">周一</div>
 							<div className="finance-title-span-two">第一周</div>
@@ -69,7 +74,11 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 								<div className="finance-title-imgage-div-two">选手撰写独立分析</div>
 							</div>
 						</div>
-						<div className="finance-date-div-first">
+						<div className="finance-date-div-first"
+							style={{
+								marginTop:width < 791 ?"20px":"0"
+							}}
+						>
 							<div className="finance-title-span-first">周日</div>
 							<div className="finance-title-span-two">第二周</div>
 							<div className="finance-title-imgage">
@@ -121,7 +130,7 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 					<div className="finance-bottom-text" style={{paddingTop:"20px"}}>同时，UFA每周会将优秀选手向多个金融机构进行推荐。</div>
 				</div>
 				
-				<div className="awards-card-wrapper">
+				<div className="awards-card-wrapper" style={{marginTop:"80px",justifyContent: "center"}}>
 				  <div
 				    className="awards-card-container"
 				    style={{ margin: "0px 60px" }}

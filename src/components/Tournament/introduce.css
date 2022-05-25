@@ -225,20 +225,33 @@ height: 32px; */
 }
 
 .awards-card-wrapper {
-  margin-top: 80px;
+  margin-top: 20px;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .awards-card-container {
-  width: 30%;
-  /* height: 480px; */
+  flex: 0 0 30%;
+  margin-top: 60px;
   background: #FFFFFF;
   box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02);
   border-radius: 0px 0px 0px 0px;
   opacity: 1;
   height: max-content;
 }
+
+.awards-card-container-small{
+	flex: 0.9;
+	margin-top: 60px;
+	background: #FFFFFF;
+	box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02);
+	border-radius: 0px 0px 0px 0px;
+	opacity: 1;
+	height: max-content;
+}
+
+
+
 
 
 .awards-card {
