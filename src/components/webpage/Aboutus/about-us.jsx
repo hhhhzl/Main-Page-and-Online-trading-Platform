@@ -540,7 +540,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               src="/homeCutout/Group 58.png"
               style={{ width: width-10, height: "79px" }}
             /></>  }
-              
+
             </div>
 
             {width > 1100 ? (
@@ -571,12 +571,16 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                         />
                       </div>
                       <div
-                        style={{
-                          width: "600px",
-                          height: "480px",
-                          border: "1px solid #3C5E78",
-                        }}
-                      ></div>
+                        >
+                      <Image
+                          src="/组 50(3).png"
+                          style={{
+                            width: "600px",
+                            height: "480px",
+                            border: "1px solid #3C5E78",
+                          }}
+                      />
+                      </div>
                       <div className="image-right-icon-bottom">
                         <Image
                           src="/homeCutout/Group 25.png"

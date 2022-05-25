@@ -122,7 +122,7 @@ export default function StockSelectionDevice(){
 										marginTop: "20px"
 									}}
 								>
-									<Slider min={0} marks={marks} step={0} range allowCross={false} defaultValue={[10, 20]} />
+									<Slider min={0} marks={marks} step={0} range allowCross={false} defaultValue={[10, 20]}/>
 								</Form.Group>
 								<Form.Group style={{paddingTop:"36px"}}>
 									<Form.Label className="stock-selection-device-title stock-selection-device-label">财务指标</Form.Label>

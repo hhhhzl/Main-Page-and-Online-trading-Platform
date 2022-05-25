@@ -9,7 +9,7 @@ import StockShowBar from '../../../screen/StockShowBar';
 import GraphTemplate from '../../../screen/GraphTemplate';
 import WatchList from '../../../screen/WatchList';
 import StockPriceGraphSimplify from '../../../screen/StockPriceGraphSimplify';
-import TeamModelIntro from '../../../Competition/team/teamModelIntro';
+import TeamModelIntro from '../../../screen/modal/teamModelIntro';
 import MarketOverview from '../../../screen/MarketOverView';
 import StockPriceGraphProfessional from '../../../screen/StockPriceGraphProfessional';
 

@@ -8,7 +8,7 @@ import WatchList from "../../../screen/WatchList";
 import PendingOrder from "../../../screen/PendingOrder";
 import KeyIndicators from "../../../screen/KeyIndicatorSimple";
 import RankingPang from "../../../Competition/RankingPang";
-import TeamModelIntro from "../../../Competition/team/teamModelIntro";
+import TeamModelIntro from "../../../screen/modal/teamModelIntro";
 
 export default function Ranking(props) {
   const { width, height } = useWindowDimensions();

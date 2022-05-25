@@ -72,7 +72,7 @@ const Rules = () => {
 			<div className="rules-p-two">
 				<div className="rules-title">评判规则</div>
 			</div>
-			<div className="rules-p-two" style={{display:"flex"}}>
+			<div className="rules-p-two" style={{display:"flex",flexWrap: "wrap",marginBottom:"120px"}}>
 				<div style={{flex:"1"}}>
 					<div style={{textAlign:"center"}}>
 						<div className="judge-rules-title">初赛</div>
@@ -96,21 +96,17 @@ const Rules = () => {
 						</div>
 						<div className="judge-rules-content" style={{marginLeft: "6px",width: "300px"}}>初赛将围绕“收益率”及“夏普指数”进行加权打分</div>
 					</div>
-					<div>
-						<div 
-							className="show-details"
-							onMouseEnter={() => changeCurrent(1)}
-							onMouseLeave={() => changeCurrent(0)}>展示详情</div>
-						<div style={{
-							width:"381px",
-							background: "#FFFFFF",
-							position: "absolute",
-							margin: "-236px 0 0 -41px",
-							display:current==1?"flex":"none"
-						}}>
-							<Image src="/tournament/Group 771.png" style={{padding: "36px 48px"}}></Image>
-						</div>
-						
+					<div 
+						className="show-details"
+						onMouseEnter={() => changeCurrent(1)}
+						onMouseLeave={() => changeCurrent(0)}>展示详情</div>
+					<div style={{
+						width:"381px",
+						background: "#FFFFFF",
+						position: "absolute",
+						display:current==1?"flex":"none"
+					}}>
+						<Image src="/tournament/Group 771.png" style={{padding: "36px 48px"}}></Image>
 					</div>
 					
 				</div>
@@ -139,27 +135,24 @@ const Rules = () => {
 						<div className="judge-rules-content" style={{marginLeft: "6px",width: "300px"}}>UFA评委将结合指标分数以及投资报告质量选出15名决赛入围选手。</div>
 					</div>
 					<div className="annotations">*投资报告的具体框架将在初赛结束时公布。</div>
-					<div>
-						<div 
-							className="show-details"
-							onMouseEnter={() => changeCurrent(2)}
-							onMouseLeave={() => changeCurrent(0)}>展示详情</div>
-						<div
-							style={{
-								width: "381px",
-								background: "#FFFFFF",
-								margin: "-232px 0 0 -30px",
-								position: "absolute",
-								display:current==2?"flex":"none",
-								flexDirection:"column"
-							}}
-						>
-							<div style={{padding: "36px 48px 12px 48px"}}>
-								<span className="pop-up-text">量化投资赛道：</span>评委将结合选手的因子挖掘、选股策略以及综合知识储备三个维度对投资 报告进行评分。
-							</div>
-							<div style={{padding: "0 48px 36px 48px"}}>
-								<span className="pop-up-text">主观多头赛道：</span>评委将结合选手的研究能力、投资管理能力以及综合知识储备三个维度对 投资报告进行评分。
-							</div>
+					<div 
+						className="show-details"
+						onMouseEnter={() => changeCurrent(2)}
+						onMouseLeave={() => changeCurrent(0)}>展示详情</div>
+					<div
+						style={{
+							width: "381px",
+							background: "#FFFFFF",
+							position: "absolute",
+							display:current==2?"flex":"none",
+							flexDirection:"column"
+						}}
+					>
+						<div style={{padding: "36px 48px 12px 48px"}}>
+							<span className="pop-up-text">量化投资赛道：</span>评委将结合选手的因子挖掘、选股策略以及综合知识储备三个维度对投资 报告进行评分。
+						</div>
+						<div style={{padding: "0 48px 36px 48px"}}>
+							<span className="pop-up-text">主观多头赛道：</span>评委将结合选手的研究能力、投资管理能力以及综合知识储备三个维度对 投资报告进行评分。
 						</div>
 					</div>
 				</div>
@@ -194,28 +187,25 @@ const Rules = () => {
 						<div className="judge-rules-content" style={{marginLeft: "6px",width: "300px"}}>最终排名将基于初赛指标分数（40%）+ 决赛分数（60%）。</div>
 					</div>
 					<div className="annotations">*PPT的展示具体框架将在决赛前夕公布</div>
-					<div>
-						<div 
-							className="show-details"
-							onMouseEnter={() => changeCurrent(3)}
-							onMouseLeave={() => changeCurrent(0)}>展示详情
+					<div 
+						className="show-details"
+						onMouseEnter={() => changeCurrent(3)}
+						onMouseLeave={() => changeCurrent(0)}>展示详情
+					</div>
+					<div
+						style={{
+							width: "381px",
+							background: "#FFFFFF",
+							position: "absolute",
+							display:current==3?"flex":"none",
+							flexDirection:"column"
+						}}
+					>
+						<div style={{padding: "36px 48px 12px 48px"}}>
+							<span className="pop-up-text">量化投资赛道：</span>评委将结合选手的因子挖掘、选股策略以及综合知识储备三个维度对投资 报告进行评分。
 						</div>
-						<div
-							style={{
-								width: "381px",
-								background: "#FFFFFF",
-								margin: "-232px 0 0 -30px",
-								position: "absolute",
-								display:current==3?"flex":"none",
-								flexDirection:"column"
-							}}
-						>
-							<div style={{padding: "36px 48px 12px 48px"}}>
-								<span className="pop-up-text">量化投资赛道：</span>评委将结合选手的因子挖掘、选股策略以及综合知识储备三个维度对投资 报告进行评分。
-							</div>
-							<div style={{padding: "0 48px 36px 48px"}}>
-								<span className="pop-up-text">主观多头赛道：</span>评委将结合选手的研究能力、投资管理能力以及综合知识储备三个维度对 投资报告进行评分。
-							</div>
+						<div style={{padding: "0 48px 36px 48px"}}>
+							<span className="pop-up-text">主观多头赛道：</span>评委将结合选手的研究能力、投资管理能力以及综合知识储备三个维度对 投资报告进行评分。
 						</div>
 					</div>
 				</div>

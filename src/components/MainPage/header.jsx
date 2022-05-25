@@ -28,7 +28,7 @@ const HeaderCreate = ({ toggle }) => {
   const [box, setbox] = useState(height * 0.09);
   const [current, setCurrent] = useState(1);
 
-  const [hover, setHover] = useState(false);
+  // const [hover, setHover] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -39,8 +39,8 @@ const HeaderCreate = ({ toggle }) => {
   const handleCloseTransaction = () => setShowTransaction(false);
   const handleShowTransaction = () => setShowTransaction(true);
 
-  const handleMouseOver = () => setHover(true);
-  const handleMouseLeave = () => setHover(false);
+  // const handleMouseOver = () => setHover(true);
+  // const handleMouseLeave = () => setHover(false);
 
   const changeCurrent = (item) => {
     
@@ -80,8 +80,8 @@ const HeaderCreate = ({ toggle }) => {
       <HeaderOut
         style={{width:width}}
         scrolledDownEnough={scrolledDownEnough}
-        onMouseOver={handleMouseOver}
-        onMouseLeave={handleMouseLeave}
+        // onMouseOver={handleMouseOver}
+        // onMouseLeave={handleMouseLeave}
       >
         <HeaderContianer>        
           <div
@@ -90,7 +90,7 @@ const HeaderCreate = ({ toggle }) => {
           >
             <Image
               src={
-                scrolledDownEnough || hover
+                scrolledDownEnough 
                   ? "/homeCutout/UFA-LOGO-RED.png"
                   : "/UFA-LOGO.png"
               }
@@ -113,20 +113,18 @@ const HeaderCreate = ({ toggle }) => {
 
 
           <HeaderMenu>
-            <HeaderItem>
+            <HeaderItem onMouseLeave={handleCloseUFA}>
               <HeaderBtnLink
                 style={{
                   borderBottom:
                     current != 1
                       ? "none"
-                      : hover || scrolledDownEnough
+                      : scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
                   color: scrolledDownEnough && current != 1
                     ? "#2A2B30"
-                    : hover && current == 1
-                    ? "#1442ED"
-                    : hover && current != 1 && !scrolledDownEnough
+                    : current != 1 && !scrolledDownEnough
                     ? "#2A2B30"
                     : scrolledDownEnough && current == 1 ? "#1442ED" : "#FFFFFF",
                 }}
@@ -143,6 +141,7 @@ const HeaderCreate = ({ toggle }) => {
                 smooth={true}
                 duration={700}
                 onMouseEnter={handleShowUFA}
+                
                 onClick={() => changeCurrent(1)}
               >
                 UFA介绍
@@ -150,7 +149,7 @@ const HeaderCreate = ({ toggle }) => {
               <div
                 className="header-menu"
                 style={{ display: showUFA && current == 1 ? "flex" : "none" }}
-                onMouseEnter={handleMouseLeave}
+                // onMouseEnter={handleMouseLeave}
                 onMouseLeave={handleCloseUFA}
               >
                 <MenuItemLinks
@@ -202,15 +201,13 @@ const HeaderCreate = ({ toggle }) => {
                   borderBottom:
                     current != 2
                       ? "none"
-                      : hover || scrolledDownEnough
+                      :  scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
                   color: scrolledDownEnough && current != 2
                     ? "#2A2B30"
-                    : hover && current == 2
+                    : current == 2
                     ? "#1442ED"
-                    : hover && current != 2 && !scrolledDownEnough
-                    ? "#2A2B30"
                     : scrolledDownEnough && current == 2 ? "#1442ED" : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
@@ -233,15 +230,13 @@ const HeaderCreate = ({ toggle }) => {
                   borderBottom:
                     current != 3
                       ? "none"
-                      : hover || scrolledDownEnough
+                      : scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
                   color: scrolledDownEnough && current != 3
                     ? "#2A2B30"
-                    : hover && current == 3
+                    : current == 3
                     ? "#1442ED"
-                    : hover && current != 3 && !scrolledDownEnough
-                    ? "#2A2B30"
                     : scrolledDownEnough && current == 3 ? "#1442ED" : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
@@ -259,21 +254,19 @@ const HeaderCreate = ({ toggle }) => {
                 赛事介绍
               </HeaderBtnLink>
             </HeaderItem>
-            <HeaderItem>
+            <HeaderItem onMouseLeave={handleCloseTransaction}>
               <HeaderBtnLink
                 style={{
                   borderBottom:
                     current != 4
                       ? "none"
-                      : hover || scrolledDownEnough
+                      : scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
                   color: scrolledDownEnough && current != 4
                     ? "#2A2B30"
-                    : hover && current == 4
+                    : current == 4
                     ? "#1442ED"
-                    : hover && current != 4 && !scrolledDownEnough
-                    ? "#2A2B30"
                     : scrolledDownEnough && current == 4 ? "#1442ED" : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
@@ -294,7 +287,7 @@ const HeaderCreate = ({ toggle }) => {
               <div
                 className="header-menu"
                 style={{ display: showTransaction ? "flex" : "none" }}
-                onMouseEnter={handleMouseLeave}
+                // onMouseEnter={handleMouseLeave}
                 onMouseLeave={handleCloseTransaction}
               >
                 <MenuItemLinks className="menu-item">个人账户</MenuItemLinks>
@@ -307,7 +300,7 @@ const HeaderCreate = ({ toggle }) => {
             <HeaderItem>
               <HeaderBtnLink
                 style={{
-                  color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                  color:scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -327,13 +320,13 @@ const HeaderCreate = ({ toggle }) => {
                   variant="primary"
                   style={{
                     background:
-                      hover || scrolledDownEnough
+                     scrolledDownEnough
                         ? "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)"
                         : "#FFFFFF",
                     border: "none",
                     boxShadow:
                       "0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)",
-                    color: hover || scrolledDownEnough ? "#FFFFFF" : "#2A2B30",
+                    color: scrolledDownEnough ? "#FFFFFF" : "#2A2B30",
                     fontFamily: "PingFang SC-Medium, PingFang SC",
                     letterSpacing: "3px",
                     paddingBottom: "0",
