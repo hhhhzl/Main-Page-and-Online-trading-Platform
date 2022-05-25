@@ -190,3 +190,7 @@
 	color: #6E7184;
 	line-height: 24px;
 }
+
+.rc-slider-track {
+    background-color: #1442ED !important;
+}
