@@ -63,6 +63,7 @@
 	font-weight: 400;
 	color: #9C9EAC;
 	line-height: 19px;
+	margin-top: 2px;
 }
 
 .judge-rules-subtitle {
@@ -103,7 +104,7 @@
 	flex: 1 1; 
 	background: #E5E8EE;
 	height: 1px;
-	width: 413.794%;
+	/* width: 413.794%; */
 }
 
 .vertical-line {
@@ -118,4 +119,9 @@
 	font-weight: bold;
 	color: #2A2B30;
 	line-height: 28px;
+}
+
+.judge-rules-li {
+	display: flex;
+	justify-content: center;
 }

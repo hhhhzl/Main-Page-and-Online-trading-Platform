@@ -73,7 +73,7 @@ const Rules = () => {
 				<div className="rules-title">评判规则</div>
 			</div>
 			<div className="rules-p-two" style={{display:"flex"}}>
-				<div style={{width: "24.167%"}}>
+				<div style={{flex:"1"}}>
 					<div style={{textAlign:"center"}}>
 						<div className="judge-rules-title">初赛</div>
 						<div className="judge-rules-time">2022年6月20日</div>
@@ -84,13 +84,13 @@ const Rules = () => {
 						</div>
 						<div className="judge-rules-subtitle" style={{marginTop:"16px"}}>指标分数</div>
 					</div>
-					<div style={{display: "flex",marginTop:"14px"}}>
+					<div className="judge-rules-li" style={{marginTop:"14px"}}>
 						<div>
 							<Image src="/tournament/Ellipse 11.png"></Image>
 						</div>
 						<div className="judge-rules-content" style={{marginLeft:"6px",width: "300px"}}>初赛将围绕“收益率”及“夏普指数”进行加权打分</div>
 					</div>
-					<div style={{display: "flex",marginTop:"12px"}}>
+					<div className="judge-rules-li" style={{marginTop:"12px"}}>
 						<div>
 							<Image src="/tournament/Ellipse 11.png"></Image>
 						</div>
@@ -115,23 +115,24 @@ const Rules = () => {
 					
 				</div>
 				
-				<div style={{width: "24.167%",marginLeft: "165px"}}>
+				<div style={{flex:"1"}}>
 					<div style={{textAlign:"center"}}>
 						<div className="judge-rules-title">复赛</div>
 						<div className="judge-rules-time">2020年9月2日</div>
 						<div style={{marginTop:"16px"}}>
 							<Image src="/tournament/Group 142.png"></Image>
+							<div className="horizontal-line"></div>
 							<div className="vertical-line"></div>
 						</div>
 						<div className="judge-rules-subtitle" style={{marginTop:"16px"}}>主观报告筛选</div>
 					</div>
-					<div style={{display: "flex",marginTop:"14px"}}>
+					<div className="judge-rules-li" style={{marginTop:"14px"}}>
 						<div>
 							<Image src="/tournament/Ellipse 11.png"></Image>
 						</div>
 						<div className="judge-rules-content" style={{marginLeft:"6px",width: "300px"}}>指标分数排名前100名的选手入围第二轮主观筛选，并提交一份概略的投资报告。</div>
 					</div>
-					<div style={{display: "flex",marginTop:"12px"}}>
+					<div className="judge-rules-li" style={{marginTop:"12px"}}>
 						<div>
 							<Image src="/tournament/Ellipse 11.png"></Image>
 						</div>
@@ -163,29 +164,30 @@ const Rules = () => {
 					</div>
 				</div>
 				
-				<div style={{width: "24.167%",marginLeft: "165px"}}>
+				<div style={{flex:"1"}}>
 					<div style={{textAlign:"center"}}>
 						<div className="judge-rules-title">决赛</div>
 						<div className="judge-rules-time">2020年9月24日</div>
 						<div style={{marginTop:"16px"}}>
 							<Image src="/tournament/Group 142.png"></Image>
+							<div className="horizontal-line"></div>
 							<div className="vertical-line"></div>
 						</div>
 						<div className="judge-rules-subtitle" style={{marginTop:"16px"}}>PPT线上展示</div>
 					</div>
-					<div style={{display: "flex",marginTop:"14px"}}>
+					<div className="judge-rules-li" style={{marginTop:"14px"}}>
 						<div>
 							<Image src="/tournament/Ellipse 11.png"></Image>
 						</div>
 						<div className="judge-rules-content" style={{marginLeft:"6px",width: "300px"}}>决赛入围选手/团队将于9月17日进行10分钟PPT线上展示，以及5分钟的评委互动环节。</div>
 					</div>
-					<div style={{display: "flex",marginTop:"12px"}}>
+					<div className="judge-rules-li" style={{marginTop:"12px"}}>
 						<div>
 							<Image src="/tournament/Ellipse 11.png"></Image>
 						</div>
 						<div className="judge-rules-content" style={{marginLeft: "6px",width: "300px"}}>评委将结合选手的专业能力以及综合能力进行评分，给予决赛分数。</div>
 					</div>
-					<div style={{display: "flex",marginTop:"12px"}}>
+					<div className="judge-rules-li" style={{marginTop:"12px"}}>
 						<div>
 							<Image src="/tournament/Ellipse 11.png"></Image>
 						</div>
@@ -196,7 +198,8 @@ const Rules = () => {
 						<div 
 							className="show-details"
 							onMouseEnter={() => changeCurrent(3)}
-							onMouseLeave={() => changeCurrent(0)}>展示详情</div>
+							onMouseLeave={() => changeCurrent(0)}>展示详情
+						</div>
 						<div
 							style={{
 								width: "381px",
