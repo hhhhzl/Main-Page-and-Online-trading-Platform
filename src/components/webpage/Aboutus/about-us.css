@@ -233,10 +233,16 @@
   width: 61.8%;
   height: max-content;
   text-justify: distribute-all-lines;
-  position: absolute;
-  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.about-center {
+  position: relative;
+  width: 74.4%;
+  height: max-content;
+  margin-top: 134px;
+  align-items: center;
 }
 
 .bottom-cover-picture {
@@ -316,13 +322,6 @@
   align-items: center;
 }
 
-.about-center {
-  position: relative;
-  width: 74.4%;
-  height: max-content;
-  margin-top: 134px;
-  align-items: center;
-}
 
 .title {
   text-align: center;
@@ -340,7 +339,11 @@
     margin-left: 7.5%;
     height: min-content;
   }
-
+  .image-left-icon-bottom{
+    position: absolute;
+    bottom: -60px;
+    left: -23px;
+  }
 }
 
 @media screen and (max-width: 1350px) {
@@ -503,7 +506,7 @@
 
   .introduction-box {
     align-items: center;
-    width: 240px;
+    width: 300px;
     height: 320px;
     transform: translate(0%, 0%);
     z-index: 2;
