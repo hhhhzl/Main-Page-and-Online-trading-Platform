@@ -44,11 +44,11 @@ const Rules = () => {
 				</div>
 				<div className="rules-top-20">
 					<div className="rules-title-two">五、报名赛事：</div>
-					<div className="rules-centent">详情见上方“ <span style={{color: "blue"}}>如何报名</span> ”。 </div>
+					<div className="rules-centent">详情见上方“ <span style={{color: "blue",cursor: "pointer"}}>如何报名</span> ”。 </div>
 				</div>
 				<div className="rules-top-20">
 					<div className="rules-title-two">六、操作平台：</div>
-					<div className="rules-centent">赛事报名成功后，个人/团队参赛者将在“交易平台”获得一份赛事账户，所有操作均在“ <span style={{color: "blue"}}>交易平台</span>”完成。</div>
+					<div className="rules-centent">赛事报名成功后，个人/团队参赛者将在“交易平台”获得一份赛事账户，所有操作均在“ <span style={{color: "blue",cursor: "pointer"}}>交易平台</span>”完成。</div>
 				</div>
 			</div>
 			<div className="rules-p-two">
@@ -80,13 +80,16 @@ const Rules = () => {
 				<div className="rules-title">财经洞悉</div>
 			</div>
 			<div className="rules-top-30">
-				<div className="rules-centent">参赛个人或团队需在赛事期间提交至少3份研报模块，未交满选手则无法获得初赛入围资格。注：研报模块质量不会被进行评分，且不影响综合分数。详情见上方“<span style={{color: "blue"}}>财经洞悉</span>”。</div>
+				<div className="rules-centent">参赛个人或团队需在赛事期间提交至少3份研报模块，未交满选手则无法获得初赛入围资格。注：研报模块质量不会被进行评分，且不影响综合分数。详情见上方“<span style={{color: "blue",cursor: "pointer"}}>财经洞悉</span>”。</div>
 			</div>
 			<div className="rules-p-two">
 				<div className="rules-title">评判规则</div>
 			</div>
 			<div className="rules-p-two" style={{marginBottom:"120px"}}>
-				<div style={{display:"flex",justifyContent:"space-between",flexWrap:"wrap"}}>
+				<div style={{
+					display:"flex",
+					justifyContent: width <=903 ?"center":"space-between",
+					flexWrap:"wrap"}}>
 					<div style={{
 						flex:width > 1400?"0 0 35%":"0 0 45%"
 					}}>
@@ -121,7 +124,7 @@ const Rules = () => {
 					<div
 					 style={{
 						 flex:width > 1400?"0 0 30%":"0 0 40%",
-						 marginTop:width<998?"15px":"0"
+						 marginTop:width<903?"50px":"0"
 					 }}
 					>
 						<div style={{textAlign:"center"}}>
@@ -161,7 +164,7 @@ const Rules = () => {
 					<div
 					 style={{
 						 flex:width > 1400?"0 0 35%":"0 0 45%",
-						 marginTop:width<998?"15px":"0"
+						 marginTop:width<903?"50px":"0"
 					 }}>
 						<div style={{textAlign:"center"}}>
 							<div className="judge-rules-title">决赛</div>
