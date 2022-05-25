@@ -212,7 +212,7 @@ const HeaderCreate = ({ toggle }) => {
                   color:
                     scrolledDownEnough && current != 2
                       ? "#2A2B30"
-                      : current == 2
+                      : current == 2 && scrolledDownEnough
                       ? "#1442ED"
                       : scrolledDownEnough && current == 2
                       ? "#1442ED"
@@ -277,7 +277,7 @@ const HeaderCreate = ({ toggle }) => {
                   color:
                     scrolledDownEnough && current != 4
                       ? "#2A2B30"
-                      : current == 4
+                      : current == 4 && scrolledDownEnough
                       ? "#1442ED"
                       : scrolledDownEnough && current == 4
                       ? "#1442ED"
