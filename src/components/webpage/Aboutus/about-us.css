@@ -449,6 +449,11 @@
 
 
 }
+@media screen and (max-width: 800px) {
+  .introduction-box {
+    margin-bottom: 30px;
+  }
+}
 
 @media screen and (max-width: 650px) {
   .video-container {
