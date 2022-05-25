@@ -7,7 +7,7 @@ const Footer = () => (
     <div>
       <br />
       <br />
-      <h6>Copyright © 2022 UFA. All Rights Reserved. 上海资菩渡科技有限公司 版权所有</h6>
+      <h6 className="footer-footer">Copyright © 2022 UFA. All Rights Reserved. 上海资菩渡科技有限公司 版权所有</h6>
     </div>
   </footer>
 );

@@ -102,6 +102,7 @@ export const HeaderLinks = styled(LinkS)`
    &.hover{
     color:#1442ED !important
     font-weight:bold !important
+    padding: 22px 19px;
 }
 &:active {
   font-weight: bold !important;
@@ -152,6 +153,6 @@ export const HeaderBtnLink = styled(LinkR)`
   &:hover {
     transition: all 0.2 ease-in-out;
     color: #ffffff;
-    font-weight:600
+    font-weight:bold;
   }
 `;

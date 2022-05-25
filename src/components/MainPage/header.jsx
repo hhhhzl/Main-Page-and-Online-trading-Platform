@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from "react";
+// import { browserHistory } from 'react-router';
 
 import {
   HeaderOut,
@@ -17,7 +18,6 @@ import useWindowDimensions from "../../utils/sizewindow";
 import Image from "react-bootstrap/Image";
 import "./header.css";
 import { MobileIcon } from "./NavbarElements";
-
 
 const HeaderCreate = ({ toggle }) => {
   const { width, height } = useWindowDimensions();
@@ -43,8 +43,9 @@ const HeaderCreate = ({ toggle }) => {
   // const handleMouseLeave = () => setHover(false);
 
   const changeCurrent = (item) => {
-    
+    console.log(item)
     setCurrent(item);
+    console.log(current)
   };
 
   // const handleMouseLeave = () => {
@@ -78,19 +79,19 @@ const HeaderCreate = ({ toggle }) => {
         </Modal>
       </div>
       <HeaderOut
-        style={{width:width}}
+        style={{ width: width }}
         scrolledDownEnough={scrolledDownEnough}
         // onMouseOver={handleMouseOver}
         // onMouseLeave={handleMouseLeave}
       >
-        <HeaderContianer>        
+        <HeaderContianer>
           <div
             className="image-icon"
             style={{ height: "64px", width: "64px", top: 0 }}
           >
             <Image
               src={
-                scrolledDownEnough 
+                scrolledDownEnough
                   ? "/homeCutout/UFA-LOGO-RED.png"
                   : "/UFA-LOGO.png"
               }
@@ -100,7 +101,10 @@ const HeaderCreate = ({ toggle }) => {
           {scrolledDownEnough ? (
             <>
               <MobileIcon onClick={() => toggle()}>
-                <ViewHeadlineTwoTone style={{color:"black"}} fontSize="large" />
+                <ViewHeadlineTwoTone
+                  style={{ color: "black" }}
+                  fontSize="large"
+                />
               </MobileIcon>
             </>
           ) : (
@@ -111,9 +115,8 @@ const HeaderCreate = ({ toggle }) => {
             </>
           )}
 
-
           <HeaderMenu>
-            <HeaderItem onMouseLeave={handleCloseUFA}>
+            <HeaderItem onMouseLeave={handleCloseUFA} style={{width:width > 900 ? "100px" : "92px"}}>
               <HeaderBtnLink
                 style={{
                   borderBottom:
@@ -122,11 +125,14 @@ const HeaderCreate = ({ toggle }) => {
                       : scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
-                  color: scrolledDownEnough && current != 1
-                    ? "#2A2B30"
-                    : current != 1 && !scrolledDownEnough
-                    ? "#2A2B30"
-                    : scrolledDownEnough && current == 1 ? "#1442ED" : "#FFFFFF",
+                  color:
+                    scrolledDownEnough && current != 1
+                      ? "#2A2B30"
+                      : current != 1 && !scrolledDownEnough
+                      ? "#FFFFFF"
+                      : scrolledDownEnough && current == 1
+                      ? "#1442ED"
+                      : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -141,7 +147,6 @@ const HeaderCreate = ({ toggle }) => {
                 smooth={true}
                 duration={700}
                 onMouseEnter={handleShowUFA}
-                
                 onClick={() => changeCurrent(1)}
               >
                 UFA介绍
@@ -201,14 +206,17 @@ const HeaderCreate = ({ toggle }) => {
                   borderBottom:
                     current != 2
                       ? "none"
-                      :  scrolledDownEnough
+                      : scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
-                  color: scrolledDownEnough && current != 2
-                    ? "#2A2B30"
-                    : current == 2
-                    ? "#1442ED"
-                    : scrolledDownEnough && current == 2 ? "#1442ED" : "#FFFFFF",
+                  color:
+                    scrolledDownEnough && current != 2
+                      ? "#2A2B30"
+                      : current == 2
+                      ? "#1442ED"
+                      : scrolledDownEnough && current == 2
+                      ? "#1442ED"
+                      : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -233,11 +241,14 @@ const HeaderCreate = ({ toggle }) => {
                       : scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
-                  color: scrolledDownEnough && current != 3
-                    ? "#2A2B30"
-                    : current == 3
-                    ? "#1442ED"
-                    : scrolledDownEnough && current == 3 ? "#1442ED" : "#FFFFFF",
+                  color:
+                    scrolledDownEnough && current != 3
+                      ? "#2A2B30"
+                      : current == 3 && !scrolledDownEnough
+                      ? "#FFFFFF"
+                      : scrolledDownEnough && current == 3
+                      ? "#1442ED"
+                      : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -263,11 +274,14 @@ const HeaderCreate = ({ toggle }) => {
                       : scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
-                  color: scrolledDownEnough && current != 4
-                    ? "#2A2B30"
-                    : current == 4
-                    ? "#1442ED"
-                    : scrolledDownEnough && current == 4 ? "#1442ED" : "#FFFFFF",
+                  color:
+                    scrolledDownEnough && current != 4
+                      ? "#2A2B30"
+                      : current == 4
+                      ? "#1442ED"
+                      : scrolledDownEnough && current == 4
+                      ? "#1442ED"
+                      : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -300,7 +314,7 @@ const HeaderCreate = ({ toggle }) => {
             <HeaderItem>
               <HeaderBtnLink
                 style={{
-                  color:scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                  color: scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -319,10 +333,9 @@ const HeaderCreate = ({ toggle }) => {
                   className="round-Button"
                   variant="primary"
                   style={{
-                    background:
-                     scrolledDownEnough
-                        ? "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)"
-                        : "#FFFFFF",
+                    background: scrolledDownEnough
+                      ? "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)"
+                      : "#FFFFFF",
                     border: "none",
                     boxShadow:
                       "0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)",
