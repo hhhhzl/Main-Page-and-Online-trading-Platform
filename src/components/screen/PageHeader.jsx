@@ -25,7 +25,7 @@ import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolk
 import { SearchOutlined } from "@material-ui/icons";
 import { Switch, Route, Link, useParams, useRouteMatch } from "react-router-dom";
 import { apiSymbols, apiSymbolsAllForSearch } from "../../api/trading_platform/market";
-import { borderRadius } from "@material-ui/system";
+
 
 const { SearchBar, ClearSearchButton } = Search;
 
@@ -292,7 +292,7 @@ const searchSwitch = () => {
      
                 <Link to={elem.link}>
                 <Button style={{backgroundColor:"white",width:"96px",height:"100%",textAlign:"center",paddingTop:"20px",fontSize:"14px",fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",fontWeight:"400",color:"#2A2B30",lineHeight:"24px",borderRadius:"0",borderLeftColor:"white",borderRightColor:"white",borderTopColor:"white",
-                borderBottom:selectKey == elem.id? "3px solid #1442ED" : "white"}}
+                borderBottom:selectKey == elem.url? "3px solid #1442ED" : "white"}}
                 onClick={() => setSelectKey(elem.id)}
                 >
                 <div >
