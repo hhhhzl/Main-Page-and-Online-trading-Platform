@@ -198,7 +198,7 @@ export default function Introduce() {
           <div 
 			className="awards-card-wrapper"
 			style={{
-				justifyContent:width > 1400?"space-between":"space-around"
+				justifyContent:width < 559?"space-around":"space-between"
 			}}>
 		  
             <div 
@@ -261,31 +261,62 @@ export default function Introduce() {
                 </div>
               </div>
             </div>
+
+              {
+                  width < 837 ?
+                      <div
+                          className= {width < 559 ? "awards-card-container-small":"awards-card-container"}
+                      >
+                          <div className="awards-card">
+                              <div className="ranking awards-center">第五至十名</div>
+                              <div className="awards-pic awards-center">
+                                  <Image
+                                      src="/homeCutout/10086.png"
+                                      style={{ width: "220px", height: "220px" }}
+                                  />
+                              </div>
+
+                              <div className="award-content awards-center">
+                                  <div>团队获得6000元人民币</div>
+                                  <div>每位团员获得官方制定的冠军证书 </div>
+                                  <div>中信证券实习机会</div>
+                              </div>
+                          </div>
+                      </div>
+                  :""
+              }
+
           </div>
-		  
-		  <div
-			className="awards-center flex-center"
-		  >
-			<div 
-				className= {width < 559 ? "awards-card-container-small":"awards-card-container"}
-			>
-			  <div className="awards-card">
-			    <div className="ranking awards-center">第五至十名</div>
-			    <div className="awards-pic awards-center">
-			      <Image
-			        src="/homeCutout/10086.png"
-			        style={{ width: "220px", height: "220px" }}
-			      />
-			    </div>
-			
-			    <div className="award-content awards-center">
-			      <div>团队获得6000元人民币</div>
-			      <div>每位团员获得官方制定的冠军证书 </div>
-			      <div>中信证券实习机会</div>
-			    </div>
-			  </div>
-			</div>
-		  </div>
+
+            {
+                width >= 837?
+                    <div
+                        className="awards-center flex-center"
+                    >
+                        <div
+                            className= {width < 559 ? "awards-card-container-small":"awards-card-container"}
+                        >
+                            <div className="awards-card">
+                                <div className="ranking awards-center">第五至十名</div>
+                                <div className="awards-pic awards-center">
+                                    <Image
+                                        src="/homeCutout/10086.png"
+                                        style={{ width: "220px", height: "220px" }}
+                                    />
+                                </div>
+
+                                <div className="award-content awards-center">
+                                    <div>团队获得6000元人民币</div>
+                                    <div>每位团员获得官方制定的冠军证书 </div>
+                                    <div>中信证券实习机会</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>:""
+
+            }
+
+
 
 
           <div className="other-awards">
