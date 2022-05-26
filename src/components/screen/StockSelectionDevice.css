@@ -194,3 +194,8 @@
 .rc-slider-track {
     background-color: #1442ED !important;
 }
+
+.rc-slider-handle {
+	background-color: #1442ED !important;
+	border: solid 2px #1442ED !important;
+}

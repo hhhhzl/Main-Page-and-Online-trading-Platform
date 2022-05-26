@@ -130,7 +130,7 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 					<div className="finance-bottom-text" style={{paddingTop:"20px"}}>同时，UFA每周会将优秀选手向多个金融机构进行推荐。</div>
 				</div>
 				
-				<div className="awards-card-wrapper" style={{marginTop:"80px",justifyContent: "center"}}>
+				<div className="awards-card-wrapper" style={{marginTop:"20px",justifyContent: "center"}}>
 				  <div
 					className= {width < 559 ? "awards-card-container-small":"awards-card-container"}
 				  >

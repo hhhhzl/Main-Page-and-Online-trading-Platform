@@ -70,10 +70,10 @@ const Rules = () => {
 						<div className="rules-title-two">持仓限制：</div>
 						<div className="rules-centent">每支证券买入时不得超过账户总资产的25%。</div>
 					</div>
-					<div className="rules-top-20">
-						<div className="rules-title-two">涨/跌停板：</div>
-						<div className="rules-centent">待补充</div>
-					</div>
+					{/*<div className="rules-top-20">*/}
+					{/*	<div className="rules-title-two">涨/跌停板：</div>*/}
+					{/*	<div className="rules-centent">待补充</div>*/}
+					{/*</div>*/}
 				</div>
 			</div>
 			<div className="rules-p-two">

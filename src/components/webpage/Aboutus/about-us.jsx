@@ -721,7 +721,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                         alignItems: "center",
                       }}
                     >
-                      “权威金融竞赛证书”为你加强背景与竞争力{width}
+                      “权威金融竞赛证书”为你加强背景与竞争力
                     </h6>
                     <p
                       style={{
