@@ -30,7 +30,7 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 		
 		<div style={{background: "#FFFFFF"}}>
 			<div className="insight-into">
-				<div>
+				<div style={{marginTop:"120px"}}>
 					<div className="finance-title">
 						财经洞悉
 					</div>
