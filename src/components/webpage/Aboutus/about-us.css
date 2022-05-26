@@ -84,7 +84,7 @@
 
 .image-left{
   position: relative;
-  width: 50%;
+  /*width: 50%;*/
   display: flex;
   justify-content: flex-end;
 }
@@ -92,7 +92,7 @@
 .image-left-icon-bottom{
   position: absolute;
   bottom: -60px;
-  left: 10px;
+  left: -60px;
 }
 
 .image-left-icon-top{
@@ -347,11 +347,6 @@
     align-items: center;
     margin-left: 7.5%;
     height: min-content;
-  }
-  .image-left-icon-bottom{
-    position: absolute;
-    bottom: -60px;
-    left: -23px;
   }
 }
 
