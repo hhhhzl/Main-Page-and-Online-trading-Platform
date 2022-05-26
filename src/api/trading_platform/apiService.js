@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiService = axios.create({
-  baseURL: "http://59.110.238.142:9000/api/",
+  baseURL: "http://82.157.18.223:10987/api/",
   timeout: 3000,
   headers: {
     "Content-Type": "application/json",

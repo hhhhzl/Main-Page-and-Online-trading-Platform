@@ -26,6 +26,7 @@ import ToolkitProvider, {
   CSVExport,
 } from "react-bootstrap-table2-toolkit";
 import { SearchOutlined } from "@material-ui/icons";
+import { apiSymbols, apiSymbolsAllForSearch } from "../../api/trading_platform/market";
 import SearchData from "../../static/SearchStock.json";
 import {
   Switch,
@@ -36,10 +37,31 @@ import {
   useHistory
 } from "react-router-dom";
 
+
 const { SearchBar, ClearSearchButton } = Search;
 
 export default function PageHeader(toggle) {
-  const { width, height } = useWindowDimensions();
+  const {width, height} = useWindowDimensions();
+  const [searchData, setsearcnData] = useState([])
+
+
+        useEffect(() => {
+          getSearchData()
+        },[])
+
+      const getSearchData = async (props) => {
+        try{
+          const response = await apiSymbolsAllForSearch()
+          let Searchdata = response.data.data
+          setsearcnData(Searchdata)
+        }catch (err) {
+          console.log(err)
+        }
+      };
+
+
+
+
   const [selectKey, setSelectKey] = useState(0);
   const [showMenu, setHhowMenu] = useState(false);
   const [showLoginOutModal, setShowLoginOutModal] = useState(false);
@@ -77,6 +99,26 @@ export default function PageHeader(toggle) {
     history.push("/");
   };
 
+
+
+
+
+  const selectRow = {
+    mode: 'radio',
+    clickToSelect: true,
+    hideSelectAll:true,
+    hideSelectColumn: true,
+    style:{background:"#E7ECFD"},
+    onSelect: (row, isSelect, rowIndex, e) => {
+      if (isSelect){
+          console.log(row)
+      }else{     
+        
+      }
+    },
+    
+  };
+
   const column = [
     {
       id: 0,
@@ -112,19 +154,104 @@ export default function PageHeader(toggle) {
 
   const columns = [
     {
-      dataField: "id",
-      text: "ID",
-      hidden: true,
+
+        dataField:'代码',
+        text:'代码',
+        sort: true,
+        headerAttrs: {
+          hidden: true
+        },
+        style: { width: "45%" },
+        formatter: (cell) => {
+          return (
+            <div
+              style={{
+                paddingTop: "6px",
+                paddingBottom: "6px",
+                paddingLeft: "12px",
+                fontSize: "14px",
+                fontFamily: " Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                fontWeight: "400",
+                color: "#2A2B30",
+                lineHeight: "24px",
+              }}
+            >
+              {cell}
+            </div>
+          )
+      }
     },
     {
-      dataField: "name",
-      text: "机构(升/降)",
-      sort: true,
-      headerAttrs: {
-        hidden: true,
-      },
+        dataField: '名称',
+        text: '名称',
+        sort: true,
+        headerAttrs: {
+            hidden: true
+          },
+        formatter: (cell) => {
+          return (
+            <div
+              style={{
+                paddingTop: "6px",
+                paddingBottom: "6px",
+                paddingLeft: "12px",
+                fontSize: "14px",
+                fontFamily: " Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                fontWeight: "400",
+                color: "#2A2B30",
+                lineHeight: "24px",
+              }}
+            >
+              {cell}
+            </div>
+          )
+      }
     },
-  ];
+    {
+      dataField: '涨跌幅',
+      text: '涨跌幅',
+      // sort: true,
+      headerAttrs: {
+          hidden: true
+        },
+        formatter: (cell) => {
+          return (
+            <>
+            {cell > 0?
+             <>
+             <div
+              style={{
+                paddingTop: "6px",
+                paddingBottom: "6px",
+                paddingLeft: "12px",
+                fontSize: "14px",
+                fontFamily: " Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                fontWeight: "400",
+                color: "#FF3541",
+                lineHeight: "24px",
+              }}
+            > +{cell}%</div>
+
+            </> : <>
+            <div
+              style={{
+                paddingTop: "6px",
+                paddingBottom: "6px",
+                paddingLeft: "12px",
+                fontSize: "14px",
+                fontFamily: " Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                fontWeight: "400",
+                color: "#42E083",
+                lineHeight: "24px",
+              }}
+            > {cell}%</div>
+            </>}
+            </>
+          )
+      }
+  },
+]
+
 
   return (
     <>

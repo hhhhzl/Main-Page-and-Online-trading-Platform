@@ -7,8 +7,7 @@ const AuthActionType ={
 
 const RegisterAuthAction = (userState) => {
     return async (dispatch) => {
-        try {
-            
+        try {  
             const response = await apiRegisterUser(userState);
             let {data} = response.data;
             console.log(response,18)

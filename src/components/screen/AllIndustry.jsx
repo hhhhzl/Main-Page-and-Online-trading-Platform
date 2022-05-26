@@ -113,7 +113,7 @@ export default function LeadingIndustryAll({setswitchClose}) {
           // </li>
           // {item.label}
           
-          <PlateCard dataSource={item} stockData={stockData} heightProp={0.28}></PlateCard>
+          <PlateCard dataSource={item} stockData={item.代表股票} heightProp={0.28}></PlateCard>
         ))}
       </div>
     </div>

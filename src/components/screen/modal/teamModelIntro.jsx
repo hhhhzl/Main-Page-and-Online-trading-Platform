@@ -33,19 +33,17 @@ export default function TeamModelIntro({show, handleClose}) {
         
            <Modal 
            show={show}
-            onHide={handleClose} 
-            dialogClassName="modal-container"
+           onHide={handleClose} 
            centered 
            backdrop="static"
-        //    size ="lg"
-        fullscreen={true}
-          keyboard={false} >
+           size ="lg"
+           keyboard={false} >
             
           <Modal.Header closeButton>
 
           </Modal.Header>
-          <Modal.Body style ={{borderWidth:"0", width:"800px", height:"900px", zIndex:999}}>
-              {/* <Card > 
+          <Modal.Body style ={{borderWidth:0}}>
+              <Card style={{border:0}} > 
                   <Card.Body>
           <div style={{
         marginTop:"-10px",
@@ -58,9 +56,8 @@ export default function TeamModelIntro({show, handleClose}) {
         lineHeight:"56px",
         letterSpacing:"1px",
         }}>团队名称</div>
-
         <div>
-        <PorforlioMoveGraph widthratio ={800}/>
+        <PorforlioMoveGraph widthratio ={700}/>
         </div>
 
         
@@ -108,23 +105,11 @@ export default function TeamModelIntro({show, handleClose}) {
 
         })}
 
-        
-
-
         </div>
         </Card.Body>
-
-        </Card> */}
-
-           
+        </Card>        
           </Modal.Body>
           </Modal>
-       
-
-
-
-
-
         </>
 
     )
