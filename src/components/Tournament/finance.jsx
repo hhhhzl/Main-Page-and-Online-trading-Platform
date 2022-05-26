@@ -28,36 +28,33 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 			</div>
 		</div>
 		
-		<div style={{
-			width: "62.5%",
-			margin: "120px 18.75% 0 18.75%",
-			background: "#FFFFFF"
-		}}> 
-			<div>
-				<div className="finance-title">
-					财经洞悉
-				</div>
-				<div style={{marginTop:"80px"}}>
-					<Image
-						src="/tournament/Group 797.png"
-						style={{width:" 100%",height:"100%"}}
-					/>
-				</div>
-				<div style={{marginTop:"140px"}}>
-					<div 
-						style={{
-							display: "flex",
-							justifyContent:"center",
-							flexDirection:width < 791 ?"column":"inherit"
-						}}>
-						<div className="finance-date-div-first">
-							<div className="finance-title-span-first">周一</div>
-							<div className="finance-title-span-two">第一周</div>
-							<div className="finance-title-imgage">
-								<div>
-									<Image 
-										src="/tournament/Group 142.png"
-										style={{width:"24px",height:"24px"}}></Image>
+		<div style={{background: "#FFFFFF"}}>
+			<div className="insight-into">
+				<div>
+					<div className="finance-title">
+						财经洞悉
+					</div>
+					<div style={{marginTop:"80px"}}>
+						<Image
+							src="/tournament/Group 797.png"
+							style={{width:" 100%",height:"100%"}}
+						/>
+					</div>
+					<div style={{marginTop:"140px"}}>
+						<div
+							style={{
+								display: "flex",
+								justifyContent:"center",
+								flexDirection:width < 791 ?"column":"inherit"
+							}}>
+							<div className="finance-date-div-first">
+								<div className="finance-title-span-first">周一</div>
+								<div className="finance-title-span-two">第一周</div>
+								<div className="finance-title-imgage">
+									<div>
+										<Image
+											src="/tournament/Group 142.png"
+											style={{width:"24px",height:"24px"}}></Image>
 										<div style={{
 											height:'1px',
 											background: "#E5E8EE",
@@ -68,47 +65,51 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 											borderRight: "2px solid #f5f6f8",
 											width:"50%"
 										}}></div>
+									</div>
+
+									<div className="finance-title-imgage-div-first">热点话题发布</div>
+									<div className="finance-title-imgage-div-two">选手撰写独立分析</div>
 								</div>
-									
-								<div className="finance-title-imgage-div-first">热点话题发布</div>
-								<div className="finance-title-imgage-div-two">选手撰写独立分析</div>
 							</div>
-						</div>
-						<div className="finance-date-div-first"
-							style={{
-								marginTop:width < 791 ?"20px":"0"
-							}}
-						>
-							<div className="finance-title-span-first">周日</div>
-							<div className="finance-title-span-two">第二周</div>
-							<div className="finance-title-imgage">
-								<Image 
-									src="/tournament/Group 142.png"
-									style={{width:"24px",height:"24px"}}></Image>
-								<div style={{
-									height:'1px',
-									background: "#E5E8EE",
-									marginTop:"-12px"
-								}}></div>
-								<div style={{
-									height: "48px",
-									borderRight: "2px solid #f5f6f8",
-									width:"50%"
-								}}></div>
-								<div className="finance-title-imgage-div-first">分析提交截止</div>
-								<div className="finance-title-imgage-div-two">
-									<span>公布优秀分析报告</span> <br/>
-									<span>线上分享会</span>
+							<div className="finance-date-div-first"
+								 style={{
+									 marginTop:width < 791 ?"20px":"0"
+								 }}
+							>
+								<div className="finance-title-span-first">周日</div>
+								<div className="finance-title-span-two">第二周</div>
+								<div className="finance-title-imgage">
+									<Image
+										src="/tournament/Group 142.png"
+										style={{width:"24px",height:"24px"}}></Image>
+									<div style={{
+										height:'1px',
+										background: "#E5E8EE",
+										marginTop:"-12px"
+									}}></div>
+									<div style={{
+										height: "48px",
+										borderRight: "2px solid #f5f6f8",
+										width:"50%"
+									}}></div>
+									<div className="finance-title-imgage-div-first">分析提交截止</div>
+									<div className="finance-title-imgage-div-two">
+										<span>公布优秀分析报告</span> <br/>
+										<span>线上分享会</span>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div className="finance-note" style={{margin: "120px 0"}}>
-				注：“财经洞悉”撰写质量不会给予评分，此板块不影响比赛分数。
+				<div className="finance-note" style={{margin: "120px 0"}}>
+					注：“财经洞悉”撰写质量不会给予评分，此板块不影响比赛分数。
+				</div>
 			</div>
 		</div>
+
+
+
 		
 		
 		
