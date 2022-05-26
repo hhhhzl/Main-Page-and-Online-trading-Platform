@@ -5,12 +5,17 @@ import { Form, Button, Image } from "react-bootstrap";
 import GoodToShare from "./GoodToShare";
 import CommitRecord from "./CommitRecord";
 import "./InvestNotes.css";
+import Countdown from "../../screen/modal/countdown"
+import {timeDifference} from '../../../utils/countdownUtil'
 
 export default function InvestNotes(props) {
   const { width, height } = useWindowDimensions();
   const [fileList, setFileList] = useState([]);
   const uploadFile = React.createRef();
   const listRef = useRef();
+  
+  const [showModal, setShowModal] = useState(timeDifference() > 0 ? true : false);
+
   const [current, setCurrent] = useState(0);
   const changeCurrent = (index) => {
     setCurrent(index);
@@ -86,9 +91,19 @@ export default function InvestNotes(props) {
     setFileList(item)
   };
 
+  const hideModal = (leftTime) => {
+    console.log(leftTime)
+    if(leftTime <=0){
+      setShowModal(false)
+    }
+  };
+
   return (
     <>
+
+    
       <PageHeader />
+      <Countdown showModal={showModal} hideModal={hideModal}></Countdown>
       <div
         style={{
           paddingTop: height * 0.075,

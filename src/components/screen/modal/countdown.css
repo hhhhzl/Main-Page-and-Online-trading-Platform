@@ -1,0 +1,41 @@
+.countdown-modal>.modal-dialog>.modal-content {
+  background: none;
+  border: none;
+  text-align: center;
+}
+
+.countdown-modal>.modal-dialog {
+  width: 100%;
+}
+
+.countdown-modal {
+  cursor: default;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.countdown-modal-time {
+  font-size: 48px;
+  font-family: Futura-Medium, Futura;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 80px;
+  letter-spacing: 5px;
+}
+
+
+
+.countdown-modal-text {
+  font-size: 80px;
+  font-family: Microsoft YaHei UI-Bold, Microsoft YaHei UI;
+  font-weight: bold;
+  color: #FFFFFF;
+  line-height: 160px;
+  letter-spacing: 9px;
+}
+
+@media (min-width: 576px) {
+  .countdown-modal>.modal-dialog {
+    max-width: 100%;
+    margin: 1.75rem auto;
+  }
+}
