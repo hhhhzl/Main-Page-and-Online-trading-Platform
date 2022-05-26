@@ -28,6 +28,7 @@ import LoginMainLayout from './components/webpage/RegisterLogin/mainLayout';
 
 
 
+
 import Tournament from './components/Tournament/tournament';
 
 // import PageHeader from './components/screen/PageHeader';
@@ -52,7 +53,7 @@ import StockSelectionDevice from './components/screen/StockSelectionDevice'
 import LeadingIndustry from './components/screen/LeadingIndustry'
 import AllIndustry from './components/screen/AllIndustry'
 import GoodToShare from './components/Competition/InvestNotes/GoodToShare';
-
+import Notice from './components/webpage/chat/Notice';
 
 
 
@@ -122,14 +123,15 @@ const MakeRouter = () => {
       <Route exact path="/home" component={MainPage} /> 
       <Route exact path="/" component={MainPage} /> 
 
+      
 
-
+      <Route exact path="/tournament" component={Tournament} />
+      <Route exact path="/chat" component={Notice} />
 
 
        {/* <PrivateRoute exact path="/stocks" component={UserStocks} />
       <PrivateRoute exact path="/market" component={UserMarket} />
       <PrivateRoute exact path="/competition" component={null} />
-      <Route exact path="/tournament" component={Tournament} />
 	  
       
 	  <Route exact path="/editData" component={EditData}/>

@@ -14,11 +14,11 @@ export const HeaderOut = styled.nav`
   align-items: center;
   font-size: 1rem;
   position: fixed;
-  transition: all 1s ease;
-  -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  -o-transition: all 1s ease;
-  -ms-transition: all 1s ease;
+  // transition: all 1s ease;
+  // -webkit-transition: all 1s ease;
+  // -moz-transition: all 1s ease;
+  // -o-transition: all 1s ease;
+  // -ms-transition: all 1s ease;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   z-index: 10;
   @media screen and (max-width: 960px) {
@@ -27,45 +27,52 @@ export const HeaderOut = styled.nav`
   @media screen and (max-width: 768px) {
     border: none;
   }
-
 `;
 
 export const HeaderContianer = styled.div`
   margin-left: 18.75%;
+  margin-right: 18.75%;
   display: flex;
-  // justify-content: space-between;
+  justify-content: space-between;
   color: #ffffff;
   height: 64px;
   align-items: center;
   cursor: pointer;
   @media screen and (max-width: 800px) {
-    margin-left:5%;
-  display: flex;
-  color: #ffffff;
-  height: 64px;
-  align-items: center;
-  cursor: pointer;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    color: #ffffff;
+    height: 64px;
+    align-items: center;
+    cursor: pointer;
   }
   @media screen and (max-width: 1200px) {
     margin-left: 10.75%;
-  display: flex;
-  color: #ffffff;
-  height: 64px;
-  align-items: center;
-  cursor: pointer;
+    margin-right: 10.75%;
+    display: flex;
+    color: #ffffff;
+    height: 64px;
+    align-items: center;
+    cursor: pointer;
+  }
+  @media screen and (max-width: 1500px) {
+    margin-left: 14%;
+    margin-right: 14%;
   }
   @media screen and (max-width: 1000px) {
     margin-left: 3%;
-  display: flex;
-  color: #ffffff;
-  height: 64px;
-  align-items: center;
-  cursor: pointer;
+    margin-right: 3%;
+    display: flex;
+    color: #ffffff;
+    height: 64px;
+    align-items: center;
+    cursor: pointer;
   }
 `;
 
 export const HeaderMenu = styled.div`
-  margin-left: 19.6875%;
+  margin-left: 35.6875%;
   display: flex;
   height: 64px;
   justify-content: center;
@@ -77,6 +84,13 @@ export const HeaderMenu = styled.div`
   @media screen and (max-width: 800px) {
     display: none;
   }
+  @media screen and (max-width: 1500px) {
+    margin-left: 30%;
+  }
+  @media screen and (max-width: 1200px) {
+    margin-left: 20%;
+  }
+ 
 `;
 
 export const HeaderItem = styled.div`
@@ -122,7 +136,7 @@ export const MenuItemLinks = styled(LinkS)`
   }
   @media screen and (max-width: 1000px) {
     padding: 4px 8px;
-    font-size:12px
+    font-size: 12px;
   }
 `;
 export const HeaderBtn = styled.nav`

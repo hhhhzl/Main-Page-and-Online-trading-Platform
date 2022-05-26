@@ -21,3 +21,13 @@
   background: #EEF0F4;
   color: #2A2B30;
 }
+
+.notice-dot{
+  width: 7px;
+	height: 7px;
+	background: #1442ED;
+	border-radius: 50%;
+  position: absolute;
+  top: 1px;
+  right: 3px;
+}
