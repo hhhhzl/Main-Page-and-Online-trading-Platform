@@ -164,7 +164,7 @@ class CandlestickCharthollow extends React.Component {
 
 	onKeyPressTrendLine(e) {
 		const keyCode = e.which;
-		console.log(keyCode);
+		console.log('keyCode:', keyCode);
 		switch (keyCode) {
 		case 46: { // DEL
 

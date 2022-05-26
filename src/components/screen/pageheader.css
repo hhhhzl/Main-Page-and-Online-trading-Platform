@@ -62,6 +62,7 @@
   font-weight: 400;
   color: #2A2B30;
   line-height: 24px;
+  width: max-content;
 }
 
 .header-user-menu {
@@ -156,6 +157,9 @@
   width: 348px;
 }
 
+.page-header-modal > .modal-dialog-centered {
+  justify-content: center;
+}
 
 .modal-header {
   border-bottom: none;

@@ -4,7 +4,9 @@
   flex-direction: column;
   background: #FFFFFF;
   color: #6E7184;
-  border-radius: 0px 0px 4px 4px;
+  position: relative;
+  top: -16px;
+  border-radius: 4px;
 }
 
 .menu-item {
@@ -12,10 +14,20 @@
   font-family: "Microsoft YaHei UI-Regular, Microsoft YaHei UI";
   font-weight: 400;
   line-height: 24px;
-  padding: 12px 24px;
+  padding: 12px 21px;
 }
 
 .menu-item:hover {
   background: #EEF0F4;
   color: #2A2B30;
+}
+
+.notice-dot{
+  width: 7px;
+	height: 7px;
+	background: #1442ED;
+	border-radius: 50%;
+  position: absolute;
+  top: 1px;
+  right: 3px;
 }

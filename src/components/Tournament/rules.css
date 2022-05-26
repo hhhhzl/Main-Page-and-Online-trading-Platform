@@ -48,6 +48,7 @@
 	margin-top: 120px;
 }
 
+
 .judge-rules-title {
 	font-size: 36px;
 	font-family: Songti SC-Bold, Songti SC;
@@ -63,7 +64,7 @@
 	font-weight: 400;
 	color: #9C9EAC;
 	line-height: 19px;
-	margin-top: 2px;
+	margin-top: 6px;
 }
 
 .judge-rules-subtitle {
@@ -81,12 +82,13 @@
 	font-weight: 400;
 	color: #6E7184;
 	line-height: 28px;
+	width: 270px;
 }
 
 .show-details {
 	border-bottom: 2px solid #2A2B30;
 	width: 67px;
-	margin: 4px 0px 240px 36.553%;
+	margin: 4px 0px 0 36.553%;
 	cursor: pointer;
 }
 
@@ -97,20 +99,31 @@
 	color: #9C9FB0;
 	line-height: 28px;
 	text-align: center;
+	width: 275px;
 }
 
 .horizontal-line {
 	margin-top: -13px;
-	flex: 1 1; 
 	background: #E5E8EE;
 	height: 1px;
-	/* width: 413.794%; */
+	width: 100%;
 }
 
 .vertical-line {
 	border-right: 1px solid #E5E8EE;
 	height: 64px;
 	width: 50.2%;
+}
+
+.pop-up{
+	width:381px;
+	background: #FFFFFF;
+	box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02), 
+				0px 2px 4px 1px rgba(0, 0, 0, 0.02), 
+				0px 4px 8px 1px rgba(0, 0, 0, 0.02), 
+				0px 8px 16px 1px rgba(0, 0, 0, 0.02), 
+				0px 16px 32px 1px rgba(0, 0, 0, 0.02), 
+				0px 32px 64px 1px rgba(0, 0, 0, 0.02);
 }
 
 .pop-up-text {
@@ -121,7 +134,27 @@
 	line-height: 28px;
 }
 
+.pop-up-content {
+	font-size: 15px;
+	font-family: Songti SC-Bold, Songti SC;
+	font-weight: bold;
+	color: #9C9FB0;
+	line-height: 28px;
+}
+
 .judge-rules-li {
 	display: flex;
 	justify-content: center;
 }
+
+.rules-model>.modal-dialog{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.rules-model>.modal-dialog>.modal-content{
+	width: max-content;
+}
+
+

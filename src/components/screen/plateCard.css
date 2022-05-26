@@ -1,5 +1,5 @@
 .plate-card-container {
-  width: 24%;
+  flex: 0 0 24%;
   background: #FFFFFF;
   box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02);
   border-radius: 4px 4px 4px 4px;
@@ -108,4 +108,17 @@
 
 .stock-table>.react-bootstrap-table>table>thead>tr>th:last-child {
   padding-right: 12px;
+}
+
+@media screen and (max-width: 1550px) {
+  .plate-card-container {
+    flex: 0 0 48%;
+  }
+
+}
+
+@media screen and (max-width: 850px) {
+  .plate-card-container {
+    flex: 0 0 100%;
+  }
 }

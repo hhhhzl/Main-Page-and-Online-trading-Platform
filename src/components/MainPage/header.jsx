@@ -1,5 +1,6 @@
-import { React, useState, useEffect } from "react";
+import { useContext, React, useState, useEffect } from "react";
 
+import { useHistory } from 'react-router';
 import {
   HeaderOut,
   HeaderContianer,
@@ -17,9 +18,12 @@ import useWindowDimensions from "../../utils/sizewindow";
 import Image from "react-bootstrap/Image";
 import "./header.css";
 import { MobileIcon } from "./NavbarElements";
+import { useRouteMatch } from "react-router-dom";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-
+import AuthContext from "../../context/AuthContext";
 const HeaderCreate = ({ toggle }) => {
+  let { user, logoutUser } = useContext(AuthContext);
   const { width, height } = useWindowDimensions();
   const [scrolledDownEnough, setScrolledDownEnough] = useState(false);
   const [show, setShow] = useState(false);
@@ -27,8 +31,11 @@ const HeaderCreate = ({ toggle }) => {
   const [showTransaction, setShowTransaction] = useState(false);
   const [box, setbox] = useState(height * 0.09);
   const [current, setCurrent] = useState(1);
+  const { url } = useRouteMatch();
+  
+  const history= useHistory()
 
-  const [hover, setHover] = useState(false);
+  // const [hover, setHover] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -38,21 +45,16 @@ const HeaderCreate = ({ toggle }) => {
 
   const handleCloseTransaction = () => setShowTransaction(false);
   const handleShowTransaction = () => setShowTransaction(true);
-
-  const handleMouseOver = () => setHover(true);
-  const handleMouseLeave = () => setHover(false);
+  
+  const jumpNewPage = () => {history.push("/")}
+  const toHome = () => {history.push("/")}
+  
 
   const changeCurrent = (item) => {
-    
+    console.log(item);
     setCurrent(item);
   };
 
-  // const handleMouseLeave = () => {
-  //   // if (isOpen) {
-  //     setHover(false)
-  //     setShowUFA(false)
-  //   // }
-  // };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,7 +63,7 @@ const HeaderCreate = ({ toggle }) => {
       const scrolledDownEnough = 85 < bodyScrollTop ? true : false;
       setScrolledDownEnough(scrolledDownEnough);
     };
-
+    console.log(user, "---------------user------------");
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => window.removeEventListener("scroll", handleScroll);
@@ -78,19 +80,20 @@ const HeaderCreate = ({ toggle }) => {
         </Modal>
       </div>
       <HeaderOut
-        style={{width:width}}
+        style={{ width: width }}
         scrolledDownEnough={scrolledDownEnough}
-        onMouseOver={handleMouseOver}
-        onMouseLeave={handleMouseLeave}
+        // onMouseOver={handleMouseOver}
+        // onMouseLeave={handleMouseLeave}
       >
-        <HeaderContianer>        
+        <HeaderContianer>
           <div
             className="image-icon"
             style={{ height: "64px", width: "64px", top: 0 }}
+            onClick={() =>toHome()}
           >
             <Image
               src={
-                scrolledDownEnough || hover
+                scrolledDownEnough
                   ? "/homeCutout/UFA-LOGO-RED.png"
                   : "/UFA-LOGO.png"
               }
@@ -100,7 +103,10 @@ const HeaderCreate = ({ toggle }) => {
           {scrolledDownEnough ? (
             <>
               <MobileIcon onClick={() => toggle()}>
-                <ViewHeadlineTwoTone style={{color:"black"}} fontSize="large" />
+                <ViewHeadlineTwoTone
+                  style={{ color: "black" }}
+                  fontSize="large"
+                />
               </MobileIcon>
             </>
           ) : (
@@ -111,24 +117,28 @@ const HeaderCreate = ({ toggle }) => {
             </>
           )}
 
-
           <HeaderMenu>
-            <HeaderItem>
+            <HeaderItem
+              onMouseLeave={handleCloseUFA}
+              style={{ width: width > 900 ? "100px" : "92px" }}
+            >
+              {/* {user} */}
               <HeaderBtnLink
                 style={{
                   borderBottom:
-                    current != 1
+                    url != "/"
                       ? "none"
-                      : hover || scrolledDownEnough
+                      : scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
-                  color: scrolledDownEnough && current != 1
-                    ? "#2A2B30"
-                    : hover && current == 1
-                    ? "#1442ED"
-                    : hover && current != 1 && !scrolledDownEnough
-                    ? "#2A2B30"
-                    : scrolledDownEnough && current == 1 ? "#1442ED" : "#FFFFFF",
+                  color:
+                    scrolledDownEnough && url != "/"
+                      ? "#2A2B30"
+                      : url != "/" && !scrolledDownEnough
+                      ? "#FFFFFF"
+                      : scrolledDownEnough && url == "/"
+                      ? "#1442ED"
+                      : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -150,7 +160,7 @@ const HeaderCreate = ({ toggle }) => {
               <div
                 className="header-menu"
                 style={{ display: showUFA && current == 1 ? "flex" : "none" }}
-                onMouseEnter={handleMouseLeave}
+                // onMouseEnter={handleMouseLeave}
                 onMouseLeave={handleCloseUFA}
               >
                 <MenuItemLinks
@@ -202,16 +212,17 @@ const HeaderCreate = ({ toggle }) => {
                   borderBottom:
                     current != 2
                       ? "none"
-                      : hover || scrolledDownEnough
+                      : scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
-                  color: scrolledDownEnough && current != 2
-                    ? "#2A2B30"
-                    : hover && current == 2
-                    ? "#1442ED"
-                    : hover && current != 2 && !scrolledDownEnough
-                    ? "#2A2B30"
-                    : scrolledDownEnough && current == 2 ? "#1442ED" : "#FFFFFF",
+                  color:
+                    scrolledDownEnough && current != 2
+                      ? "#2A2B30"
+                      : current == 2 && scrolledDownEnough
+                      ? "#1442ED"
+                      : scrolledDownEnough && current == 2
+                      ? "#1442ED"
+                      : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -231,18 +242,19 @@ const HeaderCreate = ({ toggle }) => {
               <HeaderBtnLink
                 style={{
                   borderBottom:
-                    current != 3
+                    url != "/tournament"
                       ? "none"
-                      : hover || scrolledDownEnough
+                      : scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
-                  color: scrolledDownEnough && current != 3
-                    ? "#2A2B30"
-                    : hover && current == 3
-                    ? "#1442ED"
-                    : hover && current != 3 && !scrolledDownEnough
-                    ? "#2A2B30"
-                    : scrolledDownEnough && current == 3 ? "#1442ED" : "#FFFFFF",
+                  color:
+                    scrolledDownEnough && url != "/tournament"
+                      ? "#2A2B30"
+                      : url == "/tournament" && !scrolledDownEnough
+                      ? "#FFFFFF"
+                      : scrolledDownEnough && url == "/tournament"
+                      ? "#1442ED"
+                      : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -259,22 +271,23 @@ const HeaderCreate = ({ toggle }) => {
                 赛事介绍
               </HeaderBtnLink>
             </HeaderItem>
-            <HeaderItem>
+            <HeaderItem onMouseLeave={handleCloseTransaction}>
               <HeaderBtnLink
                 style={{
                   borderBottom:
                     current != 4
                       ? "none"
-                      : hover || scrolledDownEnough
+                      : scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
-                  color: scrolledDownEnough && current != 4
-                    ? "#2A2B30"
-                    : hover && current == 4
-                    ? "#1442ED"
-                    : hover && current != 4 && !scrolledDownEnough
-                    ? "#2A2B30"
-                    : scrolledDownEnough && current == 4 ? "#1442ED" : "#FFFFFF",
+                  color:
+                    scrolledDownEnough && current != 4
+                      ? "#2A2B30"
+                      : current == 4 && scrolledDownEnough
+                      ? "#1442ED"
+                      : scrolledDownEnough && current == 4
+                      ? "#1442ED"
+                      : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -294,7 +307,7 @@ const HeaderCreate = ({ toggle }) => {
               <div
                 className="header-menu"
                 style={{ display: showTransaction ? "flex" : "none" }}
-                onMouseEnter={handleMouseLeave}
+                // onMouseEnter={handleMouseLeave}
                 onMouseLeave={handleCloseTransaction}
               >
                 <MenuItemLinks className="menu-item">个人账户</MenuItemLinks>
@@ -304,55 +317,115 @@ const HeaderCreate = ({ toggle }) => {
           </HeaderMenu>
 
           <HeaderBtn>
-            <HeaderItem>
-              <HeaderBtnLink
-                style={{
-                  color: hover || scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
-                }}
-                scrolledDownEnough={scrolledDownEnough}
-                width={width}
-                to="/register"
-              >
-                注册
-              </HeaderBtnLink>
-            </HeaderItem>
-            <HeaderItem>
-              <HeaderBtnLink
-                scrolledDownEnough={scrolledDownEnough}
-                width={width}
-                to="/login"
-              >
-                <Button
-                  className="round-Button"
-                  variant="primary"
-                  style={{
-                    background:
-                      hover || scrolledDownEnough
-                        ? "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)"
-                        : "#FFFFFF",
-                    border: "none",
-                    boxShadow:
-                      "0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)",
-                    color: hover || scrolledDownEnough ? "#FFFFFF" : "#2A2B30",
-                    fontFamily: "PingFang SC-Medium, PingFang SC",
-                    letterSpacing: "3px",
-                    paddingBottom: "0",
-                    padding: "10px 32px",
-                    fontWeight: "600",
-                  }}
-                  size="sm"
-                >
-                  <h5
+            {user && user.jti ? (
+              <>
+                <div style={{ marginRight: "34px",position:"relative" }} onClick={() =>jumpNewPage()}>
+                  
+                  <div className="notice-dot"></div>
+                  <Image
+                    src={
+                      scrolledDownEnough
+                        ? "/homeCutout/Group 1061.png"
+                        : "/homeCutout/bell_white.png"
+                    }
                     style={{
-                      fontSize: width > 900 ? "14px" : "12px",
-                      margin: "0px",
+                      width: "24px",
+                      height: "24px",
                     }}
+                  />
+                </div>
+
+                <div
+                  className="header-user"
+                  style={{
+                    marginRight: width > 1200 ? null : "75px",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: "0px",
+                  }}
+                >
+                  <div
+                    className="user-av"
+
+                    // onClick={() => handleShowMenu(!showMenu)}
                   >
-                    登录
-                  </h5>
-                </Button>
-              </HeaderBtnLink>
-            </HeaderItem>
+                    <Image
+                      src={"/loginback.jpg"}
+                      style={{
+                        width: "24px",
+                        height: "24px",
+                      }}
+                      roundedCircle
+                    />
+                    <span
+                      className="header-user-name"
+                      style={{
+                        color: scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                        marginLeft: "6px",
+                      }}
+                    >
+                      {user.username}
+                    </span>
+                    <ExpandMoreIcon
+                      style={{
+                        color: scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                      }}
+                    ></ExpandMoreIcon>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <HeaderItem>
+                  <HeaderBtnLink
+                    style={{
+                      color: scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                    }}
+                    scrolledDownEnough={scrolledDownEnough}
+                    width={width}
+                    to="/register"
+                  >
+                    注册
+                  </HeaderBtnLink>
+                </HeaderItem>
+                <HeaderItem>
+                  <HeaderBtnLink
+                    scrolledDownEnough={scrolledDownEnough}
+                    width={width}
+                    to="/login"
+                  >
+                    <Button
+                      className="round-Button"
+                      variant="primary"
+                      style={{
+                        background: scrolledDownEnough
+                          ? "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)"
+                          : "#FFFFFF",
+                        border: "none",
+                        boxShadow:
+                          "0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)",
+                        color: scrolledDownEnough ? "#FFFFFF" : "#2A2B30",
+                        fontFamily: "PingFang SC-Medium, PingFang SC",
+                        letterSpacing: "3px",
+                        paddingBottom: "0",
+                        padding: "10px 32px",
+                        fontWeight: "600",
+                      }}
+                      size="sm"
+                    >
+                      <h5
+                        style={{
+                          fontSize: width > 900 ? "14px" : "12px",
+                          margin: "0px",
+                        }}
+                      >
+                        登录
+                      </h5>
+                    </Button>
+                  </HeaderBtnLink>
+                </HeaderItem>
+              </>
+            )}
           </HeaderBtn>
         </HeaderContianer>
       </HeaderOut>

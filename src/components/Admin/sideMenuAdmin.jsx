@@ -9,7 +9,7 @@ import BallotIcon from '@material-ui/icons/BallotOutlined';
 import { Nav } from 'react-bootstrap';
 import { Switch, Route, Link, BrowserRouter, useRouteMatch } from "react-router-dom";
 import { Row } from "react-bootstrap";
-import '../TradingPlatform/eplatform.css'
+import 'components/TradingPlatform/eplatform.css'
 import useWindowDimensions from "../../utils/sizewindow";
 
 

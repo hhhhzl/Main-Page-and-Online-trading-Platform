@@ -7,7 +7,11 @@ import { Image } from "react-bootstrap";
 
 export default function GoodToShare() {
   return (
-    <div>
+    <div
+		style={{
+			background: "#FFFFFF",
+			marginTop: "24px"
+		}}>
       <div className="share">
         {data.map((item, idx) => (
           <div key={idx} className="share-div">

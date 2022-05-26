@@ -4,7 +4,7 @@ import { Bookmark } from "@material-ui/icons";
 import SideMenuUsers from '../sideMenuUsers';
 import useWindowDimensions from "../../../../utils/sizewindow";
 import { Col, Row, Card, CardGroup, Collapse, Button, Form , Accordion} from "react-bootstrap";
-import '../../eplatform.css'
+import 'components/TradingPlatform/eplatform.css'
 import MarketTopGains from '../../../screen/MarketTopGainStocks';
 import MarketStockSearch from '../../../screen/MarketStockSearch';
 import AreaChart from '../../../graphs/areaChart';

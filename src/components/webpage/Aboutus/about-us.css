@@ -51,7 +51,16 @@
   font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
   font-weight: 400;
   color: #6E7184;
-  line-height: 28px;
+  line-height: 22px;
+  margin-top: 36px;
+}
+
+.message-content-bottom {
+  font-size: 11px;
+  font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+  font-weight: 400;
+  color: #9C9EAC;
+  line-height: 19px;
   margin-top: 36px;
 }
 
@@ -75,7 +84,7 @@
 
 .image-left{
   position: relative;
-  width: 50%;
+  /*width: 50%;*/
   display: flex;
   justify-content: flex-end;
 }
@@ -83,7 +92,7 @@
 .image-left-icon-bottom{
   position: absolute;
   bottom: -60px;
-  left: 10px;
+  left: -60px;
 }
 
 .image-left-icon-top{
@@ -233,10 +242,16 @@
   width: 61.8%;
   height: max-content;
   text-justify: distribute-all-lines;
-  position: absolute;
-  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.about-center {
+  position: relative;
+  width: 74.4%;
+  height: max-content;
+  margin-top: 134px;
+  align-items: center;
 }
 
 .bottom-cover-picture {
@@ -253,8 +268,8 @@
 }
 
 .video-container {
-  width: 63.4%;
-  left: 18.3%;
+  width: 50%;
+  left: 25%;
   max-height: max-content;
   justify-content: center;
   align-items: center;
@@ -263,8 +278,8 @@
 .video-icon-wrapper {
   position: relative;
   top: 50px;
-  left: 18.3%;
-  width: 63.4%;
+  left: 25%;
+  width: 50%;
   text-align: end;
 }
 
@@ -276,8 +291,8 @@
 .video-icon-wrapper-bottom {
   position: relative;
   top: -50px;
-  left: 18.3%;
-  width: 63.4%;
+  left: 25%;
+  width: 50%;
 }
 
 .video-icon {
@@ -316,13 +331,6 @@
   align-items: center;
 }
 
-.about-center {
-  position: relative;
-  width: 74.4%;
-  height: max-content;
-  margin-top: 134px;
-  align-items: center;
-}
 
 .title {
   text-align: center;
@@ -340,7 +348,6 @@
     margin-left: 7.5%;
     height: min-content;
   }
-
 }
 
 @media screen and (max-width: 1350px) {
@@ -353,7 +360,7 @@
 
   .introduction-box {
     align-items: center;
-    width: 200px;
+    width: 250px;
     height: 370px;
     transform: translate(0%, 0%);
     z-index: 2;
@@ -442,9 +449,16 @@
     margin-top: 8px;
   }
 
-
-
-
+}
+@media screen and (max-width: 800px) {
+  .introduction-box {
+    margin-bottom: 30px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .introduction-box {
+    margin-bottom: 30px;
+  }
 }
 
 @media screen and (max-width: 650px) {
@@ -503,7 +517,7 @@
 
   .introduction-box {
     align-items: center;
-    width: 240px;
+    width: 300px;
     height: 320px;
     transform: translate(0%, 0%);
     z-index: 2;

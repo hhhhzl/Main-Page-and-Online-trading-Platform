@@ -58,8 +58,8 @@ export default function MainPage() {
             </div>   */}
       {/* 隐藏头部导航 */}
       {/* <NavbarCreate toggle = {toggle} /> */}
-      <HeaderCreate toggle = {toggle} />
-      {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>) : null}
+      <HeaderCreate toggle={toggle} />
+      {isOpen ? (<Sidebar isOpen={isOpen} toggle={toggle} />) : null}
       <div className="main-page-center">
         <Cover />
         <div className="about-us-page">
@@ -69,19 +69,19 @@ export default function MainPage() {
             </div>
           </Fade>
 
-          <Fade  bottom when={scrolledDownEnough}>
+          <Fade bottom when={scrolledDownEnough}>
             <div id="team">
               <Team />
             </div>
           </Fade>
 
-          <Fade  bottom when={scrolledDownEnough}>
+          <Fade bottom when={scrolledDownEnough}>
             <div id="executive">
               <Executive />
             </div>
           </Fade>
 
-          <Fade  bottom when={scrolledDownEnough}>
+          <Fade bottom when={scrolledDownEnough}>
             <div id="review" style={{ background: "#F5F6F8" }}>
               <Review />
             </div>

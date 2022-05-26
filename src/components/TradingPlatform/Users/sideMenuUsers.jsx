@@ -9,7 +9,7 @@ import BallotIcon from '@material-ui/icons/BallotOutlined';
 import { Nav, Button } from 'react-bootstrap';
 import { Switch, Route, Link, useParams } from "react-router-dom";
 import { Row } from "react-bootstrap";
-import '../eplatform.css'
+import 'components/TradingPlatform/eplatform.css'
 import useWindowDimensions from "../../../utils/sizewindow";
 import { CloseOutlined } from '@material-ui/icons'
 import { ViewHeadlineTwoTone } from '@material-ui/icons';

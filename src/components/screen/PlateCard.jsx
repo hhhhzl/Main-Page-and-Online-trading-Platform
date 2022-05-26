@@ -111,7 +111,7 @@ export default function PlateCard({dataSource, heightProp,stockData,index}) {
   ];
   
   return (
-    <div className="plate-card-container" style={{marginLeft:index == 0 ? '0px' : ''}}>
+    <div className="plate-card-container" style={{marginLeft:index == 0 || width < 850 ? '0px' : width < 1550 && index == 2 ? '0px' : ''}}>
       <div className="plate-name-container">
         <div className="plate-name-text">{dataSource.板块名称}</div>
         {dataSource.涨跌幅 > 0? 

@@ -167,7 +167,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
           <br />
           <br />
 
-          <div className="about-center">
+          <div className="about-center" style={{ width:width > 1385 ? "68.5%"  : width < 1350 ?"93%":"71%"}}>
             {width < 680 ? (
               <>
                 <Row className="center-container">
@@ -540,7 +540,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               src="/homeCutout/Group 58.png"
               style={{ width: width-10, height: "79px" }}
             /></>  }
-              
+
             </div>
 
             {width > 1100 ? (
@@ -551,16 +551,17 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                       <div className="message-title">
                         “权威金融竞赛证书”，为你提升核心竞争力
                       </div>
+                      <div className="message-content">
+                        证书由顶尖券商中信证券官方认证，排名前30％的参赛者均会授予颁发。同时，排名不是唯一评判标准，赛事期间设立300余份相关奖项等你来拿。
+                      </div>
                       <span className="message-icon">
                         <Image
-                          src="/homeCutout/Group 21.png"
-                          style={{ width: "49px", height: "3px" }}
+                            src="/homeCutout/Group 21.png"
+                            style={{ width: "49px", height: "3px" }}
                         />
                       </span>
-                      <div className="message-content">
-                        赛事证书由
-                        UFA，中信证券，以及清华大学联合签署。表现优异的前
-                        30%参赛选手将收获主办方颁发的官方证书，为你的简历增添亮点，丰富金融专业背景，帮助你从同龄人中迅速脱颖而出！
+                      <div className="message-content-bottom">
+                        我们希望你的实力被更多知名金融企业看见；重量级证书加持，丰富你的履历，助力职场之路畅通无忧。
                       </div>
                     </div>
                     <div className="flex-center image-right">
@@ -571,12 +572,16 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                         />
                       </div>
                       <div
-                        style={{
-                          width: "600px",
-                          height: "480px",
-                          border: "1px solid #3C5E78",
-                        }}
-                      ></div>
+                        >
+                      <Image
+                          src="/组 50(3).png"
+                          style={{
+                            width: "600px",
+                            height: "480px",
+                            border: "1px solid #3C5E78",
+                          }}
+                      />
+                      </div>
                       <div className="image-right-icon-bottom">
                         <Image
                           src="/homeCutout/Group 25.png"
@@ -615,15 +620,18 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                       <div className="message-title">
                         “0 门槛参与要求”，帮助小白完成自我提升
                       </div>
-                      <span className="message-icon">
-                        <Image
-                          src="/homeCutout/Group 21.png"
-                          style={{ width: "49px", height: "3px" }}
-                        />
-                      </span>
                       <div className="message-content">
                         就算是没有经验的投资小白也不用担心，UFA
                         将在比赛全程陪伴你，无论是指导撰写投资笔记并生成属于自己的投资报告，还是定期邀请金融专家深度解析市场走向，我们将会全力为你的成长助力，帮你实现人生新高度！
+                      </div>
+                      <span className="message-icon">
+                        <Image
+                            src="/homeCutout/Group 21.png"
+                            style={{ width: "49px", height: "3px" }}
+                        />
+                      </span>
+                      <div className="message-content-bottom">
+                        我们希望你的实力被更多知名金融企业看见；重量级证书加持，丰富你的履历，助力职场之路畅通无忧。
                       </div>
                     </div>
                   </div>
@@ -635,14 +643,17 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                       <div className="message-title">
                         “汇聚顶尖金融精英”，助你迅速拓展人脉圈
                       </div>
-                      <span className="message-icon">
-                        <Image
-                          src="/homeCutout/Group 21.png"
-                          style={{ width: "49px", height: "3px" }}
-                        />
-                      </span>
                       <div className="message-content">
                         相遇即机遇，我们联结了来自全球最顶尖大学的华人金融精英，他们可能是你未来并肩作战的同事，或是雇主，或是可靠的商业伙伴，亦或是投资人。我们丰富的线上/线下活动将为选手间进行深度交流提供绝佳机会，帮助你快速提升软技能！
+                      </div>
+                      <span className="message-icon">
+                        <Image
+                            src="/homeCutout/Group 21.png"
+                            style={{ width: "49px", height: "3px" }}
+                        />
+                      </span>
+                      <div className="message-content-bottom">
+                        我们希望为优秀的大学生提供被伯乐发掘的窗口与机遇。
                       </div>
                     </div>
                     <div className="flex-center image-right">
@@ -710,7 +721,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                         alignItems: "center",
                       }}
                     >
-                      “权威金融竞赛证书”为你加强背景与竞争力{width}
+                      “权威金融竞赛证书”为你加强背景与竞争力
                     </h6>
                     <p
                       style={{

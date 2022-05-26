@@ -1,0 +1,13 @@
+.modal-90w{
+    width: 100vw;  /* Occupy the 90% of the screen width */
+    max-width: none!important;
+}
+
+.custom-modal-style {
+    width: 897px;
+    height: 802px;
+    }
+
+.modal-container {
+    height: 40rem;
+  }
