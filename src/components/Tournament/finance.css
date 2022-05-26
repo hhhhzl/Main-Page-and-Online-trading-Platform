@@ -37,6 +37,7 @@
 	color: #C0C3CE;
 	line-height: 19px;
 	text-align: center;
+	margin-top: 6px;
 }
 
 .finance-title-imgage {
@@ -68,7 +69,6 @@
 	font-weight: 400;
 	color: #9C9FB0;
 	line-height: 28px;
-	-webkit-background-clip: text;
 	text-align: end;
 }
 
@@ -79,7 +79,6 @@
 	color: #2A2B30;
 	line-height: 60px;
 	letter-spacing: 1px;
-	-webkit-background-clip: text;
 }
 
 
@@ -90,5 +89,21 @@
 	font-weight: 400;
 	color: #5D5F6D;
 	line-height: 30px;
+}
+
+.insight-into{
+	margin: 0px 18.75%;
+}
+
+@media screen and (max-width: 1200px) {
+	.insight-into{
+		margin: 0px 12%;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.insight-into{
+		margin: 0px 5%;
+	}
 }
 

@@ -31,7 +31,10 @@ export default function Introduce() {
       </div>
       {/* 比赛流程 */}
       <div className="match white-bg">
-        <div className="left">
+		<div style={{display:"flex"}}>
+		
+		
+		<div className="left">
           <div className="match-text">比赛流程</div>
           <div className="left-round">
             <div className="round">
@@ -94,7 +97,6 @@ export default function Introduce() {
             </div>
           </div>
         </div>
-
         <div className="right">
           <div className="match-begin">
             <div className="right-line"></div>
@@ -175,7 +177,12 @@ export default function Introduce() {
             </div>
           </div>
         </div>
-      </div>
+		</div>
+		<div className="match-bottom-wrapper">
+			<span className="match-bottom-details">详情请见</span>
+			<span className="match-bottom-rules">赛事规则</span>
+		</div>
+	  </div>
 
       {/* 比赛奖项 */}
 
@@ -188,8 +195,15 @@ export default function Introduce() {
             </div>
           </div>
 
-          <div className="awards-card-wrapper">
-            <div className="awards-card-container">
+          <div 
+			className="awards-card-wrapper"
+			style={{
+				justifyContent:width < 559?"space-around":"space-between"
+			}}>
+		  
+            <div 
+				className= {width < 559 ? "awards-card-container-small":"awards-card-container"}
+			>
               <div className="awards-card">
                 <div className="ranking awards-center">第一名</div>
                 <div className="awards-pic awards-center">
@@ -208,8 +222,7 @@ export default function Introduce() {
             </div>
 
             <div
-              className="awards-card-container"
-              style={{ margin:  width > 1400 ? "0px 60px" : "0px 50px" }}
+			  className= {width < 559 ? "awards-card-container-small":"awards-card-container"}
             >
               <div className="awards-card">
                 <div className="ranking awards-center">第二名</div>
@@ -227,8 +240,11 @@ export default function Introduce() {
                 </div>
               </div>
             </div>
+			
 
-            <div className="awards-card-container">
+            <div
+				className= {width < 559 ? "awards-card-container-small":"awards-card-container"}
+			>
               <div className="awards-card">
                 <div className="ranking awards-center">第三名</div>
                 <div className="awards-pic awards-center">
@@ -245,42 +261,74 @@ export default function Introduce() {
                 </div>
               </div>
             </div>
+
+              {
+                  width < 837 ?
+                      <div
+                          className= {width < 559 ? "awards-card-container-small":"awards-card-container"}
+                      >
+                          <div className="awards-card">
+                              <div className="ranking awards-center">第五至十名</div>
+                              <div className="awards-pic awards-center">
+                                  <Image
+                                      src="/homeCutout/10086.png"
+                                      style={{ width: "220px", height: "220px" }}
+                                  />
+                              </div>
+
+                              <div className="award-content awards-center">
+                                  <div>团队获得6000元人民币</div>
+                                  <div>每位团员获得官方制定的冠军证书 </div>
+                                  <div>中信证券实习机会</div>
+                              </div>
+                          </div>
+                      </div>
+                  :""
+              }
+
           </div>
 
-          <div
-            className="awards-center flex-center"
-            style={{ marginTop: "60px" }}
-          >
-            <div className="awards-card-container">
-              <div className="awards-card">
-                <div className="ranking awards-center">第五至十名</div>
-                <div className="awards-pic awards-center">
-                  <Image
-                    src="/homeCutout/10086.png"
-                    style={{ width: "220px", height: "220px" }}
-                  />
-                </div>
+            {
+                width >= 837?
+                    <div
+                        className="awards-center flex-center"
+                    >
+                        <div
+                            className= {width < 559 ? "awards-card-container-small":"awards-card-container"}
+                        >
+                            <div className="awards-card">
+                                <div className="ranking awards-center">第五至十名</div>
+                                <div className="awards-pic awards-center">
+                                    <Image
+                                        src="/homeCutout/10086.png"
+                                        style={{ width: "220px", height: "220px" }}
+                                    />
+                                </div>
 
-                <div className="award-content awards-center">
-                  <div>团队获得6000元人民币</div>
-                  <div>每位团员获得官方制定的冠军证书 </div>
-                  <div>中信证券实习机会</div>
-                </div>
-              </div>
-            </div>
-          </div>
+                                <div className="award-content awards-center">
+                                    <div>团队获得6000元人民币</div>
+                                    <div>每位团员获得官方制定的冠军证书 </div>
+                                    <div>中信证券实习机会</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>:""
+
+            }
+
+
+
 
           <div className="other-awards">
             <Image
               src="/tournament/Group 208.png"
-              style={{ width: "87%", height: "100%" }}
+              style={{ width: "86.667%%", height: "100%" }}
             />
           </div>
 
-          <div className="awards-card-wrapper">
+          <div className="awards-card-wrapper" style={{marginTop: "60px",justifyContent:"center"}}>
             <div
-              className="awards-card-container"
-              style={{ margin: "0px 60px" }}
+			  className= {width < 559 ? "awards-card-container-small":"awards-card-container"}
             >
               <div className="awards-card">
                 <div className="ranking awards-center">模范经纪人</div>

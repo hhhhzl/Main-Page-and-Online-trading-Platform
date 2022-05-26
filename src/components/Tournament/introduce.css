@@ -43,6 +43,14 @@
   margin: 0px 18.75%;
   /* padding-bottom: 120px; */
   display: flex;
+  flex-direction: column;
+}
+
+.match-bottom-wrapper{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 120px;
 }
 
 
@@ -169,6 +177,25 @@ height: 32px; */
   letter-spacing: 1px;
 }
 
+.match-bottom-details {
+	font-size: 16px;
+	font-family: Songti SC-Regular, Songti SC;
+	font-weight: 400;
+	color: #2A2B30;
+	line-height: 28px;
+	text-align: end;
+	letter-spacing:2px;
+}
+
+.match-bottom-rules{
+	font-size: 16px;
+	font-family: Songti SC-Regular, Songti SC;
+	font-weight: 400;
+	color: #1442ED;
+	line-height: 28px;
+	letter-spacing:2px;
+}
+
 .bg {
   background-color: #E5E8EE;
 }
@@ -225,20 +252,35 @@ height: 32px; */
 }
 
 .awards-card-wrapper {
-  margin-top: 80px;
+  margin-top: 20px;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .awards-card-container {
-  width: 30%;
-  /* height: 480px; */
+  flex: 0 0 30%;
+  margin-top: 60px;
   background: #FFFFFF;
   box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02);
   border-radius: 0px 0px 0px 0px;
   opacity: 1;
   height: max-content;
 }
+
+
+
+.awards-card-container-small{
+	flex: 0.9;
+	margin-top: 60px;
+	background: #FFFFFF;
+	box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02);
+	border-radius: 0px 0px 0px 0px;
+	opacity: 1;
+	height: max-content;
+}
+
+
+
 
 
 .awards-card {
@@ -257,6 +299,8 @@ height: 32px; */
   line-height: 28px;
   letter-spacing: 1px;
 }
+
+
 
 .awards-pic {
   margin-top: 35px;
@@ -512,3 +556,5 @@ height: 32px; */
     font-size: 18px;
   }
 }
+
+

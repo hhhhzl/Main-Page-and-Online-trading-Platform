@@ -105,9 +105,10 @@
 
 @media screen and (max-width: 1200px) {
   .commit-record {
-    /* margin: 0px 24px; */
+    margin: 0px 18px;
 		justify-content: space-between;
 		padding: 30px 24px;
+		padding-left: 0px;
   }
 
 	.commit-record-div{
@@ -119,9 +120,10 @@
 
 @media screen and (max-width: 600px) {
   .commit-record {
-    /* margin: 0px 24px; */
+    margin: 0px 12px;
 		justify-content: space-between;
 		padding: 15px 12px;
+		padding-left: 0px;
   }
 
 	.commit-record-div{

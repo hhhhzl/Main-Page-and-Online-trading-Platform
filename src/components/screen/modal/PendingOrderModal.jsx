@@ -11,7 +11,8 @@ export default function PendingOrderModal({
   searchwidth,
   modalHeight,
   hideModal
-}) {
+}) 
+{
   const allRecordColumns = [
     {
       dataField: "type",

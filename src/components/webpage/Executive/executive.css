@@ -26,7 +26,6 @@
     display: flex;
     justify-content: center;
     align-items: end;
-    margin-top: 120px
 }
 
 .text-center-bootom-right {
@@ -230,7 +229,7 @@
     }
 
     .bottom-shadow-image-son {
-        bottom: -23px;
+        bottom: -27px;
         width: 170px;
     }
 
