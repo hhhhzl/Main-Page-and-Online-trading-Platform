@@ -156,6 +156,9 @@
   width: 348px;
 }
 
+.page-header-modal > .modal-dialog-centered {
+  justify-content: center;
+}
 
 .modal-header {
   border-bottom: none;

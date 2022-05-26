@@ -1,15 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
 import useWindowDimensions from "components/../utils/sizewindow";
 import PorforlioMoveGraph from "components/screen/PortforlioMoveGraph";
 import WatchList from "components/screen/WatchList";
-import KeyIndicators from "components/screen/KeyIndicatorSimple";
 import PendingOrder from "components/screen/PendingOrder";
-import LeadingIndustry from "components/screen/AllIndustry";
 import PageHeader from "components/screen/PageHeader";
 
-export default function UserPortfolio(props) {
+export default () => {
     const { width, height } = useWindowDimensions();
-    const listRef = useRef();
 
     // The size of the list
     // It will be updated later

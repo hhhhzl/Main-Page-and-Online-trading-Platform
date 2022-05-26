@@ -1,7 +1,7 @@
 import reaat, {useEffect, useState} from 'react'
 import { Card, Collapse, Button, Row, Nav, Form, Col, InputGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
-import '../TradingPlatform/eplatform.css';
+import 'components/TradingPlatform/eplatform.css';
 
 export default function StockTradeComponet({
   vertify

@@ -107,7 +107,7 @@ export const HeaderLinks = styled(LinkS)`
   font-weight: bold !important;
 }
 `;
-export const MenuItemLinks = styled(LinkS)`
+export const MenuItemLinks = styled(LinkR)`
   color: #6e7184;
   &.hover {
     background: #eef0f4;

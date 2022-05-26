@@ -2,7 +2,7 @@ import { color, height, width } from '@material-ui/system';
 import reaat, {useState} from 'react'
 import { Card, Collapse, Button, Row, Nav, Col, Badge, InputGroup, Form, Image } from 'react-bootstrap'
 import { Bookmark } from "@material-ui/icons";
-import '../TradingPlatform/eplatform.css';
+import 'components/TradingPlatform/eplatform.css';
 import { StarBorder } from '@material-ui/icons';
 import { NotificationsNone, KeyboardArrowDown, ArrowDropUp} from '@material-ui/icons';
 import UserHolding from './UserHolding';

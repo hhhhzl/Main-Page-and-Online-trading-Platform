@@ -1,7 +1,7 @@
 import { color, width } from '@material-ui/system';
 import reaat, {useState} from 'react'
 import { Card, Collapse, Button, Row, Nav, Dropdown,DropdownButton, Badge, Spinner,Col, Form } from 'react-bootstrap'
-import '../TradingPlatform/eplatform.css';
+import 'components/TradingPlatform/eplatform.css';
 import { StarBorder } from '@material-ui/icons';
 import { NotificationsNone, KeyboardArrowDown, ArrowDropUp, ArrowBack, ArrowForward, Edit, ShowChart, BarChart} from '@material-ui/icons';
 import useWindowDimensions from '../../utils/sizewindow';

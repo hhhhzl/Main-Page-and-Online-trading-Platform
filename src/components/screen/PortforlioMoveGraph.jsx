@@ -1,6 +1,6 @@
 import reaat, {useEffect, useState} from 'react'
 import { Card, Collapse, Button, Row, Nav, Col, Badge, InputGroup, Form, Image } from 'react-bootstrap'
-import '../TradingPlatform/eplatform.css';
+import 'components/TradingPlatform/eplatform.css';
 import { StarBorder } from '@material-ui/icons';
 import { NotificationsNone, KeyboardArrowDown, ArrowDropUp} from '@material-ui/icons';
 import UserHolding from './UserHolding';
