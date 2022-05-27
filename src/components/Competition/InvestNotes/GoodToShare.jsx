@@ -10,14 +10,19 @@ export default function GoodToShare() {
     <div
 		style={{
 			background: "#FFFFFF",
-			marginTop: "24px"
+			marginTop: "24px",
+			height:"780px"
 		}}>
       <div className="share">
         {data.map((item, idx) => (
           <div key={idx} className="share-div">
             <div style={{ padding: "24px 0 0 36px" }}>
               <div className="share-div-title">{item.title}</div>
-              <div style={{ paddingTop: "24px" }}>
+              <div style={{ 
+				  paddingTop: "24px" ,
+				  height:"240px",
+				  overflow:"auto"
+				}}>
                 {item.files.map((file, idf) => (
                   <div key={idf} className="share-div-centent">
                     <div style={{ paddingLeft: "12px" }}>
