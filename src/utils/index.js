@@ -3,9 +3,8 @@ export function getPlatformType() {
     return platformType;
 }
 
-export function setPlatformType() {
-    const platformType = localStorage.getItem('platformType');
-    return platformType;
+export function setPlatformType(platform) {
+    localStorage.setItem("platformType", platform);
 }
 
 export function getPlatformURL() {
@@ -19,5 +18,5 @@ export function setPlatformURL() {
 }
 
 export function clearLocalStorage() {
-    // 在退出登录时清理所有localstorage内容
+    localStorage.removeItem("platformType");
 }
