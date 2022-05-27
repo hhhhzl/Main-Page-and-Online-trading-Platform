@@ -12,12 +12,16 @@ import useWindowDimensions from "../../utils/sizewindow";
 
 import "./pendingOrder.css";
 import PendingOrderModal from "./modal/PendingOrderModal";
+import PositionModal from "./modal/PositionModal";
+import CurrentModal from "./modal/CurrentModal";
 
 const { SearchBar } = Search;
 export default function PendingOrder({heightProp, searchwidth, modalHeight}) {
   const { width, height } = useWindowDimensions();
   const [current, setCurrent] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [showPositionModal, setShowPositionModal] = useState(false);
+  const [showCurrentModal, setShowCurrentModal] = useState(false);
   const changeCurrent = (index) => {
     setCurrent(index);
   };
@@ -423,11 +427,25 @@ export default function PendingOrder({heightProp, searchwidth, modalHeight}) {
 
   
   const openModal = () => {
-    setShowModal(true);
+    if(current == 2){
+      setShowModal(true);
+    }else if (current == 1){
+      setShowCurrentModal(true)
+    }else{
+      setShowPositionModal(true)
+    }
   };
 
   const hideModal = () => {
     setShowModal(false);
+  };
+
+  const hidePositionModal = () => {
+    setShowPositionModal(false);
+  };
+
+  const hideCurrentModal = () => {
+    setShowCurrentModal(false);
   };
 
   useEffect(() => {});
@@ -435,7 +453,9 @@ export default function PendingOrder({heightProp, searchwidth, modalHeight}) {
   return (
     <>
       
-      <PendingOrderModal showModal={showModal} searchwidth={searchwidth} modalHeight={modalHeight} hideModal={hideModal}></PendingOrderModal>
+      <PendingOrderModal showModal={showModal} searchwidth={searchwidth} modalHeight={modalHeight} hideModal={hideModal}></PendingOrderModal> 
+      <PositionModal showPositionModal={showPositionModal} searchwidth={searchwidth} modalHeight={modalHeight} hidePositionModal={hidePositionModal}></PositionModal>
+      <CurrentModal showCurrentModal={showCurrentModal} searchwidth={searchwidth} modalHeight={modalHeight} hideCurrentModal={hideCurrentModal}></CurrentModal>
 
       <div className="pending-container">
         <div className="pending-order-wrapper">
@@ -463,7 +483,7 @@ export default function PendingOrder({heightProp, searchwidth, modalHeight}) {
 
           <div
             className="order-flex"
-            style={{ display: current == 2 ? "flex" : "none" }}
+            style={{ display: "flex" }}
             onClick={openModal}
           >
             <div className="all-order-text" >

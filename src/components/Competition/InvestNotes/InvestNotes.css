@@ -132,3 +132,9 @@
   }
 
 }
+
+.publish-upload-file:disabled{
+  border: none;
+  background-color: #F5F6F8;
+  cursor: not-allowed;
+}

@@ -39,3 +39,19 @@
     margin: 1.75rem auto;
   }
 }
+
+.modal-back-text {
+  margin-left: 5px;
+  color: #FFFFFF;
+  letter-spacing: 1px;
+}
+
+.modal-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50px;
+  left: 50px;
+  cursor: pointer;
+}

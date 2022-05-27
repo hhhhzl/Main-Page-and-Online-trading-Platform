@@ -2,15 +2,24 @@ import { Modal } from "react-bootstrap";
 import React, { useState, useEffect, useRef } from "react";
 import "./countdown.css";
 import { now, end } from "../../../utils/countdownUtil";
+import { ArrowBack } from "@material-ui/icons";
+import { useHistory } from "react-router";
 
 export default function Countdown({ showModal, hideModal }) {
+  
+  let history = useHistory();
   const intervalRef = useRef();
 
-  let [leftTime, setLeftTime] = useState(end-now);
+  let [leftTime, setLeftTime] = useState(end - now);
   const [d, setDays] = useState(""); //天
   const [h, setHours] = useState(""); //小时
   const [m, setMinutes] = useState(""); //分钟
   const [s, setSeconds] = useState(""); //秒
+
+
+  const backToHome = () => {
+    history.push("/")
+  };
 
   useEffect(() => {
     if (leftTime > 0) {
@@ -51,25 +60,31 @@ export default function Countdown({ showModal, hideModal }) {
   }, [leftTime]); //不传依赖
 
   return (
-    <Modal
-      show={showModal}
-      onHide={() => hideModal(leftTime)}
-      centered
-      className="countdown-modal"
-    >
-      <div className="countdown-modal-text">距离比赛开始</div>
-      <div className="countdown-modal-time">
-        {" "}
-        {d > 0 && leftTime > 0 ? (
-          <>
-            <span>{`${d}天${h}时`}</span>
-          </>
-        ) : leftTime > 0 && d <= 0 ? (
-          <>{`${h}:${m}:${s}`}</>
-        ) : (
-          <>0天0小时</>
-        )}
-      </div>
-    </Modal>
+    <>
+      <Modal
+        show={showModal}
+        onHide={() => hideModal(leftTime)}
+        centered
+        className="countdown-modal"
+      >
+        <div className="modal-back" onClick={backToHome}>
+          <ArrowBack style={{color:"#ffffff"}}></ArrowBack>
+          <div className="modal-back-text">返回首页</div>
+        </div>
+        <div className="countdown-modal-text">距离比赛开始</div>
+        <div className="countdown-modal-time">
+          {" "}
+          {d > 0 && leftTime > 0 ? (
+            <>
+              <span>{`${d}天${h}时`}</span>
+            </>
+          ) : leftTime > 0 && d <= 0 ? (
+            <>{`${h}:${m}:${s}`}</>
+          ) : (
+            <>0天0小时</>
+          )}
+        </div>
+      </Modal>
+    </>
   );
 }
