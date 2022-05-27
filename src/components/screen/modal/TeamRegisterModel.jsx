@@ -130,22 +130,32 @@ export default function TeamRegisterModel({showModal,hideModal,getBase64,imgSrc}
 			</div>
 			<div
 				style={{
-					margin: "20px 0 20px 66%"
+					margin:"10px 0",
 				}}
 			>
-				<Button
-				style={{
-					background: "#F5F6F8",
-					borderRadius: "4px 4px 4px 4px",
-					opacity: "1",
-					border:"0",
-					color:"rgb(42, 43, 48)"
-				}}
-				 onClick={hideModal}
-				>取消</Button>
-				<Button 
-					style={{marginLeft:"20px"}}
-				onClick={() => getBase64(tailorUrl)}>确认</Button>
+				<div
+					style={{
+						textAlign:"end",
+						width: "95%"
+					}}
+				>
+					<Button
+					style={{
+						background: "#F5F6F8",
+						borderRadius: "4px 4px 4px 4px",
+						opacity: "1",
+						border:"0",
+						color:"rgb(42, 43, 48)",
+						height: "38px"
+					}}
+					 onClick={hideModal}
+					>取消</Button>
+					<Button 
+						style={{
+							height: "38px"
+						}}
+					onClick={() => getBase64(tailorUrl)}>确认</Button>
+				</div>
 			</div>
 		</div>
 	</Modal>

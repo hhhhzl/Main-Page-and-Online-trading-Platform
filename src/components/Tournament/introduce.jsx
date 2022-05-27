@@ -453,7 +453,7 @@ export default function Introduce() {
               </div>
             </div>
 
-            <div className="tips">
+            <div className= {width >766?"tips":"tips-center"}>
               注：所有奖项由UFA与中信证券官方签署制定，旨在为参赛选手提供背景提升，学习成长的机会。
             </div>
           </div>
