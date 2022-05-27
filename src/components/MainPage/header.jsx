@@ -1,6 +1,6 @@
 import { useContext, React, useState, useEffect } from "react";
 
-import { useHistory } from 'react-router';
+import { useHistory } from "react-router";
 import {
   HeaderOut,
   HeaderContianer,
@@ -34,8 +34,8 @@ const HeaderCreate = ({ toggle }) => {
   const [box, setbox] = useState(height * 0.09);
   const [current, setCurrent] = useState(1);
   const { url } = useRouteMatch();
-  
-  const history= useHistory()
+
+  const history = useHistory();
 
   // const [hover, setHover] = useState(false);
 
@@ -50,16 +50,18 @@ const HeaderCreate = ({ toggle }) => {
 
   const handleCloseTransaction = () => setShowTransaction(false);
   const handleShowTransaction = () => setShowTransaction(true);
-  
-  const jumpNewPage = () => {history.push("/")}
-  const toHome = () => {history.push("/")}
-  
+
+  const jumpNewPage = () => {
+    history.push("/");
+  };
+  const toHome = () => {
+    history.push("/");
+  };
 
   const changeCurrent = (item) => {
     console.log(item);
     setCurrent(item);
   };
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -207,17 +209,17 @@ const HeaderCreate = ({ toggle }) => {
               <HeaderBtnLink
                 style={{
                   borderBottom:
-                    current != 2
+                    url != "/#"
                       ? "none"
                       : scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
                   color:
-                    scrolledDownEnough && current != 2
+                    scrolledDownEnough && url != "/#"
                       ? "#2A2B30"
-                      : current == 2 && scrolledDownEnough
+                      : url == "/#" && scrolledDownEnough
                       ? "#1442ED"
-                      : scrolledDownEnough && current == 2
+                      : scrolledDownEnough && url == "/#"
                       ? "#1442ED"
                       : "#FFFFFF",
                 }}
@@ -272,17 +274,17 @@ const HeaderCreate = ({ toggle }) => {
               <HeaderBtnLink
                 style={{
                   borderBottom:
-                    current != 4
+                    url != "/#"
                       ? "none"
                       : scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
                   color:
-                    scrolledDownEnough && current != 4
+                    scrolledDownEnough && url != "/#"
                       ? "#2A2B30"
-                      : current == 4 && scrolledDownEnough
+                      : url == "/#" && scrolledDownEnough
                       ? "#1442ED"
-                      : scrolledDownEnough && current == 4
+                      : scrolledDownEnough && url == "/#"
                       ? "#1442ED"
                       : "#FFFFFF",
                 }}
@@ -307,7 +309,9 @@ const HeaderCreate = ({ toggle }) => {
                 // onMouseEnter={handleMouseLeave}
                 onMouseLeave={handleCloseTransaction}
               >
-                <MenuItemLinksRouter to = '/eplatform' className="menu-item">赛事账户</MenuItemLinksRouter>
+                <MenuItemLinksRouter to="/eplatform" className="menu-item">
+                  赛事账户
+                </MenuItemLinksRouter>
                 {/* <MenuItemLinksRouter to='/eplatform' className="menu-item">个人账户</MenuItemLinksRouter> */}
               </div>
             </HeaderItem>
@@ -316,8 +320,10 @@ const HeaderCreate = ({ toggle }) => {
           <HeaderBtn>
             {user && user.jti ? (
               <>
-                <div style={{ marginRight: "34px",position:"relative" }} onClick={() =>jumpNewPage()}>
-                  
+                <div
+                  style={{ marginRight: "34px", position: "relative" }}
+                  onClick={() => jumpNewPage()}
+                >
                   <div className="notice-dot"></div>
                   <Image
                     src={

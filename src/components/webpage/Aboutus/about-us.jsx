@@ -17,12 +17,6 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
   const [scrolledDownEnough, setScrolledDownEnough] = useState(false);
   const { BilibiliVideo } = require("react-bilibili-video");
 
-  const delay = () => {
-    setTimeout(() => {
-      !show && setShow(!show);
-    }, 500);
-  };
-  delay();
   useEffect(() => {
     const handleScroll = () => {
       const bodyScrollTop =
@@ -41,7 +35,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
       className="section"
       style={{ paddingTop: "20px", paddingBottom: "90px" }}
     >
-      <Fade bottom when={show}>
+      <Fade bottom duration={300} delay={300} fraction={0.1}>
         <div className="text-center">
           <Image
             src="/homeCutout/Group174.png"
@@ -103,8 +97,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
           <h5 className="text-center"></h5>
           <br />
         </Container>
-      </Fade>
-      <Fade bottom when={show}>
+      
         <div className="video">
           <div className="text-center">
             <Image
@@ -524,9 +517,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
             </Button>
           </h5>
         </div>
-      </Fade>
-
-      <Fade bottom when={show}>
+      
         <div className="about-intro">
           <div
             className="section"
