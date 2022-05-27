@@ -101,7 +101,7 @@ export default function LeadingIndustryAll({setswitchClose}) {
           }}
           variant="outline-primary"
         >
-          1D
+          当日
         </Button>
       </div>
 

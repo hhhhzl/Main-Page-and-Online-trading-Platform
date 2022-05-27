@@ -114,7 +114,7 @@ const Rules = () => {
 							<div style={{marginTop:"16px"}}>
 								<Image src="/tournament/Group 142.png"></Image>
 								<div className="horizontal-line"></div>
-								<div className="vertical-line"></div>
+								{/* <div className="vertical-line"></div> */}
 							</div>
 							<div className="judge-rules-subtitle" style={{marginTop:"16px"}}>指标分数</div>
 						</div>
@@ -148,7 +148,7 @@ const Rules = () => {
 							<div style={{marginTop:"16px"}}>
 								<Image src="/tournament/Group 142.png"></Image>
 								<div className="horizontal-line"></div>
-								<div className="vertical-line"></div>
+								{/* <div className="vertical-line"></div> */}
 							</div>
 							<div className="judge-rules-subtitle" style={{marginTop:"16px"}}>主观报告筛选</div>
 						</div>
@@ -179,7 +179,7 @@ const Rules = () => {
 							<div style={{marginTop:"16px"}}>
 								<Image src="/tournament/Group 142.png"></Image>
 								<div className="horizontal-line"></div>
-								<div className="vertical-line"></div>
+								{/* <div className="vertical-line"></div> */}
 							</div>
 							<div className="judge-rules-subtitle" style={{marginTop:"16px"}}>PPT线上展示</div>
 						</div>
