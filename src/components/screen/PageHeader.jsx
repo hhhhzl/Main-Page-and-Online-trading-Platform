@@ -17,7 +17,7 @@ import { MenuItemLinks } from "../MainPage/HeaderElements";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import { MobileIcon } from "../MainPage/NavbarElements";
-import { ViewHeadlineTwoTone } from "@material-ui/icons";
+import { Notifications, NotificationsOffOutlined, ViewHeadlineTwoTone } from "@material-ui/icons";
 import "./pageheader.css";
 import useWindowDimensions from "../../utils/sizewindow";
 import BootstrapTable from "react-bootstrap-table-next";
@@ -36,7 +36,9 @@ import {
   useHistory
 } from "react-router-dom";
 import AuthContext from "context/AuthContext";
+import { NotificationsNoneOutlined } from "@material-ui/icons";
 import { MenuItemLinksRouter } from "components/MainPage/HeaderElements";
+import { IconButton } from "@material-ui/core";
 
 
 
@@ -46,6 +48,7 @@ export default function PageHeader(toggle) {
   let { user, logoutUser} = useContext(AuthContext);
   const {width, height} = useWindowDimensions();
   const [searchData, setsearcnData] = useState([])
+  const [note, setnote] = useState(null)
 
 
           useEffect(() => {
@@ -77,6 +80,10 @@ export default function PageHeader(toggle) {
   const { username } = useParams();
   const { url } = useRouteMatch();
   const history = useHistory();
+
+  const sendUserNews = () =>{
+    history.push("/chat")
+  }
 
   const searchSwitch = () => {
     if (linkedInstitution.value != "") {
@@ -424,6 +431,8 @@ export default function PageHeader(toggle) {
                           zIndex: 999,
                           width: "300px",
                           background: "white",
+                          boxShadow: "0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02)",
+
                         }}
                       >
                         <BootstrapTable
@@ -441,6 +450,16 @@ export default function PageHeader(toggle) {
               </ToolkitProvider>
             </Form>
           </div>
+          <div>
+            <IconButton style={{margin:"20px 24px", padding:"0px 0"}} onClick={() => sendUserNews()}>
+                <NotificationsNoneOutlined ></NotificationsNoneOutlined >
+                {note? (<div style={{width:"7px",height:"7px",backgroundColor:"#1442ED", borderRadius:"50%", marginLeft:"-10px",marginTop:"-10px"}}></div>)
+                : null
+                }
+                
+            </IconButton>
+          </div>
+           
 
           <div
             className="header-user"
