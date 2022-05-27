@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import "./cover.css";
@@ -8,11 +8,23 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 
 import HeaderCreate from "../../MainPage/header";
+import AuthContext from "context/AuthContext";
   
 
 export default function Cover() {
   const { width, height } = useWindowDimensions();
+  let { user, logoutUser } = useContext(AuthContext);
+  
   const history = useHistory();
+
+  const sendUser = () =>{
+    if (user){
+      history.push("/team/register")
+    }else{
+      history.push("/tournament")
+    }
+    
+  }
   return (
     <div
       id="home"
@@ -113,7 +125,7 @@ export default function Cover() {
         }}
       >
         <Button className="join-match-btn" variant="primary" size="sm"
-        onClick ={() => history.push("/team/register")}
+        onClick ={() => sendUser()}
         >
           报名参赛
         </Button>

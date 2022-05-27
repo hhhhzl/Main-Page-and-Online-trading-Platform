@@ -77,7 +77,7 @@ const MakeRouter = () => {
         <PrivateRoute exact path="/team/register" component={TeamEntry} />
         <PrivateRoute exact path="/team/create" component={TeamAgreeProcessCreate} />
         <PrivateRoute exact path="/team/join" component={TeamAgreeProcessJoin} />
-        <PrivateRoute exact path="/tournament" component={Tournament} />
+        <Route exact path="/tournament" component={Tournament} />
 
         <PrivateRoute
           exact

@@ -1,16 +1,33 @@
-import React from "react";
+import React, {useEffect,useState} from "react";
 import { Badge, Button } from "react-bootstrap";
 import { Row, Col, Container } from "react-bootstrap";
 import { Image } from "react-bootstrap";
 import "./introduce.css";
 import useWindowDimensions from "../../utils/sizewindow";
 
+
 export default function Introduce() {
   const { width, height } = useWindowDimensions();
+  const [bodyscrollrdTop, setbodyscrollTop] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setbodyscrollTop(document.documentElement.scrollTop || document.body.scrollTop)
+      console.log("屏幕向下距离",bodyscrollrdTop)
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+    
+  }, [bodyscrollrdTop]);
 
   return (
-    <div className="introduce">
+    <>
+    <div style={{position:"fixed",zIndex:10,width:"1px",height:width/2.97,background:`linear-gradient(to top, #E5E8EE ${(bodyscrollrdTop/(width/2.97)*100).toString() + '%'}, rgba(255, 255, 255, 0.5) ${(bodyscrollrdTop/(width/2.97)*100).toString() + '%'})`, top:"64px",left:width/2-1}}></div>
+    <div className="introduce" style={{width:width}}>
       <div className="introduce-content gray-bg">
+      <div style={{position:"relative",width:width,height:"48px",background:"#F5F6F8"}}></div>
+        <div className="line-container">
         <div className="introduce-mark">
           <div className="top-image">
             <Image
@@ -28,6 +45,8 @@ export default function Introduce() {
             />
           </div>
         </div>
+        </div>
+        <div style={{position:"relative",width:"100%",height:"48px",background:"#F5F6F8"}}></div>
       </div>
       {/* 比赛流程 */}
       <div className="match white-bg">
@@ -178,14 +197,14 @@ export default function Introduce() {
           </div>
         </div>
 		</div>
-		<div className="match-bottom-wrapper">
+		<div className="match-bottom-wrapper" style={{zIndex:999}}>
 			<span className="match-bottom-details">详情请见</span>
 			<span className="match-bottom-rules">赛事规则</span>
 		</div>
 	  </div>
 
       {/* 比赛奖项 */}
-
+      <div style={{position:"relative",width:"100%",height:"96px",background:"#F5F6F8"}}></div>
       <div className="match-awards-container gray-bg">
         <div className="awards-content">
           <div className="awards-title-wrapper">
@@ -355,5 +374,6 @@ export default function Introduce() {
         </div>
       </div>
     </div>
+    </>
   );
 }

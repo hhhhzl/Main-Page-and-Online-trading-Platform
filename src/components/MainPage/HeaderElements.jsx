@@ -20,7 +20,7 @@ export const HeaderOut = styled.nav`
   // -o-transition: all 1s ease;
   // -ms-transition: all 1s ease;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  z-index: 10;
+  z-index: 999;
   @media screen and (max-width: 960px) {
     transition: 1s all ease;
   }

@@ -8,6 +8,7 @@ const Rules = () => {
 	const { width, height } = useWindowDimensions();
 	const [current, setCurrent] = useState(0);
 	const [showModal, setShowModal] = useState(false);
+	const [bodyscrollrdTop, setbodyscrollTop] = useState(0);
 	
 	const openModal = (current) => {
 	  setShowModal(true);
@@ -17,12 +18,26 @@ const Rules = () => {
 	const hideModal = () => {
 	  setShowModal(false);
 	};
+
+	useEffect(() => {
+		const handleScroll = () => {
+		  setbodyscrollTop(document.documentElement.scrollTop || document.body.scrollTop)
+		  console.log("屏幕向下距离",bodyscrollrdTop)
+		};
+	
+		window.addEventListener("scroll", handleScroll, { passive: true });
+		return () => window.removeEventListener("scroll", handleScroll);
+		
+	  }, [bodyscrollrdTop]);
 	
 	
 	return (
+		<>
+		<div style={{position:"fixed",zIndex:10,width:"1px",height:width/2.97,background:`linear-gradient(to top, #E5E8EE ${(bodyscrollrdTop/(width/2.97)*100).toString() + '%'}, rgba(255, 255, 255, 0.5) ${(bodyscrollrdTop/(width/2.97)*100).toString() + '%'})`, top:"64px",left:width/2-1}}></div>
 	
 	  <div>
 		<RulesModal showModal={showModal} hideModal={hideModal} current={current}></RulesModal>
+		<div style={{position:"relative",width:width,height:"96px",background:"#FFFFFF"}}></div>
 		<div className="rules">
 			<div className="rules-title">参赛详情</div>
 			<div className="rules-top-30">
@@ -211,6 +226,7 @@ const Rules = () => {
 			</div>
 		</div>
 	  </div>
+	  </>
 	);
 	
 	
