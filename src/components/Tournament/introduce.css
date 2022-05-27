@@ -81,7 +81,7 @@
 
 
 .left {
-  border-right: 1px solid #E5E8EE;
+  /* border-right: 1px solid #E5E8EE; */
   width: 50%;
   padding: 120px 0px;
 }
