@@ -28,7 +28,7 @@ export default function MainPage() {
   const delay = () => {
     setTimeout(() => {
       !show && setShow(!show);
-    }, 500);
+    }, 200);
   };
   delay();
   useEffect(() => {
@@ -49,6 +49,7 @@ export default function MainPage() {
     setIsOpen(isOpen);
   }, [isOpen]);
 
+
   return (
     <>
       {/* <div id="home" className="fix-bar">
@@ -63,38 +64,38 @@ export default function MainPage() {
       <div className="main-page-center">
         <Cover />
         <div className="about-us-page">
-          <Fade bottom when={show}>
+          {/* <Fade bottom when={show}> */}
             <div id="aboutus">
               <Aboutus />
             </div>
-          </Fade>
+          {/* </Fade> */}
 
-          <Fade bottom when={scrolledDownEnough} >
+          <Fade bottom duration={300} delay={300} fraction={0.1}>
             <div id="team">
               <Team />
             </div>
           </Fade>
 
-          <Fade bottom when={scrolledDownEnough}>
+          <Fade bottom duration={300} delay={300} fraction={0.1}>
             <div id="executive">
               <Executive />
             </div>
           </Fade>
 
-          <Fade bottom when={scrolledDownEnough}>
+          <Fade bottom duration={300} delay={300} fraction={0.1}>
             <div id="review" style={{ background: "#F5F6F8" }}>
               <Review />
             </div>
           </Fade>
 
-          <Fade bottom when={scrolledDownEnough}>
+          <Fade bottom duration={300} delay={300} fraction={0.1}>
             <div id="contactus">
               <Contacts />
             </div>
           </Fade>
         </div>
       </div>
-      <Fade bottom when={scrolledDownEnough}>
+      <Fade bottom duration={300} delay={300} fraction={0.1}>
         <Footer />
       </Fade>
     </>

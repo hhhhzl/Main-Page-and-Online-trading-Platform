@@ -17,12 +17,6 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
   const [scrolledDownEnough, setScrolledDownEnough] = useState(false);
   const { BilibiliVideo } = require("react-bilibili-video");
 
-  const delay = () => {
-    setTimeout(() => {
-      !show && setShow(!show);
-    }, 500);
-  };
-  delay();
   useEffect(() => {
     const handleScroll = () => {
       const bodyScrollTop =
@@ -41,10 +35,10 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
       className="section"
       style={{ paddingTop: "20px", paddingBottom: "90px" }}
     >
-      <Fade bottom when={show}>
+      <Fade bottom duration={300} delay={300} fraction={0.1}>
         <div className="text-center">
           <Image
-            src="/homeCutout/Group174.png"
+            src="/homeCutout/Group174@2x.png"
             style={{ width: "248px", height: "79px" }}
           />
         </div>
@@ -59,7 +53,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
         >
           <div className="left-icon">
             <Image
-              src="/homeCutout/Group 110.png"
+              src="/homeCutout/Group 110@2x.png"
               style={{ width: "36px", height: "36px" }}
             />
           </div>
@@ -69,12 +63,11 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               textIndent: "0",
               fontSize: width > 1300 ? "24px" : width > 960 ? "20px" : "16px",
               fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
-              lineHeight: "50px",
+              lineHeight: "48px",
               letterSpacing: "0.2px",
             }}
           >
-          UFA金融协会是面向全球顶级高校（包括美国排名TOP30、中国内地TOP10、中国香港四大高校等）建立的首个跨学校，跨地区，跨文化的大学生金融协会。自成立以来，UFA金融协会与中信证券、海内外超过100所高校等建立起合作关系，并联合策划了名家分享会、金融系列公益讲座、全球华人大学生投资大赛等多个活动
-          </p>
+           UFA金融协会 (英文缩写"UFA") 是面向全球顶级高校（包括美国排名TOP30、中国内地TOP10、中国香港四大高校等）建立的首个跨学校，跨地区，跨文化的大学生金融协会。我们的愿景是“助力祖国联合全球和华人金融精英，并共同建设祖国金融未来”。</p>
           <br />
           <p
             className="bottom-angle"
@@ -87,12 +80,10 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               letterSpacing: "1px",
             }}
           >
-            “UFA金融杯”是由
-            UFA⾦融协会牵头发起的首个大型线上模拟投资比赛。“UFA金融杯”为非盈利性赛事，大赛旨在为全球华人大学生提供知识实践以及投资学习的平台支持，鼓励大学生以知促行，以行促知，培养创新精神与实践能力，推动金融创新人才培养机制的建立。大赛愿景希望联结全球未来华人精英，共同建设祖国金融未来
-          </p>
+           自成立以来，UFA金融协会与中信证券、清华大学金融协会、海外超过100所高校等建立起合作关系，并联合策划了名家分享会，金融系列公益讲座、全球大学生投资大赛等多个活动。“UFA杯: 全球大学模拟投资大赛”是由 UFA ⾦融协会牵头发起的首个汇聚全球顶尖高校大学生的大型线上模拟投资比赛。</p>
           <div className="right-icon">
             <Image
-              src="/homeCutout/Group 172.png"
+              src="/homeCutout/Group 172@2x.png"
               style={{ width: "36px", height: "36px" }}
             />
           </div>
@@ -103,12 +94,11 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
           <h5 className="text-center"></h5>
           <br />
         </Container>
-      </Fade>
-      <Fade bottom when={show}>
+
         <div className="video">
           <div className="text-center">
             <Image
-              src="/homeCutout/Group 175.png"
+              src="/homeCutout/Group 175@2x.png"
               style={{ width: "427px", height: "79px" }}
             />
           </div>
@@ -116,7 +106,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
           <div className="video-icon-wrapper">
             <div className="video-icon">
               <Image
-                src="/homeCutout/Group 143.png"
+                src="/homeCutout/Group 143@2x.png"
                 style={{ width: "108px", height: "108px" }}
               />
             </div>
@@ -155,7 +145,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
             <div className="video-icon-wrapper-bottom">
               <div className="video-icon-bottom">
                 <Image
-                  src="/homeCutout/Group 27.png"
+                  src="/homeCutout/Group 27@2x.png"
                   style={{ width: "108px", height: "108px" }}
                 />
               </div>
@@ -176,7 +166,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                       <Row>
                         <div className="box-image flex-center">
                           <Image
-                            src="/homeCutout/Group 101.png"
+                            src="/homeCutout/Group 101@2x.png"
                             style={{
                               width:
                                 width > 1350
@@ -219,7 +209,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                             }}
                           >
                             “UFA杯”
-                            由UFA与中信证券、清华大学金融协会等联合举办，旨在打造最具权威的大学生金融赛事
+                            由UFA与中信证券联合举办，旨在打造最具权威的大学生金融赛事
                           </div>
                         </div>
                       </Row>
@@ -231,7 +221,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                       <Row>
                         <div className="box-image flex-center">
                           <Image
-                            src="/homeCutout/Group 102.png"
+                            src="/homeCutout/Group 102@2x.png"
                             style={{
                               width:
                                 width > 1350
@@ -286,7 +276,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                       <Row>
                         <div className="box-image flex-center">
                           <Image
-                            src="/homeCutout/Group 103.png"
+                            src="/homeCutout/Group 103@2x.png"
                             style={{
                               width:
                                 width > 1350
@@ -345,7 +335,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                       <Row>
                         <div className="box-image flex-center">
                           <Image
-                            src="/homeCutout/Group 101.png"
+                            src="/homeCutout/Group 101@2x.png"
                             style={{
                               width:
                                 width > 1350
@@ -388,7 +378,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                             }}
                           >
                             “UFA杯”
-                            由UFA与中信证券、清华大学金融协会等联合举办，旨在打造最具权威的大学生金融赛事
+                            由UFA与中信证券联合举办，旨在打造最具权威的大学生金融赛事
                           </div>
                         </div>
                       </Row>
@@ -399,7 +389,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                       <Row>
                         <div className="box-image flex-center">
                           <Image
-                            src="/homeCutout/Group 102.png"
+                            src="/homeCutout/Group 102@2x.png"
                             style={{
                               width:
                                 width > 1350
@@ -453,7 +443,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                       <Row>
                         <div className="box-image flex-center">
                           <Image
-                            src="/homeCutout/Group 103.png"
+                            src="/homeCutout/Group 103@2x.png"
                             style={{
                               width:
                                 width > 1350
@@ -506,7 +496,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               </>
             )}
           </div>
-          <h5 className="text-center" style={{ marginTop: "-80px" }}>
+          <h5 className="text-center arrow animated bounceInDown" style={{ marginTop: "-80px" }}>
             <Button
               className="video-btn"
               style={{
@@ -524,9 +514,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
             </Button>
           </h5>
         </div>
-      </Fade>
 
-      <Fade bottom when={show}>
         <div className="about-intro">
           <div
             className="section"
@@ -534,10 +522,10 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
           >
             <div className="text-center">
               {width > 700? <><Image
-                src="/homeCutout/Group 58.png"
+                src="/homeCutout/Group 58@2x.png"
                 style={{ width: "685px", height: "79px" }}
               /></> : <><Image
-              src="/homeCutout/Group 58.png"
+              src="/homeCutout/Group 58@2x.png"
               style={{ width: width-10, height: "79px" }}
             /></>  }
 
@@ -549,14 +537,14 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                   <div className="flex-between">
                     <div className=" message-left">
                       <div className="message-title">
-                        “权威金融竞赛证书”，为你提升核心竞争力
+                        权威证书
                       </div>
                       <div className="message-content">
                         证书由顶尖券商中信证券官方认证，排名前30％的参赛者均会授予颁发。同时，排名不是唯一评判标准，赛事期间设立300余份相关奖项等你来拿。
                       </div>
                       <span className="message-icon">
                         <Image
-                            src="/homeCutout/Group 21.png"
+                            src="/homeCutout/Group 21@2x.png"
                             style={{ width: "49px", height: "3px" }}
                         />
                       </span>
@@ -567,14 +555,14 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                     <div className="flex-center image-right">
                       <div className="image-right-icon-top">
                         <Image
-                          src="/homeCutout/Rectangle 21.png"
+                          src="/homeCutout/Rectangle 21@2x.png"
                           style={{ width: "12px", height: "12px" }}
                         />
                       </div>
                       <div
                         >
                       <Image
-                          src="/组 50(3).png"
+                          src="/组 50(3)@2x.png"
                           style={{
                             width: "600px",
                             height: "480px",
@@ -584,7 +572,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                       </div>
                       <div className="image-right-icon-bottom">
                         <Image
-                          src="/homeCutout/Group 25.png"
+                          src="/homeCutout/Group 25@2x.png"
                           style={{ width: "108px", height: "108px" }}
                         />
                       </div>
@@ -597,7 +585,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                     <div className="image-left">
                       <div className="image-left-icon-bottom">
                         <Image
-                          src="/homeCutout/Group 61.png"
+                          src="/homeCutout/Group 61@2x.png"
                           style={{ width: "108px", height: "108px" }}
                         />
                       </div>
@@ -611,27 +599,26 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                       ></div>
                       <div className="image-left-icon-top">
                         <Image
-                          src="/homeCutout/Rectangle 21.png"
+                          src="/homeCutout/Rectangle 21@2x.png"
                           style={{ width: "12px", height: "12px" }}
                         />
                       </div>
                     </div>
                     <div className=" message-right">
                       <div className="message-title">
-                        “0 门槛参与要求”，帮助小白完成自我提升
+                        学习机会
                       </div>
                       <div className="message-content">
-                        就算是没有经验的投资小白也不用担心，UFA
-                        将在比赛全程陪伴你，无论是指导撰写投资笔记并生成属于自己的投资报告，还是定期邀请金融专家深度解析市场走向，我们将会全力为你的成长助力，帮你实现人生新高度！
+                        赛事期间，UFA为参赛者们准备了一系列高含金量的免费服务：包括百万知识博主、求职达人Lindsay的金融行业求职分析，多场干货满满的大咖讲座，以及中信高级分析师在线专题指导交流等。
                       </div>
                       <span className="message-icon">
                         <Image
-                            src="/homeCutout/Group 21.png"
+                            src="/homeCutout/Group 21@2x.png"
                             style={{ width: "49px", height: "3px" }}
                         />
                       </span>
                       <div className="message-content-bottom">
-                        我们希望你的实力被更多知名金融企业看见；重量级证书加持，丰富你的履历，助力职场之路畅通无忧。
+                        我们希望通过为大学生筛选并提供优质的学习资源，帮助大学生完成提升和成长。
                       </div>
                     </div>
                   </div>
@@ -641,14 +628,14 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                   <div className="flex-between">
                     <div className=" message-left">
                       <div className="message-title">
-                        “汇聚顶尖金融精英”，助你迅速拓展人脉圈
+                        丰厚奖励
                       </div>
                       <div className="message-content">
-                        相遇即机遇，我们联结了来自全球最顶尖大学的华人金融精英，他们可能是你未来并肩作战的同事，或是雇主，或是可靠的商业伙伴，亦或是投资人。我们丰富的线上/线下活动将为选手间进行深度交流提供绝佳机会，帮助你快速提升软技能！
+                        针对所有入围决赛的量化选手与主观多头选手，UFA将赠予决赛奖杯，数十万奖金，中信证券实习机会，以及UFA终身会员。
                       </div>
                       <span className="message-icon">
                         <Image
-                            src="/homeCutout/Group 21.png"
+                            src="/homeCutout/Group 21@2x.png"
                             style={{ width: "49px", height: "3px" }}
                         />
                       </span>
@@ -659,7 +646,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                     <div className="flex-center image-right">
                       <div className="image-right-icon-top">
                         <Image
-                          src="/homeCutout/Rectangle 21.png"
+                          src="/homeCutout/Rectangle 21@2x.png"
                           style={{ width: "12px", height: "12px" }}
                         />
                       </div>
@@ -672,7 +659,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                       ></div>
                       <div className="image-right-icon-bottom">
                         <Image
-                          src="/homeCutout/Group 25.png"
+                          src="/homeCutout/Group 25@2x.png"
                           style={{ width: "108px", height: "108px" }}
                         />
                       </div>

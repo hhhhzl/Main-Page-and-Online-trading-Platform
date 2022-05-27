@@ -17,6 +17,10 @@
   padding: 12px 21px;
 }
 
+.menu-item-home {
+  padding: 12px 17px;
+}
+
 .menu-item:hover {
   background: #EEF0F4;
   color: #2A2B30;
@@ -30,4 +34,11 @@
   position: absolute;
   top: 1px;
   right: 3px;
+}
+
+@media screen and (max-width: 1350px) {
+
+  .menu-item-home {
+   font-size: 12px
+  }
 }

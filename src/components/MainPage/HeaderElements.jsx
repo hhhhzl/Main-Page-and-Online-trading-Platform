@@ -57,11 +57,15 @@ export const HeaderContianer = styled.div`
     cursor: pointer;
   }
   @media screen and (max-width: 1500px) {
-    margin-left: 14%;
+    margin-left: 17%;
     margin-right: 14%;
   }
+  @media screen and (max-width: 1200px) {
+    margin-left: 22%;
+    margin-right: 12%;
+  }
   @media screen and (max-width: 1000px) {
-    margin-left: 3%;
+    margin-left: 17%;
     margin-right: 3%;
     display: flex;
     color: #ffffff;
@@ -72,7 +76,7 @@ export const HeaderContianer = styled.div`
 `;
 
 export const HeaderMenu = styled.div`
-  margin-left: 33%;
+  margin-left: 34.7%;
   display: flex;
   height: 64px;
   justify-content: center;

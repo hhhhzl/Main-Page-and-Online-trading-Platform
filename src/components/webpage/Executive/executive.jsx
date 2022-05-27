@@ -14,7 +14,7 @@ export default function Executive() {
         <div className="section" style={{padding: "120px 0px", paddingBottom: "0px"}}>
             <div className="text-center">
                 <Image
-                    src="/homeCutout/Group 71.png"
+                    src="/homeCutout/Group 71@2x.png"
                     style={{width: "286px", height: "79px"}}
                 />
             </div>
@@ -24,21 +24,22 @@ export default function Executive() {
                 {width > 650 ? (<>
                     <div className="bootom-parent">
                         <div className="text-center text-center-bootom-right">
+                            <div>
                             <Image
                                 className="bottom-shadow-people-image"
-                                src="/homeCutout/chenbolin.png"
+                                src="/homeCutout/chenbolin@2x.png"
                                 title="head image"
                                 id="img-txz"
                                 alt="header"
                                 style={{
                                     position: "relative",
-
                                 }}
                             />
+                            </div>
                             <div className="bottom-shadow-image">
                                 <Image
                                     className="bottom-shadow-image-son"
-                                    src="/homeCutout/Rectangle 656.png"
+                                    src="/homeCutout/Rectangle 656@2x.png"
                                     title="head image"
                                     id="img-txz"
                                     alt="header"
@@ -52,7 +53,7 @@ export default function Executive() {
                         <div className="text-center  text-center-bootom-left text-center-bootom-right">
                             <Image
                                 className="bottom-shadow-people-image"
-                                src="/homeCutout/helitong.png"
+                                src="/homeCutout/helitong@2x.png"
                                 title="head image"
                                 id="img-txz"
                                 alt="header"
@@ -63,7 +64,7 @@ export default function Executive() {
                             <div className="bottom-shadow-image">
                                 <Image
                                     className="bottom-shadow-image-son"
-                                    src="/homeCutout/Rectangle 656.png"
+                                    src="/homeCutout/Rectangle 656@2x.png"
                                     title="head image"
                                     id="img-txz"
                                     alt="header"
@@ -77,7 +78,7 @@ export default function Executive() {
                         <div className="text-center  text-center-bootom-left">
                             <Image
                                 className="bottom-shadow-people-image"
-                                src="/homeCutout/hezhilin.png"
+                                src="/homeCutout/hezhilin@2x.png"
                                 title="head image"
                                 id="img-txz"
                                 alt="header"
@@ -88,7 +89,7 @@ export default function Executive() {
                             <div className="bottom-shadow-image">
                                 <Image
                                     className="bottom-shadow-image-son"
-                                    src="/homeCutout/Rectangle 656.png"
+                                    src="/homeCutout/Rectangle 656@2x.png"
                                     title="head image"
                                     id="img-txz"
                                     alt="header"
@@ -104,7 +105,7 @@ export default function Executive() {
                         <div className="text-center text-center-bootom-right">
                             <Image
                                 className="bottom-shadow-people-image"
-                                src="/homeCutout/heruohang.png"
+                                src="/homeCutout/heruohang@2x.png"
                                 title="head image"
                                 id="img-txz"
                                 alt="header"
@@ -116,7 +117,7 @@ export default function Executive() {
                             <div className="bottom-shadow-image">
                                 <Image
                                     className="bottom-shadow-image-son"
-                                    src="/homeCutout/Rectangle 656.png"
+                                    src="/homeCutout/Rectangle 656@2x.png"
                                     title="head image"
                                     id="img-txz"
                                     alt="header"
@@ -131,7 +132,7 @@ export default function Executive() {
                         <div className="text-center  text-center-bootom-left">
                             <Image
                                 className="bottom-shadow-people-image"
-                                src="/homeCutout/chenhaonan.png"
+                                src="/homeCutout/chenhaonan@2x.png"
                                 title="head image"
                                 id="img-txz"
                                 alt="header"
@@ -142,7 +143,7 @@ export default function Executive() {
                             <div className="bottom-shadow-image">
                                 <Image
                                     className="bottom-shadow-image-son"
-                                    src="/homeCutout/Rectangle 656.png"
+                                    src="/homeCutout/Rectangle 656@2x.png"
                                     title="head image"
                                     id="img-txz"
                                     alt="header"

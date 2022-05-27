@@ -1,6 +1,6 @@
 import { useContext, React, useState, useEffect } from "react";
 
-import { useHistory } from 'react-router';
+import { useHistory } from "react-router";
 import {
   HeaderOut,
   HeaderContianer,
@@ -34,7 +34,7 @@ const HeaderCreate = ({ toggle }) => {
   const [box, setbox] = useState(height * 0.09);
   const [current, setCurrent] = useState(1);
   const { url } = useRouteMatch();
-  
+  const [showLoginOutModal, setShowLoginOutModal] = useState(false);
   const history= useHistory()
 
   // const [hover, setHover] = useState(false);
@@ -50,14 +50,21 @@ const HeaderCreate = ({ toggle }) => {
 
   const handleCloseTransaction = () => setShowTransaction(false);
   const handleShowTransaction = () => setShowTransaction(true);
-  
-  const jumpNewPage = () => {history.push("/")}
-  const toHome = () => {history.push("/")}
-  
+
+  const jumpNewPage = () => {
+    history.push("/");
+  };
+  const toHome = () => {
+    history.push("/");
+  };
 
   const changeCurrent = (item) => {
     console.log(item);
     setCurrent(item);
+  };
+
+  const handleLoginOut = () => {
+    setShowLoginOutModal(true);
   };
 
 
@@ -91,7 +98,7 @@ const HeaderCreate = ({ toggle }) => {
             <Image
               src={
                 scrolledDownEnough
-                  ? "/homeCutout/UFA-LOGO-RED.png"
+                  ? "/homeCutout/UFA-LOGO-RED@2x.png"
                   : "/UFA-LOGO.png"
               }
               style={{ width: "64px", height: "64px" }}
@@ -207,17 +214,17 @@ const HeaderCreate = ({ toggle }) => {
               <HeaderBtnLink
                 style={{
                   borderBottom:
-                    current != 2
+                    url != "/#"
                       ? "none"
                       : scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
                   color:
-                    scrolledDownEnough && current != 2
+                    scrolledDownEnough && url != "/#"
                       ? "#2A2B30"
-                      : current == 2 && scrolledDownEnough
+                      : url == "/#" && scrolledDownEnough
                       ? "#1442ED"
-                      : scrolledDownEnough && current == 2
+                      : scrolledDownEnough && url == "/#"
                       ? "#1442ED"
                       : "#FFFFFF",
                 }}
@@ -271,18 +278,19 @@ const HeaderCreate = ({ toggle }) => {
             <HeaderItem onMouseLeave={handleCloseTransaction}>
               <HeaderBtnLink
                 style={{
+                  paddingLeft: "16px",
                   borderBottom:
-                    current != 4
+                    url != "/#"
                       ? "none"
                       : scrolledDownEnough
                       ? "3px solid #1442ED"
                       : "3px solid #FFFFFF",
                   color:
-                    scrolledDownEnough && current != 4
+                    scrolledDownEnough && url != "/#"
                       ? "#2A2B30"
-                      : current == 4 && scrolledDownEnough
+                      : url == "/#" && scrolledDownEnough
                       ? "#1442ED"
-                      : scrolledDownEnough && current == 4
+                      : scrolledDownEnough && url == "/#"
                       ? "#1442ED"
                       : "#FFFFFF",
                 }}
@@ -307,7 +315,9 @@ const HeaderCreate = ({ toggle }) => {
                 // onMouseEnter={handleMouseLeave}
                 onMouseLeave={handleCloseTransaction}
               >
-                <MenuItemLinksRouter to = '/eplatform' className="menu-item">赛事账户</MenuItemLinksRouter>
+                <MenuItemLinksRouter to="/eplatform" className="menu-item">
+                  赛事账户
+                </MenuItemLinksRouter>
                 {/* <MenuItemLinksRouter to='/eplatform' className="menu-item">个人账户</MenuItemLinksRouter> */}
               </div>
             </HeaderItem>
@@ -316,13 +326,15 @@ const HeaderCreate = ({ toggle }) => {
           <HeaderBtn>
             {user && user.jti ? (
               <>
-                <div style={{ marginRight: "34px",position:"relative" }} onClick={() =>jumpNewPage()}>
-                  
+                <div
+                  style={{ marginRight: "34px", position: "relative" }}
+                  onClick={() => jumpNewPage()}
+                >
                   <div className="notice-dot"></div>
                   <Image
                     src={
                       scrolledDownEnough
-                        ? "/homeCutout/Group 1061.png"
+                        ? "/homeCutout/Group 1061@2x.png"
                         : "/homeCutout/bell_white.png"
                     }
                     style={{
@@ -340,11 +352,11 @@ const HeaderCreate = ({ toggle }) => {
                     justifyContent: "center",
                     padding: "0px",
                   }}
+                  onMouseLeave={() => handleShowMenu(false)}
                 >
                   <div
                     className="user-av"
-
-                    // onClick={() => handleShowMenu(!showMenu)}
+                    onClick={() => handleShowMenu(true)}
                   >
                     <Image
                       src={"/loginback.jpg"}
@@ -368,6 +380,52 @@ const HeaderCreate = ({ toggle }) => {
                         color: scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
                       }}
                     ></ExpandMoreIcon>
+                  </div>
+                  <div
+                      className="header-user-menu"
+                      style={{ display: showMenu ? "flex" : "none" }}
+                      // onMouseEnter={handleMouseLeave}
+                  >
+                    <MenuItemLinksRouter
+                        offset={-50}
+                        spy={true}
+                        smooth={true}
+                        to="/aboutus"
+                        duration={700}
+                        className="menu-item menu-item-home"
+                    >
+                      个人主页
+                    </MenuItemLinksRouter>
+                    <MenuItemLinksRouter
+                        to="/team"
+                        offset={-50}
+                        spy={true}
+                        smooth={true}
+                        duration={700}
+                        className="menu-item menu-item-home"
+                    >
+                      团队信息
+                    </MenuItemLinksRouter>
+                    <MenuItemLinksRouter
+                        to="/review"
+                        offset={-50}
+                        spy={true}
+                        smooth={true}
+                        duration={700}
+                        className="menu-item menu-item-home"
+                    >
+                      编辑资料
+                    </MenuItemLinksRouter>
+                    <MenuItemLinksRouter
+                        offset={-50}
+                        spy={true}
+                        smooth={true}
+                        duration={700}
+                        className="menu-item menu-item-home"
+                        onClick={handleLoginOut}
+                    >
+                      退出登录
+                    </MenuItemLinksRouter>
                   </div>
                 </div>
               </>

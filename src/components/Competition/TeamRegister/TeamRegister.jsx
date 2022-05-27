@@ -26,6 +26,7 @@ export default function TeamRegister({Pageprocess}){
 	
 	const hideModal = () => {
 	  setShowModal(false);
+	  setImgSrc('');
 	};
 	
 	const openModel = ()=>{
@@ -44,6 +45,7 @@ export default function TeamRegister({Pageprocess}){
 	    )
 	    reader.readAsDataURL(e.target.files[0])
 		setShowModal(true)
+		e.target.value = "";
 	  }
 	}
 	

@@ -177,7 +177,7 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 				
 				</div>
 				
-				<div className="tips" style={{paddingBottom:"120px"}}>
+				<div className= {width >766?"tips-end":"tips-center"} style={{paddingBottom:"120px"}}>
 				  注：所有奖项由UFA与中信证券官方签署制定，旨在为参赛选手提供背景提升，学习成长的机会。
 				</div>
 			</div>

@@ -44,6 +44,7 @@
 }
 
 .bottom-shadow-image-son {
+    width: 300px;
     position: relative;
     height: 30%;
 }
@@ -113,6 +114,10 @@
     z-index: 2;
     padding: 15px;
 
+}
+
+.bottom-shadow-people-image {
+    width: 300px;
 }
 
 @media screen and (max-width: 1500px) {

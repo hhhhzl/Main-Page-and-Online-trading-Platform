@@ -182,10 +182,13 @@ export default function Sign() {
       </div>
 
       <div className="footer-btn-container">
-        <div
+        {/*<div
           className="footer-btn animated bounceInDown"
-          
-        >
+        >*/}
+		
+		<div
+		  className="footer-btn animated "
+		>
           <Button className="sign-join-match-btn" variant="primary" size="sm"
           onClick ={() => sendUser()}
           >
