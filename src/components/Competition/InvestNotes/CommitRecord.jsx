@@ -14,7 +14,8 @@ export default function CommitRecord(){
 		<div
 			style={{
 				background: "#FFFFFF",
-				marginTop: "24px"
+				marginTop: "24px",
+				height: "492px"
 			}}>
 			<div className="commit-record">
 				{data.map((item, idx) => (

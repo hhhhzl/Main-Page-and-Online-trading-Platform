@@ -181,10 +181,15 @@ export default function StockSelectionDevice(){
 									<Form.Label className="stock-selection-device-label label-text">策略名称</Form.Label>
 									<Form.Control type="text" className="stock-selection-device-select"/>
 								</Form.Group>
-								<Form.Group>
+								<Form.Group
+									style={{
+										position: "absolute",
+										right: "34px",
+										top: "96px",
+									}}
+								>
 									<Button
 									style={{
-										margin: "24px 24px 0 175px",
 										width: "100px",
 										background: "#F5F6F8",
 										color: "#2A2B30",
@@ -198,14 +203,14 @@ export default function StockSelectionDevice(){
 										</Button>
 									<Button
 									style={{
-										marginTop: "24px",
+										marginLeft:"24px",
 										width: "100px",
 									}}
 										  type ="submit"
 										  size = 'sm'
 										  variant="primary"
 										>
-										  下单
+										  保存
 										</Button>
 								</Form.Group>
 							</Form.Group>

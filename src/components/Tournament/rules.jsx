@@ -150,14 +150,6 @@ const Rules = () => {
 							<div className="judge-rules-content" style={{marginLeft: "6px"}}>UFA评委将结合指标分数以及投资报告质量选出15名决赛入围选手。</div>
 						</div>
 						<div
-							style={{
-								display: "flex",
-								justifyContent: "center",
-							}}
-						>
-							<div className="annotations">*投资报告的具体框架将在初赛结束时公布。</div>
-						</div>
-						<div
 							className="show-details"
 							onClick={() => openModal(2)}>展示详情</div>
 					</div>
@@ -193,14 +185,6 @@ const Rules = () => {
 								<Image src="/tournament/Ellipse 11.png"></Image>
 							</div>
 							<div className="judge-rules-content" style={{marginLeft: "6px"}}>最终排名将基于初赛指标分数（40%）+ 决赛分数（60%）。</div>
-						</div>
-						<div
-							style={{
-								display: "flex",
-								justifyContent: "center",
-							}}
-						>
-							<div className="annotations">*PPT的展示具体框架将在决赛前夕公布</div>
 						</div>
 						<div 
 							className="show-details"
