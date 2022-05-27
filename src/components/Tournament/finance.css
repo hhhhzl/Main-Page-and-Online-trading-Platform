@@ -92,18 +92,33 @@
 }
 
 .insight-into{
+	position: relative;
 	margin: 0px 18.75%;
+	padding-top: 24px;
+	padding-bottom: 72px;
+	background-color: #FFFFFF;
+	z-index: 20;
 }
 
 @media screen and (max-width: 1200px) {
 	.insight-into{
+		position: relative;
 		margin: 0px 12%;
+		padding-top: 24px;
+		padding-bottom: 72px;
+		background-color: #FFFFFF;
+		z-index: 20;
 	}
 }
 
 @media screen and (max-width: 800px) {
 	.insight-into{
+		position: relative;
 		margin: 0px 5%;
+		padding-top: 24px;
+		padding-bottom: 72px;
+		background-color: #FFFFFF;
+		z-index: 20;
 	}
 }
 

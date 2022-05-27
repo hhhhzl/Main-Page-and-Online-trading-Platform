@@ -1,6 +1,10 @@
 .rules {
+	position:relative;
 	width: 62.5%;
-	margin: 120px 18.75% 0 18.75%;
+	margin: 0 18.75% 0 18.75%;
+	padding-top: 24px;
+	background-color: #FFFFFF;
+	z-index: 21;
 }
 
 .rules-p-two {

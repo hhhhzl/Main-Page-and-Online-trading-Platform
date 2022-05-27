@@ -1,14 +1,31 @@
-import React from "react";
+import React, {useEffect,useState} from "react";
 import Image from "react-bootstrap/Image";
 import useWindowDimensions from "../../utils/sizewindow";
 import "./finance.css"
 // import "./footer.css";
 
 const Finance = ({ profileImg, hobbyImgs }) => {
-  const { width, height } = useWindowDimensions();	
+  const { width, height } = useWindowDimensions();
+  const [bodyscrollrdTop, setbodyscrollTop] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setbodyscrollTop(document.documentElement.scrollTop || document.body.scrollTop)
+      console.log("屏幕向下距离",bodyscrollrdTop)
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+    
+  }, [bodyscrollrdTop]);	
   return (
+	  <>
+	  <div style={{position:"fixed",zIndex:10,width:"1px",height:width/2.97,background:`linear-gradient(to top, #E5E8EE ${(bodyscrollrdTop/(width/2.97)*100).toString() + '%'}, rgba(255, 255, 255, 0.5) ${(bodyscrollrdTop/(width/2.97)*100).toString() + '%'})`, top:"64px",left:width/2-1}}></div>
 	  <div>
 		<div className="gray-bg">
+		<div style={{position:"relative",width:width,height:"48px",background:"#F5F6F8"}}></div>
+		<div className="line-container">
+
 			<div className="introduce-mark">
 				<div className="top-image">
 					<Image
@@ -26,11 +43,13 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 				  />
 				</div>
 			</div>
+			</div>
+			<div style={{position:"relative",width:width,height:"48px",background:"#F5F6F8"}}></div>
 		</div>
 		
 		<div style={{background: "#FFFFFF"}}>
+		<div style={{position:"relative",width:width,height:"96px",background:"#FFFFFF"}}></div>
 			<div className="insight-into">
-				<div style={{marginTop:"120px"}}>
 					<div className="finance-title">
 						财经洞悉
 					</div>
@@ -101,27 +120,31 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 							</div>
 						</div>
 					</div>
-				</div>
-				<div className="finance-note" style={{margin: "120px 0"}}>
+
+				<div className="finance-note" style={{margin: "120px 0 0 0"}}>
 					注：“财经洞悉”撰写质量不会给予评分，此板块不影响比赛分数。
 				</div>
 			</div>
+			<div style={{position:"relative",width:width,height:"48px",background:"#FFFFFF"}}></div>
 		</div>
 
 
 
 		
 		
-		
+		<div style={{position:"relative",width:width,height:"96px",background:"#F5F6F8"}}></div>
 		<div style={{background: "#F5F6F8"}}>
 			<div 
 				style={{
+					position:"relative",
 					width: "62.5%",
 					margin: "0 18.75% 0 18.75%",
 					background: "#F5F6F8",
+					zIndex:25,
+
 				}}
 			>
-				<div className="finance-title" style={{paddingTop:"120px"}}>
+				<div className="finance-title" style={{paddingTop:"24px"}}>
 					财经洞悉 奖项
 				</div>
 				<div>
@@ -161,6 +184,7 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 			
 		</div>
 	  </div>
+	  </>
   )
 };
 

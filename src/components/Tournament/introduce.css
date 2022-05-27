@@ -1,9 +1,40 @@
+.awards-card-container {
+  flex: 0 0 30%;
+  margin-top: 60px;
+  background: #FFFFFF;
+  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02);
+  border-radius: 0px 0px 0px 0px;
+  opacity: 1;
+  height: max-content;
+}
+
 .gray-bg {
   background: #F5F6F8;
 }
 
 .introduce {
+  position: relative;
   background: #FFFFFF;
+  width: "100%";
+}
+
+.line-container{
+  position: relative;
+  margin-top: 0px;
+  /* margin-bottom: 48px; */
+  background-color: #F5F6F8;
+  z-index: 991;
+
+}
+
+.match-bottom-wrapper{
+  position:relative;
+	display: flex;
+  background-color: #FFFFFF;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 120px;
+  z-index: 990;
 }
 
 .introduce-content {
@@ -12,7 +43,7 @@
 
 .introduce-mark {
   margin: 0px 25%;
-  padding: 94px 0px;
+  padding: 46px 0px 46px 0px;
   position: relative;
 }
 
@@ -46,12 +77,7 @@
   flex-direction: column;
 }
 
-.match-bottom-wrapper{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-bottom: 120px;
-}
+
 
 
 .left {
@@ -229,8 +255,11 @@ height: 32px; */
 }
 
 .awards-content {
+  position: relative;
   margin: 0px 18.75%;
-  padding: 120px 0px;
+  background-color: #F5F6F8;
+  padding: 24px 0px;
+  z-index: 899;
 }
 
 .awards-title {
@@ -255,17 +284,10 @@ height: 32px; */
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
+  z-index: 1;
 }
 
-.awards-card-container {
-  flex: 0 0 30%;
-  margin-top: 60px;
-  background: #FFFFFF;
-  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02);
-  border-radius: 0px 0px 0px 0px;
-  opacity: 1;
-  height: max-content;
-}
+
 
 
 
@@ -350,7 +372,7 @@ height: 32px; */
   }
 
   .introduce-mark {
-    margin: 0px 20%;
+    margin: 0px 10%;
   }
 }
 
