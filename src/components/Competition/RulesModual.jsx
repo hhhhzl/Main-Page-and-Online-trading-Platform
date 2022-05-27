@@ -1,11 +1,25 @@
 import './RulesModual.css'
+import { Modal,Image, Collapse } from "react-bootstrap";
 
-export default function RulesModual(){
+export default function RulesModual({showModal,hideModal}){
 	return(
-		<div style={{width:"44.584%"}}>
+		<Modal
+		  show={showModal}
+		  onHide={hideModal}
+		  size = 'lg'
+		  backdrop="static"
+          keyboard={false}
+		  centered
+		  className="rules-model"
+		>
+			<Modal.Header closeButton></Modal.Header>
+		<div>
+			<Collapse in = {true}>
 			<div
 				style={{
-					padding: "36px 0 0 48px"
+					padding: "36px 0 0 48px", 
+					overflow: "auto",
+					height:"800px",
 				}}
 			>
 				<div className="rules-modual-title">交易规则</div>
@@ -79,6 +93,8 @@ export default function RulesModual(){
 					</div>
 				</div>
 			</div>
+			</Collapse>
 		</div>
+		</Modal>
 	)
 }

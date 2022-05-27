@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
+import { clearLocalStorage, setPlatformType } from "utils";
 
 const AuthContext = createContext();
 
@@ -40,6 +41,7 @@ export const AuthProvider = ({ children }) => {
       setuser(jwt_decode(data.access));
       console.log(user);
       localStorage.setItem("authTokens", JSON.stringify(data));
+      setPlatformType("eplatform")
       history.push(`/eplatform`);
     } else {
       alert("Something Went Wrong!");
@@ -50,6 +52,7 @@ export const AuthProvider = ({ children }) => {
     setAuthTokens(null);
     setuser(null);
     localStorage.removeItem("authTokens");
+    clearLocalStorage();
     history.push("/");
   };
 

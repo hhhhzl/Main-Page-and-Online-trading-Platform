@@ -23,6 +23,7 @@ import TeamEntry from "components/Competition/TeamRegister/TeamEntry";
 import TeamAgreeProcessCreate from "components/Competition/TeamRegister/TeamAgreeProcessCreate";
 import TeamAgreeProcessJoin from "components/Competition/TeamRegister/TeamAgreeProcessJoin";
 import Tournament from './components/Tournament/tournament'; 
+import Chat from "pages/Chat";
 
 
 const HomePage = () => {
@@ -78,6 +79,7 @@ const MakeRouter = () => {
         <PrivateRoute exact path="/team/create" component={TeamAgreeProcessCreate} />
         <PrivateRoute exact path="/team/join" component={TeamAgreeProcessJoin} />
         <Route exact path="/tournament" component={Tournament} />
+        <Route exact path="/chat" component={Chat} />
 
         <PrivateRoute
           exact
