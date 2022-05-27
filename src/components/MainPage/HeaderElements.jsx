@@ -72,7 +72,7 @@ export const HeaderContianer = styled.div`
 `;
 
 export const HeaderMenu = styled.div`
-  margin-left: 35.6875%;
+  margin-left: 33%;
   display: flex;
   height: 64px;
   justify-content: center;
@@ -122,7 +122,7 @@ export const HeaderLinks = styled(LinkS)`
   font-weight: bold !important;
 }
 `;
-export const MenuItemLinks = styled(LinkR)`
+export const MenuItemLinks = styled(LinkS)`
   color: #6e7184;
   &.hover {
     background: #eef0f4;
@@ -139,6 +139,25 @@ export const MenuItemLinks = styled(LinkR)`
     font-size: 12px;
   }
 `;
+
+export const MenuItemLinksRouter = styled(LinkR)`
+  color: #6e7184;
+  &.hover {
+    background: #eef0f4;
+    color: #eef0f4 !important;
+  }
+  &:active {
+    border: none !important;
+  }
+  @media screen and (max-width: 1330px) {
+    padding: 8px 20px;
+  }
+  @media screen and (max-width: 1000px) {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+`;
+
 export const HeaderBtn = styled.nav`
   display: flex;
   align-items: center;

@@ -19,6 +19,11 @@ import MarketView from "pages/MarketView";
 import Ranking from "pages/Ranking";
 import Picking from "pages/Picking";
 import InvestNotes from "pages/InvestNotes";
+import TeamEntry from "components/Competition/TeamRegister/TeamEntry";
+import TeamAgreeProcessCreate from "components/Competition/TeamRegister/TeamAgreeProcessCreate";
+import TeamAgreeProcessJoin from "components/Competition/TeamRegister/TeamAgreeProcessJoin";
+import Tournament from './components/Tournament/tournament'; 
+
 
 const HomePage = () => {
   return (
@@ -69,6 +74,10 @@ const MakeRouter = () => {
         <Route exact path="/changepassword" component={LoginMainLayout} />
         <Route exact path="/home" component={MainPage} />
         <Route exact path="/" component={MainPage} />
+        <PrivateRoute exact path="/team/register" component={TeamEntry} />
+        <PrivateRoute exact path="/team/create" component={TeamAgreeProcessCreate} />
+        <PrivateRoute exact path="/team/join" component={TeamAgreeProcessJoin} />
+        <PrivateRoute exact path="/tournament" component={Tournament} />
 
         <PrivateRoute
           exact

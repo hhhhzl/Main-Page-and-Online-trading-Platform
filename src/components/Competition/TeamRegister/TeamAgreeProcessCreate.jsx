@@ -8,11 +8,12 @@ import { Button, Form, Image, Modal } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import TeamReister from './TeamRegister'
 
-export default function TeamAgreeProcessCreate(){
+export default function TeamAgreeProcessCreate({toggle}){
     const {width,height} = useWindowDimensions();
     const [page, setpage] = useState(0)
     const [disable, setdisable] = useState(true)
     const history= useHistory()
+    const [isOpen, setIsOpen] = useState(false)
 
     const Pageprocess = () => {if (page!= 6){setpage(page + 1)}   }
     const Pagereduce = () => {setpage(page - 1)}
@@ -62,22 +63,21 @@ export default function TeamAgreeProcessCreate(){
 
     return (
         <>
-        {/* <HeaderCreate toggle = {toggle} />
-      {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>) : null} */}
+        <HeaderCreate toggle = {toggle} />
+      {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>) : null}
 
        <Modal 
         show={successSendtoC} 
         centered
         >
           <Modal.Header></Modal.Header>
-          <Modal.Body style={{marginLeft:"50px"}}>团队已成功创建 </Modal.Body>
-        <Modal.Footer style={{marginLeft:0}} >
-            <div style={{width:"100%",display:"flex",justifyContent:"left"}}>
-            <Button className="modal-btn modal-btn-submit"  style={{marginLeft:"50px"}} variant="primary" onClick ={() => sendUserhome()}>
+          <Modal.Body style={{textAlign:"center"}}>团队已成功创建 </Modal.Body>
+        <Modal.Footer style={{width:"100%", display:"flex",justifyContent:"center"}}  >
+            <div >
+            <Button className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUserhome()}>
             回主页
           </Button>
         </div>
-         
           </Modal.Footer>
         </Modal>
 
@@ -88,7 +88,7 @@ export default function TeamAgreeProcessCreate(){
       
       </> :
 
-            <div  style={{marginTop:height*0,width:"100%",display:"flex",justifyContent:"space-between", backgroundColor:"#F5F6F8"}}>
+            <div  style={{marginTop:height*0.64,width:"100%",display:"flex",justifyContent:"space-between", backgroundColor:"#F5F6F8"}}>
 
             <div style={{width:"48px",maxWidth:"18.75%"}}></div>
             <div style={{width:"1200px",minWidth:"fix-content",minHeight: "700px",
