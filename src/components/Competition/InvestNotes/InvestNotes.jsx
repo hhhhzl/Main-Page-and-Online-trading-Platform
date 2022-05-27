@@ -103,12 +103,12 @@ export default function InvestNotes(props) {
 
     
       <PageHeader />
-      <Countdown showModal={showModal} hideModal={hideModal}></Countdown>
+      {/* <Countdown showModal={showModal} hideModal={hideModal}></Countdown> */}
       <div
         style={{
           paddingTop: height * 0.075,
           width: "100%",
-          minHeight: "500px",
+          height: height * 0.925,
           display: "flex",
           justifyContent: "center",
           background: "#F5F6F8",

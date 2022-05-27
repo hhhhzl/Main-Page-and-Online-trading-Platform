@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import {
   Navbar,
   Container,
@@ -27,7 +27,6 @@ import ToolkitProvider, {
 } from "react-bootstrap-table2-toolkit";
 import { SearchOutlined } from "@material-ui/icons";
 import { apiSymbols, apiSymbolsAllForSearch } from "../../api/trading_platform/market";
-import SearchData from "../../static/SearchStock.json";
 import {
   Switch,
   Route,
@@ -36,28 +35,32 @@ import {
   useRouteMatch,
   useHistory
 } from "react-router-dom";
+import AuthContext from "context/AuthContext";
+import { MenuItemLinksRouter } from "components/MainPage/HeaderElements";
+
 
 
 const { SearchBar, ClearSearchButton } = Search;
 
 export default function PageHeader(toggle) {
+  let { user, logoutUser} = useContext(AuthContext);
   const {width, height} = useWindowDimensions();
   const [searchData, setsearcnData] = useState([])
 
 
-        useEffect(() => {
-          getSearchData()
-        },[])
+          useEffect(() => {
+            getSearchData()
+          },[])
 
-      const getSearchData = async (props) => {
-        try{
-          const response = await apiSymbolsAllForSearch()
-          let Searchdata = response.data.data
-          setsearcnData(Searchdata)
-        }catch (err) {
-          console.log(err)
-        }
-      };
+        const getSearchData = async (props) => {
+          try{
+            const response = await apiSymbolsAllForSearch()
+            let Searchdata = response.data.data
+            setsearcnData(Searchdata)
+          }catch (err) {
+            console.log(err)
+          }
+        };
 
 
 
@@ -95,10 +98,13 @@ export default function PageHeader(toggle) {
 
   const handleClose = () => {
     setShowLoginOutModal(false);
-    // TODO: 调函数清理localstorage
-    history.push("/");
   };
 
+  const LogUserOut = () =>{
+    // TODO: 调函数清理localstorage
+    history.push("/");
+    logoutUser()
+  }
 
 
 
@@ -111,7 +117,7 @@ export default function PageHeader(toggle) {
     style:{background:"#E7ECFD"},
     onSelect: (row, isSelect, rowIndex, e) => {
       if (isSelect){
-          console.log(row)
+          history.push("/eplatform/trade")
       }else{     
         
       }
@@ -137,7 +143,7 @@ export default function PageHeader(toggle) {
     },
     {
       id: 3,
-      title: "选股神器",
+      title: "选股器",
       link: `/eplatform/picking`,
     },
     {
@@ -161,7 +167,7 @@ export default function PageHeader(toggle) {
         headerAttrs: {
           hidden: true
         },
-        style: { width: "45%" },
+        style: { width: "40%" },
         formatter: (cell) => {
           return (
             <div
@@ -217,7 +223,7 @@ export default function PageHeader(toggle) {
         formatter: (cell) => {
           return (
             <>
-            {cell > 0?
+            {cell? cell>0? 
              <>
              <div
               style={{
@@ -245,7 +251,10 @@ export default function PageHeader(toggle) {
                 lineHeight: "24px",
               }}
             > {cell}%</div>
-            </>}
+            </>
+
+            : null
+            }
             </>
           )
       }
@@ -276,7 +285,7 @@ export default function PageHeader(toggle) {
           <Button
             className="modal-btn modal-btn-submit"
             variant="primary"
-            onClick={handleClose}
+            onClick={LogUserOut}
           >
             确认
           </Button>
@@ -361,13 +370,13 @@ export default function PageHeader(toggle) {
           <div
             style={{
               width: "240px",
-              marginLeft: "15%",
+              marginLeft: "10%",
             }}
           >
             <Form>
               <ToolkitProvider
                 keyField="id"
-                data={SearchData}
+                data={searchData}
                 columns={columns}
                 search
               >
@@ -411,7 +420,7 @@ export default function PageHeader(toggle) {
                         className="scroll"
                         style={{
                           position: "absolute",
-                          marginLeft: "3%",
+                          marginLeft: "0%",
                           zIndex: 999,
                           width: "300px",
                           background: "white",
@@ -423,6 +432,7 @@ export default function PageHeader(toggle) {
                           condensed={true}
                           sort={{ dataField: "label", order: "asc" }}
                           classes="custom-row-class"
+                          selectRow={selectRow}
                         />
                       </div>
                     </Collapse>
@@ -441,7 +451,7 @@ export default function PageHeader(toggle) {
                 src={"/homeCutout/UFA-LOGO-RED.png"}
                 style={{ width: "38px", height: "38px" }}
               />
-              <span className="header-user-name">用户名</span>
+              <span className="header-user-name">{user.username? user.username: "用户名"}</span>
               <ExpandMoreIcon></ExpandMoreIcon>
             </div>
             <div
@@ -450,7 +460,7 @@ export default function PageHeader(toggle) {
               // onMouseEnter={handleMouseLeave}
               onMouseLeave={() => handleShowMenu(!showMenu)}
             >
-              <MenuItemLinks
+              <MenuItemLinksRouter
                 offset={-50}
                 spy={true}
                 smooth={true}
@@ -459,8 +469,8 @@ export default function PageHeader(toggle) {
                 className="menu-item"
               >
                 个人主页
-              </MenuItemLinks>
-              <MenuItemLinks
+              </MenuItemLinksRouter>
+              <MenuItemLinksRouter
                 to="/team"
                 offset={-50}
                 spy={true}
@@ -469,8 +479,8 @@ export default function PageHeader(toggle) {
                 className="menu-item"
               >
                 团队信息
-              </MenuItemLinks>
-              <MenuItemLinks
+              </MenuItemLinksRouter>
+              <MenuItemLinksRouter
                 to="/review"
                 offset={-50}
                 spy={true}
@@ -479,8 +489,8 @@ export default function PageHeader(toggle) {
                 className="menu-item"
               >
                 编辑资料
-              </MenuItemLinks>
-              <MenuItemLinks
+              </MenuItemLinksRouter>
+              <MenuItemLinksRouter
                 offset={-50}
                 spy={true}
                 smooth={true}
@@ -489,7 +499,7 @@ export default function PageHeader(toggle) {
                 onClick={handleLoginOut}
               >
                 退出登录
-              </MenuItemLinks>
+              </MenuItemLinksRouter>
             </div>
           </div>
 

@@ -22,9 +22,11 @@ import { useRouteMatch } from "react-router-dom";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import AuthContext from "../../context/AuthContext";
+import { MenuItemLinksRouter } from "./HeaderElements";
 const HeaderCreate = ({ toggle }) => {
   let { user, logoutUser } = useContext(AuthContext);
   const { width, height } = useWindowDimensions();
+  const [showMenu, setHhowMenu] = useState(false);
   const [scrolledDownEnough, setScrolledDownEnough] = useState(false);
   const [show, setShow] = useState(false);
   const [showUFA, setShowUFA] = useState(false);
@@ -42,6 +44,9 @@ const HeaderCreate = ({ toggle }) => {
 
   const handleCloseUFA = () => setShowUFA(false);
   const handleShowUFA = () => setShowUFA(true);
+  const handleShowMenu = (showMenu) => {
+    setHhowMenu(showMenu);
+  };
 
   const handleCloseTransaction = () => setShowTransaction(false);
   const handleShowTransaction = () => setShowTransaction(true);
@@ -71,14 +76,6 @@ const HeaderCreate = ({ toggle }) => {
 
   return (
     <>
-      <div>
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton></Modal.Header>
-          <Modal.Body>
-            <h5 className="text-center">暂未上线，尽情期待</h5>
-          </Modal.Body>
-        </Modal>
-      </div>
       <HeaderOut
         style={{ width: width }}
         scrolledDownEnough={scrolledDownEnough}
@@ -89,7 +86,7 @@ const HeaderCreate = ({ toggle }) => {
           <div
             className="image-icon"
             style={{ height: "64px", width: "64px", top: 0 }}
-            onClick={() =>toHome()}
+            onClick={() => toHome()}
           >
             <Image
               src={
@@ -310,8 +307,8 @@ const HeaderCreate = ({ toggle }) => {
                 // onMouseEnter={handleMouseLeave}
                 onMouseLeave={handleCloseTransaction}
               >
-                <MenuItemLinks className="menu-item">个人账户</MenuItemLinks>
-                <MenuItemLinks className="menu-item">赛事账户</MenuItemLinks>
+                <MenuItemLinksRouter to = '/eplatform' className="menu-item">赛事账户</MenuItemLinksRouter>
+                {/* <MenuItemLinksRouter to='/eplatform' className="menu-item">个人账户</MenuItemLinksRouter> */}
               </div>
             </HeaderItem>
           </HeaderMenu>
