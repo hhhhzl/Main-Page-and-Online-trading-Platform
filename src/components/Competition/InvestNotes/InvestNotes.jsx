@@ -5,16 +5,18 @@ import { Form, Button, Image } from "react-bootstrap";
 import GoodToShare from "./GoodToShare";
 import CommitRecord from "./CommitRecord";
 import "./InvestNotes.css";
-import Countdown from "../../screen/modal/countdown"
-import {timeDifference} from '../../../utils/countdownUtil'
+import Countdown from "../../screen/modal/countdown";
+import { timeDifference } from "../../../utils/countdownUtil";
 
 export default function InvestNotes(props) {
   const { width, height } = useWindowDimensions();
   const [fileList, setFileList] = useState([]);
   const uploadFile = React.createRef();
   const listRef = useRef();
-  
-  const [showModal, setShowModal] = useState(timeDifference() > 0 ? true : false);
+
+  const [showModal, setShowModal] = useState(
+    timeDifference() > 0 ? true : false
+  );
 
   const [current, setCurrent] = useState(0);
   const changeCurrent = (index) => {
@@ -32,7 +34,7 @@ export default function InvestNotes(props) {
       s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
     }
     s[14] = "4";
-    s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); 
+    s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);
     s[8] = s[13] = s[18] = s[23] = "-";
     let uuid = s.join("");
     return uuid;
@@ -47,16 +49,18 @@ export default function InvestNotes(props) {
         console.log(suffix);
         if (suffix == "pdf" || suffix == "docx" || suffix == "doc") {
           // file
-          // let id = 
-          file[i].id = uuid()
+          // let id =
+          file[i].id = uuid();
+          file[i].suffix = suffix;
           fileList.push(file[i]);
         } else {
           alert("文件格式错误");
         }
       }
-      console.log(fileList)
+      console.log(fileList);
     }
     setFileList([...fileList]);
+    e.target.value = "";
   };
 
   //size大小转换为kb形式
@@ -86,22 +90,20 @@ export default function InvestNotes(props) {
   };
 
   const handleDelete = (id) => {
-    let item = fileList.filter(v => v.id != id);
-    console.log(item)
-    setFileList(item)
+    let item = fileList.filter((v) => v.id != id);
+    console.log(item);
+    setFileList(item);
   };
 
   const hideModal = (leftTime) => {
-    console.log(leftTime)
-    if(leftTime <=0){
-      setShowModal(false)
+    console.log(leftTime);
+    if (leftTime <= 0) {
+      setShowModal(false);
     }
   };
 
   return (
     <>
-
-    
       <PageHeader />
       {/* <Countdown showModal={showModal} hideModal={hideModal}></Countdown> */}
       <div
@@ -178,6 +180,7 @@ export default function InvestNotes(props) {
                       type="primary"
                       className="publish-upload-file"
                       onClick={chooseFile}
+                      disabled={fileList.length>=1}
                     >
                       <Image
                         src="/Frame.png"
@@ -199,10 +202,17 @@ export default function InvestNotes(props) {
                     <div className="upload-list" key={item.id}>
                       <div className="flie-list">
                         <div className="file-icon">
-                          <Image
-                            src="/Frame1.png"
-                            style={{ width: "36px", height: "36px" }}
-                          />
+                          {item.suffix == "pdf" ? (
+                            <Image
+                              src="/Frame1.png"
+                              style={{ width: "36px", height: "36px" }}
+                            />
+                          ) : (
+                            <Image
+                              src="/word.png"
+                              style={{ width: "36px", height: "36px" }}
+                            />
+                          )}
                         </div>
                         <div className="file-message">
                           <div className="file-name">{item.name}</div>
@@ -244,7 +254,7 @@ export default function InvestNotes(props) {
               </>
             ) : current == 1 ? (
               <>
-              <CommitRecord></CommitRecord>
+                <CommitRecord></CommitRecord>
               </>
             ) : (
               <>
