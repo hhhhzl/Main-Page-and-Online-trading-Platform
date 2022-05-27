@@ -14,7 +14,7 @@ export default function Team() {
     <div className="section colored-team" style={{ padding: "120px 0px 87px" }}>
       <div className="text-center">
         <Image
-          src="/homeCutout/Group 65.png"
+          src="/homeCutout/Group 65@2x.png"
           style={{ width: "248px", height: "79px" }}
         />
       </div>
@@ -29,7 +29,7 @@ export default function Team() {
               <Col xs={4}>
                 <div className="text-center">
                   <Image
-                    src="/homeCutout/Mask group.png"
+                    src="/homeCutout/Mask group@2x.png"
                     title="lindsay image"
                     alt="Lindsay"
                     roundedCircle
@@ -81,7 +81,7 @@ export default function Team() {
               <Col xs={4}>
                 <div className="text-center">
                   <Image
-                    src="/homeCutout/zhangyankui.png"
+                    src="/homeCutout/zhangyankui@2x.png"
                     title="张彦魁 image"
                     alt="张彦魁"
                     roundedCircle
@@ -138,7 +138,7 @@ export default function Team() {
               <Col xs={4}>
                 <div className="text-center">
                   <Image
-                    src="/homeCutout/chumen.png"
+                    src="/homeCutout/chumen@2x.png"
                     title="楚门 image"
                     alt="楚门"
                     roundedCircle
@@ -198,7 +198,7 @@ export default function Team() {
               <Col xs={6}>
                 <div className="text-center">
                   <Image
-                    src="/homeCutout/Mask group.png"
+                    src="/homeCutout/Mask group@2x.png"
                     title="lindsay image"
                     alt="Lindsay"
                     roundedCircle
@@ -252,7 +252,7 @@ export default function Team() {
               <Col xs={6}>
                 <div className="text-center">
                   <Image
-                    src="/homeCutout/zhangyankui.png"
+                    src="/homeCutout/zhangyankui@2x.png"
                     title="张彦魁 image"
                     alt="张彦魁"
                     roundedCircle
@@ -310,7 +310,7 @@ export default function Team() {
               <Col xs={6}>
                 <div className="text-center">
                   <Image
-                    src="/homeCutout/chumen.png"
+                    src="/homeCutout/chumen@2x.png"
                     title="楚门 image"
                     alt="楚门"
                     roundedCircle

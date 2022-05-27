@@ -7,6 +7,7 @@ import Collapse from "react-bootstrap/Collapse";
 import Card from "react-bootstrap/Card";
 import { Bookmark } from "@material-ui/icons";
 import useWindowDimensions from "../../../utils/sizewindow";
+import Carousel from "react-bootstrap/Carousel";
 
 const Review = ({ projectImgs }) => {
   const { width, height } = useWindowDimensions();
@@ -100,7 +101,7 @@ const Review = ({ projectImgs }) => {
         </div>
       </div>
 
-      <div className="review-picture">
+      <div className="video-container" style={{position: "relative"}}>
         <div className="review-icon-wrapper">
           <div className="review-icon">
             {width > 700 ? <Image
@@ -110,9 +111,9 @@ const Review = ({ projectImgs }) => {
 
           </div>
         </div>
-        <div style={{ minHeight: "150px" }}>
-          <Collapse in={video} dimension="width">
-            <div id="example-collapse-text">
+        <div style={{ minHeight: "150px" }} >
+          <Collapse in={video} dimension="width" >
+            <div id="example-collapse-text"  >
               <BilibiliVideo
                 cid="548193318"
                 aid="382170523"
@@ -123,7 +124,48 @@ const Review = ({ projectImgs }) => {
             </div>
           </Collapse>
           <Collapse in={image} dimension="width">
-            <div id="example-collapse-text" className="image-banner"></div>
+            <div id="example-collapse-text" className="image-banner">
+                <Carousel fade >
+                    <Carousel.Item>
+                        <img
+                            style={{objectFit: 'cover'}}
+                            className="image-banner"
+                            src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F1114%2F113020142315%2F201130142315-1-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1656213996&t=acdd17c2d37e0529c42e5552e73fa36b"
+                            alt="First slide"
+                        />
+                        {/*<Carousel.Caption>*/}
+                        {/*    <h3>First slide label</h3>*/}
+                        {/*    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>*/}
+                        {/*</Carousel.Caption>*/}
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                            style={{objectFit: 'cover'}}
+                            className="image-banner"
+                            src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F4k%2Fs%2F02%2F2109242306111155-0-lp.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1656213996&t=1902d4a73339dc2ea9971999571338c7"
+                            alt="Second slide"
+                        />
+
+                        {/*<Carousel.Caption>*/}
+                        {/*    <h3>Second slide label</h3>*/}
+                        {/*    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>*/}
+                        {/*</Carousel.Caption>*/}
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                            style={{objectFit: 'cover'}}
+                            className="image-banner"
+                            src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F1114%2F063021120F9%2F210630120F9-1-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1656213996&t=3f64664062d613b473c5727310605d13"
+                            alt="Third slide"
+                        />
+
+                        {/*<Carousel.Caption>*/}
+                        {/*    <h3>Third slide label</h3>*/}
+                        {/*    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>*/}
+                        {/*</Carousel.Caption>*/}
+                    </Carousel.Item>
+                </Carousel>
+            </div>
           </Collapse>
         </div>
         <div className="review-icon-wrapper-bottom">

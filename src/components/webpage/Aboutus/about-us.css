@@ -50,18 +50,19 @@
   font-size: 16px;
   font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
   font-weight: 400;
-  color: #6E7184;
-  line-height: 22px;
+  color: #2A2B30;
+  line-height: 28px;
   margin-top: 36px;
 }
 
 .message-content-bottom {
-  font-size: 11px;
+  font-size: 14px;
   font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
   font-weight: 400;
   color: #9C9EAC;
-  line-height: 19px;
+  line-height: 24px;
   margin-top: 36px;
+  letter-spacing: 1px;
 }
 
 .image-right{
