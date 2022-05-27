@@ -48,7 +48,7 @@ export default function MainPage() {
 
   return (
     <>
-      <div className="vertical-line" style={{height:height*0.6}}></div>
+      {/* <div className="vertical-line" style={{height:height*0.6}}></div> */}
       <HeaderCreate />
       <div className="main-page-center">
         <TournamentBg />
