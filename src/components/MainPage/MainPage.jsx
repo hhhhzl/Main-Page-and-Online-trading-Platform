@@ -69,7 +69,7 @@ export default function MainPage() {
             </div>
           </Fade>
 
-          <Fade bottom when={scrolledDownEnough}>
+          <Fade bottom when={scrolledDownEnough} >
             <div id="team">
               <Team />
             </div>

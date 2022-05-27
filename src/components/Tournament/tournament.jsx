@@ -8,9 +8,11 @@ import Introduce from "./introduce";
 import Rules from "./rules";
 import Sign from "./sign";
 import Finance from "./finance";
+import useWindowDimensions from "../../utils/sizewindow";
 import "./tournament.css"
 
 export default function MainPage() {
+  const { width, height } = useWindowDimensions();
   const [show, setShow] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -46,6 +48,7 @@ export default function MainPage() {
 
   return (
     <>
+      {/* <div className="vertical-line" style={{height:height*0.6}}></div> */}
       <HeaderCreate />
       <div className="main-page-center">
         <TournamentBg />

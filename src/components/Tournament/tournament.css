@@ -41,7 +41,18 @@
 }
 
 @media screen and (max-width: 600px) {
-  .tabs-wrapper{
+  .tabs-wrapper {
     padding-left: 10px;
   }
+}
+
+.vertical-line {
+  width: 1px;
+  /* background: #848384; */
+  border-right: 1px solid #E5E8EE;
+  position: fixed;
+  left: 50%;
+  top: 64px;
+  z-index: 99;
+  transition: all 1s ease;
 }
