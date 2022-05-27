@@ -419,8 +419,8 @@ export default function Introduce() {
 
             <div className="other-awards">
               <Image
-                src="/tournament/Group 208.png"
-                style={{ width: "86.667%%", height: "100%" }}
+                src="/tournament/Group 208@2x.png"
+                style={{ width: "86.667%", height: "100%" }}
               />
             </div>
 
