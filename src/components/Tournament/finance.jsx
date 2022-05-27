@@ -55,7 +55,7 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 					</div>
 					<div style={{marginTop:"80px"}}>
 						<Image
-							src="/tournament/Group 797.png"
+							src="/tournament/Group 797@2x.png"
 							style={{width:" 100%",height:"100%"}}
 						/>
 					</div>

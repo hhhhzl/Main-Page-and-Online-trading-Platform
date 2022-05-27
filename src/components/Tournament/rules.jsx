@@ -134,6 +134,7 @@ const Rules = () => {
 						</div>
 						<div 
 							className="show-details"
+							style={{margin: "4px 0px 0 36.553%"}}
 							onClick={()=>openModal(1)}>展示详情</div>
 					</div>
 					<div
