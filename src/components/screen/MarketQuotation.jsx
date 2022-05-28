@@ -6,7 +6,7 @@ import BootstrapTable from "react-bootstrap-table-next";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
 import { Collapse } from "react-bootstrap";
 
-export default function MarketQuotation({handleShowDetails}){
+export default function MarketQuotation({handleShowDetails,indusAll}){
 	const [count, setCount] = useState(177)
 	const columns= [
 						{
@@ -281,7 +281,7 @@ export default function MarketQuotation({handleShowDetails}){
 	return(
 		<div>
 			<div className="market-quotation-title">
-				<div onClick={() => handleShowDetails(false)}>
+				<div onClick={() => handleShowDetails(indusAll)}>
 					<Image src="/Group 863.png" style={{width:"16px",height:"16px"}}></Image>
 				</div>
 				<div className="market-quotation-genre" style={{marginLeft:"6px"}}>医药</div>

@@ -11,8 +11,22 @@ export default function StockTradeComponet({
   const [orderType, setorderType] = useState("limit_price");
   const [amount, setamount] = useState(null);
   const [price, setprice] = useState(null);
+  const [totalPrice,setTotalPrice] = useState('0.00');
 
-
+	 const handlePrice = value=>{
+		setprice(value)
+		if(amount != null){
+			setTotalPrice(value * amount)
+		}
+	 }
+	 
+	 const handleAmount = value=>{
+		setamount(value);
+		if(price != null){
+			setTotalPrice(value * price);
+		}
+	 }
+ 
 
 
   ////Not use////
@@ -167,7 +181,7 @@ opacity: "1",
     type="float"
     defaultValue={null}
     type="number"
-    onChange={(e)=>setprice(e.target.value)}
+    onChange={(e)=>handlePrice(e.target.value)}
     />
          
           </InputGroup>
@@ -181,8 +195,7 @@ opacity: "1",
       type='number'
       min='0'
       style={{paddingBottom:"10px",height: "48px",borderRadius: "4px 4px 4px 4px",opacity: 1,border: "1px solid #C0C3CE"}}
-      value={amount}
-      onChange={(e) => setamount(e.target.value)}
+      onChange={(e) => handleAmount(e.target.value)}
     ></Form.Control>
   </Col>
 </Form.Group>
@@ -338,7 +351,7 @@ orderType == "present_price" ? (<>
                   <h6 style={{fontSize:'16px',padding:"3px"}}>可购数量（手）：</h6> */}
                 </div>
                 <div style={{textAlign:"right",paddingRight:"3px"}}>
-                  <h6 style={{fontSize: "24px",fontFamily: "Futura-Medium, Futura",fontWeight: "600",color: "#2A2B30",lineHeight: "40px",letterSpacing: "1px"}}>￥0.00</h6>
+                  <h6 style={{fontSize: "24px",fontFamily: "Futura-Medium, Futura",fontWeight: "600",color: "#2A2B30",lineHeight: "40px",letterSpacing: "1px"}}>￥{totalPrice}</h6>
                   {/* <h6 style={{fontSize:'16px',padding:"3px"}}>123123</h6>
                   <h6 style={{fontSize:'16px',padding:"3px"}}>123</h6> */}
                 </div>

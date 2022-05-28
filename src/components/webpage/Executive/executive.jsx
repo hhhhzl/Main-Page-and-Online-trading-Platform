@@ -111,7 +111,6 @@ export default function Executive() {
                                 alt="header"
                                 style={{
                                     position: "relative",
-
                                 }}
                             />
                             <div className="bottom-shadow-image">

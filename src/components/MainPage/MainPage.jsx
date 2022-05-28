@@ -53,7 +53,7 @@ export default function MainPage() {
   return (
     <>
       {/* <div id="home" className="fix-bar">
-             <div className="text-center">   
+             <div className="text-center">
                <Image src = "/UFAlogo.jpg" title="UFA Logo" id="img-txz" alt="header"  roundedCircle  style={{ position: "relative", marginTop:"0.8vh", width: "8vh", height: "8vh",}}/>
                </div>
             </div>   */}
@@ -70,32 +70,32 @@ export default function MainPage() {
             </div>
           {/* </Fade> */}
 
-          <Fade bottom duration={300} delay={300} fraction={0.1}>
+          <Fade bottom duration={150} delay={150} fraction={0.1}>
             <div id="team">
               <Team />
             </div>
           </Fade>
 
-          <Fade bottom duration={300} delay={300} fraction={0.1}>
+          <Fade bottom duration={150} delay={150} fraction={0.1}>
             <div id="executive">
               <Executive />
             </div>
           </Fade>
 
-          <Fade bottom duration={300} delay={300} fraction={0.1}>
+          <Fade bottom duration={150} delay={150} fraction={0.1}>
             <div id="review" style={{ background: "#F5F6F8" }}>
               <Review />
             </div>
           </Fade>
 
-          <Fade bottom duration={300} delay={300} fraction={0.1}>
+          <Fade bottom duration={150} delay={150} fraction={0.1}>
             <div id="contactus">
               <Contacts />
             </div>
           </Fade>
         </div>
       </div>
-      <Fade bottom duration={300} delay={300} fraction={0.1}>
+      <Fade bottom duration={150} delay={150} fraction={0.1}>
         <Footer />
       </Fade>
     </>

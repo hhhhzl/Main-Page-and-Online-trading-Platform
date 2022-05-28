@@ -5,8 +5,8 @@ import { Link as LinkS } from "react-scroll";
 export const HeaderOut = styled.nav`
   background: ${(props) =>
     props.scrolledDownEnough
-      ? "#FFFFFF"
-      : "linear-gradient(180deg,rgba(0, 0, 0, 0.2) 0%,rgba(0, 0, 0, 0) 100%)"};
+      ?"#FFFFFF"
+      : props.url =="/team/create"?"#FFFFFF": "linear-gradient(180deg,rgba(0, 0, 0, 0.2) 0%,rgba(0, 0, 0, 0) 100%)"};
   height: 64px;
   margin-left: ${(props) => (props.scrolledDownEnough ? "0%" : "0%")};
   width: ${(props) => (props.scrolledDownEnough ? "100%" : "100%")};
@@ -174,7 +174,9 @@ export const HeaderBtn = styled.nav`
 `;
 export const HeaderBtnLink = styled(LinkR)`
   white-space: nowrap;
-  color:${(props) => (props.scrolledDownEnough ? "#2A2B30" : "#ffffff")};
+  color:${(props) => (props.scrolledDownEnough ? "#2A2B30"
+    : props.url =="/team/create"? "#2A2B30": "#ffffff")};
+    props.scrolledDownEnough
   text-decoration:none;
   display:flex;
   align-item: center;
