@@ -35,7 +35,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
       className="section"
       style={{ paddingTop: "20px", paddingBottom: "90px" }}
     >
-      <Fade bottom duration={300} delay={300} fraction={0.1}>
+      <Fade bottom duration={150} delay={150} fraction={0.1}>
         <div className="text-center">
           <Image
             src="/homeCutout/Group174@2x.png"
@@ -80,7 +80,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               letterSpacing: "1px",
             }}
           >
-           自成立以来，UFA金融协会与中信证券、清华大学金融协会、海外超过100所高校等建立起合作关系，并联合策划了名家分享会，金融系列公益讲座、全球大学生投资大赛等多个活动。“UFA杯: 全球大学模拟投资大赛”是由 UFA ⾦融协会牵头发起的首个汇聚全球顶尖高校大学生的大型线上模拟投资比赛。</p>
+           自成立以来，UFA金融协会与中信证券、海外超过100所高校等建立起合作关系，并联合策划了名家分享会，金融系列公益讲座、全球大学生投资大赛等多个活动。“UFA杯: 全球大学模拟投资大赛”是由 UFA ⾦融协会牵头发起的首个汇聚全球顶尖高校大学生的大型线上模拟投资比赛。</p>
           <div className="right-icon">
             <Image
               src="/homeCutout/Group 172@2x.png"
@@ -723,7 +723,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                       }}
                     >
                       赛事证书由
-                      UFA，中信证券，以及清华大学联合签署。表现优异的前
+                      UFA，中信证券联合签署。表现优异的前
                       30%参赛选手将收获主办方颁发的官方证书，为你的简历增添亮点，丰富金融专业背景，帮助你从同龄人中迅速脱颖而出！
                     </p>
                   </div>

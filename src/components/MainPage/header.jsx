@@ -11,7 +11,7 @@ import {
   HeaderBtn,
   MenuItemLinks,
 } from "./HeaderElements";
-import { ViewHeadlineTwoTone } from "@material-ui/icons";
+import {NotificationsNoneOutlined, ViewHeadlineTwoTone} from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { Modal, Button } from "react-bootstrap";
 import useWindowDimensions from "../../utils/sizewindow";
@@ -23,6 +23,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import AuthContext from "../../context/AuthContext";
 import { MenuItemLinksRouter } from "./HeaderElements";
+import {IconButton} from "@material-ui/core";
 const HeaderCreate = ({ toggle }) => {
   let { user, logoutUser } = useContext(AuthContext);
   const { width, height } = useWindowDimensions();
@@ -36,7 +37,10 @@ const HeaderCreate = ({ toggle }) => {
   const { url } = useRouteMatch();
   const [showLoginOutModal, setShowLoginOutModal] = useState(false);
   const history= useHistory()
-
+  const [note, setnote] = useState(null)
+  const sendUserNews = () =>{
+    history.push("/chat")
+  }
   // const [hover, setHover] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -86,6 +90,7 @@ const HeaderCreate = ({ toggle }) => {
       <HeaderOut
         style={{ width: width }}
         scrolledDownEnough={scrolledDownEnough}
+        url={url}
         // onMouseOver={handleMouseOver}
         // onMouseLeave={handleMouseLeave}
       >
@@ -99,7 +104,9 @@ const HeaderCreate = ({ toggle }) => {
               src={
                 scrolledDownEnough
                   ? "/homeCutout/UFA-LOGO-RED@2x.png"
-                  : "/UFA-LOGO.png"
+                  : url == "/team/create"
+                  ? "/homeCutout/UFA-LOGO-RED@2x.png"
+                  :"/UFA-LOGO.png"
               }
               style={{ width: "64px", height: "64px" }}
             />
@@ -138,13 +145,16 @@ const HeaderCreate = ({ toggle }) => {
                   color:
                     scrolledDownEnough && url != "/"
                       ? "#2A2B30"
-                      : url != "/" && !scrolledDownEnough
+                      : url != "/" && scrolledDownEnough
                       ? "#FFFFFF"
                       : scrolledDownEnough && url == "/"
                       ? "#1442ED"
+                      : !scrolledDownEnough && url == "/team/create"
+                      ? "#2A2B30"
                       : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
+                url={url}
                 width={width}
                 offset={-50}
                 activeClass={
@@ -163,7 +173,7 @@ const HeaderCreate = ({ toggle }) => {
               </HeaderBtnLink>
               <div
                 className="header-menu"
-                style={{ display: showUFA && current == 1 ? "flex" : "none" }}
+                style={{ display: showUFA && current == 1 && url == "/" ? "flex" : "none" }}
                 // onMouseEnter={handleMouseLeave}
                 onMouseLeave={handleCloseUFA}
               >
@@ -226,6 +236,8 @@ const HeaderCreate = ({ toggle }) => {
                       ? "#1442ED"
                       : scrolledDownEnough && url == "/#"
                       ? "#1442ED"
+                      : !scrolledDownEnough && url == "/team/create"
+                      ? "#2A2B30"
                       : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
@@ -258,6 +270,8 @@ const HeaderCreate = ({ toggle }) => {
                       ? "#FFFFFF"
                       : scrolledDownEnough && url == "/tournament"
                       ? "#1442ED"
+                      : !scrolledDownEnough && url == "/team/create"
+                      ? "#2A2B30"
                       : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
@@ -292,6 +306,8 @@ const HeaderCreate = ({ toggle }) => {
                       ? "#1442ED"
                       : scrolledDownEnough && url == "/#"
                       ? "#1442ED"
+                      : !scrolledDownEnough && url == "/team/create"
+                      ? "#2A2B30"
                       : "#FFFFFF",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
@@ -326,22 +342,21 @@ const HeaderCreate = ({ toggle }) => {
           <HeaderBtn>
             {user && user.jti ? (
               <>
-                <div
-                  style={{ marginRight: "34px", position: "relative" }}
-                  onClick={() => jumpNewPage()}
-                >
-                  <div className="notice-dot"></div>
-                  <Image
-                    src={
-                      scrolledDownEnough
-                        ? "/homeCutout/Group 1061@2x.png"
-                        : "/homeCutout/bell_white.png"
+                <div>
+                  <IconButton style={{
+                    margin:"20px 24px",
+                    padding:"0px 0",
+                    color:
+                        scrolledDownEnough?"black"
+                        : url == "/team/create"
+                        ? "black"
+                        :"white",
+                  }} onClick={() => sendUserNews()}>
+                    <NotificationsNoneOutlined ></NotificationsNoneOutlined >
+                    {note? (<div style={{width:"7px",height:"7px",backgroundColor:"#1442ED", borderRadius:"50%", marginLeft:"-10px",marginTop:"-10px"}}></div>)
+                        : null
                     }
-                    style={{
-                      width: "24px",
-                      height: "24px",
-                    }}
-                  />
+                  </IconButton>
                 </div>
 
                 <div
@@ -369,7 +384,12 @@ const HeaderCreate = ({ toggle }) => {
                     <span
                       className="header-user-name"
                       style={{
-                        color: scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                        color:
+                            scrolledDownEnough
+                                ? "#2A2B30"
+                                : url == "/team/create"
+                                ? "#2A2B30"
+                                : "#FFFFFF",
                         marginLeft: "6px",
                       }}
                     >
@@ -377,7 +397,11 @@ const HeaderCreate = ({ toggle }) => {
                     </span>
                     <ExpandMoreIcon
                       style={{
-                        color: scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                        color: scrolledDownEnough
+                            ? "#2A2B30"
+                            : url == "/team/create"
+                            ? "#2A2B30"
+                            : "#FFFFFF",
                       }}
                     ></ExpandMoreIcon>
                   </div>

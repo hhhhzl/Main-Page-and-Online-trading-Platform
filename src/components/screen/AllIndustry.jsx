@@ -19,7 +19,7 @@ import PlateCard from "./PlateCard";
 import "./leadingIndustry.css";
 import { IconButton } from "@material-ui/core";
 
-export default function LeadingIndustryAll({setswitchClose}) {
+export default function LeadingIndustryAll({setIndusAll,indusAll,handleShowDetails}) {
   const [data, setData] = useState([]);
   const [stockData, setstockData] = useState([]);
   const [extend, setExtend] = useState(true);
@@ -76,7 +76,7 @@ export default function LeadingIndustryAll({setswitchClose}) {
           paddingLeft: "48px",
         }}
       >
-        <IconButton onClick ={() => setswitchClose(true)}>
+        <IconButton onClick ={() => setIndusAll(1)}>
         <ArrowBack style={{color:"#2A2B30",fontSize:"18px"}}></ArrowBack>
         </IconButton>
         
@@ -112,8 +112,7 @@ export default function LeadingIndustryAll({setswitchClose}) {
           //   {/* {item.label} : {item.value} */}
           // </li>
           // {item.label}
-          
-          <PlateCard dataSource={item} stockData={item.代表股票} heightProp={0.28}></PlateCard>
+        <PlateCard handleShowDetails={handleShowDetails} indusAll={indusAll} dataSource={item} stockData={item.代表股票} heightProp={0.28} index={index}></PlateCard>
         ))}
       </div>
     </div>

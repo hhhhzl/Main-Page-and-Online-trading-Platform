@@ -19,7 +19,7 @@ import PlateCard from "./PlateCard";
 import "./leadingIndustry.css";
 import { IconButton } from "@material-ui/core";
 
-export default function LeadingIndustry({setswitchClose,handleShowDetails}) {
+export default function LeadingIndustry({handleShowDetails,indusAll,setIndusAll}) {
   const [data, setData] = useState([]);
   const [stockData, setStockData] = useState([]);
   const [extend, setExtend] = useState(true);
@@ -55,7 +55,6 @@ export default function LeadingIndustry({setswitchClose,handleShowDetails}) {
       .get(url)
       .then(function (response) {
         let data = response.data.data.splice(0, 10);
-        console.log(data);
         setStockData(data);
         setExtendPlate(false);
       })
@@ -69,7 +68,7 @@ export default function LeadingIndustry({setswitchClose,handleShowDetails}) {
       <div className="leading-industry-title">
         <div className="leading-industry-text">领涨行业</div>
         <div className="order-flex">
-        <IconButton onClick={() => setswitchClose(false)}>
+        <IconButton onClick={() => setIndusAll(2)}>
           <div className="all-order-text"> 
             全部      
           </div>      
@@ -118,7 +117,7 @@ export default function LeadingIndustry({setswitchClose,handleShowDetails}) {
           //   {/* {item.label} : {item.value} */}
           // </li>
           // {item.label}
-          <PlateCard handleShowDetails={handleShowDetails}  dataSource={item} stockData={item.代表股票} heightProp={0.28} index={index}></PlateCard>
+          <PlateCard handleShowDetails={handleShowDetails} indusAll={indusAll} dataSource={item} stockData={item.代表股票} heightProp={0.28} index={index}></PlateCard>
         ))}
       </div>
     </div>
