@@ -1,17 +1,17 @@
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LabelList } from 'recharts';
 
 const propdata = [
-  { name: "<-15%", number: 134, color:0},
-  { name: "-15~-10%", number: 253, color: 0},
-  { name: "-10~-5%", number: 376, color: 0},
-  { name: "-5~-2%", number: 402, color: 0},
-  { name: "-2~-0%", number: 814,color: 0},
-  { name: "0%", number: 125, color: -1},
-  { name: "0~2%", number: 326, color: 1},
-  { name: "2~5%", number: 127, color: 1 },
-  { name: "5~10%", number: 72, color: 1 },
-  { name: "10~15%", number: 36, color: 1 },
-  { name: ">15%", number: 24, color: 1 }
+  { name: "<-15%", number: 0, color:0},
+  { name: "-15~-10%", number: 0, color: 0},
+  { name: "-10~-5%", number: 0, color: 0},
+  { name: "-5~-2%", number: 0, color: 0},
+  { name: "-2~-0%", number: 0,color: 0},
+  { name: "0%", number: 0, color: 2},
+  { name: "0~2%", number: 0, color: 1},
+  { name: "2~5%", number: 0, color: 1 },
+  { name: "5~10%", number: 0, color: 1 },
+  { name: "10~15%", number: 0, color: 1 },
+  { name: ">15%", number: 0, color: 1 }
 ];
 
 const renderCustomizedLabel = ({x, y, stroke, fill, color, value}) => {
@@ -36,10 +36,10 @@ const renderCustomizedLabel = ({x, y, stroke, fill, color, value}) => {
 
 };
 
-export default function BarChartMarket({width}) {
+export default function BarChartMarket({width, dataprops}) {
   return (
       <ResponsiveContainer>
-    <BarChart width={width} height={width/ 1.767} margin ={{left:0, bottom:0., top:width * 0.1122, bottom:36}} data={propdata}>
+    <BarChart width={width} height={width/ 1.767} margin ={{left:0, bottom:0., top:width * 0.1122, bottom:36}} data={dataprops? dataprops : propdata}>
       <defs>
             <linearGradient id="MyGradient" x1="0" y1="100%" x2="0" y2="0%">
                 <stop offset="0%" stopColor="#42E083" stopOpacity={0} />
@@ -72,8 +72,8 @@ export default function BarChartMarket({width}) {
       <Bar dataKey="number" radius={[4, 4, 0, 0]} barSize={24} label ={renderCustomizedLabel}>
       {
       propdata.map((datum, entry, index) => (
-        <Cell key={`cell-${index}`}  fill= {datum.color === 0? "url(#MyGradient)" : "url(#MyGradient1)"} color={
-            datum.color === 0? "#16CE62" : "#EC1421"
+        <Cell key={`cell-${index}`}  fill= {datum.color === 0? "url(#MyGradient)" : datum.color === 1? "url(#MyGradient1)" : "url(#gray)"} color={
+            datum.color === 0? "#16CE62" :  datum.color === 1? "#EC1421" : "#9C9EAC"
         }/>
         
       ))

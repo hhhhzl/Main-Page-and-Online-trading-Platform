@@ -105,11 +105,8 @@ export default function StockPriceGraphSimplify({widthratio}) {
 
       <div>
       <Card style={{width:widthratio, borderColor:"white"}} > 
-
-          <Row style={{ height:"124px" }}>
-              <Col xs ={7} style={{height:"124px"}} >
-                  <div>
-
+      <div style={{width:"100%",display:"flex", justifyContent:"space-between"}}>
+        <div style={{width:"max-content"}}>
 
                   <div style={{
                       height:"40px",
@@ -135,45 +132,39 @@ export default function StockPriceGraphSimplify({widthratio}) {
                       letterSpacing:"1px",
                       }}>￥1,986.32</div>
 
+            <div style={{height:"28px",display:"flex",justifyContent:"left"}}>
+                  <div style={{
+                        fontSize:"16px",
+                        fontFamily:"Microsoft YaHei UI-Bold",
+                        fontWeight:"500",
+                        padding:"0px",
+                        color:updown? "#42E083" : "#FF3541",
+                        lineHeight:"28px",
+                        }}>+¥30608.26(+2.03%)</div>
 
-        <Row>
-            <Col xs ={7} style={{height:"28px"}}>
-        <div style={{
-        fontSize:"16px",
-        fontFamily:"Microsoft YaHei UI-Bold",
-        fontWeight:"500",
-        padding:"0px",
-        color:updown? "#42E083" : "#FF3541",
-        lineHeight:"28px",
-        }}>+¥30608.26(+2.03%)</div>
+                  <div style={{
+                          fontSize:"16px",
+                          marginLeft:"6px",
+                          fontFamily:"Microsoft YaHei UI-Bold",
+                          fontWeight:"400",
+                          padding:"0px",
+                          color:"#9C9EAC",
+                          lineHeight:"28px",
+                          }}>
 
-        
-        </Col><Col xs ={5} style={{height:"28px"}}>
-        <div style={{
-        fontSize:"16px",
-        marginLeft:"-40%",
-        fontFamily:"Microsoft YaHei UI-Bold",
-        fontWeight:"400",
-        padding:"0px",
-        color:"#9C9EAC",
-        lineHeight:"28px",
-        }}>
+                          {arrays[id] == "今日"? "今日" : <>近{arrays[id]}</> }
+                          
+                          </div>
+            </div>
 
-        {arrays[id] == "今日"? "今日" : <>近{arrays[id]}</> }
-        
-        </div>
-    
-            </Col></Row>
-        
-                  </div>
-              </Col>
-            
-              
-              <Col xs ={5} style={{height:"124px"}}>
-                  <div style={{display:"flex",justifyContent:"space-between",padding:"13% 0% 10% 5%"}}>
+          </div>
 
 
-                      {add? <><div>
+          <div style={{width:"264px",height:"100px"}}>
+
+
+          <div style={{display:"flex",justifyContent:"space-between",padding:"13% 0% 10% 0%"}}>
+          {add? <><div>
                           <Button style={{background: "#F5F6F8",width: "120px",height: "48px", borderRadius: "4px 4px 4px 4px",opacity: 1, borderWidth:"0"}}
                           variant="outline-secondary"
                           onClick={() => setAdd(false)}
@@ -251,16 +242,12 @@ export default function StockPriceGraphSimplify({widthratio}) {
                               padding:"0px",
                               }}
                               /> </div>
-                            </>}
-                            
-                                     
+                            </>}             
                           </Button>
-                     </div>
-                  </div>
-              </Col>
-
-          </Row>
-
+                       </div>
+                   </div>
+                 </div>
+               </div>
     
               <div style={{marginTop:"8px",width:"100%", borderColor:"white"}}>
               <AreaSeriesForStockPrice width={widthratio} 

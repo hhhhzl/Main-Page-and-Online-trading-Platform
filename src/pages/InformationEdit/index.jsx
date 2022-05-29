@@ -5,6 +5,7 @@ import Notice from "components/webpage/chat/Notice";
 import { getPlatformType } from "utils";
 import HeaderCreate from "components/MainPage/header";
 import { useHistory } from "react-router-dom";
+import EditData from "components/screen/EditUserProfile";
 
 export default ({searchData}) => {
     const { width, height } = useWindowDimensions();
@@ -15,11 +16,10 @@ export default ({searchData}) => {
         {
             platformType == null ? <HeaderCreate/> : <PageHeader searchData = {searchData} />
         }
-            <div style={{width:"100%",height:"100%",display:"flex",justifyContent:"center"}}>
-                <div style={{marginTop:platformType == null? "112px" :"48px",width:"1200px"}} >
-                   <Notice/>
-                </div>
-            </div>
+      
+           <EditData/>
+        
+
         </>
     );
 }

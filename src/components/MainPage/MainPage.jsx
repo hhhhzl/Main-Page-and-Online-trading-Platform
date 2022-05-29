@@ -14,6 +14,7 @@ import Sidebar from "./Sidebar";
 import { ClassNames } from "@emotion/react";
 import HeaderCreate from './header'
 import Fade from "react-reveal/Fade";
+import { clearLocalStorage } from "utils";
 
 export default function MainPage() {
   const [show, setShow] = useState(false);
@@ -48,6 +49,10 @@ export default function MainPage() {
     console.log(isOpen);
     setIsOpen(isOpen);
   }, [isOpen]);
+
+  useEffect(() =>{
+    clearLocalStorage()
+  })
 
 
   return (

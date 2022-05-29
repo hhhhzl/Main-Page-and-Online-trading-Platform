@@ -68,6 +68,7 @@
 .header-user-menu {
   cursor: pointer;
   position: absolute;
+  width: 107px;
   top: 50px;
   display: flex;
   flex-direction: column;

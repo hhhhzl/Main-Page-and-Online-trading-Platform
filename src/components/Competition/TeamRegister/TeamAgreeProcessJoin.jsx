@@ -13,6 +13,10 @@ export default function TeamAgreeProcessJoin(){
     const {width,height} = useWindowDimensions();
     const [page, setpage] = useState(0)
     const [disable, setdisable] = useState(true)
+    const [isOpen, setIsOpen] = useState(false);
+    const toggle = () => {
+        setIsOpen(!isOpen);
+      };
     
     const history= useHistory()
 
@@ -79,18 +83,20 @@ export default function TeamAgreeProcessJoin(){
 
     return (
         <>
-        {/* <HeaderCreate toggle = {toggle} />
-      {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>) : null} */}
+        <div>
+        <HeaderCreate toggle = {toggle} />
+      {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>) : null}
+      </div>
 
        <Modal 
         show={successSendtoC} 
         centered
         >
           <Modal.Header></Modal.Header>
-          <Modal.Body style={{marginLeft:"-10px"}}>请求已发送至队长，请耐心等待通过，首页点击团队信息查看进入团队状态 </Modal.Body>
+          <Modal.Body style={{textAlign:"center"}}>请求已发送至队长，请耐心等待通过，首页点击团队信息查看进入团队状态 </Modal.Body>
         <Modal.Footer style={{marginLeft:0}} >
-            <div style={{width:"100%",display:"flex",justifyContent:"left"}}>
-            <Button className="modal-btn modal-btn-submit"  style={{marginLeft:"50px"}} variant="primary" onClick ={() => sendUserhome()}>
+            <div style={{width:"100%",display:"flex",justifyContent:"center"}}>
+            <Button className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUserhome()}>
             回主页
           </Button>
         </div>
@@ -107,12 +113,11 @@ export default function TeamAgreeProcessJoin(){
             <div  style={{marginTop:height*0,width:"100%",display:"flex",justifyContent:"space-between", backgroundColor:"#F5F6F8"}}>
 
             <div style={{width:"48px",maxWidth:"18.75%"}}></div>
-            <div style={{width:"1200px",minWidth:"fix-content",minHeight: "700px",
-                minWidth: "fix-content",
+            <div style={{width:"1200px",minWidth:"fix-content",
                 height:height,
                 }}>
 
-                <div style={{height:"111px", width:"100%"}}>
+                <div style={{marginTop:"64px",height:"111px", width:"100%"}}>
                         <div style={{paddingBottom:"24px",paddingTop:"48px", fontSize:"24px", fontFamily:"Microsoft YaHei U-Bold, Microsoft YaHei UI", fontWeight:"bold", color:"#2A2B30", lineHeight:"40px",letterSpacing:"1px"}}>
                         {process[page - 1].title}
                         </div>

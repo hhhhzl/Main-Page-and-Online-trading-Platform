@@ -4,7 +4,7 @@ import PageHeader from "components/screen/PageHeader";
 import StockSelectionDevice from "components/screen/StockSelectionDevice";
 import MarketQuotation from "components/screen/MarketQuotation";
 
-export default () => {
+export default ({searchData}) => {
     const { width, height } = useWindowDimensions();
     // const [porforliowidth, setporforliowidth] = useState(1200);
     // const [porforlioheight, setporforlioheight] = useState(800);
@@ -23,7 +23,7 @@ export default () => {
 
     return (
         <>
-            <PageHeader />
+            <PageHeader searchData = {searchData} />
             <div
                 style={{
                     marginTop: 0,

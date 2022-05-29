@@ -1,5 +1,11 @@
 import { useContext, React, useState, useEffect } from "react";
-
+import {
+  Switch,
+  Route,
+  Link,
+  useParams,
+  useRouteMatch,
+} from "react-router-dom";
 import { useHistory } from "react-router";
 import {
   HeaderOut,
@@ -12,18 +18,17 @@ import {
   MenuItemLinks,
 } from "./HeaderElements";
 import {NotificationsNoneOutlined, ViewHeadlineTwoTone} from "@material-ui/icons";
-import { Link } from "react-router-dom";
 import { Modal, Button } from "react-bootstrap";
 import useWindowDimensions from "../../utils/sizewindow";
 import Image from "react-bootstrap/Image";
 import "./header.css";
 import { MobileIcon } from "./NavbarElements";
-import { useRouteMatch } from "react-router-dom";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import AuthContext from "../../context/AuthContext";
 import { MenuItemLinksRouter } from "./HeaderElements";
 import {IconButton} from "@material-ui/core";
+import { clearLocalStorage, setPlatformType } from "utils";
 const HeaderCreate = ({ toggle }) => {
   let { user, logoutUser } = useContext(AuthContext);
   const { width, height } = useWindowDimensions();
@@ -71,6 +76,12 @@ const HeaderCreate = ({ toggle }) => {
     setShowLoginOutModal(true);
   };
 
+  const LogUserOut = () =>{
+    setShowLoginOutModal(false)
+    history.push("/");
+    logoutUser()
+    clearLocalStorage()
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,6 +98,33 @@ const HeaderCreate = ({ toggle }) => {
 
   return (
     <>
+    <Modal
+        show={showLoginOutModal}
+        onHide={handleClose}
+        centered
+        className="page-header-modal"
+      >
+        <Modal.Header closeButton>
+          {/* <Modal.Title>Modal heading</Modal.Title> */}
+        </Modal.Header>
+        <Modal.Body>您确定要退出吗？</Modal.Body>
+        <Modal.Footer>
+          <Button
+            className="modal-btn modal-btn-cancel"
+            variant="secondary"
+            onClick={handleClose}
+          >
+            取消
+          </Button>
+          <Button
+            className="modal-btn modal-btn-submit"
+            variant="primary"
+            onClick={LogUserOut}
+          >
+            确认
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <HeaderOut
         style={{ width: width }}
         scrolledDownEnough={scrolledDownEnough}
@@ -104,7 +142,7 @@ const HeaderCreate = ({ toggle }) => {
               src={
                 scrolledDownEnough
                   ? "/homeCutout/UFA-LOGO-RED@2x.png"
-                  : url == "/team/create"
+                  : (url != "/" && url != "/tournament")
                   ? "/homeCutout/UFA-LOGO-RED@2x.png"
                   :"/UFA-LOGO.png"
               }
@@ -149,7 +187,7 @@ const HeaderCreate = ({ toggle }) => {
                       ? "#FFFFFF"
                       : scrolledDownEnough && url == "/"
                       ? "#1442ED"
-                      : !scrolledDownEnough && url == "/team/create"
+                      : !scrolledDownEnough && (url != "/" && url != "/tournament")
                       ? "#2A2B30"
                       : "#FFFFFF",
                 }}
@@ -236,7 +274,7 @@ const HeaderCreate = ({ toggle }) => {
                       ? "#1442ED"
                       : scrolledDownEnough && url == "/#"
                       ? "#1442ED"
-                      : !scrolledDownEnough && url == "/team/create"
+                      : !scrolledDownEnough && (url != "/" && url != "/tournament")
                       ? "#2A2B30"
                       : "#FFFFFF",
                 }}
@@ -270,7 +308,7 @@ const HeaderCreate = ({ toggle }) => {
                       ? "#FFFFFF"
                       : scrolledDownEnough && url == "/tournament"
                       ? "#1442ED"
-                      : !scrolledDownEnough && url == "/team/create"
+                      : !scrolledDownEnough && (url != "/" && url != "/tournament")
                       ? "#2A2B30"
                       : "#FFFFFF",
                 }}
@@ -306,7 +344,7 @@ const HeaderCreate = ({ toggle }) => {
                       ? "#1442ED"
                       : scrolledDownEnough && url == "/#"
                       ? "#1442ED"
-                      : !scrolledDownEnough && url == "/team/create"
+                      : !scrolledDownEnough && (url != "/" && url != "/tournament")
                       ? "#2A2B30"
                       : "#FFFFFF",
                 }}
@@ -331,7 +369,7 @@ const HeaderCreate = ({ toggle }) => {
                 // onMouseEnter={handleMouseLeave}
                 onMouseLeave={handleCloseTransaction}
               >
-                <MenuItemLinksRouter to="/eplatform" className="menu-item">
+                <MenuItemLinksRouter to="/eplatform" className="menu-item" onClick={() => setPlatformType("competition")}>
                   赛事账户
                 </MenuItemLinksRouter>
                 {/* <MenuItemLinksRouter to='/eplatform' className="menu-item">个人账户</MenuItemLinksRouter> */}
@@ -348,12 +386,12 @@ const HeaderCreate = ({ toggle }) => {
                     padding:"0px 0",
                     color:
                         scrolledDownEnough?"black"
-                        : url == "/team/create"
+                        : (url != "/" && url != "/tournament")
                         ? "black"
                         :"white",
                   }} onClick={() => sendUserNews()}>
                     <NotificationsNoneOutlined ></NotificationsNoneOutlined >
-                    {note? (<div style={{width:"7px",height:"7px",backgroundColor:"#1442ED", borderRadius:"50%", marginLeft:"-10px",marginTop:"-10px"}}></div>)
+                    {true? (<div style={{width:"7px",height:"7px",backgroundColor:"#1442ED", borderRadius:"50%", marginLeft:"-10px",marginTop:"-10px"}}></div>)
                         : null
                     }
                   </IconButton>
@@ -387,7 +425,7 @@ const HeaderCreate = ({ toggle }) => {
                         color:
                             scrolledDownEnough
                                 ? "#2A2B30"
-                                : url == "/team/create"
+                                : (url != "/" && url != "/tournament")
                                 ? "#2A2B30"
                                 : "#FFFFFF",
                         marginLeft: "6px",
@@ -399,7 +437,7 @@ const HeaderCreate = ({ toggle }) => {
                       style={{
                         color: scrolledDownEnough
                             ? "#2A2B30"
-                            : url == "/team/create"
+                            : (url != "/" && url != "/tournament")
                             ? "#2A2B30"
                             : "#FFFFFF",
                       }}
@@ -414,7 +452,7 @@ const HeaderCreate = ({ toggle }) => {
                         offset={-50}
                         spy={true}
                         smooth={true}
-                        to="/aboutus"
+                        to="/personal"
                         duration={700}
                         className="menu-item menu-item-home"
                     >
@@ -431,7 +469,7 @@ const HeaderCreate = ({ toggle }) => {
                       团队信息
                     </MenuItemLinksRouter>
                     <MenuItemLinksRouter
-                        to="/review"
+                        to="/personalEdit"
                         offset={-50}
                         spy={true}
                         smooth={true}
@@ -446,7 +484,7 @@ const HeaderCreate = ({ toggle }) => {
                         smooth={true}
                         duration={700}
                         className="menu-item menu-item-home"
-                        onClick={handleLoginOut}
+                        onClick={() => handleLoginOut()}
                     >
                       退出登录
                     </MenuItemLinksRouter>

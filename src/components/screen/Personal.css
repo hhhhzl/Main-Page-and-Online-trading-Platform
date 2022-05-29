@@ -1,8 +1,9 @@
 .personal-homepage {
 	display: flex;
 	flex-direction: column;
-	position: absolute;
-	margin-left: 33.073%;
+	justify-content: center;
+	position: relative;
+	margin-left: 48px;
 	text-align: center;
 }
 
