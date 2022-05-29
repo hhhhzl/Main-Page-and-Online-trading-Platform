@@ -6,18 +6,28 @@ import { IconButton } from '@material-ui/core';
 import { ArrowBack, ArrowForward } from '@material-ui/icons';
 import { Button, Form, Image } from 'react-bootstrap';
 import { useHistory } from 'react-router';
+import Footer from 'components/MainPage/footer';
 
 export default function TeamEntry(){
     const {width,height} = useWindowDimensions();
     const history= useHistory()
 
+    
+
     const [disable, setdisable] = useState(true)
+    
 
     const [hovercreate, setHovercreate] = useState(true);
     const [hoverjoin, setHoverjoin] = useState(false);
     const [createshow, setcreatshow] = useState(false);
     const [joinshow, setjoinshow] = useState(false);
     const sendUserhome = () => {history.push("/home")}
+
+
+    const [isOpen, setIsOpen] = useState(false);
+    const toggle = () => {
+        setIsOpen(!isOpen);
+      };
 
     const handleMouseOverC = () => {
         setHovercreate(true);
@@ -46,8 +56,11 @@ export default function TeamEntry(){
 
     return (
         <>
-        {/* <HeaderCreate toggle = {toggle} />
-      {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>) : null} */}
+        <div>
+        <HeaderCreate toggle = {toggle} />
+      {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>) : null}
+      </div>
+      
 
          <div  style={{marginTop:height*0,width:"100%",display:"flex",justifyContent:"space-between", backgroundColor:"#F5F6F8"}}>
 
@@ -56,7 +69,7 @@ export default function TeamEntry(){
             minWidth: "fix-content",
             height:height,
             }}>
-                <div style={{height:"111px", width:"100%"}}>
+                <div style={{marginTop:"64px",height:"111px", width:"100%"}}>
                 
                     <div style={{paddingBottom:"24px",paddingTop:"48px", fontSize:"24px", fontFamily:"Microsoft YaHei U-Bold, Microsoft YaHei UI", fontWeight:"bold", color:"#2A2B30", lineHeight:"40px",letterSpacing:"1px"}}>
                     <IconButton onClick={() => sendUserhome()} >
@@ -198,6 +211,12 @@ export default function TeamEntry(){
         </div>
         <div style={{width:"48px",maxWidth:"18.75%"}}></div>
         </div>
+
+        <div style={{position:"relative"}}>
+        <Footer />
+        </div>
+
+        
 
         </>
         

@@ -3,12 +3,15 @@ import { Card, Collapse, Button, Row, Nav, Col, Badge, InputGroup, Form, Image }
 import './screen.css';
 import AreaChartForMarketView from '../graphs/AreaChartForMarketView';
 import BarChartMarket from '../graphs/BarChartMarket';
+import "./plateCard.css";
 
 
-export default function MarketUpdownDistribute({widthRatio}) {
+export default function MarketUpdownDistribute({widthRatio, searchData}) {
 
     const [selected, setselected] = useState(0)
     const [upDown, setUpdown] = useState(false)
+    const [stockforprop, setstockforprop] = useState(null)
+    const [dataSource, setdataSource] = useState(null)
 
     const data = [
         {
@@ -50,10 +53,82 @@ export default function MarketUpdownDistribute({widthRatio}) {
 
     ]
 
+    useEffect(() => {
+        if (searchData) {
+            const [updown, stockdata] = stockUpdownFilter()
+           console.log(updown)
+           setstockforprop(stockdata)
+           setdataSource(updown)
+        }
+        
+    },[searchData])
+    
+    const stockUpdownFilter = (props) =>{
+        const propsdata = {"<-15%":0,  "-15~-10%":0, "-10~-5%":0, "-5~-2%":0, "-2~-0%":0, "0%":0, "0~2%":0, "2~5%":0, "5~10%":0, "10~15%":0,">15%":0}
+        const label = {"<-15%":0,  "-15~-10%":0, "-10~-5%":0, "-5~-2%":0, "-2~-0%":0, "0%":2, "0~2%":1, "2~5%":1, "5~10%":1, "10~15%":1,">15%":1}
+        const updown = {"上涨家数":0 , "下跌家数": 0 ,"不涨不跌家数":0}
+        searchData.forEach((elem) =>{
+            if (elem.涨跌幅 <= -15){
+                propsdata['<-15%'] = propsdata['<-15%'] +1 || 1
+                updown.下跌家数 = updown.下跌家数 + 1 || 1
+            } else if (-15 < elem.涨跌幅 && elem.涨跌幅 <= -10){
+                propsdata['-15~-10%'] = propsdata['-15~-10%'] + 1 || 1
+                updown.下跌家数 = updown.下跌家数 + 1 || 1
+
+            } else if (-10 < elem.涨跌幅 && elem.涨跌幅 <= -5){
+                propsdata['-10~-5%'] = propsdata['-10~-5%'] + 1 || 1
+                updown.下跌家数 = updown.下跌家数 + 1 || 1
+
+            } else if (-5 < elem.涨跌幅 && elem.涨跌幅 <= -2){
+                propsdata['-5~-2%'] = propsdata['-5~-2%'] + 1 || 1
+                updown.下跌家数 = updown.下跌家数 + 1 || 1
+
+            } else if (-2 < elem.涨跌幅 && elem.涨跌幅 < 0){
+                propsdata['-2~-0%'] = propsdata['-2~-0%'] + 1 || 1
+                updown.下跌家数 = updown.下跌家数 + 1 || 1
+
+            } else if (0 < elem.涨跌幅 && elem.涨跌幅 <= 2){
+                propsdata['0~2%'] = propsdata['0~-2%'] + 1 || 1
+                updown.上涨家数 = updown.上涨家数 + 1 || 1
+
+            } else if (2 < elem.涨跌幅 && elem.涨跌幅 <= 5){
+                propsdata['2~5%'] = propsdata['2~5%'] + 1 || 1
+                updown.上涨家数 = updown.上涨家数 + 1 || 1
+
+            }else if (5 < elem.涨跌幅 && elem.涨跌幅 <= 10){
+                propsdata['5~10%'] = propsdata['5~10%'] + 1 || 1
+                updown.上涨家数 = updown.上涨家数 + 1 || 1
+
+            }else if (10 < elem.涨跌幅 && elem.涨跌幅 <= 15){
+                propsdata['10~15%'] = propsdata['10~15%'] + 1 || 1
+                updown.上涨家数 = updown.上涨家数 + 1 || 1
+
+            }else if (15 < elem.涨跌幅){
+                propsdata['>15%'] = propsdata['>15%'] + 1 || 1
+                updown.上涨家数 = updown.上涨家数 + 1 || 1
+
+            }else if (elem.涨跌幅 == 0){
+                propsdata['0%'] = propsdata['0%'] + 1 || 1
+                updown.不涨不跌家数 = updown.不涨不跌家数 + 1 || 1
+            }
+
+        })
+        console.log("结果",propsdata, updown)
+        const stockpropsData = []
+        for (const [key, value] of Object.entries(propsdata)) {
+            const single = {"name":key, "number":value,"color":label[key]}
+            console.log(single);
+            stockpropsData.push(single)
+          }
+        return [updown, stockpropsData]
+    }
+
+    
+
     // useEffect(() => {
-    //     setselected(selected)
-    //     console.log(selected)
-    // },[selected])
+    //     setstockforprop(stockforprop)
+    //     setupAndDown(upAndDown)
+    // },[stockforprop,upAndDown])
 
     return (
         <>
@@ -104,16 +179,93 @@ export default function MarketUpdownDistribute({widthRatio}) {
                             fontWeight:"500",
                             color:"#000000",
                             lineHeight:"28px",
-                            }}>8,035</div>
+                            }}>{searchData? searchData.length : "无数据"}</div>
                             </div>
 
         
         </div>
 
         <div style={{marginTop:"24px", width:widthRatio *0.9,marginLeft:"5%", height:widthRatio *0.4761}}>
-            <BarChartMarket width = {widthRatio * 0.9}/>
-            <div style={{height:"42px", backgroundColor:"red"}}>
-                预留涨跌
+            <BarChartMarket width = {widthRatio * 0.9} dataprops = {stockforprop}/>
+            <div style={{height:"42px"}}>
+                {dataSource? (
+                    <div className="plate-line">
+                    <div
+                      className="plate-line-wrapper"
+                      style={{
+                        width:
+                          (dataSource.下跌家数 /
+                            (dataSource.下跌家数 +
+                              dataSource.上涨家数 +
+                              dataSource.不涨不跌家数)) *
+                            100 +
+                          "%",
+                        display: dataSource.下跌家数 == 0 ? "none" : "flex",
+                        justifyContent: "flex-start",
+                      }}
+                    >
+                      <div className="plate-line-down"></div>
+                      <div
+                        className="plate-line-text"
+                        style={{ textAlign: "start", color: "#16CE62", fontSize: "16px",
+                        fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                        fontWeight: 400,
+                        lineHeight:"28px"
+                      }}
+                      >
+                        下跌: {dataSource.下跌家数}
+                      </div>
+                    </div>
+                    <div
+                      className="plate-line-wrapper"
+                      style={{
+                        width:
+                          (dataSource.不涨不跌家数 /
+                            (dataSource.下跌家数 +
+                              dataSource.上涨家数 +
+                              dataSource.不涨不跌家数)) *
+                            100 +
+                          "%",
+                        margin: "0px 4px",
+                      }}
+                    >
+                      <div className="plate-line-center"></div>
+                      <div
+                        className="plate-line-text"
+                        style={{ textAlign: "center", color: "#9C9EAC" }}
+                      >
+                        {/* {dataSource.不涨不跌家数} */}
+                      </div>
+                    </div>
+                    <div
+                      className="plate-line-wrapper"
+                      style={{
+                        width:
+                          (dataSource.上涨家数 /
+                            (dataSource.下跌家数 +
+                              dataSource.上涨家数 +
+                              dataSource.不涨不跌家数)) *
+                            100 +
+                          "%",
+                        display: dataSource.上涨家数 == 0 ? "none" : "flex",
+                        justifyContent: "flex-end",
+                      }}
+                    >
+                      <div className="plate-line-up"></div>
+                      <div
+                        className="plate-line-text"
+                        style={{ textAlign: "end", color: "#EC1421",fontSize: "16px",
+                        fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                        fontWeight: 400,
+                        lineHeight:"28px" }}
+                      >
+                        上涨: {dataSource.上涨家数}
+                      </div>
+                    </div>
+                  </div>
+
+                ) : null}
+            
             </div>
         </div>
         

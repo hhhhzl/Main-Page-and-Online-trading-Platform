@@ -8,7 +8,7 @@ import useWindowDimensions from "../../../../utils/sizewindow";
 import StockTradeBar from '../../../screen/StockTradeBar';
 import GraphTemplate from '../../../screen/GraphTemplate';
 import WatchList from '../../../screen/WatchList';
-import PersonalHomepage from '../PersonalHomepage';
+import PersonalHomepage from '../../../screen/PersonalHomepage';
 import KeyIndicators from '../../../screen/KeyIndicatorProfessional'
 import StockPriceGraphProfessional from '../../../screen/StockPriceGraphProfessional'
 

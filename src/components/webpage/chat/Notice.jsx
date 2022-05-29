@@ -16,7 +16,7 @@ export default function Notice(){
 	};
 	
 	return(
-		<div style={{margin: "48px 0 24px 0px",width:"100%",
+		<div style={{margin:0,width:"100%",
 		borderRadius: "4px 4px 4px 4px"}}>
 			<div className="notice-title">全部通知</div>
 			<div style={{marginTop:"24px",display:"flex",height:"770px",boxShadow: "0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02)",}}>

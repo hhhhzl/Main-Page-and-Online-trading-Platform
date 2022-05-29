@@ -38,14 +38,11 @@ export default function PorforlioMoveGraph({
       {vertify? ( <>
 
       <div>
-      <Card style={{width:"100%", borderColor:"white"}} > 
+      <Card style={{width:"100%", borderColor:"white",}} > 
 
-          <Row style={{ height:"84px"}} >
-              <Col xs ={7} style={{ height:"84px"}} >
-                  <div>
-
-
-                  <div style={{
+      <div style={{width:"100%",display:"flex", justifyContent:"space-between"}}>
+        <div style={{width:"300px"}}>
+        <div style={{
                       height:"56px",
         fontSize:"36px",
         fontFamily:"Microsoft YaHei UI-Bold",
@@ -56,42 +53,40 @@ export default function PorforlioMoveGraph({
         letterSpacing:"1px",
         }}>¥{usersummary}</div>
 
+            <div style={{height:"28px",display:"flex",justifyContent:"left"}}>
+            <div style={{
+            fontSize:"16px",
+            fontFamily:"Microsoft YaHei UI-Bold",
+            fontWeight:"500",
+            padding:"0px",
+            color:"#2A2B30",
+            marginRight:"20px",
+            lineHeight:"28px",
+            }}>¥30608.26{" "}(+2.03%)</div>
 
-        <div style={{height:"28px",display:"flex",justifyContent:"left"}}>
-        <div style={{
-        fontSize:"16px",
-        fontFamily:"Microsoft YaHei UI-Bold",
-        fontWeight:"500",
-        padding:"0px",
-        color:"#2A2B30",
-        marginRight:"20px",
-        lineHeight:"28px",
-        }}>¥30608.26{" "}(+2.03%)</div>
-
-        
-       
-        <div style={{
-        fontSize:"16px",
-        fontFamily:"Microsoft YaHei UI-Bold",
-        fontWeight:"400",
-        padding:"0px",
-        color:"#9C9EAC",
-        lineHeight:"28px",
-        }}>
-
-        {arrays[id] == "全部"? "全部" : <>近{arrays[id]}</> }
-        
-        </div>
-        </div>
-    
+            
           
-        
-                  </div>
-              </Col>
-              <Col xs ={1}></Col>
-              
-              <Col xs ={4} style={{ height:"84px"}}>
-                  <div style={{display:"flex",justifyContent:"space-between",padding:"15% 0% 10% 0%"}}>
+            <div style={{
+            fontSize:"16px",
+            fontFamily:"Microsoft YaHei UI-Bold",
+            fontWeight:"400",
+            padding:"0px",
+            color:"#9C9EAC",
+            lineHeight:"28px",
+            }}>
+
+            {arrays[id] == "全部"? "全部" : <>近{arrays[id]}</> }
+            
+            </div>
+            </div>
+
+          </div>
+
+
+          <div style={{width:"239px",height:"100px"}}>
+
+
+          <div style={{display:"flex",justifyContent:"space-between",padding:"15% 0% 10% 0%"}}>
                       <div>
                       <div style={{
                           fontSize:"18px",
@@ -156,10 +151,10 @@ export default function PorforlioMoveGraph({
                           }}>综合分数</div>
                           </div>
                   </div>
-              </Col>
 
-          </Row>
+            </div>
 
+      </div>
     
               <div style={{marginTop:"48px",width:"100%", borderColor:"white"}}>
               <LineSeriesForPorfolio width={widthratio} timeperiod = {timeP}/>

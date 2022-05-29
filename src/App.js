@@ -1,4 +1,5 @@
 import "./App.css";
+import { React, useState, useEffect, useContext } from "react";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MainPage from "./components/MainPage/MainPage";
@@ -24,6 +25,10 @@ import TeamAgreeProcessCreate from "components/Competition/TeamRegister/TeamAgre
 import TeamAgreeProcessJoin from "components/Competition/TeamRegister/TeamAgreeProcessJoin";
 import Tournament from './components/Tournament/tournament'; 
 import Chat from "pages/Chat";
+import InformationEdit from "pages/InformationEdit";
+import UserProfile from "pages/UserProfile";
+import TeamInfo from "pages/TeamInfo";
+import { apiSymbolsAllForSearch } from "api/trading_platform/market";
 
 
 const HomePage = () => {
@@ -41,6 +46,7 @@ const RedirectComponent = (to) => {
 };
 
 const MakeRouter = () => {
+  const [searchData, setsearcnData] = useState([])
   // const dispatch = useDispatch();
   // const token = useSelector(selectAuthToken);
   // const userInfo = useSelector(selectAuthUserProfile);
@@ -65,6 +71,22 @@ const MakeRouter = () => {
   // let userRoute = userInfo ? userRouteMap[userType] : <Route path='/' component={MainPage} />;
   // console.log(userRoute);
 
+
+  useEffect(() => {
+    getSearchData()
+  },[])
+
+const getSearchData = async (props) => {
+  try{
+    const response = await apiSymbolsAllForSearch()
+    let Searchdata = response.data.data
+    setsearcnData(Searchdata)
+  }catch (err) {
+    console.log(err)
+  }
+};
+
+
   return (
     <Switch>
       <AuthProvider>
@@ -73,13 +95,35 @@ const MakeRouter = () => {
         <Route exact path="/Vlogin" component={LoginMainLayout} />
         <Route exact path="/forgetpassword" component={LoginMainLayout} />
         <Route exact path="/changepassword" component={LoginMainLayout} />
-        <Route exact path="/home" component={MainPage} />
+        <Route exact path="/home" component={RedirectComponent("/")} />
         <Route exact path="/" component={MainPage} />
+
+        {/* ////////// */}
         <PrivateRoute exact path="/team/register" component={TeamEntry} />
         <PrivateRoute exact path="/team/create" component={TeamAgreeProcessCreate} />
         <PrivateRoute exact path="/team/join" component={TeamAgreeProcessJoin} />
         <Route exact path="/tournament" component={Tournament} />
-        <Route exact path="/chat" component={Chat} />
+        <Route exact path="/tournament/" component={RedirectComponent("/tournament")} />
+
+
+
+
+        <PrivateRoute exact path="/chat">
+          <Chat searchData = {searchData}/>
+        </PrivateRoute>
+        <PrivateRoute exact path="/personalEdit">
+          <InformationEdit searchData = {searchData}/>
+        </PrivateRoute>
+        <PrivateRoute exact path="/personal">
+          <UserProfile searchData = {searchData}/>
+        </PrivateRoute>
+        <PrivateRoute exact path="/team">
+          <TeamInfo searchData = {searchData}/>
+        </PrivateRoute>
+
+
+
+
 
         <PrivateRoute
           exact
@@ -88,23 +132,40 @@ const MakeRouter = () => {
         />
         <PrivateRoute
           exact
-          path="/eplatform/summary"
-          component={UserSummary}
-        />
-        <PrivateRoute exact path="/eplatform/trade" component={TradeSimple} />
+          path="/eplatform/summary">
+            <UserSummary searchData = {searchData}/>
+        </PrivateRoute>
+
+        <PrivateRoute exact path="/eplatform/trade">
+          <TradeSimple searchData = {searchData}/>
+        </PrivateRoute>
         <PrivateRoute
           exact
           path="/eplatform/trade/pro"
-          component={TradePro}
-        />
-        <PrivateRoute exact path="/eplatform/market" component={MarketView} />
-        <PrivateRoute exact path="/eplatform/picking" component={Picking} />
-        <PrivateRoute exact path="/eplatform/ranking" component={Ranking} />
+        >
+        <TradePro searchData = {searchData}/>
+        </PrivateRoute>
+
+        <PrivateRoute exact path="/eplatform/market">
+        <MarketView searchData = {searchData}/>
+        </PrivateRoute>
+
+        <PrivateRoute exact path="/eplatform/picking">
+        <Picking searchData = {searchData}/>
+        </PrivateRoute>
+
+        <PrivateRoute exact path="/eplatform/ranking">
+        <Ranking searchData = {searchData}/>
+        </PrivateRoute>
+
+
         <PrivateRoute
           exact
           path="/eplatform/invest_notes"
-          component={InvestNotes}
-        />
+
+        >
+          <InvestNotes searchData = {searchData}/>
+        </PrivateRoute>
 
         <PrivateRoute
           exact

@@ -23,7 +23,7 @@ import MarketUpdownDistribute from "components/screen/MarkeUpdownDistribute";
 
 import MarketQuotation from "components/screen/MarketQuotation";
 
-export default () => {
+export default ({searchData}) => {
   const { width, height } = useWindowDimensions();
   const [extend, setExtend] = useState(true);
   const [indusAll,setIndusAll] = useState(1);
@@ -52,7 +52,7 @@ export default () => {
 //   })
   return (
     <>
-      <PageHeader />
+      <PageHeader searchData = {searchData}/>
       <Card style={{ padding: 0, borderColor: "white" }}>
         <Collapse in={indusAll == 1}>
           <Card.Body style={{ padding: 0, borderColor: "white" }}>
@@ -93,7 +93,7 @@ export default () => {
                     }}
                   >
                     <MarketUpdownDistribute
-                      widthRatio={width > 920 ? width / 2 : 920 / 2}
+                      widthRatio={width > 920 ? width / 2 : 920 / 2} searchData ={searchData}
                     />
                   </div>
                 </div>
