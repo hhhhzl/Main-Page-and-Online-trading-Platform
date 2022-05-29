@@ -59,7 +59,7 @@ const Contacts = () => {
                       lineHeight: "28px",
                     }}
                   >
-                    “UFA杯” 由UFA与中信证券、清华大学金融协会等联合举办
+                    “UFA杯” 由UFA与中信证券联合举办
                   </div>
                 </div>
               </Row>
@@ -107,7 +107,7 @@ const Contacts = () => {
                       lineHeight: "28px",
                     }}
                   >
-                    “UFA杯” 由UFA与中信证券、清华大学金融协会等联合举办
+                    “UFA杯” 由UFA与中信证券联合举办
                   </div>
                 </div>
               </Row>
@@ -152,7 +152,7 @@ const Contacts = () => {
                       lineHeight: "28px",
                     }}
                   >
-                    “UFA杯” 由UFA与中信证券、清华大学金融协会等联合举办
+                    “UFA杯” 由UFA与中信证券联合举办
                   </div>
                 </div>
               </Row>
@@ -199,7 +199,7 @@ const Contacts = () => {
                       lineHeight: "28px",
                     }}
                   >
-                    “UFA杯” 由UFA与中信证券、清华大学金融协会等联合举办
+                    “UFA杯” 由UFA与中信证券联合举办
                   </div>
                 </div>
               </Row>
@@ -247,7 +247,7 @@ const Contacts = () => {
                       lineHeight: "28px",
                     }}
                   >
-                    “UFA杯” 由UFA与中信证券、清华大学金融协会等联合举办
+                    “UFA杯” 由UFA与中信证券联合举办
                   </div>
                 </div>
               </Row>
@@ -292,7 +292,7 @@ const Contacts = () => {
                       lineHeight: "28px",
                     }}
                   >
-                    “UFA杯” 由UFA与中信证券、清华大学金融协会等联合举办
+                    “UFA杯” 由UFA与中信证券联合举办
                   </div>
                 </div>
               </Row>

@@ -42,3 +42,10 @@
    font-size: 12px
   }
 }
+
+@media screen and (max-width: 1350px) {
+
+  .menu-item-home {
+   font-size: 12px
+  }
+}

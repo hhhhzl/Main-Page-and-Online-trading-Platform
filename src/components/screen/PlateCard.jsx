@@ -9,7 +9,7 @@ import "./plateCard.css";
 
 import useWindowDimensions from "../../utils/sizewindow";
 
-export default function PlateCard({dataSource, heightProp,stockData,index,handleShowDetails}) {
+export default function PlateCard({dataSource, heightProp,stockData,index,handleShowDetails,indusAll}) {
   const { width, height } = useWindowDimensions();
   const [data, setData] = useState([]);
   const [extend, setExtend] = useState(true);
@@ -111,7 +111,11 @@ export default function PlateCard({dataSource, heightProp,stockData,index,handle
   ];
   
   return (
-    <div onClick={() => handleShowDetails(true)} className="plate-card-container" style={{marginLeft:index == 0 || width < 850 ? '0px' : width < 1550 && index == 2 ? '0px' : ''}}>
+    <div 
+		onClick={() => handleShowDetails(indusAll)} 
+		className="plate-card-container" 
+		style={{marginLeft:index == 0 || width < 850 ? '0px' : width < 1550 && index == 2 ? '0px' : ''}}
+		>
       <div className="plate-name-container">
         <div className="plate-name-text">{dataSource.板块名称}</div>
         {dataSource.涨跌幅 > 0? 

@@ -26,15 +26,26 @@ import MarketQuotation from "components/screen/MarketQuotation";
 export default () => {
   const { width, height } = useWindowDimensions();
   const [extend, setExtend] = useState(true);
-  const [switchClose, setswitchClose] = useState(true);
-  const [showDetails, setShowDetails] = useState(false);
+  const [indusAll,setIndusAll] = useState(1);
 
   const extendbar = () => {
     setExtend(!extend);
   };
 
   const handleShowDetails = (prop) => {
-    setShowDetails(prop)
+	  console.log(prop);
+	  if(prop==1){
+		setIndusAll(3)
+	  }
+	  if(prop==2){
+		setIndusAll(4)
+	  }
+	  if(prop==3){
+		setIndusAll(1)  
+	  }
+	  if(prop==4){
+		setIndusAll(2)
+	  }
   };
 //   useEffect(() => {
 //       console.log(showDetails)
@@ -43,7 +54,7 @@ export default () => {
     <>
       <PageHeader />
       <Card style={{ padding: 0, borderColor: "white" }}>
-        <Collapse in={switchClose && !showDetails}>
+        <Collapse in={indusAll == 1}>
           <Card.Body style={{ padding: 0, borderColor: "white" }}>
             {width > 700 ? (
               <>
@@ -106,25 +117,32 @@ export default () => {
           </Card.Body>
         </Collapse>
       </Card>
-
-      {switchClose  && !showDetails ? (
-        <>
-          <div style={{ marginTop: height * 0.056, margin: "48px" }}>
-            <LeadingIndustry
-              handleShowDetails={handleShowDetails}
-              setswitchClose={setswitchClose}
-            />
-          </div>
-        </>
-      ) : showDetails && switchClose ? (
-        <>
-          <MarketQuotation handleShowDetails={handleShowDetails}/>{" "}
-        </>
-      ) : (
-        <>
-          <LeadingIndustryAll setswitchClose={setswitchClose} />
-        </>
-      )}
+	  
+	  {
+		indusAll == 1 ?(
+			<>
+			  <div style={{ marginTop: height * 0.056, margin: "48px" }}>
+				<LeadingIndustry
+				  handleShowDetails={handleShowDetails}
+				  indusAll={indusAll}
+				  setIndusAll={setIndusAll}
+				/>
+			  </div>
+			</>
+		):indusAll == 2? (
+			<>
+			  <LeadingIndustryAll 
+			  setIndusAll={setIndusAll}
+			  indusAll={indusAll}
+			  handleShowDetails={handleShowDetails} />
+			</>
+		) :(
+			<>
+			  <MarketQuotation handleShowDetails={handleShowDetails} indusAll={indusAll}/>{" "}
+			</>
+		) 
+		  
+	  }
     </>
   );
 };
