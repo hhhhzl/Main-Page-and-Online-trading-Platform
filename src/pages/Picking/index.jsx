@@ -34,8 +34,10 @@ export default ({searchData}) => {
                 }}
             >
                 <StockSelectionDevice />
-                <MarketQuotation />
+                <div style={{width:"75%"}}>
+                    <MarketQuotation />
 
+                </div>
             </div>
         </>
     );
