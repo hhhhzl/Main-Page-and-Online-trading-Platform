@@ -1,4 +1,4 @@
-import react, {useState, useEffect} from 'react'
+import react, {useState, useEffect,useContext} from 'react'
 import HeaderCreate from '../../MainPage/header'
 import useWindowDimensions from '../../../utils/sizewindow';
 import Sidebar from '../../MainPage/Sidebar';
@@ -7,8 +7,10 @@ import { ArrowBack, ArrowForward } from '@material-ui/icons';
 import { Button, Form, Image } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import Footer from 'components/MainPage/footer';
+import AuthContext from "../../../context/AuthContext";
 
 export default function TeamEntry(){
+	let { user, logoutUser } = useContext(AuthContext);
     const {width,height} = useWindowDimensions();
     const history= useHistory()
 
@@ -92,7 +94,7 @@ export default function TeamEntry(){
 
                             <div style={{marginTop:"140px",display:"flex",justifyContent:"center"}}>
                             <div style={{width:"72px", height:"72px"}}>
-                               <Image src="/homeCutout/Mask group.png"  style={{position: "relative", width: "100%",height: "100%"}}/>
+                               <Image src={"/homeCutout/Mask group.png"}  style={{position: "relative", width: "100%",height: "100%"}}/>
                             </div>
 
                             
@@ -161,7 +163,7 @@ export default function TeamEntry(){
                             >
                             <div style={{marginTop:"140px",display:"flex",justifyContent:"center"}}>
                             <div style={{width:"72px", height:"72px"}}>
-                               <Image src="/homeCutout/Mask group.png" style={{position: "relative", width: "100%",height: "100%"}}/>
+                               <Image src={"/homeCutout/Mask group.png"} style={{position: "relative", width: "100%",height: "100%"}}/>
                             </div>
                             </div>
 

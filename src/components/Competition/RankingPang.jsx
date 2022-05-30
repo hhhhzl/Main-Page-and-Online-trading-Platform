@@ -227,7 +227,7 @@ export default function RankingPang() {
 					{
 						current == 0 ? (
 							<div>
-								<div className="ranking-pang-table">
+								<div className="ranking-pang-table" style={{overflowX: "auto"}}>
 									<BootstrapTable
 										style="table"
 										bordered={false}

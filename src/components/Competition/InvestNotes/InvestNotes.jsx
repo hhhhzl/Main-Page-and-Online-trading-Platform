@@ -7,6 +7,7 @@ import CommitRecord from "./CommitRecord";
 import "./InvestNotes.css";
 import Countdown from "../../screen/modal/countdown";
 import { timeDifference } from "../../../utils/countdownUtil";
+import {getFileName} from "../../../utils/index"
 
 export default function InvestNotes({searchData}) {
   const { width, height } = useWindowDimensions();
@@ -50,6 +51,7 @@ export default function InvestNotes({searchData}) {
         if (suffix == "pdf" || suffix == "docx" || suffix == "doc") {
           // file
           // let id =
+          file[i].newFileName = getFileName(file[i].name)
           file[i].id = uuid();
           file[i].suffix = suffix;
           fileList.push(file[i]);
@@ -102,10 +104,11 @@ export default function InvestNotes({searchData}) {
     }
   };
 
+
   return (
     <>
       <PageHeader searchData = {searchData} />
-      {/* <Countdown showModal={showModal} hideModal={hideModal}></Countdown> */}
+      <Countdown showModal={showModal} hideModal={hideModal}></Countdown>
       <div
         style={{
           paddingTop: height * 0.075,
@@ -128,6 +131,7 @@ export default function InvestNotes({searchData}) {
             display: "flex",
             alignItems: "baseline",
             flexDirection: "column",
+            margin:'0px 48px'
           }}
           ref={listRef}
         >
@@ -215,7 +219,7 @@ export default function InvestNotes({searchData}) {
                           )}
                         </div>
                         <div className="file-message">
-                          <div className="file-name">{item.name}</div>
+                          <div className="file-name">{item.newFileName}</div>
                           <div className="file-size">
                             {fileSizeByteToM(item.size)}
                           </div>
