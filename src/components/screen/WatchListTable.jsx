@@ -7,6 +7,7 @@ import ToolkitProvider, {
 } from "react-bootstrap-table2-toolkit";
 import useWindowDimensions from "../../utils/sizewindow";
 import AreaChartWatchList from "../graphs/AreaTableForWatchList";
+import { Button } from "react-bootstrap";
 
 const { SearchBar } = Search;
 const { ExportCSVButton } = CSVExport;
@@ -123,12 +124,12 @@ export default function WatchListTable({ heightratio, searchwidth }) {
                     paddingTop: "0px",
                     fontSize: "14px",
                     paddingRight: "30px",
-                    color: "green",
+                    color: "#16CE62",
                     fontFamily: "Futura-Medium, Futura",
-                    fontWeight: "#16CE62",
+                    fontWeight: "500",
                   }}
                 >
-                  {pl}%
+                  +{pl}%
                 </h6>
               </>
             )}

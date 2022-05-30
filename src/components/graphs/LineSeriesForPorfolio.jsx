@@ -18,9 +18,9 @@ import useWindowDimensions from "../../utils/sizewindow";
 import HoverTooltip from "react-stockcharts/lib/tooltip/HoverTooltip";
 
 const canvasGradient = createVerticalLinearGradient([
-    { stop: 0, color: hexToRGBA("#b5d0ff", 0.2) },
-	{ stop: 0.7, color: hexToRGBA("#6fa4fc", 0.4) },
-	{ stop: 1, color: hexToRGBA("#4286f4", 0.8) },
+    { stop: 0, color: hexToRGBA("#b5d0ff", 0) },
+	{ stop: 0.9, color: hexToRGBA("#6fa4fc", 0.07) },
+	{ stop: 1, color: hexToRGBA("#4286f4", 0.16) },
 ]);
 
 const dateFormat = timeFormat("%Y-%m-%d");
@@ -78,11 +78,12 @@ class LineSeriesForPorfolio extends React.Component {
 
     return (
       <ChartCanvas
+      
         ratio={1}
         width={width}
         height={width * 0.381}
         margin={{ left: 0, right: 0, top: 33, bottom:34}}
-        type={"svg"}
+        type={"canvas"}
         data={data}
         xScale={xScale}
         xAccessor={xAccessor}
@@ -97,7 +98,7 @@ class LineSeriesForPorfolio extends React.Component {
         <defs>
 						<linearGradient id="MyGradient" x1="0" y1="100%" x2="0" y2="0%">
 							<stop offset="0%" stopColor="#2B8CFF" stopOpacity={0} />
-							<stop offset="99%" stopColor="#2361FF" stopOpacity={0.07} />
+							{/* <stop offset="99.999%" stopColor="#2361FF" stopOpacity={0.03} /> */}
 							<stop offset="100%"  stopColor="#2B8CFF " stopOpacity={0.16} />
 						</linearGradient>
 		</defs>
@@ -148,7 +149,7 @@ class LineSeriesForPorfolio extends React.Component {
 
 
 LineSeriesForPorfolio.defaultProps = {
-  type: "svg"
+  type: "canvas"
 };
 LineSeriesForPorfolio = fitWidth(LineSeriesForPorfolio);
 

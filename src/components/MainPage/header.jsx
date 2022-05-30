@@ -391,7 +391,7 @@ const HeaderCreate = ({ toggle }) => {
                         :"white",
                   }} onClick={() => sendUserNews()}>
                     <NotificationsNoneOutlined ></NotificationsNoneOutlined >
-                    {true? (<div style={{width:"7px",height:"7px",backgroundColor:"#1442ED", borderRadius:"50%", marginLeft:"-10px",marginTop:"-10px"}}></div>)
+                    {note? (<div style={{width:"7px",height:"7px",backgroundColor:"#FF3541", borderRadius:"50%", marginLeft:"-10px",marginTop:"-10px"}}></div>)
                         : null
                     }
                   </IconButton>

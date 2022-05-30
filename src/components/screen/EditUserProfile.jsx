@@ -3,7 +3,7 @@ import {FormGroup,FormLabel,FormControl,Button,Image, Modal} from "react-bootstr
 import './Personal.css'
 import { useHistory } from "react-router";
 
-export default function EditData(){
+export default function EditData({platformType}){
 	const [userState, setUserState] = useState({})
 	const [username, setUsername] = useState("管理员");
 	const [school, setSchool] = useState("密歇根大学");

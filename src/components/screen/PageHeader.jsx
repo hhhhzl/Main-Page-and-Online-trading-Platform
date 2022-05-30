@@ -317,16 +317,18 @@ export default function PageHeader({searchData, toggle}) {
                   marginLeft: "20px",
                   display: "flex",
                   justifyContent: "left",
+                  backgroundColor:"white",
                 }}
               >
                 {column.map((elem) => {
                   return (
-                    <Link to={elem.link}>
+                   
                       <Button
                         style={{
                           backgroundColor: "white",
-                          width: "96px",
+                          width: "86px",
                           height: "100%",
+                          marginRight:"10px",
                           textAlign: "center",
                           paddingTop: "20px",
                           fontSize: "14px",
@@ -344,10 +346,11 @@ export default function PageHeader({searchData, toggle}) {
                               ? "3px solid #1442ED"
                               : "white",
                         }}
+                        onClick={() => history.push(elem.link)}
                       >
                         <div>{elem.title}</div>
                       </Button>
-                    </Link>
+                 
                   );
                 })}
               </div>
@@ -432,7 +435,7 @@ export default function PageHeader({searchData, toggle}) {
           <div>
             <IconButton style={{margin:"20px 24px", padding:"0px 0"}} onClick={() => sendUserNews()}>
                 <NotificationsNoneOutlined ></NotificationsNoneOutlined >
-                {note? (<div style={{width:"7px",height:"7px",backgroundColor:"#1442ED", borderRadius:"50%", marginLeft:"-10px",marginTop:"-10px"}}></div>)
+                {true? (<div style={{width:"7px",height:"7px",backgroundColor:"#FF3541", borderRadius:"50%", marginLeft:"-10px",marginTop:"-10px"}}></div>)
                 : null
                 }
                 

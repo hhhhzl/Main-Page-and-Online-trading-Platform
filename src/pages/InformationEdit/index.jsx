@@ -17,7 +17,7 @@ export default ({searchData}) => {
             platformType == null ? <HeaderCreate/> : <PageHeader searchData = {searchData} />
         }
       
-           <EditData/>
+           <EditData platformType ={platformType}/>
         
 
         </>

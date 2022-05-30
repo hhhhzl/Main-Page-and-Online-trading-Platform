@@ -8,7 +8,7 @@ import "./InvestNotes.css";
 import Countdown from "../../screen/modal/countdown";
 import { timeDifference } from "../../../utils/countdownUtil";
 
-export default function InvestNotes(props) {
+export default function InvestNotes({searchData}) {
   const { width, height } = useWindowDimensions();
   const [fileList, setFileList] = useState([]);
   const uploadFile = React.createRef();
@@ -104,7 +104,7 @@ export default function InvestNotes(props) {
 
   return (
     <>
-      <PageHeader />
+      <PageHeader searchData = {searchData} />
       {/* <Countdown showModal={showModal} hideModal={hideModal}></Countdown> */}
       <div
         style={{
