@@ -1,6 +1,6 @@
 .market-quotation-title {
 	display: flex;
-	width: 100%;
+	/* width: 100%; */
 	margin: 19px 0 0 48px;
 	background-color: red;
 }
@@ -23,6 +23,14 @@
 	line-height: 24px;
 }
 
+.market-quotation-table{
+	overflow-x: scroll;
+}
+
+
+.market-quotation-table>.react-bootstrap-table>.table{
+	min-width: max-content;
+}
 
 .market-quotation-table>.react-bootstrap-table>table>thead>tr>th {
 	font-size: 14px;

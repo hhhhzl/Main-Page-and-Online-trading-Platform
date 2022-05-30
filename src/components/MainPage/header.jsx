@@ -17,7 +17,10 @@ import {
   HeaderBtn,
   MenuItemLinks,
 } from "./HeaderElements";
-import {NotificationsNoneOutlined, ViewHeadlineTwoTone} from "@material-ui/icons";
+import {
+  NotificationsNoneOutlined,
+  ViewHeadlineTwoTone,
+} from "@material-ui/icons";
 import { Modal, Button } from "react-bootstrap";
 import useWindowDimensions from "../../utils/sizewindow";
 import Image from "react-bootstrap/Image";
@@ -27,7 +30,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import AuthContext from "../../context/AuthContext";
 import { MenuItemLinksRouter } from "./HeaderElements";
-import {IconButton} from "@material-ui/core";
+import { IconButton } from "@material-ui/core";
 import { clearLocalStorage, setPlatformType } from "utils";
 const HeaderCreate = ({ toggle }) => {
   let { user, logoutUser } = useContext(AuthContext);
@@ -41,11 +44,11 @@ const HeaderCreate = ({ toggle }) => {
   const [current, setCurrent] = useState(1);
   const { url } = useRouteMatch();
   const [showLoginOutModal, setShowLoginOutModal] = useState(false);
-  const history= useHistory()
-  const [note, setnote] = useState(null)
-  const sendUserNews = () =>{
-    history.push("/chat")
-  }
+  const history = useHistory();
+  const [note, setnote] = useState(null);
+  const sendUserNews = () => {
+    history.push("/chat");
+  };
   // const [hover, setHover] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -76,12 +79,12 @@ const HeaderCreate = ({ toggle }) => {
     setShowLoginOutModal(true);
   };
 
-  const LogUserOut = () =>{
-    setShowLoginOutModal(false)
+  const LogUserOut = () => {
+    setShowLoginOutModal(false);
     history.push("/");
-    logoutUser()
-    clearLocalStorage()
-  }
+    logoutUser();
+    clearLocalStorage();
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -98,7 +101,7 @@ const HeaderCreate = ({ toggle }) => {
 
   return (
     <>
-    <Modal
+      <Modal
         show={showLoginOutModal}
         onHide={handleClose}
         centered
@@ -126,7 +129,20 @@ const HeaderCreate = ({ toggle }) => {
         </Modal.Footer>
       </Modal>
       <HeaderOut
-        style={{ width: width }}
+        style={{
+          width: width,
+          borderBottom:
+            url == "/personal" ||
+            url == "/team" ||
+            url == "/personalEdit" ||
+            url == "/personalEdit" ||
+            url == "/chat" || 
+            url == "/team/register" || 
+            url == "/team/create" || 
+            url == "/team/join"
+              ? "1px solid rgb(229, 232, 238)"
+              : "",
+        }}
         scrolledDownEnough={scrolledDownEnough}
         url={url}
         // onMouseOver={handleMouseOver}
@@ -142,9 +158,9 @@ const HeaderCreate = ({ toggle }) => {
               src={
                 scrolledDownEnough
                   ? "/homeCutout/UFA-LOGO-RED@2x.png"
-                  : (url != "/" && url != "/tournament")
+                  : url != "/" && url != "/tournament"
                   ? "/homeCutout/UFA-LOGO-RED@2x.png"
-                  :"/UFA-LOGO.png"
+                  : "/UFA-LOGO.png"
               }
               style={{ width: "64px", height: "64px" }}
             />
@@ -187,7 +203,9 @@ const HeaderCreate = ({ toggle }) => {
                       ? "#FFFFFF"
                       : scrolledDownEnough && url == "/"
                       ? "#1442ED"
-                      : !scrolledDownEnough && (url != "/" && url != "/tournament")
+                      : !scrolledDownEnough &&
+                        url != "/" &&
+                        url != "/tournament"
                       ? "#2A2B30"
                       : "#FFFFFF",
                 }}
@@ -211,7 +229,10 @@ const HeaderCreate = ({ toggle }) => {
               </HeaderBtnLink>
               <div
                 className="header-menu"
-                style={{ display: showUFA && current == 1 && url == "/" ? "flex" : "none" }}
+                style={{
+                  display:
+                    showUFA && current == 1 && url == "/" ? "flex" : "none",
+                }}
                 // onMouseEnter={handleMouseLeave}
                 onMouseLeave={handleCloseUFA}
               >
@@ -274,7 +295,9 @@ const HeaderCreate = ({ toggle }) => {
                       ? "#1442ED"
                       : scrolledDownEnough && url == "/#"
                       ? "#1442ED"
-                      : !scrolledDownEnough && (url != "/" && url != "/tournament")
+                      : !scrolledDownEnough &&
+                        url != "/" &&
+                        url != "/tournament"
                       ? "#2A2B30"
                       : "#FFFFFF",
                 }}
@@ -308,7 +331,9 @@ const HeaderCreate = ({ toggle }) => {
                       ? "#FFFFFF"
                       : scrolledDownEnough && url == "/tournament"
                       ? "#1442ED"
-                      : !scrolledDownEnough && (url != "/" && url != "/tournament")
+                      : !scrolledDownEnough &&
+                        url != "/" &&
+                        url != "/tournament"
                       ? "#2A2B30"
                       : "#FFFFFF",
                 }}
@@ -344,7 +369,9 @@ const HeaderCreate = ({ toggle }) => {
                       ? "#1442ED"
                       : scrolledDownEnough && url == "/#"
                       ? "#1442ED"
-                      : !scrolledDownEnough && (url != "/" && url != "/tournament")
+                      : !scrolledDownEnough &&
+                        url != "/" &&
+                        url != "/tournament"
                       ? "#2A2B30"
                       : "#FFFFFF",
                 }}
@@ -369,7 +396,11 @@ const HeaderCreate = ({ toggle }) => {
                 // onMouseEnter={handleMouseLeave}
                 onMouseLeave={handleCloseTransaction}
               >
-                <MenuItemLinksRouter to="/eplatform" className="menu-item" onClick={() => setPlatformType("competition")}>
+                <MenuItemLinksRouter
+                  to="/eplatform"
+                  className="menu-item"
+                  onClick={() => setPlatformType("competition")}
+                >
                   赛事账户
                 </MenuItemLinksRouter>
                 {/* <MenuItemLinksRouter to='/eplatform' className="menu-item">个人账户</MenuItemLinksRouter> */}
@@ -381,19 +412,31 @@ const HeaderCreate = ({ toggle }) => {
             {user && user.jti ? (
               <>
                 <div>
-                  <IconButton style={{
-                    margin:"20px 24px",
-                    padding:"0px 0",
-                    color:
-                        scrolledDownEnough?"black"
-                        : (url != "/" && url != "/tournament")
+                  <IconButton
+                    style={{
+                      margin: "20px 24px",
+                      padding: "0px 0",
+                      color: scrolledDownEnough
                         ? "black"
-                        :"white",
-                  }} onClick={() => sendUserNews()}>
-                    <NotificationsNoneOutlined ></NotificationsNoneOutlined >
-                    {note? (<div style={{width:"7px",height:"7px",backgroundColor:"#FF3541", borderRadius:"50%", marginLeft:"-10px",marginTop:"-10px"}}></div>)
-                        : null
-                    }
+                        : url != "/" && url != "/tournament"
+                        ? "black"
+                        : "white",
+                    }}
+                    onClick={() => sendUserNews()}
+                  >
+                    <NotificationsNoneOutlined></NotificationsNoneOutlined>
+                    {note ? (
+                      <div
+                        style={{
+                          width: "7px",
+                          height: "7px",
+                          backgroundColor: "#FF3541",
+                          borderRadius: "50%",
+                          marginLeft: "-10px",
+                          marginTop: "-10px",
+                        }}
+                      ></div>
+                    ) : null}
                   </IconButton>
                 </div>
 
@@ -407,10 +450,7 @@ const HeaderCreate = ({ toggle }) => {
                   }}
                   onMouseLeave={() => handleShowMenu(false)}
                 >
-                  <div
-                    className="user-av"
-                    onClick={() => handleShowMenu(true)}
-                  >
+                  <div className="user-av" onClick={() => handleShowMenu(true)}>
                     <Image
                       src={"/loginback.jpg"}
                       style={{
@@ -422,12 +462,11 @@ const HeaderCreate = ({ toggle }) => {
                     <span
                       className="header-user-name"
                       style={{
-                        color:
-                            scrolledDownEnough
-                                ? "#2A2B30"
-                                : (url != "/" && url != "/tournament")
-                                ? "#2A2B30"
-                                : "#FFFFFF",
+                        color: scrolledDownEnough
+                          ? "#2A2B30"
+                          : url != "/" && url != "/tournament"
+                          ? "#2A2B30"
+                          : "#FFFFFF",
                         marginLeft: "6px",
                       }}
                     >
@@ -436,55 +475,55 @@ const HeaderCreate = ({ toggle }) => {
                     <ExpandMoreIcon
                       style={{
                         color: scrolledDownEnough
-                            ? "#2A2B30"
-                            : (url != "/" && url != "/tournament")
-                            ? "#2A2B30"
-                            : "#FFFFFF",
+                          ? "#2A2B30"
+                          : url != "/" && url != "/tournament"
+                          ? "#2A2B30"
+                          : "#FFFFFF",
                       }}
                     ></ExpandMoreIcon>
                   </div>
                   <div
-                      className="header-user-menu"
-                      style={{ display: showMenu ? "flex" : "none" }}
-                      // onMouseEnter={handleMouseLeave}
+                    className="header-user-menu"
+                    style={{ display: showMenu ? "flex" : "none" }}
+                    // onMouseEnter={handleMouseLeave}
                   >
                     <MenuItemLinksRouter
-                        offset={-50}
-                        spy={true}
-                        smooth={true}
-                        to="/personal"
-                        duration={700}
-                        className="menu-item menu-item-home"
+                      offset={-50}
+                      spy={true}
+                      smooth={true}
+                      to="/personal"
+                      duration={700}
+                      className="menu-item menu-item-home"
                     >
                       个人主页
                     </MenuItemLinksRouter>
                     <MenuItemLinksRouter
-                        to="/team"
-                        offset={-50}
-                        spy={true}
-                        smooth={true}
-                        duration={700}
-                        className="menu-item menu-item-home"
+                      to="/team"
+                      offset={-50}
+                      spy={true}
+                      smooth={true}
+                      duration={700}
+                      className="menu-item menu-item-home"
                     >
                       团队信息
                     </MenuItemLinksRouter>
                     <MenuItemLinksRouter
-                        to="/personalEdit"
-                        offset={-50}
-                        spy={true}
-                        smooth={true}
-                        duration={700}
-                        className="menu-item menu-item-home"
+                      to="/personalEdit"
+                      offset={-50}
+                      spy={true}
+                      smooth={true}
+                      duration={700}
+                      className="menu-item menu-item-home"
                     >
                       编辑资料
                     </MenuItemLinksRouter>
                     <MenuItemLinksRouter
-                        offset={-50}
-                        spy={true}
-                        smooth={true}
-                        duration={700}
-                        className="menu-item menu-item-home"
-                        onClick={() => handleLoginOut()}
+                      offset={-50}
+                      spy={true}
+                      smooth={true}
+                      duration={700}
+                      className="menu-item menu-item-home"
+                      onClick={() => handleLoginOut()}
                     >
                       退出登录
                     </MenuItemLinksRouter>

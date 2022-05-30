@@ -4,6 +4,7 @@ import "./countdown.css";
 import { now, end } from "../../../utils/countdownUtil";
 import { ArrowBack } from "@material-ui/icons";
 import { useHistory } from "react-router";
+import moment from "moment"
 
 export default function Countdown({ showModal, hideModal }) {
   
@@ -24,7 +25,8 @@ export default function Countdown({ showModal, hideModal }) {
   useEffect(() => {
     if (leftTime > 0) {
       intervalRef.current = setInterval(() => {
-        const newNow = Math.round(new Date().getTime()).toString(); // 重新获取当前时间
+        // const newNow = Math.round(new Date().getTime()).toString(); // 重新获取当前时间
+        const newNow = moment().local().valueOf()
         let newLeftTime = end - newNow;
 
         let days = Math.floor(newLeftTime / 1000 / 60 / 60 / 24);

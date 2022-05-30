@@ -19,7 +19,8 @@ export const HeaderOut = styled.nav`
   // -moz-transition: all 1s ease;
   // -o-transition: all 1s ease;
   // -ms-transition: all 1s ease;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  
+  border-bottom: ${(props) => (props.scrolledDownEnough ? "1px solid rgb(229, 232, 238)" : "1px solid rgba(255, 255, 255, 0.2)")}; 
   z-index: 999;
   @media screen and (max-width: 960px) {
     transition: 0s all ease;

@@ -117,7 +117,7 @@ export default function LeadingIndustry({handleShowDetails,indusAll,setIndusAll}
           //   {/* {item.label} : {item.value} */}
           // </li>
           // {item.label}
-          <PlateCard handleShowDetails={handleShowDetails} indusAll={indusAll} dataSource={item} stockData={item.代表股票} heightProp={0.28} index={index}></PlateCard>
+          <PlateCard handleShowDetails={handleShowDetails} indusAll={indusAll} dataSource={item} stockData={item.代表股票} heightProp={0.15} index={index}></PlateCard>
         ))}
       </div>
     </div>

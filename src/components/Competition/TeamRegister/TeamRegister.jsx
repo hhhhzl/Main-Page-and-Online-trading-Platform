@@ -18,9 +18,7 @@ export default function TeamRegister({Pageprocess}){
     const history= useHistory()
     const sendUserback = () => {history.push("/team/register")}
 	
-	 const uploadFile = React.createRef();
-	
-	
+	const uploadFile = React.createRef();
 	const [showModal, setShowModal] = useState(false);
 	const [imgSrc, setImgSrc] = useState('')
 	
@@ -48,7 +46,6 @@ export default function TeamRegister({Pageprocess}){
 		e.target.value = "";
 	  }
 	}
-	
 	
 	const getBase64 = (url) => {
 		setShowModal(false)
@@ -183,7 +180,7 @@ export default function TeamRegister({Pageprocess}){
                         border:"1px solid #F5F6F8", borderRadius:"4px 4px 4px 4px",
                         boxShadow:disable? null : "0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08)",
                         }}
-                        onClick={() => Pageprocess()}
+                        onClick={() => Pageprocess(headPortrait)}
                         >
                             <div style={{display:"flex",justifyContent:"right"}}>
                             <div style={{

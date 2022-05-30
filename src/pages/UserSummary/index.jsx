@@ -100,7 +100,7 @@ export default ({searchData}) => {
                     <div style={{ width: width > 1200? "63.3%" : width -96}}>
                         <PorforlioMoveGraph widthratio={width > 1200? 1200 *0.633 : width -96} />
                         <div style={{ marginTop: height * 0.0564 }}>
-                            <PendingOrder heightProp={0.23} modalHeight={0.7} />
+                            <PendingOrder heightProp={0.18} modalHeight={0.7} />
                         </div>
                     </div>
 

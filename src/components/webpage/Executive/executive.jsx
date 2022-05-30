@@ -14,7 +14,7 @@ export default function Executive() {
         <div className="section" style={{padding: "120px 0px", paddingBottom: "0px"}}>
             <div className="text-center">
                 <Image
-                    src="/homeCutout/Group 71@2x.png"
+                    src="/homeCutout/Group 1097@2x.png"
                     style={{width: "286px", height: "79px"}}
                 />
             </div>
