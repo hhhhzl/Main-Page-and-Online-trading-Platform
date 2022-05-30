@@ -2,11 +2,14 @@ import './Notice.css'
 import data from '../../../static/Notice.json'
 import React, { useState, useEffect, useRef } from "react";
 import {Image,Button} from "react-bootstrap";
+import useWindowDimensions from "../../../utils/sizewindow";
 
 export default function Notice(){
+	const { width, height } = useWindowDimensions();
 	const [current,setCurrent] = useState(0);
 	const [notice,setNotice] = useState(data[0]);
 	const [noticeList,setNoticeList] = useState(data);
+	const [show,setShow] = useState(1)
 	
 	const read = (index) =>{
 		data[index].status=1;
@@ -15,12 +18,30 @@ export default function Notice(){
 		setCurrent(index);
 	};
 	
+	const changeShow= ()=>{
+		console.log(show);
+		setShow((show==1?2:1));
+		console.log(show);
+	}
+	
 	return(
-		<div style={{margin:0,width:"100%",
-		borderRadius: "4px 4px 4px 4px"}}>
+		
+		<div style={{margin:0,width:"100%",borderRadius: "4px 4px 4px 4px",position:"relative"}}>
 			<div className="notice-title">全部通知</div>
-			<div style={{marginTop:"24px",display:"flex",height:"770px",boxShadow: "0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02)",}}>
-				<div className="notice-left">
+			<div style={{marginTop:"24px",
+				display:"flex",
+				height:"770px",
+				justifyContent:"center",
+				boxShadow: "0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02)",}}>
+				<div 
+					style={{
+						position: "absolute",
+						left: "0",
+						display:show==1?"none":"block",
+						background: "white",
+						zIndex: "99"
+					}}
+					className="notice-left">
 					{
 						data.map((item,index)=>(
 							<div 
@@ -44,6 +65,16 @@ export default function Notice(){
 							</div>
 						))	
 					}
+				</div>
+				<div
+					style={{
+						position: "absolute",
+						left: show==1?"0":"360px",
+						top: "76px",
+						zIndex:"100"
+					}}
+				>
+					<Button onClick={()=> changeShow()}>{show==1?"展开":"关闭"}</Button>
 				</div>
 				
 				<div className="notice-right">
@@ -83,5 +114,6 @@ export default function Notice(){
 				</div>
 			</div>
 		</div>
+		
 	)
 }
