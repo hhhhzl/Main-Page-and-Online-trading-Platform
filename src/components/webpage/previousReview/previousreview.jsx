@@ -16,7 +16,96 @@ const Review = ({ projectImgs }) => {
   const [type, setType] = useState("front-end");
   const [image, setimage] = useState(false);
   const [video, setvideo] = useState(true);
-  // const data = [];
+  const data = [
+    {
+      url:"/review/review_00.png",
+      alt:"001",
+    },
+    {
+      url:"/review/review_01.png",
+      alt:"002",
+    },
+    {
+      url:"/review/review_02.png",
+      alt:"003",
+    },
+    {
+      url:"/review/review_03.png",
+      alt:"004",
+    },
+    {
+      url:"/review/review_04.png",
+      alt:"005",
+    },
+    {
+      url:"/review/review_05.png",
+      alt:"006",
+    },
+    {
+      url:"/review/review_06.png",
+      alt:"007",
+    },
+    {
+      url:"/review/review_07.png",
+      alt:"008",
+    },
+    {
+      url:"/review/review_08.png",
+      alt:"009",
+    },
+    {
+      url:"/review/review_09.png",
+      alt:"10",
+    },
+    {
+      url:"/review/review_10.png",
+      alt:"11",
+    },
+    {
+      url:"/review/review_11.png",
+      alt:"12",
+    },
+    {
+      url:"/review/review_12.png",
+      alt:"13",
+    },
+    {
+      url:"/review/review_13.png",
+      alt:"14",
+    },
+    {
+      url:"/review/review_14.png",
+      alt:"15",
+    },
+    {
+      url:"/review/review_15.png",
+      alt:"16",
+    },
+    {
+      url:"/review/review_16.png",
+      alt:"17",
+    },
+    {
+      url:"/review/review_17.png",
+      alt:"18",
+    },
+    {
+      url:"/review/review_18.png",
+      alt:"19",
+    },
+    {
+      url:"/review/review_19.png",
+      alt:"20",
+    },
+    {
+      url:"/review/review_20.png",
+      alt:"21",
+    },
+    {
+      url:"/review/review_21.png",
+      alt:"22",
+    },
+  ];
 
   const Openvideo = () => {
     setvideo(true);
@@ -133,12 +222,17 @@ const Review = ({ projectImgs }) => {
           <Collapse in={image} dimension="width">
             <div id="example-collapse-text" className="image-banner">
               <Carousel fade>
-                {/* {data.map((item, idx) => (
+                {data.map((item, idx) => (
                   <Carousel.Item>
-
+                    <img
+                      style={{ objectFit: "cover" }}
+                      className="image-banner"
+                      src={item.url}
+                      alt={item.alt}
+                    />
                   </Carousel.Item>
-                ))} */}
-                <Carousel.Item>
+                ))}
+                {/* <Carousel.Item>
                   <img
                     style={{ objectFit: "cover" }}
                     className="image-banner"
@@ -161,7 +255,7 @@ const Review = ({ projectImgs }) => {
                     src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F1114%2F063021120F9%2F210630120F9-1-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1656213996&t=3f64664062d613b473c5727310605d13"
                     alt="Third slide"
                   />
-                </Carousel.Item>
+                </Carousel.Item> */}
               </Carousel>
             </div>
           </Collapse>
