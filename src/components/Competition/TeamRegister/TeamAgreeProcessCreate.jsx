@@ -14,9 +14,18 @@ export default function TeamAgreeProcessCreate({toggle}){
     const [disable, setdisable] = useState(true)
     const history= useHistory()
     const [isOpen, setIsOpen] = useState(false)
+	const [headPortrait,setHeadPortrait] = useState('');
     
 
-    const Pageprocess = () => {if (page!= 6){setpage(page + 1)}   }
+    const Pageprocess = (headPortrait) => {
+		if(headPortrait != undefined){
+			setHeadPortrait(headPortrait);
+		}
+		console.log(headPortrait);
+		if (page!= 6){
+			setpage(page + 1)
+		}   
+	}
     const Pagereduce = () => {setpage(page - 1)}
     const sendUserhome = () => {history.push("/home")}
 
@@ -115,7 +124,7 @@ export default function TeamAgreeProcessCreate({toggle}){
 
                             <div style={{display:"flex", justifyContent:"center"}}>
                             <div style={{width:"160px", height:"160px"}}>
-                            <Image src="/homeCutout/Mask group.png" roundedCircle style={{position: "relative", width: "100%",height: "100%"}}/>
+                            <Image src={headPortrait} roundedCircle style={{position: "relative", width: "100%",height: "100%"}}/>
                             </div>
 
                             

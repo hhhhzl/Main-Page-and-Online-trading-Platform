@@ -2,6 +2,7 @@ import React, { useState,useEffect } from "react";
 import {FormGroup,FormLabel,FormControl,Button,Image, Modal} from "react-bootstrap";
 import './Personal.css'
 import { useHistory } from "react-router";
+import TeamRegisterModel from './modal/TeamRegisterModel'
 
 export default function EditData({platformType}){
 	const [userState, setUserState] = useState({})
@@ -20,6 +21,47 @@ export default function EditData({platformType}){
 		console.log(experienceList);
 		setExperienceList([...experienceList]);
 	}
+	const handleDelete = (idx) => {
+	  experienceList.splice(idx,1);
+	  console.log(experienceList);
+	  setExperienceList([...experienceList]);
+	};
+	
+	const uploadFile = React.createRef();
+	const [showModal, setShowModal] = useState(false);
+	const [imgSrc, setImgSrc] = useState('')
+	const [headPortrait,setHeadPortrait] = useState('/Lindsay.jpg')
+	
+	const hideModal = () => {
+	  setShowModal(false);
+	  setImgSrc('');
+	};
+	
+	const openModel = ()=>{
+		setShowModal(true)
+	}
+	
+	const chooseFile = () => {
+	  uploadFile.current.click();
+	};
+	
+	function onSelectFile(e: React.ChangeEvent<HTMLInputElement>) {
+	  if (e.target.files && e.target.files.length > 0) {
+	    const reader = new FileReader()
+	    reader.addEventListener('load', () =>
+	      setImgSrc(reader.result.toString() || ''),
+	    )
+	    reader.readAsDataURL(e.target.files[0])
+		setShowModal(true)
+		e.target.value = "";
+	  }
+	}
+	const getBase64 = (url) => {
+		setShowModal(false)
+		setHeadPortrait(url);
+	}
+	
+	
 	return(
 		<>
 		<Modal
@@ -40,6 +82,10 @@ export default function EditData({platformType}){
          
           </Modal.Footer>
         </Modal>
+		
+		<TeamRegisterModel showModal={showModal} hideModal={hideModal} getBase64={getBase64} imgSrc={imgSrc}></TeamRegisterModel>
+		
+		
 		<div style={{backgroundColor: "#F5F6F8",display:"flex",justifyContent:"space-between"}}>
 			<div style={{width:"48px",maxWidth:"18.75%"}}></div>
 			<div  style={{
@@ -50,15 +96,26 @@ export default function EditData({platformType}){
                     }}>
 				<div className="edit-title">编辑资料</div>
 				<div className="edit-user-person" style={{backgroundColor:"#FFFFFF",marginTop:"24px"}}>
-					<div style={{textAlign:"center"}}>
-						<div style={{padding: "60px 0 51px"}}>
-							<Image
-							  src="/Lindsay.jpg"
-							  style={{ width: "160px", height: "160px" }}
-							/>
+					<div style={{
+						display:"flex",
+						flexDirection:"column",
+						justifyContent:"center",
+						textAlign:"center"
+					}}>
+						<div style={{margin: "60px 0 24px"}}>
+							<Image src={headPortrait} roundedCircle style={{position: "relative", width: "160px",height: "160px"}}/>
 						</div>
 						<div>
-							<Button style={{width:"120px",height:"40px",backgroundColor: "#F5F6F8",border:0,color:"black"}}>修改头像</Button>
+							<Button 
+								onClick={chooseFile} 
+								style={{width:"120px",height:"40px",backgroundColor: "#F5F6F8",border:0,color:"black"}}
+							>修改头像</Button>
+							<input
+								hidden
+								ref={uploadFile}
+								type="file" 
+								accept="image/*" 
+								onChange={onSelectFile} />
 						</div>
 					</div>
 					<div style={{margin:" 35px 4%"}}>
@@ -111,7 +168,7 @@ export default function EditData({platformType}){
 						</div>
 					</div>
 					<div style={{margin:" 60px 4%"}}>
-						<div className="information">学习经历</div>
+						<div className="information">实习经历</div>
 						{
 							experienceList.map((item,idx)=>(
 								<div key={idx} style={{marginTop:"35px",display: "flex"}}>
@@ -129,20 +186,33 @@ export default function EditData({platformType}){
 										}}
 									  />
 									</FormGroup>
+									
 									<FormGroup style={{width: "44%",marginLeft:"4%"}}>
 									  <FormLabel className="edit-form-label">实习职位</FormLabel>
-									  <FormControl
-										type="text"
-										value={experienceList[idx].experience}
-										style={{width:"100%",height:"48px"}}
-										placeholder="请输入文字"
-										onChange={(e) => {
-										  experienceList[idx].experience = e.target.value;
-										  setExperienceList(experienceList);
-										  setUserState({...userState, ...{ setExperienceList }});
-										}}
-									  />
+									  <div style={{display:"flex"}}>
+										  <FormControl
+											type="text"
+											value={experienceList[idx].experience}
+											style={{width:"85%",height:"48px"}}
+											placeholder="请输入文字"
+											onChange={(e) => {
+											  experienceList[idx].experience = e.target.value;
+											  setExperienceList(experienceList);
+											  setUserState({...userState, ...{ setExperienceList }});
+											}}
+										  />
+										  <Button 
+											variant="danger"
+											disabled ={experienceList.length==1}
+											onClick={() => handleDelete(idx)}
+											style={{marginLeft:"12px"}}>删除</Button>
+									  </div>
+									  
 									</FormGroup>
+									
+									
+									
+									
 								</div>
 							))
 						}
