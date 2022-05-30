@@ -25,7 +25,7 @@ export default ({searchData}) => {
 
 
                 <div style={{ width: width > 1200? "1200px" : width -96, minHeight: "500px", minWidth: "fix-content", }}>
-                     <div style={{ height: height * 0.075, width: "100%", display: "flex", justifyContent: "right", paddingTop:"25px",paddingBottom:"24" }}>
+                     <div style={{ height: "80px", width: "100%", display: "flex", justifyContent: "right", paddingTop:"25px",paddingBottom:"24" }}>
                         
 
                         {
@@ -52,6 +52,7 @@ export default ({searchData}) => {
 								<div style={{
 									  width: "56px",
                                       height: "24px",
+                                      paddingLeft:"18px",
                                       fontSize: "14px",
                                       fontFamily: "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
                                       fontWeight: "bold",
@@ -61,7 +62,7 @@ export default ({searchData}) => {
 								</Dropdown.Toggle>
 								<Dropdown.Menu style={{
 									  width:"360px", border:"0px"}}>
-									<WatchList vertify={false} />
+									<WatchList vertify={false} heightratio={0.63} searchwidth={1200 * 0.3} />
 								</Dropdown.Menu>
 							  </Dropdown>
 							</div>
@@ -104,7 +105,7 @@ export default ({searchData}) => {
                     </div>
 
                     {width> 1200? (<div style={{ width: "30%" }}>
-								<WatchList heightratio={0.63} searchwidth={1200 * 0.3} />
+								<WatchList heightratio={0.68} searchwidth={1200 * 0.3} />
 					</div>) : null}
 
                     

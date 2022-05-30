@@ -1,7 +1,7 @@
 import InvestNotes from "components/Competition/InvestNotes/InvestNotes"
 
-export default () => {
+export default ({searchData}) => {
     return (
-        <InvestNotes />
+        <InvestNotes searchData = {searchData} />
     )
 }

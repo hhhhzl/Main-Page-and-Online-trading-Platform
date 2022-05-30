@@ -7,6 +7,11 @@ import './competition.css'
 export default function TeamModelIntro({show, handleClose}) {
     // const [show, setShow] = useState(true);
     // const handleClose = () => setShow(false);
+    const [load,setload] = useState(false)
+
+    const handleLoad = () => {
+        setload(true);
+      };
 
 
     const data = [
@@ -35,6 +40,7 @@ export default function TeamModelIntro({show, handleClose}) {
            <Modal 
            show={show}
            onHide={handleClose} 
+           onEnter={handleLoad}
            centered 
            backdrop="static"
            size ="lg"
@@ -43,8 +49,8 @@ export default function TeamModelIntro({show, handleClose}) {
           <Modal.Header closeButton>
 
           </Modal.Header>
-          <Modal.Body style ={{borderWidth:0}}>
-              <TeamInformationPage/>   
+          <Modal.Body style ={{borderWidth:0, minHeight:"800px"}}>
+              <TeamInformationPage load ={load}/>   
           </Modal.Body>
           </Modal>
         </>

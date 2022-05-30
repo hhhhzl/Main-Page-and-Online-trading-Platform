@@ -42,7 +42,7 @@ export default ({searchData}) => {
 						paddingTop: platformType == null? "112px" :  0
                     }}
                 >
-					<TeamInformationPage/>          
+					<TeamInformationPage load ={true}/>          
                 </div>
                 <div
                     style={{

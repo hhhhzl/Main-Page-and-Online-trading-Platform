@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import {Card, Image } from "react-bootstrap";
 import PorforlioMoveGraph from "./PortforlioMoveGraph";
 
-export default function TeamInformationPage() {
+export default function TeamInformationPage({load}) {
     // const [show, setShow] = useState(true);
     // const handleClose = () => setShow(false);
     const data = [
@@ -27,8 +27,8 @@ export default function TeamInformationPage() {
 
     return (
         <>
-              <Card style={{border:0}} > 
-                  <Card.Body>
+              <Card style={{margin:0,border:0,maxHeight:"800px"}} > 
+                  <Card.Body style={{padding:0}}>
           <div style={{
         marginTop:"-10px",
         marginBottom:"24px",
@@ -41,7 +41,7 @@ export default function TeamInformationPage() {
         letterSpacing:"1px",
         }}>团队名称</div>
         <div>
-        <PorforlioMoveGraph widthratio ={700}/>
+            {load && <PorforlioMoveGraph widthratio={1200 * 0.63}/>}
         </div>
 
         <div style={{height:"224px", display:"flex",justifyContent:"left",padding:"36px 0% 0% 0%"}}>

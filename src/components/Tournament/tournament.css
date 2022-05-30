@@ -23,6 +23,9 @@
 }
 
 
+
+
+
 .tabs-wrapper>.nav-item>.active {
   color: #2A2B30 !important;
   font-size: 14px;
@@ -39,6 +42,8 @@
   border-top: 1px solid #E5E8EE;
   margin-top: 1px;
 }
+
+
 
 @media screen and (max-width: 600px) {
   .tabs-wrapper {

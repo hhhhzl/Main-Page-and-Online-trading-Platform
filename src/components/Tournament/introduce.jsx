@@ -24,11 +24,11 @@ export default function Introduce() {
   return (
     <>
       <div
-        style={{
+        style={{      
           position: "fixed",
           zIndex: 10,
           width: "1px",
-          height: width / 2.97,
+          height: width / 2.9,
           background: `linear-gradient(to top, #E5E8EE ${
             ((bodyscrollrdTop / (width / 2.97)) * 100).toString() + "%"
           }, rgba(255, 255, 255, 0.5) ${
@@ -36,6 +36,7 @@ export default function Introduce() {
           })`,
           top: "64px",
           left: width / 2 - 1,
+          className:"animated bounceInDown",
         }}
       ></div>
       <div className="introduce" style={{ width: width }}>

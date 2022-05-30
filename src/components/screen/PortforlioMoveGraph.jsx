@@ -7,6 +7,7 @@ import UserHolding from './UserHolding';
 import WatchListTable from './WatchListTable';
 import useWindowDimensions from '../../utils/sizewindow';
 import LineSeriesForPorfolio from '../graphs/LineSeriesForPorfolio';
+import { getPlatformType } from 'utils';
 
 
 export default function PorforlioMoveGraph({
@@ -21,12 +22,14 @@ export default function PorforlioMoveGraph({
   const [timeP,setTimeP] = useState(7);
   const [id,setID] = useState(0)
   const [vertify, setvertify] = useState(true);
-
+  const [platform, setplatform] = useState(getPlatformType())
 
   const [usersummary,setusersummary] = useState(200000.00)
 
 
   const arrays = ["一周","一个月","三个月","六个月","一年","全部"]
+
+  const arraysforCompetition = ["一周","半个月","一个月","两个月","三个月","全部"]
 
     useEffect(()=>{
         setTimeP(timeP)
@@ -75,7 +78,8 @@ export default function PorforlioMoveGraph({
             lineHeight:"28px",
             }}>
 
-            {arrays[id] == "全部"? "全部" : <>近{arrays[id]}</> }
+              {platform == "competition"? arraysforCompetition[id] == "全部"? "全部" : <>近{arraysforCompetition[id]}</> 
+              : arrays[id] == "全部"? "全部" : <>近{arrays[id]}</> }
             
             </div>
             </div>
@@ -180,7 +184,7 @@ export default function PorforlioMoveGraph({
                 lineHeight:"28px",
                 letterSpacing:"1px",
                 }} variant="outline-primary"
-                onClick={() => {setTimeP(7);setID(0)}}
+                onClick={() => {setTimeP(5);setID(0)}}
                 >
                 1W
                 </Button>
@@ -200,9 +204,9 @@ export default function PorforlioMoveGraph({
                 lineHeight:"28px",
                 letterSpacing:"1px",
                 }} variant="outline-primary"
-                onClick={() => {setTimeP(30);setID(1)}}
+                onClick={() => {setTimeP(platform == "competition"? 11 : 21);setID(1)}}
                 >
-                1M
+                {platform == "competition"? "15D" : "1M"}
                 </Button>
 
                 <Button style={{height:"36px",borderBottom: id == 2? "3px solid #26409A" : "0px",
@@ -220,9 +224,9 @@ export default function PorforlioMoveGraph({
                 lineHeight:"28px",
                 letterSpacing:"1px",
                 }} variant="outline-primary"
-                onClick={() => {setTimeP(90);setID(2)}}
+                onClick={() => {setTimeP(platform == "competition"? 21 : 63);setID(2)}}
                 >
-                3M
+                {platform == "competition"? "1M" : "3M"}
                 </Button>
 
                 <Button style={{height:"36px",borderBottom: id == 3? "3px solid #26409A" : "0px",
@@ -240,9 +244,9 @@ export default function PorforlioMoveGraph({
                 lineHeight:"28px",
                 letterSpacing:"1px",
                 }} variant="outline-primary"
-                onClick={() => {setTimeP(180);setID(3)}}
+                onClick={() => {setTimeP(platform == "competition"? 42 : 126);setID(3)}}
                 >
-                6M
+                {platform == "competition"? "2M" : "6M"}
                 </Button>
 
                 <Button style={{height:"36px",borderBottom: id == 4? "3px solid #26409A" : "0px",
@@ -260,9 +264,9 @@ export default function PorforlioMoveGraph({
                 lineHeight:"28px",
                 letterSpacing:"1px",
                 }} variant="outline-primary"
-                onClick={() => {setTimeP(365);setID(4)}}
+                onClick={() => {setTimeP(platform == "competition"? 126 : 250);setID(4)}}
                 >
-                1Y
+                {platform == "competition"? "3M" : "1Y"}
                 </Button>
 
                 <Button style={{height:"36px",borderBottom: id == 5? "3px solid #26409A" : "0px",
@@ -280,7 +284,7 @@ export default function PorforlioMoveGraph({
                 lineHeight:"28px",
                 letterSpacing:"1px",
                 }} variant="outline-primary"
-                onClick={() => {setTimeP(365);setID(5)}}
+                onClick={() => {setTimeP(500);setID(5)}}
                 >
                 全部
                 </Button>
