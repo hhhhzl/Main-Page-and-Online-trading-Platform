@@ -8,6 +8,7 @@ import Carousel from "react-bootstrap/Carousel";
 import Bottompicture from "./bottom-picture";
 import { Bookmark } from "@material-ui/icons";
 import useWindowDimensions from "../../../utils/sizewindow";
+import { useHistory } from "react-router";
 import Fade from "react-reveal/Fade";
 
 const Aboutus = ({ profileImg, hobbyImgs }) => {
@@ -16,6 +17,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
   const [show, setShow] = useState(false);
   const [scrolledDownEnough, setScrolledDownEnough] = useState(false);
   const { BilibiliVideo } = require("react-bilibili-video");
+  const history = useHistory();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -509,6 +511,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               }}
               variant="outline-primary"
               size="lg"
+              onClick= {()=>history.push("/tournament")}
             >
               了解赛事
             </Button>

@@ -61,7 +61,7 @@ const searchSwitch = () => {
             minWidth: "fix-content",
             height:height,
             }}>
-                <div style={{height:"111px", width:"100%"}}>
+                <div style={{marginTop:"48px",height:"111px", width:"100%"}}>
                     <div style={{paddingBottom:"24px",paddingTop:"48px", fontSize:"24px", fontFamily:"Microsoft YaHei U-Bold, Microsoft YaHei UI", fontWeight:"bold", color:"#2A2B30", lineHeight:"40px",letterSpacing:"1px"}}>
                      搜索团队
                     </div>

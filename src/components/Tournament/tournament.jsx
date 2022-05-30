@@ -11,6 +11,7 @@ import Finance from "./finance";
 import Sidebar from "../MainPage/Sidebar";
 import useWindowDimensions from "../../utils/sizewindow";
 import "./tournament.css"
+import { clearLocalStorage } from "utils";
 
 export default function MainPage() {
   const { width, height } = useWindowDimensions();
@@ -29,6 +30,11 @@ export default function MainPage() {
     }, 500);
   };
   delay();
+
+  useEffect(() =>{
+    clearLocalStorage()
+  })
+
   useEffect(() => {
     const handleScroll = () => {
       const bodyScrollTop =

@@ -147,72 +147,72 @@ export default function PlateCard({dataSource, heightProp,stockData,index,handle
 
       {/* 中线 */}
       <div className="plate-line">
-        <div
-          className="plate-line-wrapper"
-          style={{
-            width:
-              (dataSource.下跌家数 /
-                (dataSource.下跌家数 +
-                  dataSource.上涨家数 +
-                  3)) *
-                100 +
-              "%",
-            display: dataSource.下跌家数 == 0 ? "none" : "flex",
-            justifyContent: "flex-start",
-          }}
-        >
-          <div className="plate-line-down"></div>
-          <div
-            className="plate-line-text"
-            style={{ textAlign: "start", color: "#16CE62" }}
-          >
-            {dataSource.下跌家数}
-          </div>
-        </div>
-        <div
-          className="plate-line-wrapper"
-          style={{
-            width:
-              (3 /
-                (dataSource.下跌家数 +
-                  dataSource.上涨家数 +
-                  3)) *
-                100 +
-              "%",
-            margin: "0px 4px",
-          }}
-        >
-          <div className="plate-line-center"></div>
-          <div
-            className="plate-line-text"
-            style={{ textAlign: "center", color: "#9C9EAC" }}
-          >
-            3
-          </div>
-        </div>
-        <div
-          className="plate-line-wrapper"
-          style={{
-            width:
-              (dataSource.上涨家数 /
-                (dataSource.下跌家数 +
-                  dataSource.上涨家数 +
-                  3)) *
-                100 +
-              "%",
-            display: dataSource.上涨家数 == 0 ? "none" : "flex",
-            justifyContent: "flex-end",
-          }}
-        >
-          <div className="plate-line-up"></div>
-          <div
-            className="plate-line-text"
-            style={{ textAlign: "end", color: "#EC1421" }}
-          >
-            {dataSource.上涨家数}
-          </div>
-        </div>
-      </div>
+                    <div
+                      className="plate-line-wrapper"
+                      style={{
+                        width:
+                          (dataSource.下跌家数 /
+                            (dataSource.下跌家数 +
+                              dataSource.上涨家数 +
+                              dataSource.不涨不跌家数)) *
+                            100 +
+                          "%",
+                        display: dataSource.下跌家数 == 0 ? "none" : "flex",
+                        justifyContent: "flex-start",
+                      }}
+                    >
+                      <div className="plate-line-down"></div>
+                      <div
+                        className="plate-line-text"
+                        style={{ textAlign: "start", color: "#16CE62" }}
+                      >
+                        {dataSource.下跌家数}
+                      </div>
+                    </div>
+                    <div
+                      className="plate-line-wrapper"
+                      style={{
+                        width:
+                          (dataSource.不涨不跌家数 /
+                            (dataSource.下跌家数 +
+                              dataSource.上涨家数 +
+                              dataSource.不涨不跌家数)) *
+                            100 +
+                          "%",
+                        margin: "0px 4px",
+                      }}
+                    >
+                      <div className="plate-line-center"></div>
+                      <div
+                        className="plate-line-text"
+                        style={{ textAlign: "center", color: "#9C9EAC" }}
+                      >
+                        {dataSource.不涨不跌家数}
+                      </div>
+                    </div>
+                    <div
+                      className="plate-line-wrapper"
+                      style={{
+                        width:
+                          (dataSource.上涨家数 /
+                            (dataSource.下跌家数 +
+                              dataSource.上涨家数 +
+                              dataSource.不涨不跌家数)) *
+                            100 +
+                          "%",
+                        display: dataSource.上涨家数 == 0 ? "none" : "flex",
+                        justifyContent: "flex-end",
+                      }}
+                    >
+                      <div className="plate-line-up"></div>
+                      <div
+                        className="plate-line-text"
+                        style={{ textAlign: "end", color: "#EC1421" }}
+                      >
+                        {dataSource.上涨家数}
+                      </div>
+                    </div>
+                  </div>
 
       {/* 表格 */}
 

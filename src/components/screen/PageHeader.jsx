@@ -39,36 +39,19 @@ import AuthContext from "context/AuthContext";
 import { NotificationsNoneOutlined } from "@material-ui/icons";
 import { MenuItemLinksRouter } from "components/MainPage/HeaderElements";
 import { IconButton } from "@material-ui/core";
+import { clearLocalStorage } from "utils";
 
 
 
 const { SearchBar, ClearSearchButton } = Search;
 
-export default function PageHeader(toggle) {
+export default function PageHeader({searchData, toggle}) {
   let { user, logoutUser} = useContext(AuthContext);
   const {width, height} = useWindowDimensions();
-  const [searchData, setsearcnData] = useState([])
   const [note, setnote] = useState(null)
 
 
-          useEffect(() => {
-            getSearchData()
-          },[])
 
-        const getSearchData = async (props) => {
-          try{
-            const response = await apiSymbolsAllForSearch()
-            let Searchdata = response.data.data
-            setsearcnData(Searchdata)
-          }catch (err) {
-            console.log(err)
-          }
-        };
-
-
-
-
-  const [selectKey, setSelectKey] = useState(0);
   const [showMenu, setHhowMenu] = useState(false);
   const [showLoginOutModal, setShowLoginOutModal] = useState(false);
 
@@ -92,9 +75,6 @@ export default function PageHeader(toggle) {
       setScrollswitch(false);
     }
   };
-  const handleSelect = (eventKey) => {
-    setSelectKey(eventKey);
-  };
   const handleShowMenu = (showMenu) => {
     setHhowMenu(showMenu);
   };
@@ -108,9 +88,9 @@ export default function PageHeader(toggle) {
   };
 
   const LogUserOut = () =>{
-    // TODO: 调函数清理localstorage
     history.push("/");
     logoutUser()
+    clearLocalStorage()
   }
 
 
@@ -323,7 +303,7 @@ export default function PageHeader(toggle) {
             justifyContent: width > 1200 ? "left" : "space-around",
           }}
         >
-          <div>
+          <div onClick={() => {clearLocalStorage();history.push("/")}}>
             <Image
               src={"/homeCutout/UFA-LOGO-RED.png"}
               style={{ width: "64px", height: "64px" }}
@@ -337,16 +317,18 @@ export default function PageHeader(toggle) {
                   marginLeft: "20px",
                   display: "flex",
                   justifyContent: "left",
+                  backgroundColor:"white",
                 }}
               >
                 {column.map((elem) => {
                   return (
-                    <Link to={elem.link}>
+                   
                       <Button
                         style={{
                           backgroundColor: "white",
-                          width: "96px",
+                          width: "86px",
                           height: "100%",
+                          marginRight:"10px",
                           textAlign: "center",
                           paddingTop: "20px",
                           fontSize: "14px",
@@ -364,11 +346,11 @@ export default function PageHeader(toggle) {
                               ? "3px solid #1442ED"
                               : "white",
                         }}
-                        onClick={() => setSelectKey(elem.id)}
+                        onClick={() => history.push(elem.link)}
                       >
                         <div>{elem.title}</div>
                       </Button>
-                    </Link>
+                 
                   );
                 })}
               </div>
@@ -453,7 +435,7 @@ export default function PageHeader(toggle) {
           <div>
             <IconButton style={{margin:"20px 24px", padding:"0px 0"}} onClick={() => sendUserNews()}>
                 <NotificationsNoneOutlined ></NotificationsNoneOutlined >
-                {note? (<div style={{width:"7px",height:"7px",backgroundColor:"#1442ED", borderRadius:"50%", marginLeft:"-10px",marginTop:"-10px"}}></div>)
+                {true? (<div style={{width:"7px",height:"7px",backgroundColor:"#FF3541", borderRadius:"50%", marginLeft:"-10px",marginTop:"-10px"}}></div>)
                 : null
                 }
                 
@@ -483,7 +465,7 @@ export default function PageHeader(toggle) {
                 offset={-50}
                 spy={true}
                 smooth={true}
-                to="/aboutus"
+                to="/personal"
                 duration={700}
                 className="menu-item"
               >
@@ -500,7 +482,7 @@ export default function PageHeader(toggle) {
                 团队信息
               </MenuItemLinksRouter>
               <MenuItemLinksRouter
-                to="/review"
+                to="/personalEdit"
                 offset={-50}
                 spy={true}
                 smooth={true}
@@ -508,6 +490,16 @@ export default function PageHeader(toggle) {
                 className="menu-item"
               >
                 编辑资料
+              </MenuItemLinksRouter>
+              <MenuItemLinksRouter
+                offset={-50}
+                spy={true}
+                smooth={true}
+                duration={700}
+                className="menu-item"
+                onClick={() => {clearLocalStorage();history.push("/home")}}
+              >
+                回到主页
               </MenuItemLinksRouter>
               <MenuItemLinksRouter
                 offset={-50}

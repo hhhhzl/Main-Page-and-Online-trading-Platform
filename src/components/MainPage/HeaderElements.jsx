@@ -6,7 +6,7 @@ export const HeaderOut = styled.nav`
   background: ${(props) =>
     props.scrolledDownEnough
       ?"#FFFFFF"
-      : props.url =="/team/create"?"#FFFFFF": "linear-gradient(180deg,rgba(0, 0, 0, 0.2) 0%,rgba(0, 0, 0, 0) 100%)"};
+      : (props.url != "/" && props.url != "/tournament")?"#FFFFFF": "linear-gradient(180deg,rgba(0, 0, 0, 0.2) 0%,rgba(0, 0, 0, 0) 100%)"};
   height: 64px;
   margin-left: ${(props) => (props.scrolledDownEnough ? "0%" : "0%")};
   width: ${(props) => (props.scrolledDownEnough ? "100%" : "100%")};
@@ -22,7 +22,7 @@ export const HeaderOut = styled.nav`
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   z-index: 999;
   @media screen and (max-width: 960px) {
-    transition: 1s all ease;
+    transition: 0s all ease;
   }
   @media screen and (max-width: 768px) {
     border: none;
@@ -175,8 +175,7 @@ export const HeaderBtn = styled.nav`
 export const HeaderBtnLink = styled(LinkR)`
   white-space: nowrap;
   color:${(props) => (props.scrolledDownEnough ? "#2A2B30"
-    : props.url =="/team/create"? "#2A2B30": "#ffffff")};
-    props.scrolledDownEnough
+    : (props.url != "/" && props.url != "/tournament")? "#2A2B30": "#ffffff")};
   text-decoration:none;
   display:flex;
   align-item: center;

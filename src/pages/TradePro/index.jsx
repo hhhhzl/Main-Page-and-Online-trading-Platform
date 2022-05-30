@@ -1,7 +1,7 @@
 import StockPriceGraphProfessional from "components/screen/StockPriceGraphProfessional"
 
-export default () => {
+export default ({searchData}) => {
     return (
-        <StockPriceGraphProfessional />
+        <StockPriceGraphProfessional searchData = {searchData} />
     )
 }

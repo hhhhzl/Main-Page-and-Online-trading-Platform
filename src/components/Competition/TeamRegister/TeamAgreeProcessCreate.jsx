@@ -1,7 +1,7 @@
 import react, {useState, useEffect} from 'react'
-import HeaderCreate from '../../MainPage/header'
-import useWindowDimensions from '../../../utils/sizewindow';
-import Sidebar from '../../MainPage/Sidebar';
+import HeaderCreate from 'components/MainPage/header';
+import useWindowDimensions from 'utils/sizewindow';
+import Sidebar from 'components/MainPage/Sidebar';
 import { IconButton } from '@material-ui/core';
 import { ArrowBack, ArrowForward } from '@material-ui/icons';
 import { Button, Form, Image, Modal } from 'react-bootstrap';
@@ -14,6 +14,7 @@ export default function TeamAgreeProcessCreate({toggle}){
     const [disable, setdisable] = useState(true)
     const history= useHistory()
     const [isOpen, setIsOpen] = useState(false)
+    
 
     const Pageprocess = () => {if (page!= 6){setpage(page + 1)}   }
     const Pagereduce = () => {setpage(page - 1)}
@@ -88,7 +89,7 @@ export default function TeamAgreeProcessCreate({toggle}){
       
       </> :
 
-            <div  style={{marginTop:height*0.64,width:"100%",display:"flex",justifyContent:"space-between", backgroundColor:"#F5F6F8"}}>
+            <div  style={{marginTop:height*0,width:"100%",display:"flex",justifyContent:"space-between", backgroundColor:"#F5F6F8"}}>
 
             <div style={{width:"48px",maxWidth:"18.75%"}}></div>
             <div style={{width:"1200px",minWidth:"fix-content",minHeight: "700px",
@@ -96,7 +97,7 @@ export default function TeamAgreeProcessCreate({toggle}){
                 height:height,
                 }}>
 
-                <div style={{height:"111px", width:"100%"}}>
+                <div style={{marginTop:"64px",height:"111px", width:"100%"}}>
                         <div style={{paddingBottom:"24px",paddingTop:"48px", fontSize:"24px", fontFamily:"Microsoft YaHei U-Bold, Microsoft YaHei UI", fontWeight:"bold", color:"#2A2B30", lineHeight:"40px",letterSpacing:"1px"}}>
                         {process[page - 1].title}
                         </div>

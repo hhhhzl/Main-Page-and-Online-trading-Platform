@@ -1,8 +1,9 @@
 import React, { useState,useEffect } from "react";
-import {FormGroup,FormLabel,FormControl,Button,Image} from "react-bootstrap";
+import {FormGroup,FormLabel,FormControl,Button,Image, Modal} from "react-bootstrap";
 import './Personal.css'
+import { useHistory } from "react-router";
 
-export default function EditData(){
+export default function EditData({platformType}){
 	const [userState, setUserState] = useState({})
 	const [username, setUsername] = useState("管理员");
 	const [school, setSchool] = useState("密歇根大学");
@@ -10,6 +11,8 @@ export default function EditData(){
 	const [experienceList,setExperienceList] = useState([
 		{company:"密歇根大学",experience:"实习经历实习经历实习经历实习经历实习经历实习"}
 	])
+	const [successSendtoC, setsuccessSendtoC] = useState(false)
+	const history= useHistory()
 	
 	const addExperience=()=>{
 		let obj ={company:"密歇根大学",experience:"实习经历实习经历实习经历实习经历实习经历实习"};
@@ -18,10 +21,35 @@ export default function EditData(){
 		setExperienceList([...experienceList]);
 	}
 	return(
-		<div style={{backgroundColor: "#F5F6F8"}}>
-			<div style={{marginLeft:"18.75%"}}>
+		<>
+		<Modal
+        show={successSendtoC} 
+        >
+          <Modal.Header></Modal.Header>
+          <Modal.Body style={{textAlign:"center"}}><div style={{fontSize: "14px",
+                                    fontFamily: "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+                                    fontWeight: "bold",
+                                    color: "#2A2B30",
+                                    lineHeight:"24px"}}>个人信息已修改成功</div></Modal.Body>
+        <Modal.Footer style={{marginLeft:0}} >
+            <div style={{width:"100%",display:"flex",justifyContent:"center"}}>
+            <Button className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => history.push("/personal")}>
+            确定
+          </Button>
+        </div>
+         
+          </Modal.Footer>
+        </Modal>
+		<div style={{backgroundColor: "#F5F6F8",display:"flex",justifyContent:"space-between"}}>
+			<div style={{width:"48px",maxWidth:"18.75%"}}></div>
+			<div  style={{
+				        paddingTop:"112px",
+                        width: "1200px",
+                        minHeight: "700px",
+                        minWidth: "fix-content",
+                    }}>
 				<div className="edit-title">编辑资料</div>
-				<div className="edit-user-person" style={{width:"76.924%",backgroundColor:"#FFFFFF",marginTop:"24px"}}>
+				<div className="edit-user-person" style={{backgroundColor:"#FFFFFF",marginTop:"24px"}}>
 					<div style={{textAlign:"center"}}>
 						<div style={{padding: "60px 0 51px"}}>
 							<Image
@@ -132,7 +160,7 @@ export default function EditData(){
 					</div>
 					<div style={{marginTop:"60px",textAlign:"center"}}>
 						<div style={{textAlign:"center",padding:"60px"}}>
-							 <Button style={{width:"26.668%",height:"48px"}}>
+							 <Button style={{width:"26.668%",height:"48px"}} onClick = {() => setsuccessSendtoC(true)}>
 								确定
 							 </Button>
 						</div>
@@ -140,7 +168,9 @@ export default function EditData(){
 						  
 				</div>
 			</div>
+			<div style={{width:"48px",maxWidth:"18.75%"}}></div>
 			
 		</div>
+		</>
 	)
 }

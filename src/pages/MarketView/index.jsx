@@ -23,7 +23,7 @@ import MarketUpdownDistribute from "components/screen/MarkeUpdownDistribute";
 
 import MarketQuotation from "components/screen/MarketQuotation";
 
-export default () => {
+export default ({searchData}) => {
   const { width, height } = useWindowDimensions();
   const [extend, setExtend] = useState(true);
   const [indusAll,setIndusAll] = useState(1);
@@ -52,11 +52,11 @@ export default () => {
 //   })
   return (
     <>
-      <PageHeader />
+      <PageHeader searchData = {searchData}/>
       <Card style={{ padding: 0, borderColor: "white" }}>
         <Collapse in={indusAll == 1}>
           <Card.Body style={{ padding: 0, borderColor: "white" }}>
-            {width > 700 ? (
+            {width > 1000 ? (
               <>
                 <div
                   style={{
@@ -70,7 +70,7 @@ export default () => {
                   <div
                     style={{
                       width: "50%",
-                      height: height * 0.55,
+                      height: height * 0.512,
                       minHeight: "500px",
                     }}
                   >
@@ -81,19 +81,19 @@ export default () => {
                   <div
                     style={{
                       width: "1px",
-                      height: height * 0.55,
+                      height: height * 0.512,
                       backgroundColor: "#E5E8EE",
                     }}
                   ></div>
                   <div
                     style={{
                       width: "50%",
-                      height: height * 0.52,
+                      height: height * 0.512,
                       minHeight: "500px",
                     }}
                   >
                     <MarketUpdownDistribute
-                      widthRatio={width > 920 ? width / 2 : 920 / 2}
+                      widthRatio={width > 920 ? width / 2 : 920 / 2} searchData ={searchData}
                     />
                   </div>
                 </div>
@@ -104,13 +104,13 @@ export default () => {
                   style={{
                     width: "100%",
                     height: height * 0.56,
-                    minHeight: "300px",
+                    minHeight: "550px",
                   }}
                 >
                   <MarketOverview widthRatio={width} />
                 </div>
-                <div style={{ width: "100%", height: height * 0.56 }}>
-                  <MarketUpdownDistribute widthRatio={width} />
+                <div style={{ marginTop:"60px",width: "100%", height: width>1000? height * 0.56 :'max-content',minHeight:"300px"}}>
+                  <MarketUpdownDistribute widthRatio={width} searchData ={searchData}/>
                 </div>
               </>
             )}
@@ -121,7 +121,7 @@ export default () => {
 	  {
 		indusAll == 1 ?(
 			<>
-			  <div style={{ marginTop: height * 0.056, margin: "48px" }}>
+			  <div style={{margin: "48px",marginTop:"60px",Bottom:"24px"}}>
 				<LeadingIndustry
 				  handleShowDetails={handleShowDetails}
 				  indusAll={indusAll}
