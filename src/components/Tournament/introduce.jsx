@@ -23,22 +23,24 @@ export default function Introduce() {
 
   return (
     <>
-      <div
-        style={{      
-          position: "fixed",
-          zIndex: 10,
-          width: "1px",
-          height: width / 2.9,
-          background: `linear-gradient(to top, #E5E8EE ${
-            ((bodyscrollrdTop / (width / 2.97)) * 100).toString() + "%"
-          }, rgba(255, 255, 255, 0.5) ${
-            ((bodyscrollrdTop / (width / 2.97)) * 100).toString() + "%"
-          })`,
-          top: "64px",
-          left: width / 2 - 1,
-          className:"animated bounceInDown",
-        }}
-      ></div>
+      <Fade top >
+        <div
+          style={{
+            position: "fixed",
+            zIndex: 10,
+            width: "1px",
+            height: width / 2.9,
+            background: `linear-gradient(to top, #E5E8EE ${
+              ((bodyscrollrdTop / (width / 2.97)) * 100).toString() + "%"
+            }, rgba(255, 255, 255, 0.5) ${
+              ((bodyscrollrdTop / (width / 2.97)) * 100).toString() + "%"
+            })`,
+            top: "64px",
+            left: width / 2 - 1,
+            className: "animated bounceInDown",
+          }}
+        ></div>
+      </Fade>
       <div className="introduce" style={{ width: width }}>
         <div className="introduce-content gray-bg">
           <div
@@ -154,7 +156,6 @@ export default function Introduce() {
               </Fade>
             </div>
             <div className="right">
-
               <Fade bottom when={bodyscrollrdTop > 700}>
                 <div className="match-begin">
                   <div className="right-line"></div>
@@ -163,97 +164,103 @@ export default function Introduce() {
               </Fade>
 
               <Fade bottom when={bodyscrollrdTop > 1000}>
-              <div className="flex-start" style={{ marginTop: "222px" }}>
-                <div className="icon-wrapper-left">
-                  <Image
-                    src="/tournament/Group 142.png"
-                    style={{ width: "24px", height: "24px" }}
-                  />
+                <div className="flex-start" style={{ marginTop: "222px" }}>
+                  <div className="icon-wrapper-left">
+                    <Image
+                      src="/tournament/Group 142.png"
+                      style={{ width: "24px", height: "24px" }}
+                    />
+                  </div>
+                  <div className="right-line bg"></div>
+                  <div className="month" style={{ paddingLeft: "16px" }}>
+                    6.18
+                  </div>
                 </div>
-                <div className="right-line bg"></div>
-                <div className="month" style={{ paddingLeft: "16px" }}>
-                  6.18
-                </div>
-              </div>
-              </Fade> 
+              </Fade>
               <Fade bottom when={bodyscrollrdTop > 1200}>
-              <div className="finals-name">
-                <div className="right-line"></div>
-                <div className="finals-name-container">
-                  <div className="match-end-text" style={{ textAlign: "left" }}>
-                    初赛开始：指标分数
-                  </div>
-                  <div
-                    className="match-end-content"
-                    style={{ textAlign: "left" }}
-                  >
-                    <div>
-                      指标分数将根据3个月的“综合收益率”以及“夏普比率”两个指标进行打分
-                    </div>
-                  </div>
-                </div>
-              </div>
-              </Fade> 
-              <Fade bottom when={bodyscrollrdTop > 1400}>
-              <div className="flex-start" style={{ marginTop: "120px" }}>
-                <div className="icon-wrapper-left">
-                  <Image
-                    src="/tournament/Group 142.png"
-                    style={{ width: "24px", height: "24px" }}
-                  />
-                </div>
-                <div className="right-line bg"></div>
-                <div className="month" style={{ paddingLeft: "16px" }}>
-                  9.9
-                </div>
-              </div>
-              </Fade> 
-              <Fade bottom when={bodyscrollrdTop > 1700}>
-              <div className="finals-name" style={{ marginTop: "131px" }}>
-                <div className="right-line"></div>
-                <div className="finals-name-container">
-                  <div className="match-end-text" style={{ textAlign: "left" }}>
-                    复赛结束，公布决赛候选名单
-                  </div>
-                  <div
-                    className="match-end-content"
-                    style={{ textAlign: "left" }}
-                  >
-                    <div>
-                      UFA评委将综合逻辑报告，以及指标分数筛选出15名入围决赛选手。
-                    </div>
-                  </div>
-                </div>
-              </div>
-              </Fade> 
-              <Fade bottom when={bodyscrollrdTop > 2000}>
-              <div className="flex-start" style={{ marginTop: "143px" }}>
-                <div className="icon-wrapper-left">
-                  <Image
-                    src="/tournament/Group 142.png"
-                    style={{ width: "24px", height: "24px" }}
-                  />
-                </div>
-                <div className="right-line bg"></div>
-                <div className="left-round" style={{ marginTop: "0px" }}>
-                  <div className="round">
+                <div className="finals-name">
+                  <div className="right-line"></div>
+                  <div className="finals-name-container">
                     <div
-                      className="time-wrapper"
-                      style={{
-                        padding:
-                          width > 1350
-                            ? "80px 20px"
-                            : width > 900
-                            ? "70px 10px"
-                            : "60px 15px",
-                      }}
+                      className="match-end-text"
+                      style={{ textAlign: "left" }}
                     >
-                      <div className="month">9.24</div>
-                      <div className="year">2022</div>
+                      初赛开始：指标分数
+                    </div>
+                    <div
+                      className="match-end-content"
+                      style={{ textAlign: "left" }}
+                    >
+                      <div>
+                        指标分数将根据3个月的“综合收益率”以及“夏普比率”两个指标进行打分
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </Fade>
+              <Fade bottom when={bodyscrollrdTop > 1400}>
+                <div className="flex-start" style={{ marginTop: "120px" }}>
+                  <div className="icon-wrapper-left">
+                    <Image
+                      src="/tournament/Group 142.png"
+                      style={{ width: "24px", height: "24px" }}
+                    />
+                  </div>
+                  <div className="right-line bg"></div>
+                  <div className="month" style={{ paddingLeft: "16px" }}>
+                    9.9
+                  </div>
+                </div>
+              </Fade>
+              <Fade bottom when={bodyscrollrdTop > 1700}>
+                <div className="finals-name" style={{ marginTop: "131px" }}>
+                  <div className="right-line"></div>
+                  <div className="finals-name-container">
+                    <div
+                      className="match-end-text"
+                      style={{ textAlign: "left" }}
+                    >
+                      复赛结束，公布决赛候选名单
+                    </div>
+                    <div
+                      className="match-end-content"
+                      style={{ textAlign: "left" }}
+                    >
+                      <div>
+                        UFA评委将综合逻辑报告，以及指标分数筛选出15名入围决赛选手。
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Fade>
+              <Fade bottom when={bodyscrollrdTop > 2000}>
+                <div className="flex-start" style={{ marginTop: "143px" }}>
+                  <div className="icon-wrapper-left">
+                    <Image
+                      src="/tournament/Group 142.png"
+                      style={{ width: "24px", height: "24px" }}
+                    />
+                  </div>
+                  <div className="right-line bg"></div>
+                  <div className="left-round" style={{ marginTop: "0px" }}>
+                    <div className="round">
+                      <div
+                        className="time-wrapper"
+                        style={{
+                          padding:
+                            width > 1350
+                              ? "80px 20px"
+                              : width > 900
+                              ? "70px 10px"
+                              : "60px 15px",
+                        }}
+                      >
+                        <div className="month">9.24</div>
+                        <div className="year">2022</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </Fade>
             </div>
           </div>
@@ -454,7 +461,7 @@ export default function Introduce() {
               </div>
             </div>
 
-            <div className= {width >766?"tips-end":"tips-center"}>
+            <div className={width > 766 ? "tips-end" : "tips-center"}>
               注：所有奖项由UFA与中信证券官方签署制定，旨在为参赛选手提供背景提升，学习成长的机会。
             </div>
           </div>
