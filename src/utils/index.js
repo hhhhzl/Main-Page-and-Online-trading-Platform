@@ -67,47 +67,46 @@ export function fmoney(s, n) {
     return flag ? ('-' + str) : str;
 }
 
-export function changeUnit(value) {
-    let newValue = ['', '', ''];
-    let fr = 1000;
-    const ad = 1;
-    let num = 3;
-    const fm = 1;
-    while (value / fr >= 1) {
-      fr *= 10;
-      num += 1;
-      // console.log('数字', value / fr, 'num:', num);
+var addWan = function (integer, number, mutiple, decimalDigit) {
+    var digit = getDigit(integer);
+    if (digit > 3) {
+        var remainder = digit % 8;
+        if (remainder >= 5) { // ‘十万’、‘百万’、‘千万’显示为‘万’
+            remainder = 4;
+        }
+        return Math.round(number / Math.pow(10, remainder + mutiple - decimalDigit)) / Math.pow(10, decimalDigit) + '万';
+    } else {
+        return Math.round(number / Math.pow(10, mutiple - decimalDigit)) / Math.pow(10, decimalDigit);
     }
-    if (num <= 4) { // 千
-      newValue[1] = '千';
-      newValue[0] = parseInt(value / 1000) + '';
-    } else if (num <= 8) { // 万
-      const text1 = parseInt(num - 4) / 3 > 1 ? '千万' : '万';
-      // tslint:disable-next-line:no-shadowed-variable
-      const fm = '万' === text1 ? 10000 : 10000000;
-      newValue[1] = text1;
-      newValue[0] = (value / fm) + '';
-    } else if (num <= 16) {// 亿
-      let text1 = (num - 8) / 3 > 1 ? '千亿' : '亿';
-      text1 = (num - 8) / 4 > 1 ? '万亿' : text1;
-      text1 = (num - 8) / 7 > 1 ? '千万亿' : text1;
-      // tslint:disable-next-line:no-shadowed-variable
-      let fm = 1;
-      if ('亿' === text1) {
-        fm = 100000000;
-      } else if ('千亿' === text1) {
-        fm = 100000000000;
-      } else if ('万亿' === text1) {
-        fm = 1000000000000;
-      } else if ('千万亿' === text1) {
-        fm = 1000000000000000;
-      }
-      newValue[1] = text1;
-      newValue[0] = parseInt(value / fm) + '';
+};
+
+var getDigit = function (integer) {
+    var digit = -1;
+    while (integer >= 1) {
+        digit++;
+        integer = integer / 10;
     }
-    if (value < 1000) {
-      newValue[1] = '';
-      newValue[0] = value + '';
+    return digit;
+};
+
+export function changeUnit(number, decimalDigit) {
+    decimalDigit = decimalDigit == null ? 2 : decimalDigit;
+    var integer = Math.floor(number);
+    var digit = getDigit(integer);
+    var unit = [];
+    if (digit > 3) {
+        var multiple = Math.floor(digit / 8);
+        if (multiple >= 1) {
+            var tmp = Math.round(integer / Math.pow(10, 8 * multiple));
+            unit.push(addWan(tmp, number, 8 * multiple, decimalDigit));
+            for (var i = 0; i < multiple; i++) {
+                unit.push('亿');
+            }
+            return unit.join('');
+        } else {
+            return addWan(integer, number, 0, decimalDigit);
+        }
+    } else {
+        return number;
     }
-    return newValue.join('');
-  }
+}

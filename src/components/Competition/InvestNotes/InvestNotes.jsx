@@ -103,15 +103,11 @@ export default function InvestNotes({searchData}) {
     }
   };
 
-  useEffect(() => {
-    console.log(changeUnit(1120450000.02))
-  })
-
 
   return (
     <>
       <PageHeader searchData = {searchData} />
-      {/* <Countdown showModal={showModal} hideModal={hideModal}></Countdown> */}
+      <Countdown showModal={showModal} hideModal={hideModal}></Countdown>
       <div
         style={{
           paddingTop: height * 0.075,
