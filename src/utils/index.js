@@ -89,6 +89,7 @@ var getDigit = function (integer) {
     return digit;
 };
 
+// number数值 decimalDigit(保留小数位数)
 export function changeUnit(number, decimalDigit) {
     decimalDigit = decimalDigit == null ? 2 : decimalDigit;
     var integer = Math.floor(number);
