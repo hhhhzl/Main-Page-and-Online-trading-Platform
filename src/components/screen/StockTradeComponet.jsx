@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import 'components/TradingPlatform/eplatform.css';
 
 export default function StockTradeComponet({
-  vertify
+  vertify,
+  stockdata
 }){
   const [validated, setValidated] = useState(false);
   const [option,setoption] = useState("buy");
@@ -95,7 +96,7 @@ opacity: "1",
         color:"#2A2B30",
         lineHeight:"28px",
         letterSpacing:"2px",
-        }}>{"阿里巴巴"}</h2>
+        }}>{stockdata? stockdata.名称: null}</h2>
             
             
             </Col></Row>

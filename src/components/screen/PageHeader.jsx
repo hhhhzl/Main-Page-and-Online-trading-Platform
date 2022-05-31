@@ -40,6 +40,7 @@ import { NotificationsNoneOutlined } from "@material-ui/icons";
 import { MenuItemLinksRouter } from "components/MainPage/HeaderElements";
 import { IconButton } from "@material-ui/core";
 import { clearLocalStorage } from "utils";
+import { symbol } from "d3-shape";
 
 
 
@@ -104,7 +105,11 @@ export default function PageHeader({searchData, toggle}) {
     style:{background:"#E7ECFD"},
     onSelect: (row, isSelect, rowIndex, e) => {
       if (isSelect){
-          history.push("/eplatform/trade")
+          history.push({
+            pathname:"/eplatform/trade",
+            search:`?symbol=${row.代码}`,
+            state:{symbol:row.代码}
+          })
       }else{     
         
       }
@@ -330,12 +335,12 @@ export default function PageHeader({searchData, toggle}) {
                           height: "100%",
                           marginRight:"10px",
                           textAlign: "center",
-                          paddingTop: "20px",
+                          paddingTop: "10px",
                           fontSize: "14px",
                           fontFamily:
                             "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
-                          fontWeight: "400",
-                          color: "#2A2B30",
+                          fontWeight: elem.title == "财经洞悉"? "bold" : "400",
+                          color: elem.title == "财经洞悉"? "#1442ED" : "#2A2B30",
                           lineHeight: "24px",
                           borderRadius: "0",
                           borderLeftColor: "white",
@@ -364,7 +369,7 @@ export default function PageHeader({searchData, toggle}) {
           >
             <Form>
               <ToolkitProvider
-                keyField="id"
+                keyField="代码"
                 data={searchData}
                 columns={columns}
                 search

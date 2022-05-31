@@ -1,28 +1,10 @@
 import React, { useEffect,useState } from 'react';
 import axios from 'axios';
 import './KeyIndicator.css'
+import { fmoney } from 'utils';
 
-export default function KeyIndicators(){
-	const [data, setData] = useState('')
+export default function KeyIndicators({stockdata}){
 	const [extend, setExtend] = useState(true)
-	
-	useEffect(()=>{
-		if(extend){
-			getIndicator()
-		}
-	})
-	
-	const getIndicator= () => {
-	    return axios.get('http://82.157.18.223:10987/api/live/ticker?symbol=SH.000001')
-		.then(function (response) {
-	        console.log(response.data.data)
-			setData(response.data.data)
-			setExtend(false)
-	      })
-	      .catch(function (error) {
-	        console.log(error);
-	      });
-	}
 	
 	
 	return(
@@ -31,13 +13,53 @@ export default function KeyIndicators(){
 				<div className="indicator-simple-title">关键指标</div>
 				<div className="simple-line"></div>
 				<div className="indicator-simple">
-					{Object.keys(data).map((obj,idx)=>(
-						<div className="indicator-simple-div" key={idx}>
-							<div className="indicator-simple-key">{obj}</div>
-							<div className="indicator-simple-value"> {data[obj]}</div>
-						</div>
-					))
+
+					{!stockdata?
+					
+					/////TO DO
+					<div style={{width:"100%",marginTop:"30px",display:"flex",justifyContent:"center"}}>	
+					"loading...." 
+					</div>
+					:
+					<>
+				
+					<div className="indicator-simple-div">
+						<div className="indicator-simple-key">开盘</div>
+						<div className="indicator-simple-value"> {stockdata.今开}</div>
+					</div>
+					<div className="indicator-simple-div">
+						<div className="indicator-simple-key">昨收</div>
+						<div className="indicator-simple-value"> {stockdata.昨收}</div>
+					</div>
+					<div className="indicator-simple-div">
+						<div className="indicator-simple-key">最高</div>
+						<div className="indicator-simple-value"> {stockdata.最高}</div>
+					</div>
+					<div className="indicator-simple-div">
+						<div className="indicator-simple-key">最低</div>
+						<div className="indicator-simple-value"> {stockdata.最低}</div>
+					</div>
+					<div className="indicator-simple-div">
+						<div className="indicator-simple-key">成交额</div>
+						<div className="indicator-simple-value"> {stockdata.成交额}</div>
+					</div>
+					<div className="indicator-simple-div">
+						<div className="indicator-simple-key">成交均量（三月）</div>
+						<div className="indicator-simple-value"> {fmoney(stockdata["成交均量(3月)"])}</div>
+					</div>
+					<div className="indicator-simple-div">
+						<div className="indicator-simple-key">振幅</div>
+						<div className="indicator-simple-value"> {stockdata.振幅}</div>
+					</div>
+					<div className="indicator-simple-div">
+						<div className="indicator-simple-key">52周最高</div>
+						<div className="indicator-simple-value"> {stockdata["52周最高"]}</div>
+					</div>
+
+					</>
+					
 					}
+					
 				
 				</div>
 			</div>

@@ -8,9 +8,50 @@ import WatchList from "components/screen/WatchList";
 import PendingOrder from "components/screen/PendingOrder";
 import KeyIndicators from "components/screen/KeyIndicatorSimple";
 import { Button, Dropdown} from 'react-bootstrap'
+import { getLastStock, setLastStock } from "utils";
+import { apiLiveStockInfo } from "api/trading_platform/market";
+import { useLocation } from "react-router";
 
-export default ({searchData}) => {
+const defaultstock = "SH.600030"
+
+export default ({searchData,searchstock}) => {
     const { width, height } = useWindowDimensions();
+    const [stockLastView, setStockLastView] = useState(getLastStock()? getLastStock() : null)
+    const [stockdata,setstockdata] = useState(null)
+    const location = useLocation();
+
+        useEffect(()=>{
+            console.log(location.state,24)
+            if(location.state){      
+                getStock(location.state.symbol)
+            }else{
+                getdeflautStock() 
+            }                              
+        },[])
+
+    const getdeflautStock = async (props) => {
+        try{
+          const response = await apiLiveStockInfo(defaultstock)
+          let stockDataResponse = response.data.data
+          console.log(stockDataResponse, 32)
+          setstockdata(stockDataResponse)
+          setLastStock(stockDataResponse.代码)
+        }catch (err) {
+          console.log(err)
+        }
+      };
+
+      const getStock = async (symbol) => {
+        try{
+          const response = await apiLiveStockInfo(symbol)
+          let stockDataResponse = response.data.data
+          console.log(stockDataResponse, 32)
+          setstockdata(stockDataResponse)
+          setLastStock(stockDataResponse.代码)
+        }catch (err) {
+          console.log(err)
+        }
+      };
 
     return (
         <>
@@ -106,7 +147,7 @@ export default ({searchData}) => {
 								</Dropdown.Toggle>
 								<Dropdown.Menu style={{
 									  width:"360px", border:"0px"}}>
-									<StockTradeComponet vertify={false} />
+									<StockTradeComponet vertify={false} stockdata ={stockdata} />
 								</Dropdown.Menu>
 							  </Dropdown>
 							</div>
@@ -122,16 +163,16 @@ export default ({searchData}) => {
 
 					<div style={{display: "flex", justifyContent: "space-between" }}>
 					<div style={{ width:width >1200?"63.3%":"100%"}}>
-                        <StockPriceGraphSimplify widthratio={width > 1200? 1200 *0.633 : width -96} />
+                        <StockPriceGraphSimplify widthratio={width > 1200? 1200 *0.633 : width -96} stockdata ={stockdata} />
                         <div style={{ marginTop: "40px" }}>
-                            <KeyIndicators heightProp={0.23} />
+                            <KeyIndicators heightProp={0.23} stockdata={stockdata} />
                         </div>
                     </div>
 
 
 					{width > 1200? (
 						<div style={{ width: "30%" }}>
-						<StockTradeComponet />
+						<StockTradeComponet vertify={false} stockdata ={stockdata} />
 						<div style={{ marginTop: "24px" }}>
 							<WatchList heightratio={0.2} searchwidth={1200 * 0.3} />
 						</div>

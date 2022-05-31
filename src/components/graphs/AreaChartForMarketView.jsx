@@ -15,6 +15,7 @@ import {
 import { discontinuousTimeScaleProviderBuilder } from "react-stockcharts/lib/scale";
 import { SampleData } from "../../static/Stockdata";
 import useWindowDimensions from "../../utils/sizewindow";
+import CrossHairCursor from "react-stockcharts/lib/coordinates/CrossHairCursor";
 
 const canvasGradient = (upDown) => createVerticalLinearGradient([
   { stop: 0, color: hexToRGBA(upDown ? "#42E083" : "#FF3541", 0) },
@@ -92,8 +93,6 @@ class AreaChartForMarketView extends React.Component {
           fontWeight ={500}
           tickPadding = {width*0.0458}
           />
-          
-
           <AreaSeries
             yAccessor={(d) => d.close}
             fill="url(#MyGradient)"

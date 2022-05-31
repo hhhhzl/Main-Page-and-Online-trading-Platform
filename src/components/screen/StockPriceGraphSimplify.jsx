@@ -23,15 +23,19 @@ import {
 import { discontinuousTimeScaleProviderBuilder } from "react-stockcharts/lib/scale";
 import { SampleData } from "../../static/Stockdata";
 import { Link } from 'react-router-dom';
+import { fmoney } from 'utils';
 
 
-export default function StockPriceGraphSimplify({widthratio}) {
+export default function StockPriceGraphSimplify({
+  widthratio,
+  stockdata
+  }) {
   const {width,height} = useWindowDimensions();
   const [timeP,setTimeP] = useState(7);
   const [id,setID] = useState(0)
   const [vertify, setvertify] = useState(true);
   const [add,setAdd] = useState(false)
-  const [showAddselfselected, setshowAddselfselected] = useState(true)
+  const [showAddselfselected, setshowAddselfselected] = useState(false)
 
 
   const [hover1, setHover1] = useState(false);
@@ -125,7 +129,7 @@ export default function StockPriceGraphSimplify({widthratio}) {
             color: "#000000",
             lineHeight: "24px"}}
           >
-            已将<strong>阿里巴巴</strong>加入自选列表
+            已将<strong>{stockdata?.名称}</strong>加入自选列表
           </div></Modal.Header>
         </Modal>
       </div>
@@ -144,7 +148,7 @@ export default function StockPriceGraphSimplify({widthratio}) {
                       color:"#2A2B30",
                       lineHeight:"40px",
                       letterSpacing:"1px",
-                      }}>阿里巴巴</div>
+                      }}>{stockdata? stockdata.名称 : null}</div>
 
                   <div style={{
                       height:"56px",
@@ -157,7 +161,10 @@ export default function StockPriceGraphSimplify({widthratio}) {
                       color:"#2A2B30",
                       lineHeight:"56px",
                       letterSpacing:"1px",
-                      }}>￥1,986.32</div>
+                      }}>￥{stockdata? fmoney(stockdata?.最新价,2) 
+                        : 
+                      "LOADING..."
+                      }</div>
 
             <div style={{height:"28px",display:"flex",justifyContent:"left"}}>
                   <div style={{
@@ -165,9 +172,22 @@ export default function StockPriceGraphSimplify({widthratio}) {
                         fontFamily:"Microsoft YaHei UI-Bold",
                         fontWeight:"500",
                         padding:"0px",
-                        color:updown? "#42E083" : "#FF3541",
+                        color:stockdata?.最新价 - stockdata?.今开 < 0 ? "#42E083" : "#FF3541",
                         lineHeight:"28px",
-                        }}>+¥30608.26(+2.03%)</div>
+                        }}>{stockdata? <>
+
+                        {stockdata?.最新价 - stockdata?.今开 >0? 
+                        <>+￥{(stockdata?.最新价-stockdata?.今开).toFixed(2)}</> 
+                        : <>-￥{(stockdata?.最新价-stockdata?.今开).toFixed(2) *-1}</>} 
+                        (
+                        {stockdata?.最新价 - stockdata?.今开 >0? 
+                        <>+{(((stockdata?.最新价/stockdata?.今开) - 1)* 100).toFixed(2)}%</> 
+                        : <>-{(((stockdata?.最新价/stockdata?.今开) - 1)* 100).toFixed(2)}%</>}
+                        )
+                        
+                         </> : null}
+                         
+                        </div>
 
                   <div style={{
                           fontSize:"16px",

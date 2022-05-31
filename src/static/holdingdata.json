@@ -10,5 +10,36 @@
     {"id":1,"symbol":"XPEV","holdingshares":23,"price":25,"avgprice":30,"position":7},
     {"id":1,"symbol":"AMD","holdingshares":20,"price":120,"avgprice":80,"position":7},
     {"id":1,"symbol":"NIO","holdingshares":20,"price":10,"avgprice":65,"position":7},
-    {"id":1,"symbol":"XPEV","holdingshares":23,"price":25,"avgprice":30,"position":7}
+    {"id":1,"symbol":"XPEV","holdingshares":23,"price":25,"avgprice":30,"position":7},
+    
+		{
+			"代码": "SH.300278",
+			"名称": "华昌达",
+			"最新价": 5.68,
+			"涨跌幅": 20.08
+		},
+		{
+			"代码": "SH.301040",
+			"名称": "中环海陆",
+			"最新价": 29.16,
+			"涨跌幅": 20
+		},
+		{
+			"代码": "SH.300313",
+			"名称": "ST天山",
+			"最新价": 7.51,
+			"涨跌幅": 19.97
+		},
+		{
+			"代码": "SH.300159",
+			"名称": "ST新研",
+			"最新价": 2.18,
+			"涨跌幅": 19.78
+		},
+		{
+			"代码": "SH.300879",
+			"名称": "大叶股份",
+			"最新价": 24.28,
+			"涨跌幅": 15.89
+		}
 ]
