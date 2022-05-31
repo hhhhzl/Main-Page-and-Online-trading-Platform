@@ -31,6 +31,9 @@ export default function StockPriceGraphSimplify({widthratio}) {
   const [id,setID] = useState(0)
   const [vertify, setvertify] = useState(true);
   const [add,setAdd] = useState(false)
+  const [showAddselfselected, setshowAddselfselected] = useState(true)
+
+
   const [hover1, setHover1] = useState(false);
   const [hover2, setHover2] = useState(false);
   const handleMouseOver1 = () => setHover1(true);
@@ -40,6 +43,7 @@ export default function StockPriceGraphSimplify({widthratio}) {
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
+  const handleClose1 = () => setshowAddselfselected(false);
   const handleShow = () => setShow(true);
 
   
@@ -100,6 +104,29 @@ export default function StockPriceGraphSimplify({widthratio}) {
           <Modal.Body>
             <h5 className="text-center">您手机尺寸暂不支持专业版，请使用大尺寸设备</h5>
           </Modal.Body>
+        </Modal>
+      </div>
+
+
+      {/* {showAddselfselected? <div style={{postion:"fixed", top :"89px", left:"0px"}}>
+        <div style={{width:width>"360px"? "360px" :width, height:"48px"}}>
+
+        </div>
+        已将<strong>阿里巴巴</strong>加入自选</div> : null} */}
+        <div>
+        <Modal size="sm"
+      aria-labelledby="contained-modal-title-vcenter" 
+      show={showAddselfselected} onHide={handleClose1}>
+          <Modal.Header closeButton> 
+          <div style={{
+            fontSize: "14px",
+            fontfamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+            fontWeight: "400",
+            color: "#000000",
+            lineHeight: "24px"}}
+          >
+            已将<strong>阿里巴巴</strong>加入自选列表
+          </div></Modal.Header>
         </Modal>
       </div>
 
@@ -196,7 +223,10 @@ export default function StockPriceGraphSimplify({widthratio}) {
                               fontWeight:"bold",
                               padding:"5% 10% 10% 3%",
                               lineHeight:"24px"
-                              }}><Add className ="hover-fontcolor"/>加入自选</div>              
+                              }}
+                              onClick = {() => {setshowAddselfselected(true)
+                              }}
+                              ><Add className ="hover-fontcolor"/>加入自选</div>              
                           </Button>
                      </div>
                      

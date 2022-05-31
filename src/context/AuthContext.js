@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
       setuser(jwt_decode(data.access));
       console.log(user);
       localStorage.setItem("authTokens", JSON.stringify(data));
-      setPlatformType("eplatform")
+      setPlatformType("competition")
       history.push(`/eplatform`);
     } else {
       alert("Something Went Wrong!");

@@ -13,12 +13,7 @@ export default function TeamEntry(){
 	let { user, logoutUser } = useContext(AuthContext);
     const {width,height} = useWindowDimensions();
     const history= useHistory()
-
-    
-
     const [disable, setdisable] = useState(true)
-    
-
     const [hovercreate, setHovercreate] = useState(true);
     const [hoverjoin, setHoverjoin] = useState(false);
     const [createshow, setcreatshow] = useState(false);
@@ -64,7 +59,7 @@ export default function TeamEntry(){
       </div>
       
 
-         <div  style={{marginTop:height*0,width:"100%",display:"flex",justifyContent:"space-between", backgroundColor:"#F5F6F8"}}>
+         <div  style={{marginTop:height*0,width:"100%",height:height*0.89,minHeight:"876px",display:"flex",justifyContent:"space-between", backgroundColor:"#F5F6F8"}}>
 
         <div style={{width:"48px",maxWidth:"18.75%"}}></div>
         <div style={{width:"1200px",minWidth:"fix-content",minHeight: "700px",
@@ -81,7 +76,7 @@ export default function TeamEntry(){
                 </div>
                 <div style={{height:"700px",width:"100%", backgroundColor:"white",display:"flex",justifyContent:"left"}}>
 
-                        <Button style ={{
+                        <div style ={{
                             paddingTop:0,
                             width:"50%",
                             height:"100%",
@@ -92,7 +87,7 @@ export default function TeamEntry(){
                             >
 
 
-                            <div style={{marginTop:"140px",display:"flex",justifyContent:"center"}}>
+                            <div style={{marginTop:"248px",display:"flex",justifyContent:"center"}}>
                             <div style={{width:"72px", height:"72px"}}>
                                <Image src={"/homeCutout/Mask group.png"}  style={{position: "relative", width: "100%",height: "100%"}}/>
                             </div>
@@ -141,15 +136,8 @@ export default function TeamEntry(){
                             
 
                             </div>
-                            </Button>
-
-
-
-
-
-
-
-                            <Button style ={{
+                            </div>
+                            <div style ={{
                             paddingTop:0,
                             width:"50%",
                             height:"100%",
@@ -161,7 +149,7 @@ export default function TeamEntry(){
                             onMouseOver={() => handleMouseOverJ()}
                             
                             >
-                            <div style={{marginTop:"140px",display:"flex",justifyContent:"center"}}>
+                            <div style={{marginTop:"248px",display:"flex",justifyContent:"center"}}>
                             <div style={{width:"72px", height:"72px"}}>
                                <Image src={"/homeCutout/Mask group.png"} style={{position: "relative", width: "100%",height: "100%"}}/>
                             </div>
@@ -206,7 +194,7 @@ export default function TeamEntry(){
                             
 
                             </div>
-                            </Button>
+                            </div>
                         
                 
                 </div>

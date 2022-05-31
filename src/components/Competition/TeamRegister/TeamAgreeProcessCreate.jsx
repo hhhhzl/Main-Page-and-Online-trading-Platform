@@ -14,7 +14,11 @@ export default function TeamAgreeProcessCreate({toggle}){
     const [disable, setdisable] = useState(true)
     const history= useHistory()
     const [isOpen, setIsOpen] = useState(false)
+
 	const [headPortrait,setHeadPortrait] = useState('');
+    const [teamname, setteamname] = useState("")
+    const [lianghua,setlianghua] = useState(false)
+    const [duotou,setduotou] = useState(false)
     
 
     const Pageprocess = (headPortrait) => {
@@ -94,7 +98,16 @@ export default function TeamAgreeProcessCreate({toggle}){
 
       {page == 0 ? 
       <>
-      <TeamReister Pageprocess = {Pageprocess}/>
+      <TeamReister
+       Pageprocess = {Pageprocess}
+       teamname = {teamname}
+       setteamname = {setteamname}
+       lianghua = {lianghua}
+       duotou = {duotou}
+       setlianghua = {setlianghua}
+       setduotou = {setduotou}
+       
+       />
       
       </> :
 
@@ -152,7 +165,7 @@ export default function TeamAgreeProcessCreate({toggle}){
                                 fontWeight:"400",
                                 color:"#2A2B30",
                                 lineHeight:"24px",
-                            }}>对短时间的好看好看</div>
+                            }}>{teamname}</div>
                         </div>
 
                         <div style={{marginTop:"36px",display:"flex", justifyContent:"center"}}>
@@ -176,13 +189,16 @@ export default function TeamAgreeProcessCreate({toggle}){
                                 fontWeight:"400",
                                 color:"#2A2B30",
                                 lineHeight:"24px",
-                            }}>主观赛道</div>    
+                            }}>{
+                                lianghua? "量化" : "主观"
+                            }赛道
+                            </div>    
                         </div>
                         
 
                         <div style={{marginTop:"112px",display:"flex", justifyContent:"center"}}>
                             <div style={{display:"flex", justifyContent:"left"}}>         
-                                <Form.Check type ="radio" onChange={() => setdisable(false)}/> 
+                                <Form.Check type ="radio" checked ={!disable} onClick ={(e) => setdisable(!disable)}/> 
                             <div style={{
                                 fontSize:"14px",
                                 fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI;",

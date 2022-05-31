@@ -4,7 +4,7 @@ import "./countdown.css";
 import { now, end } from "../../../utils/countdownUtil";
 import { ArrowBack } from "@material-ui/icons";
 import { useHistory } from "react-router";
-import moment from "moment"
+import moment from "moment";
 
 export default function Countdown({ showModal, hideModal }) {
   

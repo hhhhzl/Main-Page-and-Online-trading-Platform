@@ -83,7 +83,6 @@ const [validated, setValidated] = useState(false);
       </div>
         </Col>
         <Col xs={3}>
-        <Nav.Item>
         <div style={{
         width:"88px",
         height:"24px",
@@ -99,7 +98,6 @@ const [validated, setValidated] = useState(false);
         }} to="/login">去登录
 
         </Link></div>
-            </Nav.Item>
         </Col>
       </Row>
         <br/>

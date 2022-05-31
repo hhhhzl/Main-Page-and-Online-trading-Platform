@@ -72,7 +72,7 @@ export default function RankingPang() {
 			},
 			formatter: (value, row) => {
 				return (
-					<div style={{ textAlign: "center", justifyContent: "center" }}>
+					<div style={{ textAlign: "center",display:"flex", justifyContent: "center"}}>
 						<LineSeriesPorfolioRanking width={100} timeperiod={90} />
 					</div>
 				);

@@ -9,14 +9,55 @@ import { useHistory } from 'react-router';
 
 import ReactCrop,{centerCrop,makeAspectCrop} from "react-image-crop";
 import TeamRegisterModel from '../../screen/modal/TeamRegisterModel'
+import Footer from 'components/MainPage/footer';
 
 
-export default function TeamRegister({Pageprocess}){
+export default function TeamRegister({
+    Pageprocess, 
+    teamname, 
+    setteamname, 
+    lianghua,
+    setlianghua,
+    duotou,
+    setduotou
+}){
     const {width,height} = useWindowDimensions();
     const [disable, setdisable] = useState(true)
 	const [headPortrait,setHeadPortrait] = useState('/Lindsay.jpg')
     const history= useHistory()
     const sendUserback = () => {history.push("/team/register")}
+
+
+    const selectionTracklianghua = (e) =>{
+        if (!lianghua){
+            setlianghua(true)
+            setduotou(false)
+            
+        }else{
+            setlianghua(false)
+        }
+    }
+
+    const selectionTrackduotou = (e) =>{
+        if (!duotou){
+            setlianghua(false)
+            setduotou(true)
+            
+        }else{
+            setduotou(false)
+        }
+    }
+
+    useEffect(()=>{
+        if (teamname.length > 0 &&  (lianghua || duotou) ){
+            setdisable(false)
+        }else if (teamname.length == 0){
+            setdisable(true)
+        }else{
+            setdisable(true)
+        }
+        console.log(disable,49)
+    },[lianghua,duotou,disable])
 	
 	const uploadFile = React.createRef();
 	const [showModal, setShowModal] = useState(false);
@@ -66,7 +107,7 @@ export default function TeamRegister({Pageprocess}){
             minWidth: "fix-content",
             height:height,
             }}>
-                <div style={{height:"111px", width:"100%"}}>
+                <div style={{marginTop:"64px",height:"111px", width:"100%"}}>
                     <div style={{paddingBottom:"24px",paddingTop:"48px", fontSize:"24px", fontFamily:"Microsoft YaHei U-Bold, Microsoft YaHei UI", fontWeight:"bold", color:"#2A2B30", lineHeight:"40px",letterSpacing:"1px"}}>
                      填写团队信息
                     </div>
@@ -109,7 +150,14 @@ export default function TeamRegister({Pageprocess}){
 									color:"rgb(42, 43, 48)"
 								}}
 								onClick={chooseFile} 
-							>上传图片</Button>
+							><div style={{
+                                fontSize:"14px",
+                                fontFamily:"Microsoft YaHei UI-Bold, Microsoft YaHei UI;",
+                                fontWeight:"bold",
+                                color:"#2A2B30",
+                                lineHeight:"24px",
+
+                            }}>上传头像</div></Button>
 							<input 
 								hidden
 								ref={uploadFile}
@@ -139,7 +187,11 @@ export default function TeamRegister({Pageprocess}){
 
                     <div style={{marginTop:"12px",display:"flex", justifyContent:"center"}}>
                         <Form>
-                            <Form.Control placeholder={"请填写团队名称"} style={{width:"360px", height:"40px",textAlign:"center", paddingTop:"8px",border:"1px solid #C0C3CE", background:"white", borderRadius:"4px 4px 4px 4px"}} />
+                            <Form.Control placeholder={"请填写团队名称"} 
+                            style={{width:"360px", height:"40px",textAlign:"center", paddingTop:"8px",border:"1px solid #C0C3CE", background:"white", borderRadius:"4px 4px 4px 4px"}} 
+                            value={teamname}
+                            onChange={(e) => setteamname(e.target.value)}
+                            />
                         </Form>
                     </div>
 
@@ -161,12 +213,12 @@ export default function TeamRegister({Pageprocess}){
 
                         <div style={{display:"flex", justifyContent:"space-even"}}>
                         <Form>
-                            <Form.Check type="radio"/>
+                            <Form.Check type="radio" checked={lianghua} value={lianghua} onClick ={(e) => selectionTracklianghua(e)}/>
                         </Form>
                         <div style={{marginLeft:"8px", marginRight:"24px"}}>量化赛道</div>
 
                         <Form>
-                            <Form.Check type="radio"/>
+                            <Form.Check type="radio"  checked={duotou} value={duotou} onClick ={(e) => selectionTrackduotou(e)}/>
                         </Form>
                         <div style={{marginLeft:"8px", marginRight:"24px"}}>主观多头赛道</div>
 
@@ -176,7 +228,8 @@ export default function TeamRegister({Pageprocess}){
 
                     <div style={{marginTop:"60px",display:"flex", justifyContent:"center"}}>
 
-                        <Button disabled={false} style ={{width:"288px",height:"48px", backgroundColor:disable? "#F5F6F8" : "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)", 
+                        <Button disabled={disable} 
+                        style ={{width:"288px",height:"48px", background:disable? "#F5F6F8" : "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)", 
                         border:"1px solid #F5F6F8", borderRadius:"4px 4px 4px 4px",
                         boxShadow:disable? null : "0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08)",
                         }}
@@ -200,10 +253,14 @@ export default function TeamRegister({Pageprocess}){
                             </Button>
                         
                     </div>
+                    
                 </div>
         </div>
         <div style={{width:"48px",maxWidth:"18.75%"}}></div>
+
         </div>
+
+        
 
 
 
