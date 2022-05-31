@@ -249,7 +249,7 @@ const HeaderCreate = ({ toggle }) => {
                 </MenuItemLinks>
                 <MenuItemLinks
                   to="team"
-                  offset={-50}
+                  offset={20}
                   spy={true}
                   smooth={true}
                   duration={700}
@@ -379,7 +379,9 @@ const HeaderCreate = ({ toggle }) => {
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
                 offset={-20}
-                onClick={() => changeCurrent(4)}
+                onClick={() => {changeCurrent(4);
+                  setPlatformType("competition")
+                }}
                 activeClass={
                   scrolledDownEnough ? "active-block-scroll" : "active-block"
                 }

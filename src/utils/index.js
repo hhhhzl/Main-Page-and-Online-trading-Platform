@@ -21,14 +21,13 @@ export function clearLocalStorage() {
     localStorage.removeItem("platformType");
 }
 
-
-export function setLastStock(stock) {
-    localStorage.setItem("laststock", stock);
+export function setLastStock(stock){
+    localStorage.setItem("stockLastView",stock);
 }
 
 export function getLastStock() {
-    const platformType = localStorage.getItem('lastock');
-    return platformType;
+    const stockLastView = localStorage.getItem('stockLastView');
+    return stockLastView;
 }
 
 export function getFileName(name) {
