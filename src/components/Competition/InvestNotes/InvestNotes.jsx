@@ -7,7 +7,7 @@ import CommitRecord from "./CommitRecord";
 import "./InvestNotes.css";
 import Countdown from "../../screen/modal/countdown";
 import { timeDifference } from "../../../utils/countdownUtil";
-import {getFileName} from "../../../utils/index"
+import {getFileName,changeUnit} from "../../../utils/index"
 
 export default function InvestNotes({searchData}) {
   const { width, height } = useWindowDimensions();
@@ -98,17 +98,20 @@ export default function InvestNotes({searchData}) {
   };
 
   const hideModal = (leftTime) => {
-    console.log(leftTime);
     if (leftTime <= 0) {
       setShowModal(false);
     }
   };
 
+  useEffect(() => {
+    console.log(changeUnit(1120450000.02))
+  })
+
 
   return (
     <>
       <PageHeader searchData = {searchData} />
-      <Countdown showModal={showModal} hideModal={hideModal}></Countdown>
+      {/* <Countdown showModal={showModal} hideModal={hideModal}></Countdown> */}
       <div
         style={{
           paddingTop: height * 0.075,

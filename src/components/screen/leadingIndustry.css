@@ -17,8 +17,8 @@
   /* margin-top: 24px; */
   display: flex;
   flex-wrap: wrap;
-  margin: 0px 48px 0px 33px;
-  justify-content: space-between;
+  margin: 0px 48px 0px 48px;
+  justify-content: flex-start;
 }
 
 @media screen and (max-width: 850px) {
