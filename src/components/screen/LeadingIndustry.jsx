@@ -64,7 +64,7 @@ export default function LeadingIndustry({handleShowDetails,indusAll,setIndusAll}
   };
   
   return (
-    <div className="leading-industry">
+    <div className="leading-industry" style={{paddingBottom:"24px"}}>
       <div className="leading-industry-title">
         <div className="leading-industry-text">领涨行业</div>
         <div className="order-flex">
