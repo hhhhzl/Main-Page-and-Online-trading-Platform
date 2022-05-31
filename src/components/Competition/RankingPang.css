@@ -39,6 +39,10 @@
 	vertical-align: middle;
 }
 
+.ranking-pang-table>.react-bootstrap-table>.table>thead>tr>th:hover {
+	background: #ececec;
+}
+
 .ranking-pang-table>.react-bootstrap-table>.table>:not(:last-child)>:last-child>* {
 	border-bottom-color: aliceblue;
 }

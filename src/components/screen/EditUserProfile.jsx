@@ -14,7 +14,7 @@ export default function EditData({platformType}){
 	])
 	const [successSendtoC, setsuccessSendtoC] = useState(false)
 	const history= useHistory()
-	
+
 	const addExperience=()=>{
 		let obj ={company:"密歇根大学",experience:"实习经历实习经历实习经历实习经历实习经历实习"};
 		experienceList.push(obj);
@@ -26,25 +26,25 @@ export default function EditData({platformType}){
 	  console.log(experienceList);
 	  setExperienceList([...experienceList]);
 	};
-	
+
 	const uploadFile = React.createRef();
 	const [showModal, setShowModal] = useState(false);
 	const [imgSrc, setImgSrc] = useState('')
 	const [headPortrait,setHeadPortrait] = useState('/Lindsay.jpg')
-	
+
 	const hideModal = () => {
 	  setShowModal(false);
 	  setImgSrc('');
 	};
-	
+
 	const openModel = ()=>{
 		setShowModal(true)
 	}
-	
+
 	const chooseFile = () => {
 	  uploadFile.current.click();
 	};
-	
+
 	function onSelectFile(e: React.ChangeEvent<HTMLInputElement>) {
 	  if (e.target.files && e.target.files.length > 0) {
 	    const reader = new FileReader()
@@ -60,12 +60,12 @@ export default function EditData({platformType}){
 		setShowModal(false)
 		setHeadPortrait(url);
 	}
-	
-	
+
+
 	return(
 		<>
 		<Modal
-        show={successSendtoC} 
+        show={successSendtoC}
         >
           <Modal.Header></Modal.Header>
           <Modal.Body style={{textAlign:"center"}}><div style={{fontSize: "14px",
@@ -79,13 +79,13 @@ export default function EditData({platformType}){
             确定
           </Button>
         </div>
-         
+
           </Modal.Footer>
         </Modal>
-		
+
 		<TeamRegisterModel showModal={showModal} hideModal={hideModal} getBase64={getBase64} imgSrc={imgSrc}></TeamRegisterModel>
-		
-		
+
+
 		<div style={{backgroundColor: "#F5F6F8",display:"flex",justifyContent:"space-between"}}>
 			<div style={{width:"48px",maxWidth:"18.75%"}}></div>
 			<div  style={{
@@ -106,15 +106,15 @@ export default function EditData({platformType}){
 							<Image src={headPortrait} roundedCircle style={{position: "relative", width: "160px",height: "160px"}}/>
 						</div>
 						<div>
-							<Button 
-								onClick={chooseFile} 
+							<Button
+								onClick={chooseFile}
 								style={{width:"120px",height:"40px",backgroundColor: "#F5F6F8",border:0,color:"black"}}
 							>修改头像</Button>
 							<input
 								hidden
 								ref={uploadFile}
-								type="file" 
-								accept="image/*" 
+								type="file"
+								accept="image/*"
 								onChange={onSelectFile} />
 						</div>
 					</div>
@@ -186,10 +186,10 @@ export default function EditData({platformType}){
 										}}
 									  />
 									</FormGroup>
-									
+
 									<FormGroup style={{width: "44%",marginLeft:"4%"}}>
 									  <FormLabel className="edit-form-label">实习职位</FormLabel>
-									  <div style={{display:"flex"}}>
+									  <div style={{display:"flex",alignItems: "center"}}>
 										  <FormControl
 											type="text"
 											value={experienceList[idx].experience}
@@ -201,23 +201,32 @@ export default function EditData({platformType}){
 											  setUserState({...userState, ...{ setExperienceList }});
 											}}
 										  />
-										  <Button 
-											variant="danger"
-											disabled ={experienceList.length==1}
-											onClick={() => handleDelete(idx)}
-											style={{marginLeft:"12px"}}>删除</Button>
+										  {/*<Button */}
+											{/*variant="danger"*/}
+											{/*disabled ={experienceList.length==1}*/}
+											{/*onClick={() => handleDelete(idx)}*/}
+											{/*style={{marginLeft:"12px"}}>删除</Button>*/}
+										  <Image
+											  show={experienceList.length!=1}
+
+											  onClick={() => handleDelete(idx)}
+											  src="/Frame-delete.png"
+											  style={{
+											  	width: "22px", height: "22px",display:experienceList.length == 1?"none":'block'
+											  }}
+										  />
 									  </div>
-									  
+
 									</FormGroup>
-									
-									
-									
-									
+
+
+
+
 								</div>
 							))
 						}
 						<FormGroup style={{marginTop:"36px"}}>
-							<Button 
+							<Button
 								onClick={addExperience}
 								style={{width:"26.668%",height:"48px",backgroundColor: "#F5F6F8",border:0,color:"black"}}>
 								<Image
@@ -235,11 +244,11 @@ export default function EditData({platformType}){
 							 </Button>
 						</div>
 					</div>
-						  
+
 				</div>
 			</div>
 			<div style={{width:"48px",maxWidth:"18.75%"}}></div>
-			
+
 		</div>
 		</>
 	)

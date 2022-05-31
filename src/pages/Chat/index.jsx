@@ -15,8 +15,8 @@ export default ({searchData}) => {
         {
             platformType == null ? <HeaderCreate/> : <PageHeader searchData = {searchData} />
         }
-            <div style={{width:"100%",height:"100%",display:"flex",justifyContent:"center"}}>
-                <div style={{marginTop:platformType == null? "112px" :"48px",width:"1200px"}} >
+            <div style={{width:"100%",height:"100%"}}>
+                <div style={{marginTop:platformType == null? "112px" :"48px",marginLeft:width > 1500 ? "18.75%" : "5%",marginRight:width > 1500 ? "18.75%" : "5%"}} >
                    <Notice/>
                 </div>
             </div>
