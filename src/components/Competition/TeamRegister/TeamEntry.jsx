@@ -14,10 +14,10 @@ export default function TeamEntry(){
     const {width,height} = useWindowDimensions();
     const history= useHistory()
 
-    
+
 
     const [disable, setdisable] = useState(true)
-    
+
 
     const [hovercreate, setHovercreate] = useState(true);
     const [hoverjoin, setHoverjoin] = useState(false);
@@ -62,7 +62,7 @@ export default function TeamEntry(){
         <HeaderCreate toggle = {toggle} />
       {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>) : null}
       </div>
-      
+
 
          <div  style={{marginTop:height*0,width:"100%",display:"flex",justifyContent:"space-between", backgroundColor:"#F5F6F8"}}>
 
@@ -72,7 +72,7 @@ export default function TeamEntry(){
             height:height,
             }}>
                 <div style={{marginTop:"64px",height:"111px", width:"100%"}}>
-                
+
                     <div style={{paddingBottom:"24px",paddingTop:"48px", fontSize:"24px", fontFamily:"Microsoft YaHei U-Bold, Microsoft YaHei UI", fontWeight:"bold", color:"#2A2B30", lineHeight:"40px",letterSpacing:"1px"}}>
                     <IconButton onClick={() => sendUserhome()} >
                             <ArrowBack/>
@@ -85,7 +85,7 @@ export default function TeamEntry(){
                             paddingTop:0,
                             width:"50%",
                             height:"100%",
-                            background: hovercreate? "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)" :"white", 
+                            background: hovercreate? "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)" :"white",
                             border:"1px solid #F5F6F8", borderRadius:"4px 4px 4px 4px",
                             }}
                             onMouseOver={() => handleMouseOverC()}
@@ -94,11 +94,11 @@ export default function TeamEntry(){
 
                             <div style={{marginTop:"140px",display:"flex",justifyContent:"center"}}>
                             <div style={{width:"72px", height:"72px"}}>
-                               <Image src={"/homeCutout/Mask group.png"}  style={{position: "relative", width: "100%",height: "100%"}}/>
+                               <Image src={"/homeCutout/Group 1073@2x.png"}  style={{position: "relative", width: "100%",height: "100%"}}/>
                             </div>
 
-                            
-                            
+
+
 
                             </div>
 
@@ -106,15 +106,15 @@ export default function TeamEntry(){
                             <div style={{fontSize:"20px", fontFamily:"Microsoft YaHei U-Bold, Microsoft YaHei UI", fontWeight:"bold", color:hovercreate? "#FFFFFF" : "#2A2B30", lineHeight:"36px",letterSpacing:"1px"}}>
                              创建团队（我是队长）
                             </div>
-                            
-                            
+
+
 
                             </div>
 
                             <div style={{marginTop:"152px",display:"flex",justifyContent:"center"}}>
 
                             {createshow? <>
-                                <Button style ={{width:"288px",height:"48px", backgroundColor: "#F5F6F8", 
+                                <Button style ={{width:"288px",height:"48px", backgroundColor: "#F5F6F8",
                         border:"1px solid #F5F6F8", borderRadius:"4px 4px 4px 4px",
                         boxShadow:disable? null : "0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08)",
                         }}
@@ -129,16 +129,16 @@ export default function TeamEntry(){
                                 lineHeight:"24px",
                                 paddingRight:"95px"
                                 }}>
-                            下一步 
+                            下一步
                             </div>
                             <ArrowForward style={{ color: "#2A2B30"}}/>
 
-                            </div>                        
+                            </div>
                             </Button>
 
                             </> : null}
-                            
-                            
+
+
 
                             </div>
                             </Button>
@@ -153,17 +153,17 @@ export default function TeamEntry(){
                             paddingTop:0,
                             width:"50%",
                             height:"100%",
-                            background: hoverjoin? "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)" :"white", 
+                            background: hoverjoin? "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)" :"white",
                             border:"1px solid #F5F6F8", borderRadius:"4px 4px 4px 4px",
-                          
+
 
                              }}
                             onMouseOver={() => handleMouseOverJ()}
-                            
+
                             >
                             <div style={{marginTop:"140px",display:"flex",justifyContent:"center"}}>
                             <div style={{width:"72px", height:"72px"}}>
-                               <Image src={"/homeCutout/Mask group.png"} style={{position: "relative", width: "100%",height: "100%"}}/>
+                               <Image src={"/homeCutout/Group 1074@2x.png"} style={{position: "relative", width: "100%",height: "100%"}}/>
                             </div>
                             </div>
 
@@ -171,15 +171,15 @@ export default function TeamEntry(){
                             <div style={{fontSize:"20px", fontFamily:"Microsoft YaHei U-Bold, Microsoft YaHei UI", fontWeight:"bold", color:hoverjoin? "#FFFFFF" : "#2A2B30", lineHeight:"36px",letterSpacing:"1px"}}>
                              加入团队
                             </div>
-                            
-                            
+
+
 
                             </div>
 
                             <div style={{marginTop:"152px",display:"flex",justifyContent:"center"}}>
 
                                 {joinshow? <>
-                                    <Button style ={{width:"288px",height:"48px", backgroundColor: "#F5F6F8", 
+                                    <Button style ={{width:"288px",height:"48px", backgroundColor: "#F5F6F8",
                         border:"1px solid #F5F6F8", borderRadius:"4px 4px 4px 4px",
                         boxShadow:disable? null : "0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08)",
                         }}
@@ -194,21 +194,21 @@ export default function TeamEntry(){
                                 lineHeight:"24px",
                                 paddingRight:"95px"
                                 }}>
-                            下一步 
+                            下一步
                             </div>
                             <ArrowForward style={{ color: "#2A2B30"}}/>
 
-                            </div>                        
+                            </div>
                             </Button>
 
                                 </> : null}
-                           
-                            
+
+
 
                             </div>
                             </Button>
-                        
-                
+
+
                 </div>
         </div>
         <div style={{width:"48px",maxWidth:"18.75%"}}></div>
@@ -218,10 +218,10 @@ export default function TeamEntry(){
         <Footer />
         </div>
 
-        
+
 
         </>
-        
+
 
     )
 }
