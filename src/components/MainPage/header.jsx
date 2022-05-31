@@ -232,6 +232,7 @@ const HeaderCreate = ({ toggle }) => {
                 style={{
                   display:
                     showUFA && current == 1 && url == "/" ? "flex" : "none",
+                    width:"107px"
                 }}
                 // onMouseEnter={handleMouseLeave}
                 onMouseLeave={handleCloseUFA}
@@ -386,11 +387,12 @@ const HeaderCreate = ({ toggle }) => {
                 spy={true}
                 smooth={true}
                 duration={700}
-                onMouseEnter={handleShowTransaction}
+                // onMouseEnter={handleShowTransaction}
+                to="/eplatform"
               >
-                交易平台
+                赛事账户
               </HeaderBtnLink>
-              <div
+              {/* <div
                 className="header-menu"
                 style={{ display: showTransaction ? "flex" : "none" }}
                 // onMouseEnter={handleMouseLeave}
@@ -403,8 +405,8 @@ const HeaderCreate = ({ toggle }) => {
                 >
                   赛事账户
                 </MenuItemLinksRouter>
-                {/* <MenuItemLinksRouter to='/eplatform' className="menu-item">个人账户</MenuItemLinksRouter> */}
-              </div>
+                <MenuItemLinksRouter to='/eplatform' className="menu-item">个人账户</MenuItemLinksRouter>
+              </div> */}
             </HeaderItem>
           </HeaderMenu>
 

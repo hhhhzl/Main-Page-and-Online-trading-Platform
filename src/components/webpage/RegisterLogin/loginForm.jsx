@@ -79,7 +79,7 @@ export default function LoginForm({ setToken }) {
 
         </Col>
           <Col xs={6} style={{ marginLeft: "0px", width: "110px", marginTop: "35px" }}>
-            <Nav.Item>
+      
               <Link style={{
                 height: "28px",
                 fontSize: "14px",
@@ -89,7 +89,7 @@ export default function LoginForm({ setToken }) {
                 lineHeight: "28px",
                 letterSpacing: "1px",
               }} to="/Vlogin">验证码登录</Link>
-            </Nav.Item>
+    
           </Col></Row>
         <Row>
           <Col xs={3}>
@@ -106,7 +106,7 @@ export default function LoginForm({ setToken }) {
             </div>
           </Col>
           <Col xs={3}>
-            <Nav.Item>
+  
               <div style={{
                 width: "88px",
                 height: "24px",
@@ -123,7 +123,6 @@ export default function LoginForm({ setToken }) {
                 }} to="/register">去注册
 
                 </Link></div>
-            </Nav.Item>
           </Col>
         </Row>
         <br />

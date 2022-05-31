@@ -18,9 +18,9 @@ import useWindowDimensions from "../../utils/sizewindow";
 import HoverTooltip from "react-stockcharts/lib/tooltip/HoverTooltip";
 
 const canvasGradient = createVerticalLinearGradient([
-    { stop: 0, color: hexToRGBA("#b5d0ff", 0.2) },
-	{ stop: 0.7, color: hexToRGBA("#6fa4fc", 0.4) },
-	{ stop: 1, color: hexToRGBA("#4286f4", 0.8) },
+    { stop: 0, color: hexToRGBA("#b5d0ff", 0) },
+	{ stop: 0.7, color: hexToRGBA("#6fa4fc", 0.07) },
+	{ stop: 1, color: hexToRGBA("#4286f4", 0.16) },
 ]);
 
 
@@ -57,8 +57,8 @@ class LineSeriesPorfolioranking extends React.Component {
         ratio={1}
         width={width}
         height={width * 0.381}
-        margin={{ left: 0, right: 0, top: 0, bottom:0}}
-        type={"svg"}
+        margin={{ left: width* 0.03, right: 0, top: 0, bottom:0}}
+        type={"canvas"}
         data={data}
         xScale={xScale}
         xAccessor={xAccessor}
@@ -95,7 +95,7 @@ class LineSeriesPorfolioranking extends React.Component {
 
 
 LineSeriesPorfolioranking.defaultProps = {
-  type: "svg"
+  type: "canvas"
 };
 
 const LineSeriesPorfolioRanking = fitWidth(LineSeriesPorfolioranking);

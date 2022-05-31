@@ -93,7 +93,7 @@ export default function TeamAgreeProcessJoin(){
         centered
         >
           <Modal.Header></Modal.Header>
-          <Modal.Body style={{textAlign:"center"}}>请求已发送至队长，请耐心等待通过，首页点击团队信息查看进入团队状态 </Modal.Body>
+          <Modal.Body style={{textAlign:"center"}}>请求已发送至队长，请耐心等待通过，首页点击团队信息查看加入团队状态 </Modal.Body>
         <Modal.Footer style={{marginLeft:0}} >
             <div style={{width:"100%",display:"flex",justifyContent:"center"}}>
             <Button className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUserhome()}>
@@ -263,7 +263,7 @@ export default function TeamAgreeProcessJoin(){
 
                         <div style={{marginTop:"52px",display:"flex", justifyContent:"center"}}>
                             <div style={{display:"flex", justifyContent:"left"}}>         
-                                <Form.Check type ="radio" onChange={() => setdisable(false)}/> 
+                                <Form.Check type ="radio" checked ={!disable} onClick ={(e) => setdisable(!disable)}/> 
                             <div style={{
                                 fontSize:"14px",
                                 fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI;",
