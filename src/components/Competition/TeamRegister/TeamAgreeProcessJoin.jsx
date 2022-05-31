@@ -17,7 +17,7 @@ export default function TeamAgreeProcessJoin(){
     const toggle = () => {
         setIsOpen(!isOpen);
       };
-
+    
     const history= useHistory()
 
     const Pageprocess = () => {if (page!= 6){setpage(page + 1)}   }
@@ -88,26 +88,26 @@ export default function TeamAgreeProcessJoin(){
       {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>) : null}
       </div>
 
-       <Modal
-        show={successSendtoC}
+       <Modal 
+        show={successSendtoC} 
         centered
         >
           <Modal.Header></Modal.Header>
-          <Modal.Body style={{textAlign:"center"}}>请求已发送至队长，请耐心等待通过，首页点击团队信息查看进入团队状态 </Modal.Body>
+          <Modal.Body style={{textAlign:"center"}}>请求已发送至队长，请耐心等待通过，首页点击团队信息查看加入团队状态 </Modal.Body>
         <Modal.Footer style={{marginLeft:0}} >
             <div style={{width:"100%",display:"flex",justifyContent:"center"}}>
             <Button className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUserhome()}>
             回主页
           </Button>
         </div>
-
+         
           </Modal.Footer>
         </Modal>
 
 
-      {page == 0 ?
+      {page == 0 ? 
       <>
-      <TeamSearch Pageprocess = {Pageprocess}/>
+      <TeamSearch Pageprocess = {Pageprocess}/> 
       </> :
 
             <div  style={{marginTop:height*0,width:"100%",display:"flex",justifyContent:"space-between", backgroundColor:"#F5F6F8"}}>
@@ -135,11 +135,11 @@ export default function TeamAgreeProcessJoin(){
 
                             <div style={{display:"flex", justifyContent:"center"}}>
                             <div style={{width:"160px", height:"160px"}}>
-                            <Image src="/homeCutout/Group 1073@2x.png" roundedCircle style={{position: "relative", width: "100%",height: "100%"}}/>
+                            <Image src="/homeCutout/Mask group.png" roundedCircle style={{position: "relative", width: "100%",height: "100%"}}/>
                             </div>
 
-
-
+                            
+                        
                         </div>
 
                         <div style={{marginTop:"36px",display:"flex", justifyContent:"center"}}>
@@ -168,7 +168,7 @@ export default function TeamAgreeProcessJoin(){
                             </div>
                         </div>
 
-
+                        
 
                         <div style={{marginTop:"12px",display:"flex", justifyContent:"center"}}>
                             <div style={{width:"250px",display:"flex", justifyContent:"left"}}>
@@ -190,7 +190,7 @@ export default function TeamAgreeProcessJoin(){
                                 fontWeight:"400",
                                 color:"#2A2B30",
                                 lineHeight:"24px",
-                            }}>主观赛道</div>
+                            }}>主观赛道</div>   
                             </div>
                         </div>
 
@@ -218,7 +218,7 @@ export default function TeamAgreeProcessJoin(){
                                         return (
                                     <div style ={{width:"63px",marginRight:"24px",textAlign:"center",}}>
                                     <Image
-                                    src="/homeCutout/Group 1074@2x.png"
+                                    src="/homeCutout/Mask group.png"
                                     roundedCircle
                                     style={{
                                     position: "relative",
@@ -257,37 +257,37 @@ export default function TeamAgreeProcessJoin(){
 
                                     </div>
 
-
+                            
                         </div>
-
+                        
 
                         <div style={{marginTop:"52px",display:"flex", justifyContent:"center"}}>
-                            <div style={{display:"flex", justifyContent:"left"}}>
-                                <Form.Check type ="radio" onChange={() => setdisable(false)}/>
+                            <div style={{display:"flex", justifyContent:"left"}}>         
+                                <Form.Check type ="radio" checked ={!disable} onClick ={(e) => setdisable(!disable)}/> 
                             <div style={{
                                 fontSize:"14px",
                                 fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI;",
                                 fontWeight:"400",
                                 color:"#6E7184",
                                 lineHeight:"24px",
-                            }}>
+                            }}> 
                                 我已同意...隐私政策和服务条款
                             </div>
 
                             </div>
-
-
+                            
+                            
                         </div>
 
 
                         <div style={{marginTop:"12px",display:"flex", justifyContent:"center"}}>
 
-                        <Button disabled={disable} style ={{width:"288px",height:"48px",
+                        <Button disabled={disable} style ={{width:"288px",height:"48px", 
                             border:"1px solid #F5F6F8", borderRadius:"4px 4px 4px 4px",
                             boxShadow:disable? null : "0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08)",
                             textAlign:"center",
-                            backgroundColor:"linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)"
-                            }}
+                            backgroundColor:"linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)" 
+                            }} 
                             onClick={() => setsuccessSendtoC(true)}
                             >
                                 <div style={{
@@ -299,23 +299,23 @@ export default function TeamAgreeProcessJoin(){
                                     }}>
                                 确认参赛
                                 </div>
-
-
+                    
+                                
                                 </Button>
-
-
-
+                        
+                            
+                            
                         </div>
 
 
 
 
 
+                    
 
-
-
-
-
+                        
+                        
+                        
                         </> : <>
 
                             <div style={{marginTop:"135px",display:"flex", justifyContent:"center"}}>
@@ -324,23 +324,23 @@ export default function TeamAgreeProcessJoin(){
                             {process[page].pagename}
                             </div>
                             <div style={{marginTop:"16px",fontSize:"18px", fontFamily:"Microsoft YaHei U-Regular, Microsoft YaHei UI", fontWeight:"400", color:"#2A2B30", lineHeight:"32px"}}>
-                                {page != 4? (<>{process[page-1].pagetext}</>) :
+                                {page != 4? (<>{process[page-1].pagetext}</>) : 
                                 <>
                                 赛事期间，UFA将定期抛出热点财经新闻话题，并邀请大学生基于新闻话题撰写独立分析。
                                 <br/>“财经洞悉”将每两周举行一次，共计六次。 奖励：每次财经洞悉提交截止后，UFA组委会将对50份优秀分析通过邮件形式发放奖状，并对数个优秀学生进行独家采访。
                                 <br/>“财经洞悉”作为投资比赛的附属活动，此板块不影响比赛分数。
                                 </>
                                 }
-
+                            
                             </div>
 
-                            </div>
+                            </div>  
 
                         </div>
 
                         <div style={{marginTop:page == 4? "150px" : "280px" ,display:"flex", justifyContent:"center"}}>
 
-                            <Button style ={{width:"288px",height:"48px", backgroundColor:"linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)",
+                            <Button style ={{width:"288px",height:"48px", backgroundColor:"linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)", 
                             border:"1px solid #F5F6F8", borderRadius:"4px 4px 4px 4px",
                             boxShadow:"0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08)",
                             }}
@@ -360,34 +360,34 @@ export default function TeamAgreeProcessJoin(){
                                 <ArrowForward style={{ color:"white"}}/>
 
                                 </div>
-
+                                
                                 </Button>
 
-                            </div>
-
-
-
-
+                            </div> 
+                        
+                        
+                        
+                        
                         </>}
 
+                                
 
-
-
+                    
                         </div>
 
-
+                    
             </div>
             <div style={{width:"48px",maxWidth:"18.75%"}}></div>
             </div>
-
-
-
+      
+      
+      
       }
 
-
+         
 
         </>
-
+        
 
     )
 }
