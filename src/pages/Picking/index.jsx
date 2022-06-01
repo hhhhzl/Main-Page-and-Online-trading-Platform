@@ -2,24 +2,51 @@ import React, { useState, useEffect, useRef } from "react";
 import useWindowDimensions from "components/../utils/sizewindow";
 import PageHeader from "components/screen/PageHeader";
 import StockSelectionDevice from "components/screen/StockSelectionDevice";
-import MarketQuotation from "components/screen/MarketQuotation";
+import MarketQuotationList from "components/screen/StockSelectionDeviceList";
+import { apiLiveStockInfo } from "api/trading_platform/market";
+import axios from "axios";
 
 export default ({searchData}) => {
     const { width, height } = useWindowDimensions();
-    // const [porforliowidth, setporforliowidth] = useState(1200);
-    // const [porforlioheight, setporforlioheight] = useState(800);
+    const [allstocksdata,setallstocksdata] = useState(null)
+    const [count, setcount] = useState(null)
 
-    // const getListSize = () => {
-    //     const newWidth = listRef.current.clientWidth;
-    //     setporforliowidth(newWidth);
+    useEffect(()=>{
+        if(searchData){
+            let list = []
+            searchData.forEach((elem) =>{
+                list.push(elem.代码)
+            })
+            // getallstocksData(list)
+        }
+    },[])
 
-    //     const newHeight = listRef.current.clientHeight;
-    //     setporforlioheight(newHeight);
-    //   };
+    const getallstocksData = (list) =>{
+		try{
+            // console.log(searchData,22)
+            let searchdata = ["SH.600030","SH.603025"]
+            let stockDataResponse = []
+            axios.all(list.map((elem) => apiLiveStockInfo(elem).data)).then(
+                axios.spread((...allData)=>{
+                    console.log({allData},27)
+                })
+            )
+            
+            //     // console.log(elem.代码)
+            //     const response = await apiLiveStockInfo("SH.600030")
+			//     let Response = response.data.data
+			//     console.log(Response, 27)
+            //     stockDataResponse.push(Response)
 
-    //   useEffect(() => {
-    //     window.addEventListener("resize", getListSiz e);
-    //   }, []);
+            // setcount(stockDataResponse?.length)
+			// setallstocksdata(stockDataResponse)
+            // console.log(allstocksdata)
+			
+		}catch (err) {
+			console.log(err)
+		}
+	}
+
 
     return (
         <>
@@ -35,7 +62,7 @@ export default ({searchData}) => {
             >
                 <StockSelectionDevice />
                 <div style={{width:"75%"}}>
-                    <MarketQuotation />
+                    <MarketQuotationList allstocks ={searchData} />
 
                 </div>
             </div>

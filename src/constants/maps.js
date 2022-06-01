@@ -1,11 +1,3 @@
-export const mapUserType = {
-  S: "超级管理员",
-  A: "项目管理员",
-  E: "专家",
-  M: "机构领导",
-  U: "机构用户",
-};
-
 export const mapUserSex = {
   M: "男",
   F: "女",

@@ -1,25 +1,30 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import {Image} from "react-bootstrap";
 import './StockSelectionDevice.css'
 import data from "../../static/StockSelectionDeviceList.json";
 import BootstrapTable from "react-bootstrap-table-next";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
 import { Collapse } from "react-bootstrap";
+import paginationFactory from 'react-bootstrap-table2-paginator';
 
-export default function MarketQuotation(){
-	const [count, setCount] = useState(177)
+
+export default function MarketQuotationList({allstocks}){
+	const [count, setCount] = useState(null)
+	const [searchData, setsearchData] = useState(null)
+	
+
 	const columns= [
 		{
-			dataField:"No",
-			text:"No",
+			dataField:"#",
+			text:"No.",
 			style:{
 				textAlign:"center"
 			},
-			formatter: (value, row) => {
+			formatter: (value, row, rowIndex) => {
 			  return (
 				<div>
 				  <h6 className="table-tr-futura">
-					{value}
+					{rowIndex + 1}
 				  </h6>
 				</div>
 			  );
@@ -198,8 +203,8 @@ export default function MarketQuotation(){
 		<div>
 			<div style={{display:"flex",margin:"15px 0 0 12px",alignItems: "center"}}>
 				<div className="choose-text">找到</div> 
-				<div style={{padding:"0 6px",color:"blue"}}>{count}</div> 
-				<div className="choose-text">只股票，当前最多展示200只</div>
+				<div style={{padding:"0 6px",color:"blue"}}>{allstocks? allstocks.length : "--"}</div> 
+				<div className="choose-text">只股票{allstocks? allstocks.length>200?  ", 当前仅展示200只":null :null}</div>
 			</div>
 			<div>
 				  <div>
@@ -210,9 +215,10 @@ export default function MarketQuotation(){
 						  bordered={false}
 						  hover
 						  condensed
-							keyField="id"
-							data={data}
+							keyField="代码"
+							data={allstocks? allstocks.slice(2) : []}
 							columns={columns}
+							// pagination={ paginationFactory(20) }
 						/>
 					  </div>
 				  </div>

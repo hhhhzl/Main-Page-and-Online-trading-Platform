@@ -21,6 +21,7 @@ export function clearLocalStorage() {
     localStorage.removeItem("platformType");
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////
 export function setLastStock(stock){
     localStorage.setItem("stockLastView",stock);
 }
@@ -29,7 +30,23 @@ export function getLastStock() {
     const stockLastView = localStorage.getItem('stockLastView');
     return stockLastView;
 }
+export function setWatchlist(list){
+    localStorage.setItem("watchlist",JSON.stringify(list));
+}
 
+
+export function addWatchlist(symbol){
+    let stocklist = getWatchList() || []
+    stocklist.push(symbol)
+    localStorage.setItem("watchlist",JSON.stringify(stocklist));
+}
+
+export function getWatchList(){
+    const WatchList = JSON.parse(localStorage.getItem('watchlist'));
+    return WatchList  
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
 export function getFileName(name) {
     let nameArr = name.split(".")
     let nameStr = ""

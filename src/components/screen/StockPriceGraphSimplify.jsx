@@ -23,10 +23,12 @@ import {
 import { discontinuousTimeScaleProviderBuilder } from "react-stockcharts/lib/scale";
 import { SampleData } from "../../static/Stockdata";
 import { Link } from 'react-router-dom';
-import { fmoney } from 'utils';
+import { addWatchlist, fmoney, getWatchList, setWatchlist } from 'utils';
+import { WatchListAction } from 'redux/actions/WatchListAction';
+import { connect } from 'react-redux';
 
 
-export default function StockPriceGraphSimplify({
+function StockPriceGraphSimplify({
   widthratio,
   stockdata
   }) {
@@ -67,9 +69,16 @@ export default function StockPriceGraphSimplify({
       const [end, setend] = useState(data[Math.max(0, data.length - 7)])
       const [updown, setupdown] = useState(end.close < start.close? true : false)
 
-   
+    const addwatchlistToloacl = (symbol) =>{
+      addWatchlist(symbol)
+    }
 
-  
+    const removeFromWatchList = (symbol) =>{
+      let watchlist = getWatchList()
+      let deletewatchList = watchlist.filter(elem => elem != stockdata.代码)
+      setWatchlist(deletewatchList)
+      setAdd(false)
+    }
 
   const checkprice = (interval,id) =>{
       setTimeP(interval)
@@ -82,21 +91,29 @@ export default function StockPriceGraphSimplify({
       }
   }
 
-  const checkupdown = () =>{
-    
-  }
-
   
-
   const arrays = ["今日","一周","一个月","三个月","一年","五年"]
 
+    // useEffect(()=>{
+    //     setTimeP(timeP)
+    //     setID(id)
+    //     setend(end)
+    //     setupdown(updown)
+    //     console.log(timeP,id,end,updown,80)
+    // },[timeP,id,end,updown])
+
+
     useEffect(()=>{
-        setTimeP(timeP)
-        setID(id)
-        setend(end)
-        setupdown(updown)
-        console.log(timeP,id,end,updown,80)
-    },[timeP,id,end,updown])
+      let watchlist = getWatchList()
+      if (stockdata != null && watchlist != [] && watchlist != null){
+        if (watchlist.includes(stockdata?.代码)){
+          setAdd(true)
+        }
+      }
+      
+
+    })
+
 
     return (
       <>
@@ -182,7 +199,7 @@ export default function StockPriceGraphSimplify({
                         (
                         {stockdata?.最新价 - stockdata?.今开 >0? 
                         <>+{(((stockdata?.最新价/stockdata?.今开) - 1)* 100).toFixed(2)}%</> 
-                        : <>-{(((stockdata?.最新价/stockdata?.今开) - 1)* 100).toFixed(2)}%</>}
+                        : <>{(((stockdata?.最新价/stockdata?.今开) - 1)* 100).toFixed(2)}%</>}
                         )
                         
                          </> : null}
@@ -214,7 +231,7 @@ export default function StockPriceGraphSimplify({
           {add? <><div>
                           <Button style={{background: "#F5F6F8",width: "120px",height: "48px", borderRadius: "4px 4px 4px 4px",opacity: 1, borderWidth:"0"}}
                           variant="outline-secondary"
-                          onClick={() => setAdd(false)}
+                          onClick={() => {removeFromWatchList()}}
                           >     
                               <div   style={{
                                   display:"flex",
@@ -231,7 +248,7 @@ export default function StockPriceGraphSimplify({
                      <div>
                           <Button className="select-Button"  style={{width: "120px",height: "48px", borderRadius: "4px 4px 4px 4px",opacity: 1, borderWidth: "1px", borderColor:"#2A2B30"}} 
                           variant="outline-secondary"
-                          onClick={() => setAdd(true)}
+                          onClick = {() => {setshowAddselfselected(true);addwatchlistToloacl(stockdata?.代码)}}
                           onMouseOver={handleMouseOver1}
                           onMouseLeave={handleMouseLeave1}
                           > 
@@ -243,8 +260,6 @@ export default function StockPriceGraphSimplify({
                               fontWeight:"bold",
                               padding:"5% 10% 10% 3%",
                               lineHeight:"24px"
-                              }}
-                              onClick = {() => {setshowAddselfselected(true)
                               }}
                               ><Add className ="hover-fontcolor"/>加入自选</div>              
                           </Button>
@@ -469,3 +484,21 @@ export default function StockPriceGraphSimplify({
 
     )
 }
+
+const mapStateToProps = (state) =>{
+  return {
+    config: state,
+
+  }
+}
+
+const mapDispatchToProps = (dispatch) =>{
+  return {
+    WatchListChange: (config) => {
+      dispatch(WatchListAction(config));
+      console.log(config,335)
+    },  
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(StockPriceGraphSimplify)

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import BootstrapTable from "react-bootstrap-table-next";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
 
-import { Collapse } from "react-bootstrap";
+import { Card, Collapse } from "react-bootstrap";
 import axios from "axios";
 import "./plateCard.css";
 
@@ -16,6 +16,7 @@ export default function PlateCard({
   index,
   handleShowDetails,
   indusAll,
+  setfield
 }) {
   const { width, height } = useWindowDimensions();
   const [data, setData] = useState([]);
@@ -127,8 +128,8 @@ export default function PlateCard({
   ];
 
   return (
-    <div
-      onClick={() => handleShowDetails(indusAll)}
+    <Card
+      onClick={() => {handleShowDetails(indusAll);setfield(dataSource.板块名称)}}
       className="plate-card-container"
       style={{
         marginLeft:
@@ -274,6 +275,6 @@ export default function PlateCard({
           )}
         </ToolkitProvider>{" "}
       </div>
-    </div>
+    </Card>
   );
 }

@@ -4,14 +4,11 @@ const authState = {
     isLoggedIn: false,
     user:{
         username:"",
-        expires_at: "",
-        jwttoken: "",
-        authorities: []
     }
 }
 const authreducer = (state = authState, action) => {
     switch (action.type) {
-        case AuthActionType.REGISTER_SUCCESS:
+        case AuthActionType.RGISTER_SUCCESS:
             return {
                 isLoggedIn: true,
                 user:action.payload,
