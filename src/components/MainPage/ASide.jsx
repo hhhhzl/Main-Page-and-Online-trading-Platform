@@ -257,7 +257,7 @@ const ASide = ({ isOpen, toggle }) => {
           </>
         ) : (
           <>
-            <div style={{ paddingBottom: "30px" }} className="asidebar-btn">
+            <div style={{ paddingBottom: "22px" }} className="asidebar-btn">
               <HeaderBtnLink
                 style={{
                   color: "#2A2B30",
