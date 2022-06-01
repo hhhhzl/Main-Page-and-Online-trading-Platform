@@ -176,7 +176,7 @@ const HeaderCreate = ({ toggle }) => {
                   ? "/homeCutout/UFA-LOGO-RED@2x.png"
                   : url != "/" && url != "/tournament"
                   ? "/homeCutout/UFA-LOGO-RED@2x.png"
-                  : "/UFA-LOGO.png"
+                  : "/UFA-LOGO@2x.png"
               }
               style={{
                 width: "64px",

@@ -24,7 +24,7 @@ import InvestNotes from "pages/InvestNotes";
 import TeamEntry from "components/Competition/TeamRegister/TeamEntry";
 import TeamAgreeProcessCreate from "components/Competition/TeamRegister/TeamAgreeProcessCreate";
 import TeamAgreeProcessJoin from "components/Competition/TeamRegister/TeamAgreeProcessJoin";
-import Tournament from './components/Tournament/tournament'; 
+import Tournament from './components/Tournament/tournament';
 import Chat from "pages/Chat";
 import InformationEdit from "pages/InformationEdit";
 import UserProfile from "pages/UserProfile";
@@ -92,6 +92,7 @@ const getSearchData = async (props) => {
     <Switch>
       <AuthProvider>
         <Route exact path="/register" component={LoginMainLayout} />
+        <Route exact path="/NextRegisterForm" component={LoginMainLayout} />
         <Route exact path="/login" component={LoginMainLayout} />
         <Route exact path="/Vlogin" component={LoginMainLayout} />
         <Route exact path="/forgetpassword" component={LoginMainLayout} />
