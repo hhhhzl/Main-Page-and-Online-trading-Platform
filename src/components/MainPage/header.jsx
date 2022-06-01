@@ -185,7 +185,7 @@ const HeaderCreate = ({ toggle }) => {
             />
           </div>
 
-          <div style={{ display: width < 426 ? "block" : "none" }}>
+          <div style={{ display: width < 800 ? "block" : "none" }}>
             {user && user.jti ? (
               <>
                 <div>
