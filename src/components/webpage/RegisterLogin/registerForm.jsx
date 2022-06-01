@@ -329,8 +329,7 @@ const mapDispatchToProps = (dispatch) =>{
     register: (userState) => {
       dispatch(RegisterAuthAction(userState));
       console.log(userState,335)
-    },
-    
+    },  
   }
 }
 

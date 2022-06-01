@@ -16,16 +16,18 @@ const defaultstock = "SH.600030"
 
 export default ({searchData,searchstock}) => {
     const { width, height } = useWindowDimensions();
-    const [stockLastView, setStockLastView] = useState(getLastStock()? getLastStock() : null)
     const [stockdata,setstockdata] = useState(null)
     const location = useLocation();
 
         useEffect(()=>{
-            console.log(location.state,24)
             if(location.state){      
                 getStock(location.state.symbol)
             }else{
-                getdeflautStock() 
+                if (getLastStock()){
+                    getStock(getLastStock())
+                }else{
+                    getdeflautStock() 
+                }    
             }                              
         },[])
 
@@ -35,7 +37,6 @@ export default ({searchData,searchstock}) => {
           let stockDataResponse = response.data.data
           console.log(stockDataResponse, 32)
           setstockdata(stockDataResponse)
-          setLastStock(stockDataResponse.代码)
         }catch (err) {
           console.log(err)
         }

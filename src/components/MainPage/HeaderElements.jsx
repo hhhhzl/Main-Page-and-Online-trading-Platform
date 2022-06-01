@@ -30,6 +30,8 @@ export const HeaderOut = styled.nav`
   }
 `;
 
+
+
 export const HeaderContianer = styled.div`
   margin-left: 18.75%;
   margin-right: 18.75%;

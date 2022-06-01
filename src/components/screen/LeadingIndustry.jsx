@@ -19,7 +19,7 @@ import PlateCard from "./PlateCard";
 import "./leadingIndustry.css";
 import { IconButton } from "@material-ui/core";
 
-export default function LeadingIndustry({handleShowDetails,indusAll,setIndusAll}) {
+export default function LeadingIndustry({handleShowDetails,indusAll,setIndusAll,setfield}) {
   const [data, setData] = useState([]);
   const [stockData, setStockData] = useState([]);
   const [extend, setExtend] = useState(true);
@@ -117,7 +117,7 @@ export default function LeadingIndustry({handleShowDetails,indusAll,setIndusAll}
           //   {/* {item.label} : {item.value} */}
           // </li>
           // {item.label}
-          <PlateCard handleShowDetails={handleShowDetails} indusAll={indusAll} dataSource={item} stockData={item.代表股票} heightProp={0.15} index={index}></PlateCard>
+          <PlateCard handleShowDetails={handleShowDetails} indusAll={indusAll} dataSource={item} stockData={item.代表股票} heightProp={0.15} index={index} setfield ={setfield}></PlateCard>
         ))}
       </div>
     </div>

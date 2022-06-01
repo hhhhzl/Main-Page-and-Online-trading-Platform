@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { clearLocalStorage, setPlatformType } from "utils";
 
 const AuthContext = createContext();
@@ -19,6 +19,12 @@ export const AuthProvider = ({ children }) => {
       : null
   );
   const [loading, setloading] = useState(true);
+
+  const location = useLocation()
+  const [route, setRoute] = useState({
+    to: location.pathname,
+    from: location.pathname
+  });
 
   const history = useHistory();
 
@@ -42,7 +48,7 @@ export const AuthProvider = ({ children }) => {
       console.log(user);
       localStorage.setItem("authTokens", JSON.stringify(data));
       setPlatformType("competition")
-      history.push(`/eplatform`);
+      history.push(route.from);
     } else {
       alert("Something Went Wrong!");
     }
@@ -91,6 +97,10 @@ export const AuthProvider = ({ children }) => {
   //     }, fourMinutes)
   //     return () => clearInterval(interval)
   // },[authTokens,loading])
+
+  useEffect(() =>{
+    setRoute((prev) => ({to: location.pathname, from: prev.to}))
+  },[location])
 
   return (
     <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>

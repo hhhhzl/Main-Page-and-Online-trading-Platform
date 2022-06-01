@@ -25,8 +25,10 @@ import MarketQuotation from "components/screen/MarketQuotation";
 
 export default ({searchData}) => {
   const { width, height } = useWindowDimensions();
+  const [data, setData] = useState([]);
   const [extend, setExtend] = useState(true);
   const [indusAll,setIndusAll] = useState(1);
+  const [field, setfield] = useState(null)
 
   const extendbar = () => {
     setExtend(!extend);
@@ -47,9 +49,11 @@ export default ({searchData}) => {
 		setIndusAll(2)
 	  }
   };
-//   useEffect(() => {
-//       console.log(showDetails)
-//   })
+
+  useEffect(() => {
+      setfield(field)
+      console.log(field)
+  })
   return (
     <>
       <PageHeader searchData = {searchData}/>
@@ -126,6 +130,9 @@ export default ({searchData}) => {
 				  handleShowDetails={handleShowDetails}
 				  indusAll={indusAll}
 				  setIndusAll={setIndusAll}
+          data = {data}
+          setData={setData}
+          setfield = {setfield}
 				/>
 			  </div>
 			</>
@@ -134,11 +141,15 @@ export default ({searchData}) => {
 			  <LeadingIndustryAll 
 			  setIndusAll={setIndusAll}
 			  indusAll={indusAll}
-			  handleShowDetails={handleShowDetails} />
+			  handleShowDetails={handleShowDetails}
+        data = {data}
+        setData={setData}
+        setfield = {setfield}
+        />
 			</>
 		) :(
 			<>
-			  <MarketQuotation handleShowDetails={handleShowDetails} indusAll={indusAll}/>{" "}
+			  <MarketQuotation handleShowDetails={handleShowDetails} indusAll={indusAll} field={field}/>{" "}
 			</>
 		) 
 		  
