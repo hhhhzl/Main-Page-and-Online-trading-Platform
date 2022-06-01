@@ -63,6 +63,16 @@ export const MobileIcon =styled.div`
 }
 `
 
+export const HomeMobileIcon =styled.div`
+  display:none;
+  margin-top:-1vh;
+
+  @media screen and (max-width: 800px){
+    display:flex;
+    transform: translate(0%, 15%);
+}
+`
+
 export const NavMenu =styled.ul`
    display:flex;
    position: absolute;

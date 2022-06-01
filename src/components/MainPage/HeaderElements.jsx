@@ -29,8 +29,11 @@ export const HeaderOut = styled.nav`
   @media screen and (max-width: 768px) {
     border: none;
   }
-`;
 
+  @media screen and (max-width: 426px) {
+    padding: 0px 16px;
+  }
+`;
 
 
 export const HeaderContianer = styled.div`
@@ -69,13 +72,20 @@ export const HeaderContianer = styled.div`
     margin-right: 12%;
   }
   @media screen and (max-width: 1000px) {
-    margin-left: 17%;
+    margin-left: 3%;
     margin-right: 3%;
     display: flex;
     color: #ffffff;
     height: 64px;
     align-items: center;
     cursor: pointer;
+  }
+  @media screen and (max-width: 426px) {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    width: 100%;
+    margin:0px
   }
 `;
 

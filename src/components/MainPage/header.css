@@ -27,11 +27,11 @@
   color: #2A2B30;
 }
 
-.notice-dot{
+.notice-dot {
   width: 7px;
-	height: 7px;
-	background: #1442ED;
-	border-radius: 50%;
+  height: 7px;
+  background: #1442ED;
+  border-radius: 50%;
   position: absolute;
   top: 1px;
   right: 3px;
@@ -40,13 +40,22 @@
 @media screen and (max-width: 1350px) {
 
   .menu-item-home {
-   font-size: 12px
+    font-size: 12px
   }
 }
 
 @media screen and (max-width: 1350px) {
 
   .menu-item-home {
-   font-size: 12px
+    font-size: 12px
   }
+}
+
+.small-screen-title {
+  display: flex;
+  font-size: 14px;
+  font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+  font-weight: 400;
+  color: #FFFFFF;
+  line-height: 24px;
 }

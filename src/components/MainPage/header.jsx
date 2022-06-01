@@ -25,7 +25,7 @@ import { Modal, Button } from "react-bootstrap";
 import useWindowDimensions from "../../utils/sizewindow";
 import Image from "react-bootstrap/Image";
 import "./header.css";
-import { MobileIcon } from "./NavbarElements";
+import { MobileIcon, HomeMobileIcon } from "./NavbarElements";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import AuthContext from "../../context/AuthContext";
@@ -136,9 +136,9 @@ const HeaderCreate = ({ toggle }) => {
             url == "/team" ||
             url == "/personalEdit" ||
             url == "/personalEdit" ||
-            url == "/chat" || 
-            url == "/team/register" || 
-            url == "/team/create" || 
+            url == "/chat" ||
+            url == "/team/register" ||
+            url == "/team/create" ||
             url == "/team/join"
               ? "1px solid rgb(229, 232, 238)"
               : "",
@@ -149,8 +149,24 @@ const HeaderCreate = ({ toggle }) => {
         // onMouseLeave={handleMouseLeave}
       >
         <HeaderContianer>
+          {scrolledDownEnough ? (
+            <>
+              <HomeMobileIcon onClick={() => toggle()}>
+                <ViewHeadlineTwoTone
+                  style={{ color: "black" }}
+                  fontSize="large"
+                />
+              </HomeMobileIcon>
+            </>
+          ) : (
+            <>
+              <HomeMobileIcon onClick={() => toggle()}>
+                <ViewHeadlineTwoTone fontSize="large" />
+              </HomeMobileIcon>
+            </>
+          )}
           <div
-            className="image-icon"
+            className=""
             style={{ height: "64px", width: "64px", top: 0 }}
             onClick={() => toHome()}
           >
@@ -162,25 +178,84 @@ const HeaderCreate = ({ toggle }) => {
                   ? "/homeCutout/UFA-LOGO-RED@2x.png"
                   : "/UFA-LOGO.png"
               }
-              style={{ width: "64px", height: "64px" }}
+              style={{
+                width: "64px",
+                height: "64px",
+              }}
             />
           </div>
-          {scrolledDownEnough ? (
-            <>
-              <MobileIcon onClick={() => toggle()}>
-                <ViewHeadlineTwoTone
-                  style={{ color: "black" }}
-                  fontSize="large"
-                />
-              </MobileIcon>
-            </>
-          ) : (
-            <>
-              <MobileIcon onClick={() => toggle()}>
-                <ViewHeadlineTwoTone fontSize="large" />
-              </MobileIcon>
-            </>
-          )}
+
+          <div style={{ display: width < 426 ? "block" : "none" }}>
+            {user && user.jti ? (
+              <>
+                <div>
+                  <IconButton
+                    style={{
+                      // margin: "20px 24px",
+                      padding: "0px 0",
+                      color: scrolledDownEnough
+                        ? "black"
+                        : url != "/" && url != "/tournament"
+                        ? "black"
+                        : "white",
+                    }}
+                    onClick={() => sendUserNews()}
+                  >
+                    <NotificationsNoneOutlined></NotificationsNoneOutlined>
+                    {note ? (
+                      <div
+                        style={{
+                          width: "7px",
+                          height: "7px",
+                          backgroundColor: "#FF3541",
+                          borderRadius: "50%",
+                          marginLeft: "-10px",
+                          marginTop: "-10px",
+                        }}
+                      ></div>
+                    ) : null}
+                  </IconButton>
+                </div>
+              </>
+            ) : (
+              // <span
+              //   className="small-screen-title"
+              //   style={{ color: scrolledDownEnough ? "black" : "" }}
+              // >
+              //   登录/注册
+              // </span>
+              <div className="small-screen-title">
+                <HeaderBtnLink
+                  style={{
+                    color: scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                    padding: "0px",
+                    fontSize: "16px",
+                  }}
+                  to="/login"
+                >
+                  登录
+                </HeaderBtnLink>
+                <span
+                  style={{
+                    color: scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                  }}
+                >
+                  /
+                </span>
+                <HeaderBtnLink
+                  style={{
+                    color: scrolledDownEnough ? "#2A2B30" : "#FFFFFF",
+                    padding: "0px",
+                    fontSize: "16px",
+                  }}
+                  to="/register"
+                >
+                  注册
+                </HeaderBtnLink>
+                {/* <span className="small-screen-title" style={{color:"#2A2B30",fontSize:"18px"}}>登录/注册</span> */}
+              </div>
+            )}
+          </div>
 
           <HeaderMenu>
             <HeaderItem
@@ -232,7 +307,7 @@ const HeaderCreate = ({ toggle }) => {
                 style={{
                   display:
                     showUFA && current == 1 && url == "/" ? "flex" : "none",
-                    width:"107px"
+                  width: "107px",
                 }}
                 // onMouseEnter={handleMouseLeave}
                 onMouseLeave={handleCloseUFA}
@@ -379,8 +454,9 @@ const HeaderCreate = ({ toggle }) => {
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
                 offset={-20}
-                onClick={() => {changeCurrent(4);
-                  setPlatformType("competition")
+                onClick={() => {
+                  changeCurrent(4);
+                  setPlatformType("competition");
                 }}
                 activeClass={
                   scrolledDownEnough ? "active-block-scroll" : "active-block"
