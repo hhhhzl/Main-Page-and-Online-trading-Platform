@@ -14,6 +14,7 @@ export const HeaderOut = styled.nav`
   align-items: center;
   font-size: 1rem;
   position: fixed;
+  top: 0px;
   // transition: all 1s ease;
   // -webkit-transition: all 1s ease;
   // -moz-transition: all 1s ease;
