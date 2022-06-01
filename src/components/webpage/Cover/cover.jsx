@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import "./cover.css";
@@ -9,37 +9,31 @@ import { useHistory } from "react-router";
 
 import HeaderCreate from "../../MainPage/header";
 import AuthContext from "context/AuthContext";
-  
 
 export default function Cover() {
   const { width, height } = useWindowDimensions();
   let { user, logoutUser } = useContext(AuthContext);
-  
+
   const history = useHistory();
 
-  const sendUser = () =>{
-    if (user){
-      history.push("/team/register")
-    }else{
-      history.push("/tournament")
+  const sendUser = () => {
+    if (user) {
+      history.push("/team/register");
+    } else {
+      history.push("/tournament");
     }
-    
-  }
+  };
   return (
     <div
       id="home"
       className="cover animated"
       style={{
-        background:
-          width > 1920
-            ? "url('/Banner@2x.png') center center / 100% no-repeat"
-            : "url('/Banner.png') center center / 100%  no-repeat",
+        background: "url('/Banner.png') center center no-repeat",
         width: width,
-        height: width / 2.67,
+        height: "720px",
       }}
     >
       {/* <HeaderCreate /> */}
-
       {/* {width > 600 ? <Image
       src = "/background2.jpg"   
       style={{
@@ -59,77 +53,137 @@ export default function Cover() {
       }}
     />
     } */}
-
       <div className="overlay" />
-
-      {/* <div className="center">
+      <div className="bg-content-center">
         <div
           className="greetings"
           style={{
             fontSize: width * 0.01458,
+            marginTop: width > 1300 ? "178px" : ""
           }}
         >
-          <div className="left-angle"></div>
           <div className="wrapper">
-            <span>
-              <strong style={{ color: "#FFFFFF" }}>U</strong>NDERGRADUATE
+            {width > 800 ? (
+              <Image
+                src="/homeCutout/Group 173.png"
+                style={{
+                  width: width * 0.3229,
+                  height: width * 0.026,
+                  minWidth: "350px",
+                  minHeight: "26px",
+                }}
+              />
+            ) : (
+              <Image
+                src="/homeCutout/Group 1110.png"
+                style={{
+                  width: "100%",
+                  height: "29px",
+                }}
+              />
+            )}
+          </div>
+        </div>
+
+        {width > 800 ? (
+          <div
+            className="name"
+            style={{
+              letterSpacing: width * 0.0083 + "px",
+            }}
+          >
+            <span
+              style={{
+                fontSize: width * 0.0869,
+                lineHeight: width * 0.102 + "px",
+              }}
+            >
+              UFA
             </span>
-            <span>
-              <strong style={{ color: "#FFFFFF", marginLeft: "10px" }}>
-                F
-              </strong>
-              INANCE
-            </span>
-            <span>
-              <strong style={{ color: "#FFFFFF", marginLeft: "10px" }}>
-                A
-              </strong>
-              SSOCIATION
+            <span
+              style={{
+                marginLeft: "30px",
+                fontSize: width * 0.0729,
+                lineHeight: width * 0.0854 + "px",
+                fontFamily: "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+                fontWeight:"bold"
+              }}
+            >
+              金融协会
             </span>
           </div>
-          <div className="right-angle"></div>
-        </div>
-
+        ) : (
+          <>
+            <div
+              className="name"
+              style={{
+                letterSpacing: width * 0.0083 + "px",
+                flexDirection: "column",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "72px",
+                  lineHeight: "96px",
+                  letterSpacing: "8px",
+                  marginTop: "10px",
+                }}
+              >
+                UFA
+              </div>
+              <div
+                style={{
+                  fontSize: "60px",
+                  lineHeight: "70px",
+                  letterSpacing: "7px",
+                  fontFamily: "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+                  fontWeight: "bold",
+                }}
+              >
+                金融协会
+              </div>
+            </div>
+            <div
+              style={{
+                marginTop: "48px",
+              }}
+            >
+              <Button
+                style={{
+                  fontWeight: "bold",
+                  letterSpacing: "1px",
+                  fontFamily: "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+                  padding: "10px 24px",
+                }}
+                className="join-match-btn"
+                variant="primary"
+                size="sm"
+                onClick={() => sendUser()}
+              >
+                报名参赛
+              </Button>
+            </div>
+          </>
+        )}
+      </div>
+      {width > 800 ? (
         <div
-          className="name"
+          className="arrow animated bounceInDown home-match-btn"
           style={{
-            letterSpacing: width * 0.0083 + "px",
+            bottom: width * 0.0963,
+            // left:width * 0.4854
           }}
         >
-          <span
-            style={{
-              fontSize: width * 0.0869,
-              lineHeight: width * 0.102 + "px",
-            }}
+          <Button
+            className="join-match-btn"
+            variant="primary"
+            size="sm"
+            onClick={() => sendUser()}
           >
-            UFA
-          </span>
-          <span
-            style={{
-              marginLeft: "30px",
-              fontSize: width * 0.0729,
-              lineHeight: width * 0.0854 + "px",
-              fontFamily: "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
-            }}
-          >
-            金融协会
-          </span>
+            报名参赛
+          </Button>
         </div>
-      </div> */}
-
-      <div
-        className="arrow animated bounceInDown"
-        style={{
-          bottom: width * 0.0963,
-          // left:width * 0.4854
-        }}
-      >
-        <Button className="join-match-btn" variant="primary" size="sm"
-        onClick ={() => sendUser()}
-        >
-          报名参赛
-        </Button>
-      </div>
+      ) : null}
     </div>
   );
 }

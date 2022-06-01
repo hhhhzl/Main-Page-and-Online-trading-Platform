@@ -89,7 +89,7 @@ export default function CurrentModal({
             <h6
               style={{
                 fontSize: "14px",
-                fontFamily: "Futura-Medium, Futura",
+                fontFamily: "Futura",
                 fontWeight: "500",
                 color: "#9C9EAC",
               }}

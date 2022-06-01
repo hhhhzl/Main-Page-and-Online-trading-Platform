@@ -38,7 +38,7 @@ export default function RankingPang() {
 						<div
 							style={{
 								fontSize: "18px",
-								fontFamily: "Futura-Medium, Futura",
+								fontFamily: "Futura",
 								fontWeight: "500",
 								color: "#2A2B30",
 								lineHeight: "24px",

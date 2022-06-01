@@ -182,7 +182,7 @@ export default function MarketUpdownDistribute({widthRatio, searchData}) {
                             marginLeft:"5px",
                             height:"13.43%",
                             fontSize:"16px",
-                            fontFamily:" Futura-Medium, Futura",
+                            fontFamily:" Futura",
                             fontWeight:"500",
                             color:"#000000",
                             lineHeight:"28px",

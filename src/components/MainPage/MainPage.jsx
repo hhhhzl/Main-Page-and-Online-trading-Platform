@@ -11,6 +11,7 @@ import Image from "react-bootstrap/Image";
 import Team from "../webpage/Team/team";
 import NavbarCreate from "./nav";
 import Sidebar from "./Sidebar";
+import ASide from "./ASide";
 import { ClassNames } from "@emotion/react";
 import HeaderCreate from './header'
 import Fade from "react-reveal/Fade";
@@ -65,7 +66,8 @@ export default function MainPage() {
       {/* 隐藏头部导航 */}
       {/* <NavbarCreate toggle = {toggle} /> */}
       <HeaderCreate toggle={toggle} />
-      {isOpen ? (<Sidebar isOpen={isOpen} toggle={toggle} />) : null}
+      {/* {isOpen ? (<Sidebar isOpen={isOpen} toggle={toggle} />) : null} */}
+      {isOpen ? (<ASide isOpen={isOpen} toggle={toggle} />) : null}
       <div className="main-page-center">
         <Cover />
         <div className="about-us-page">

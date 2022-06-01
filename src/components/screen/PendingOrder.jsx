@@ -97,7 +97,7 @@ export default function PendingOrder({heightProp, searchwidth, modalHeight}) {
             <h6
               style={{
                 fontSize: "14px",
-                fontFamily: "Futura-Medium, Futura",
+                fontFamily: "Futura",
                 fontWeight: "500",
                 color: "#9C9EAC",
                 textAlign: "end",
@@ -189,7 +189,7 @@ export default function PendingOrder({heightProp, searchwidth, modalHeight}) {
             <h6
               style={{
                 fontSize: "14px",
-                fontFamily: "Futura-Medium, Futura",
+                fontFamily: "Futura",
                 fontWeight: "500",
                 color: "#9C9EAC",
               }}
@@ -362,7 +362,7 @@ export default function PendingOrder({heightProp, searchwidth, modalHeight}) {
             <h6
               style={{
                 fontSize: "14px",
-                fontFamily: "Futura-Medium, Futura",
+                fontFamily: "Futura",
                 fontWeight: "500",
                 color: "#9C9EAC",
                 textAlign: "end",
