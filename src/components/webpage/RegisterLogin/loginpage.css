@@ -13,7 +13,7 @@
     -ms-transition: all 1s ease;
      border-bottom: none;
      z-index: -1;
-    
+
 }
 
 .login-container{
@@ -32,7 +32,7 @@
     -ms-transition: all 1s ease;
      border-bottom: none;
      z-index: 1;
-    
+
 }
 
 .login-interface {
@@ -49,13 +49,14 @@
 
 .loadingusername{
     color:black;
-    margin-bottom: 0.5rem!important;
+    margin-bottom: 36px;
 }
 .loadinguserpassword{
     color:white;
     margin-bottom: 1rem!important;
 }
 .loadinglogin{
+    height: 48px;
     color:#6E7184;
     margin-bottom: 0.7rem!important;
 }
@@ -65,3 +66,7 @@
     height:7vh;
     margin-left:0%
 }
+.Link-hover:hover{
+   border: none;
+}
+
