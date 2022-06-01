@@ -64,7 +64,7 @@ export default function LoginForm({ setToken }) {
   return (
     <div>
       <div className="login-container" style={{ marginLeft: width > 800 ? "18.75%" : "10%", marginTop: height * 0.1 }}>
-        <Link style={{ color: "black", textDecoration: "none" }} to="/home"><ArrowBack /></Link>
+        <Link className="Link-hover" style={{ color: "black", textDecoration: "none" }} to="/home"><ArrowBack /></Link>
         <Row style={{ width: "100%" }}><Col xs={7}>
           <h2 style={{
             width: "250px",
@@ -79,7 +79,7 @@ export default function LoginForm({ setToken }) {
 
         </Col>
           <Col xs={6} style={{ marginLeft: "0px", width: "110px", marginTop: "35px" }}>
-      
+
               <Link style={{
                 height: "28px",
                 fontSize: "14px",
@@ -89,7 +89,7 @@ export default function LoginForm({ setToken }) {
                 lineHeight: "28px",
                 letterSpacing: "1px",
               }} to="/Vlogin">验证码登录</Link>
-    
+
           </Col></Row>
         <Row>
           <Col xs={3}>
@@ -106,7 +106,7 @@ export default function LoginForm({ setToken }) {
             </div>
           </Col>
           <Col xs={3}>
-  
+
               <div style={{
                 width: "88px",
                 height: "24px",
@@ -129,11 +129,12 @@ export default function LoginForm({ setToken }) {
         <br />
 
         <Form noValidate validated={validated} id="addProject" onSubmit={loginUser}>
-          <Form.Group className="loadinglogin">
+          <Form.Group >
             <Form.Label column sm={3} style={{ color: "black", fontSize: "14px" }} >
               邮箱
             </Form.Label>
             <Form.Control
+                className="loadinglogin"
               required
               name='username'
               value={username}
@@ -141,7 +142,7 @@ export default function LoginForm({ setToken }) {
             ></Form.Control>
 
           </Form.Group>
-          <Form.Group as={Row} className="loadinglogin"
+          <Form.Group as={Row}
           >
             <Form.Label column sm={2} style={{ color: "black", fontSize: "14px" }}>
               密码
@@ -153,6 +154,7 @@ export default function LoginForm({ setToken }) {
 
           <Form.Control
             required
+            className="loadinglogin"
             name='password'
             type="password"
             aria-label="Example text with button addon"

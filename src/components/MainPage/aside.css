@@ -1,0 +1,98 @@
+.aside {
+  position: fixed;
+  width: 200px;
+  display: flex;
+  left: 0;
+  transition: 0.3s ease-in-out;
+  z-index: 1000;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.home-icon {
+  padding: 12px 0 0 16px;
+}
+
+.sidebar-wrapper {
+  margin-top: 24px;
+}
+
+.home-side-link {
+  font-size: 16px;
+  font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+  font-weight: 400;
+  color: #2A2B30;
+  line-height: 28px;
+  padding: 22px;
+  padding-left: 0px;
+  cursor: pointer;
+}
+
+.home-side-link:active {
+  color: #2A2B30;
+  border-bottom: none !important;
+  font-weight: auto !important;
+}
+
+.home-side-link:hover {
+  color: rgb(20, 66, 237);
+}
+
+.home-side-link-current {
+  font-size: 14px;
+  font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+  font-weight: 400;
+  color: #6E7184;
+  line-height: 24px;
+  padding: 24px 0px 24px 16px;
+  cursor: pointer;
+}
+
+.home-side-link-current:active {
+  color: #6E7184;
+  border-bottom: none !important;
+  font-weight: auto !important;
+}
+
+.home-side-link-current:hover {
+  color: #2A2B30;
+}
+
+
+
+
+.ul-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-left: 32px;
+}
+
+.sidebar-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-left: 32px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.sidebar-footer-content {
+  padding: 22px;
+  padding-left: 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidebar-footer-username {
+  margin-left: 8px;
+  font-size: 16px;
+  font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+  font-weight: 400;
+  color: #2A2B30;
+  line-height: 28px;
+}
+
+.asidebar-btn{
+  display: flex;
+  align-items: center;
+}

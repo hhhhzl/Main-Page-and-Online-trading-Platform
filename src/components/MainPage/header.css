@@ -16,10 +16,24 @@
   font-weight: 400;
   line-height: 24px;
   padding: 12px 21px;
+  width: 100%;
+  text-align: center;
 }
 
 .menu-item-home {
   padding: 12px 17px;
+}
+
+.menu-item:first-child:hover {
+  background: #EEF0F4;
+  color: #2A2B30;
+  border-radius: 4px;
+}
+
+.menu-item:last-child:hover {
+  background: #EEF0F4;
+  color: #2A2B30;
+  border-radius: 4px;
 }
 
 .menu-item:hover {
@@ -27,11 +41,11 @@
   color: #2A2B30;
 }
 
-.notice-dot{
+.notice-dot {
   width: 7px;
-	height: 7px;
-	background: #1442ED;
-	border-radius: 50%;
+  height: 7px;
+  background: #1442ED;
+  border-radius: 50%;
   position: absolute;
   top: 1px;
   right: 3px;
@@ -40,13 +54,22 @@
 @media screen and (max-width: 1350px) {
 
   .menu-item-home {
-   font-size: 12px
+    font-size: 12px
   }
 }
 
 @media screen and (max-width: 1350px) {
 
   .menu-item-home {
-   font-size: 12px
+    font-size: 12px
   }
+}
+
+.small-screen-title {
+  display: flex;
+  font-size: 14px;
+  font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+  font-weight: 400;
+  color: #FFFFFF;
+  line-height: 24px;
 }

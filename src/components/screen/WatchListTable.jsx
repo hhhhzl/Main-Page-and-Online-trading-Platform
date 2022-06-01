@@ -84,7 +84,7 @@ export default function WatchListTable({ heightratio, searchwidth, watchlistdata
                     textAlign: "right",
                     paddingRight: "30px",
                     color: "#2A2B30",
-                    fontFamily: "Futura-Medium, Futura",
+                    fontFamily: "Futura",
                     fontWeight: "500",
                   }}
                 >

@@ -7,6 +7,14 @@
 	line-height: 24px;
 }
 
+.choose-table {
+	overflow-x: scroll;
+}
+
+.choose-table>.react-bootstrap-table>.table {
+	min-width: max-content;
+}
+
 .choose-table>.react-bootstrap-table>table>thead>tr>th {
 	font-size: 14px;
 	font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
@@ -19,7 +27,7 @@
 	padding: 16px 0px;
 }
 
-.choose-table>.react-bootstrap-table>table>tbody>tr{
+.choose-table>.react-bootstrap-table>table>tbody>tr {
 	height: 56px;
 	border-color: inherit;
 	border-style: solid;
@@ -36,7 +44,7 @@
 
 .table-tr-futura {
 	font-size: 14px;
-	font-family: Futura-Medium, Futura;
+	font-family: Futura;
 	font-weight: 500;
 	color: #2A2B30;
 	line-height: 24px;
@@ -45,52 +53,61 @@
 
 .table-tr-increase {
 	font-size: 14px;
-	font-family: Futura-Medium, Futura;
+	font-family: Futura;
 	font-weight: 500;
 	color: #EC1421;
 	line-height: 24px;
 }
 
 .choose-table>.react-bootstrap-table>table>thead>tr>th:nth-child(1) {
-  text-align: center;
+	text-align: center;
 }
+
 .choose-table>.react-bootstrap-table>table>thead>tr>th:nth-child(4) {
-  text-align: right;
+	text-align: right;
 }
+
 .choose-table>.react-bootstrap-table>table>thead>tr>th:nth-child(5) {
-  text-align: right;
+	text-align: right;
 }
+
 .choose-table>.react-bootstrap-table>table>thead>tr>th:nth-child(6) {
-  text-align: right;
+	text-align: right;
 }
+
 .choose-table>.react-bootstrap-table>table>thead>tr>th:nth-child(7) {
-  text-align: right;
+	text-align: right;
 }
+
 .choose-table>.react-bootstrap-table>table>thead>tr>th:nth-child(8) {
-  text-align: right;
+	text-align: right;
 }
+
 .choose-table>.react-bootstrap-table>table>thead>tr>th:nth-child(9) {
-  text-align: right;
+	text-align: right;
 }
+
 .choose-table>.react-bootstrap-table>table>thead>tr>th:nth-child(10) {
-  text-align: right;
+	text-align: right;
 }
+
 .choose-table>.react-bootstrap-table>table>thead>tr>th:nth-child(11) {
-  text-align: right;
+	text-align: right;
 }
+
 .choose-table>.react-bootstrap-table>table>thead>tr>th:nth-child(12) {
-  text-align: right;
+	text-align: right;
 }
 
 
 
-.stock-selection-device-tabs{
+.stock-selection-device-tabs {
 	display: flex;
 	align-items: center;
 	margin: 13px 48px 12px;
 }
 
-.stock-selection-device-active-font{
+.stock-selection-device-active-font {
 	font-size: 24px;
 	font-family: Microsoft YaHei UI-Bold, Microsoft YaHei UI;
 	font-weight: bold;
@@ -99,7 +116,7 @@
 	letter-spacing: 1px;
 }
 
-.stock-selection-device-normal-font{
+.stock-selection-device-normal-font {
 	font-size: 16px;
 	font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
 	font-weight: 400;
@@ -116,7 +133,7 @@
 	line-height: 28px;
 }
 
-.stock-selection-device-label{
+.stock-selection-device-label {
 	width: 67px;
 }
 
@@ -128,14 +145,14 @@
 	line-height: 24px;
 }
 
-.stock-selection-device-group{
+.stock-selection-device-group {
 	display: flex;
 	align-items: center;
 	padding-top: 16px;
 }
 
 
-.stock-selection-device-select{
+.stock-selection-device-select {
 	margin-left: 21.25%;
 	width: 55.557%;
 	height: 36px;
@@ -166,22 +183,22 @@
 
 
 
-.market{
+.market {
 	display: flex;
 	align-items: center;
 }
 
 
-.list-label{
+.list-label {
 	padding: 24px 48px;
 	border-bottom: 1px solid #E5E8EE;
 }
 
-.list-label:hover{
+.list-label:hover {
 	background: #E5E8EE;
 }
 
-.strategy-label{
+.strategy-label {
 	width: 36.46%;
 	height: 24px;
 	font-size: 14px;
@@ -192,10 +209,29 @@
 }
 
 .rc-slider-track {
-    background-color: #1442ED !important;
+	background-color: #1442ED !important;
 }
 
 .rc-slider-handle {
 	background-color: #1442ED !important;
 	border: solid 2px #1442ED !important;
+}
+
+
+.quotes-card{
+	position: absolute;
+	z-index: 99;
+	width: 150px;
+	top: 30px;
+	left: 0;
+	padding: 6px 12px;
+}
+
+.finance-card{
+	position: absolute;
+	z-index: 99;
+	width: 150px;
+	top: 30px;
+	left: 0;
+	padding: 6px 12px;
 }

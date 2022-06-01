@@ -77,7 +77,7 @@ export default function PlateCard({
           <div>
             <h6
               className="stock-text"
-              style={{ fontFamily: "Futura-Medium, Futura", fontWeight: "500" }}
+              style={{ fontFamily: "Futura", fontWeight: "500" }}
             >
               {value}
             </h6>
@@ -99,7 +99,7 @@ export default function PlateCard({
                 <h6
                   className="stock-text"
                   style={{
-                    fontFamily: "Futura-Medium, Futura",
+                    fontFamily: "Futura",
                     fontWeight: "500",
                     color: "#EC1421", //红涨
                   }}
@@ -112,7 +112,7 @@ export default function PlateCard({
                 <h6
                   className="stock-text"
                   style={{
-                    fontFamily: "Futura-Medium, Futura",
+                    fontFamily: "Futura",
                     fontWeight: "500",
                     color: "#16CE62", //绿跌
                   }}

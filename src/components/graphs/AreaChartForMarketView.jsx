@@ -89,7 +89,7 @@ class AreaChartForMarketView extends React.Component {
           showDomain ={false}
           ticks ={5}
           fontSize={12}
-          fontFamily ={"Futura-Medium, Futura"}
+          fontFamily ={"Futura"}
           fontWeight ={500}
           tickPadding = {width*0.0458}
           />
