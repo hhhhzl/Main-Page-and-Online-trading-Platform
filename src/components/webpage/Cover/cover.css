@@ -1,3 +1,4 @@
+
 .cover {
   width: 100%;
   height: max-content;
@@ -38,6 +39,14 @@ a {
 a:active {
   border-bottom: 3px solid #1442ED;
   font-weight: bold;
+}
+
+.bg-content-center{
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
 }
 
 
@@ -116,7 +125,7 @@ a:active {
 
 .name {
   /* font-size: 10.4375rem; */
-  font-family: "Futura-Medium, Futura";
+  font-family: "Futura";
   font-weight: 500;
   color: #FFFFFF;
   /* -webkit-text-fill-color: transparent; */
@@ -130,7 +139,7 @@ a:active {
   color: #73bddd;
   font-weight: 500;
   line-height: 33px;
-  font-family: "Futura-Medium, Futura";
+  font-family: "Futura";
   display: flex;
   justify-content: center;
 }
@@ -267,6 +276,9 @@ a:active {
     width: 10px;
     height: 10px;
   }
+  .bg-content-center{
+    justify-content: center;
+  }
 
   .right-angle {
     bottom: -25px;
@@ -280,6 +292,7 @@ a:active {
 }
 
 @media only screen and (max-width: 600px) {
+
 
   .projects .subheader {
     padding-left: 30px;
@@ -297,17 +310,17 @@ a:active {
     align-items: center;
     width: max-content;
     z-index: 1; */
-    transition: all 0.5s ease;
+    /* transition: all 0.5s ease;
     animation-delay: 0.5s;
     -webkit-animation-delay: 0.5s;
     position: absolute;
-    bottom: 10px !important;
+    bottom: -100px !important; */
   }
 
   .arrow .btn {
-    font-size: 14px;
+    /* font-size: 16px;
     padding-top: 2px;
-    padding-bottom: 2px;
+    padding-bottom: 2px; */
     /* width: 100%; */
   }
 

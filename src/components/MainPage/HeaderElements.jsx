@@ -15,6 +15,7 @@ export const HeaderOut = styled.nav`
   top:0px;
   font-size: 1rem;
   position: fixed;
+  top: 0px;
   // transition: all 1s ease;
   // -webkit-transition: all 1s ease;
   // -moz-transition: all 1s ease;
@@ -29,8 +30,11 @@ export const HeaderOut = styled.nav`
   @media screen and (max-width: 768px) {
     border: none;
   }
-`;
 
+  @media screen and (max-width: 426px) {
+    padding: 0px 16px;
+  }
+`;
 
 
 export const HeaderContianer = styled.div`
@@ -64,12 +68,12 @@ export const HeaderContianer = styled.div`
     margin-left: 17%;
     margin-right: 14%;
   }
-  @media screen and (max-width: 1200px) {
-    margin-left: 22%;
-    margin-right: 12%;
-  }
+  // @media screen and (max-width: 1200px) {
+  //   margin-left: 22%;
+  //   margin-right: 12%;
+  // }
   @media screen and (max-width: 1000px) {
-    margin-left: 17%;
+    margin-left: 5%;
     margin-right: 3%;
     display: flex;
     color: #ffffff;
@@ -77,10 +81,23 @@ export const HeaderContianer = styled.div`
     align-items: center;
     cursor: pointer;
   }
+  @media screen and (max-width: 800px) {
+    padding: 0px 15px;
+    // margin-left: 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    width: 100%;
+    margin:0;
+  }
+  @media screen and (max-width: 430px) {
+    padding: 0;
+    margin:0;
+  }
 `;
 
 export const HeaderMenu = styled.div`
-  margin-left: 34.7%;
+  margin-left: 21.7%;
   display: flex;
   height: 64px;
   justify-content: center;
@@ -93,10 +110,10 @@ export const HeaderMenu = styled.div`
     display: none;
   }
   @media screen and (max-width: 1500px) {
-    margin-left: 30%;
+    margin-left: 17%;
   }
   @media screen and (max-width: 1200px) {
-    margin-left: 20%;
+    margin-left: 15%;
   }
  
 `;

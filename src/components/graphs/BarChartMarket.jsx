@@ -23,7 +23,7 @@ const renderCustomizedLabel = ({x, y, stroke, fill, color, value}) => {
      fill = {color}
      style={{ 
          fontSize: 12, 
-         fontFamily:"Futura-Medium, Futura",
+         fontFamily:"Futura",
         fontWeight:"500",
         color:"#16CE62",
         lineHeight:"20px",
@@ -62,7 +62,7 @@ export default function BarChartMarket({width, dataprops}) {
       <XAxis dataKey="name" strokeWidth={0} style={{
           height:"20px",
         fontSize: '12px',
-        fontFamily: 'Futura-Medium, Futura',
+        fontFamily: 'Futura',
         fontWeight:"500",
         color:"#9C9EAC",
         lineHeight:"20px",

@@ -352,7 +352,7 @@ orderType == "present_price" ? (<>
                   <h6 style={{fontSize:'16px',padding:"3px"}}>可购数量（手）：</h6> */}
                 </div>
                 <div style={{textAlign:"right",paddingRight:"3px"}}>
-                  <h6 style={{fontSize: "24px",fontFamily: "Futura-Medium, Futura",fontWeight: "600",color: "#2A2B30",lineHeight: "40px",letterSpacing: "1px"}}>￥{totalPrice}</h6>
+                  <h6 style={{fontSize: "24px",fontFamily: "Futura",fontWeight: "600",color: "#2A2B30",lineHeight: "40px",letterSpacing: "1px"}}>￥{totalPrice}</h6>
                   {/* <h6 style={{fontSize:'16px',padding:"3px"}}>123123</h6>
                   <h6 style={{fontSize:'16px',padding:"3px"}}>123</h6> */}
                 </div>
@@ -621,7 +621,7 @@ orderType == "present_price" ? (<>
                   <h6 style={{fontSize:'16px',padding:"3px"}}>可购数量（手）：</h6> */}
                 </div>
                 <div style={{textAlign:"right",paddingRight:"3px"}}>
-                  <h6 style={{fontSize: "24px",fontFamily: "Futura-Medium, Futura",fontWeight: "600",color: "#2A2B30",lineHeight: "40px",letterSpacing: "1px"}}>￥0.00</h6>
+                  <h6 style={{fontSize: "24px",fontFamily: "Futura",fontWeight: "600",color: "#2A2B30",lineHeight: "40px",letterSpacing: "1px"}}>￥0.00</h6>
                   {/* <h6 style={{fontSize:'16px',padding:"3px"}}>123123</h6>
                   <h6 style={{fontSize:'16px',padding:"3px"}}>123</h6> */}
                 </div>

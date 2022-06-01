@@ -16,8 +16,8 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-    
-  }, [bodyscrollrdTop]);	
+
+  }, [bodyscrollrdTop]);
   return (
 	  <>
 	  <div style={{position:"fixed",zIndex:10,width:"1px",height:width/2.97,background:`linear-gradient(to top, #E5E8EE ${(bodyscrollrdTop/(width/2.97)*100).toString() + '%'}, rgba(255, 255, 255, 0.5) ${(bodyscrollrdTop/(width/2.97)*100).toString() + '%'})`, top:"64px",left:width/2-1}}></div>
@@ -46,18 +46,27 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 			</div>
 			<div style={{position:"relative",width:width,height:"48px",background:"#F5F6F8"}}></div>
 		</div>
-		
+
 		<div style={{background: "#FFFFFF"}}>
 		<div style={{position:"relative",width:width,height:"96px",background:"#FFFFFF"}}></div>
 			<div className="insight-into">
 					<div className="finance-title">
 						财经洞悉
 					</div>
-					<div style={{marginTop:"80px"}}>
+					<div style={{marginTop:"80px",position: "relative"}}>
 						<Image
 							src="/tournament/Group 797@2x.png"
 							style={{width:" 100%",height:"100%"}}
 						/>
+						<a href="/eplatform" >
+							<Image
+								src="/tournament/赛事账户.png"
+								style={{position: "absolute",left:"44.7%",top:"70%",width:"8%"}}
+							/>
+						</a>
+					</div>
+					<div className="finance-note" >
+						（“财经洞悉”撰写质量不会给予评分，此板块不影响比赛分数）
 					</div>
 					<div style={{marginTop:"140px"}}>
 						<div
@@ -121,20 +130,18 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 						</div>
 					</div>
 
-				<div className="finance-note" style={{margin: "120px 0 0 0"}}>
-					注：“财经洞悉”撰写质量不会给予评分，此板块不影响比赛分数。
-				</div>
+
 			</div>
 			<div style={{position:"relative",width:width,height:"48px",background:"#FFFFFF"}}></div>
 		</div>
 
 
 
-		
-		
+
+
 		<div style={{position:"relative",width:width,height:"96px",background:"#F5F6F8"}}></div>
 		<div style={{background: "#F5F6F8"}}>
-			<div 
+			<div
 				style={{
 					position:"relative",
 					width: "62.5%",
@@ -153,7 +160,7 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 					<div className="finance-bottom-text" style={{paddingTop:"20px"}}>对于部分优秀分析，UFA会对选手做独家采访，并将其分析及选手采访刊登在UFA官网以及UFA公众号【UFA视野全球】。</div>
 					<div className="finance-bottom-text" style={{paddingTop:"20px"}}>同时，UFA每周会将优秀选手向多个金融机构进行推荐。</div>
 				</div>
-				
+
 				<div className="awards-card-wrapper" style={{marginTop:"20px",justifyContent: "center"}}>
 				  <div
 					className= {width < 559 ? "awards-card-container-small":"awards-card-container"}
@@ -166,7 +173,7 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 				          style={{ width: "220px", height: "220px" }}
 				        />
 				      </div>
-				
+
 				      <div className="award-content awards-center">
 				        <div>团队获得5000元人民币</div>
 				        <div>每位团员获得官方制定的冠军证书 </div>
@@ -174,14 +181,14 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 				      </div>
 				    </div>
 				  </div>
-				
+
 				</div>
-				
+
 				<div className= {width >766?"tips-end":"tips-center"} style={{paddingBottom:"120px"}}>
 				  注：所有奖项由UFA与中信证券官方签署制定，旨在为参赛选手提供背景提升，学习成长的机会。
 				</div>
 			</div>
-			
+
 		</div>
 	  </div>
 	  </>

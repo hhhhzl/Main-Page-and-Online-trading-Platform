@@ -17,6 +17,7 @@ import { borderBottom, fontWeight } from "@material-ui/system";
 import { IconButton } from '@material-ui/core';
 import LoginForm from "./loginForm";
 import RegisterForm from "./registerForm";
+import NextRegisterForm from "./nextRegisterForm";
 import VertificationCode from "./VerificationCode";
 import VertificationLogin from "./vertificationLogin";
 import ForgetPassword from "./fogetPassword";
@@ -27,11 +28,11 @@ export default function LoginMainLayout({setToken}) {
 
   return (
       <>
-      
+
     <div>
       {width > 800? <>
       <Image
-      src = "/loginback.jpg"    
+      src = "/loginback.jpg"
       style={{
         position: "fixed",
         left: -450,
@@ -39,9 +40,9 @@ export default function LoginMainLayout({setToken}) {
         width:width,
         height:"100%"
       }}
-    /></> : null}      
+    /></> : null}
     <div className ="login-interface" style={{width: width > 800? "50%": "100%",minHeight:height, marginLeft:width > 800 ? "50%": null}}>
-          <Switch>        
+          <Switch>
             <Route path="/login">
                 <LoginForm/>
             </Route>
@@ -57,10 +58,13 @@ export default function LoginMainLayout({setToken}) {
             <Route path="/forgetpassword">
                 <ForgetPassword/>
             </Route>
+              <Route path="/nextRegisterForm">
+                  <NextRegisterForm/>
+              </Route>
           </Switch>
     </div>
 
-    
+
     </div>
 
 </>

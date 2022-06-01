@@ -127,8 +127,7 @@ export default function Executive() {
                                 <div className="name">贺若航 Harris</div>
                             </div>
                         </div>
-
-                        <div className="text-center  text-center-bootom-left">
+                        <div className="text-center  text-center-bootom-left text-center-bootom-right">
                             <Image
                                 className="bottom-shadow-people-image"
                                 src="/homeCutout/chenhaonan@2x.png"
@@ -151,6 +150,31 @@ export default function Executive() {
                             <div className="bottom-shadow-text">
                                 <div className="school">密歇根大学 大三</div>
                                 <div className="name">陈昊楠 Norman</div>
+                            </div>
+                        </div>
+                        <div className="text-center  text-center-bootom-left">
+                            <Image
+                                className="bottom-shadow-people-image"
+                                src="/homeCutout/Jerry@2x.png"
+                                title="head image"
+                                id="img-txz"
+                                alt="header"
+                                style={{
+                                    position: "relative",
+                                }}
+                            />
+                            <div className="bottom-shadow-image">
+                                <Image
+                                    className="bottom-shadow-image-son"
+                                    src="/homeCutout/Rectangle 656@2x.png"
+                                    title="head image"
+                                    id="img-txz"
+                                    alt="header"
+                                />
+                            </div>
+                            <div className="bottom-shadow-text">
+                                <div className="school">密歇根大学 大四</div>
+                                <div className="name">陈嘉瑞 Jerry</div>
                             </div>
                         </div>
                     </div>
@@ -263,6 +287,28 @@ export default function Executive() {
                         <div className="bottom-shadow-text">
                             <div className="school">密歇根大学 大三</div>
                             <div className="name">陈昊楠 Norman</div>
+                        </div>
+                    </div>
+                    <div className="small-bottom">
+                        <Image
+                            src="/homeCutout/Jerry.png"
+                            title="head image"
+                            id="img-txz"
+                            alt="header"
+                            style={{
+                                position: "relative",
+                            }}
+                        />
+                        <Image
+                            className="bottom-shadow-image-son"
+                            src="/homeCutout/Rectangle 656.png"
+                            title="head image"
+                            id="img-txz"
+                            alt="header"
+                        />
+                        <div className="bottom-shadow-text">
+                            <div className="school">密歇根大学 大四</div>
+                            <div className="name">陈嘉瑞 Jerry</div>
                         </div>
                     </div>
                 </>)}

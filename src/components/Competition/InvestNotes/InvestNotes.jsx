@@ -159,7 +159,28 @@ export default function InvestNotes({searchData}) {
           <>
             {current == 0 ? (
               <>
+
                 <div className="file-upload-wrapper">
+                  <div>
+                    <div className="file-upload-title">财经洞悉介绍</div>
+                    <div className="file-text">
+                      <div>
+                        赛事期间，UFA将定期抛出热点财经新闻话题，并邀请大学生基于新闻话题撰写独立分析。“财经洞悉”将每两周举行一次，共计六次。
+                      </div>
+                    </div>
+                    <div className="file-upload-title">奖励</div>
+                    <div className="file-text">
+                      <div>
+                        UFA将每周对优秀的作品选手进行采访，并在UFA公众号等平台进行展示。同时，优秀的作品选手将获得由UFA颁发的“优秀财经人”奖状。
+                      </div>
+                    </div>
+                  </div>
+                  <div style={{width: "100%",
+                    height: "1px",
+                    background: "#E5E8EE",
+                    borderRadius: "0px 0px 0px 0px",
+                    opacity: "1",marginTop:"36px"}}></div>
+                  <div className="file-upload-title">本周热题</div>
                   <div className="file-upload-text">
                     <div>
                       重要文案重要文案重要文案重要文案重要文案重要文案重要文案重要文案重要文案
