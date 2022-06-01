@@ -59,6 +59,7 @@ export default function Cover() {
           className="greetings"
           style={{
             fontSize: width * 0.01458,
+            marginTop: width > 1300 ? "178px" : ""
           }}
         >
           <div className="wrapper">
@@ -103,6 +104,7 @@ export default function Cover() {
                 fontSize: width * 0.0729,
                 lineHeight: width * 0.0854 + "px",
                 fontFamily: "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+                fontWeight:"bold"
               }}
             >
               金融协会
@@ -164,7 +166,7 @@ export default function Cover() {
       </div>
       {width > 426 ? (
         <div
-          className="arrow animated bounceInDown"
+          className="arrow animated bounceInDown home-match-btn"
           style={{
             bottom: width * 0.0963,
             // left:width * 0.4854

@@ -298,17 +298,18 @@ a:active {
     align-items: center;
     width: max-content;
     z-index: 1; */
-    transition: all 0.5s ease;
+
+    /* transition: all 0.5s ease;
     animation-delay: 0.5s;
     -webkit-animation-delay: 0.5s;
     position: relative;
-    bottom: 10px !important;
+    bottom: 10px !important; */
   }
 
   .arrow .btn {
-    font-size: 14px;
+    /* font-size: 14px;
     padding-top: 2px;
-    padding-bottom: 2px;
+    padding-bottom: 2px; */
     /* width: 100%; */
   }
 
