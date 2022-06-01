@@ -83,7 +83,7 @@ export default function WatchListTable({ heightratio, searchwidth }) {
                     textAlign: "right",
                     paddingRight: "30px",
                     color: "#2A2B30",
-                    fontFamily: "Futura-Medium, Futura",
+                    fontFamily: "Futura",
                     fontWeight: "500",
                   }}
                 >
@@ -96,7 +96,7 @@ export default function WatchListTable({ heightratio, searchwidth }) {
                     fontSize: "14px",
                     paddingRight: "30px",
                     color: "#EC1421",
-                    fontFamily: "Futura-Medium, Futura",
+                    fontFamily: "Futura",
                     fontWeight: "500",
                   }}
                 >
@@ -112,7 +112,7 @@ export default function WatchListTable({ heightratio, searchwidth }) {
                     fontSize: "16px",
                     paddingRight: "30px",
                     color: "#2A2B30",
-                    fontFamily: "Futura-Medium, Futura",
+                    fontFamily: "Futura",
                     fontWeight: "500",
                   }}
                 >
@@ -125,7 +125,7 @@ export default function WatchListTable({ heightratio, searchwidth }) {
                     fontSize: "14px",
                     paddingRight: "30px",
                     color: "#16CE62",
-                    fontFamily: "Futura-Medium, Futura",
+                    fontFamily: "Futura",
                     fontWeight: "500",
                   }}
                 >

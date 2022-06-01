@@ -1,4 +1,5 @@
 import "./App.css";
+// import './assets/font/font.css';
 import { React, useState, useEffect, useContext } from "react";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
