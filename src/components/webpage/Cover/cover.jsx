@@ -63,12 +63,14 @@ export default function Cover() {
           }}
         >
           <div className="wrapper">
-            {width > 428 ? (
+            {width > 800 ? (
               <Image
                 src="/homeCutout/Group 173.png"
                 style={{
-                  width: "100%",
-                  height: "100%",
+                  width: width * 0.3229,
+                  height: width * 0.026,
+                  minWidth: "350px",
+                  minHeight: "26px",
                 }}
               />
             ) : (
@@ -83,7 +85,7 @@ export default function Cover() {
           </div>
         </div>
 
-        {width > 426 ? (
+        {width > 800 ? (
           <div
             className="name"
             style={{
@@ -164,7 +166,7 @@ export default function Cover() {
           </>
         )}
       </div>
-      {width > 426 ? (
+      {width > 800 ? (
         <div
           className="arrow animated bounceInDown home-match-btn"
           style={{

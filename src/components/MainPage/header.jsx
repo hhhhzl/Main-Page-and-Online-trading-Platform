@@ -283,6 +283,7 @@ const HeaderCreate = ({ toggle }) => {
                         url != "/tournament"
                       ? "#2A2B30"
                       : "#FFFFFF",
+                  fontWeight: url == "/" ? "bold" : "500",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 url={url}
@@ -376,6 +377,7 @@ const HeaderCreate = ({ toggle }) => {
                         url != "/tournament"
                       ? "#2A2B30"
                       : "#FFFFFF",
+                      fontWeight: url == "/#" ? "bold" : "500",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -412,6 +414,7 @@ const HeaderCreate = ({ toggle }) => {
                         url != "/tournament"
                       ? "#2A2B30"
                       : "#FFFFFF",
+                      fontWeight: url == "/tournament" ? "bold" : "500",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -450,6 +453,7 @@ const HeaderCreate = ({ toggle }) => {
                         url != "/tournament"
                       ? "#2A2B30"
                       : "#FFFFFF",
+                      fontWeight: url == "/#" ? "bold" : "500",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}

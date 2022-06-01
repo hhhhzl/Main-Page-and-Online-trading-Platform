@@ -67,10 +67,10 @@ export const HeaderContianer = styled.div`
     margin-left: 17%;
     margin-right: 14%;
   }
-  @media screen and (max-width: 1200px) {
-    margin-left: 22%;
-    margin-right: 12%;
-  }
+  // @media screen and (max-width: 1200px) {
+  //   margin-left: 22%;
+  //   margin-right: 12%;
+  // }
   @media screen and (max-width: 1000px) {
     margin-left: 3%;
     margin-right: 3%;
@@ -106,7 +106,7 @@ export const HeaderMenu = styled.div`
     margin-left: 30%;
   }
   @media screen and (max-width: 1200px) {
-    margin-left: 20%;
+    margin-left: 15%;
   }
  
 `;
