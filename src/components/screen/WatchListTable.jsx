@@ -8,15 +8,17 @@ import ToolkitProvider, {
 import useWindowDimensions from "../../utils/sizewindow";
 import AreaChartWatchList from "../graphs/AreaTableForWatchList";
 import { Button } from "react-bootstrap";
+import { useHistory } from "react-router";
 
 const { SearchBar } = Search;
 const { ExportCSVButton } = CSVExport;
 
-export default function WatchListTable({ heightratio, searchwidth }) {
+export default function WatchListTable({ heightratio, searchwidth, watchlistdata }) {
   const { width, height } = useWindowDimensions();
+  let history = useHistory()
   const columns = [
     {
-      dataField: "symbol",
+      dataField: "名称",
       text: "名称",
       sort: true,
       style: { width: "33%" },
@@ -37,13 +39,13 @@ export default function WatchListTable({ heightratio, searchwidth }) {
               lineHeight: "24px",
             }}
           >
-            {row.symbol}
+            {row.名称}
           </div>
         );
       },
     },
     {
-      dataField: "symbol",
+      dataField: "名称",
       isDummyField: true,
       style: { width: "33.3%" },
       headerAttrs: {
@@ -59,8 +61,8 @@ export default function WatchListTable({ heightratio, searchwidth }) {
     },
 
     {
-      dataField: "price",
-      text: "价格/涨跌",
+      dataField: "最新价",
+      text: "最新价",
       sort: true,
       style: { width: "25%" },
       headerAttrs: {
@@ -73,8 +75,7 @@ export default function WatchListTable({ heightratio, searchwidth }) {
         let pl = ((value / row.avgprice - 1) * 100).toFixed(2);
         return (
           <div>
-            {balance < 0 ? (
-              <>
+              
                 <h6
                   style={{
                     paddingTop: "12px",
@@ -87,7 +88,7 @@ export default function WatchListTable({ heightratio, searchwidth }) {
                     fontWeight: "500",
                   }}
                 >
-                  {balance}
+                  {row.最新价}
                 </h6>
                 <h6
                   style={{
@@ -95,56 +96,37 @@ export default function WatchListTable({ heightratio, searchwidth }) {
                     paddingTop: "0px",
                     fontSize: "14px",
                     paddingRight: "30px",
-                    color: "#EC1421",
+                    color: row.涨跌幅>0? "#EC1421" : "#16CE62",
                     fontFamily: "Futura-Medium, Futura",
                     fontWeight: "500",
                   }}
                 >
-                  {pl}%
+                  {row.涨跌幅>0? <>+{row.涨跌幅}%</>: <>{row.涨跌幅}%</> }
                 </h6>
-              </>
-            ) : (
-              <>
-                <h6
-                  style={{
-                    textAlign: "right",
-                    paddingTop: "12px",
-                    fontSize: "16px",
-                    paddingRight: "30px",
-                    color: "#2A2B30",
-                    fontFamily: "Futura-Medium, Futura",
-                    fontWeight: "500",
-                  }}
-                >
-                  {balance}
-                </h6>
-                <h6
-                  style={{
-                    textAlign: "right",
-                    paddingTop: "0px",
-                    fontSize: "14px",
-                    paddingRight: "30px",
-                    color: "#16CE62",
-                    fontFamily: "Futura-Medium, Futura",
-                    fontWeight: "500",
-                  }}
-                >
-                  +{pl}%
-                </h6>
-              </>
-            )}
           </div>
         );
       },
     },
   ];
 
-  const indication = () => {
-    return (
-      <>
-        <p style={{ textAlign: "center" }}>无数据</p>
-      </>
-    );
+  const selectRow = {
+    mode: 'radio',
+    clickToSelect: true,
+    hideSelectAll:true,
+    hideSelectColumn: true,
+    style:{background:"#F5F6F8"},
+    onSelect: (row, isSelect, rowIndex, e) => {
+      if (isSelect){
+          history.push({
+            pathname:"/eplatform/trade",
+            search:`?symbol=${row.代码}`,
+            state:{symbol:row.代码}
+          })
+      }else{     
+        
+      }
+    },
+    
   };
 
   const rowStyle = { borderColor: "white" };
@@ -152,8 +134,8 @@ export default function WatchListTable({ heightratio, searchwidth }) {
   return (
     <ToolkitProvider
       bootstrap4
-      keyField="id"
-      data={data}
+      keyField="代码"
+      data={watchlistdata? watchlistdata : []}
       columns={columns}
       search
       exportCSV={{
@@ -213,6 +195,7 @@ export default function WatchListTable({ heightratio, searchwidth }) {
               hover={true}
               // noDataIndication={indication}
               rowStyle={rowStyle}
+              selectRow={selectRow}
             />
           </div>
 
