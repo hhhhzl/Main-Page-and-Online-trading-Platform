@@ -72,7 +72,7 @@ export const HeaderContianer = styled.div`
   //   margin-right: 12%;
   // }
   @media screen and (max-width: 1000px) {
-    margin-left: 3%;
+    margin-left: 5%;
     margin-right: 3%;
     display: flex;
     color: #ffffff;
@@ -80,17 +80,23 @@ export const HeaderContianer = styled.div`
     align-items: center;
     cursor: pointer;
   }
-  @media screen and (max-width: 426px) {
+  @media screen and (max-width: 800px) {
+    padding: 0px 15px;
+    // margin-left: 3%;
     display: flex;
     justify-content: space-between;
     align-items:center;
     width: 100%;
-    margin:0px
+    margin:0;
+  }
+  @media screen and (max-width: 430px) {
+    padding: 0;
+    margin:0;
   }
 `;
 
 export const HeaderMenu = styled.div`
-  margin-left: 34.7%;
+  margin-left: 21.7%;
   display: flex;
   height: 64px;
   justify-content: center;
@@ -103,10 +109,10 @@ export const HeaderMenu = styled.div`
     display: none;
   }
   @media screen and (max-width: 1500px) {
-    margin-left: 30%;
+    margin-left: 17%;
   }
   @media screen and (max-width: 1200px) {
-    margin-left: 15%;
+    margin-left: 12%;
   }
  
 `;
