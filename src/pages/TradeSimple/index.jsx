@@ -8,7 +8,7 @@ import WatchList from "components/screen/WatchList";
 import PendingOrder from "components/screen/PendingOrder";
 import KeyIndicators from "components/screen/KeyIndicatorSimple";
 import { Button, Dropdown} from 'react-bootstrap'
-import { getLastStock, setLastStock } from "utils";
+import { getLastStock, getWatchList, setLastStock } from "utils";
 import { apiLiveStockInfo } from "api/trading_platform/market";
 import { useLocation } from "react-router";
 
@@ -17,7 +17,9 @@ const defaultstock = "SH.600030"
 export default ({searchData,searchstock}) => {
     const { width, height } = useWindowDimensions();
     const [stockdata,setstockdata] = useState(null)
+    const [watchliststocks, setwatchliststocks] = useState([])
     const location = useLocation();
+    const [load,setload] = useState(false)
 
         useEffect(()=>{
             if(location.state){      
@@ -28,8 +30,16 @@ export default ({searchData,searchstock}) => {
                 }else{
                     getdeflautStock() 
                 }    
-            }                              
+            }  
+            if (!load){
+                getWatchListFunc()
+                console.log(watchliststocks)
+                setload(true)
+            }  
+                                       
         },[])
+
+       
 
     const getdeflautStock = async (props) => {
         try{
@@ -53,6 +63,23 @@ export default ({searchData,searchstock}) => {
           console.log(err)
         }
       };
+
+      const getWatchListFunc = async () => {
+        try {
+            let list = getWatchList()
+            const newWatchlistArray = await Promise.all(list.map(async function(stock) {
+                const response = await apiLiveStockInfo(stock);
+                const watchlistdata = response.data.data;
+                return watchlistdata;
+            }));
+            console.log(newWatchlistArray);
+            setwatchliststocks(newWatchlistArray)
+        } catch (e) {
+            console.log(e);
+        }
+      }
+            
+           
 
     return (
         <>
@@ -115,7 +142,7 @@ export default ({searchData,searchstock}) => {
 								</Dropdown.Toggle>
 								<Dropdown.Menu style={{
 									  width:"360px", border:"0px"}}>
-									<WatchList vertify={false} heightratio={0.5} searchwidth={1200 * 0.3} />
+									<WatchList vertify={false} heightratio={0.5} searchwidth={1200 * 0.3} watchlistdata ={watchliststocks} />
 								</Dropdown.Menu>
 							  </Dropdown>
 							</div>
@@ -175,7 +202,7 @@ export default ({searchData,searchstock}) => {
 						<div style={{ width: "30%" }}>
 						<StockTradeComponet vertify={false} stockdata ={stockdata} />
 						<div style={{ marginTop: "24px" }}>
-							<WatchList heightratio={0.2} searchwidth={1200 * 0.3} />
+							<WatchList heightratio={0.2} searchwidth={1200 * 0.3} watchlistdata ={watchliststocks} />
 						</div>
 					</div>
 					) : null}

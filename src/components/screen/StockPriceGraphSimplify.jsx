@@ -1,7 +1,7 @@
 import reaat, {useEffect, useState} from 'react'
 import { Card, Collapse, Button, Row, Nav, Col, Badge, InputGroup, Form, Image,Modal } from 'react-bootstrap'
 import './screen.css';
-import { Add, ArrowForward, Check, Edit, Forward, StarBorder } from '@material-ui/icons';
+import { Add, ArrowForward, Check, Edit, Forward, Refresh, StarBorder } from '@material-ui/icons';
 import { NotificationsNone, KeyboardArrowDown, ArrowDropUp} from '@material-ui/icons';
 import UserHolding from './UserHolding';
 import WatchListTable from './WatchListTable';
@@ -38,6 +38,8 @@ function StockPriceGraphSimplify({
   const [vertify, setvertify] = useState(true);
   const [add,setAdd] = useState(false)
   const [showAddselfselected, setshowAddselfselected] = useState(false)
+  const [showdeleteselfselected, setshowdeleteselfselected] = useState(false)
+
 
 
   const [hover1, setHover1] = useState(false);
@@ -49,7 +51,8 @@ function StockPriceGraphSimplify({
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleClose1 = () => setshowAddselfselected(false);
+  const handleClose1 = () => {setshowAddselfselected(false);window.location.reload(false)}
+  const handleClose2 = () => {setshowdeleteselfselected(false);window.location.reload(false)}
   const handleShow = () => setShow(true);
 
   
@@ -152,6 +155,23 @@ function StockPriceGraphSimplify({
       </div>
 
       <div>
+        <Modal size="sm"
+      aria-labelledby="contained-modal-title-vcenter" 
+      show={showdeleteselfselected} onHide={handleClose2}>
+          <Modal.Header closeButton> 
+          <div style={{
+            fontSize: "14px",
+            fontfamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+            fontWeight: "400",
+            color: "#000000",
+            lineHeight: "24px"}}
+          >
+            已将<strong>{stockdata?.名称}</strong>移除自选列表
+          </div></Modal.Header>
+        </Modal>
+      </div>
+
+      <div>
       <Card style={{width:widthratio, borderColor:"white"}} > 
       <div style={{width:"100%",display:"flex", justifyContent:"space-between"}}>
         <div style={{width:"max-content"}}>
@@ -189,17 +209,17 @@ function StockPriceGraphSimplify({
                         fontFamily:"Microsoft YaHei UI-Bold",
                         fontWeight:"500",
                         padding:"0px",
-                        color:stockdata?.最新价 - stockdata?.今开 < 0 ? "#42E083" : "#FF3541",
+                        color:stockdata?.最新价 - stockdata?.昨收 < 0 ? "#42E083" : "#FF3541",
                         lineHeight:"28px",
                         }}>{stockdata? <>
 
-                        {stockdata?.最新价 - stockdata?.今开 >0? 
-                        <>+￥{(stockdata?.最新价-stockdata?.今开).toFixed(2)}</> 
-                        : <>-￥{(stockdata?.最新价-stockdata?.今开).toFixed(2) *-1}</>} 
+                        {stockdata?.最新价 - stockdata?.昨收 >0? 
+                        <>+￥{(stockdata?.最新价-stockdata?.昨收).toFixed(2)}</> 
+                        : <>-￥{(stockdata?.最新价-stockdata?.昨收).toFixed(2) *-1}</>} 
                         (
-                        {stockdata?.最新价 - stockdata?.今开 >0? 
-                        <>+{(((stockdata?.最新价/stockdata?.今开) - 1)* 100).toFixed(2)}%</> 
-                        : <>{(((stockdata?.最新价/stockdata?.今开) - 1)* 100).toFixed(2)}%</>}
+                        {stockdata?.最新价 - stockdata?.昨收 >0? 
+                        <>+{(((stockdata?.最新价/stockdata?.昨收) - 1)* 100).toFixed(2)}%</> 
+                        : <>{(((stockdata?.最新价/stockdata?.昨收) - 1)* 100).toFixed(2)}%</>}
                         )
                         
                          </> : null}
@@ -231,7 +251,7 @@ function StockPriceGraphSimplify({
           {add? <><div>
                           <Button style={{background: "#F5F6F8",width: "120px",height: "48px", borderRadius: "4px 4px 4px 4px",opacity: 1, borderWidth:"0"}}
                           variant="outline-secondary"
-                          onClick={() => {removeFromWatchList()}}
+                          onClick={() => {removeFromWatchList();setshowdeleteselfselected(true)}}
                           >     
                               <div   style={{
                                   display:"flex",
