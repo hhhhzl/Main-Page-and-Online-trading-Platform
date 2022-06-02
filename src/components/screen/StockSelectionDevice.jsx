@@ -1,15 +1,60 @@
 import React, { useEffect, useState } from "react";
 import "./StockSelectionDevice.css";
 import data from "../../static/Strategy.json";
-import { Form, InputGroup, Image, Button, Card } from "react-bootstrap";
+import { Form, InputGroup, Image, Button, Card, Dropdown, Collapse } from "react-bootstrap";
 import Slider, { Range } from "rc-slider";
 import "rc-slider/assets/index.css";
+import useWindowDimensions from "utils/sizewindow";
 
 export default function StockSelectionDevice() {
+  const {width,height} = useWindowDimensions()
   const [current, setCurrent] = useState(0);
   const [showQuotesCard, setShowQuotesCard] = useState(false);
   const [showFinanceCard, setShowFinanceCard] = useState(false);
-  const [quotesCheckdList, setQuotesCheckdList] = useState([]);
+  const [quotestChecker, setquotestChecker] = useState([
+    {
+      id: 1,
+      label: "市值",
+      checked: true,
+    },
+    {
+      id: 2,
+      label: "当前价",
+      checked: false,
+    },
+    {
+      id: 3,
+      label: "当日涨跌幅",
+      checked: false,
+    },
+    {
+      id: 4,
+      label: "成交量",
+      checked: false,
+    }
+  ])
+  const [earningChecker, setearningChecker] = useState([
+      {
+        id: 1,
+        label: "市盈率",
+        checked: true,
+      },
+      {
+        id: 2,
+        label: "每股收益",
+        checked: false,
+      },
+      {
+        id: 3,
+        label: "股息",
+        checked: false,
+      },
+      {
+        id: 4,
+        label: "市盈率(TTM)",
+        checked: false,
+      }
+    ]);
 
   const changeCurrent = (index) => {
     setCurrent(index);
@@ -22,33 +67,6 @@ export default function StockSelectionDevice() {
   const handleShowFinanceCard = () => {
     setShowFinanceCard(!showFinanceCard);
   };
-
-  const quotesCheck = [
-    {
-      id: 1,
-      label: "市值",
-      checked: true,
-      value: "市值",
-    },
-    {
-      id: 2,
-      label: "当前价",
-      checked: false,
-      value: "当前价",
-    },
-    {
-      id: 3,
-      label: "当日涨跌幅",
-      checked: false,
-      value: "当日涨跌幅",
-    },
-    {
-      id: 4,
-      label: "成交量",
-      checked: false,
-      value: "成交量",
-    },
-  ];
 
   const financeCheck = [
     {
@@ -93,19 +111,21 @@ export default function StockSelectionDevice() {
     },
   };
 
-  const handleChangeQuotesCheck = (item) => {
-    // debugger
-    quotesCheck.forEach((v) => {
-      debugger;
-      if (v.id == item.id) {
-        v.checked = !item.checked;
-      }
-    });
-    console.log(quotesCheck);
+  const Changstate = (e,i,j) => {
+    const clonedData = [...quotestChecker];
+      clonedData[i]["checked"] = !clonedData[i]["checked"];
+    setquotestChecker(clonedData);
   };
 
+  const ChangstateEarning = (e,i,j) => {
+    const clonedData = [...quotestChecker];
+      clonedData[i]["checked"] = !clonedData[i]["checked"];
+    setearningChecker(clonedData);
+  };
+  
+
   return (
-    <div style={{ width: "25%" }}>
+    <div style={{ width: "100%" }}>
       <div className="stock-selection-device-tabs">
         <div
           onClick={() => changeCurrent(0)}
@@ -132,8 +152,10 @@ export default function StockSelectionDevice() {
       <div style={{ borderBottom: "1px solid #E5E8EE" }}></div>
       <div>
         {current == 0 ? (
-          <div>
-            <Form style={{ marginLeft: "48px" }}>
+          <>
+          <Collapse in = {true}>
+          <div style={{height: height-280, overflow:"auto"}}>
+            <Form style={{ marginLeft: "48px", marginRight:"48px" }}>
               <Form.Group
                 style={{
                   marginTop: "24px",
@@ -159,29 +181,30 @@ export default function StockSelectionDevice() {
                   <option value="全部">全部</option>
                 </Form.Select>
               </Form.Group>
-              <Form.Group style={{ paddingTop: "36px" }}>
+
+
+              <div style={{width:"100%", marginTop:"36px", display:"flex",justifyContent:"space-between"}}>
+              <Form.Group >
                 <Form.Label className="stock-selection-device-title stock-selection-device-label">
                   行情指标
                 </Form.Label>
-                <Form.Label
-                  style={{
-                    marginLeft: "67.826%",
-                    position: "relative",
-                  }}
-                >
-                  <Image
-                    onClick={handleShowQuotesCard}
+              </Form.Group>
+
+                  <Dropdown style={{paddingTop:"0",height:"24px"}} id={`dropdown-button-drop-end`} drop={"end"}>
+                    <Dropdown.Toggle variant="link" bsPrefix="p-0">
+                    <Image
                     src="/Group 981.png"
                     style={{ width: "24px", height: "24px" }}
                   ></Image>
-                  {showQuotesCard ? (
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu style={{position:"fixed"}}>
                     <Card className="quotes-card">
-                      {quotesCheck.map((item) => (
-                        <div style={{ display: "flex" }}>
+                      {quotestChecker.map((item,i) => (
+                        <div style={{ display: "flex",justifyContent:"space-between" }}>
                           <Form.Check
                             type="checkBox"
                             checked={item.checked}
-                            onClick={() => handleChangeQuotesCheck(item)}
+                            onChange = {(e) => Changstate(e,i)}
                           />
                           <span style={{ marginLeft: "8px" }}>
                             {item.label}
@@ -189,147 +212,244 @@ export default function StockSelectionDevice() {
                         </div>
                       ))}
                     </Card>
-                  ) : null}
-                </Form.Label>
-              </Form.Group>
+                    </Dropdown.Menu>
+                    </Dropdown>
+                    </div>                
 
-              <Form.Group className="stock-selection-device-group">
-                <Form.Label className="stock-selection-device-label label-text">
-                  市值
-                </Form.Label>
-                <InputGroup
-                  style={{
-                    width: "107px",
-                    height: "36px",
-                    marginLeft: "21.25%",
-                  }}
-                >
-                  <Form.Control
-                    type="number"
-                    placeholder="0.00"
-                    defaultValue={null}
-                  />
-                  <InputGroup.Text style={{ backgroundColor: "white" }}>
-                    亿
-                  </InputGroup.Text>
-                </InputGroup>
-                <Form.Label style={{ padding: "6px" }}>至</Form.Label>
-                <InputGroup
-                  style={{
-                    width: "107px",
-                    height: "36px",
-                  }}
-                >
-                  <Form.Control
-                    placeholder="0.00"
-                    required
-                    defaultValue={null}
-                    type="number"
-                  />
-                  <InputGroup.Text style={{ backgroundColor: "white" }}>
-                    亿
-                  </InputGroup.Text>
-                </InputGroup>
-              </Form.Group>
-              <Form.Group
-                style={{
-                  width: "92%",
-                  marginTop: "20px",
-                }}
-              >
-                <Slider
-                  min={0}
-                  marks={marks}
-                  step={0}
-                  range
-                  allowCross={false}
-                  defaultValue={[10, 20]}
-                />
-              </Form.Group>
+              {
+                quotestChecker.map(elem => {
+                  if (elem.checked){
+                    return(
+                      <>
+           
+                        <Form.Group className="stock-selection-device-group">
+                          <Form.Label className="stock-selection-device-label label-text">
+                            {elem.label}
+                            </Form.Label>
+                            <InputGroup
+                              style={{
+                                width: "107px",
+                                height: "36px",
+                                marginLeft: "21.25%",
+                                border:"1px solid #C0C3CE",
+                                borderBottom:"1px solid #C0C3CE",
+                                borderRadius:"4px",
+                              }}
+                            >
+                              <Form.Control
+                                style={{backgroundColor:"rgba(0, 0, 0, 0)",border:"0"}}
+                                type="float"
+                                placeholder="0.00"
+                                defaultValue={null}
+                              />
+                              <InputGroup.Text style={{ width:"28px", padding:"0px", backgroundColor: "rgba(0, 0, 0, 0)" ,border:"0"}}>
+                              <div style={{
+                                  width: "14px",
+                                  height: "24px",fontSize: "14px",
+                                  fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                                   fontWeight: "400",
+                                   color: "#C0C3CE",
+                                  lineHeight: "24px",}}> 亿</div>
+                              </InputGroup.Text>
+                            </InputGroup>
+                            <Form.Label style={{ marginTop:"6px",padding: "6px" }}><div style={{
+                                  width: "14px",
+                                  height: "24px",
+                                  fontSize: "14px",
+                                  fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                                   fontWeight: "400",
+                                   color: "#2A2B30",
+                                  lineHeight: "24px",}}> 至</div></Form.Label>
+                            <InputGroup
+                              style={{
+                                width: "107px",
+                                height: "36px",
+                                border:"1px solid #C0C3CE",
+                                borderRadius:"4px",
+                              }}
+                            >
+                              <Form.Control
+                                style={{backgroundColor:"rgba(0, 0, 0, 0)",border:"0"}}
+                                type="float"
+                                placeholder="0.00"
+                                defaultValue={null}
+                              />
+                              <InputGroup.Text style={{ width:"28px", padding:"0px", backgroundColor: "rgba(0, 0, 0, 0)", border:"0"}}>
+                              <div style={{
+                                  width: "14px",
+                                  height: "24px",fontSize: "14px",
+                                  fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                                   fontWeight: "400",
+                                   color: "#C0C3CE",
+                                  lineHeight: "24px",}}> 亿</div>
+                              </InputGroup.Text>
+                            </InputGroup>
+                          </Form.Group>
+
+                          <div
+                            style={{
+                              width: "100%",
+                              marginTop: "20px",
+                              marginBottom:"11px"
+                            }}
+                          >
+                            <Slider
+                              min={0}
+                              marks={marks}
+                              step={0}
+                              range
+                              allowCross={false}
+                              defaultValue={[10, 20]}
+                            />
+                          </div>
+                          <div style={{width:"100%",height:"16px"}}></div>
+                      </>
+                    )
+                  }
+                })
+              }
+
+              
 
             
 
-              <Form.Group style={{ paddingTop: "36px" }}>
+            <div style={{width:"100%", marginTop:"36px", display:"flex",justifyContent:"space-between"}}>
+              <Form.Group >
                 <Form.Label className="stock-selection-device-title stock-selection-device-label">
                   财务指标
                 </Form.Label>
-                <Form.Label
-                  style={{
-                    marginLeft: "67.826%",
-                    position: "relative",
-                  }}
-                >
-                  <Image
-                    onClick={handleShowFinanceCard}
+              </Form.Group>
+
+                  <Dropdown style={{paddingTop:"0",height:"24px"}}>
+                    <Dropdown.Toggle variant="link" bsPrefix="p-0">
+                    <Image
                     src="/Group 981.png"
                     style={{ width: "24px", height: "24px" }}
                   ></Image>
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu 
 
-                  {showFinanceCard ? (
-                    <Card className="finance-card">
-                      {financeCheck.map((item) => (
-                        <Form.Check type="checkbox" label={item.label} />
+
+//TO DO fix Zindex...............................................
+                    // style={{position:"absolute",zIndex:999, marginLeft:"100px"}}
+                     
+                    >
+                    <Card className="quotes-card">
+                      {earningChecker.map((item,i) => (
+                        <div style={{ display: "flex",justifyContent:"space-between" }}>
+                          <Form.Check
+                            type="checkBox"
+                            checked={item.checked}
+                            onChange = {(e) => ChangstateEarning(e,i)}
+                          />
+                          <span style={{ marginLeft: "8px" }}>
+                            {item.label}
+                          </span>
+                        </div>
                       ))}
                     </Card>
-                  ) : null}
-                </Form.Label>
-              </Form.Group>
+                    </Dropdown.Menu>
+                    </Dropdown>
+                    </div> 
 
-              <Form.Group className="stock-selection-device-group">
-                <Form.Label className="stock-selection-device-label stock-selection-device-label label-text">
-                  每股收益
-                </Form.Label>
-                <InputGroup
-                  style={{
-                    width: "107px",
-                    height: "36px",
-                    marginLeft: "21.25%",
-                  }}
-                >
-                  <Form.Control
-                    type="number"
-                    placeholder="0.00"
-                    defaultValue={null}
-                  />
-                  <InputGroup.Text style={{ backgroundColor: "white" }}>
-                    亿
-                  </InputGroup.Text>
-                </InputGroup>
-                <Form.Label style={{ padding: "6px" }}>至</Form.Label>
-                <InputGroup
-                  style={{
-                    width: "107px",
-                    height: "36px",
-                  }}
-                >
-                  <Form.Control
-                    placeholder="0.00"
-                    required
-                    defaultValue={null}
-                    type="number"
-                  />
-                  <InputGroup.Text style={{ backgroundColor: "white" }}>
-                    亿
-                  </InputGroup.Text>
-                </InputGroup>
-              </Form.Group>
-              <Form.Group
-                style={{
-                  width: "92%",
-                  marginTop: "20px",
-                }}
-              >
-                <Slider
-                  min={0}
-                  marks={marks}
-                  step={0}
-                  range
-                  allowCross={false}
-                  defaultValue={[10, 20]}
-                />
-              </Form.Group>
+
+
+                    {
+                earningChecker.map(elem => {
+                  if (elem.checked){
+                    return(
+                      <>
+           
+                        <Form.Group className="stock-selection-device-group">
+                          <Form.Label className="stock-selection-device-label label-text">
+                            {elem.label}
+                            </Form.Label>
+                            <InputGroup
+                              style={{
+                                width: "107px",
+                                height: "36px",
+                                marginLeft: "21.25%",
+                                border:"1px solid #C0C3CE",
+                                borderBottom:"1px solid #C0C3CE",
+                                borderRadius:"4px",
+                              }}
+                            >
+                              <Form.Control
+                                style={{backgroundColor:"rgba(0, 0, 0, 0)",border:"0"}}
+                                type="float"
+                                placeholder="0.00"
+                                defaultValue={null}
+                              />
+                              <InputGroup.Text style={{ width:"28px", padding:"0px", backgroundColor: "rgba(0, 0, 0, 0)" ,border:"0"}}>
+                              <div style={{
+                                  width: "14px",
+                                  height: "24px",fontSize: "14px",
+                                  fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                                   fontWeight: "400",
+                                   color: "#C0C3CE",
+                                  lineHeight: "24px",}}> 亿</div>
+                              </InputGroup.Text>
+                            </InputGroup>
+                            <Form.Label style={{ marginTop:"6px",padding: "6px" }}><div style={{
+                                  width: "14px",
+                                  height: "24px",
+                                  fontSize: "14px",
+                                  fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                                   fontWeight: "400",
+                                   color: "#2A2B30",
+                                  lineHeight: "24px",}}> 至</div></Form.Label>
+                            <InputGroup
+                              style={{
+                                width: "107px",
+                                height: "36px",
+                                border:"1px solid #C0C3CE",
+                                borderRadius:"4px",
+                              }}
+                            >
+                              <Form.Control
+                                style={{backgroundColor:"rgba(0, 0, 0, 0)",border:"0"}}
+                                type="float"
+                                placeholder="0.00"
+                                defaultValue={null}
+                              />
+                              <InputGroup.Text style={{ width:"28px", padding:"0px", backgroundColor: "rgba(0, 0, 0, 0)", border:"0"}}>
+                              <div style={{
+                                  width: "14px",
+                                  height: "24px",fontSize: "14px",
+                                  fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                                   fontWeight: "400",
+                                   color: "#C0C3CE",
+                                  lineHeight: "24px",}}> 亿</div>
+                              </InputGroup.Text>
+                            </InputGroup>
+                          </Form.Group>
+
+                          <div
+                            style={{
+                              width: "100%",
+                              marginTop: "20px",
+                              marginBottom:"11px"
+                            }}
+                          >
+                            <Slider
+                              min={0}
+                              marks={marks}
+                              step={0}
+                              range
+                              allowCross={false}
+                              defaultValue={[10, 20]}
+                            />
+                          </div>
+                          <div style={{width:"100%",height:"16px"}}></div>
+                      </>
+                    )
+                  }
+                })
+              }
+
+             
             </Form>
-            <Form.Group className="fixed">
+            <Form.Group className="fixed" style={{position:"fixed",bottom:0,width:"25%",minWidth:"320px"}}>
               <Form.Group className="stock-selection-device-group">
                 <Form.Label className="stock-selection-device-label label-text">
                   策略名称
@@ -373,7 +493,15 @@ export default function StockSelectionDevice() {
               </Form.Group>
             </Form.Group>
           </div>
+          </Collapse>
+          </>
         ) : (
+
+
+
+
+
+          ////////////////////////////////////我的策略/////////////////////////////////////
           <div>
             {data.map((item, idx) => (
               <div className="list-label">

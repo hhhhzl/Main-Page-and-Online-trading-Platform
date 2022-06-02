@@ -122,11 +122,6 @@ const searchSwitch = () => {
           setupdown(false)
       }
   }
-
-  const checkupdown = () =>{
-    
-  }
-
   
 
   const arrays = [{
