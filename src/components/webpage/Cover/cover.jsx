@@ -170,7 +170,7 @@ export default function Cover() {
         <div
           className="arrow animated bounceInDown home-match-btn"
           style={{
-            bottom: width * 0.0963,
+            bottom: width * 0.118,
             // left:width * 0.4854
           }}
         >

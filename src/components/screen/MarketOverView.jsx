@@ -23,11 +23,48 @@ import { discontinuousTimeScaleProviderBuilder } from "react-stockcharts/lib/sca
 import { SampleData } from "../../static/Stockdata";
 import AreaChart from '../graphs/areaChart';
 import AreaChartForMarketView from '../graphs/AreaChartForMarketView';
+import { apiLiveMarket, apiLiveMarketInfoMultiple } from 'api/trading_platform/market';
+import { fmoney } from 'utils';
+
+const market = {
+    "symbols": ["ID.000001", "ID.399001", "ID.399006","ID.000002","ID.399300"]
+}
 
 export default function MarketOverview({widthRatio}) {
 
-    const [selected, setselected] = useState(0)
+    const [selected, setselected] = useState("ID.000001")
     const [upDown, setUpdown] = useState(false)
+    const [marketStock, setmarketStock] = useState(null)
+
+    useEffect(() =>{
+        getMarketOverViewOld()
+        
+    },[])
+
+    const getMarketOverViewNew = async () =>{
+        try{
+            const response = await apiLiveMarketInfoMultiple(market)
+            const stockdata = response.data.data;
+            console.log(stockdata)
+            setmarketStock(stockdata)           
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+    const getMarketOverViewOld = async () => {
+        try {
+            const MarketOverviewArray = await Promise.all(market.symbols.map(async function(stock) {
+                const response = await apiLiveMarket(stock);
+                const watchlistdata = response.data.data;
+                return watchlistdata;
+            }));
+            console.log(MarketOverviewArray);
+            setmarketStock(MarketOverviewArray)
+        } catch (e) {
+            console.log(e);
+        }
+      }
 
     const data = [
         {
@@ -105,16 +142,16 @@ export default function MarketOverview({widthRatio}) {
                 >
 
                     {
-                        data.map((elem) => {
+                        marketStock?.map((elem) => {
                             return (
                                 <Button
-                                onClick={() => setselected(elem.id)}
+                                onClick={() => setselected(elem.代码)}
                                  style={{width:"100%", height:"16.23%",
                                 position:"relative",
                                 textAlign:"left",
                                 borderWidth:"0",
                                 background: "#FFFFFF",
-                                zIndex: selected == elem.id? 1000 : 1, 
+                                zIndex: selected == elem.代码? 1000 : 1, 
                                 borderRadius: "4px 4px 4px 4px",
                                 opacity: 1,  
                                 // marginBottom:"3px",
@@ -123,10 +160,9 @@ export default function MarketOverview({widthRatio}) {
                             
                             >
                         <div style={{display:"flex",justifyContent:"left",
-                        boxShadow: selected == elem.id? "0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02)" : null,
+                        boxShadow: selected === elem.代码? "0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02)" : null,
                          width:"100%",height:"100%"}}>
-                            <div style={{width:"5.26%",height:"100%",borderRadius: "4px 0px 0px 4px",backgroundColor: selected == elem.id? upDown? "#16CE62": "#FF3541" : null}}></div>
-
+                            <div style={{width:"5.26%",height:"100%",borderRadius: "4px 0px 0px 4px",backgroundColor: selected == elem.代码? elem.最新价-elem.昨收< 0? "#16CE62": "#FF3541" : null}}></div>
                             <div style ={{width:"94.74%",height:"100%"}}>
                             <div style={{
                                     paddingTop:"4.21%",
@@ -140,7 +176,7 @@ export default function MarketOverview({widthRatio}) {
                                     fontWeight:"bold",
                                     color:"#2A2B30",
                                     lineHeight:"28px",  
-                                    }}>{elem.name}</div>
+                                    }}>{elem.名称}</div>
 
                                     <div style={{
                                     paddingTop:"4.21%",
@@ -153,7 +189,7 @@ export default function MarketOverview({widthRatio}) {
                                     fontWeight:"500",
                                     color:"#2A2B30",
                                     lineHeight:"24px",  
-                                    }}>{elem.price}</div>
+                                    }}>{fmoney(elem.最新价)}</div>
 
                                     <div style={{
                                     paddingTop:"4.21%",
@@ -166,9 +202,18 @@ export default function MarketOverview({widthRatio}) {
                                     fontSize:"14px",
                                     fontFamily:"Futura",
                                     fontWeight:"500",
-                                    color:upDown? "#16CE62": "#FF3541",
+                                    color: elem.最新价-elem.昨收< 0? "#16CE62": "#FF3541",
                                     lineHeight:"24px",  
-                                    }}>{elem.updown}{" "}{elem.percent}</div>
+                                    }}>{
+                                        elem.最新价-elem.昨收>=0?
+                                        <>+{fmoney(elem.最新价-elem.昨收,2)}</>
+                                        :
+                                        fmoney(elem.最新价-elem.昨收,2)
+                                    }{" "}{elem.涨跌幅>=0? 
+                                        <>+{elem.涨跌幅}%</>
+                                        :
+                                        <>{elem.涨跌幅}%</>
+                                    }</div>
                             </div>
                         </div>
                     </Button>
@@ -214,7 +259,7 @@ export default function MarketOverview({widthRatio}) {
                                     color:"#9C9EAC",
                                     lineHeight:"20px",  
                                     letterSpacing: "1px"
-                                    }}>11:30</div>
+                                    }}>11:30/13:00</div>
                                     <div style={{
                                     // marginLeft:"-65%",
                                    

@@ -22,3 +22,9 @@ export const apiKLine = ({ symbol, start, end, tf }) =>
 // live
 export const apiLiveStockInfo = (symbol) =>
     apiService.get(`/live/stock_info`, { params: { symbol } });
+export const apiLiveStockInfoMultiple =  ({symbols}) => 
+    apiService.post(`/live/stock_infos`,  { symbols } );
+export const apiLiveMarket =  (symbol) => 
+    apiService.get(`/live/index_info`, { params: { symbol } });
+export const apiLiveMarketInfoMultiple =  ({symbols}) => 
+    apiService.post(`/live/index_infos`,  { symbols } );

@@ -132,6 +132,8 @@ export default function WatchListTable({ heightratio, searchwidth, watchlistdata
   const rowStyle = { borderColor: "white" };
 
   return (
+
+    <> 
     <ToolkitProvider
       bootstrap4
       keyField="代码"
@@ -185,9 +187,11 @@ export default function WatchListTable({ heightratio, searchwidth, watchlistdata
               marginBottom: "0px",
               borderRadius: "4px 4px 4px 4px",
               opacity: "1",
-            }}
-          >
-            <BootstrapTable
+            }}>
+
+         
+            {watchlistdata?.length>0? <>
+              <BootstrapTable
               {...props.baseProps}
               bordered={false}
               condensed
@@ -197,7 +201,18 @@ export default function WatchListTable({ heightratio, searchwidth, watchlistdata
               rowStyle={rowStyle}
               selectRow={selectRow}
             />
-          </div>
+            
+            
+            </> 
+            :
+             <div style={{display:"flex",justifyContent:"center",marginTop:height * heightratio*0.35,letterSpacing:"2px"}}>
+               您的自选列表空空如也~~
+               </div>
+
+            }
+            </div>
+           
+          
 
           {/* <div className="search-div">
 <ExportCSVButton 
@@ -207,6 +222,7 @@ export default function WatchListTable({ heightratio, searchwidth, watchlistdata
 </div> */}
         </>
       )}
-    </ToolkitProvider>
+    </ToolkitProvider>    
+    </>
   );
 }

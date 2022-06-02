@@ -1,36 +1,24 @@
 import reaat, {useEffect, useState} from 'react'
-import { Card, Collapse, Button, Row, Nav, Col, Badge, InputGroup, Form, Image,Modal } from 'react-bootstrap'
+import { Card, Button, Modal } from 'react-bootstrap'
 import './screen.css';
-import { Add, ArrowForward, Check, Edit, Forward, Refresh, StarBorder } from '@material-ui/icons';
-import { NotificationsNone, KeyboardArrowDown, ArrowDropUp} from '@material-ui/icons';
-import UserHolding from './UserHolding';
-import WatchListTable from './WatchListTable';
+import { Add, ArrowForward, Check } from '@material-ui/icons';
 import useWindowDimensions from '../../utils/sizewindow';
-import LineSeriesForPorfolio from '../graphs/LineSeriesForPorfolio';
 import AreaSeriesForStockPrice from '../graphs/AreaSeriesForStockPrice';
-
 import * as d3 from "d3";
-import { format } from "d3-format";
-import { ChartCanvas, Chart } from "react-stockcharts";
-import { AreaSeries, AlternatingFillAreaSeries } from "react-stockcharts/lib/series";
-import { fitWidth } from "react-stockcharts/lib/helper";
 import { last } from "react-stockcharts/lib/utils";
-import { timeFormat } from "d3-time-format";
-import {
-  createVerticalLinearGradient,
-  hexToRGBA
-} from "react-stockcharts/lib/utils";
 import { discontinuousTimeScaleProviderBuilder } from "react-stockcharts/lib/scale";
-import { SampleData } from "../../static/Stockdata";
+import { DataNone } from "../../static/StockNone";
+import { SampleData } from '../../static/Stockdata';
 import { Link } from 'react-router-dom';
-import { addWatchlist, fmoney, getWatchList, setWatchlist } from 'utils';
+import { addWatchlist, fmoney, getWatchList, setLastStock, setWatchlist } from 'utils';
 import { WatchListAction } from 'redux/actions/WatchListAction';
 import { connect } from 'react-redux';
 
 
 function StockPriceGraphSimplify({
   widthratio,
-  stockdata
+  stockdata,
+  kline,
   }) {
   const {width,height} = useWindowDimensions();
   const [timeP,setTimeP] = useState(7);
@@ -59,18 +47,9 @@ function StockPriceGraphSimplify({
   
   
 
-    const dateTimeFormat = "%Y-%m-%d %H:%M:%S";
-    const parseDate = d3.timeParse(dateTimeFormat);
-    const ScaleProvider = discontinuousTimeScaleProviderBuilder().inputDateAccessor(
-        (d) => parseDate(d.date)
-      );
-    const { data, xScale, xAccessor, displayXAccessor } = ScaleProvider(
-        SampleData
-      );
+    
 
-      const [start, setstart] = useState(last(data))
-      const [end, setend] = useState(data[Math.max(0, data.length - 7)])
-      const [updown, setupdown] = useState(end.close < start.close? true : false)
+      
 
     const addwatchlistToloacl = (symbol) =>{
       addWatchlist(symbol)
@@ -83,27 +62,64 @@ function StockPriceGraphSimplify({
       setAdd(false)
     }
 
+
+    const dateTimeFormat = "%Y-%m-%d %H:%M:%S";
+    const parseDate = d3.timeParse(dateTimeFormat);
+    const ScaleProvider = discontinuousTimeScaleProviderBuilder().inputDateAccessor(
+      (d) => parseDate(d.datetime)
+    );
+    const { data, xScale, xAccessor, displayXAccessor } = ScaleProvider(
+      kline? kline : DataNone
+    );
+    
+    const [start, setstart] = useState(data[Math.max(0, data.length - 7)])
+    const [end, setend] = useState(last(data))
+    const [updown, setupdown] = useState(end.close >= start.close? false : true)
+
   const checkprice = (interval,id) =>{
+      setend(last(data))
       setTimeP(interval)
-      setID(id)  
-      setend(data[Math.max(0, data.length - interval)])
-      if (data[Math.max(0, data.length - interval)].close < start.close){
+      setID(id) 
+      setstart(data[Math.max(0,data.length - interval)])    
+      if (data[Math.max(0, data.length - interval)].close >= start.close){
           setupdown(true)
       }else{
           setupdown(false)
       }
+      
+      
+      
   }
 
-  
-  const arrays = ["今日","一周","一个月","三个月","一年","五年"]
+  const determineUporDown = () => {
+    if (id == 0){
+      const pricediff = (stockdata?.最新价-stockdata?.昨收).toFixed(2)
+      const percentdiff = (((stockdata?.最新价/stockdata?.昨收) - 1)* 100).toFixed(2)
+      if (stockdata?.最新价 - stockdata?.最新价 >= 0){
+        return [true, pricediff, percentdiff]
+      } else{
+        return [false, pricediff, percentdiff]
+      }    
+    }else{
+      const pricediff = (end.close - start.close).toFixed(2)
+      const percentdiff = (((end.close/start.close) - 1)* 100).toFixed(2)
+      if (end.close - start.close >= 0){
+        return [true, pricediff, percentdiff]
+      }else {
+        return [false, pricediff, percentdiff]
+      }
+    }
+  }
 
-    // useEffect(()=>{
-    //     setTimeP(timeP)
-    //     setID(id)
-    //     setend(end)
-    //     setupdown(updown)
-    //     console.log(timeP,id,end,updown,80)
-    // },[timeP,id,end,updown])
+  useEffect(() =>{
+    setstart(start)
+    setupdown(end.close >= start.close? false : true)
+    setID(id)
+  },[start])
+
+  
+  const arrays = ["今日","一周","一个月","三个月","六个月","一年","三年"]
+
 
 
     useEffect(()=>{
@@ -113,8 +129,6 @@ function StockPriceGraphSimplify({
           setAdd(true)
         }
       }
-      
-
     })
 
 
@@ -209,17 +223,17 @@ function StockPriceGraphSimplify({
                         fontFamily:"Microsoft YaHei UI-Bold",
                         fontWeight:"500",
                         padding:"0px",
-                        color:stockdata?.最新价 - stockdata?.昨收 < 0 ? "#42E083" : "#FF3541",
+                        color:determineUporDown()[0]? "#FF3541" :  "#42E083",
                         lineHeight:"28px",
                         }}>{stockdata? <>
 
-                        {stockdata?.最新价 - stockdata?.昨收 >0? 
-                        <>+￥{(stockdata?.最新价-stockdata?.昨收).toFixed(2)}</> 
-                        : <>-￥{(stockdata?.最新价-stockdata?.昨收).toFixed(2) *-1}</>} 
+                        {determineUporDown()[0]? 
+                        <>+￥{determineUporDown()[1]}</> 
+                        : <>-￥{determineUporDown()[1] *-1}</>} 
                         (
-                        {stockdata?.最新价 - stockdata?.昨收 >0? 
-                        <>+{(((stockdata?.最新价/stockdata?.昨收) - 1)* 100).toFixed(2)}%</> 
-                        : <>{(((stockdata?.最新价/stockdata?.昨收) - 1)* 100).toFixed(2)}%</>}
+                        {determineUporDown()[0]? 
+                        <>+{determineUporDown()[2]}%</> 
+                        : <>{determineUporDown()[2]}%</>}
                         )
                         
                          </> : null}
@@ -387,7 +401,7 @@ function StockPriceGraphSimplify({
                 lineHeight:"28px",
                 letterSpacing:"1px",
                 }} variant="outline-primary"
-                onClick={() => {checkprice(30,1)}}
+                onClick={() => {checkprice(7,1)}}
                 >
                 1W
                 </Button>
@@ -407,7 +421,7 @@ function StockPriceGraphSimplify({
                 lineHeight:"28px",
                 letterSpacing:"1px",
                 }} variant="outline-primary"
-                onClick={() => {checkprice(90,2)}}
+                onClick={() => {checkprice(30,2)}}
                 >
                 1M
                 </Button>
@@ -427,7 +441,7 @@ function StockPriceGraphSimplify({
                 lineHeight:"28px",
                 letterSpacing:"1px",
                 }} variant="outline-primary"
-                onClick={() => {checkprice(180,3)}}
+                onClick={() => {checkprice(66,3)}}
                 >
                 3M
                 </Button>
@@ -447,9 +461,9 @@ function StockPriceGraphSimplify({
                 lineHeight:"28px",
                 letterSpacing:"1px",
                 }} variant="outline-primary"
-                onClick={() => {checkprice(365,4)}}
+                onClick={() => {checkprice(132,4)}}
                 >
-                1Y
+                6M
                 </Button>
 
                 <Button style={{height:"36px",borderBottom: id == 5? updown? "3px solid #42E083" : "3px solid #FF3541" : "0px",
@@ -463,13 +477,33 @@ function StockPriceGraphSimplify({
                 fontFamily:"Microsoft YaHei UI-Bold",
                 fontWeight:"500",
                 padding:"0px",
-                color:id == 5 ? updown? "#42E083" : "#FF3541" : "#2A2B30",
+                color:id == 5? updown? "#42E083" : "#FF3541" : "#2A2B30",
                 lineHeight:"28px",
                 letterSpacing:"1px",
                 }} variant="outline-primary"
                 onClick={() => {checkprice(365,5)}}
                 >
-                5Y
+                1Y
+                </Button>
+
+                <Button style={{height:"36px",borderBottom: id == 6? updown? "3px solid #42E083" : "3px solid #FF3541" : "0px",
+                borderTop:"0px",
+                borderLeft:"0px",
+                borderRight:"0px",
+                borderRadius:"0px",   
+                backgroundColor:"white",
+                fontSize:"16px",
+                textAlign:"center",
+                fontFamily:"Microsoft YaHei UI-Bold",
+                fontWeight:"500",
+                padding:"0px",
+                color:id == 6 ? updown? "#42E083" : "#FF3541" : "#2A2B30",
+                lineHeight:"28px",
+                letterSpacing:"1px",
+                }} variant="outline-primary"
+                onClick={() => {checkprice(600,6)}}
+                >
+                3Y
                 </Button>
                 </div> 
               </div>
