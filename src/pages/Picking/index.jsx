@@ -60,8 +60,15 @@ export default ({searchData}) => {
                     justifyContent: "left",
                 }}
             >
-                <StockSelectionDevice />
-                <div style={{width:"75%"}}>
+                <div style={{position:"relative",zIndex:10,width:"25%",minWidth:"320px"}}>
+                     <StockSelectionDevice />
+
+                </div>
+                <div style={{position:"relative",zIndex:10,marginTop:"64px",width:"1px",height:"max-content",backgroundColor:"#E5E8EE"}}></div>
+                
+
+
+                <div style={{position:"relative",zIndex:10,width:"75%",height:height-64}}>
                     <MarketQuotationList allstocks ={searchData} />
 
                 </div>

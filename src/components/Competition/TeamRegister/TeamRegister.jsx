@@ -49,14 +49,14 @@ export default function TeamRegister({
     }
 
     useEffect(()=>{
-        if (teamname.length > 0 &&  (lianghua || duotou) ){
+        console.log(teamname.length)
+        if (teamname.length && (lianghua || duotou) ){
             setdisable(false)
         }else if (teamname.length == 0){
             setdisable(true)
         }else{
             setdisable(true)
         }
-        console.log(disable,49)
     },[lianghua,duotou,disable])
 
 	const uploadFile = React.createRef();

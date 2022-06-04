@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from 'react';
 import axios from 'axios';
 import './KeyIndicator.css'
-import { fmoney } from 'utils';
+import { changeUnit, fmoney } from 'utils';
 
 export default function KeyIndicators({stockdata}){
 	const [extend, setExtend] = useState(true)
@@ -41,11 +41,11 @@ export default function KeyIndicators({stockdata}){
 					</div>
 					<div className="indicator-simple-div">
 						<div className="indicator-simple-key">成交额</div>
-						<div className="indicator-simple-value"> {stockdata.成交额}</div>
+						<div className="indicator-simple-value"> {changeUnit(stockdata.成交额)}</div>
 					</div>
 					<div className="indicator-simple-div">
 						<div className="indicator-simple-key">成交均量（三月）</div>
-						<div className="indicator-simple-value"> {fmoney(stockdata["成交均量(3月)"])}</div>
+						<div className="indicator-simple-value"> {changeUnit(stockdata["成交均量(3月)"])}</div>
 					</div>
 					<div className="indicator-simple-div">
 						<div className="indicator-simple-key">振幅</div>

@@ -195,7 +195,7 @@ export default function MarketQuotation({ handleShowDetails, indusAll, field }) 
       },
     },
     {
-      dataField: "成交均量（3月）",
+      dataField: "成交均量(3月)",
       text: "成交均量（3月）",
       sort: true,
       style: {
@@ -204,7 +204,7 @@ export default function MarketQuotation({ handleShowDetails, indusAll, field }) 
       formatter: (value, row) => {
         return (
           <div>
-            <h6 className="table-tr-futura">{value}</h6>
+            <h6 className="table-tr-futura">{changeUnit(value)}</h6>
           </div>
         );
       },

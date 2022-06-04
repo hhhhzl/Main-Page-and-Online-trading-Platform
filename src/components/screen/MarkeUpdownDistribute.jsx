@@ -4,7 +4,7 @@ import './screen.css';
 import AreaChartForMarketView from '../graphs/AreaChartForMarketView';
 import BarChartMarket from '../graphs/BarChartMarket';
 import "./plateCard.css";
-import { CodeSharp } from '@material-ui/icons';
+import {fmoney} from "../../utils/index"
 
 
 export default function MarketUpdownDistribute({widthRatio, searchData}) {
@@ -213,14 +213,16 @@ export default function MarketUpdownDistribute({widthRatio, searchData}) {
                     >
                       <div className="plate-line-down"></div>
                       <div
-                        className="plate-line-text"
+                        className="plate-linfmoneye-text"
                         style={{ textAlign: "start", color: "#16CE62", fontSize: "16px",
                         fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
                         fontWeight: 400,
                         lineHeight:"28px"
                       }}
                       >
-                        下跌: {dataSource.下跌家数}
+                        下跌 
+                        {/* {fmoney(dataSource.下跌家数,0)} */}
+                        {dataSource.下跌家数}
                       </div>
                     </div>
                     <div
