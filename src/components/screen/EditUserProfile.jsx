@@ -89,7 +89,7 @@ export default function EditData({platformType}){
 		<div style={{backgroundColor: "#F5F6F8",display:"flex",justifyContent:"space-between"}}>
 			<div style={{width:"48px",maxWidth:"18.75%"}}></div>
 			<div  style={{
-				        paddingTop:"112px",
+				        paddingTop:"48px",
                         width: "1200px",
                         minHeight: "700px",
                         minWidth: "fix-content",

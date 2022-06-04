@@ -23,7 +23,7 @@ import {
 } from "react-stockcharts/lib/utils";
 import { discontinuousTimeScaleProviderBuilder } from "react-stockcharts/lib/scale";
 import { SampleData } from "../../static/Stockdata";
-import  SearchData  from "../../static/SearchStock.json"
+
 
 import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolkit';
 import BootstrapTable from 'react-bootstrap-table-next';
@@ -37,15 +37,28 @@ import PointFigurechart from '../graphs/PointFigureChart';
 import CandleStickChartHollow from '../graphs/CandleStickChartHollow';
 import LineSeriesChart from '../graphs/LineSeriesChart';
 import AreaSeriesChart from '../graphs/AreaSeriesChart';
+import { fmoney } from 'utils';
+import {
+    Switch,
+    Route,
+    useParams,
+    useRouteMatch,
+    useHistory
+  } from "react-router-dom";
 
 const { SearchBar, ClearSearchButton } = Search;
 
 
-export default function StockPriceGraphProfessional(props) {
+export default function StockPriceGraphProfessional({
+    searchData,
+    stockdata,
+    kline,
+    watchlistdata
+}) {
   const {width,height} = useWindowDimensions();
   const [openself,setopenself] = useState(false);
   const [timeP,setTimeP] = useState(7);
-  const [id,setID] = useState(0)
+  const [id,setID] = useState(5)
   const [vertify, setvertify] = useState(true);
   const [add,setAdd] = useState(false)
   const [hover1, setHover1] = useState(false);
@@ -55,9 +68,11 @@ export default function StockPriceGraphProfessional(props) {
   const handleMouseOver2 = () => setHover2(true);
   const handleMouseLeave2 = () => setHover2(false);
   const [chooseChartType, setchooseChartType] = useState(0)
+  const history = useHistory();
 
 
   const [show, setshow] = useState(false)
+  const [showgoingback,setshowgoingback] = useState(false)
   const handleShow = () => {setshow(true)}
   const handleClose = () => {setshow(false)};
 
@@ -65,18 +80,21 @@ export default function StockPriceGraphProfessional(props) {
 
 
 ////////////////////////////指标//////////////////////////////
-   const [volumeshow, setvolumeshow] = useState(false)
+const [volumeshow, setvolumeshow] = useState(false)
+const [emashow, setemashow] = useState(false)
+const [bollingshow, setbollingshow] = useState(false)
+const [macdshow, setmacdshow] = useState(false)
+const [RSIshow, setRSIshow] = useState(false)
+const [ATRshow, setATRshow] = useState(false)
 
 
 
    
 
   
-  
 
-
-
-  ///////////////choosing logic///////////////////////////
+///////////////choosing logic///////////////////////////
+  const [graphnumber, setgraphnumber] = useState(0)
  
 
   const [scrollswitch, setScrollswitch] = useState(false);
@@ -163,20 +181,124 @@ const searchSwitch = () => {
 
 ]
 
-  const columns = [
+const selectRow = {
+    mode: 'radio',
+    clickToSelect: true,
+    hideSelectAll:true,
+    hideSelectColumn: true,
+    style:{background:"#E7ECFD"},
+    onSelect: (row, isSelect, rowIndex, e) => {
+      if (isSelect){
+          history.push({
+            pathname:"/eplatform/trade/pro",
+            search:`?symbol=${row.代码}`,
+            state:{symbol:row.代码}
+          })
+      }else{     
+        
+      }
+    },
+    
+  };
+
+const columns = [
     {
-        dataField:'id',
-        text:'ID',
-        hidden: true
+        dataField:'代码',
+        text:'代码',
+        sort: true,
+        headerAttrs: {
+          hidden: true
+        },
+        style: { width: "40%" },
+        formatter: (cell) => {
+          return (
+            <div
+              style={{
+                paddingTop: "6px",
+                paddingBottom: "6px",
+                paddingLeft: "12px",
+                fontSize: "14px",
+                fontFamily: " Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                fontWeight: "400",
+                color: "#2A2B30",
+                lineHeight: "24px",
+              }}
+            >
+              {cell}
+            </div>
+          )
+      }
     },
     {
-        dataField: 'name',
-        text: '机构(升/降)',
+        dataField: '名称',
+        text: '名称',
         sort: true,
         headerAttrs: {
             hidden: true
           },
+        formatter: (cell) => {
+          return (
+            <div
+              style={{
+                paddingTop: "6px",
+                paddingBottom: "6px",
+                paddingLeft: "12px",
+                fontSize: "14px",
+                fontFamily: " Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                fontWeight: "400",
+                color: "#2A2B30",
+                lineHeight: "24px",
+              }}
+            >
+              {cell}
+            </div>
+          )
+      }
     },
+    {
+      dataField: '涨跌幅',
+      text: '涨跌幅',
+      // sort: true,
+      headerAttrs: {
+          hidden: true
+        },
+        formatter: (cell) => {
+          return (
+            <>
+            {cell >= 0? 
+             <>
+             <div
+              style={{
+                paddingTop: "6px",
+                paddingBottom: "6px",
+                paddingLeft: "12px",
+                fontSize: "14px",
+                fontFamily: " Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                fontWeight: "400",
+                color: "#FF3541",
+                lineHeight: "24px",
+              }}
+            > +{cell}%</div>
+
+            </> : <>
+            <div
+              style={{
+                paddingTop: "6px",
+                paddingBottom: "6px",
+                paddingLeft: "12px",
+                fontSize: "14px",
+                fontFamily: " Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                fontWeight: "400",
+                color: "#42E083",
+                lineHeight: "24px",
+              }}
+            > {cell}%</div>
+            </>
+            }
+            </>
+          )
+      }
+  },
 ]
 
 
@@ -184,7 +306,20 @@ const searchSwitch = () => {
 /////////////////////////////////////////////////////////////////////////Type/////////////////////////////////////////////////////
   const CandleChart = () => {
       return(
-        <CandleStickChart width ={openself? width-348: width} choice = {"Trendline"} ma ={[12,50]} open = {openself} volumeshow = {volumeshow}/>
+        <CandleStickChart 
+        width ={openself? width-348: width} 
+        screeheight = {height - 192}
+        choice = {"Trendline"} 
+        ma ={[12,50]} 
+        open = {openself} 
+        volumeshow = {volumeshow} 
+        emashow = {emashow} 
+        macdshow = {macdshow}
+        bollingshow = {bollingshow}
+        graphnumber = {graphnumber}
+        rsishow = {RSIshow}
+        ATRshow = {ATRshow}
+        />
       )
   }
 
@@ -247,13 +382,28 @@ let ChartChoice = chartChooseType[chooseChartType]
 
 
 
-   useEffect(()=>{
-       setopenself(openself)
-   },[openself])
 
-   useEffect(()=>{
-    setvolumeshow(volumeshow)
-},[volumeshow])
+   useEffect(() =>{
+    const count = [macdshow,ATRshow,RSIshow]
+    var number  = 0
+    count.forEach((elem) =>{
+        if (elem == true){
+            number++
+        }
+    })
+    setgraphnumber(number)
+})
+
+  useEffect(() => {
+    if (width < 800 || height< 750){
+         setshowgoingback(true)
+         const interval = setInterval(() => {
+            history.push('/eplatform/trade');
+            clearInterval(interval);
+        }, 2000);
+    }
+  })
+
 
    
 
@@ -277,13 +427,29 @@ let ChartChoice = chartChooseType[chooseChartType]
                       }}>功能暂未开放</div></Modal.Body>
       </Modal>
 
+      <Modal show={showgoingback} centered>
+        <Modal.Body style ={{textAlign:"center"}}>
+          <div style={{
+                      height:"24px",
+                      fontSize:"15px",
+                      paddingTop:"4px",
+                      textAlign:"center",    
+                      fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                      fontWeight:"400",
+                      color:"#2A2B30",
+                      lineHeight:"24px",
+                      }}>设备屏幕尺寸过小，专业版暂不支持，返回简易版本中...</div>
+          {/* <Modal.Title>Modal heading</Modal.Title> */}
+        </Modal.Body>
+      </Modal>
+
     <div style={{width:"100%",height:"100%", minHeight:"1000px",minWidth:"1200px", display:"flex", justifyContent:"left"}}>
 
 
 {/* /////HEADER/////////////////////////////////////////////////////////////////////////////////// */}
 
     <div>
-    <div style={{width:openself? width-348 : "100%",minHeight:"6.2%", display:"flex",justifyContent:"left",borderBottom:"1px solid #E5E8EE"}}>
+    <div style={{width:openself? width-348 : "100%", minWidth:openself? 1200 - 348: 1200,minHeight:"6.2%", display:"flex",justifyContent:"left",borderBottom:"1px solid #E5E8EE"}}>
     <div style={{marginLeft:"2.5%" ,width:"37.7%",display:"flex",justifyContent:"left"}}>
                 <Link style ={{color:"black", paddingTop:"24px", textDecoration:"none"}} to="../trade"><ArrowBack/></Link>
                 <div style={{
@@ -295,7 +461,7 @@ let ChartChoice = chartChooseType[chooseChartType]
                       marginLeft:"6px",
                       color:"#2A2B30",
                       lineHeight:"28px",
-                      }}>阿里巴巴</div>
+                      }}>{stockdata? stockdata.名称 : "LOADING..."}</div>
 
                 <div style={{
                       height:"28px",
@@ -306,7 +472,10 @@ let ChartChoice = chartChooseType[chooseChartType]
                       marginLeft:"6px",
                       color:"#2A2B30",
                       lineHeight:"28px",
-                      }}>￥1,986.32</div>
+                      }}>￥{stockdata? fmoney(stockdata?.最新价,2) 
+                        : 
+                      null
+                      }</div>
 
                 <div style={{
                       height:"28px",
@@ -315,9 +484,9 @@ let ChartChoice = chartChooseType[chooseChartType]
                       fontFamily:" Futura",
                       fontWeight:"500",
                       marginLeft:"6px",
-                      color:"#EC1421",
+                      color:stockdata?.涨跌幅>=0? "#EC1421" : "#42E083",
                       lineHeight:"28px",
-                      }}>(+2.03%)</div>
+                      }}>{stockdata?.涨跌幅>=0? <>(+{stockdata?.涨跌幅}%)</> : <>({stockdata?.涨跌幅}%)</> }</div>
 
                 <div style={{
                       height:"28px",
@@ -342,7 +511,7 @@ let ChartChoice = chartChooseType[chooseChartType]
               </Dropdown.Toggle>
               <Dropdown.Menu align="end" style={{position:'fixed',
                       width:"300px", border:"0px",Left:"10%"}}>
-                     <KeyIndicators/>
+                     <KeyIndicators stockdata = {stockdata}/>
                 
                 </Dropdown.Menu>
               </Dropdown>
@@ -352,8 +521,8 @@ let ChartChoice = chartChooseType[chooseChartType]
             <div style={{width:"18.75%"}}>
                 <Form >
                 <ToolkitProvider  
-                              keyField="id"
-                              data={ SearchData }
+                              keyField="代码"
+                              data={ searchData? searchData : null }
                               columns={ columns }  
                               search
                             >
@@ -373,13 +542,19 @@ let ChartChoice = chartChooseType[chooseChartType]
                                 />   
                                 </InputGroup>          
                                 <Collapse in= {scrollswitch}>
-                                 <div className ="scroll" style={{position:"absolute",marginLeft:"3%",zIndex:999, width:"300px",background: "white"}}>
+                                 <div className ="scroll" style={{position:"absolute",marginLeft:"0%",
+                                 zIndex:999, 
+                                 width:"300px",
+                                 background: "white",
+                                 boxShadow: "0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02)",
+                                 }}>
                                 <BootstrapTable 
                                 { ...props.baseProps}
                                  hover = {true}
                                  condensed ={true}
                                  sort={ { dataField: 'label', order: 'asc' } }       
                                  classes ="custom-row-class"
+                                 selectRow={selectRow}
                                 />  
                                 </div>
                                </Collapse>  
@@ -422,7 +597,7 @@ let ChartChoice = chartChooseType[chooseChartType]
               </Dropdown.Toggle>
               <Dropdown.Menu style={{
                       width:"360px", border:"0px"}}>
-                <StockTradeComponet vertify={false} />
+                <StockTradeComponet vertify={false} stockdata ={stockdata} />
                 
                 </Dropdown.Menu>
 
@@ -443,7 +618,7 @@ let ChartChoice = chartChooseType[chooseChartType]
         </div>
 
 
-        <div style={{width:openself? width-348 : "100%",minHeight:"6.2%", display:"flex",justifyContent:"left",borderBottom:"1px solid #E5E8EE"}}>
+        <div style={{width:openself? width-348 : "100%", minWidth:openself? 1200 - 348: 1200,minHeight:"6.2%", display:"flex",justifyContent:"left",borderBottom:"1px solid #E5E8EE"}}>
             <div style={{width:"100%",height:"100%",display:"flex",justifyContent:"space-between"}}>
     <div style={{width:openself? width-348 : "100%",maxWidth:"100%",height:"100%"}}>
     <div style={{width:openself? width-348 : "100%",maxWidth:"100%",minHeight:"4.81%",height:"55px",borderBottom:"1px solid #E5E8EE",display:"flex",justifyContent:"space-between"}}>
@@ -601,7 +776,8 @@ let ChartChoice = chartChooseType[chooseChartType]
                       lineHeight:"24px",
                       }}>均线指标：</div> */}
                 {/* <Dropdown.Item >MA</Dropdown.Item> */}
-                <Dropdown.Item onClick={() => setvolumeshow(!volumeshow)} ><div style={{
+                
+                    <div style={{
                       height:"24px",
                       width:"100%",
                       fontSize:"14px",
@@ -610,13 +786,14 @@ let ChartChoice = chartChooseType[chooseChartType]
                       textAlign:"center",    
                       fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
                       fontWeight:"400",
-                      color:volumeshow? "white" : "#2A2B30",
-                      background:volumeshow? "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)" : "white",
+                      color:"#2A2B30",
                       lineHeight:"24px",
                       display:"flex",
                       justifyContent:"space-evenly",
-                      }}>成交量</div></Dropdown.Item>
-                <Dropdown.Item ><div style={{
+                      }}>
+                          <Form.Check checked ={volumeshow} onClick={(e) => setvolumeshow(!volumeshow)}/>
+                          成交量</div>
+                <div style={{
                       height:"24px",
                       fontSize:"14px",
                       paddingTop:"4px",
@@ -627,11 +804,11 @@ let ChartChoice = chartChooseType[chooseChartType]
                       lineHeight:"24px",
                       display:"flex",
                       justifyContent:"space-evenly",
-                      }}><Form><Form.Check></Form.Check></Form>EMA</div></Dropdown.Item>
+                      }}><Form.Check checked ={emashow} onClick={(e) => setemashow(!emashow)}/>EMA</div>
                 {/* <Dropdown.Item >SMA</Dropdown.Item>
                 <Dropdown.Item >TMA</Dropdown.Item>
                 <Dropdown.Item >WMA</Dropdown.Item> */}
-                <Dropdown.Item ><div style={{
+                <div style={{
                       height:"24px",
                       fontSize:"14px",
                       paddingTop:"4px",
@@ -642,9 +819,9 @@ let ChartChoice = chartChooseType[chooseChartType]
                       lineHeight:"24px",
                       display:"flex",
                       justifyContent:"space-evenly",
-                      }}><Form><Form.Check></Form.Check></Form>布林线</div></Dropdown.Item>
+                      }}><Form.Check checked ={bollingshow} onClick={(e) => setbollingshow(!bollingshow)}/>布林线</div>
                 <hr/>
-                <Dropdown.Item><div style={{
+                <div style={{
                       height:"24px",
                       fontSize:"14px",
                       paddingTop:"4px",
@@ -655,8 +832,8 @@ let ChartChoice = chartChooseType[chooseChartType]
                       lineHeight:"24px",
                       display:"flex",
                       justifyContent:"space-evenly",
-                      }}><Form><Form.Check></Form.Check></Form>MACD</div></Dropdown.Item>
-                <Dropdown.Item><div style={{
+                      }}><Form.Check checked ={macdshow} onClick={(e) => setmacdshow(!macdshow)}/>MACD</div>
+                <div style={{
                       height:"24px",
                       fontSize:"14px",
                       paddingTop:"4px",
@@ -667,8 +844,8 @@ let ChartChoice = chartChooseType[chooseChartType]
                       lineHeight:"24px",
                       display:"flex",
                       justifyContent:"space-evenly",
-                      }}><Form><Form.Check></Form.Check></Form>RSI</div></Dropdown.Item>
-                <Dropdown.Item><div style={{
+                      }}><Form.Check checked ={RSIshow} onClick={(e) => setRSIshow(!RSIshow)}/>RSI</div>
+                <div style={{
                       height:"24px",
                       fontSize:"14px",
                       paddingTop:"4px",
@@ -679,7 +856,7 @@ let ChartChoice = chartChooseType[chooseChartType]
                       lineHeight:"24px",
                       display:"flex",
                       justifyContent:"space-evenly",
-                      }}><Form><Form.Check></Form.Check></Form>ATR</div></Dropdown.Item>
+                      }}><Form.Check checked ={ATRshow} onClick={(e) => setATRshow(!ATRshow)}/>ATR</div>
                 </Dropdown.Menu>
               </Dropdown>
        
@@ -786,7 +963,7 @@ let ChartChoice = chartChooseType[chooseChartType]
     </div>
 
     {openself? (<div style={{width:"348px",height:"100%",borderBottom:"1px solid #E5E8EE",backgroundColor:"yellow"}}>
-                <WatchList heightratio={(height-138)/height}/>
+                <WatchList heightratio={(height-138)/height} watchlistdata ={watchlistdata}/>
             </div>   ) : null}
 
 

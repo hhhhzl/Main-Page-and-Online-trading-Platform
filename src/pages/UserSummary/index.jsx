@@ -8,13 +8,13 @@ import { useEffect, useState } from "react";
 import RulesModual from "components/Competition/RulesModual";
 import { useLocation } from "react-router-dom";
 import { apiLiveStockInfo } from "api/trading_platform/market";
-import { getWatchList } from "utils";
+import { getPlatformType, getWatchList } from "utils";
 
 export default ({searchData}) => {
     const { width, height } = useWindowDimensions();
     const [showCompetitionrules, setshowCompetitionrules] = useState(false)
     const handleClose = () => {setshowCompetitionrules(false)};
-
+    const [platformType, setPlatformType] =  useState(getPlatformType())
     const [watchliststocks, setwatchliststocks] = useState([])
     const location = useLocation();
     const [load,setload] = useState(false)
@@ -44,7 +44,7 @@ export default ({searchData}) => {
 
     return (
         <>
-            <PageHeader searchData = {searchData} />
+            <PageHeader searchData = {searchData} platformType = {platformType} />
             <RulesModual showModal = {showCompetitionrules} hideModal = {handleClose} />
 
             <div style={{ marginTop: 0, width: "100%", minHeight: "500px", display: "flex", justifyContent: "space-between" }}>

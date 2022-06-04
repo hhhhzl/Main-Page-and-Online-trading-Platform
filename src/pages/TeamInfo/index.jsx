@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import PageHeader from "components/screen/PageHeader";
 import useWindowDimensions from "components/../utils/sizewindow";
 import StockPriceGraphSimplify from "components/screen/StockPriceGraphSimplify";
@@ -11,15 +11,17 @@ import { Dropdown} from 'react-bootstrap'
 import TeamInformationPage from "components/screen/TeamInformationPageCom";
 import { getPlatformType } from "utils";
 import HeaderCreate from "components/MainPage/header";
+import AuthContext from "context/AuthContext";
 
 export default ({searchData}) => {
+    let {apikey} = useContext(AuthContext)
     const { width, height } = useWindowDimensions();
     const [platformType, setPlatformType] =  useState(getPlatformType())
 
     return (
         <>
             {
-            platformType == null ? <HeaderCreate/> : <PageHeader searchData = {searchData} />
+            platformType == null ? <HeaderCreate/> : <PageHeader searchData = {searchData} platformType={platformType} showrankingOnly = {apikey? null :true} />
         }
             <div
                 style={{

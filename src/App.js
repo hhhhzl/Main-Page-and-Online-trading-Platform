@@ -30,6 +30,7 @@ import InformationEdit from "pages/InformationEdit";
 import UserProfile from "pages/UserProfile";
 import TeamInfo from "pages/TeamInfo";
 import { apiSymbolsAllForSearch } from "api/trading_platform/market";
+import PrivateCompetitionRoute from "utils/PrivateCompetitionRoute";
 
 
 const HomePage = () => {
@@ -92,7 +93,6 @@ const getSearchData = async (props) => {
     <Switch>
       <AuthProvider>
         <Route exact path="/register" component={LoginMainLayout} />
-        <Route exact path="/NextRegisterForm" component={LoginMainLayout} />
         <Route exact path="/login" component={LoginMainLayout} />
         <Route exact path="/Vlogin" component={LoginMainLayout} />
         <Route exact path="/forgetpassword" component={LoginMainLayout} />
@@ -126,7 +126,7 @@ const getSearchData = async (props) => {
 
 
 
-
+{/* ///////////////////////////////////////////////////////////////////交易平台 */}
         <PrivateRoute
           exact
           path="/eplatform"
@@ -168,6 +168,49 @@ const getSearchData = async (props) => {
         >
           <InvestNotes searchData = {searchData}/>
         </PrivateRoute>
+
+{/* ///////////////////////////////////////////////////////////////////////////赛事平台 */}
+        <PrivateCompetitionRoute
+          exact
+          path="/competition"
+          component={RedirectComponent("/competition/summary")}
+        />
+        <PrivateCompetitionRoute
+          exact
+          path="/competition/summary">
+            <UserSummary searchData = {searchData}/>
+        </PrivateCompetitionRoute>
+
+        <PrivateCompetitionRoute exact path="/competition/trade">
+          <TradeSimple searchData = {searchData}/>
+        </PrivateCompetitionRoute>
+        <PrivateCompetitionRoute
+          exact
+          path="/competition/trade/pro"
+        >
+        <TradePro searchData = {searchData}/>
+        </PrivateCompetitionRoute>
+
+        <PrivateCompetitionRoute exact path="/competition/market">
+        <MarketView searchData = {searchData}/>
+        </PrivateCompetitionRoute>
+
+        <PrivateCompetitionRoute exact path="/competition/picking">
+        <Picking searchData = {searchData}/>
+        </PrivateCompetitionRoute>
+
+        <PrivateRoute exact path="/competition/ranking">
+        <Ranking searchData = {searchData}/>
+        </PrivateRoute>
+
+
+        <PrivateCompetitionRoute
+          exact
+          path="/competition/invest_notes"
+
+        >
+          <InvestNotes searchData = {searchData}/>
+        </PrivateCompetitionRoute>
 
         <PrivateRoute
           exact

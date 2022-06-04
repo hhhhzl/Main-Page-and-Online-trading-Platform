@@ -163,7 +163,7 @@ function StockPriceGraphSimplify({
             color: "#000000",
             lineHeight: "24px"}}
           >
-            已将<strong>{stockdata?.名称}</strong>加入自选列表
+            已将{" "}<strong>{stockdata?.名称}</strong>{" "}加入自选列表
           </div></Modal.Header>
         </Modal>
       </div>

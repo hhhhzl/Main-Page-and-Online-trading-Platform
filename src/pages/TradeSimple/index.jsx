@@ -8,7 +8,7 @@ import WatchList from "components/screen/WatchList";
 import PendingOrder from "components/screen/PendingOrder";
 import KeyIndicators from "components/screen/KeyIndicatorSimple";
 import { Button, Dropdown} from 'react-bootstrap'
-import { getLastStock, getWatchList, setLastStock } from "utils";
+import { getLastStock, getPlatformType, getWatchList, setLastStock } from "utils";
 import { apiKLine, apiLiveStockInfo } from "api/trading_platform/market";
 import { useLocation } from "react-router";
 import moment from "moment";
@@ -23,6 +23,7 @@ export default ({searchData,searchstock}) => {
     const [watchliststocks, setwatchliststocks] = useState([])
     const location = useLocation();
     const [load,setload] = useState(false)
+    const [platformType, setPlatformType] =  useState(getPlatformType())
 
 
         useEffect(() =>{
@@ -108,7 +109,7 @@ export default ({searchData,searchstock}) => {
 
     return (
         <>
-            <PageHeader searchData = {searchData} />
+            <PageHeader searchData = {searchData} platformType = {platformType} />
             <div
                 style={{
                     marginTop: 0,
@@ -130,7 +131,7 @@ export default ({searchData,searchstock}) => {
                         minWidth: "fix-content",
                     }}
                 >
-                   <div style={{ height: height * 0.075, width: "100%", display: "flex", justifyContent: "right", paddingTop:"25px",paddingBottom:"24" }}>
+                   <div style={{ height: height * 0.075,minHeight:"81px" ,width: "100%", display: "flex", justifyContent: "right", paddingTop:"25px",paddingBottom:"24" }}>
                         
 
                         {

@@ -470,7 +470,7 @@ const HeaderCreate = ({ toggle }) => {
                 smooth={true}
                 duration={700}
                 // onMouseEnter={handleShowTransaction}
-                to="/eplatform"
+                to="/competition"
               >
                 赛事账户
               </HeaderBtnLink>

@@ -13,6 +13,7 @@ import {RegisterAuthAction} from "../../../redux/actions/AuthAction";
 import {getFileName} from "../../../utils";
 import {useHistory} from "react-router";
 import TeamRegisterModel from "../../screen/modal/TeamRegisterModel";
+import { IconButton } from "@material-ui/core";
 
 function RegisterForm(props) {
     const {
@@ -23,33 +24,43 @@ function RegisterForm(props) {
     const [show, setShow] = useState(false);
     const {width, height} = useWindowDimensions();
     const history = useHistory()
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [email, setEmail] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [firstName, setFirstName] = useState("");
-    const [sex, setSex] = useState("M");
+
+    const [realName, setrealName] = useState("");
+    const [wechat, setwechat] = useState("");
+    const [sex, setSex] = useState("");
+    const [birthday, setbirthday] = useState("")
     const [mobileNumber, setMobileNumber] = useState("");
+
     const [degree, setDegree] = useState("1");
     const [org, setOrg] = useState("1");
     const [regin, setRegin] = useState("")
     const [userType, setUserType] = useState("U");
+    const [page, setpage] = useState(1)
+    const [experienceList, setExperienceList] = useState([
+        {company: "密歇根大学", experience: "实习经历实习经历实习经历实习经历实习经历实习"}
+    ])
+    const [disable, setdisable] = useState(true)
+
+
+    const addExperience = () => {
+        let obj = {company: "密歇根大学", experience: "实习经历实习经历实习经历实习经历实习经历实习"};
+        experienceList.push(obj);
+        console.log(experienceList);
+        setExperienceList([...experienceList]);
+    }
+    const handleDelete = (idx) => {
+        experienceList.splice(idx, 1);
+        console.log(experienceList);
+        setExperienceList([...experienceList]);
+    };
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const testData = {
-        last_name: lastName,
-        first_name: firstName,
-        username: username,
-        password: password,
-        sex: sex,
-        org: org,
-        email: email,
-        mobile_number: mobileNumber,
-        degree: degree,
-        user_type: userType,
-    };
 
     const [validated, setValidated] = useState(false);
 
@@ -131,13 +142,15 @@ function RegisterForm(props) {
     }
 
     return (
-        <div>
+        <>
 
+            {page == 1?
+            <>
             <div className="login-container"
-                 style={{marginLeft: width > 800 ? "18.75%" : "10%", marginTop: height * 0.1}}>
+                 style={{marginLeft: width > 800 ? "18.75%" : "10%", marginTop: height * 0.09}}>
                 <Link className="Link-hover" style={{color: "black", textDecoration: "none"}} to="/home"><ArrowBack/></Link>
-                <Row style={{width: "100%"}}><Col xs={7}>
-                    <h2 style={{
+                <div style={{width: "100%"}}>
+                    <div style={{
                         width: "250px",
                         height: "80px",
                         fontSize: "40px",
@@ -146,11 +159,9 @@ function RegisterForm(props) {
                         color: "#2A2B30",
                         lineHeight: "80px",
                         letterSpacing: "5px",
-                    }}>欢迎注册</h2>
+                    }}>欢迎注册</div>
+                </div>
 
-                </Col>
-                    <Col xs={6} style={{marginLeft: "0px", width: "110px", marginTop: "35px"}}>
-                    </Col></Row>
                 <div>
                     <div >
                         <div style={{
@@ -159,7 +170,7 @@ function RegisterForm(props) {
                         }}>
                             <h6 style={{
                                 fontSize: "14px",
-                                fontFamily: "Microsoft YaHei UI-Bold",
+                                fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
                                 color: "#2A2B30",
                                 lineHeight: "24px"
                             }}>已有账户？</h6>
@@ -176,7 +187,7 @@ function RegisterForm(props) {
                             <Link style={{
                                 height: "28px",
                                 fontSize: "14px",
-                                fontFamily: "Microsoft YaHei UI-Bold",
+                                fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
                                 fontWeight: "400",
                                 color: "#6E7184",
                                 lineHeight: "24px",
@@ -185,9 +196,7 @@ function RegisterForm(props) {
                             </Link></div>
                     </div>
                 </div>
-                <br/>
-                <br/>
-                <div style={{marginBottom: "20px"}}>
+                <div style={{marginBottom: "20px", marginTop:"60px"}}>
                     <Image
                         src={headPortrait}
                         style={{width: "44px", height: "44px",borderRadius: "50%"}}
@@ -208,10 +217,15 @@ function RegisterForm(props) {
                             onChange={onSelectFile}/>
                     </Button>
                 </div>
+
                 <Form noValidate validated={validated} id="addProject" onSubmit={(event) => {
-                    setValidated(true);
+                    const form = event.currentTarget;
+                    if (form.checkValidity() === false) {
                     event.preventDefault();
-                    history.push("/NextRegisterForm")
+                    event.stopPropagation();
+                    }
+                    setValidated(true);
+                    // history.push("/NextRegisterForm")
                     // register(userState)
                 }}>
 
@@ -238,7 +252,7 @@ function RegisterForm(props) {
                         ></Form.Control>
                     </Form.Group>
 
-                    <Form.Group className="mb-3">
+                    <Form.Group className="loadingusername">
                         <Form.Label column sm={2}>
                             邮箱
                         </Form.Label>
@@ -274,7 +288,7 @@ function RegisterForm(props) {
                             请输入最少8位，最多20位的密码！
                         </Form.Control.Feedback>
                     </Form.Group>
-                    <Form.Group className="mb-3">
+                    <Form.Group className="loadingusername">
                         <Form.Label column>
                             确认密码
                         </Form.Label>
@@ -294,18 +308,20 @@ function RegisterForm(props) {
                             两次输入密码不一致！
                         </Form.Control.Feedback>
                     </Form.Group>
-                    <Form.Group className="mb-3">
+                    <Form.Group className="loadingusername">
                         <Form.Label column>
                             微信号
                         </Form.Label>
-
+                    
                         <Form.Control
                             className="loadinglogin"
                             required
-                            value={mobileNumber}
-                            onChange={(e) => setMobileNumber(e.target.value)}
+                            value={wechat}
+                            onChange={(e) => setwechat(e.target.value)}
                         ></Form.Control>
-                    </Form.Group>
+                    </Form.Group >
+
+                    <Form.Group className="loadingusername">
                     <Form.Label column>
                         真实姓名
                     </Form.Label>
@@ -313,120 +329,40 @@ function RegisterForm(props) {
                     <Form.Control
                         className="loadinglogin"
                         required
-                        value={mobileNumber}
-                        onChange={(e) => setMobileNumber(e.target.value)}
+                        value={realName}
+                        onChange={(e) => setrealName(e.target.value)}
                     ></Form.Control>
+                    </Form.Group>
 
-                    <Form.Group as={Row}>
-                        <Col sm={3}>
-                            <Form.Label className="loadingusername" column sm={6}>
+                    <Form.Group as={Row} className="loadingusername">
+                        <Col sm={6}>
+                            <Form.Label  column sm={6}>
                                 性别
                             </Form.Label>
-                            <Form.Select className="loadinglogin" required value={sex}
-                                         onChange={(e) => setSex(e.target.value)}>
+                            <Form.Select 
+                            className="loadinglogin" required value={sex} defaultValue={""}      
+                                onChange={(e) => setSex(e.target.value)}>
+                                <option value= "">选择性别</option>
                                 <option value="male">男</option>
                                 <option value="wemale">女</option>
 
                             </Form.Select>
                         </Col>
-                        <Col sm={3}>
-                            <Form.Label className="loadingusername" column>
-                                年
+                        <Col sm={6}>
+                            <Form.Label  column sm={6}>
+                                生日
                             </Form.Label>
 
-                            <Form.Select
+                            <Form.Control
                                 className="loadinglogin"
+                                type = "date"
                                 required
-                                value={degree}
-                                onChange={(e) => setDegree(e.target.value)}
+                                value={birthday}
+                                onChange={(e) => setbirthday(e.target.value)}
                             >
-                                <option value="1">2022</option>
-                            </Form.Select>
-                        </Col>
-                        <Col sm={3}>
-                            <Form.Label className="loadingusername" column>
-                                月
-                            </Form.Label>
-
-                            <Form.Select
-                                className="loadinglogin"
-                                required
-                                value={degree}
-                                onChange={(e) => setDegree(e.target.value)}
-                            >
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                            </Form.Select>
-                        </Col>
-                        <Col sm={3}>
-                            <Form.Label className="loadingusername" column>
-                                日
-                            </Form.Label>
-
-                            <Form.Select
-                                className="loadinglogin"
-                                required
-                                value={degree}
-                                onChange={(e) => setDegree(e.target.value)}
-                            >
-                                <option value="1">1</option>
-                            </Form.Select>
+                            </Form.Control>
                         </Col>
                     </Form.Group>
-
-                    {/*  <Form.Group className="loadingusername">
-
-                        <Form.Label column>
-                            院校/单位
-                        </Form.Label>
-
-                        <Form.Control
-                            className="loadinglogin"
-                            required
-                            value={password}
-                            onChange={(e) => setOrg(e.target.value)}
-                        ></Form.Control>
-
-                    </Form.Group>
-
-                    <Form.Group className="loadingusername">
-
-                        <Form.Label column>
-                            地区
-                        </Form.Label>
-
-                        <Form.Control
-                            className="loadinglogin"
-                            required
-                            value={password}
-                            onChange={(e) => setRegin(e.target.value)}
-                        ></Form.Control>
-
-                    </Form.Group>*/}
-
-                    {/* <Row>
-            <Col xs={8}>
-            <Link style ={{color:"black",fontSize:16,padding:25}} to="/login">去登陆</Link>
-            </Col>
-            <Col xs ={4}>
-              <Nav.Item>
-                <Link style ={{color:"black",fontSize:16,padding:25}} to="/home">回到主页</Link>
-              </Nav.Item>
-
-            </Col>
-            </Row> */}
-                    <br/>
-
 
                     <Form.Group as={Row} className="loadinglogin" style={{
                         background: "linear-gradient(135deg,#2B8CFF 0%, #2346FF 100%)",
@@ -444,28 +380,214 @@ function RegisterForm(props) {
                                 fontWeight:"bold"
                             }}
                             type="submit"
-                            // onClick={() => {
-                            //   const data = {
-                            //     username,
-                            //     password,
-                            //     email,
-                            //     last_name: lastName,
-                            //     first_name: firstName,
-                            //     sex,
-                            //     mobile_number: mobileNumber,
-                            //     degree,
-                            //     org: org,
-                            //     user_type: userType,
-                            //   };
-                            //   dispatch(register({ data }));
-                            // }}
                         >
                             下一步
                         </Button>
-                    </Form.Group>
+                    </Form.Group>      
                 </Form>
             </div>
-        </div>
+            </>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+            :
+            <>
+            <div className="login-container"
+                 style={{marginLeft: width > 800 ? "18.75%" : "10%", marginTop: height * 0.1}}>
+                     <div style={{marginLeft:"-10px"}}>
+                     <IconButton onClick={() => setpage(1)}>
+                         <ArrowBack style={{color:"black"}} />
+                     </IconButton>
+                     </div>
+                     
+                
+            <Form noValidate validated={validated} id="addProject" onSubmit={(event) => {
+                    event.preventDefault();
+                }}>
+                    <Form.Group className="loadingusername">
+                        <Form.Label  column>
+                            学历
+                        </Form.Label>
+
+                        <Form.Select
+                            className="loadinglogin"
+                            required
+                            value={degree}
+                            onChange={(e) => setDegree(e.target.value)}
+                        >
+                            <option value="college">本科</option>
+                            <option value="graduate">研究生</option>
+                            <option value="phd">博士</option>
+                        </Form.Select>
+                    </Form.Group>
+
+
+                    <Form.Group className="loadingusername">
+
+                        <Form.Label column>
+                            大学名称（中文）
+                        </Form.Label>
+
+                        <Form.Control
+                            className="loadinglogin"
+                            required
+                            value={password}
+                            onChange={(e) => setOrg(e.target.value)}
+                        ></Form.Control>
+
+                    </Form.Group>
+
+                    <Form.Group className="loadingusername">
+
+                        <Form.Label column>
+                            所在国家
+                        </Form.Label>
+
+                        <Form.Control
+                            className="loadinglogin"
+                            required
+                            value={password}
+                            onChange={(e) => setRegin(e.target.value)}
+                        ></Form.Control>
+
+                    </Form.Group>
+
+                    <Form.Group className="loadingusername">
+
+                        <Form.Label column>
+                            希望未来从事职业
+                        </Form.Label>
+
+                        <Form.Control
+                            className="loadinglogin"
+                            required
+                            value={password}
+                            onChange={(e) => setRegin(e.target.value)}
+                        ></Form.Control>
+
+                    </Form.Group>
+                    <div>
+                        <div className="information">实习经历（选填）</div>
+                        {
+                            experienceList.map((item, idx) => (
+                                <div key={idx} style={{marginTop: "24px", display: "flex"}}>
+                                    <Form.Group>
+                                        <Form.Label className="edit-form-label">实习公司</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            value={item.company}
+                                            style={{width: "100%", height: "48px"}}
+                                            placeholder="请输入文字"
+                                            onChange={(e) => {
+                                                experienceList[idx].company = e.target.value;
+                                                setExperienceList(experienceList);
+                                                setUserState({...userState, ...{setExperienceList}});
+                                            }}
+                                        />
+                                    </Form.Group>
+
+                                    <Form.Group style={{marginLeft: "4%"}}>
+                                        <Form.Label className="edit-form-label">实习职位</Form.Label>
+                                        <div style={{display: "flex", alignItems: "center"}}>
+                                            <Form.Control
+                                                type="text"
+                                                value={experienceList[idx].experience}
+                                                style={{width: "85%", height: "48px"}}
+                                                placeholder="请输入文字"
+                                                onChange={(e) => {
+                                                    experienceList[idx].experience = e.target.value;
+                                                    setExperienceList(experienceList);
+                                                    setUserState({...userState, ...{setExperienceList}});
+                                                }}
+                                            />
+                                            <Image
+                                                show={experienceList.length != 1}
+
+                                                onClick={() => handleDelete(idx)}
+                                                src="/Frame-delete@2x.png"
+                                                style={{
+                                                    marginLeft:"24px",
+                                                    width: "22px",
+                                                    height: "22px",
+                                                    display: experienceList.length == 1 ? "none" : 'block'
+                                                }}
+                                            />
+                                        </div>
+
+                                    </Form.Group>
+
+                                </div>
+
+                            ))
+
+                        }
+                        <Form.Group style={{marginTop: "36px"}}>
+                            <Button
+                                onClick={addExperience}
+                                style={{
+                                    width: "46%",
+                                    height: "48px",
+                                    backgroundColor: "#F5F6F8",
+                                    border: 0,
+                                    color: "black",fontWeight:"bold"
+                                }}>
+                                <Image
+                                    src="/homeCutout/Group 864.png"
+                                    style={{width: "16px", height: "16px"}}
+                                />
+                                新增一条 实习经历
+                            </Button>
+                        </Form.Group>
+                    </div>
+
+                    <div style={{marginTop: "32px", display: "flex"}}>
+                        <div style={{display: "flex", justifyContent: "left"}}>
+                            <Form.Check type="radio" checked={!disable} onClick={(e) => setdisable(!disable)}/>
+                            <div style={{
+                                fontSize: "14px",
+                                fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI;",
+                                fontWeight: "400",
+                                color: "#6E7184",
+                                lineHeight: "24px",
+                                marginLeft: "8px"
+                            }}>
+                                我已同意...隐私政策和服务条款
+                            </div>
+                        </div>
+                    </div>
+
+                    <Form.Group as={Row} className="loadinglogin" style={{
+                        background: "linear-gradient(135deg,#2B8CFF 0%, #2346FF 100%)",
+                        borderRadius: "4px 4px 4px 4px",
+                        marginTop: "24px"
+                    }}>
+
+                        <Button
+                            onClick={() => {
+                                history.push("/NextRegisterForm")
+                            }}
+                            style={{
+                                color: "white",
+                                marginLeft:"0px",
+                                marginRight:"0px",
+                                fontWeight:"bold"
+                            }}
+                        >
+                            注册
+                        </Button>
+                    </Form.Group>
+                </Form>
+                </div>
+            </>
+            }
+     </>
+            
     );
 }
 

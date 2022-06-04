@@ -40,16 +40,87 @@ import { NotificationsNoneOutlined } from "@material-ui/icons";
 import { MenuItemLinksRouter } from "components/MainPage/HeaderElements";
 import { IconButton } from "@material-ui/core";
 import { clearLocalStorage } from "utils";
-import { symbol } from "d3-shape";
 
 
 
 const { SearchBar, ClearSearchButton } = Search;
 
-export default function PageHeader({searchData, toggle}) {
-  let { user, logoutUser} = useContext(AuthContext);
+export default function PageHeader({searchData, platformType, showrankingOnly}) {
+  let { user, logoutUser, apikey} = useContext(AuthContext);
   const {width, height} = useWindowDimensions();
   const [note, setnote] = useState(null)
+  const [headermenu,setheadermenu] =  useState(
+    platformType == "eplatform"? [{
+    id: 0,
+    title: "账户总览",
+    link: `/${platformType}/summary`,
+  },
+  {
+    id: 1,
+    title: "个股交易",
+    link: `/${platformType}/trade`,
+  },
+  {
+    id: 2,
+    title: "市场行情",
+    link: `/${platformType}/market`,
+  },
+  {
+    id: 3,
+    title: "选股器",
+    link: `/${platformType}/picking`,
+  },
+  {
+    id: 4,
+    title: "排行榜",
+    link: `/${platformType}/ranking`,
+  },
+  ]
+
+  :
+
+  platformType == "competition" && showrankingOnly != true?
+  [{
+    id: 0,
+    title: "账户总览",
+    link: `/${platformType}/summary`,
+  },
+  {
+    id: 1,
+    title: "个股交易",
+    link: `/${platformType}/trade`,
+  },
+  {
+    id: 2,
+    title: "市场行情",
+    link: `/${platformType}/market`,
+  },
+  {
+    id: 3,
+    title: "选股器",
+    link: `/${platformType}/picking`,
+  },
+  {
+    id: 4,
+    title: "排行榜",
+    link: `/${platformType}/ranking`,
+  },
+  {
+    id: 5,
+    title: "财经洞悉",
+    link: `/${platformType}/invest_notes`,
+  },
+
+  ] : 
+  
+  [
+  {
+    id: 4,
+    title: "排行榜",
+    link: `/${platformType}/ranking`,
+  },
+  ]
+  )
 
 
 
@@ -103,7 +174,7 @@ export default function PageHeader({searchData, toggle}) {
     onSelect: (row, isSelect, rowIndex, e) => {
       if (isSelect){
           history.push({
-            pathname:"/eplatform/trade",
+            pathname:`/${platformType}/trade`,
             search:`?symbol=${row.代码}`,
             state:{symbol:row.代码}
           })
@@ -113,39 +184,6 @@ export default function PageHeader({searchData, toggle}) {
     },
     
   };
-
-  const column = [
-    {
-      id: 0,
-      title: "账户总览",
-      link: `/eplatform/summary`,
-    },
-    {
-      id: 1,
-      title: "个股交易",
-      link: `/eplatform/trade`,
-    },
-    {
-      id: 2,
-      title: "市场行情",
-      link: `/eplatform/market`,
-    },
-    {
-      id: 3,
-      title: "选股器",
-      link: `/eplatform/picking`,
-    },
-    {
-      id: 4,
-      title: "排行榜",
-      link: `/eplatform/ranking`,
-    },
-    {
-      id: 5,
-      title: "财经洞悉",
-      link: `/eplatform/invest_notes`,
-    },
-  ];
 
   const columns = [
     {
@@ -299,9 +337,12 @@ export default function PageHeader({searchData, toggle}) {
             width: width > 1200 ? "1200px" : "100%",
             minWidth: "fix-content",
             display: "flex",
-            justifyContent: width > 1200 ? "left" : "space-around",
+            justifyContent: width > 1200 ? "space-between" : "space-around",
           }}
         >
+
+
+        <div style ={{display:"flex", justifyContent:"left"}}>
           <div onClick={() => {clearLocalStorage();history.push("/")}}>
             <Image
               src={"/homeCutout/UFA-LOGO-RED.png"}
@@ -320,7 +361,7 @@ export default function PageHeader({searchData, toggle}) {
                   backgroundColor:"white",
                 }}
               >
-                {column.map((elem) => {
+                {headermenu.map((elem) => {
                   return (
                    
                       <Button
@@ -356,16 +397,26 @@ export default function PageHeader({searchData, toggle}) {
               </div>
             </>
           ) : null}
+          </div>
+
+
+
+
+        <div style={{display:"flex",justifyContent:"right"}}>
           <div
             style={{
               width: "240px",
               marginLeft: "20px",
             }}
           >
+            {showrankingOnly? 
+            null 
+            : 
+            <>
             <Form>
               <ToolkitProvider
                 keyField="代码"
-                data={searchData}
+                data={searchData? searchData : null}
                 columns={columns}
                 search
               >
@@ -396,7 +447,7 @@ export default function PageHeader({searchData, toggle}) {
                           borderWidth: "0px",
                         }}
                         type="text"
-                        placeholder="代码/名称/拼音"
+                        placeholder="代码/名称"
                         ref={(n) => setLinkedInstitution(n)}
                         onChange={() => {
                           handleSearch({ ...props.searchProps });
@@ -431,6 +482,9 @@ export default function PageHeader({searchData, toggle}) {
                 )}
               </ToolkitProvider>
             </Form>
+
+            </> }
+            
           </div>
           <div>
             <IconButton style={{margin:"20px 24px", padding:"0px 0"}} onClick={() => sendUserNews()}>
@@ -471,6 +525,8 @@ export default function PageHeader({searchData, toggle}) {
               >
                 个人主页
               </MenuItemLinksRouter>
+              {platformType == "competition"? 
+              <>
               <MenuItemLinksRouter
                 to="/team"
                 offset={-50}
@@ -481,6 +537,10 @@ export default function PageHeader({searchData, toggle}) {
               >
                 团队信息
               </MenuItemLinksRouter>
+              </>
+              :null
+              }
+              
               <MenuItemLinksRouter
                 to="/personalEdit"
                 offset={-50}
@@ -513,8 +573,9 @@ export default function PageHeader({searchData, toggle}) {
               </MenuItemLinksRouter>
             </div>
           </div>
+          </div>
 
-          <MobileIcon onClick={() => toggle()}>
+          <MobileIcon>
             <ViewHeadlineTwoTone style={{ color: "black" }} fontSize="large" />
           </MobileIcon>
         </div>

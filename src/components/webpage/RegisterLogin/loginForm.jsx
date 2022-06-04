@@ -27,47 +27,14 @@ export default function LoginForm({ setToken }) {
   let history = useHistory();
 
 
-  const handleClick = (name, password) => {
-    pushingforword(determinUser(name, password));
-  }
-
-  const pushingforword = (type) => {
-    console.log(type)
-    if (!type) {
-      setUsername("")
-      setPassword("")
-
-    } else if (type == "A") {
-      history.push("/eplatform/admin")
-    } else if (type == "U") {
-      history.push("/eplatform/user")
-    }
-
-  }
-
-
-
-  const determinUser = (name, password) => {
-    console.log(name)
-    console.log(password)
-    let yes = 0;
-    let type = "";
-    for (let i = 0; i < user.length; i++) {
-      if (user[i].name === name && user[i].password === password) {
-        return user[i].type;
-      }
-    }
-    return false
-  }
-
-
   return (
     <div>
       <div className="login-container" style={{ marginLeft: width > 800 ? "18.75%" : "10%", marginTop: height * 0.1 }}>
         <Link className="Link-hover" style={{ color: "black", textDecoration: "none" }} to="/home"><ArrowBack /></Link>
-        <Row style={{ width: "100%" }}><Col xs={7}>
-          <h2 style={{
-            width: "250px",
+        <div style={{ width: "100%", display:"flex",justifyContent:"left" }}>
+          <div>
+          <div style={{
+            width: "234px",
             height: "80px",
             fontSize: "40px",
             fontFamily: "Microsoft YaHei UI-Bold",
@@ -75,10 +42,10 @@ export default function LoginForm({ setToken }) {
             color: "#2A2B30",
             lineHeight: "80px",
             letterSpacing: "5px",
-          }}>账户登录</h2>
+          }}>账户登录</div>
 
-        </Col>
-          <Col xs={6} style={{ marginLeft: "0px", width: "110px", marginTop: "35px" }}>
+        </div>
+          <div style={{ marginLeft: "0px", width: "110px", marginTop: "35px" }}>
 
               <Link style={{
                 height: "28px",
@@ -90,51 +57,57 @@ export default function LoginForm({ setToken }) {
                 letterSpacing: "1px",
               }} to="/Vlogin">验证码登录</Link>
 
-          </Col></Row>
-        <Row>
-          <Col xs={3}>
+          </div></div>
+        <div style={{display:"flex",justifyContent:"left"}}>
+ 
             <div style={{
               width: "88px",
               height: "24px",
             }}>
               <h6 style={{
                 fontSize: "14px",
-                fontFamily: "Microsoft YaHei UI-Bold",
+                fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                fontWeight:"400px",
                 color: "#2A2B30",
                 lineHeight: "24px"
               }}>还没有账户？</h6>
             </div>
-          </Col>
-          <Col xs={3}>
+  
 
               <div style={{
                 width: "88px",
                 height: "24px",
-                marginLeft: "-20px",
+                marginLeft: "6px",
                 marginTop: "-1px",
               }}>
                 <Link style={{
                   height: "28px",
                   fontSize: "14px",
-                  fontFamily: "Microsoft YaHei UI-Bold",
+                  fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
                   fontWeight: "400",
                   color: "#6E7184",
                   lineHeight: "24px",
                 }} to="/register">去注册
 
                 </Link></div>
-          </Col>
-        </Row>
+        </div>
         <br />
         <br />
 
         <Form noValidate validated={validated} id="addProject" onSubmit={loginUser}>
           <Form.Group >
-            <Form.Label column sm={3} style={{ color: "black", fontSize: "14px" }} >
+            <Form.Label 
+            column 
+            sm={3} 
+            style={{ color: "black", fontSize: "14px",
+            fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+            fontWeight: "400",
+            color: "#2A2B30",
+            lineHeight: "24px"}} >
               邮箱
             </Form.Label>
             <Form.Control
-                className="loadinglogin"
+              className="loadinglogin"
               required
               name='username'
               value={username}

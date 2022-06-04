@@ -205,8 +205,23 @@ export default function WatchListTable({ heightratio, searchwidth, watchlistdata
             
             </> 
             :
-             <div style={{display:"flex",justifyContent:"center",marginTop:height * heightratio*0.35,letterSpacing:"2px"}}>
+             <div style={{display:"flex",
+             justifyContent:"center",
+             marginTop:height * heightratio*0.35,
+             }}>
+               <div style={{
+                 color:"#C0C3CE",
+                 width: "169px",
+                 height: "24px",
+                 fontSize: "14px",
+                 fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                 fontWeight: 400,
+                 color: "#C0C3CE",
+                 lineHeight: "24px",
+               }}>
                您的自选列表空空如也~~
+               </div>
+               
                </div>
 
             }

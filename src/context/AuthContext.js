@@ -13,6 +13,11 @@ export const AuthProvider = ({ children }) => {
       ? jwt_decode(localStorage.getItem("authTokens"))
       : null
   );
+  const [apikey, setapikey] = useState(() => 
+    localStorage.getItem("apikey")
+      ? localStorage.getItem("apikey")
+      : "sadsdkahk"
+  );
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens")
       ? JSON.parse(localStorage.getItem("authTokens"))
@@ -47,8 +52,19 @@ export const AuthProvider = ({ children }) => {
       setuser(jwt_decode(data.access));
       console.log(user);
       localStorage.setItem("authTokens", JSON.stringify(data));
-      setPlatformType("competition")
-      history.push(route.from);
+
+
+      ///TO list : ask and set for apiKey
+    
+      if (route.from == "/eplatform"){
+         setPlatformType("eplatform")
+        history.push(route.from);
+      }else if (route.from == "/competition"){
+       setPlatformType("competition")
+        history.push(route.from);
+      } else{
+        history.push('/')
+      }
     } else {
       alert("Something Went Wrong!");
     }
@@ -84,6 +100,7 @@ export const AuthProvider = ({ children }) => {
   let contextData = {
     loginUser: loginUser,
     user: user,
+    apikey: apikey,
     authTokens: authTokens,
     logoutUser: logoutUser,
   };

@@ -22,6 +22,7 @@ import PageHeader from "components/screen/PageHeader";
 import MarketUpdownDistribute from "components/screen/MarkeUpdownDistribute";
 
 import MarketQuotation from "components/screen/MarketQuotation";
+import { getPlatformType } from "utils";
 
 export default ({searchData}) => {
   const { width, height } = useWindowDimensions();
@@ -29,6 +30,7 @@ export default ({searchData}) => {
   const [extend, setExtend] = useState(true);
   const [indusAll,setIndusAll] = useState(1);
   const [field, setfield] = useState(null)
+  const [platformType, setPlatformType] =  useState(getPlatformType())
 
   const extendbar = () => {
     setExtend(!extend);
@@ -56,7 +58,7 @@ export default ({searchData}) => {
   })
   return (
     <>
-      <PageHeader searchData = {searchData}/>
+      <PageHeader searchData = {searchData} platformType = {platformType}/>
       <Card style={{ padding: 0, borderColor: "white" }}>
         <Collapse in={indusAll == 1}>
           <Card.Body style={{ padding: 0, borderColor: "white" }}>
