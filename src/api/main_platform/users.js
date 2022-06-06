@@ -5,6 +5,8 @@ import apiService from "./apiService";
 // query_params: N/A
 export const apiGetAllUsers = (query_params) =>
     apiService.get(`users/get_user/`, { params: query_params });
+
+    
 export const apiGetUser = (id) =>
     apiService.get(`users/get_user/${id}/`);
 export const apiUpdateUser = (id, data) =>

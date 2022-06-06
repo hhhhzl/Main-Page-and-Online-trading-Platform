@@ -107,7 +107,7 @@ export default function InvestNotes({searchData, platformType}) {
   return (
     <>
       <PageHeader searchData = {searchData} platformType ={platformType}/>
-      <Countdown showModal={showModal} hideModal={hideModal}></Countdown>
+      {/* <Countdown showModal={showModal} hideModal={hideModal}></Countdown> */}
       <div
         style={{
           paddingTop: height * 0.075,

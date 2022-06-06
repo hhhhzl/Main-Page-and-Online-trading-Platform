@@ -13,7 +13,8 @@ import useWindowDimensions from '../../utils/sizewindow';
 export default function WatchList({
   heightratio,
   searchwidth,
-  watchlistdata
+  watchlistdata,
+  platformType
 }) {
   const {width,height} = useWindowDimensions();
     const [displayrow1, setdisplayrow1] = useState(true);
@@ -45,7 +46,7 @@ opacity: 1}}>
         </div>
         </Card.Header>
        
-    <WatchListTable heightratio = {heightratio} searchwidth ={searchwidth} watchlistdata ={watchlistdata}/> 
+    <WatchListTable heightratio = {heightratio} searchwidth ={searchwidth} watchlistdata ={watchlistdata} platformType = {platformType}/> 
    
     </Card>
     

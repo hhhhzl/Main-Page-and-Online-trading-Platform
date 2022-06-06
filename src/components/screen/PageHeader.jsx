@@ -40,6 +40,8 @@ import { NotificationsNoneOutlined } from "@material-ui/icons";
 import { MenuItemLinksRouter } from "components/MainPage/HeaderElements";
 import { IconButton } from "@material-ui/core";
 import { clearLocalStorage } from "utils";
+import { useDispatch, useSelector } from "react-redux";
+import { updateStock } from "redux/reducers/Stock/stockReducer";
 
 
 
@@ -49,6 +51,7 @@ export default function PageHeader({searchData, platformType, showrankingOnly}) 
   let { user, logoutUser, apikey} = useContext(AuthContext);
   const {width, height} = useWindowDimensions();
   const [note, setnote] = useState(null)
+  const dispatch = useDispatch()
   const [headermenu,setheadermenu] =  useState(
     platformType == "eplatform"? [{
     id: 0,
@@ -173,11 +176,9 @@ export default function PageHeader({searchData, platformType, showrankingOnly}) 
     style:{background:"#E7ECFD"},
     onSelect: (row, isSelect, rowIndex, e) => {
       if (isSelect){
-          history.push({
-            pathname:`/${platformType}/trade`,
-            search:`?symbol=${row.代码}`,
-            state:{symbol:row.代码}
-          })
+          dispatch(updateStock(row.代码))
+          setScrollswitch(false);
+          history.push(`/${platformType}/trade`)
       }else{     
         
       }

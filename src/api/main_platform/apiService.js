@@ -1,8 +1,7 @@
 import axios from "axios";
-import { TOKEN_LOCAL_STORAGE_KEY } from "../../constants/values";
 
 const apiService = axios.create({
-  baseURL: "http://59.110.238.142:8000/api/",
+  baseURL: "http://82.157.18.223:10985/api/",
   timeout: 3000,
   headers: {
     "Content-Type": "application/json",
@@ -11,7 +10,7 @@ const apiService = axios.create({
 
 apiService.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem(TOKEN_LOCAL_STORAGE_KEY);
+    const token = localStorage.getItem("authTokens").access;
     if (token) {
       config.headers["Authorization"] = `Token ${token}`;
     }

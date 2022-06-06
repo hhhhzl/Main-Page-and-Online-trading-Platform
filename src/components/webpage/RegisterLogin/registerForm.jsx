@@ -36,9 +36,10 @@ function RegisterForm(props) {
     const [birthday, setbirthday] = useState("")
     const [mobileNumber, setMobileNumber] = useState("");
 
-    const [degree, setDegree] = useState("1");
-    const [org, setOrg] = useState("1");
+    const [degree, setDegree] = useState("");
+    const [org, setOrg] = useState("");
     const [regin, setRegin] = useState("")
+    const [job, setjob] = useState("")
     const [userType, setUserType] = useState("U");
     const [page, setpage] = useState(1)
     const [experienceList, setExperienceList] = useState([
@@ -62,7 +63,8 @@ function RegisterForm(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [validated, setValidated] = useState(false);
+    const [validated1, setValidated1] = useState(false);
+    const [validated2, setValidated2] = useState(false);
 
     const uuid = () => {
         let s = [];
@@ -106,7 +108,7 @@ function RegisterForm(props) {
     };
 
     const handleSubmit = () => {
-        setValidated(true);
+        setValidated1(true);
     };
 
     function IsPassword(confirmPassword) {
@@ -218,13 +220,15 @@ function RegisterForm(props) {
                     </Button>
                 </div>
 
-                <Form noValidate validated={validated} id="addProject" onSubmit={(event) => {
+                <Form noValidate validated={validated1} id="addProject" onSubmit={(event) => {
                     const form = event.currentTarget;
                     if (form.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
-                    }
-                    setValidated(true);
+                    setValidated1(true)
+                    }else{
+                       setpage(2)
+                    }            
                     // history.push("/NextRegisterForm")
                     // register(userState)
                 }}>
@@ -407,11 +411,18 @@ function RegisterForm(props) {
                      </div>
                      
                 
-            <Form noValidate validated={validated} id="addProject" onSubmit={(event) => {
+            <Form noValidate validated={validated2} id="addProject" onSubmit={(event) => {
+                    const form = event.currentTarget;
+                    if (form.checkValidity() === false) {
                     event.preventDefault();
+                    event.stopPropagation();
+                    setValidated2(true)
+                    }else{
+                       setpage(1)
+                    }   
                 }}>
                     <Form.Group className="loadingusername">
-                        <Form.Label  column>
+                        <Form.Label column>
                             学历
                         </Form.Label>
 
@@ -421,6 +432,7 @@ function RegisterForm(props) {
                             value={degree}
                             onChange={(e) => setDegree(e.target.value)}
                         >
+                            <option value="">请选择学历</option>
                             <option value="college">本科</option>
                             <option value="graduate">研究生</option>
                             <option value="phd">博士</option>
@@ -437,7 +449,7 @@ function RegisterForm(props) {
                         <Form.Control
                             className="loadinglogin"
                             required
-                            value={password}
+                            value={org}
                             onChange={(e) => setOrg(e.target.value)}
                         ></Form.Control>
 
@@ -452,7 +464,7 @@ function RegisterForm(props) {
                         <Form.Control
                             className="loadinglogin"
                             required
-                            value={password}
+                            value={regin}
                             onChange={(e) => setRegin(e.target.value)}
                         ></Form.Control>
 
@@ -467,8 +479,8 @@ function RegisterForm(props) {
                         <Form.Control
                             className="loadinglogin"
                             required
-                            value={password}
-                            onChange={(e) => setRegin(e.target.value)}
+                            value={job}
+                            onChange={(e) => setjob(e.target.value)}
                         ></Form.Control>
 
                     </Form.Group>
@@ -477,7 +489,7 @@ function RegisterForm(props) {
                         {
                             experienceList.map((item, idx) => (
                                 <div key={idx} style={{marginTop: "24px", display: "flex"}}>
-                                    <Form.Group>
+                                    <Form.Group >
                                         <Form.Label className="edit-form-label">实习公司</Form.Label>
                                         <Form.Control
                                             type="text"
@@ -569,9 +581,6 @@ function RegisterForm(props) {
                     }}>
 
                         <Button
-                            onClick={() => {
-                                history.push("/NextRegisterForm")
-                            }}
                             style={{
                                 color: "white",
                                 marginLeft:"0px",

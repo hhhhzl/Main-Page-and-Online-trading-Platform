@@ -9,12 +9,15 @@ import useWindowDimensions from "../../utils/sizewindow";
 import AreaChartWatchList from "../graphs/AreaTableForWatchList";
 import { Button } from "react-bootstrap";
 import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
+import { updateStock } from "redux/reducers/Stock/stockReducer";
 
 const { SearchBar } = Search;
 const { ExportCSVButton } = CSVExport;
 
-export default function WatchListTable({ heightratio, searchwidth, watchlistdata }) {
+export default function WatchListTable({ heightratio, searchwidth, watchlistdata, platformType}) {
   const { width, height } = useWindowDimensions();
+  const dispatch = useDispatch()
   let history = useHistory()
   const columns = [
     {
@@ -117,11 +120,8 @@ export default function WatchListTable({ heightratio, searchwidth, watchlistdata
     style:{background:"#F5F6F8"},
     onSelect: (row, isSelect, rowIndex, e) => {
       if (isSelect){
-          history.push({
-            pathname:"/eplatform/trade",
-            search:`?symbol=${row.代码}`,
-            state:{symbol:row.代码}
-          })
+          dispatch(updateStock(row.代码))
+          history.push(`/${platformType}/trade`)
       }else{     
         
       }
