@@ -583,7 +583,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                   </div>
                 </div>
 
-                <div style={{ marginTop: "200px" }}>
+                <div style={{ marginTop: "200px",marginLeft:"71px" }}>
                   <div className="flex-between">
                     <div className="image-left">
                       <div className="image-left-icon-bottom">
