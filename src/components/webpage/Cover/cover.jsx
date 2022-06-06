@@ -35,16 +35,16 @@ export default function Cover() {
     >
       {/* <HeaderCreate /> */}
       {/* {width > 600 ? <Image
-      src = "/background2.jpg"   
+      src = "/background2.jpg"
       style={{
         position: "relative",
         top: width > 1000 ? "9vh" : "9vh",
         width: width > 600 ? (width) : (width),
         height: width/2.72
       }}
-    /> : 
+    /> :
     <Image
-      src = "/background1.jpg"   
+      src = "/background1.jpg"
       style={{
         position: "relative",
         top: width > 1000 ? "9vh" : "9vh",
@@ -59,13 +59,13 @@ export default function Cover() {
           className="greetings"
           style={{
             fontSize: width * 0.01458,
-            marginTop: width > 1300 ? "178px" : ""
+            marginTop: width > 1350 ?"179px":width >1100 ? "225px": width < 800 ?"179px":"275px"
           }}
         >
           <div className="wrapper">
             {width > 800 ? (
               <Image
-                src="/homeCutout/Group 173.png"
+                src="/homeCutout/Group 173@2x.png"
                 style={{
                   width: width * 0.3229,
                   height: width * 0.026,
@@ -86,6 +86,7 @@ export default function Cover() {
         </div>
 
         {width > 800 ? (
+            <div>
           <div
             className="name"
             style={{
@@ -109,9 +110,28 @@ export default function Cover() {
                 fontWeight:"bold"
               }}
             >
-              金融协会
+              青年会
             </span>
           </div>
+                <div
+                    className="animated bounceInDown home-match-btn"
+                    style={{
+                        bottom: "185px",
+                        textAlign:"center",
+                        marginTop:"40px",
+                    }}
+                >
+                    <Button
+                        className="join-match-btn"
+                        variant="primary"
+                        size="sm"
+                        onClick={() => sendUser()}
+                        style={{fontWeight:"600",fontFamily:"Microsoft YaHei UI-Bold"}}
+                    >
+                        报名参赛
+                    </Button>
+                </div>
+            </div>
         ) : (
           <>
             <div
@@ -140,7 +160,7 @@ export default function Cover() {
                   fontWeight: "bold",
                 }}
               >
-                金融协会
+                  青年会
               </div>
             </div>
             <div
@@ -166,24 +186,7 @@ export default function Cover() {
           </>
         )}
       </div>
-      {width > 800 ? (
-        <div
-          className="arrow animated bounceInDown home-match-btn"
-          style={{
-            bottom: width * 0.118,
-            // left:width * 0.4854
-          }}
-        >
-          <Button
-            className="join-match-btn"
-            variant="primary"
-            size="sm"
-            onClick={() => sendUser()}
-          >
-            报名参赛
-          </Button>
-        </div>
-      ) : null}
+
     </div>
   );
 }

@@ -105,6 +105,22 @@ const Review = ({ projectImgs }) => {
       url:"/review/review_21.png",
       alt:"22",
     },
+    {
+      url:"/review/review_22.png",
+      alt:"23",
+    },
+    {
+      url:"/review/review_23.png",
+      alt:"24",
+    },
+    {
+      url:"/review/review_24.png",
+      alt:"25",
+    },
+    {
+      url:"/review/review_25.png",
+      alt:"26",
+    },
   ];
 
   const Openvideo = () => {
@@ -126,7 +142,7 @@ const Review = ({ projectImgs }) => {
     <>
       <div className="text-center" style={{ paddingTop: "120px" }}>
         <Image
-          src="/homeCutout/Group 77.png"
+          src="/homeCutout/Group 77@2x.png"
           style={{ width: "248px", height: "79px" }}
         />
       </div>
@@ -143,6 +159,8 @@ const Review = ({ projectImgs }) => {
                 : "#FFFFFF",
               border: "none",
               fontFamily: "MicrosoftYaHei",
+              boxShadow: "0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)"
+
             }}
             onClick={Openvideo}
           >
@@ -155,6 +173,8 @@ const Review = ({ projectImgs }) => {
                 lineHeight: "24px",
                 color: video ? "#FFFFFF" : "#9C9EAC",
                 fontWeight: video ? "bold" : "400",
+                boxShadow: "0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)"
+
               }}
             >
               活动视频
@@ -169,6 +189,8 @@ const Review = ({ projectImgs }) => {
                 : "#FFFFFF",
               border: "none",
               fontFamily: "MicrosoftYaHei",
+              boxShadow: "0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)"
+
               // borderBlockEndWidth: "5px",
               // borderBlockEndColor: image ? "#26409A" : "white",
             }}
@@ -183,6 +205,8 @@ const Review = ({ projectImgs }) => {
                 lineHeight: "24px",
                 color: image ? "#FFFFFF" : "#9C9EAC",
                 fontWeight: image ? "bold" : "400",
+                boxShadow: "0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)"
+
               }}
             >
               赛事图集

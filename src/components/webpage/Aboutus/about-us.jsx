@@ -69,7 +69,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               letterSpacing: "0.2px",
             }}
           >
-           UFA金融协会 (英文缩写"UFA") 是面向全球顶级高校（包括美国排名TOP30、中国内地TOP10、中国香港四大高校等）建立的首个跨学校，跨地区，跨文化的大学生金融协会。我们的愿景是“助力祖国联合全球和华人金融精英，并共同建设祖国金融未来”。</p>
+           UFA青年会 (英文缩写"UFA") 是面向全球顶级高校（包括美国排名TOP30、中国内地TOP10、中国香港四大高校等）建立的首个跨学校，跨地区，跨文化的大学生金融协会。我们的愿景是“助力祖国联合全球和华人金融精英，并共同建设祖国金融未来”。</p>
           <br />
           <p
             className="bottom-angle"
@@ -82,7 +82,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               letterSpacing: "1px",
             }}
           >
-           自成立以来，UFA金融协会与中信证券、海外超过100所高校等建立起合作关系，并联合策划了名家分享会，金融系列公益讲座、全球大学生投资大赛等多个活动。“UFA杯: 全球大学模拟投资大赛”是由 UFA ⾦融协会牵头发起的首个汇聚全球顶尖高校大学生的大型线上模拟投资比赛。</p>
+           自成立以来，UFA青年会与中信证券、海外超过100所高校等建立起合作关系，并联合策划了名家分享会，金融系列公益讲座、全球大学生投资大赛等多个活动。“UFA杯: 全球大学模拟投资大赛”是由 UFA ⾦融协会牵头发起的首个汇聚全球顶尖高校大学生的大型线上模拟投资比赛。</p>
           <div className="right-icon">
             <Image
               src="/homeCutout/Group 172@2x.png"
@@ -507,7 +507,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                 fontSize: "14px",
                 fontWeight: "600",
                 lineHeight: "16px",
-                fontFamily: "PingFang SC-Semibold, PingFang SC",
+                fontFamily: "Microsoft YaHei UI-Bold",
               }}
               variant="outline-primary"
               size="lg"
@@ -583,7 +583,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                   </div>
                 </div>
 
-                <div style={{ marginTop: "200px" }}>
+                <div style={{ marginTop: "200px",marginLeft:"71px" }}>
                   <div className="flex-between">
                     <div className="image-left">
                       <div className="image-left-icon-bottom">
