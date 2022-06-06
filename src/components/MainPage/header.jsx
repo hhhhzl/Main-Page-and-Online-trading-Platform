@@ -533,8 +533,9 @@ const HeaderCreate = ({ toggle }) => {
                     padding: "0px",
                   }}
                   onMouseLeave={() => handleShowMenu(false)}
+                  onMouseEnter={() => handleShowMenu(true)}
                 >
-                  <div className="user-av" onClick={() => handleShowMenu(true)}>
+                  <div className="user-av">
                     <Image
                       src={"/loginback.jpg"}
                       style={{
@@ -556,19 +557,19 @@ const HeaderCreate = ({ toggle }) => {
                     >
                       {user.username}
                     </span>
-                    <ExpandMoreIcon
-                      style={{
-                        color: scrolledDownEnough
-                          ? "#2A2B30"
-                          : url != "/" && url != "/tournament"
-                          ? "#2A2B30"
-                          : "#FFFFFF",
-                      }}
-                    ></ExpandMoreIcon>
+                    {/*<ExpandMoreIcon*/}
+                    {/*  style={{*/}
+                    {/*    color: scrolledDownEnough*/}
+                    {/*      ? "#2A2B30"*/}
+                    {/*      : url != "/" && url != "/tournament"*/}
+                    {/*      ? "#2A2B30"*/}
+                    {/*      : "#FFFFFF",*/}
+                    {/*  }}*/}
+                    {/*></ExpandMoreIcon>*/}
                   </div>
                   <div
                     className="header-user-menu"
-                    style={{ display: showMenu ? "flex" : "none" }}
+                    style={{ display: showMenu ? "flex" : "none",borderRadius:"4px" }}
                     // onMouseEnter={handleMouseLeave}
                   >
                     <MenuItemLinksRouter

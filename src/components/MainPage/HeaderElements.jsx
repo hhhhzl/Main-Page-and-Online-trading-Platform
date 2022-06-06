@@ -97,7 +97,7 @@ export const HeaderContianer = styled.div`
 `;
 
 export const HeaderMenu = styled.div`
-  margin-left: 21.7%;
+  margin-left: 19%;
   display: flex;
   height: 64px;
   justify-content: center;

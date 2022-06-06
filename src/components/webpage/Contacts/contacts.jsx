@@ -14,7 +14,7 @@ const Contacts = () => {
     <div className="section" style={{ padding: "120px 0px 0px 0px" }}>
       <div className="text-center">
         <Image
-          src="/homeCutout/Group 81.png"
+          src="/homeCutout/Group 81@2x.png"
           style={{ width: "248px", height: "79px" }}
         />
       </div>
@@ -305,13 +305,13 @@ const Contacts = () => {
         <div className="section" style={{ padding: " 120px 0px" }}>
           <div className="text-center">
             <Image
-              src="/homeCutout/Group 127.png"
+              src="/homeCutout/Group 127@2x.png"
               style={{ width: "248px", height: "79px" }}
             />
           </div>
 
           <div className="text-center" style={{ paddingTop: "80px" }}>
-            <div>
+            <div style={{marginBottom:"43px"}}>
               <Image
                 src="/corpo.png"
                 style={{ width: "160px", height: "160px", marginRight: "40px" }}
