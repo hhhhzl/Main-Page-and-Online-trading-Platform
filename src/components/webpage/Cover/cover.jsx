@@ -110,7 +110,7 @@ export default function Cover() {
                 fontWeight:"bold"
               }}
             >
-              青年会
+              全球青年汇
             </span>
           </div>
                 <div
@@ -160,7 +160,7 @@ export default function Cover() {
                   fontWeight: "bold",
                 }}
               >
-                  青年会
+                  全球青年汇
               </div>
             </div>
             <div
