@@ -65,7 +65,7 @@ export default function Cover() {
           <div className="wrapper">
             {width > 800 ? (
               <Image
-                src="/homeCutout/Group 173.png"
+                src="/homeCutout/Group 173@2x.png"
                 style={{
                   width: width * 0.3229,
                   height: width * 0.026,
@@ -110,7 +110,7 @@ export default function Cover() {
                 fontWeight:"bold"
               }}
             >
-              金融协会
+              青年会
             </span>
           </div>
                 <div
@@ -126,6 +126,7 @@ export default function Cover() {
                         variant="primary"
                         size="sm"
                         onClick={() => sendUser()}
+                        style={{fontWeight:"600",fontFamily:"Microsoft YaHei UI-Bold"}}
                     >
                         报名参赛
                     </Button>
@@ -159,7 +160,7 @@ export default function Cover() {
                   fontWeight: "bold",
                 }}
               >
-                金融协会
+                  青年会
               </div>
             </div>
             <div

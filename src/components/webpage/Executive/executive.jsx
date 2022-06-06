@@ -15,7 +15,7 @@ export default function Executive() {
             <div className="text-center">
                 <Image
                     src="/homeCutout/Group 1097@2x.png"
-                    style={{width: "286px", height: "79px"}}
+                    style={{width: "310px", height: "79px"}}
                 />
             </div>
 
