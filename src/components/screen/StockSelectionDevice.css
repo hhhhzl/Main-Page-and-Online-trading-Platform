@@ -148,7 +148,7 @@
 .stock-selection-device-group {
 	display: flex;
 	align-items: center;
-	padding-top: 16px;
+	margin-top: 16px;
 }
 
 
@@ -219,12 +219,14 @@
 
 
 .quotes-card{
-	position: absolute;
-	z-index: 99;
 	width: 150px;
-	top: 30px;
+	top: 0px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
 	left: 0;
 	padding: 6px 12px;
+	border:0
 }
 
 .finance-card{

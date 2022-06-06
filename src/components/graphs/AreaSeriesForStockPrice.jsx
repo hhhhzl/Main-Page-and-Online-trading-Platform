@@ -30,7 +30,7 @@ function tooltipContent(ys) {
       x: dateFormat(xAccessor(currentItem)),
       y: [
         {
-          // label: "close",
+          label: "收盘(￥)",
           value: currentItem.close && numberFormat(currentItem.close)
         }
       ]
@@ -70,7 +70,11 @@ class AreaSeriesForStockPrice extends React.Component {
 
 
     return (
-      <ChartCanvas
+      <>
+      {data? 
+      <>
+
+<ChartCanvas
         ratio={1}
         width={width}
         height={width * 0.381}
@@ -106,14 +110,6 @@ class AreaSeriesForStockPrice extends React.Component {
             bgheight ={1}
 			      fontSize={12}
             />
-
-
-        
-
-        
-          
-
-
           <AreaSeries
             yAccessor={(d) => d.close}
             tooltipContent={tooltipContent([])}
@@ -121,19 +117,13 @@ class AreaSeriesForStockPrice extends React.Component {
             strokeWidth={1}
             stroke = {updown? "#42E083" : "#FF3541"}
             canvasGradient={canvasGradient}
-          />
-          {/* <AlternatingFillAreaSeries 
-          baseAt ={data[data.length -90].open} 
-          strokeWidth={{top:1,bottom:1}} 
-          yAccessor={(d) => d.open} 
-          connectNulls ={true} 
-          stroke ={{ top: data[0].open > data[data.length -90].open? '#42E083':"#FF3541" , bottom: data[0].open > data[data.length -90].open? '#42E083':"#FF3541" }}
-          fill ={{ top: data[0].open > data[data.length -90].open? '#42E083':"#FF3541" , bottom: data[0].open > data[data.length -90].open? '#42E083':"#FF3541" }}
-          interpolation={curveMonotoneX}
-          fillOpacity ={{top:0.16, bottom:0.16}}
-          />   */}
+            />
         </Chart>
       </ChartCanvas>
+      </>
+      : null}
+     
+      </>
     );
   }
 }

@@ -6,11 +6,19 @@ import BootstrapTable from "react-bootstrap-table-next";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
 import { Collapse } from "react-bootstrap";
 import paginationFactory from 'react-bootstrap-table2-paginator';
+import useWindowDimensions from "utils/sizewindow";
 
 
 export default function MarketQuotationList({allstocks}){
+	const {width,height} = useWindowDimensions()
 	const [count, setCount] = useState(null)
 	const [searchData, setsearchData] = useState(null)
+
+	const pagination = paginationFactory({
+        sizePerPageList: [{
+            text: '200', value: 200
+        }, {}]
+    });
 	
 
 	const columns= [
@@ -215,10 +223,10 @@ export default function MarketQuotationList({allstocks}){
 						  bordered={false}
 						  hover
 						  condensed
-							keyField="代码"
-							data={allstocks? allstocks.slice(2) : []}
-							columns={columns}
-							// pagination={ paginationFactory(20) }
+						  keyField="代码"
+						  data={allstocks? allstocks.slice(2) : []}
+						  columns={columns}
+						  pagination={pagination}
 						/>
 					  </div>
 				  </div>

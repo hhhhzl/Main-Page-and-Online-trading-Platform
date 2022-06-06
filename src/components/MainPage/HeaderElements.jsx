@@ -12,6 +12,7 @@ export const HeaderOut = styled.nav`
   width: ${(props) => (props.scrolledDownEnough ? "100%" : "100%")};
   justify-content: center;
   align-items: center;
+  top:0px;
   font-size: 1rem;
   position: fixed;
   top: 0px;

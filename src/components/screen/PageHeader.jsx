@@ -94,9 +94,6 @@ export default function PageHeader({searchData, toggle}) {
     clearLocalStorage()
   }
 
-
-
-
   const selectRow = {
     mode: 'radio',
     clickToSelect: true,
@@ -152,7 +149,6 @@ export default function PageHeader({searchData, toggle}) {
 
   const columns = [
     {
-
         dataField:'代码',
         text:'代码',
         sort: true,
@@ -215,7 +211,7 @@ export default function PageHeader({searchData, toggle}) {
         formatter: (cell) => {
           return (
             <>
-            {cell? cell>0? 
+            {cell >= 0? 
              <>
              <div
               style={{
@@ -244,8 +240,6 @@ export default function PageHeader({searchData, toggle}) {
               }}
             > {cell}%</div>
             </>
-
-            : null
             }
             </>
           )
@@ -320,6 +314,7 @@ export default function PageHeader({searchData, toggle}) {
               <div
                 style={{
                   marginLeft: "20px",
+                  marginRight:"10%",
                   display: "flex",
                   justifyContent: "left",
                   backgroundColor:"white",
@@ -339,8 +334,8 @@ export default function PageHeader({searchData, toggle}) {
                           fontSize: "14px",
                           fontFamily:
                             "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
-                          fontWeight: elem.title == "财经洞悉"? "bold" : "400",
-                          color: elem.title == "财经洞悉"? "#1442ED" : "#2A2B30",
+                          fontWeight: elem.title == "财经洞悉" || url == elem.link? "bold" : "400",
+                          color: elem.title == "财经洞悉" || url == elem.link ? "#1442ED" : "#2A2B30",
                           lineHeight: "24px",
                           borderRadius: "0",
                           borderLeftColor: "white",
@@ -364,7 +359,7 @@ export default function PageHeader({searchData, toggle}) {
           <div
             style={{
               width: "240px",
-              marginLeft: "10%",
+              marginLeft: "20px",
             }}
           >
             <Form>
@@ -457,7 +452,7 @@ export default function PageHeader({searchData, toggle}) {
                 src={"/homeCutout/UFA-LOGO-RED.png"}
                 style={{ width: "38px", height: "38px" }}
               />
-              <span className="header-user-name">{user.username? user.username: "用户名"}</span>
+              <span className="header-user-name">{user.username? user.username.length > 5? <>{user.username.slice(4)}...</> : user.username : "用户名"}</span>
               <ExpandMoreIcon></ExpandMoreIcon>
             </div>
             <div

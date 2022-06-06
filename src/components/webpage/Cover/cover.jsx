@@ -186,6 +186,24 @@ export default function Cover() {
           </>
         )}
       </div>
+      {width > 800 ? (
+        <div
+          className="arrow animated bounceInDown home-match-btn"
+          style={{
+            bottom: width * 0.118,
+            // left:width * 0.4854
+          }}
+        >
+          <Button
+            className="join-match-btn"
+            variant="primary"
+            size="sm"
+            onClick={() => sendUser()}
+          >
+            报名参赛
+          </Button>
+        </div>
+      ) : null}
     </div>
   );
 }
