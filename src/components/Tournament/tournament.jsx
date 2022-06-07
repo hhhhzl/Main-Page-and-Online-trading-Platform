@@ -8,7 +8,7 @@ import Introduce from "./introduce";
 import Rules from "./rules";
 import Sign from "./sign";
 import Finance from "./finance";
-import Sidebar from "../MainPage/Sidebar";
+import ASide from "../MainPage/ASide";
 import useWindowDimensions from "../../utils/sizewindow";
 import "./tournament.css"
 import { clearLocalStorage } from "utils";
@@ -57,7 +57,8 @@ export default function MainPage() {
     <>
       {/* <div className="vertical-line" style={{height:height*0.6}}></div> */}
       <HeaderCreate toggle={toggle}/>
-      {isOpen ? (<Sidebar isOpen={isOpen} toggle={toggle} />) : null}
+      {/* {isOpen ? (<Sidebar isOpen={isOpen} toggle={toggle} />) : null} */}
+      {isOpen ? (<ASide isOpen={isOpen} toggle={toggle} />) : null}
       <div className="main-page-center">
         <TournamentBg />
         <div className="tourament-page">

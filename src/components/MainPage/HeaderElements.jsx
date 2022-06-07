@@ -5,14 +5,16 @@ import { Link as LinkS } from "react-scroll";
 export const HeaderOut = styled.nav`
   background: ${(props) =>
     props.scrolledDownEnough
-      ?"#FFFFFF"
-      : (props.url != "/" && props.url != "/tournament")?"#FFFFFF": "linear-gradient(180deg,rgba(0, 0, 0, 0.2) 0%,rgba(0, 0, 0, 0) 100%)"};
+      ? "#FFFFFF"
+      : props.url != "/" && props.url != "/tournament"
+      ? "#FFFFFF"
+      : "linear-gradient(180deg,rgba(0, 0, 0, 0.2) 0%,rgba(0, 0, 0, 0) 100%)"};
   height: 64px;
   margin-left: ${(props) => (props.scrolledDownEnough ? "0%" : "0%")};
   width: ${(props) => (props.scrolledDownEnough ? "100%" : "100%")};
   justify-content: center;
   align-items: center;
-  top:0px;
+  top: 0px;
   font-size: 1rem;
   position: fixed;
   top: 0px;
@@ -21,8 +23,11 @@ export const HeaderOut = styled.nav`
   // -moz-transition: all 1s ease;
   // -o-transition: all 1s ease;
   // -ms-transition: all 1s ease;
-  
-  border-bottom: ${(props) => (props.scrolledDownEnough ? "1px solid rgb(229, 232, 238)" : "1px solid rgba(255, 255, 255, 0.2)")}; 
+
+  border-bottom: ${(props) =>
+    props.scrolledDownEnough
+      ? "1px solid rgb(229, 232, 238)"
+      : "1px solid rgba(255, 255, 255, 0.2)"};
   z-index: 999;
   @media screen and (max-width: 960px) {
     transition: 0s all ease;
@@ -35,7 +40,6 @@ export const HeaderOut = styled.nav`
     padding: 0px 16px;
   }
 `;
-
 
 export const HeaderContianer = styled.div`
   margin-left: 18.75%;
@@ -86,13 +90,13 @@ export const HeaderContianer = styled.div`
     // margin-left: 3%;
     display: flex;
     justify-content: space-between;
-    align-items:center;
+    align-items: center;
     width: 100%;
-    margin:0;
+    margin: 0;
   }
   @media screen and (max-width: 430px) {
     padding: 0;
-    margin:0;
+    margin: 0;
   }
 `;
 
@@ -115,7 +119,6 @@ export const HeaderMenu = styled.div`
   @media screen and (max-width: 1200px) {
     margin-left: 15%;
   }
- 
 `;
 
 export const HeaderItem = styled.div`
@@ -195,8 +198,12 @@ export const HeaderBtn = styled.nav`
 `;
 export const HeaderBtnLink = styled(LinkR)`
   white-space: nowrap;
-  color:${(props) => (props.scrolledDownEnough ? "#2A2B30"
-    : (props.url != "/" && props.url != "/tournament")? "#2A2B30": "#ffffff")};
+  color:${(props) =>
+    props.scrolledDownEnough
+      ? "#2A2B30"
+      : props.url != "/" && props.url != "/tournament"
+      ? "#2A2B30"
+      : "#ffffff"};
   text-decoration:none;
   display:flex;
   align-item: center;
