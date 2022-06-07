@@ -264,6 +264,7 @@ const HeaderCreate = ({ toggle }) => {
             >
               {/* {user} */}
               <HeaderBtnLink
+                className={url == "/" ? "active-bold" : "active-500"}
                 style={{
                   borderBottom:
                     url != "/"
@@ -283,7 +284,7 @@ const HeaderCreate = ({ toggle }) => {
                         url != "/tournament"
                       ? "#2A2B30"
                       : "#FFFFFF",
-                  fontWeight: url == "/" ? "bold" : "500",
+                  // fontWeight: url == "/" ? "bold" : "500",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 url={url}
@@ -358,6 +359,7 @@ const HeaderCreate = ({ toggle }) => {
 
             <HeaderItem>
               <HeaderBtnLink
+                className={url == "/#" ? "active-bold" : "active-500"}
                 style={{
                   borderBottom:
                     url != "/#"
@@ -377,7 +379,7 @@ const HeaderCreate = ({ toggle }) => {
                         url != "/tournament"
                       ? "#2A2B30"
                       : "#FFFFFF",
-                      fontWeight: url == "/#" ? "bold" : "500",
+                  // fontWeight: url == "/#" ? "bold" : "500",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -395,6 +397,7 @@ const HeaderCreate = ({ toggle }) => {
             </HeaderItem>
             <HeaderItem>
               <HeaderBtnLink
+                className={url == "/tournament" ? "active-bold" : ""}
                 style={{
                   borderBottom:
                     url != "/tournament"
@@ -414,7 +417,7 @@ const HeaderCreate = ({ toggle }) => {
                         url != "/tournament"
                       ? "#2A2B30"
                       : "#FFFFFF",
-                      fontWeight: url == "/tournament" ? "bold" : "500",
+                  // fontWeight: url == "/tournament" ? "bold" : "500",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -433,6 +436,7 @@ const HeaderCreate = ({ toggle }) => {
             </HeaderItem>
             <HeaderItem onMouseLeave={handleCloseTransaction}>
               <HeaderBtnLink
+                className={url == "/#" ? "active-bold" : "active-500"}
                 style={{
                   paddingLeft: "16px",
                   borderBottom:
@@ -453,7 +457,7 @@ const HeaderCreate = ({ toggle }) => {
                         url != "/tournament"
                       ? "#2A2B30"
                       : "#FFFFFF",
-                      fontWeight: url == "/#" ? "bold" : "500",
+                  // fontWeight: url == "/#" ? "bold" : "500",
                 }}
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
@@ -532,6 +536,7 @@ const HeaderCreate = ({ toggle }) => {
                     justifyContent: "center",
                     padding: "0px",
                   }}
+                  onClick={() => handleShowMenu(true)}
                   onMouseLeave={() => handleShowMenu(false)}
                   onMouseEnter={() => handleShowMenu(true)}
                 >
@@ -569,7 +574,10 @@ const HeaderCreate = ({ toggle }) => {
                   </div>
                   <div
                     className="header-user-menu"
-                    style={{ display: showMenu ? "flex" : "none",borderRadius:"4px" }}
+                    style={{
+                      display: showMenu ? "flex" : "none",
+                      borderRadius: "4px",
+                    }}
                     // onMouseEnter={handleMouseLeave}
                   >
                     <MenuItemLinksRouter

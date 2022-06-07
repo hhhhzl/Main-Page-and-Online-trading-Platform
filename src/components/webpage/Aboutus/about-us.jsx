@@ -69,7 +69,9 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               letterSpacing: "0.2px",
             }}
           >
-           UFA全球青年汇 (英文缩写"UFA") 是面向全球顶级高校（包括美国排名TOP30、中国内地TOP10、中国香港四大高校等）建立的首个跨学校，跨地区，跨文化的大学生金融协会。我们的愿景是“助力祖国联合全球和华人金融精英，并共同建设祖国金融未来”。</p>
+            UFA全球青年汇 (英文缩写"UFA")
+            是面向全球顶级高校（包括美国排名TOP30、中国内地TOP10、中国香港四大高校等）建立的首个跨学校，跨地区，跨文化的大学生金融协会。我们的愿景是“助力祖国联合全球和华人金融精英，并共同建设祖国金融未来”。
+          </p>
           <br />
           <p
             className="bottom-angle"
@@ -82,7 +84,10 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               letterSpacing: "1px",
             }}
           >
-           自成立以来，UFA全球青年汇会与中信证券、海外超过100所高校等建立起合作关系，并联合策划了名家分享会，金融系列公益讲座、全球大学生投资大赛等多个活动。“UFA杯: 全球大学模拟投资大赛”是由 UFA ⾦融协会牵头发起的首个汇聚全球顶尖高校大学生的大型线上模拟投资比赛。</p>
+            自成立以来，UFA全球青年汇会与中信证券、海外超过100所高校等建立起合作关系，并联合策划了名家分享会，金融系列公益讲座、全球大学生投资大赛等多个活动。“UFA杯:
+            全球大学模拟投资大赛”是由 UFA
+            ⾦融协会牵头发起的首个汇聚全球顶尖高校大学生的大型线上模拟投资比赛。
+          </p>
           <div className="right-icon">
             <Image
               src="/homeCutout/Group 172@2x.png"
@@ -114,36 +119,17 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
             </div>
           </div>
           <div className="video-wrapper">
-            <Carousel fade className="video-container">
-              <Carousel.Item className="player-wrapper">
-                <BilibiliVideo
-                  cid="548193318"
-                  aid="382170523"
-                  asWide
-                  highQuality
-                  danmaku={0}
+            <div className="video-container">
+              <div className="player-wrapper">
+                <ReactPlayer
+                  className="player-wrapper"
+                  url="https://test1-1311825037.cos.ap-nanjing.myqcloud.com/public/competition_intro_video.mp4"
+                  width="100%"
+                  height="100%"
+                  controls={true}
                 />
-              </Carousel.Item>
-
-              <Carousel.Item className="player-wrapper">
-                <BilibiliVideo
-                  cid="548193318"
-                  aid="382170523"
-                  asWide
-                  highQuality
-                  danmaku={0}
-                />
-              </Carousel.Item>
-              <Carousel.Item className="player-wrapper">
-                <BilibiliVideo
-                  cid="548193318"
-                  aid="382170523"
-                  asWide
-                  highQuality
-                  danmaku={0}
-                />
-              </Carousel.Item>
-            </Carousel>
+              </div>
+            </div>
             <div className="video-icon-wrapper-bottom">
               <div className="video-icon-bottom">
                 <Image
@@ -159,7 +145,12 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
           <br />
           <br />
 
-          <div className="about-center" style={{ width:width > 1385 ? "68.5%"  : width < 1350 ?"93%":"71%"}}>
+          <div
+            className="about-center"
+            style={{
+              width: width > 1385 ? "68.5%" : width < 1350 ? "93%" : "71%",
+            }}
+          >
             {width < 680 ? (
               <>
                 <Row className="center-container">
@@ -498,7 +489,10 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               </>
             )}
           </div>
-          <h5 className="text-center arrow animated bounceInDown" style={{ marginTop: "-80px" }}>
+          <h5
+            className="text-center arrow animated bounceInDown"
+            style={{ marginTop: "-80px" }}
+          >
             <Button
               className="video-btn"
               style={{
@@ -511,7 +505,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               }}
               variant="outline-primary"
               size="lg"
-              onClick= {()=>history.push("/tournament")}
+              onClick={() => history.push("/tournament")}
             >
               了解赛事
             </Button>
@@ -524,14 +518,21 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
             style={{ paddingTop: "120px", paddingBottom: "90px" }}
           >
             <div className="text-center">
-              {width > 700? <><Image
-                src="/homeCutout/Group 58@2x.png"
-                style={{ width: "685px", height: "79px" }}
-              /></> : <><Image
-              src="/homeCutout/Group 58@2x.png"
-              style={{ width: width-10, height: "79px" }}
-            /></>  }
-
+              {width > 700 ? (
+                <>
+                  <Image
+                    src="/homeCutout/Group 58@2x.png"
+                    style={{ width: "685px", height: "79px" }}
+                  />
+                </>
+              ) : (
+                <>
+                  <Image
+                    src="/homeCutout/Group 58@2x.png"
+                    style={{ width: width - 10, height: "79px" }}
+                  />
+                </>
+              )}
             </div>
 
             {width > 1100 ? (
@@ -539,16 +540,14 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                 <div className="message-box">
                   <div className="flex-between">
                     <div className=" message-left">
-                      <div className="message-title">
-                        权威证书
-                      </div>
+                      <div className="message-title">权威证书</div>
                       <div className="message-content">
                         证书由顶尖券商中信证券官方认证，排名前30％的参赛者均会授予颁发。同时，排名不是唯一评判标准，赛事期间设立300余份相关奖项等你来拿。
                       </div>
                       <span className="message-icon">
                         <Image
-                            src="/homeCutout/Group 21@2x.png"
-                            style={{ width: "49px", height: "3px" }}
+                          src="/homeCutout/Group 21@2x.png"
+                          style={{ width: "49px", height: "3px" }}
                         />
                       </span>
                       <div className="message-content-bottom">
@@ -562,16 +561,15 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                           style={{ width: "12px", height: "12px" }}
                         />
                       </div>
-                      <div
-                        >
-                      <Image
+                      <div>
+                        <Image
                           src="/组 50(3)@2x.png"
                           style={{
                             width: "600px",
                             height: "480px",
                             border: "1px solid #3C5E78",
                           }}
-                      />
+                        />
                       </div>
                       <div className="image-right-icon-bottom">
                         <Image
@@ -583,7 +581,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                   </div>
                 </div>
 
-                <div style={{ marginTop: "200px",marginLeft:"71px" }}>
+                <div style={{ marginTop: "200px", marginLeft: "71px" }}>
                   <div className="flex-between">
                     <div className="image-left">
                       <div className="image-left-icon-bottom">
@@ -608,16 +606,14 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                       </div>
                     </div>
                     <div className=" message-right">
-                      <div className="message-title">
-                        学习机会
-                      </div>
+                      <div className="message-title">学习机会</div>
                       <div className="message-content">
                         赛事期间，UFA为参赛者们准备了一系列高含金量的免费服务：包括百万知识博主、求职达人Lindsay的金融行业求职分析，多场干货满满的大咖讲座，以及中信高级分析师在线专题指导交流等。
                       </div>
                       <span className="message-icon">
                         <Image
-                            src="/homeCutout/Group 21@2x.png"
-                            style={{ width: "49px", height: "3px" }}
+                          src="/homeCutout/Group 21@2x.png"
+                          style={{ width: "49px", height: "3px" }}
                         />
                       </span>
                       <div className="message-content-bottom">
@@ -630,16 +626,14 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                 <div style={{ marginTop: "200px" }}>
                   <div className="flex-between">
                     <div className=" message-left">
-                      <div className="message-title">
-                        丰厚奖励
-                      </div>
+                      <div className="message-title">丰厚奖励</div>
                       <div className="message-content">
                         针对所有入围决赛的量化选手与主观多头选手，UFA将赠予决赛奖杯，数十万奖金，中信证券实习机会，以及UFA终身会员。
                       </div>
                       <span className="message-icon">
                         <Image
-                            src="/homeCutout/Group 21@2x.png"
-                            style={{ width: "49px", height: "3px" }}
+                          src="/homeCutout/Group 21@2x.png"
+                          style={{ width: "49px", height: "3px" }}
                         />
                       </span>
                       <div className="message-content-bottom">
@@ -725,8 +719,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                         paddingRight: width > 750 ? "10px" : "5px",
                       }}
                     >
-                      赛事证书由
-                      UFA，中信证券联合签署。表现优异的前
+                      赛事证书由 UFA，中信证券联合签署。表现优异的前
                       30%参赛选手将收获主办方颁发的官方证书，为你的简历增添亮点，丰富金融专业背景，帮助你从同龄人中迅速脱颖而出！
                     </p>
                   </div>
