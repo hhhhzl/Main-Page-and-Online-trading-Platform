@@ -2,12 +2,15 @@ import { createContext, useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import { useHistory, useLocation } from "react-router-dom";
 import { clearLocalStorage, setPlatformType } from "utils";
+import { fetchUser } from "redux/reducers/users/usersSlices";
+import { useDispatch } from "react-redux";
 
 const AuthContext = createContext();
 
 export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
+  const dispatch = useDispatch();
   const [user, setuser] = useState(() =>
     localStorage.getItem("authTokens")
       ? jwt_decode(localStorage.getItem("authTokens"))
@@ -50,7 +53,7 @@ export const AuthProvider = ({ children }) => {
       setAuthTokens(data.data);
       setuser(jwt_decode(data.data.access));
       localStorage.setItem("authTokens", JSON.stringify(data.data));
-
+      dispatch(fetchUser())
 
       ///TO list : ask and set for apiKey
     

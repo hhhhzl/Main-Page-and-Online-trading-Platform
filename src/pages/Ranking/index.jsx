@@ -10,10 +10,12 @@ export default ({searchData}) => {
     return (
         <>
             <PageHeader searchData = {searchData} platformType = {platformType} showrankingOnly = {apikey? null :true}/>
-            <div style={{width:"100%",height:"100%",display:"flex",justifyContent:"center", background:"#F5F6F8"}}>
+            <div style={{width:"100%",height:"100%",display:"flex",justifyContent:"space-between", background:"#F5F6F8"}}>
+            <div style={{ width: "48px", minHeight: "500px", maxWidth: "18.75%" }}></div>
                 <div style={{width:"1200px"}} >
                    <RankingPang />
                 </div>
+                <div style={{ width: "48px", minHeight: "500px", maxWidth: "18.75%" }}></div>
             </div>
             
         </>
