@@ -9,8 +9,8 @@ export const apiGetAllUsers = (query_params) =>
     
 export const apiGetUser = (id) =>
     apiService.get(`users/get_user/${id}/`);
-export const apiUpdateUser = (id, data) =>
-    apiService.post(`users/update_user/${id}/`, data);
+export const apiUpdateUser = (data) =>
+    apiService.post(`users/update_profile/`, data);
 
 // register
 export const apiRegisterUser = (data) =>

@@ -8,7 +8,7 @@ import rootReducer from "../reducers/rootReducer";
 
 const configurestore =  configureStore({
     reducer:{
-        user:userSlice.reducer,
+        userInfo:userSlice.reducer,
         watchList: watchListSlice.reducer,
         stock: StockSlice.reducer
     }

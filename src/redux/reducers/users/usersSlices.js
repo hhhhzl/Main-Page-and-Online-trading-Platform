@@ -11,7 +11,7 @@ const initialState = {
 
   export const fetchUser = createAsyncThunk(
     "users/fetchUser",
-    async ({userID}) => {
+    async (userID) => {
       const response = await apiGetUser(userID);
       return response.data.data;
     }
@@ -19,15 +19,15 @@ const initialState = {
   
   export const updateUser = createAsyncThunk(
     "users/updateUsers",
-    async ({ userID, data }) => {
-      const response = await apiUpdateUser(userID, data);
+    async ({ data }) => {
+      const response = await apiUpdateUser(data);
       return response.data.data;
     }
   );
 
 
   export const userSlice = createSlice({
-      name:"user",
+      name:"userInfo",
       initialState,
       reducers:{},
       extraReducers: (builder) =>{
@@ -65,5 +65,3 @@ const initialState = {
 
         }
   })
-
-  export const selectUser = (state) => state.user.data;

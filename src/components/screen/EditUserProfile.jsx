@@ -1,22 +1,31 @@
-import React, { useState,useEffect } from "react";
+import React, { useState,useEffect, useContext } from "react";
 import {FormGroup,FormLabel,FormControl,Button,Image, Modal} from "react-bootstrap";
 import './Personal.css'
 import { useHistory } from "react-router";
 import TeamRegisterModel from './modal/TeamRegisterModel'
+import AuthContext from "context/AuthContext";
+import { updateUser } from "redux/reducers/users/usersSlices";
+import { useDispatch } from "react-redux";
 
-export default function EditData({platformType}){
-	const [userState, setUserState] = useState({})
-	const [username, setUsername] = useState("管理员");
-	const [school, setSchool] = useState("密歇根大学");
-	const [personalProfile,setPersonalProfile] = useState("实习经历实习经历实习经历实习经历实习经历实习经历实习经历实习经历实习经历实习经历实习经历实习经历");
-	const [experienceList,setExperienceList] = useState([
-		{company:"密歇根大学",experience:"实习经历实习经历实习经历实习经历实习经历实习"}
+export default function EditData({
+	platformType,
+	userName,
+	userget
+}){
+	const [userState, setUserState] = useState(userget? userget : {})
+	let {user} = useContext(AuthContext)
+	const [lastname, setlastname] = useState(userget? userget.last_name: "");
+	const [institution, setinstitution] = useState(userget? userget.institution : "");
+	const [personalProfile,setPersonalProfile] = useState("");
+	const [experienceList,setExperienceList] = useState(userget.experience?.length> 0? userget.experience : [
+		{company:"",position:""}
 	])
 	const [successSendtoC, setsuccessSendtoC] = useState(false)
 	const history= useHistory()
+	const dispatch = useDispatch();
 
 	const addExperience=()=>{
-		let obj ={company:"密歇根大学",experience:"实习经历实习经历实习经历实习经历实习经历实习"};
+		let obj ={company:"",position:""};
 		experienceList.push(obj);
 		console.log(experienceList);
 		setExperienceList([...experienceList]);
@@ -30,7 +39,7 @@ export default function EditData({platformType}){
 	const uploadFile = React.createRef();
 	const [showModal, setShowModal] = useState(false);
 	const [imgSrc, setImgSrc] = useState('')
-	const [headPortrait,setHeadPortrait] = useState('/Lindsay.jpg')
+	const [headPortrait,setHeadPortrait] = useState(userget? userget.avatar :'/Lindsay.jpg')
 
 	const hideModal = () => {
 	  setShowModal(false);
@@ -60,7 +69,6 @@ export default function EditData({platformType}){
 		setShowModal(false)
 		setHeadPortrait(url);
 	}
-
 
 	return(
 		<>
@@ -125,13 +133,14 @@ export default function EditData({platformType}){
 							  <FormLabel className="edit-form-label">用户名</FormLabel>
 							  <FormControl
 								type="text"
-								value={username}
+								value={lastname}
 								style={{width:"100%",height:"48px"}}
 								placeholder="请输入文字"
 								onChange={(e) => {
-								  const username = e.target.value;
-								  setUsername(e.target.value)
-								  setUserState({...userState, ...{ username }});
+								  const last_name = e.target.value;
+								  const first_name = e.target.value;
+								  setlastname(e.target.value)
+								  setUserState({...userState, ...{ last_name }, ...{ first_name }});
 								}}
 							  />
 							</FormGroup>
@@ -139,13 +148,13 @@ export default function EditData({platformType}){
 							  <FormLabel className="edit-form-label">学校</FormLabel>
 							  <FormControl
 								type="text"
-								value={school}
+								value={institution}
 								style={{width:"100%",height:"48px"}}
 								placeholder="请输入文字"
 								onChange={(e) => {
-								  const school = e.target.value;
-								  setSchool(e.target.value)
-								  setUserState({...userState, ...{ school }});
+								  const institution = e.target.value;
+								  setinstitution(e.target.value)
+								  setUserState({...userState, ...{ institution }});
 								}}
 							  />
 							</FormGroup>
@@ -157,7 +166,7 @@ export default function EditData({platformType}){
 								className="form-control"
 								value={personalProfile}
 								style={{width:"100%",height:"96px"}}
-								placeholder="请输入文字"
+								placeholder="完善个人简历获取更多他人关注哟~~"
 								onChange={(e) => {
 								  const personalProfile = e.target.value;
 								  setPersonalProfile(e.target.value)
@@ -178,11 +187,12 @@ export default function EditData({platformType}){
 										type="text"
 										value={item.company}
 										style={{width:"100%",height:"48px"}}
-										placeholder="请输入文字"
+										placeholder="请输入实习经历"
 										onChange={(e) => {
 										  experienceList[idx].company = e.target.value;
 										  setExperienceList(experienceList);
-										  setUserState({...userState, ...{ setExperienceList }});
+										  const experience = experienceList
+										  setUserState({...userState, ...{ experience }});
 										}}
 									  />
 									</FormGroup>
@@ -192,13 +202,14 @@ export default function EditData({platformType}){
 									  <div style={{display:"flex",alignItems: "center"}}>
 										  <FormControl
 											type="text"
-											value={experienceList[idx].experience}
+											value={experienceList[idx].position}
 											style={{width:"85%",height:"48px"}}
-											placeholder="请输入文字"
+											placeholder="请输入实习经历"
 											onChange={(e) => {
-											  experienceList[idx].experience = e.target.value;
+											  experienceList[idx].position = e.target.value;
 											  setExperienceList(experienceList);
-											  setUserState({...userState, ...{ setExperienceList }});
+											  const experience = experienceList
+											  setUserState({...userState, ...{ experience }});
 											}}
 										  />
 										  {/*<Button */}
@@ -239,7 +250,15 @@ export default function EditData({platformType}){
 					</div>
 					<div style={{marginTop:"60px",textAlign:"center"}}>
 						<div style={{textAlign:"center",padding:"60px"}}>
-							 <Button style={{width:"26.668%",height:"48px"}} onClick = {() => setsuccessSendtoC(true)}>
+							 <Button style={{width:"26.668%",height:"48px"}} 
+							 onClick = {() => {
+								 dispatch(
+									 updateUser({
+									 data: userState
+									}))
+
+								}
+							}>
 								确定
 							 </Button>
 						</div>
