@@ -144,7 +144,7 @@ a:active {
   justify-content: center;
 }
 
-.join-match-btn {
+/* .join-match-btn {
   background: linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%);
   padding: 12px 32px;
   font-family: PingFang SC-Semibold, PingFang SC;
@@ -154,7 +154,7 @@ a:active {
   border: none;
   border-radius: 24px 24px 24px 24px;
   box-shadow: 0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08);
-}
+} */
 
 .overlay {
   background: rgba(0, 0, 0, 0);

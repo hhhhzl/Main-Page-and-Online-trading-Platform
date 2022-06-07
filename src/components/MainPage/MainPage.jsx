@@ -13,11 +13,13 @@ import NavbarCreate from "./nav";
 import Sidebar from "./Sidebar";
 import ASide from "./ASide";
 import { ClassNames } from "@emotion/react";
-import HeaderCreate from './header'
+import HeaderCreate from "./header";
 import Fade from "react-reveal/Fade";
+import useWindowDimensions from "../../utils/sizewindow";
 import { clearLocalStorage } from "utils";
 
 export default function MainPage() {
+  const { width, height } = useWindowDimensions();
   const [show, setShow] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -51,10 +53,9 @@ export default function MainPage() {
     setIsOpen(isOpen);
   }, [isOpen]);
 
-  useEffect(() =>{
-    clearLocalStorage()
-  })
-
+  useEffect(() => {
+    clearLocalStorage();
+  });
 
   return (
     <>
@@ -67,14 +68,14 @@ export default function MainPage() {
       {/* <NavbarCreate toggle = {toggle} /> */}
       <HeaderCreate toggle={toggle} />
       {/* {isOpen ? (<Sidebar isOpen={isOpen} toggle={toggle} />) : null} */}
-      {isOpen ? (<ASide isOpen={isOpen} toggle={toggle} />) : null}
+      {isOpen ? <ASide isOpen={isOpen} toggle={toggle} /> : null}
       <div className="main-page-center">
         <Cover />
         <div className="about-us-page">
           {/* <Fade bottom when={show}> */}
-            <div id="aboutus">
-              <Aboutus />
-            </div>
+          <div id="aboutus">
+            <Aboutus />
+          </div>
           {/* </Fade> */}
 
           <Fade bottom duration={150} delay={150} fraction={0.1}>

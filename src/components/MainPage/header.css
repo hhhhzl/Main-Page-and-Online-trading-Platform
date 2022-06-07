@@ -73,3 +73,11 @@
   color: #FFFFFF;
   line-height: 24px;
 }
+
+.active-bold{
+  font-weight: bold !important;
+}
+
+.active-500{
+  font-weight: 500;
+}

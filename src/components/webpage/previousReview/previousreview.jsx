@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FormGroup, FormControl, Col, Row, Button } from "react-bootstrap";
+
+import ReactPlayer from "react-player";
 import Image from "react-bootstrap/Image";
 import classNames from "classnames";
 import "./previousreview.css";
@@ -18,108 +20,108 @@ const Review = ({ projectImgs }) => {
   const [video, setvideo] = useState(true);
   const data = [
     {
-      url:"/review/review_00.png",
-      alt:"001",
+      url: "/review/review_00.png",
+      alt: "001",
     },
     {
-      url:"/review/review_01.png",
-      alt:"002",
+      url: "/review/review_01.png",
+      alt: "002",
     },
     {
-      url:"/review/review_02.png",
-      alt:"003",
+      url: "/review/review_02.png",
+      alt: "003",
     },
     {
-      url:"/review/review_03.png",
-      alt:"004",
+      url: "/review/review_03.png",
+      alt: "004",
     },
     {
-      url:"/review/review_04.png",
-      alt:"005",
+      url: "/review/review_04.png",
+      alt: "005",
     },
     {
-      url:"/review/review_05.png",
-      alt:"006",
+      url: "/review/review_05.png",
+      alt: "006",
     },
     {
-      url:"/review/review_06.png",
-      alt:"007",
+      url: "/review/review_06.png",
+      alt: "007",
     },
     {
-      url:"/review/review_07.png",
-      alt:"008",
+      url: "/review/review_07.png",
+      alt: "008",
     },
     {
-      url:"/review/review_08.png",
-      alt:"009",
+      url: "/review/review_08.png",
+      alt: "009",
     },
     {
-      url:"/review/review_09.png",
-      alt:"10",
+      url: "/review/review_09.png",
+      alt: "10",
     },
     {
-      url:"/review/review_10.png",
-      alt:"11",
+      url: "/review/review_10.png",
+      alt: "11",
     },
     {
-      url:"/review/review_11.png",
-      alt:"12",
+      url: "/review/review_11.png",
+      alt: "12",
     },
     {
-      url:"/review/review_12.png",
-      alt:"13",
+      url: "/review/review_12.png",
+      alt: "13",
     },
     {
-      url:"/review/review_13.png",
-      alt:"14",
+      url: "/review/review_13.png",
+      alt: "14",
     },
     {
-      url:"/review/review_14.png",
-      alt:"15",
+      url: "/review/review_14.png",
+      alt: "15",
     },
     {
-      url:"/review/review_15.png",
-      alt:"16",
+      url: "/review/review_15.png",
+      alt: "16",
     },
     {
-      url:"/review/review_16.png",
-      alt:"17",
+      url: "/review/review_16.png",
+      alt: "17",
     },
     {
-      url:"/review/review_17.png",
-      alt:"18",
+      url: "/review/review_17.png",
+      alt: "18",
     },
     {
-      url:"/review/review_18.png",
-      alt:"19",
+      url: "/review/review_18.png",
+      alt: "19",
     },
     {
-      url:"/review/review_19.png",
-      alt:"20",
+      url: "/review/review_19.png",
+      alt: "20",
     },
     {
-      url:"/review/review_20.png",
-      alt:"21",
+      url: "/review/review_20.png",
+      alt: "21",
     },
     {
-      url:"/review/review_21.png",
-      alt:"22",
+      url: "/review/review_21.png",
+      alt: "22",
     },
     {
-      url:"/review/review_22.png",
-      alt:"23",
+      url: "/review/review_22.png",
+      alt: "23",
     },
     {
-      url:"/review/review_23.png",
-      alt:"24",
+      url: "/review/review_23.png",
+      alt: "24",
     },
     {
-      url:"/review/review_24.png",
-      alt:"25",
+      url: "/review/review_24.png",
+      alt: "25",
     },
     {
-      url:"/review/review_25.png",
-      alt:"26",
+      url: "/review/review_25.png",
+      alt: "26",
     },
   ];
 
@@ -149,6 +151,7 @@ const Review = ({ projectImgs }) => {
       <div className="flex-center " style={{ marginTop: "80px" }}>
         <div className="btn-groups">
           <Button
+            className="view-btn"
             style={{
               // borderBlockEndWidth: "5px",
               // borderBlockEndColor: video ? "#26409A" : "white",
@@ -159,8 +162,8 @@ const Review = ({ projectImgs }) => {
                 : "#FFFFFF",
               border: "none",
               fontFamily: "MicrosoftYaHei",
-              boxShadow: "0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)"
-
+              boxShadow:
+                "0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)",
             }}
             onClick={Openvideo}
           >
@@ -171,16 +174,17 @@ const Review = ({ projectImgs }) => {
                 fontWeight: "bold",
                 fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
                 lineHeight: "24px",
-                color: video ? "#FFFFFF" : "#9C9EAC",
+                color: video ? "#FFFFFF" : "#2A2B30",
                 fontWeight: video ? "bold" : "400",
-                boxShadow: "0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)"
-
+                boxShadow:
+                  "0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)",
               }}
             >
               活动视频
             </span>
           </Button>
           <Button
+            className="view-btn"
             style={{
               padding: "8px 32px",
               borderRadius: " 24px",
@@ -189,7 +193,8 @@ const Review = ({ projectImgs }) => {
                 : "#FFFFFF",
               border: "none",
               fontFamily: "MicrosoftYaHei",
-              boxShadow: "0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)"
+              boxShadow:
+                "0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)",
 
               // borderBlockEndWidth: "5px",
               // borderBlockEndColor: image ? "#26409A" : "white",
@@ -203,10 +208,10 @@ const Review = ({ projectImgs }) => {
                 fontWeight: "bold",
                 fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
                 lineHeight: "24px",
-                color: image ? "#FFFFFF" : "#9C9EAC",
+                color: image ? "#FFFFFF" : "#2A2B30",
                 fontWeight: image ? "bold" : "400",
-                boxShadow: "0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)"
-
+                boxShadow:
+                  "0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)",
               }}
             >
               赛事图集
@@ -234,12 +239,12 @@ const Review = ({ projectImgs }) => {
         <div style={{ minHeight: "150px" }}>
           <Collapse in={video} dimension="width">
             <div id="example-collapse-text">
-              <BilibiliVideo
-                cid="548193318"
-                aid="382170523"
-                asWide
-                highQuality
-                danmaku={0}
+              <ReactPlayer
+                className="player-wrapper"
+                url="https://test1-1311825037.cos.ap-nanjing.myqcloud.com/public/competition_intro_video.mp4"
+                width="100%"
+                height="100%"
+                controls={true}
               />
             </div>
           </Collapse>
