@@ -120,7 +120,7 @@ export default function MarketOverview({widthRatio}) {
         paddingBottom:"24px",
         height:"13.43%",
         fontSize:"24px",
-        fontFamily:"Microsoft YaHei UI-Bold, Microsoft YaHei UI;",
+        fontFamily:"Microsoft YaHei UI-Bold, Microsoft YaHei UI",
         fontWeight:"bold",
         color:"#2A2B30",
         lineHeight:"40px",

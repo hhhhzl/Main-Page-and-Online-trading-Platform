@@ -8,16 +8,11 @@ import {Link} from 'react-router-dom';
 import useWindowDimensions from "../../../utils/sizewindow";
 import {Nav} from 'react-bootstrap';
 import {ArrowBack} from "@material-ui/icons";
-import {connect} from "react-redux";
 import {RegisterAuthAction} from "../../../redux/actions/AuthAction";
 import {getFileName} from "../../../utils";
 import {useHistory} from "react-router";
 
-function NextRegisterForm(props) {
-    const {
-        user,
-        register
-    } = props;
+export default function NextRegisterForm(props) {
     const [userState, setUserState] = useState({})
     const [show, setShow] = useState(false);
     const {width, height} = useWindowDimensions();
@@ -41,18 +36,6 @@ function NextRegisterForm(props) {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const testData = {
-        last_name: lastName,
-        first_name: firstName,
-        username: username,
-        password: password,
-        sex: sex,
-        org: org,
-        email: email,
-        mobile_number: mobileNumber,
-        degree: degree,
-        user_type: userType,
-    };
 
     const [validated, setValidated] = useState(false);
 
@@ -69,25 +52,25 @@ function NextRegisterForm(props) {
         setExperienceList([...experienceList]);
     };
 
-    function IsEmail(str) {
+    const IsEmail = (str) => {
         let reg = /^\w+@[a-zA-Z0-9]{2,10}(?:\.[a-z]{2,4}){1,3}$/;
         let bool = reg.test(str);
         console.log("bool" + bool)
         return bool;
     }
 
-    return (
-        <div>
-
+    return 
+    (
+        <>
             <div className="login-container"
                  style={{marginLeft: width > 800 ? "18.75%" : "10%", marginTop: height * 0.1}}>
                 <Link className="Link-hover" style={{
                     color: "black",
                     textDecoration: "none",
                 }} to="/register"><ArrowBack/></Link>
+
                 <Form noValidate validated={validated} id="addProject" onSubmit={(event) => {
                     event.preventDefault();
-                    register(userState)
                 }}>
                     <Form.Group className="loadingusername">
                         <Form.Label  column>
@@ -238,10 +221,7 @@ function NextRegisterForm(props) {
                             }}>
                                 我已同意...隐私政策和服务条款
                             </div>
-
                         </div>
-
-
                     </div>
 
                     <Form.Group as={Row} className="loadinglogin" style={{
@@ -260,45 +240,14 @@ function NextRegisterForm(props) {
                                 marginRight:"0px",
                                 fontWeight:"bold"
                             }}
-                            // onClick={() => {
-                            //   const data = {
-                            //     username,
-                            //     password,
-                            //     email,
-                            //     last_name: lastName,
-                            //     first_name: firstName,
-                            //     sex,
-                            //     mobile_number: mobileNumber,
-                            //     degree,
-                            //     org: org,
-                            //     user_type: userType,
-                            //   };
-                            //   dispatch(register({ data }));
-                            // }}
                         >
                             注册
                         </Button>
                     </Form.Group>
                 </Form>
             </div>
-        </div>
+        </>
     );
 }
 
-const mapStateToProps = (state) => {
-    return {
-        user: state,
 
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        register: (userState) => {
-            dispatch(RegisterAuthAction(userState));
-            console.log(userState, 335)
-        },
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(NextRegisterForm)

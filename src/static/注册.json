@@ -1,0 +1,75 @@
+[
+    {
+        "email":"hhhhzl@bu.edu",
+        "username": "hhhhzl0822",
+        "password": "test1234HHHH",
+        "last_name":"he",
+        "first_name":"zhilin",
+        "mobile_number":13883623073,
+        "wechat_id":"1232",
+        "gender":"M",
+        "degree":"3",
+        "region":"cq",
+        "institution":"cqyz",
+        "major":"math"
+    },
+    {
+        "email":"test1@ufa.edu",
+        "username": "陈柏霖是我",
+        "password": "test1234CBLtest",
+        "last_name":"Chen",
+        "first_name":"Bolin",
+        "mobile_number":13883623073,
+        "wechat_id":"1232",
+        "gender":"M",
+        "degree":"3",
+        "region":"cq",
+        "institution":"cqyz",
+        "major":"math"
+    },
+    {
+        "email":"test2@ufa.edu",
+        "username": "贺书记hhhh",
+        "password": "test1234HRHtest",
+        "last_name":"He",
+        "first_name":"Rohang",
+        "mobile_number":13883623073,
+        "wechat_id":"1232",
+        "gender":"M",
+        "degree":"3",
+        "region":"cq",
+        "institution":"cqyz",
+        "major":"math"
+    },
+    {
+        "email":"test3@ufa.edu",
+        "username": "铜锣湾扛把子",
+        "password": "test1234CHNtest",
+        "last_name":"Chen",
+        "first_name":"Haonan",
+        "mobile_number":13883623073,
+        "wechat_id":"1232",
+        "gender":"M",
+        "degree":"3",
+        "region":"cq",
+        "institution":"cqyz",
+        "major":"math"
+    },
+    {
+        "email":"test4@ufa.edu",
+        "username": "littleHE",
+        "password": "test1234HLTtest",
+        "last_name":"He",
+        "first_name":"Litong",
+        "mobile_number":13883623073,
+        "wechat_id":"1232",
+        "gender":"F",
+        "degree":"3",
+        "region":"cq",
+        "institution":"cqyz",
+        "major":"math"
+    }
+    
+
+    
+]

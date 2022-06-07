@@ -5,11 +5,13 @@ import StockSelectionDevice from "components/screen/StockSelectionDevice";
 import MarketQuotationList from "components/screen/StockSelectionDeviceList";
 import { apiLiveStockInfo } from "api/trading_platform/market";
 import axios from "axios";
+import { getPlatformType } from "utils";
 
 export default ({searchData}) => {
     const { width, height } = useWindowDimensions();
     const [allstocksdata,setallstocksdata] = useState(null)
     const [count, setcount] = useState(null)
+    const [platformType, setPlatformType] =  useState(getPlatformType())
 
     useEffect(()=>{
         if(searchData){
@@ -50,7 +52,7 @@ export default ({searchData}) => {
 
     return (
         <>
-            <PageHeader searchData = {searchData} />
+            <PageHeader searchData = {searchData} platformType = {platformType} />
             <div
                 style={{
                     marginTop: 0,

@@ -9,7 +9,7 @@ import WatchList from "components/screen/WatchList";
 import PendingOrder from "components/screen/PendingOrder";
 import KeyIndicators from "components/screen/KeyIndicatorSimple";
 import { Button, Dropdown} from 'react-bootstrap'
-import { getLastStock, getWatchList, setLastStock } from "utils";
+import { getLastStock, getPlatformType, getWatchList, setLastStock } from "utils";
 import { apiKLine, apiLiveStockInfo } from "api/trading_platform/market";
 import { useLocation } from "react-router";
 import moment from "moment";
@@ -24,6 +24,7 @@ export default ({searchData}) => {
     const [watchliststocks, setwatchliststocks] = useState([])
     const location = useLocation();
     const [load,setload] = useState(false)
+    const [platformType, setPlatformType] =  useState(getPlatformType())
 
 
         useEffect(() =>{
@@ -109,6 +110,7 @@ export default ({searchData}) => {
         searchData = {searchData} 
         stockdata={stockdata}
         watchlistdata ={watchliststocks}
+        kline = {kline}
         />
     )
 }

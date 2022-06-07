@@ -9,12 +9,15 @@ import useWindowDimensions from "../../utils/sizewindow";
 import AreaChartWatchList from "../graphs/AreaTableForWatchList";
 import { Button } from "react-bootstrap";
 import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
+import { updateStock } from "redux/reducers/Stock/stockReducer";
 
 const { SearchBar } = Search;
 const { ExportCSVButton } = CSVExport;
 
-export default function WatchListTable({ heightratio, searchwidth, watchlistdata }) {
+export default function WatchListTable({ heightratio, searchwidth, watchlistdata, platformType}) {
   const { width, height } = useWindowDimensions();
+  const dispatch = useDispatch()
   let history = useHistory()
   const columns = [
     {
@@ -117,11 +120,8 @@ export default function WatchListTable({ heightratio, searchwidth, watchlistdata
     style:{background:"#F5F6F8"},
     onSelect: (row, isSelect, rowIndex, e) => {
       if (isSelect){
-          history.push({
-            pathname:"/eplatform/trade",
-            search:`?symbol=${row.代码}`,
-            state:{symbol:row.代码}
-          })
+          dispatch(updateStock(row.代码))
+          history.push(`/${platformType}/trade`)
       }else{     
         
       }
@@ -205,8 +205,23 @@ export default function WatchListTable({ heightratio, searchwidth, watchlistdata
             
             </> 
             :
-             <div style={{display:"flex",justifyContent:"center",marginTop:height * heightratio*0.35,letterSpacing:"2px"}}>
+             <div style={{display:"flex",
+             justifyContent:"center",
+             marginTop:height * heightratio*0.35,
+             }}>
+               <div style={{
+                 color:"#C0C3CE",
+                 width: "169px",
+                 height: "24px",
+                 fontSize: "14px",
+                 fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                 fontWeight: 400,
+                 color: "#C0C3CE",
+                 lineHeight: "24px",
+               }}>
                您的自选列表空空如也~~
+               </div>
+               
                </div>
 
             }

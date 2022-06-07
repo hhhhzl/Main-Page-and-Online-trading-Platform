@@ -8,34 +8,39 @@ import { useEffect, useState } from "react";
 import RulesModual from "components/Competition/RulesModual";
 import { useLocation } from "react-router-dom";
 import { apiLiveStockInfo } from "api/trading_platform/market";
-import { getWatchList } from "utils";
+import { getPlatformType, getWatchList } from "utils";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchWatchList } from "redux/reducers/WatchList/WatchListReducer";
 
 export default ({searchData}) => {
     const { width, height } = useWindowDimensions();
     const [showCompetitionrules, setshowCompetitionrules] = useState(false)
     const handleClose = () => {setshowCompetitionrules(false)};
-
+    const [platformType, setPlatformType] =  useState(getPlatformType())
     const [watchliststocks, setwatchliststocks] = useState([])
     const location = useLocation();
     const [load,setload] = useState(false)
+    const {config, loading} = useSelector(state => state.watchList)
+    const dispatch = useDispatch()
 
-        useEffect(()=>{
-            if (!load){
-                getWatchListFunc()
-                console.log(watchliststocks)
-                setload(true)
-            }                           
-        },[])
 
-      const getWatchListFunc = async () => {
+    useEffect(()=>{
+        if (!load){
+            dispatch(fetchWatchList())
+            getWatchListFunc() 
+            setload(true) 
+        }    
+                        
+    },[dispatch])
+
+    const getWatchListFunc = async () => {
         try {
-            let list = getWatchList()
-            const newWatchlistArray = await Promise.all(list.map(async function(stock) {
+            const lists = config.watchlist;
+            const newWatchlistArray = await Promise.all(lists.map(async function(stock) {
                 const response = await apiLiveStockInfo(stock);
                 const watchlistdata = response.data.data;
                 return watchlistdata;
             }));
-            console.log(newWatchlistArray);
             setwatchliststocks(newWatchlistArray)
         } catch (e) {
             console.log(e);
@@ -44,7 +49,7 @@ export default ({searchData}) => {
 
     return (
         <>
-            <PageHeader searchData = {searchData} />
+            <PageHeader searchData = {searchData} platformType = {platformType} />
             <RulesModual showModal = {showCompetitionrules} hideModal = {handleClose} />
 
             <div style={{ marginTop: 0, width: "100%", minHeight: "500px", display: "flex", justifyContent: "space-between" }}>
@@ -89,7 +94,7 @@ export default ({searchData}) => {
 								</Dropdown.Toggle>
 								<Dropdown.Menu style={{
 									  width:"360px", border:"0px"}}>
-									<WatchList vertify={false} heightratio={0.63} searchwidth={1200 * 0.3} watchlistdata ={watchliststocks} />
+									<WatchList vertify={false} heightratio={0.63} searchwidth={1200 * 0.3} watchlistdata ={watchliststocks} platformType = {platformType} />
 								</Dropdown.Menu>
 							  </Dropdown>
 							</div>
@@ -132,7 +137,7 @@ export default ({searchData}) => {
                     </div>
 
                     {width> 1200? (<div style={{ width: "30%" }}>
-								<WatchList heightratio={0.65} searchwidth={1200 * 0.3} watchlistdata ={watchliststocks}/>
+								<WatchList heightratio={0.65} searchwidth={1200 * 0.3} watchlistdata ={watchliststocks} platformType = {platformType}/>
 					</div>) : null}
 
                     

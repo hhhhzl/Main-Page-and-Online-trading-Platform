@@ -12,21 +12,27 @@ import { SampleData } from '../../static/Stockdata';
 import { Link } from 'react-router-dom';
 import { addWatchlist, fmoney, getWatchList, setLastStock, setWatchlist } from 'utils';
 import { WatchListAction } from 'redux/actions/WatchListAction';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
+import { fetchWatchList, removeWatchList, updateWatchList } from 'redux/reducers/WatchList/WatchListReducer';
 
 
 function StockPriceGraphSimplify({
   widthratio,
   stockdata,
   kline,
+  setloadwatchlist,
+  id,
+  setID,
   }) {
   const {width,height} = useWindowDimensions();
   const [timeP,setTimeP] = useState(7);
-  const [id,setID] = useState(0)
   const [vertify, setvertify] = useState(true);
   const [add,setAdd] = useState(false)
   const [showAddselfselected, setshowAddselfselected] = useState(false)
   const [showdeleteselfselected, setshowdeleteselfselected] = useState(false)
+
+  const {config, loading} = useSelector(state => state.watchList)
+  const dispatch = useDispatch()
 
 
 
@@ -39,26 +45,24 @@ function StockPriceGraphSimplify({
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleClose1 = () => {setshowAddselfselected(false);window.location.reload(false)}
-  const handleClose2 = () => {setshowdeleteselfselected(false);window.location.reload(false)}
+  const handleClose1 = () => {setshowAddselfselected(false);
+    // window.location.reload(false)
+  }
+  const handleClose2 = () => {setshowdeleteselfselected(false);
+    // window.location.reload(false)
+  }
   const handleShow = () => setShow(true);
 
-  
-  
-  
-
-    
-
-      
-
     const addwatchlistToloacl = (symbol) =>{
-      addWatchlist(symbol)
+      setshowAddselfselected(true);
+      dispatch(updateWatchList(symbol))
+      setloadwatchlist(true)
     }
 
     const removeFromWatchList = (symbol) =>{
-      let watchlist = getWatchList()
-      let deletewatchList = watchlist.filter(elem => elem != stockdata.代码)
-      setWatchlist(deletewatchList)
+      setshowdeleteselfselected(true)
+      dispatch(removeWatchList(symbol))
+      setloadwatchlist(true)
       setAdd(false)
     }
 
@@ -163,7 +167,7 @@ function StockPriceGraphSimplify({
             color: "#000000",
             lineHeight: "24px"}}
           >
-            已将<strong>{stockdata?.名称}</strong>加入自选列表
+            已将{" "}<strong>{stockdata?.名称}</strong>{" "}加入自选列表
           </div></Modal.Header>
         </Modal>
       </div>
@@ -265,7 +269,10 @@ function StockPriceGraphSimplify({
           {add? <><div>
                           <Button style={{background: "#F5F6F8",width: "120px",height: "48px", borderRadius: "4px 4px 4px 4px",opacity: 1, borderWidth:"0"}}
                           variant="outline-secondary"
-                          onClick={() => {removeFromWatchList();setshowdeleteselfselected(true)}}
+                          onClick={() => {
+                            removeFromWatchList(stockdata.代码);
+                            
+                          }}
                           >     
                               <div   style={{
                                   display:"flex",
@@ -282,7 +289,9 @@ function StockPriceGraphSimplify({
                      <div>
                           <Button className="select-Button"  style={{width: "120px",height: "48px", borderRadius: "4px 4px 4px 4px",opacity: 1, borderWidth: "1px", borderColor:"#2A2B30"}} 
                           variant="outline-secondary"
-                          onClick = {() => {setshowAddselfselected(true);addwatchlistToloacl(stockdata?.代码)}}
+                          onClick = {() => {        
+                            addwatchlistToloacl(stockdata?.代码)
+                          }}
                           onMouseOver={handleMouseOver1}
                           onMouseLeave={handleMouseLeave1}
                           > 

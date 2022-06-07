@@ -8,44 +8,66 @@ import WatchList from "components/screen/WatchList";
 import PendingOrder from "components/screen/PendingOrder";
 import KeyIndicators from "components/screen/KeyIndicatorSimple";
 import { Button, Dropdown} from 'react-bootstrap'
-import { getLastStock, getWatchList, setLastStock } from "utils";
+import { getLastStock, getPlatformType, getWatchList, setLastStock } from "utils";
 import { apiKLine, apiLiveStockInfo } from "api/trading_platform/market";
 import { useLocation } from "react-router";
 import moment from "moment";
 import {tz} from "moment-timezone"
+import { useDispatch, useSelector } from "react-redux";
+import { fetchWatchList } from "redux/reducers/WatchList/WatchListReducer";
+import { fetchStock } from "redux/reducers/Stock/stockReducer";
 
 const defaultstock = "SH.600030"
 
 export default ({searchData,searchstock}) => {
+    const [id,setID] = useState(0)
     const { width, height } = useWindowDimensions();
     const [stockdata,setstockdata] = useState(null)
     const [kline, setkline] = useState(null)
     const [watchliststocks, setwatchliststocks] = useState([])
     const location = useLocation();
-    const [load,setload] = useState(false)
+    const [load,setload] = useState(true)
+    const [loadwatchlist,setloadwatchlist] = useState(true)
+    const [platformType, setPlatformType] =  useState(getPlatformType())
+    const {watchlist} = useSelector(state => state.watchList.config)
+    const {status} = useSelector(state => state.watchList)
+    const {stock, state} = useSelector(state => state.stock)
+    const dispatch = useDispatch()
 
 
-        useEffect(() =>{
-            if (!load){
-                if(location.state){      
-                    getStock(location.state.symbol)
-                    getKlineStock(location.state.symbol)
-                    getWatchListFunc()  
-                }else{
-                    if (getLastStock()){
-                        const last = getLastStock()
-                    getStock(last)
-                    getKlineStock(last)
-                    getWatchListFunc()        
-                }else{
-                    getdeflautStock()
-                    getKlineStock(defaultstock) 
-                    getWatchListFunc()
-                    }    
-                } 
-            }
-            setload(true)
-        },[])
+    useEffect(() =>{
+        if (load){
+            dispatch(fetchStock())
+            setload(false)
+            setID(0)
+        }
+        
+    },[dispatch,load,stock])
+
+    useEffect(()=>{
+        if (state == "Fullfilled"){
+            getKlineStock(stock)
+            getStock(stock)
+            setLastStock(stock)
+            setID(0)
+        }
+    },[state])
+
+
+    useEffect(()=>{
+        if (loadwatchlist){
+            dispatch(fetchWatchList())
+            setloadwatchlist(false)
+        }
+    },[dispatch,watchlist,loadwatchlist])
+
+    useEffect(()=>{
+        if (status == "Fullfilled"){
+            getWatchListFunc()
+        }
+    },[status])
+
+
 
 
     const getKlineStock = async (symbol) =>{
@@ -67,8 +89,6 @@ export default ({searchData,searchstock}) => {
 
     }
 
-       
-
     const getdeflautStock = async (props) => {
         try{
           const response = await apiLiveStockInfo(defaultstock)
@@ -79,7 +99,7 @@ export default ({searchData,searchstock}) => {
         }
       };
 
-      const getStock = async (symbol) => {
+    const getStock = async (symbol) => {
         try{
           const response = await apiLiveStockInfo(symbol)
           let stockDataResponse = response.data.data
@@ -90,10 +110,9 @@ export default ({searchData,searchstock}) => {
         }
       };
 
-      const getWatchListFunc = async () => {
+    const getWatchListFunc = async () => {
         try {
-            let list = getWatchList()
-            const newWatchlistArray = await Promise.all(list.map(async function(stock) {
+            const newWatchlistArray = await Promise.all(watchlist.map(async function(stock) {
                 const response = await apiLiveStockInfo(stock);
                 const watchlistdata = response.data.data;
                 return watchlistdata;
@@ -108,7 +127,7 @@ export default ({searchData,searchstock}) => {
 
     return (
         <>
-            <PageHeader searchData = {searchData} />
+            <PageHeader searchData = {searchData} platformType = {platformType} />
             <div
                 style={{
                     marginTop: 0,
@@ -130,7 +149,7 @@ export default ({searchData,searchstock}) => {
                         minWidth: "fix-content",
                     }}
                 >
-                   <div style={{ height: height * 0.075, width: "100%", display: "flex", justifyContent: "right", paddingTop:"25px",paddingBottom:"24" }}>
+                   <div style={{ height: height * 0.075,minHeight:"81px" ,width: "100%", display: "flex", justifyContent: "right", paddingTop:"25px",paddingBottom:"24" }}>
                         
 
                         {
@@ -167,7 +186,7 @@ export default ({searchData,searchstock}) => {
 								</Dropdown.Toggle>
 								<Dropdown.Menu style={{
 									  width:"360px", border:"0px"}}>
-									<WatchList vertify={false} heightratio={0.5} searchwidth={1200 * 0.3} watchlistdata ={watchliststocks} />
+									<WatchList vertify={false} heightratio={0.5} searchwidth={1200 * 0.3} watchlistdata ={watchliststocks} platformType = {platformType} />
 								</Dropdown.Menu>
 							  </Dropdown>
 							</div>
@@ -215,7 +234,11 @@ export default ({searchData,searchstock}) => {
                         <StockPriceGraphSimplify 
                         widthratio={width > 1200? 1200 *0.633 : width -96} 
                         stockdata ={stockdata}
-                         kline ={kline} />
+                         kline ={kline}
+                         setloadwatchlist = {setloadwatchlist}
+                         id  = {id}
+                         setID = {setID}
+                          />
                         <div style={{ marginTop: "40px" }}>
                             <KeyIndicators heightProp={0.23} stockdata={stockdata} />
                         </div>
@@ -224,7 +247,7 @@ export default ({searchData,searchstock}) => {
 						<div style={{ width: "30%" }}>
 						<StockTradeComponet vertify={false} stockdata ={stockdata} />
 						<div style={{ marginTop: "24px" }}>
-							<WatchList heightratio={0.2} searchwidth={1200 * 0.3} watchlistdata ={watchliststocks} />
+							<WatchList heightratio={0.2} searchwidth={1200 * 0.3} watchlistdata ={watchliststocks} platformType = {platformType}/>
 						</div>
 					</div>
 					) : null}

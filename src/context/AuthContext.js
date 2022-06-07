@@ -13,6 +13,11 @@ export const AuthProvider = ({ children }) => {
       ? jwt_decode(localStorage.getItem("authTokens"))
       : null
   );
+  const [apikey, setapikey] = useState(() => 
+    localStorage.getItem("apikey")
+      ? localStorage.getItem("apikey")
+      : "sadsdkahk"
+  );
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens")
       ? JSON.parse(localStorage.getItem("authTokens"))
@@ -30,27 +35,38 @@ export const AuthProvider = ({ children }) => {
 
   let loginUser = async (e) => {
     e.preventDefault();
-    let response = await fetch("http://59.110.238.142:8000/api/users/token/", {
+    let response = await fetch("http://82.157.18.223:10985/api/users/token/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: e.target.username.value,
+        email: e.target.username.value,
         password: e.target.password.value,
       }),
     });
     let data = await response.json();
-    console.log(jwt_decode(data.access));
-    if (response.status === 200) {
-      setAuthTokens(data);
-      setuser(jwt_decode(data.access));
-      console.log(user);
-      localStorage.setItem("authTokens", JSON.stringify(data));
-      setPlatformType("competition")
-      history.push(route.from);
-    } else {
-      alert("Something Went Wrong!");
+    if (data.msg != "The data in request body is invalid." && data.msg != "Unauthorized." ) {
+      setAuthTokens(data.data);
+      setuser(jwt_decode(data.data.access));
+      localStorage.setItem("authTokens", JSON.stringify(data.data));
+
+
+      ///TO list : ask and set for apiKey
+    
+      if (route.from == "/eplatform"){
+         setPlatformType("eplatform")
+        history.push(route.from);
+      }else if (route.from == "/competition"){
+       setPlatformType("competition")
+        history.push(route.from);
+      } else{
+        history.push('/')
+      }
+    } else if (data.data.detail == "No active account found with the given credentials") {
+      alert("密码错误/邮箱错误/用户不存在");
+    } else{
+      alert("系统错误,请稍后重试...");
     }
   };
 
@@ -62,6 +78,8 @@ export const AuthProvider = ({ children }) => {
     history.push("/");
   };
 
+  
+
   let updataToken = async () => {
     console.log("update");
     let response = await fetch("http://59.110.238.142:8000/api/users/token/", {
@@ -72,7 +90,7 @@ export const AuthProvider = ({ children }) => {
       body: JSON.stringify({ refresh: authTokens.refresh }),
     });
     let data = await response.json();
-    if (response.status === 200) {
+    if (data.msg != "The data in request body is invalid") {
       setAuthTokens(data);
       setuser(jwt_decode(data.access));
       localStorage.setItem("authTokens", JSON.stringify(data));
@@ -84,6 +102,7 @@ export const AuthProvider = ({ children }) => {
   let contextData = {
     loginUser: loginUser,
     user: user,
+    apikey: apikey,
     authTokens: authTokens,
     logoutUser: logoutUser,
   };
