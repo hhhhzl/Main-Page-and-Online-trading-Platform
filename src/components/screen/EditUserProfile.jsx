@@ -12,7 +12,7 @@ export default function EditData({
 	userName,
 	userget
 }){
-	const [userState, setUserState] = useState(userget? userget : {})
+	const [userState, setUserState] = useState({})
 	let {user} = useContext(AuthContext)
 	const [lastname, setlastname] = useState(userget? userget.last_name: "");
 	const [institution, setinstitution] = useState(userget? userget.institution : "");
