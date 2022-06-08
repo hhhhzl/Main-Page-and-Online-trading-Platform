@@ -8,6 +8,7 @@ import {Button, Form, Image, Modal} from 'react-bootstrap';
 import {useHistory} from 'react-router';
 import TeamReister from './TeamRegister'
 import TeamQuestionnaire from './TeamQuestionnaire'
+import Footer from "../../MainPage/footer";
 
 export default function TeamAgreeProcessCreate({toggle}) {
     const {width, height} = useWindowDimensions();
@@ -378,7 +379,9 @@ export default function TeamAgreeProcessCreate({toggle}) {
 
 
             }
-
+            <div style={{ position: "relative" }}>
+                <Footer />
+            </div>
 
         </>
 
