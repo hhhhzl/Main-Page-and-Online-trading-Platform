@@ -223,6 +223,10 @@ height: 32px; */
 	cursor: pointer;
 }
 
+.match-bottom-rules:hover{
+  border-bottom: 1px solid;
+}
+
 .bg {
   background-color: #E5E8EE;
 }
@@ -347,7 +351,7 @@ height: 32px; */
 }
 
 @keyframes fadeIn {
-  0% { 
+  0% {
     opacity: 0;
   }
   100% {
@@ -416,7 +420,7 @@ height: 32px; */
   font-weight: 400;
   color: #9C9FB0;
   line-height: 28px;
-  margin: 120px 0;
+  margin-top: 120px;
   text-align: end;
   letter-spacing: 1px;
 }
@@ -427,7 +431,7 @@ height: 32px; */
   font-weight: 400;
   color: #9C9FB0;
   line-height: 28px;
-  margin: 120px 0;
+  margin-top: 120px;
   text-align: center;
   letter-spacing: 1px;
 }
@@ -639,7 +643,7 @@ height: 32px; */
     font-size: 20px;
   }
 
-  
+
 
   .right-line {
     width: 80px;

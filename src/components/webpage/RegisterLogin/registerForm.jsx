@@ -228,7 +228,7 @@ function RegisterForm(props) {
                     setValidated1(true)
                     }else{
                        setpage(2)
-                    }            
+                    }
                     // history.push("/NextRegisterForm")
                     // register(userState)
                 }}>
@@ -314,9 +314,9 @@ function RegisterForm(props) {
                     </Form.Group>
                     <Form.Group className="loadingusername">
                         <Form.Label column>
-                            微信号
+                            微信号（便于邀请您进入赛事微信群）
                         </Form.Label>
-                    
+
                         <Form.Control
                             className="loadinglogin"
                             required
@@ -343,8 +343,8 @@ function RegisterForm(props) {
                             <Form.Label  column sm={6}>
                                 性别
                             </Form.Label>
-                            <Form.Select 
-                            className="loadinglogin" required value={sex} defaultValue={""}      
+                            <Form.Select
+                            className="loadinglogin" required value={sex} defaultValue={""}
                                 onChange={(e) => setSex(e.target.value)}>
                                 <option value= "">选择性别</option>
                                 <option value="male">男</option>
@@ -387,19 +387,19 @@ function RegisterForm(props) {
                         >
                             下一步
                         </Button>
-                    </Form.Group>      
+                    </Form.Group>
                 </Form>
             </div>
             </>
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
             :
             <>
             <div className="login-container"
@@ -409,8 +409,8 @@ function RegisterForm(props) {
                          <ArrowBack style={{color:"black"}} />
                      </IconButton>
                      </div>
-                     
-                
+
+
             <Form noValidate validated={validated2} id="addProject" onSubmit={(event) => {
                     const form = event.currentTarget;
                     if (form.checkValidity() === false) {
@@ -419,7 +419,7 @@ function RegisterForm(props) {
                     setValidated2(true)
                     }else{
                        setpage(1)
-                    }   
+                    }
                 }}>
                     <Form.Group className="loadingusername">
                         <Form.Label column>
@@ -596,7 +596,7 @@ function RegisterForm(props) {
             </>
             }
      </>
-            
+
     );
 }
 

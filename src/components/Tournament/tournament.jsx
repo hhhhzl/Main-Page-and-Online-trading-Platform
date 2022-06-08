@@ -18,6 +18,7 @@ export default function MainPage() {
   const [show, setShow] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [defaultPage, setDefaultPage] = useState(1);
 
   const [scrolledDownEnough, setScrolledDownEnough] = useState(false);
   const toggle = () => {

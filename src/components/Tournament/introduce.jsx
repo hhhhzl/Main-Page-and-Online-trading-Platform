@@ -96,7 +96,7 @@ export default function Introduce() {
                   <div className="left-line"></div>
                   <div className="icon-wrapper">
                     <Image
-                      src="/tournament/Group 142.png"
+                      src="/tournament/Group 142@2x.png"
                       style={{ width: "24px", height: "24px" }}
                     />
                   </div>
@@ -113,7 +113,7 @@ export default function Introduce() {
                   <div className="right-line bg"></div>
                   <div className="icon-wrapper">
                     <Image
-                      src="/tournament/Group 142.png"
+                      src="/tournament/Group 142@2x.png"
                       style={{ width: "24px", height: "24px" }}
                     />
                   </div>
@@ -137,7 +137,7 @@ export default function Introduce() {
                   <div className="right-line bg"></div>
                   <div className="icon-wrapper">
                     <Image
-                      src="/tournament/Group 142.png"
+                      src="/tournament/Group 142@2x.png"
                       style={{ width: "24px", height: "24px" }}
                     />
                   </div>
@@ -167,7 +167,7 @@ export default function Introduce() {
                 <div className="flex-start" style={{ marginTop: "222px" }}>
                   <div className="icon-wrapper-left">
                     <Image
-                      src="/tournament/Group 142.png"
+                      src="/tournament/Group 142@2x.png"
                       style={{ width: "24px", height: "24px" }}
                     />
                   </div>
@@ -202,7 +202,7 @@ export default function Introduce() {
                 <div className="flex-start" style={{ marginTop: "120px" }}>
                   <div className="icon-wrapper-left">
                     <Image
-                      src="/tournament/Group 142.png"
+                      src="/tournament/Group 142@2x.png"
                       style={{ width: "24px", height: "24px" }}
                     />
                   </div>
@@ -237,7 +237,7 @@ export default function Introduce() {
                 <div className="flex-start" style={{ marginTop: "143px" }}>
                   <div className="icon-wrapper-left">
                     <Image
-                      src="/tournament/Group 142.png"
+                      src="/tournament/Group 142@2x.png"
                       style={{ width: "24px", height: "24px" }}
                     />
                   </div>
@@ -264,7 +264,7 @@ export default function Introduce() {
               </Fade>
             </div>
           </div>
-          <div className="match-bottom-wrapper" style={{ zIndex: 999 }}>
+          <div className="match-bottom-wrapper" style={{ zIndex: 999,padding: "8px 0px"}}>
             <span className="match-bottom-details">详情请见</span>
             <span className="match-bottom-rules">赛事规则</span>
           </div>
@@ -375,7 +375,7 @@ export default function Introduce() {
                   }
                 >
                   <div className="awards-card">
-                    <div className="ranking awards-center">第五至十名</div>
+                    <div className="ranking awards-center">第四至十名</div>
                     <div className="awards-pic awards-center">
                       <Image
                         src="/homeCutout/10086.png"
@@ -405,7 +405,7 @@ export default function Introduce() {
                   }
                 >
                   <div className="awards-card">
-                    <div className="ranking awards-center">第五至十名</div>
+                    <div className="ranking awards-center">第四至十名</div>
                     <div className="awards-pic awards-center">
                       <Image
                         src="/homeCutout/10086.png"

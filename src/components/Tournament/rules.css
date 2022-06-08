@@ -90,7 +90,7 @@
 }
 
 .show-details {
-	border-bottom: 2px solid #2A2B30;
+	border-bottom: 1px solid #2A2B30;
 	width: 67px;
 	margin: 12px 0px 0 36.553%;
 	cursor: pointer;
@@ -120,11 +120,11 @@
 .pop-up{
 	width:381px;
 	background: #FFFFFF;
-	box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02), 
-				0px 2px 4px 1px rgba(0, 0, 0, 0.02), 
-				0px 4px 8px 1px rgba(0, 0, 0, 0.02), 
-				0px 8px 16px 1px rgba(0, 0, 0, 0.02), 
-				0px 16px 32px 1px rgba(0, 0, 0, 0.02), 
+	box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02),
+				0px 2px 4px 1px rgba(0, 0, 0, 0.02),
+				0px 4px 8px 1px rgba(0, 0, 0, 0.02),
+				0px 8px 16px 1px rgba(0, 0, 0, 0.02),
+				0px 16px 32px 1px rgba(0, 0, 0, 0.02),
 				0px 32px 64px 1px rgba(0, 0, 0, 0.02);
 }
 
@@ -147,6 +147,14 @@
 .judge-rules-li {
 	display: flex;
 	justify-content: center;
+}
+
+.judge-rules-dot {
+	width: 6px;
+	height: 7px;
+}
+.button-hover:hover{
+	border-bottom: 1px solid;
 }
 
 .rules-model>.modal-dialog{

@@ -12,7 +12,7 @@ export default function Sign() {
   const [bodyscrollrdTop, setbodyscrollTop] = useState(0);
   let { user, logoutUser } = useContext(AuthContext);
   const history = useHistory();
-  
+
   const [loginModel, setloginModel] = useState(false)
   const handleClose = () => {
     setloginModel(false);
@@ -24,7 +24,7 @@ export default function Sign() {
     }else{
       setloginModel(true)
     }
-    
+
   }
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function Sign() {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-    
+
   }, [bodyscrollrdTop]);
 
   return (
@@ -49,10 +49,10 @@ export default function Sign() {
      className="page-header-modal"
     >
       <Modal.Header closeButton>
-      <Modal.Title 
+      <Modal.Title
       style={{
       textAlign:"center",
-      fontSize:"15px", 
+      fontSize:"15px",
       fontFamily:"",
       fontFamily:" Microsoft YaHei UI-Bold, Microsoft YaHei UI;",
       fontWeight:"bold",
@@ -83,7 +83,7 @@ export default function Sign() {
             <div className="flex-start" style={{ paddingTop: "110px" }}>
               <div className="sign-icon-wrapper">
                 <Image
-                  src="/tournament/Group 142.png"
+                  src="/tournament/Group 142@2x.png"
                   style={{ width: "24px", height: "24px" }}
                 />
               </div>
@@ -92,7 +92,7 @@ export default function Sign() {
 
               <div className="step-icon">
                 <Image
-                  src="/tournament/Group 179.png"
+                  src="/tournament/Group 179@2x.png"
                   style={{ width: "94px", height: "94px" }}
                 />
               </div>
@@ -103,7 +103,7 @@ export default function Sign() {
             <div className="flex-start" style={{ paddingTop: "100px" }}>
               <div className="sign-icon-wrapper">
                 <Image
-                  src="/tournament/Group 142.png"
+                  src="/tournament/Group 142@2x.png"
                   style={{ width: "24px", height: "24px" }}
                 />
               </div>
@@ -112,7 +112,7 @@ export default function Sign() {
 
               <div className="step-icon">
                 <Image
-                  src="/tournament/Group 181.png"
+                  src="/tournament/Group 181@2x.png"
                   style={{ width: "94px", height: "94px" }}
                 />
               </div>
@@ -123,7 +123,7 @@ export default function Sign() {
             <div className="flex-start" style={{ paddingTop: "100px" }}>
               <div className="sign-icon-wrapper">
                 <Image
-                  src="/tournament/Group 142.png"
+                  src="/tournament/Group 142@2x.png"
                   style={{ width: "24px", height: "24px" }}
                 />
               </div>
@@ -132,7 +132,7 @@ export default function Sign() {
 
               <div className="step-icon">
                 <Image
-                  src="/tournament/Group 182.png"
+                  src="/tournament/Group 182@2x.png"
                   style={{ width: "94px", height: "94px" }}
                 />
               </div>
@@ -142,7 +142,7 @@ export default function Sign() {
             <div className="flex-start" style={{ paddingTop: "90px" }}>
               <div className="sign-icon-wrapper">
                 <Image
-                  src="/tournament/Group 142.png"
+                  src="/tournament/Group 142@2x.png"
                   style={{ width: "24px", height: "24px" }}
                 />
               </div>
@@ -151,7 +151,7 @@ export default function Sign() {
 
               <div className="step-icon">
                 <Image
-                  src="/tournament/Group 186.png"
+                  src="/tournament/Group 186@2x.png"
                   style={{ width: "94px", height: "94px" }}
                 />
               </div>
@@ -161,7 +161,7 @@ export default function Sign() {
             <div className="flex-start" style={{ paddingTop: "90px" }}>
               <div className="sign-icon-wrapper">
                 <Image
-                  src="/tournament/Group 142.png"
+                  src="/tournament/Group 142@2x.png"
                   style={{ width: "24px", height: "24px" }}
                 />
               </div>
@@ -170,7 +170,7 @@ export default function Sign() {
 
               <div className="step-icon">
                 <Image
-                  src="/tournament/Group 188.png"
+                  src="/tournament/Group 188@2x.png"
                   style={{ width: "94px", height: "94px" }}
                 />
               </div>
@@ -185,14 +185,14 @@ export default function Sign() {
         {/*<div
           className="footer-btn animated bounceInDown"
         >*/}
-		
+
 		<div
 		  className="footer-btn animated"
 		>
           <Button className="sign-join-match-btn" variant="primary" size="sm"
           onClick ={() => sendUser()}
           >
-            报名参赛
+            正式报名
           </Button>
         </div>
       </div>
