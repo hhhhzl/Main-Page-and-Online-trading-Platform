@@ -17,15 +17,14 @@
         "email":"test1@ufa.edu",
         "username": "陈柏霖是我",
         "password": "test1234CBLtest",
-        "last_name":"Chen",
+        "last_name":"Chen Bolin",
         "first_name":"Bolin",
-        "mobile_number":13883623073,
         "wechat_id":"1232",
         "gender":"M",
         "degree":"3",
-        "region":"cq",
-        "institution":"cqyz",
-        "major":"math"
+        "region":"重庆市",
+        "institution":"南加州大学",
+        "major":"数学金融"
     },
     {
         "email":"test2@ufa.edu",
@@ -82,8 +81,5 @@
         "region":"重庆",
         "institution":"重庆渝中",
         "major":"math"    
-    }
-    
-
-    
+    }    
 ]

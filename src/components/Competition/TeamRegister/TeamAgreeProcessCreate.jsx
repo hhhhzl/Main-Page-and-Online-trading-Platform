@@ -109,6 +109,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
                         <Button className="modal-btn modal-btn-submit" variant="primary" onClick={() => sendUserhome()}>
                             回主页
                         </Button>
+
                     </div>
                 </Modal.Footer>
             </Modal>
