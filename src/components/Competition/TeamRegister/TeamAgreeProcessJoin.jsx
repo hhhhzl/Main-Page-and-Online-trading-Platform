@@ -9,6 +9,7 @@ import { useHistory } from 'react-router';
 import TeamReister from './TeamRegister'
 import TeamSearch from './TeamSearch';
 import TeamQuestionnaire from "./TeamQuestionnaire";
+import Footer from "components/MainPage/footer";
 
 export default function TeamAgreeProcessJoin(){
     const {width,height} = useWindowDimensions();
@@ -157,7 +158,7 @@ export default function TeamAgreeProcessJoin(){
                             </IconButton>
                         </div>
 
-                        {page == 5? <>
+                        {page == 6? <>
 
                             <div style={{display:"flex", justifyContent:"center"}}>
                             <div style={{width:"160px", height:"160px"}}>
@@ -409,7 +410,9 @@ export default function TeamAgreeProcessJoin(){
 
 
       }
-
+            <div style={{ position: "relative" }}>
+                <Footer />
+            </div>
 
 
         </>
