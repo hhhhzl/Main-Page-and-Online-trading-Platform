@@ -218,7 +218,10 @@
 }
 
 .video-btn:hover{
-  
+  background: linear-gradient(135deg, #226ECC 0%, #1D3CCC 100%);
+  opacity: 1;
+  position: relative;
+  bottom: 4px;
 }
 
 .video {
