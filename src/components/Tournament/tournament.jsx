@@ -10,18 +10,25 @@ import Sign from "./sign";
 import Finance from "./finance";
 import ASide from "../MainPage/ASide";
 import useWindowDimensions from "../../utils/sizewindow";
-import "./tournament.css"
+import "./tournament.css";
 import { clearLocalStorage } from "utils";
 
 export default function MainPage() {
   const { width, height } = useWindowDimensions();
   const [show, setShow] = useState(false);
+  const [eventKey, setEventKey] = useState(1);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [defaultPage, setDefaultPage] = useState(1);
 
   const [scrolledDownEnough, setScrolledDownEnough] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
+  };
+
+  const changeEventKey = (param) => {
+    document.documentElement.scrollTop = 475;
+    setEventKey(param);
   };
 
   const delay = () => {
@@ -31,9 +38,9 @@ export default function MainPage() {
   };
   delay();
 
-  useEffect(() =>{
-    clearLocalStorage()
-  })
+  useEffect(() => {
+    clearLocalStorage();
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,20 +58,26 @@ export default function MainPage() {
   useEffect(() => {
     console.log(isOpen);
     setIsOpen(isOpen);
-  }, [isOpen]);
+    setEventKey(eventKey);
+  }, [isOpen, eventKey]);
 
   return (
     <>
       {/* <div className="vertical-line" style={{height:height*0.6}}></div> */}
-      <HeaderCreate toggle={toggle}/>
+      <HeaderCreate toggle={toggle} />
       {/* {isOpen ? (<Sidebar isOpen={isOpen} toggle={toggle} />) : null} */}
-      {isOpen ? (<ASide isOpen={isOpen} toggle={toggle} />) : null}
+      {isOpen ? <ASide isOpen={isOpen} toggle={toggle} /> : null}
       <div className="main-page-center">
         <TournamentBg />
         <div className="tourament-page">
-          <Tabs className="tabs-wrapper" id="">
+          <Tabs
+            className="tabs-wrapper"
+            id=""
+            activeKey={eventKey}
+            onSelect={(k) => setEventKey(k)}
+          >
             <Tab className="tabs-item" eventKey={1} title="赛事介绍">
-              <Introduce />
+              <Introduce changeEventKey={changeEventKey} />
             </Tab>
             <Tab eventKey={2} title="赛事规则">
               <Rules />

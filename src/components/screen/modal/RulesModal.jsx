@@ -14,9 +14,9 @@ export default function FinanceModal({showModal,hideModal,current}){
 				style={{
 					display:current==1?"flex":"none"
 				}}>
-				<Image src="/tournament/Group 771.png" style={{padding: "36px 48px"}}></Image>
+				<Image src="/tournament/Group 771@2x.png" style={{padding: "36px 48px", width: "100%"}}></Image>
 			</div>
-			
+
 			<div
 				className="pop-up"
 				style={{
@@ -38,7 +38,7 @@ export default function FinanceModal({showModal,hideModal,current}){
 				</div>
 				<div  style={{padding: "0 48px 36px 48px"}} className="annotations">*投资报告的具体框架将在初赛结束时公布。</div>
 			</div>
-			
+
 			<div
 				className="pop-up"
 				style={{

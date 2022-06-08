@@ -40,6 +40,8 @@
 	font-weight: bold;
 	color: #2A2B30;
 	line-height: 24px;
+	margin-bottom: 0px;
+	margin-top: 10px;
 }
 
 .table-tr-futura {
@@ -48,6 +50,8 @@
 	font-weight: 500;
 	color: #2A2B30;
 	line-height: 24px;
+	margin-bottom: 0px;
+	margin-top: 10px;
 }
 
 
@@ -57,6 +61,12 @@
 	font-weight: 500;
 	color: #EC1421;
 	line-height: 24px;
+	margin-bottom: 0px;
+	margin-top: 10px;
+}
+
+.choose-table>.react-bootstrap-table>table>tbody>tr>td:nth-child(3) {
+	padding-left: 0px;
 }
 
 .choose-table>.react-bootstrap-table>table>thead>tr>th:nth-child(1) {

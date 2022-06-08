@@ -8,6 +8,8 @@ import { Button, Form, Image,Modal } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import TeamReister from './TeamRegister'
 import TeamSearch from './TeamSearch';
+import TeamQuestionnaire from "./TeamQuestionnaire";
+import Footer from "components/MainPage/footer";
 
 export default function TeamAgreeProcessJoin(){
     const {width,height} = useWindowDimensions();
@@ -23,6 +25,12 @@ export default function TeamAgreeProcessJoin(){
     const Pageprocess = () => {if (page!= 6){setpage(page + 1)}   }
     const Pagereduce = () => {setpage(page - 1)}
     const sendUserhome = () => {history.push("/home")}
+    const [grade, setGrade] = useState("")
+    const [investmentTime, setInvestmentTime] = useState("")
+    const [attentionIndustry, setAttentionIndustry] = useState("")
+    const backPageprocess = () => {
+        setpage(page - 1)
+    }
 
     const [successSendtoC, setsuccessSendtoC] = useState(false)
 
@@ -35,28 +43,34 @@ export default function TeamAgreeProcessJoin(){
             pagetext:"每位选手只能创立/加入一个赛事团队。报名成功后，无法更换团队与赛道。"
         },
         {
-            id:2,
+            id: 2,
+            title: "参赛通知",
+            pagename: "报名限制",
+            pagetext: "每位选手只能创立/加入一个赛事团队。报名成功后，无法更换团队与赛道。"
+        },
+        {
+            id:3,
             title:"参赛通知",
             pagename:"交易规则",
             pagetext:"大赛交易规则模拟A股交易规则；其中，每支证券买入时不得超过账户总资产的25%。"
 
         },
         {
-            id:3,
+            id:4,
             title:"参赛通知",
             pagename:"排名规则",
             pagetext:"初赛复赛决赛... 我同意大赛选拔机制，并对评委筛选结果无异议。"
 
         },
         {
-            id:4,
+            id:5,
             title:"参赛通知",
             pagename:"财经洞悉",
             pagetext:"初赛复赛决赛... 我同意大赛选拔机制，并对评委筛选结果无异议。"
 
         },
         {
-            id:5,
+            id:6,
             title:"总览/回顾",
             pagename:"财经洞悉",
             pagetext:"赛事期间，UFA将定期抛出热点财经新闻话题，并邀请大学生基于新闻话题撰写独立分析。<br/>“财经洞悉”将每两周举行一次，共计六次。 奖励：每次财经洞悉提交截止后，UFA组委会将对50份优秀分析通过邮件形式发放奖状，并对数个优秀学生进行独家采访。<br/>“财经洞悉”作为投资比赛的附属活动，此板块不影响比赛分数。"
@@ -108,7 +122,20 @@ export default function TeamAgreeProcessJoin(){
       {page == 0 ?
       <>
       <TeamSearch Pageprocess = {Pageprocess}/>
-      </> :
+      </> : page == 1 ?
+              <>
+                  <TeamQuestionnaire
+                      Pageprocess={Pageprocess}
+                      backPageprocess={backPageprocess}
+                      grade={grade}
+                      setGrade={setGrade}
+                      investmentTime={investmentTime}
+                      setInvestmentTime={setInvestmentTime}
+                      attentionIndustry={attentionIndustry}
+                      setAttentionIndustry={setAttentionIndustry}
+                  />
+
+              </> :
 
             <div  style={{marginTop:height*0,width:"100%",display:"flex",justifyContent:"space-between", backgroundColor:"#F5F6F8"}}>
 
@@ -131,7 +158,7 @@ export default function TeamAgreeProcessJoin(){
                             </IconButton>
                         </div>
 
-                        {page == 5? <>
+                        {page == 6? <>
 
                             <div style={{display:"flex", justifyContent:"center"}}>
                             <div style={{width:"160px", height:"160px"}}>
@@ -355,7 +382,7 @@ export default function TeamAgreeProcessJoin(){
                                     lineHeight:"24px",
                                     paddingRight:"65px"
                                     }}>
-                                同意（{page}/4）
+                                同意（{page-1}/4）
                                 </div>
                                 <ArrowForward style={{ color:"white"}}/>
 
@@ -383,7 +410,9 @@ export default function TeamAgreeProcessJoin(){
 
 
       }
-
+            <div style={{ position: "relative" }}>
+                <Footer />
+            </div>
 
 
         </>

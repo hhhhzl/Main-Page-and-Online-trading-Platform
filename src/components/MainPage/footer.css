@@ -9,6 +9,8 @@ footer {
   left: 0;
   background-color: #F5F6F8;
   border-top: 1px solid #E5E8EE;
+  position: relative;
+  z-index: 100;
 }
 
 .line {

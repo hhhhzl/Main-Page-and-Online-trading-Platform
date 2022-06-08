@@ -1,4 +1,3 @@
-
 .cover {
   width: 100%;
   height: max-content;
@@ -26,8 +25,8 @@
   border-bottom: 3px solid #73bddd;
 }
 
-.wrapper{
-  padding:8px 0px
+.wrapper {
+  padding: 8px 0px
 }
 
 
@@ -41,7 +40,7 @@ a:active {
   font-weight: bold;
 }
 
-.bg-content-center{
+.bg-content-center {
   display: flex;
   /* justify-content: center; */
   align-items: center;
@@ -124,11 +123,6 @@ a:active {
 }
 
 .name {
-  /* font-size: 10.4375rem; */
-  font-family: "Futura";
-  font-weight: 500;
-  color: #FFFFFF;
-  /* -webkit-text-fill-color: transparent; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -166,6 +160,10 @@ a:active {
   opacity: 0.3;
   width: 100%;
   height: 100%;
+}
+
+.image-sm{
+  padding: 24px;
 }
 
 .arrow {
@@ -247,8 +245,8 @@ a:active {
     height: 7px;
   }
 
-  .wrapper{
-    padding:6px 0px
+  .wrapper {
+    padding: 6px 0px
   }
 }
 
@@ -265,8 +263,8 @@ a:active {
     height: 13px;
   }
 
-  .wrapper{
-    padding:6px 0px
+  .wrapper {
+    padding: 6px 0px
   }
 }
 
@@ -283,8 +281,8 @@ a:active {
     height: 10px;
   }
 
-  .wrapper{
-    padding:4px 0px
+  .wrapper {
+    padding: 4px 0px
   }
 }
 
@@ -294,10 +292,6 @@ a:active {
   .projects .subheader {
     padding-left: 30px;
     padding-right: 30px;
-  }
-
-  .name {
-    letter-spacing: 1px !important;
   }
 
   .arrow {
@@ -337,7 +331,7 @@ a:active {
     display: none;
   }
 
-  .wrapper{
-    padding:0px
+  .wrapper {
+    padding: 0px
   }
 }

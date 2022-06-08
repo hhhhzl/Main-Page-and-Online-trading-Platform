@@ -18,11 +18,6 @@ export const HeaderOut = styled.nav`
   font-size: 1rem;
   position: fixed;
   top: 0px;
-  // transition: all 1s ease;
-  // -webkit-transition: all 1s ease;
-  // -moz-transition: all 1s ease;
-  // -o-transition: all 1s ease;
-  // -ms-transition: all 1s ease;
 
   border-bottom: ${(props) =>
     props.scrolledDownEnough
@@ -32,9 +27,9 @@ export const HeaderOut = styled.nav`
   @media screen and (max-width: 960px) {
     transition: 0s all ease;
   }
-  @media screen and (max-width: 768px) {
-    border: none;
-  }
+  // @media screen and (max-width: 768px) {
+  //   border: none;
+  // }
 
   @media screen and (max-width: 426px) {
     padding: 0px 16px;
@@ -101,7 +96,7 @@ export const HeaderContianer = styled.div`
 `;
 
 export const HeaderMenu = styled.div`
-  margin-left: 19%;
+  margin-left: 21%;
   display: flex;
   height: 64px;
   justify-content: center;

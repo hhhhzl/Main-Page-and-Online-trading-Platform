@@ -8,6 +8,9 @@ import {Button, Form, Image, Modal} from 'react-bootstrap';
 import {useHistory} from 'react-router';
 import TeamReister from './TeamRegister'
 import TeamQuestionnaire from './TeamQuestionnaire'
+import Footer from "../../MainPage/footer";
+import { apiCreateTeamAccount } from 'api/main_platform/competitions';
+import { competitionID } from 'constants/maps';
 
 export default function TeamAgreeProcessCreate({toggle}) {
     const {width, height} = useWindowDimensions();
@@ -29,7 +32,6 @@ export default function TeamAgreeProcessCreate({toggle}) {
         if (headPortrait != undefined) {
             setHeadPortrait(headPortrait);
         }
-        console.log(page);
         if (page != 6) {
             setpage(page + 1)
         }
@@ -45,9 +47,33 @@ export default function TeamAgreeProcessCreate({toggle}) {
     const sendUserhome = () => {
         history.push("/home")
     }
-
+    
 
     const [successSendtoC, setsuccessSendtoC] = useState(false)
+    const [showExist, setshowExist] = useState(false)
+    const [deadline, setdeadline] = useState(false)
+
+    const createTeam = async () =>{
+        try{
+            const data = {
+                competition_id:competitionID,
+                name:teamname
+            }
+            const dataprops = JSON.stringify(data)
+            const response = await apiCreateTeamAccount(dataprops)      
+            const messge = response.data.msg
+            if (messge === "The user has already joined a team in this competition."){
+                setshowExist(true)
+            }else if (messge == "OK."){
+                setsuccessSendtoC(true)
+            }else{
+                setdeadline(true)     
+            }
+        }catch(e){
+            alert("系统错误，请稍后重试..")
+        }    
+    }
+
 
     const process = [
         {
@@ -103,7 +129,39 @@ export default function TeamAgreeProcessCreate({toggle}) {
                 centered
             >
                 <Modal.Header></Modal.Header>
-                <Modal.Body style={{textAlign: "center"}}>团队已成功创建 </Modal.Body>
+                <Modal.Body style={{textAlign: "center",letterSpacing:"2px"}}>恭喜您报名成功！后续请根据邮件指示，扫描二维码加入选手微信群（若您是团队形式报名，请联系其他团员前往网站报名进入团队） </Modal.Body>
+                <Modal.Footer style={{width: "100%", display: "flex", justifyContent: "center"}}>
+                    <div>
+                        <Button className="modal-btn modal-btn-submit" variant="primary" onClick={() => sendUserhome()}>
+                            回主页
+                        </Button>
+
+                    </div>
+                </Modal.Footer>
+            </Modal>
+
+            <Modal
+                show={showExist}
+                centered
+            >
+                <Modal.Header></Modal.Header>
+                <Modal.Body style={{textAlign: "center",letterSpacing:"2px"}}>报名失败，报名已截止 </Modal.Body>
+                <Modal.Footer style={{width: "100%", display: "flex", justifyContent: "center"}}>
+                    <div>
+                        <Button className="modal-btn modal-btn-submit" variant="primary" onClick={() => sendUserhome()}>
+                            回主页
+                        </Button>
+
+                    </div>
+                </Modal.Footer>
+            </Modal>
+
+            <Modal
+                show={showExist}
+                centered
+            >
+                <Modal.Header></Modal.Header>
+                <Modal.Body style={{textAlign: "center",letterSpacing:"2px"}}>注册失败, 您已存在于一个队伍当中 </Modal.Body>
                 <Modal.Footer style={{width: "100%", display: "flex", justifyContent: "center"}}>
                     <div>
                         <Button className="modal-btn modal-btn-submit" variant="primary" onClick={() => sendUserhome()}>
@@ -274,7 +332,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
                                             textAlign: "center",
                                             backgroundColor: "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)"
                                         }}
-                                                onClick={() => setsuccessSendtoC(true)}
+                                                onClick={() => createTeam()}
                                         >
                                             <div style={{
                                                 fontSize: "14px",
@@ -378,7 +436,9 @@ export default function TeamAgreeProcessCreate({toggle}) {
 
 
             }
-
+            <div style={{ position: "relative" }}>
+                <Footer />
+            </div>
 
         </>
 
