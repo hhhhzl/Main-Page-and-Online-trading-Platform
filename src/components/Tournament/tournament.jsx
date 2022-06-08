@@ -80,7 +80,7 @@ export default function MainPage() {
               <Introduce changeEventKey={changeEventKey} />
             </Tab>
             <Tab eventKey={2} title="赛事规则">
-              <Rules />
+              <Rules changeEventKey={changeEventKey}/>
             </Tab>
             <Tab eventKey={3} title="财经洞悉">
               <Finance />
