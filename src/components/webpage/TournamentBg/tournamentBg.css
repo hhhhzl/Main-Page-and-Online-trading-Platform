@@ -148,10 +148,10 @@ a:active {
 }
 
 .join-match-btn:hover {
-  background: linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%) rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #226ECC 0%, #1D3CCC 100%);
   border-radius: 24px 24px 24px 24px;
-  opacity: 1;
-  margin-bottom: 4px;
+  position: relative;
+  bottom: 4px;
 }
 
 .overlay {

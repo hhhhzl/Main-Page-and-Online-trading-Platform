@@ -135,7 +135,6 @@ const HeaderCreate = ({ toggle }) => {
             url == "/personal" ||
             url == "/team" ||
             url == "/personalEdit" ||
-            url == "/personalEdit" ||
             url == "/chat" ||
             url == "/team/register" ||
             url == "/team/create" ||
@@ -149,7 +148,14 @@ const HeaderCreate = ({ toggle }) => {
         // onMouseLeave={handleMouseLeave}
       >
         <HeaderContianer>
-          {scrolledDownEnough ? (
+          {scrolledDownEnough ||
+          url == "/personal" ||
+          url == "/team" ||
+          url == "/personalEdit" ||
+          url == "/chat" ||
+          url == "/team/register" ||
+          url == "/team/create" ||
+          url == "/team/join" ? (
             <>
               <HomeMobileIcon onClick={() => toggle()}>
                 <ViewHeadlineTwoTone

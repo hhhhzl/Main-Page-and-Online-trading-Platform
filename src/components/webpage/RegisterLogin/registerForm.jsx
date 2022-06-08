@@ -290,7 +290,7 @@ export default function RegisterForm(props) {
         <>
 
        <Modal
-        show={show} 
+        show={show}
         centered
         >
           <Modal.Header></Modal.Header>
@@ -306,8 +306,8 @@ export default function RegisterForm(props) {
         </Modal>
 
 
-        <Modal 
-        show={showerror} 
+        <Modal
+        show={showerror}
         onHide={() => setshowerror(false)}
         style={{textAlign:"center"}}
         >
@@ -398,7 +398,7 @@ export default function RegisterForm(props) {
                     setValidated1(true)
                     }else{
                        setpage(2)
-                    }            
+                    }
                 }}>
 
 
@@ -490,18 +490,19 @@ export default function RegisterForm(props) {
                         </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group className="loadingusername">
+
                         <Form.Label>
                             微信号（便于邀请您进入赛事微信群）
                         </Form.Label>
-                    
+
                         <Form.Control
                             className="loadinglogin"
                             required
                             value={wechat}
                             onChange={(e) => {
-                                const wechat_id = e.target.value; 
+                                const wechat_id = e.target.value;
                                 setwechat(e.target.value)
-                                setUserState({...userState, ...{wechat_id}})  
+                                setUserState({...userState, ...{wechat_id}})
                             }}
                         ></Form.Control>
                     </Form.Group >
@@ -529,9 +530,9 @@ export default function RegisterForm(props) {
                             <Form.Label>
                                 性别
                             </Form.Label>
-                            <Form.Select 
-                            className="loadinglogin" required value={sex} defaultValue={""}      
-                                onChange={(e) => 
+                            <Form.Select
+                            className="loadinglogin" required value={sex} defaultValue={""}
+                                onChange={(e) =>
                                     {
                                         const gender = e.target.value;
                                         setSex(e.target.value)
@@ -579,19 +580,19 @@ export default function RegisterForm(props) {
                         >
                             下一步
                         </Button>
-                    </Form.Group>      
+                    </Form.Group>
                 </Form>
             </div>
             </>
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
             :
             <>
             <div className="login-container"
@@ -649,8 +650,8 @@ export default function RegisterForm(props) {
                             </Link></div>
                     </div>
                 </div>
-                     
-                
+
+
             <Form style= {{marginTop:"60px"}} noValidate validated={validated2} id="addProject" onSubmit={(e) => {
                     const form = e.currentTarget;
                     if (form.checkValidity() === false) {
@@ -660,7 +661,7 @@ export default function RegisterForm(props) {
                     }else{
                         setsubmit(true)
                       submitregisterForm(e)
-                    }   
+                    }
                 }}>
                     <Form.Group className="loadingusername">
                         <Form.Label column>
@@ -671,7 +672,7 @@ export default function RegisterForm(props) {
                             className="loadinglogin"
                             required
                             value={degree}
-                            onChange={(e) => 
+                            onChange={(e) =>
                                 {const degree = e.target.value;
                                 setDegree(e.target.value)
                                 setUserState({...userState, ...{degree}})
@@ -902,12 +903,12 @@ export default function RegisterForm(props) {
                         </Form.Group>
                     </div>
 
-                   
+
                     <div style={{marginTop: "32px", display: "flex"}}>
                         <div style={{display: "flex", justifyContent: "left"}}>
                         <Form.Group>
-                            <Form.Check 
-                             required 
+                            <Form.Check
+                             required
                              checked={!disable}
                              onClick = {(e) => setdisable(!disable)}
                             // type="radio"
@@ -942,10 +943,10 @@ export default function RegisterForm(props) {
                             }}>隐私政策和服务条款</Button>
                         </div>
                     </div>
-                    
 
-                    <Form.Group as={Row} 
-                    className="loadinglogin" 
+
+                    <Form.Group as={Row}
+                    className="loadinglogin"
                     style={{
                         background: "linear-gradient(135deg,#2B8CFF 0%, #2346FF 100%)",
                         borderRadius: "4px 4px 4px 4px",
@@ -969,7 +970,7 @@ export default function RegisterForm(props) {
             </>
             }
      </>
-            
+
     );
 }
 

@@ -151,15 +151,10 @@ const Review = ({ projectImgs }) => {
       <div className="flex-center " style={{ marginTop: "80px" }}>
         <div className="btn-groups">
           <Button
-            className="view-btn"
+            className={video ? "view-btn-bg" : "view-btn"}
             style={{
-              // borderBlockEndWidth: "5px",
-              // borderBlockEndColor: video ? "#26409A" : "white",
               padding: "8px 32px",
               borderRadius: " 24px",
-              background: video
-                ? "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)"
-                : "#FFFFFF",
               border: "none",
               fontFamily: "MicrosoftYaHei",
               boxShadow:
@@ -168,13 +163,14 @@ const Review = ({ projectImgs }) => {
             onClick={Openvideo}
           >
             <span
+              className={image ? "font-hover" : ""}
               style={{
                 margin: "0px",
                 fontSize: "14px",
                 fontWeight: "bold",
                 fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
                 lineHeight: "24px",
-                color: video ? "#FFFFFF" : "#2A2B30",
+                color: video ? "#FFFFFF" : "#9C9EAC",
                 fontWeight: video ? "bold" : "400",
                 boxShadow:
                   "0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)",
@@ -184,13 +180,10 @@ const Review = ({ projectImgs }) => {
             </span>
           </Button>
           <Button
-            className="view-btn"
+            className={image ? "view-btn-bg" : "view-btn"}
             style={{
               padding: "8px 32px",
               borderRadius: " 24px",
-              background: image
-                ? "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)"
-                : "#FFFFFF",
               border: "none",
               fontFamily: "MicrosoftYaHei",
               boxShadow:
@@ -202,13 +195,14 @@ const Review = ({ projectImgs }) => {
             onClick={Openimage}
           >
             <span
+              className={video ? "font-hover" : ""}
               style={{
                 margin: "0px",
                 fontSize: "14px",
                 fontWeight: "bold",
                 fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
                 lineHeight: "24px",
-                color: image ? "#FFFFFF" : "#2A2B30",
+                color: image ? "#FFFFFF" : "#9C9EAC",
                 fontWeight: image ? "bold" : "400",
                 boxShadow:
                   "0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)",

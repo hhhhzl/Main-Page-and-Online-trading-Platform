@@ -6,17 +6,22 @@ import "./introduce.css";
 import useWindowDimensions from "../../utils/sizewindow";
 import Fade from "react-reveal/Fade";
 
-export default function Introduce() {
+export default function Introduce({changeEventKey}) {
   const { width, height } = useWindowDimensions();
+  const [tobottom,setTobottom] = useState(true);
   const [bodyscrollrdTop, setbodyscrollTop] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setbodyscrollTop(
-        document.documentElement.scrollTop || document.body.scrollTop
-      );
+      if(document.documentElement.scrollTop > bodyscrollrdTop || document.body.scrollTop > bodyscrollrdTop){
+        
+        setbodyscrollTop(
+          document.documentElement.scrollTop || document.body.scrollTop
+        );
+      }
+     
     };
-
+    console.log(bodyscrollrdTop)
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [bodyscrollrdTop]);
@@ -96,7 +101,7 @@ export default function Introduce() {
                   <div className="left-line"></div>
                   <div className="icon-wrapper">
                     <Image
-                      src="/tournament/Group 142.png"
+                      src="/tournament/Group 142@2x.png"
                       style={{ width: "24px", height: "24px" }}
                     />
                   </div>
@@ -113,7 +118,7 @@ export default function Introduce() {
                   <div className="right-line bg"></div>
                   <div className="icon-wrapper">
                     <Image
-                      src="/tournament/Group 142.png"
+                      src="/tournament/Group 142@2x.png"
                       style={{ width: "24px", height: "24px" }}
                     />
                   </div>
@@ -137,7 +142,7 @@ export default function Introduce() {
                   <div className="right-line bg"></div>
                   <div className="icon-wrapper">
                     <Image
-                      src="/tournament/Group 142.png"
+                      src="/tournament/Group 142@2x.png"
                       style={{ width: "24px", height: "24px" }}
                     />
                   </div>
@@ -167,7 +172,7 @@ export default function Introduce() {
                 <div className="flex-start" style={{ marginTop: "222px" }}>
                   <div className="icon-wrapper-left">
                     <Image
-                      src="/tournament/Group 142.png"
+                      src="/tournament/Group 142@2x.png"
                       style={{ width: "24px", height: "24px" }}
                     />
                   </div>
@@ -202,7 +207,7 @@ export default function Introduce() {
                 <div className="flex-start" style={{ marginTop: "120px" }}>
                   <div className="icon-wrapper-left">
                     <Image
-                      src="/tournament/Group 142.png"
+                      src="/tournament/Group 142@2x.png"
                       style={{ width: "24px", height: "24px" }}
                     />
                   </div>
@@ -237,7 +242,7 @@ export default function Introduce() {
                 <div className="flex-start" style={{ marginTop: "143px" }}>
                   <div className="icon-wrapper-left">
                     <Image
-                      src="/tournament/Group 142.png"
+                      src="/tournament/Group 142@2x.png"
                       style={{ width: "24px", height: "24px" }}
                     />
                   </div>
@@ -264,9 +269,9 @@ export default function Introduce() {
               </Fade>
             </div>
           </div>
-          <div className="match-bottom-wrapper" style={{ zIndex: 999 }}>
+          <div className="match-bottom-wrapper" style={{ zIndex: 999,padding: "8px 0px"}}>
             <span className="match-bottom-details">详情请见</span>
-            <span className="match-bottom-rules">赛事规则</span>
+            <div className="match-bottom-rules" onClick={() => changeEventKey(2)}>赛事规则</div>
           </div>
         </div>
 
@@ -375,7 +380,7 @@ export default function Introduce() {
                   }
                 >
                   <div className="awards-card">
-                    <div className="ranking awards-center">第五至十名</div>
+                    <div className="ranking awards-center">第四至十名</div>
                     <div className="awards-pic awards-center">
                       <Image
                         src="/homeCutout/10086.png"
@@ -405,7 +410,7 @@ export default function Introduce() {
                   }
                 >
                   <div className="awards-card">
-                    <div className="ranking awards-center">第五至十名</div>
+                    <div className="ranking awards-center">第四至十名</div>
                     <div className="awards-pic awards-center">
                       <Image
                         src="/homeCutout/10086.png"
