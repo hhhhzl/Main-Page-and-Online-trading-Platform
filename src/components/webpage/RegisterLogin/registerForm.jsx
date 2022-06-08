@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {Button, Form, Row, Col} from "react-bootstrap";
+import React, {useEffect, useState} from "react";
+import {Button, Form, Row, Col, Badge, Modal} from "react-bootstrap";
 import {propTypes} from "react-bootstrap/esm/Image";
 import {SentimentSatisfiedAlt} from "@material-ui/icons";
 import './loginpage.css';
@@ -14,14 +14,13 @@ import {getFileName} from "../../../utils";
 import {useHistory} from "react-router";
 import TeamRegisterModel from "../../screen/modal/TeamRegisterModel";
 import { IconButton } from "@material-ui/core";
+import { mapUserDegree } from "constants/maps";
+import { apiRegisterUser } from "api/main_platform/users";
 
-function RegisterForm(props) {
-    const {
-        user,
-        register
-    } = props;
+export default function RegisterForm(props) {
     const [userState, setUserState] = useState({})
     const [show, setShow] = useState(false);
+    const [showerror, setshowerror] = useState(false)
     const {width, height} = useWindowDimensions();
     const history = useHistory()
 
@@ -40,10 +39,9 @@ function RegisterForm(props) {
     const [org, setOrg] = useState("");
     const [regin, setRegin] = useState("")
     const [job, setjob] = useState("")
-    const [userType, setUserType] = useState("U");
     const [page, setpage] = useState(1)
     const [experienceList, setExperienceList] = useState([
-        {company: "密歇根大学", experience: "实习经历实习经历实习经历实习经历实习经历实习"}
+        {company: "", position: ""}
     ])
     const [disable, setdisable] = useState(true)
 
@@ -143,8 +141,64 @@ function RegisterForm(props) {
         setHeadPortrait(url);
     }
 
+    const submitregisterForm = async (e) => {
+        e.preventDefault();
+        try{
+            console.log(userState,147)
+            const JsonData = JSON.stringify(userState)
+            console.log(JsonData,149)
+            const response = await apiRegisterUser(JsonData)
+            console.log(response)
+            if (response.data.msg == "The data in request body is invalid."){
+                setshowerror(true)
+            }else if (response.data.msg == "OK."){
+                setShow(true)
+            }
+
+        }catch(e){
+            console.log(e)
+        }
+    }
+
+    const sendUser = (id) =>{
+        if (id == 1){
+            history.push("/login")
+        }else{
+            history.push("/")
+        }
+
+    }
+
+
     return (
         <>
+
+       <Modal
+        show={show} 
+        centered
+        >
+          <Modal.Header></Modal.Header>
+          <Modal.Body style={{textAlign:"center"}}>用户已成功注册 </Modal.Body>
+        <Modal.Footer style={{width:"100%", display:"flex",justifyContent:"center"}}  >
+            <Button style={{marginRight:"20px"}} className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUser(0)}>
+            回主页
+          </Button>
+          <Button style={{marginLeft:"20px"}} className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUser(1)}>
+            去登录
+          </Button>
+          </Modal.Footer>
+        </Modal>
+
+
+        <Modal 
+        show={showerror} 
+        onHide={() => setshowerror(false)}
+        style={{textAlign:"center"}}
+        >
+          <Modal.Header closeButton> 用户名/邮箱已被注册</Modal.Header>
+
+        </Modal>
+
 
             {page == 1?
             <>
@@ -229,8 +283,6 @@ function RegisterForm(props) {
                     }else{
                        setpage(2)
                     }            
-                    // history.push("/NextRegisterForm")
-                    // register(userState)
                 }}>
 
 
@@ -246,14 +298,17 @@ function RegisterForm(props) {
                             className="loadinglogin"
                             required
                             value={username}
+                            pattern= "^[A-Za-z0-9_\u4e00-\u9fff]{4,12}$"
                             onChange={(e) => {
                                 const username = e.target.value
                                 setUsername(e.target.value)
                                 setUserState({...userState, ...{username}});
-
                             }
                             }
                         ></Form.Control>
+                        <Form.Control.Feedback type="invalid">
+                            用户名长度为4至12
+                        </Form.Control.Feedback>
                     </Form.Group>
 
                     <Form.Group className="loadingusername">
@@ -265,7 +320,12 @@ function RegisterForm(props) {
                             className="loadinglogin"
                             required
                             value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            onChange={(e) => {
+                                const email = e.target.value
+                                setEmail(e.target.value)
+                                setUserState({...userState, ...{email}});
+                            }
+                            }
                             pattern="^([a-zA-Z\d][\w-]{2,})@(\w{2,})\.([a-z]{2,})(\.[a-z]{2,})?$"
                         ></Form.Control>
                         <Form.Control.Feedback type="invalid">
@@ -286,7 +346,7 @@ function RegisterForm(props) {
                                 setPassword(e.target.value)
                                 setUserState({...userState, ...{password}});
                             }}
-                            pattern="^.{8,20}"
+                            pattern="^[A-Za-z0-9]{8,20}$"
                         ></Form.Control>
                         <Form.Control.Feedback type="invalid">
                             请输入最少8位，最多20位的密码！
@@ -304,7 +364,8 @@ function RegisterForm(props) {
                             onChange={(e) => {
                                 const confirmPassword = e.target.value;
                                 setConfirmPassword(e.target.value)
-                                setUserState({...userState, ...{confirmPassword}});
+                                const mobile_number = 13883729275
+                                setUserState({...userState, ...{mobile_number}});
                             }}
                             pattern={IsPassword(confirmPassword)}
                         ></Form.Control>
@@ -313,7 +374,7 @@ function RegisterForm(props) {
                         </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group className="loadingusername">
-                        <Form.Label column>
+                        <Form.Label>
                             微信号
                         </Form.Label>
                     
@@ -321,7 +382,11 @@ function RegisterForm(props) {
                             className="loadinglogin"
                             required
                             value={wechat}
-                            onChange={(e) => setwechat(e.target.value)}
+                            onChange={(e) => {
+                                const wechat_id = e.target.value; 
+                                setwechat(e.target.value)
+                                setUserState({...userState, ...{wechat_id}})  
+                            }}
                         ></Form.Control>
                     </Form.Group >
 
@@ -334,26 +399,37 @@ function RegisterForm(props) {
                         className="loadinglogin"
                         required
                         value={realName}
-                        onChange={(e) => setrealName(e.target.value)}
+                        onChange={(e) => {
+                            const last_name = e.target.value;
+                            const first_name = e.target.value;
+                            setrealName(e.target.value)
+                            setUserState({...userState, ...{first_name},...{last_name}})
+                        }}
                     ></Form.Control>
                     </Form.Group>
 
-                    <Form.Group as={Row} className="loadingusername">
-                        <Col sm={6}>
-                            <Form.Label  column sm={6}>
+                    <Form.Group style={{display:"flex",justifyContent:"space-between"}} className="loadingusername">
+                        <div style={{width:"200px"}}>
+                            <Form.Label>
                                 性别
                             </Form.Label>
                             <Form.Select 
                             className="loadinglogin" required value={sex} defaultValue={""}      
-                                onChange={(e) => setSex(e.target.value)}>
+                                onChange={(e) => 
+                                    {
+                                        const gender = e.target.value;
+                                        setSex(e.target.value)
+                                        setUserState({...userState, ...{gender}})
+                                    }
+                                }>
                                 <option value= "">选择性别</option>
-                                <option value="male">男</option>
-                                <option value="wemale">女</option>
+                                <option value="M">男</option>
+                                <option value="F">女</option>
 
                             </Form.Select>
-                        </Col>
-                        <Col sm={6}>
-                            <Form.Label  column sm={6}>
+                        </div>
+                        <div style={{width:"200px"}}>
+                            <Form.Label>
                                 生日
                             </Form.Label>
 
@@ -365,7 +441,7 @@ function RegisterForm(props) {
                                 onChange={(e) => setbirthday(e.target.value)}
                             >
                             </Form.Control>
-                        </Col>
+                        </div>
                     </Form.Group>
 
                     <Form.Group as={Row} className="loadinglogin" style={{
@@ -409,16 +485,64 @@ function RegisterForm(props) {
                          <ArrowBack style={{color:"black"}} />
                      </IconButton>
                      </div>
+
+                     <div style={{width: "100%"}}>
+                    <div style={{
+                        width: "250px",
+                        height: "80px",
+                        fontSize: "40px",
+                        fontFamily: "Microsoft YaHei UI-Bold",
+                        fontWeight: "bold",
+                        color: "#2A2B30",
+                        lineHeight: "80px",
+                        letterSpacing: "5px",
+                    }}>欢迎注册</div>
+                </div>
+
+                <div>
+                    <div >
+                        <div style={{
+                            width: "88px",
+                            height: "24px",
+                        }}>
+                            <h6 style={{
+                                fontSize: "14px",
+                                fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                                color: "#2A2B30",
+                                lineHeight: "24px"
+                            }}>已有账户？</h6>
+                        </div>
+                    </div>
+                    <div >
+                        <div style={{
+                            width: "88px",
+                            height: "24px",
+                            position:"relative",
+                            left:"75px",
+                            top:"-25px",
+                        }}>
+                            <Link style={{
+                                height: "28px",
+                                fontSize: "14px",
+                                fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                                fontWeight: "400",
+                                color: "#6E7184",
+                                lineHeight: "24px",
+                            }} to="/login">去登录
+
+                            </Link></div>
+                    </div>
+                </div>
                      
                 
-            <Form noValidate validated={validated2} id="addProject" onSubmit={(event) => {
-                    const form = event.currentTarget;
+            <Form style= {{marginTop:"60px"}} noValidate validated={validated2} id="addProject" onSubmit={(e) => {
+                    const form = e.currentTarget;
                     if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
+                    e.preventDefault();
+                    e.stopPropagation();
                     setValidated2(true)
                     }else{
-                       setpage(1)
+                      submitregisterForm(e)
                     }   
                 }}>
                     <Form.Group className="loadingusername">
@@ -430,12 +554,18 @@ function RegisterForm(props) {
                             className="loadinglogin"
                             required
                             value={degree}
-                            onChange={(e) => setDegree(e.target.value)}
+                            onChange={(e) => 
+                                {const degree = e.target.value;
+                                setDegree(e.target.value)
+                                setUserState({...userState, ...{degree}})
+                            }}
                         >
                             <option value="">请选择学历</option>
-                            <option value="college">本科</option>
-                            <option value="graduate">研究生</option>
-                            <option value="phd">博士</option>
+                            {Object.entries(mapUserDegree).map(([icode, iname]) => (
+                                            <option key={icode} value={icode}>
+                                                {iname}
+                                            </option>
+                            ))}
                         </Form.Select>
                     </Form.Group>
 
@@ -443,14 +573,18 @@ function RegisterForm(props) {
                     <Form.Group className="loadingusername">
 
                         <Form.Label column>
-                            大学名称（中文）
+                            大学名称
                         </Form.Label>
 
                         <Form.Control
                             className="loadinglogin"
                             required
                             value={org}
-                            onChange={(e) => setOrg(e.target.value)}
+                            onChange={(e) => {
+                                setOrg(e.target.value)
+                                const institution = e.target.value
+                                setUserState({...userState, ...{institution}})
+                            }}
                         ></Form.Control>
 
                     </Form.Group>
@@ -458,14 +592,20 @@ function RegisterForm(props) {
                     <Form.Group className="loadingusername">
 
                         <Form.Label column>
-                            所在国家
+                            所在国家/地区
                         </Form.Label>
 
                         <Form.Control
                             className="loadinglogin"
                             required
                             value={regin}
-                            onChange={(e) => setRegin(e.target.value)}
+                            onChange={(e) => 
+                                {
+                                    const region = e.target.value;
+                                    setRegin(e.target.value)
+                                    setUserState({...userState, ...{region}})
+                                }
+                                }
                         ></Form.Control>
 
                     </Form.Group>
@@ -473,14 +613,18 @@ function RegisterForm(props) {
                     <Form.Group className="loadingusername">
 
                         <Form.Label column>
-                            希望未来从事职业
+                            专业
                         </Form.Label>
 
                         <Form.Control
                             className="loadinglogin"
                             required
                             value={job}
-                            onChange={(e) => setjob(e.target.value)}
+                            onChange={(e) => {
+                                const major = e.target.value
+                                setjob(e.target.value)
+                                setUserState({...userState, ...{major}})
+                            }}
                         ></Form.Control>
 
                     </Form.Group>
@@ -499,7 +643,8 @@ function RegisterForm(props) {
                                             onChange={(e) => {
                                                 experienceList[idx].company = e.target.value;
                                                 setExperienceList(experienceList);
-                                                setUserState({...userState, ...{setExperienceList}});
+                                                const experience = experienceList;
+                                                setUserState({...userState, ...{experience}});
                                             }}
                                         />
                                     </Form.Group>
@@ -515,7 +660,8 @@ function RegisterForm(props) {
                                                 onChange={(e) => {
                                                     experienceList[idx].experience = e.target.value;
                                                     setExperienceList(experienceList);
-                                                    setUserState({...userState, ...{setExperienceList}});
+                                                    const experience = experienceList;
+                                                    setUserState({...userState, ...{experience}});
                                                 }}
                                             />
                                             <Image
@@ -558,23 +704,51 @@ function RegisterForm(props) {
                         </Form.Group>
                     </div>
 
+                   
                     <div style={{marginTop: "32px", display: "flex"}}>
                         <div style={{display: "flex", justifyContent: "left"}}>
-                            <Form.Check type="radio" checked={!disable} onClick={(e) => setdisable(!disable)}/>
+                        <Form.Group>
+                            <Form.Check 
+                             required 
+                             checked={!disable}
+                             onClick = {(e) => setdisable(!disable)}
+                            // type="radio"
+                             feedback="注册前请先同意"
+                             feedbackType="invalid"
+                             />
+                            </Form.Group>
                             <div style={{
                                 fontSize: "14px",
-                                fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI;",
+                                fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
                                 fontWeight: "400",
                                 color: "#6E7184",
                                 lineHeight: "24px",
                                 marginLeft: "8px"
                             }}>
-                                我已同意...隐私政策和服务条款
+                                我已同意...
                             </div>
+                            <Button style={{
+                                padding:"0",
+                                backgroundColor:"white",
+                                fontSize: "14px",
+                                fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                                fontWeight: "400",
+                                borderRadius:"0",
+                                borderLeft:0,
+                                borderRight:0,
+                                borderTop:0,
+                                borderBottom:"1 solid blue",
+                                color: "#6E7184",
+                                lineHeight: "24px",
+                                marginLeft: "8px"
+                            }}>隐私政策和服务条款</Button>
                         </div>
                     </div>
+                    
 
-                    <Form.Group as={Row} className="loadinglogin" style={{
+                    <Form.Group as={Row} 
+                    className="loadinglogin" 
+                    style={{
                         background: "linear-gradient(135deg,#2B8CFF 0%, #2346FF 100%)",
                         borderRadius: "4px 4px 4px 4px",
                         marginTop: "24px"
@@ -587,6 +761,7 @@ function RegisterForm(props) {
                                 marginRight:"0px",
                                 fontWeight:"bold"
                             }}
+                            type="submit"
                         >
                             注册
                         </Button>
@@ -600,20 +775,6 @@ function RegisterForm(props) {
     );
 }
 
-const mapStateToProps = (state) => {
-    return {
-        user: state,
 
-    }
-}
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        register: (userState) => {
-            dispatch(RegisterAuthAction(userState));
-            console.log(userState, 335)
-        },
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm)
