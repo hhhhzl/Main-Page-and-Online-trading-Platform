@@ -157,7 +157,7 @@ export default function TeamAgreeProcessJoin(){
                             </IconButton>
                         </div>
 
-                        {page == 5? <>
+                        {page == 6? <>
 
                             <div style={{display:"flex", justifyContent:"center"}}>
                             <div style={{width:"160px", height:"160px"}}>
