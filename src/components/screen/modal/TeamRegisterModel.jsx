@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef,useEffect } from 'react'
 
 import ReactCrop, {
   centerCrop,
@@ -48,10 +48,10 @@ export default function TeamRegisterModel({showModal,hideModal,getBase64,imgSrc}
   function onImageLoad(e: React.SyntheticEvent<HTMLImageElement>) {
     if (aspect) {
       const { width, height } = e.currentTarget
-      setCrop(centerAspectCrop(width, height, aspect))
+      setCrop(centerAspectCrop(width, height, aspect));
     }
   }
-  
+
 
   useDebounceEffect(
     async () => {
@@ -73,19 +73,21 @@ export default function TeamRegisterModel({showModal,hideModal,getBase64,imgSrc}
 		setTailorUrl(a);
       }
     },
-    100,
-    [completedCrop, scale, rotate],
-  )
+    0)
+	
+	function onCropComplete(e){
+		setCompletedCrop(e)
+	}
 
-  function handleToggleAspectClick() {
-    if (aspect) {
-      setAspect(undefined)
-    } else if (imgRef.current) {
-      const { width, height } = imgRef.current
-      setAspect(1)
-      setCrop(centerAspectCrop(width, height,1))
-    }
-  }
+  // function handleToggleAspectClick() {
+  //   if (aspect) {
+  //     setAspect(undefined)
+  //   } else if (imgRef.current) {
+  //     const { width, height } = imgRef.current
+  //     setAspect(1)
+  //     setCrop(centerAspectCrop(width, height,1))
+  //   }
+  // }
 
   return (
 	<Modal
@@ -101,7 +103,7 @@ export default function TeamRegisterModel({showModal,hideModal,getBase64,imgSrc}
 				  <ReactCrop
 					crop={crop}
 					onChange={(_, percentCrop) => setCrop(percentCrop)}
-					onComplete={(c) => setCompletedCrop(c)}
+					onComplete={(c) => onCropComplete(c)}
 					aspect={aspect}
 				  >
 					<img
