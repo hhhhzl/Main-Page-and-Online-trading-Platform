@@ -93,10 +93,7 @@ export default function Cover() {
 
         {width > 800 ? (
           <div>
-            <div
-              className="name"
-              
-            >
+            <div className="name">
               <Image
                 src="/homeCutout/index@2x.png"
                 style={{
@@ -104,6 +101,7 @@ export default function Cover() {
                   height: "11.5625%",
                 }}
               />
+
               {/* <span
                 style={{
                   fontSize: width * 0.0869,
@@ -149,13 +147,20 @@ export default function Cover() {
         ) : (
           <>
             <div
-              className="name"
-              style={{
-                letterSpacing: width * 0.0083 + "px",
-                flexDirection: "column",
-              }}
+              className="image-sm"
+              // style={{
+              //   letterSpacing: width * 0.0083 + "px",
+              //   flexDirection: "column",
+              // }}
             >
-              <div
+              <Image
+                src="/homeCutout/Group 1100@2x.png"
+                style={{
+                  width: "329px",
+                  height: "172px",
+                }}
+              />
+              {/* <div
                 style={{
                   fontSize: "72px",
                   lineHeight: "96px",
@@ -175,7 +180,7 @@ export default function Cover() {
                 }}
               >
                 全球青年汇
-              </div>
+              </div> */}
             </div>
             <div
               style={{

@@ -162,6 +162,10 @@ a:active {
   height: 100%;
 }
 
+.image-sm{
+  padding: 24px;
+}
+
 .arrow {
   position: absolute;
   /* bottom: 15%; */
