@@ -49,15 +49,12 @@ export default function TeamRegister({
     }
 
     useEffect(()=>{
-        console.log(teamname.length)
-        if (teamname.length && (lianghua || duotou) ){
+        if (teamname.length> 0 && teamname.length < 8  && (lianghua || duotou) ){
             setdisable(false)
-        }else if (teamname.length == 0){
-            setdisable(true)
         }else{
             setdisable(true)
         }
-    },[lianghua,duotou,disable])
+    },[lianghua,duotou,disable,teamname])
 
 	const uploadFile = React.createRef();
 	const [showModal, setShowModal] = useState(false);
@@ -187,7 +184,7 @@ export default function TeamRegister({
 
                     <div style={{marginTop:"12px",display:"flex", justifyContent:"center"}}>
                         <Form>
-                            <Form.Control placeholder={"请填写团队名称"}
+                            <Form.Control placeholder={"请填写团队名称 (中文+英文最多八位字符)"}
                             style={{width:"360px", height:"40px",textAlign:"center", paddingTop:"8px",border:"1px solid #C0C3CE", background:"white", borderRadius:"4px 4px 4px 4px"}}
                             value={teamname}
                             onChange={(e) => setteamname(e.target.value)}

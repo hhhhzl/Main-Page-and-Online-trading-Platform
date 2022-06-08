@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Button, Form, Row, Col, Badge, Modal} from "react-bootstrap";
+import {Button, Form, Row, Col, Badge, Modal, Collapse} from "react-bootstrap";
 import {propTypes} from "react-bootstrap/esm/Image";
 import {SentimentSatisfiedAlt} from "@material-ui/icons";
 import './loginpage.css';
@@ -16,6 +16,12 @@ import TeamRegisterModel from "../../screen/modal/TeamRegisterModel";
 import { IconButton } from "@material-ui/core";
 import { mapUserDegree } from "constants/maps";
 import { apiRegisterUser } from "api/main_platform/users";
+import ToolkitProvider from "react-bootstrap-table2-toolkit";
+import BootstrapTable from "react-bootstrap-table-next";
+import schooldata from "../../../constants/学校.json"
+import areadata from "../../../constants/地区.json"
+import data from "../../../static/searchdataSmallTabel.json"
+import { SampleData } from "static/Stockdata";
 
 export default function RegisterForm(props) {
     const [userState, setUserState] = useState({})
@@ -47,7 +53,7 @@ export default function RegisterForm(props) {
 
 
     const addExperience = () => {
-        let obj = {company: "密歇根大学", experience: "实习经历实习经历实习经历实习经历实习经历实习"};
+        let obj = {company: "", experience: ""};
         experienceList.push(obj);
         console.log(experienceList);
         setExperienceList([...experienceList]);
@@ -57,7 +63,9 @@ export default function RegisterForm(props) {
         console.log(experienceList);
         setExperienceList([...experienceList]);
     };
+    const [submit, setsubmit] = useState(false)
 
+    
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -143,6 +151,8 @@ export default function RegisterForm(props) {
 
     const submitregisterForm = async (e) => {
         e.preventDefault();
+        setUserState({...userState, ...{region:linkedArea.value}})
+        console.log(userState)
         try{
             console.log(userState,147)
             const JsonData = JSON.stringify(userState)
@@ -168,6 +178,112 @@ export default function RegisterForm(props) {
         }
 
     }
+
+
+    const [linkedSchool, setLinkedSchool] = useState("")
+    const [linkedArea, setLinkedArea] = useState("")
+    const handleSearchS = (propes) => {
+        propes.onSearch(linkedSchool.value);
+    };
+
+    const handleSearchA = (propes) => {
+        propes.onSearch(linkedArea.value);
+    };
+    const [scrollswitchS, setScrollswitchS] = useState(false);
+    const [scrollswitchA, setScrollswitchA] = useState(false);
+
+    const searchSwitchS = () => {
+        if (linkedSchool.value != ""){
+            // setUserState({...userState, ...{institution:linkedSchool.value}})
+            setScrollswitchS(true)
+        }else{
+            setScrollswitchS(false)
+        }
+    };
+
+    const searchSwitchA = () => {
+        if (linkedArea.value != ""){
+            // setUserState({...userState, ...{institution:linkedSchool.value}})
+            setScrollswitchA(true)
+        }else{
+            setScrollswitchA(false)
+        }
+    };
+
+    const Schoolcolumns = [
+        {
+            dataField: "school", 
+            text: "school",
+            headerAttrs: {
+                hidden: true
+            },
+        }
+    ]
+
+    const Areacolumns = [
+        {
+            dataField: "area", 
+            text: "area",
+            headerAttrs: {
+                hidden: true
+            },
+        }
+    ]
+
+    const selectRowS = {
+        mode: 'radio',
+        clickToSelect: true,
+        hideSelectAll:true,
+        hideSelectColumn: true,
+        style:{background:"#E7ECFD"},
+        selected: [],
+        onSelect: (row, isSelect, rowIndex, e) => {
+            if (isSelect){
+                setLinkedSchool({value:row.school})
+                setOrg(row.school)
+                const institution = row.school
+                setUserState({...userState, ...{institution}})
+                setScrollswitchS(false)
+            }else{
+
+            }  
+            
+          },
+      };
+
+      const selectRowA = {
+        mode: 'radio',
+        clickToSelect: true,
+        hideSelectAll:true,
+        hideSelectColumn: true,
+        style:{background:"#E7ECFD"},
+        selected: [],
+        onSelect: (row, isSelect, rowIndex, e) => {
+            if (isSelect){
+                setLinkedArea({value:row.area})
+                setRegin(row.area)
+                const region = row.area
+                setUserState({...userState, ...{region}})
+                setScrollswitchA(false)
+            }else{
+
+            }  
+            
+          },
+      };
+
+
+    useEffect(()=>{
+        if (submit){
+            setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value}})
+            setsubmit(false)
+            console.log(userState)
+        }
+    }, [submit, userState])
+
+    useEffect(()=>{
+        console.log(userState)
+    })
 
 
     return (
@@ -346,10 +462,10 @@ export default function RegisterForm(props) {
                                 setPassword(e.target.value)
                                 setUserState({...userState, ...{password}});
                             }}
-                            pattern="^[A-Za-z0-9]{8,20}$"
+                            pattern="^[A-Za-z0-9]{8}$"
                         ></Form.Control>
                         <Form.Control.Feedback type="invalid">
-                            请输入最少8位，最多20位的密码！
+                            请输入最多8位密码！
                         </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group className="loadingusername">
@@ -374,7 +490,8 @@ export default function RegisterForm(props) {
                         </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group className="loadingusername">
-                        <Form.Label column>
+
+                        <Form.Label>
                             微信号（便于邀请您进入赛事微信群）
                         </Form.Label>
 
@@ -542,6 +659,7 @@ export default function RegisterForm(props) {
                     e.stopPropagation();
                     setValidated2(true)
                     }else{
+                        setsubmit(true)
                       submitregisterForm(e)
                     }
                 }}>
@@ -569,25 +687,74 @@ export default function RegisterForm(props) {
                         </Form.Select>
                     </Form.Group>
 
+                    <ToolkitProvider
+                            keyField="school"
+                            data = {schooldata}
+                            columns = { Schoolcolumns}  
+                            search
+                            >
+                    {props => (
+                    <>
 
                     <Form.Group className="loadingusername">
 
                         <Form.Label column>
-                            大学名称
+                            大学名称（海外大学请搜索英文）
                         </Form.Label>
 
                         <Form.Control
                             className="loadinglogin"
-                            required
-                            value={org}
-                            onChange={(e) => {
-                                setOrg(e.target.value)
-                                const institution = e.target.value
-                                setUserState({...userState, ...{institution}})
+                            type="text"
+                            required            
+                            ref = { n => {setLinkedSchool(n)}}
+                            value={linkedSchool.value}
+                            pattern="^.{4,200}"
+                            onChange={(e) => {  
+                                handleSearchS({...props.searchProps});
+                                searchSwitchS();
+                                // setOrg(e.target.value)
+                                // setLinkedSchool(e.target.value)
+                            
                             }}
                         ></Form.Control>
 
+                            <Collapse in= {scrollswitchS}>
+                                 <div style={{
+                          maxHeight:"200px",
+                          overflow:"auto",
+                          position: "relative",
+                          marginLeft: "0%",
+                          marginTop:"-10px",
+                          zIndex: 999,
+                          width: "420px",
+                          background: "white",
+                          border:"0",
+                          boxShadow: "0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02)",
+
+                        }}>
+                                <BootstrapTable 
+                                {...props.baseProps}
+                                 hover = {true}
+                                 condensed ={true} 
+                                 selectRow = {selectRowS}         
+                                //  rowEvents={ rowEvents }
+                                />  
+                                </div>
+                               </Collapse>  
+
                     </Form.Group>
+                    </>
+                    )}
+                </ToolkitProvider>
+
+                <ToolkitProvider
+                            keyField="area"
+                            data = {areadata}
+                            columns = { Areacolumns}  
+                            search
+                            >
+                    {props => (
+                    <>
 
                     <Form.Group className="loadingusername">
 
@@ -597,18 +764,50 @@ export default function RegisterForm(props) {
 
                         <Form.Control
                             className="loadinglogin"
-                            required
-                            value={regin}
-                            onChange={(e) =>
+                            type="text"
+                            required            
+                            ref = { n => {setLinkedArea(n)}}
+                            value={linkedArea.value}
+                            pattern="^.{2,200}"
+                            onChange={(e) => 
                                 {
-                                    const region = e.target.value;
-                                    setRegin(e.target.value)
-                                    setUserState({...userState, ...{region}})
+                                    handleSearchA({...props.searchProps});
+                                    searchSwitchA();
+                                    // const region = e.target.value;
+                                    // setRegin(e.target.value)
+                                    // setUserState({...userState, ...{region}})
                                 }
                                 }
                         ></Form.Control>
+                         <Collapse in= {scrollswitchA}>
+                                 <div style={{
+                          maxHeight:"200px",
+                          overflow:"auto",
+                          position: "relative",
+                          marginLeft: "0%",
+                          marginTop:"-10px",
+                          zIndex: 999,
+                          width: "420px",
+                          background: "white",
+                          border:"0",
+                          boxShadow: "0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02)",
+
+                        }}>
+                                <BootstrapTable 
+                                { ...props.baseProps}
+                                 hover = {true}
+                                 condensed ={true} 
+                                 selectRow = {selectRowA}         
+                                //  rowEvents={ rowEvents }
+                                />  
+                                </div>
+                               </Collapse>  
 
                     </Form.Group>
+                    </>
+                    )}
+                </ToolkitProvider>
+
 
                     <Form.Group className="loadingusername">
 
