@@ -109,8 +109,7 @@ export default function TeamAgreeProcessCreate({toggle}){
        
        />
       
-      </> :
-
+      </> : 
             <div  style={{marginTop:height*0,width:"100%",display:"flex",justifyContent:"space-between", backgroundColor:"#F5F6F8"}}>
 
             <div style={{width:"48px",maxWidth:"18.75%"}}></div>

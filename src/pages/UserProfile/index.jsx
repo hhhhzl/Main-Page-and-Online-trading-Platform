@@ -11,7 +11,7 @@ import { fetchUser } from "redux/reducers/users/usersSlices";
 import { useDispatch, useSelector } from "react-redux";
 
 export default ({searchData}) => {
-    let {apikey,user} = useContext(AuthContext)
+    let {apikey, user} = useContext(AuthContext)
     const { width, height } = useWindowDimensions();
     const [platformType, setPlatformType] =  useState(getPlatformType())
     const {data} = useSelector(state => state.userInfo)
@@ -23,7 +23,7 @@ export default ({searchData}) => {
             dispatch(fetchUser(user.user_id))
             setload(false)
         }
-    },[load,dispatch])
+    },[load,dispatch,data])
     
     
     return (
