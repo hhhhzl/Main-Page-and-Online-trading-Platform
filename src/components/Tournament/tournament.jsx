@@ -27,9 +27,8 @@ export default function MainPage() {
   };
 
   const changeEventKey = (param) => {
-    debugger;
+    document.documentElement.scrollTop = 475;
     setEventKey(param);
-    console.log(eventKey);
   };
 
   const delay = () => {

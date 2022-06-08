@@ -127,7 +127,7 @@ export default function Cover() {
               style={{
                 bottom: "185px",
                 textAlign: "center",
-                marginTop: "40px",
+                marginTop: "15px",
               }}
             >
               <Button
