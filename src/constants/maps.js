@@ -12,3 +12,4 @@ export const mapUserDegree = {
   6: "初中或以下",
 };
 
+export const competitionID = 1
