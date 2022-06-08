@@ -220,10 +220,21 @@ export default function TeamRegister({
                         <Form>
                             <Form.Check type="radio"  checked={duotou} value={duotou} onClick ={(e) => selectionTrackduotou(e)}/>
                         </Form>
-                        <div style={{marginLeft:"8px", marginRight:"24px"}}>主观多头赛道</div>
+                        <div style={{marginLeft:"8px", marginRight:"24px"}}>主观赛道</div>
 
                         </div>
 
+                    </div>
+                    <div style={{marginTop:"12px",display:"flex", justifyContent:"center"}}>
+                        <div style={{
+                            fontSize:"14px",
+                            fontFamily:"Microsoft YaHei UI-Bold, Microsoft YaHei UI;",
+                            color:"#C0C3CE",
+                            lineHeight:"24px",
+                        }}>
+                            *本次比赛鼓励量化选手的参与，并为量化选手设立更多奖励/实习机会。
+
+                        </div>
                     </div>
 
                     <div style={{marginTop:"60px",display:"flex", justifyContent:"center"}}>
