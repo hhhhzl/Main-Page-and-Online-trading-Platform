@@ -8,15 +8,20 @@ import Fade from "react-reveal/Fade";
 
 export default function Introduce({changeEventKey}) {
   const { width, height } = useWindowDimensions();
+  const [tobottom,setTobottom] = useState(true);
   const [bodyscrollrdTop, setbodyscrollTop] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setbodyscrollTop(
-        document.documentElement.scrollTop || document.body.scrollTop
-      );
+      if(document.documentElement.scrollTop > bodyscrollrdTop || document.body.scrollTop > bodyscrollrdTop){
+        
+        setbodyscrollTop(
+          document.documentElement.scrollTop || document.body.scrollTop
+        );
+      }
+     
     };
-
+    console.log(bodyscrollrdTop)
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [bodyscrollrdTop]);

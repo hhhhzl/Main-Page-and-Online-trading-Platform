@@ -53,13 +53,19 @@ export default function Cover() {
       }}
     />
     } */}
-      <div className="overlay" />
       <div className="bg-content-center">
         <div
           className="greetings"
           style={{
             fontSize: width * 0.01458,
-            marginTop: width > 1350 ?"179px":width >1100 ? "225px": width < 800 ?"179px":"275px"
+            marginTop:
+              width > 1350
+                ? "179px"
+                : width > 1100
+                ? "225px"
+                : width < 800
+                ? "179px"
+                : "275px",
           }}
         >
           <div className="wrapper">
@@ -86,52 +92,60 @@ export default function Cover() {
         </div>
 
         {width > 800 ? (
-            <div>
-          <div
-            className="name"
-            style={{
-              letterSpacing: width * 0.0083 + "px",
-            }}
-          >
-            <span
-              style={{
-                fontSize: width * 0.0869,
-                lineHeight: width * 0.102 + "px",
-              }}
+          <div>
+            <div
+              className="name"
+              
             >
-              UFA
-            </span>
-            <span
-              style={{
-                marginLeft: "30px",
-                fontSize: width * 0.0729,
-                lineHeight: width * 0.0854 + "px",
-                fontFamily: "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
-                fontWeight:"bold"
-              }}
-            >
-              全球青年汇
-            </span>
-          </div>
-                <div
-                    className="animated bounceInDown home-match-btn"
-                    style={{
-                        bottom: "185px",
-                        textAlign:"center",
-                        marginTop:"40px",
-                    }}
-                >
-                    <Button
-                        className="join-match-btn"
-                        variant="primary"
-                        size="sm"
-                        onClick={() => sendUser()}
-                        style={{fontWeight:"600",fontFamily:"Microsoft YaHei UI-Bold"}}
-                    >
-                        报名参赛
-                    </Button>
-                </div>
+              <Image
+                src="/homeCutout/index@2x.png"
+                style={{
+                  width: "60.2083%",
+                  height: "11.5625%",
+                }}
+              />
+              {/* <span
+                style={{
+                  fontSize: width * 0.0869,
+                  lineHeight: width * 0.102 + "px",
+                }}
+              >
+                UFA
+              </span>
+              <span
+                style={{
+                  marginLeft: "30px",
+                  fontSize: width * 0.0729,
+                  lineHeight: width * 0.0854 + "px",
+                  fontFamily: "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+                  fontWeight: "bold",
+                }}
+              >
+                全球青年汇
+              </span> */}
             </div>
+            <div
+              className="animated bounceInDown home-match-btn"
+              style={{
+                bottom: "185px",
+                textAlign: "center",
+                marginTop: "40px",
+              }}
+            >
+              <Button
+                className="join-match-btn"
+                variant="primary"
+                size="sm"
+                onClick={() => sendUser()}
+                style={{
+                  fontWeight: "600",
+                  fontFamily: "Microsoft YaHei UI-Bold",
+                }}
+              >
+                报名参赛
+              </Button>
+            </div>
+          </div>
         ) : (
           <>
             <div
@@ -160,7 +174,7 @@ export default function Cover() {
                   fontWeight: "bold",
                 }}
               >
-                  全球青年汇
+                全球青年汇
               </div>
             </div>
             <div
@@ -186,7 +200,6 @@ export default function Cover() {
           </>
         )}
       </div>
-
     </div>
   );
 }

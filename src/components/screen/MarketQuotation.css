@@ -62,6 +62,10 @@
   padding-left: 8px;
 }
 
+.market-quotation-table>.react-bootstrap-table>table>tbody>tr>td:nth-child(3){
+  padding-left: 0px;
+}
+
 .market-quotation-table>.react-bootstrap-table>table>thead>tr>th:nth-child(4) {
  text-align: right;
 }

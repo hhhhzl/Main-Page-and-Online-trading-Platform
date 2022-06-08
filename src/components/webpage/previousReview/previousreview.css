@@ -37,6 +37,10 @@
   background: #FFFFFF
 }
 
+.view-btn:hover{
+  background: #FFFFFF;
+}
+
 .image-banner {
   width: 100%;
   background: #F5F6F8;

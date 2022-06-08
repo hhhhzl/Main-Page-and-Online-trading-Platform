@@ -22,7 +22,7 @@ const Rules = () => {
 	useEffect(() => {
 		const handleScroll = () => {
 		  setbodyscrollTop(document.documentElement.scrollTop || document.body.scrollTop)
-		  console.log("屏幕向下距离",bodyscrollrdTop)
+		  // console.log("屏幕向下距离",bodyscrollrdTop)
 		};
 
 		window.addEventListener("scroll", handleScroll, { passive: true });
