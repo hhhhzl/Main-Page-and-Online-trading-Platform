@@ -328,7 +328,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                       <Row>
                         <div className="box-image flex-center">
                           <Image
-                            src="/homeCutout/Group 101@2x.png"
+                            src="/homeCutout/quanwei@2x.png"
                             style={{
                               width:
                                 width > 1350
@@ -490,7 +490,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
             )}
           </div>
           <h5
-            className="text-center arrow animated bounceInDown"
+            className="text-center"
             style={{ marginTop: "-80px" }}
           >
             <Button

@@ -6,7 +6,7 @@ import "./introduce.css";
 import useWindowDimensions from "../../utils/sizewindow";
 import Fade from "react-reveal/Fade";
 
-export default function Introduce() {
+export default function Introduce({changeEventKey}) {
   const { width, height } = useWindowDimensions();
   const [bodyscrollrdTop, setbodyscrollTop] = useState(0);
 
@@ -266,7 +266,7 @@ export default function Introduce() {
           </div>
           <div className="match-bottom-wrapper" style={{ zIndex: 999 }}>
             <span className="match-bottom-details">详情请见</span>
-            <span className="match-bottom-rules">赛事规则</span>
+            <div className="match-bottom-rules" onClick={() => changeEventKey(2)}>赛事规则</div>
           </div>
         </div>
 

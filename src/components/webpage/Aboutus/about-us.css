@@ -217,6 +217,10 @@
   opacity: 1;
 }
 
+.video-btn:hover{
+  
+}
+
 .video {
   width: 100%;
   height: max-content;

@@ -29,13 +29,23 @@
   right: 60px;
 }
 
+.view-btn-bg{
+  background:linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)
+}
 
+.view-btn{
+  background: #FFFFFF
+}
 
 .image-banner {
   width: 100%;
   background: #F5F6F8;
   border-radius: 0px 0px 0px 0px;
   opacity: 1;
+}
+
+.font-hover:hover{
+  color: #2A2B30 !important;
 }
 
 @media screen and (max-width: 960px) {

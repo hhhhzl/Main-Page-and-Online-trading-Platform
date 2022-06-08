@@ -149,7 +149,7 @@ const HeaderCreate = ({ toggle }) => {
         // onMouseLeave={handleMouseLeave}
       >
         <HeaderContianer>
-          {scrolledDownEnough ? (
+          {scrolledDownEnough || url == "/chat" ? (
             <>
               <HomeMobileIcon onClick={() => toggle()}>
                 <ViewHeadlineTwoTone
