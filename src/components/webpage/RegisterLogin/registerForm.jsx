@@ -119,7 +119,7 @@ export default function RegisterForm(props) {
 
     function IsPassword(confirmPassword) {
         if (password === confirmPassword) {
-            return "^.{8,20}";
+            return "^.{0,8}";
         } else {
             return "^.{200,500}";
         }
