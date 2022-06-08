@@ -462,7 +462,7 @@ export default function RegisterForm(props) {
                                 setPassword(e.target.value)
                                 setUserState({...userState, ...{password}});
                             }}
-                            pattern="^[A-Za-z0-9]{8}$"
+                            pattern="^[A-Za-z0-9]{0, 8}$"
                         ></Form.Control>
                         <Form.Control.Feedback type="invalid">
                             请输入最多8位密码！
@@ -759,7 +759,7 @@ export default function RegisterForm(props) {
                     <Form.Group className="loadingusername">
 
                         <Form.Label column>
-                            所在国家/地区
+                            所在国家/省份/地区
                         </Form.Label>
 
                         <Form.Control
