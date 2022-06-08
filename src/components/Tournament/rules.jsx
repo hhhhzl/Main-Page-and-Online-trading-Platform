@@ -9,12 +9,12 @@ const Rules = () => {
 	const [current, setCurrent] = useState(0);
 	const [showModal, setShowModal] = useState(false);
 	const [bodyscrollrdTop, setbodyscrollTop] = useState(0);
-	
+
 	const openModal = (current) => {
 	  setShowModal(true);
 	  setCurrent(current);
 	};
-	
+
 	const hideModal = () => {
 	  setShowModal(false);
 	};
@@ -24,17 +24,17 @@ const Rules = () => {
 		  setbodyscrollTop(document.documentElement.scrollTop || document.body.scrollTop)
 		  console.log("屏幕向下距离",bodyscrollrdTop)
 		};
-	
+
 		window.addEventListener("scroll", handleScroll, { passive: true });
 		return () => window.removeEventListener("scroll", handleScroll);
-		
+
 	  }, [bodyscrollrdTop]);
-	
-	
+
+
 	return (
 		<>
 		<div style={{position:"fixed",zIndex:10,width:"1px",height:width/2.97,background:`linear-gradient(to top, #E5E8EE ${(bodyscrollrdTop/(width/2.97)*100).toString() + '%'}, rgba(255, 255, 255, 0.5) ${(bodyscrollrdTop/(width/2.97)*100).toString() + '%'})`, top:"64px",left:width/2-1}}></div>
-	
+
 	  <div>
 		<RulesModal showModal={showModal} hideModal={hideModal} current={current}></RulesModal>
 		<div style={{position:"relative",width:width,height:"96px",background:"#FFFFFF"}}></div>
@@ -59,11 +59,11 @@ const Rules = () => {
 				</div>
 				<div className="rules-top-20">
 					<div className="rules-title-two">五、报名赛事：</div>
-					<div className="rules-centent">详情见上方“ <span style={{color: "blue",cursor: "pointer"}}>如何报名</span> ”。 </div>
+					<div className="rules-centent">详情见上方“ <span style={{color: "blue",cursor: "pointer"}} className="button-hover">如何报名</span> ”。 </div>
 				</div>
 				<div className="rules-top-20">
 					<div className="rules-title-two">六、操作平台：</div>
-					<div className="rules-centent">赛事报名成功后，个人/团队参赛者将在“交易平台”获得一份赛事账户，所有操作均在“ <span style={{color: "blue",cursor: "pointer"}}>交易平台</span>”完成。</div>
+					<div className="rules-centent">赛事报名成功后，个人/团队参赛者将在“交易平台”获得一份赛事账户，所有操作均在“ <span style={{color: "blue",cursor: "pointer"}} className="button-hover">交易平台</span>”完成。</div>
 				</div>
 			</div>
 			<div className="rules-p-two">
@@ -95,7 +95,7 @@ const Rules = () => {
 				<div className="rules-title">财经洞悉</div>
 			</div>
 			<div className="rules-top-30">
-				<div className="rules-centent">参赛个人或团队需在赛事期间提交至少3份研报模块，未交满选手则无法获得初赛入围资格。注：研报模块质量不会被进行评分，且不影响综合分数。详情见上方“<span style={{color: "blue",cursor: "pointer"}}>财经洞悉</span>”。</div>
+				<div className="rules-centent">参赛个人或团队需在赛事期间提交至少3份研报模块，未交满选手则无法获得初赛入围资格。注：研报模块质量不会被进行评分，且不影响综合分数。详情见上方“<span style={{color: "blue",cursor: "pointer"}} className="button-hover">财经洞悉</span>”。</div>
 			</div>
 			<div className="rules-p-two">
 				<div className="rules-title">评判规则</div>
@@ -112,7 +112,7 @@ const Rules = () => {
 							<div className="judge-rules-title">初赛</div>
 							<div className="judge-rules-time">2022年6月20日</div>
 							<div style={{marginTop:"16px"}}>
-								<Image src="/tournament/Group 142.png"></Image>
+								<Image src="/tournament/Group 142@2x.png" style={{width:"24px",height:"24px"}}></Image>
 								<div className="horizontal-line"></div>
 								{/* <div className="vertical-line"></div> */}
 							</div>
@@ -121,20 +121,20 @@ const Rules = () => {
 						<div>
 							<div className="judge-rules-li" style={{marginTop:"14px"}}>
 								<div>
-									<Image src="/tournament/Ellipse 11.png"></Image>
+									<Image className="judge-rules-dot" src="/tournament/Ellipse 11@2x.png"></Image>
 								</div>
 								<div className="judge-rules-content" style={{marginLeft:"6px"}}>初赛将围绕“收益率”及“夏普指数”进行加权打分</div>
 							</div>
 							<div className="judge-rules-li" style={{marginTop:"12px"}}>
 								<div>
-									<Image src="/tournament/Ellipse 11.png"></Image>
+									<Image className="judge-rules-dot"  src="/tournament/Ellipse 11@2x.png"></Image>
 								</div>
 								<div className="judge-rules-content" style={{marginLeft: "6px"}}>初赛将围绕“收益率”及“夏普指数”进行加权打分</div>
 							</div>
 						</div>
-						<div 
+						<div
 							className="show-details"
-							style={{margin: "4px 0px 0 36.553%"}}
+							style={{margin: "4px 0px 0 36.553%",textAlign: "center"}}
 							onClick={()=>openModal(1)}>展示详情</div>
 					</div>
 					<div
@@ -147,7 +147,7 @@ const Rules = () => {
 							<div className="judge-rules-title">复赛</div>
 							<div className="judge-rules-time">2020年9月2日</div>
 							<div style={{marginTop:"16px"}}>
-								<Image src="/tournament/Group 142.png"></Image>
+								<Image src="/tournament/Group 142@2x.png" style={{width:"24px",height:"24px"}}></Image>
 								<div className="horizontal-line"></div>
 								{/* <div className="vertical-line"></div> */}
 							</div>
@@ -155,13 +155,13 @@ const Rules = () => {
 						</div>
 						<div className="judge-rules-li" style={{marginTop:"14px"}}>
 							<div>
-								<Image src="/tournament/Ellipse 11.png"></Image>
+								<Image className="judge-rules-dot"  src="/tournament/Ellipse 11@2x.png"></Image>
 							</div>
 							<div className="judge-rules-content" style={{marginLeft:"6px"}}>指标分数排名前100名的选手入围第二轮主观筛选，并提交一份概略的投资报告。</div>
 						</div>
 						<div className="judge-rules-li" style={{marginTop:"12px"}}>
 							<div>
-								<Image src="/tournament/Ellipse 11.png"></Image>
+								<Image className="judge-rules-dot"  src="/tournament/Ellipse 11@2x.png"></Image>
 							</div>
 							<div className="judge-rules-content" style={{marginLeft: "6px"}}>UFA评委将结合指标分数以及投资报告质量选出15名决赛入围选手。</div>
 						</div>
@@ -178,7 +178,7 @@ const Rules = () => {
 							<div className="judge-rules-title">决赛</div>
 							<div className="judge-rules-time">2020年9月24日</div>
 							<div style={{marginTop:"16px"}}>
-								<Image src="/tournament/Group 142.png"></Image>
+								<Image src="/tournament/Group 142@2x.png" style={{width:"24px",height:"24px"}}></Image>
 								<div className="horizontal-line"></div>
 								{/* <div className="vertical-line"></div> */}
 							</div>
@@ -186,23 +186,23 @@ const Rules = () => {
 						</div>
 						<div className="judge-rules-li" style={{marginTop:"14px"}}>
 							<div>
-								<Image src="/tournament/Ellipse 11.png"></Image>
+								<Image className="judge-rules-dot"  src="/tournament/Ellipse 11@2x.png"></Image>
 							</div>
 							<div className="judge-rules-content" style={{marginLeft:"6px"}}>决赛入围选手/团队将于9月17日进行10分钟PPT线上展示，以及5分钟的评委互动环节。</div>
 						</div>
 						<div className="judge-rules-li" style={{marginTop:"12px"}}>
 							<div>
-								<Image src="/tournament/Ellipse 11.png"></Image>
+								<Image className="judge-rules-dot"  src="/tournament/Ellipse 11@2x.png"></Image>
 							</div>
 							<div className="judge-rules-content" style={{marginLeft: "6px"}}>评委将结合选手的专业能力以及综合能力进行评分，给予决赛分数。</div>
 						</div>
 						<div className="judge-rules-li" style={{marginTop:"12px"}}>
 							<div>
-								<Image src="/tournament/Ellipse 11.png"></Image>
+								<Image className="judge-rules-dot"  src="/tournament/Ellipse 11@2x.png"></Image>
 							</div>
 							<div className="judge-rules-content" style={{marginLeft: "6px"}}>最终排名将基于初赛指标分数（40%）+ 决赛分数（60%）。</div>
 						</div>
-						<div 
+						<div
 							className="show-details"
 							onClick={() => openModal(3)}>展示详情
 						</div>
@@ -213,8 +213,8 @@ const Rules = () => {
 	  </div>
 	  </>
 	);
-	
-	
+
+
 }
 
 

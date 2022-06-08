@@ -60,7 +60,8 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 						/>
 						<a href="/eplatform" >
 							<Image
-								src="/tournament/赛事账户.png"
+								className="button-hover"
+								src="/tournament/赛事账户@2x.png"
 								style={{position: "absolute",left:"44.7%",top:"70%",width:"8%"}}
 							/>
 						</a>
@@ -81,7 +82,7 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 								<div className="finance-title-imgage">
 									<div>
 										<Image
-											src="/tournament/Group 142.png"
+											src="/tournament/Group 142@2x.png"
 											style={{width:"24px",height:"24px"}}></Image>
 										<div style={{
 											height:'1px',
@@ -108,7 +109,7 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 								<div className="finance-title-span-two">第二周</div>
 								<div className="finance-title-imgage">
 									<Image
-										src="/tournament/Group 142.png"
+										src="/tournament/Group 142@2x.png"
 										style={{width:"24px",height:"24px"}}></Image>
 									<div style={{
 										height:'1px',
@@ -156,7 +157,7 @@ const Finance = ({ profileImg, hobbyImgs }) => {
 				</div>
 				<div>
 					<div className="finance-title-two" style={{paddingTop:"80px"}}>模范经纪人</div>
-					<div className="finance-bottom-text" style={{paddingTop:"30px"}}>在每一次财经新闻话题截止后，UFA组委会会阅览并筛选50个优秀的选手分析，并发布由UFA及中信证券官方签</div>
+					<div className="finance-bottom-text" style={{paddingTop:"30px"}}>在每一次财经新闻话题截止后，UFA组委会会阅览并筛选50个优秀的选手分析，并发布由UFA及中信证券官方签署的优秀证书。</div>
 					<div className="finance-bottom-text" style={{paddingTop:"20px"}}>对于部分优秀分析，UFA会对选手做独家采访，并将其分析及选手采访刊登在UFA官网以及UFA公众号【UFA视野全球】。</div>
 					<div className="finance-bottom-text" style={{paddingTop:"20px"}}>同时，UFA每周会将优秀选手向多个金融机构进行推荐。</div>
 				</div>
