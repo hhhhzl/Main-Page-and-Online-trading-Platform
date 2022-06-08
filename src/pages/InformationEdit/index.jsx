@@ -18,13 +18,13 @@ export default ({searchData}) => {
     const [load, setload] = useState(true)
     const dispatch = useDispatch()
 
-    useEffect(()=>{
+    useEffect(()=>{   
         if (load){
             console.log(user.user_id)
             dispatch(fetchUser(user.user_id))
             setload(false)
         }
-    },[load,dispatch])
+    },[load,dispatch,data])
     
     return (
         <>

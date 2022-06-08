@@ -149,9 +149,9 @@ export default function RegisterForm(props) {
             console.log(JsonData,149)
             const response = await apiRegisterUser(JsonData)
             console.log(response)
-            if (response.msg == "The data in request body is invalid."){
+            if (response.data.msg == "The data in request body is invalid."){
                 setshowerror(true)
-            }else if (response.msg == "ok."){
+            }else if (response.data.msg == "OK."){
                 setShow(true)
             }
 
@@ -180,14 +180,12 @@ export default function RegisterForm(props) {
           <Modal.Header></Modal.Header>
           <Modal.Body style={{textAlign:"center"}}>用户已成功注册 </Modal.Body>
         <Modal.Footer style={{width:"100%", display:"flex",justifyContent:"center"}}  >
-            <div style = {{ display:"flex",justifyContent:"space-evenly"}} >
-            <Button className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUser(0)}>
+            <Button style={{marginRight:"20px"}} className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUser(0)}>
             回主页
           </Button>
-          <Button className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUser(1)}>
+          <Button style={{marginLeft:"20px"}} className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUser(1)}>
             去登录
           </Button>
-        </div>
           </Modal.Footer>
         </Modal>
 
@@ -366,6 +364,8 @@ export default function RegisterForm(props) {
                             onChange={(e) => {
                                 const confirmPassword = e.target.value;
                                 setConfirmPassword(e.target.value)
+                                const mobile_number = 13883729275
+                                setUserState({...userState, ...{mobile_number}});
                             }}
                             pattern={IsPassword(confirmPassword)}
                         ></Form.Control>
@@ -374,7 +374,7 @@ export default function RegisterForm(props) {
                         </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group className="loadingusername">
-                        <Form.Label column>
+                        <Form.Label>
                             微信号
                         </Form.Label>
                     
@@ -408,9 +408,9 @@ export default function RegisterForm(props) {
                     ></Form.Control>
                     </Form.Group>
 
-                    <Form.Group as={Row} className="loadingusername">
-                        <Col sm={6}>
-                            <Form.Label  column sm={6}>
+                    <Form.Group style={{display:"flex",justifyContent:"space-between"}} className="loadingusername">
+                        <div style={{width:"200px"}}>
+                            <Form.Label>
                                 性别
                             </Form.Label>
                             <Form.Select 
@@ -427,9 +427,9 @@ export default function RegisterForm(props) {
                                 <option value="F">女</option>
 
                             </Form.Select>
-                        </Col>
-                        <Col sm={6}>
-                            <Form.Label  column sm={6}>
+                        </div>
+                        <div style={{width:"200px"}}>
+                            <Form.Label>
                                 生日
                             </Form.Label>
 
@@ -441,7 +441,7 @@ export default function RegisterForm(props) {
                                 onChange={(e) => setbirthday(e.target.value)}
                             >
                             </Form.Control>
-                        </Col>
+                        </div>
                     </Form.Group>
 
                     <Form.Group as={Row} className="loadinglogin" style={{
@@ -762,7 +762,6 @@ export default function RegisterForm(props) {
                                 fontWeight:"bold"
                             }}
                             type="submit"
-                            disabled
                         >
                             注册
                         </Button>
