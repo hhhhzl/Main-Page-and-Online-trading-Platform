@@ -1,5 +1,5 @@
 import reaat, {useEffect, useState} from 'react'
-import { Card, Collapse, Button, Row, Nav, Col, Badge, InputGroup, Form, Image,Dropdown, Modal} from 'react-bootstrap'
+import { Card, Collapse, Button, Row, Nav, Col, Badge, InputGroup, Form, Image,Dropdown, Modal,Spinner} from 'react-bootstrap'
 import './screen.css';
 import { Add, ArrowBack, ArrowForward, Check, Edit, Forward, StarBorder,Search as Seachimage, SearchOutlined, ShowChart,BarChart,FormatIndentDecrease, FormatIndentIncrease, FlareSharp } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
@@ -461,7 +461,7 @@ let ChartChoice = chartChooseType[chooseChartType]
                       marginLeft:"6px",
                       color:"#2A2B30",
                       lineHeight:"28px",
-                      }}>{stockdata? stockdata.名称 : "LOADING..."}</div>
+                      }}>{stockdata? stockdata.名称 : <Spinner animation="border"></Spinner>}</div>
 
                 <div style={{
                       height:"28px",
