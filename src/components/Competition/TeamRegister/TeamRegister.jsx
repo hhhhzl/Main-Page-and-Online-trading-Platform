@@ -101,15 +101,14 @@ export default function TeamRegister({
 
         <div style={{width:"48px",maxWidth:"18.75%"}}></div>
         <div style={{width:"1200px",minWidth:"fix-content",minHeight: "700px",
-            minWidth: "fix-content",
-            height:height,
+            height:"max-content",marginBottom:"84px",
             }}>
                 <div style={{marginTop:"64px",height:"111px", width:"100%"}}>
                     <div style={{paddingBottom:"24px",paddingTop:"48px", fontSize:"24px", fontFamily:"Microsoft YaHei U-Bold, Microsoft YaHei UI", fontWeight:"bold", color:"#2A2B30", lineHeight:"40px",letterSpacing:"1px"}}>
                      填写团队信息
                     </div>
                 </div>
-                <div style={{height:"700px",width:"100%", backgroundColor:"white"}}>
+                <div style={{height:"max-content",minHeight:"700px",width:"100%", backgroundColor:"white"}}>
 
                     <div style={{marginLeft:"24px", height:"8.57%"}}>
                         <IconButton onClick={() => sendUserback()} style={{paddingTop:"24px", paddingBottom:"16px"}}>
