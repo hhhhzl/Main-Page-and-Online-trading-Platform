@@ -51,7 +51,9 @@ const HeaderCreate = ({ toggle }) => {
   };
   // const [hover, setHover] = useState(false);
 
-  const handleClose = () => setShow(false);
+  // const handleClose = () => setShow(false);
+  const handleClose = () => setShowLoginOutModal(false);
+
   const handleShow = () => setShow(true);
 
   const handleCloseUFA = () => setShowUFA(false);
