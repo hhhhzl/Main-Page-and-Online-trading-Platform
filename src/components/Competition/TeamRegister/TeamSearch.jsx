@@ -14,11 +14,12 @@ import { apiGetUser } from 'api/main_platform/users';
 
 const { SearchBar, ClearSearchButton } = Search;
 
-export default function TeamSearch({Pageprocess}){
+export default function TeamSearch({Pageprocess, setteamid}){
     const {width,height} = useWindowDimensions();
     const [disable, setdisable] = useState(false)
     const [load, setload] = useState(false)
     const [teamdata,setteamdata] = useState([])
+    const [submitable,setsubmitable] = useState(false)
     const history= useHistory()
     const sendUserback = () => {history.push("/team/register")}
 
@@ -56,13 +57,19 @@ const searchSwitch = () => {
                 const newPeopleArray = await Promise.all(responsedata.map(async function(team) {
                     const responseUser = await apiGetUser(team.leader);
                     const Leaderdata = responseUser.data.data;
-                    console.log(Leaderdata)
                     return Leaderdata;
                 }));
                 console.log(newPeopleArray)
-                for (i == 0; i < responsedata.length; i++) {
+                const teamlist = []
+                for (let i = 0; i < responsedata.length; i++) {
+                    const LeaderInfo = newPeopleArray[i]
+                    const teamInfo = responsedata[i]
+                    teamInfo.leadername = LeaderInfo.last_name
+                    teamInfo.leaderemail = LeaderInfo.email
+                    teamlist.push(teamInfo)
+                  }
+                setteamdata(teamlist)
 
-                }
             } catch (e) {
                 console.log(e);
             }
@@ -72,29 +79,108 @@ const searchSwitch = () => {
     }
     const columns = [
         {
-            dataField:'id',
-            text:'ID',
-            headerAttrs: {
-                hidden: true
-              },
-        },
-        {
             dataField: 'avatar',
             text: '图片',
             sort: true,
+            style: { width: "14.4%" },
             headerAttrs: {
                 hidden: true
               },
+            formatter: (value, row) =>{
+                return (
+                    <>
+                    <div style={{display:"flex",justifyContent:"right"}}>
+                    <Image src={value} rounded style={{width:"36px",height:"36px"}}/>
+                    </div>
+                    </>
+                )
+            }
         },
         {
-            dataField: 'learder',
-            text: '图片',
+            dataField: 'name',
+            text: '团队名称',
             sort: true,
+            style: { width: "100%" },
             headerAttrs: {
                 hidden: true
               },
+              formatter: (value,row) =>{
+                return (
+                    <>
+                    <div>{value}</div> 
+                    <div style={{display:"flex",justifyContent:"left"}}>
+                    <div style={{marginRight:"0px"}}>{row.leadername} · {"主观赛道"} · {row.leaderemail}</div> 
+                    {/* <div style={{marginRight:"7px"}}></div>
+                    <div style={{marginRight:"7px"}}></div>    */}
+                    </div> 
+                            
+                    </>
+                )
+            }
+        },
+        {
+            dataField: 'leadername',
+            text: '队长名称',
+            sort: true,
+            style: { width: "0%" },
+            hidden: true,
+            headerAttrs: {
+                hidden: true
+              },
+              formatter: (value,row) =>{
+                return (
+                    <>
+                            
+                    </>
+                )
+            }
+        },
+        {
+            dataField: 'leaderemail',
+            text: '队长邮箱',
+            sort: true,
+            style: { width: "0%" },
+            hidden: true,
+            headerAttrs: {
+                hidden: true
+              },
+              formatter: (value,row) =>{
+                return (
+                    <>
+                            
+                    </>
+                )
+            }
         },
     ]
+
+    const selectRow = {
+        mode: 'radio',
+        clickToSelect: true,
+        hideSelectAll:true,
+        hideSelectColumn: true,
+        style:{background:"#E7ECFD"},
+        selected: [],
+        onSelect: (row, isSelect, rowIndex, e) => {
+            if (isSelect){
+                setLinkedInstitution({value:row.name})
+                setteamid(row.id)
+                setScrollswitch(false)
+                setsubmitable(true)
+            }else{
+
+            }  
+            
+          },
+      };
+
+      const nextbuttonSubmit = () =>{
+          if (submitable && typeof(linkedInstitution) === 'object'){
+              Pageprocess()
+          }else{
+              alert("队伍名称错误，请重新搜索")
+          }
+      }
 
     return (
         <>
@@ -143,8 +229,8 @@ const searchSwitch = () => {
                     <div style={{marginTop:"12px",display:"flex", justifyContent:"center"}}>
                     <Form style={{width:"360px",height:"48px"}} >
         <ToolkitProvider  
-                      keyField="id"
-                      data={ SearchData }
+                      keyField="name"
+                      data={ teamdata? teamdata :null }
                       columns={ columns }  
                       search
                     >
@@ -156,21 +242,22 @@ const searchSwitch = () => {
                              style={{height:"48px",background:"#F5F6F8",marginTop:"14px",borderRadius: "0px 4px 4px 0px",opacity: 1,borderWidth:"0px"}}
                              type="text"
                              placeholder="搜索/团队/队长"
+                             value={linkedInstitution.value}
                              ref={ n => setLinkedInstitution(n)}
                              onChange={() => {
-                                 handleSearch({...props.searchProps});searchSwitch();
+                                 handleSearch({...props.searchProps});
+                                 searchSwitch();
                         }
                     }     
                         />   
                         </InputGroup>          
                         <Collapse in= {scrollswitch}>
-                         <div className ="scroll" style={{position:"absolute",marginLeft:"3%",zIndex:999, width:"300px",background: "white"}}>
+                         <div style={{position:"absolute",height:"250px",marginLeft:"0px",zIndex:999, width:"360px",background: "white", overflow:"scroll",borderRadius: "4px 4px 4px 4px",border: "1px solid #C0C3CE"}}>
                         <BootstrapTable 
                         { ...props.baseProps}
                          hover = {true}
                          condensed ={true}
-                         sort={ { dataField: 'label', order: 'asc' } }       
-                         classes ="custom-row-class"
+                         selectRow={selectRow}
                         />  
                         </div>
                        </Collapse>  
@@ -193,7 +280,7 @@ const searchSwitch = () => {
                         border:"1px solid #F5F6F8", borderRadius:"4px 4px 4px 4px",
                         boxShadow:disable? null : "0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08)",
                         }}
-                        onClick={() => Pageprocess()}
+                        onClick={() => nextbuttonSubmit()}
                         >
                             <div style={{display:"flex",justifyContent:"right"}}>
                             <div style={{

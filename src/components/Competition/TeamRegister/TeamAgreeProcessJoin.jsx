@@ -10,10 +10,17 @@ import TeamReister from './TeamRegister'
 import TeamSearch from './TeamSearch';
 import TeamQuestionnaire from "./TeamQuestionnaire";
 import Footer from "components/MainPage/footer";
+import { apiGetTeamAccount, apiJoinTeamAccount } from 'api/main_platform/competitions';
+import { apiGetUser } from 'api/main_platform/users';
 
 export default function TeamAgreeProcessJoin(){
     const {width,height} = useWindowDimensions();
     const [page, setpage] = useState(0)
+    const [teamid, setteamid] = useState(null)
+
+
+    const [teamdata, setteamdata] = useState(null)
+    const [members, setmembers] = useState(null)
     const [disable, setdisable] = useState(true)
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => {
@@ -33,6 +40,7 @@ export default function TeamAgreeProcessJoin(){
     }
 
     const [successSendtoC, setsuccessSendtoC] = useState(false)
+    const [showExist, setshowExist] = useState(false)
 
 
     const process =[
@@ -94,6 +102,49 @@ export default function TeamAgreeProcessJoin(){
         },
     ]
 
+    useEffect(() => {
+        if(page == 1){
+            getTeamInformation()
+        }
+    },[page])
+    
+    const getTeamInformation = async () =>{
+        try{
+            const response = await apiGetTeamAccount(teamid)
+            setteamdata(response.data.data.metadata)
+            const member = response.data.data.members
+            try {
+                const newPeopleArray = await Promise.all(member.map(async function(user) {
+                    const responseUser = await apiGetUser(user.user);
+                    const Userdata = responseUser.data.data;
+                    return Userdata;
+                }));
+                setmembers(newPeopleArray)
+            } catch (e) {
+                console.log(e);
+            }
+        }catch(e){
+            console.log(e)
+        }
+        
+    } 
+
+    const submitJoinOrder = async () => {
+        try {
+            const response = await apiJoinTeamAccount(teamid)
+            if (response.data.msg == 'OK.'){
+                setsuccessSendtoC(true)
+            }else if(response.data.msg == 'The user has already joined a team in this competition.'){
+                setshowExist(true)
+            }else{
+                alert("失败")
+                history.push('/')
+            }
+        }catch(e){
+            alert("系统错误，请稍后重试")
+            history.push('/')
+        }
+    }
 
     return (
         <>
@@ -101,6 +152,22 @@ export default function TeamAgreeProcessJoin(){
         <HeaderCreate toggle = {toggle} />
       {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>) : null}
       </div>
+
+            <Modal
+                show={showExist}
+                centered
+            >
+                <Modal.Header></Modal.Header>
+                <Modal.Body style={{textAlign: "center",letterSpacing:"2px"}}>注册失败, 您已存在于一个队伍当中 </Modal.Body>
+                <Modal.Footer style={{width: "100%", display: "flex", justifyContent: "center"}}>
+                    <div>
+                        <Button className="modal-btn modal-btn-submit" variant="primary" onClick={() => sendUserhome()}>
+                            回主页
+                        </Button>
+
+                    </div>
+                </Modal.Footer>
+            </Modal>
 
        <Modal
         show={successSendtoC}
@@ -121,7 +188,7 @@ export default function TeamAgreeProcessJoin(){
 
       {page == 0 ?
       <>
-      <TeamSearch Pageprocess = {Pageprocess}/>
+      <TeamSearch Pageprocess = {Pageprocess} setteamid = {setteamid}/>
       </> : page == 1 ?
               <>
                   <TeamQuestionnaire
@@ -207,7 +274,7 @@ export default function TeamAgreeProcessJoin(){
                                 fontWeight:"400",
                                 color:"#2A2B30",
                                 lineHeight:"24px",
-                            }}>对asdsjhsadkhdh</div>
+                            }}>{teamdata? teamdata.name : "loading...."}</div>
 
                             <div style={{
                                 width:"125px",
@@ -241,11 +308,11 @@ export default function TeamAgreeProcessJoin(){
 
                         <div style={{height:"84px", display:"flex",justifyContent:"left"}}>
 
-                                    {user.map((elem) => {
+                                    {members?.map((elem) => {
                                         return (
-                                    <div style ={{width:"63px",marginRight:"24px",textAlign:"center",}}>
+                                    <div style ={{width:"max-content",marginRight:"24px",textAlign:"center",}}>
                                     <Image
-                                    src="/homeCutout/Group 1074@2x.png"
+                                    src={elem.avatar}
                                     roundedCircle
                                     style={{
                                     position: "relative",
@@ -261,7 +328,7 @@ export default function TeamAgreeProcessJoin(){
                                     fontWeight:"400",
                                     color:"#2A2B30",
                                     lineHeight:"24px",
-                                    }}>{elem.username}</div>
+                                    }}>{elem.last_name}</div>
 
                                     <div style={{marginTop:"0px",
                                     height:"24px",
@@ -270,7 +337,7 @@ export default function TeamAgreeProcessJoin(){
                                     fontWeight:"400",
                                     color:"#6E7184",
                                     lineHeight:"24px",
-                                    }}>{elem.school}</div>
+                                    }}>{elem.institution}</div>
 
 
 
@@ -315,7 +382,7 @@ export default function TeamAgreeProcessJoin(){
                             textAlign:"center",
                             backgroundColor:"linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)"
                             }}
-                            onClick={() => setsuccessSendtoC(true)}
+                            onClick={() => submitJoinOrder()}
                             >
                                 <div style={{
                                     fontSize:"14px",
