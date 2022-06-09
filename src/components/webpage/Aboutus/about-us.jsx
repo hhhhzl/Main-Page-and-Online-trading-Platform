@@ -149,11 +149,12 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
             className="about-center"
             style={{
               width: width > 1385 ? "68.5%" : width < 1350 ? "93%" : "71%",
+              marginTop: width < 700 ? "60%" : ''
             }}
           >
             {width < 680 ? (
               <>
-                <Row className="center-container">
+                <Row className="center-container" style={{flexDirection: width < 700 ? 'column' : 'row'}}>
                   <Col className="flex-center">
                     <div className="introduction-box">
                       <Row>
@@ -322,7 +323,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               </>
             ) : (
               <>
-                <Row>
+                <Row style={{flexDirection: width < 700 ? 'column' : 'row'}}>
                   <Col className="flex-center">
                     <div className="introduction-box">
                       <Row>
