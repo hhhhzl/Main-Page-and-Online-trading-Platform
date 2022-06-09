@@ -107,9 +107,22 @@ const searchSwitch = () => {
               formatter: (value,row) =>{
                 return (
                     <>
-                    <div>{value}</div> 
+                    <div style={{
+                        height: "24px",
+                    fontSize: "14px",
+                    fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                    fontWeight: 400,
+                    color: "#2A2B30",
+                    lineHight: "24px"}}>{value}</div> 
                     <div style={{display:"flex",justifyContent:"left"}}>
-                    <div style={{marginRight:"0px"}}>{row.leadername} · {"主观赛道"} · {row.leaderemail}</div> 
+                    <div style={{
+                        height: "24px",
+                        fontSize: "12px",
+                        fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                        fontWeight: 400,
+                        color: "#6E7184",
+                        lineHight: "24px"
+                    }}>{row.leadername} · {"主观赛道"} · {row.leaderemail}</div> 
                     {/* <div style={{marginRight:"7px"}}></div>
                     <div style={{marginRight:"7px"}}></div>    */}
                     </div> 
@@ -241,7 +254,7 @@ const searchSwitch = () => {
                              <Form.Control
                              style={{height:"48px",background:"#F5F6F8",marginTop:"14px",borderRadius: "0px 4px 4px 0px",opacity: 1,borderWidth:"0px"}}
                              type="text"
-                             placeholder="搜索/团队/队长"
+                             placeholder="搜索团队名/队长/队长邮箱"
                              value={linkedInstitution.value}
                              ref={ n => setLinkedInstitution(n)}
                              onChange={() => {

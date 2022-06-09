@@ -507,7 +507,7 @@ export default function PageHeader({searchData, platformType, showrankingOnly}) 
                 src={"/homeCutout/UFA-LOGO-RED.png"}
                 style={{ width: "38px", height: "38px" }}
               />
-              <span className="header-user-name">{user.username? user.username.length > 5? <>{user.username.slice(4)}...</> : user.username : "用户名"}</span>
+              <span className="header-user-name">{user.username? user.username.length > 8? <>{user.username.slice(0,5)}...</> : user.username : "用户名"}</span>
               <ExpandMoreIcon></ExpandMoreIcon>
             </div>
             <div
