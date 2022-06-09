@@ -1,7 +1,7 @@
 .tabs-wrapper {
-  border-bottom: 1px solid #E5E8EE;
-  padding-left: 18.75%;
-  background: #ffffff;
+    border-bottom: 1px solid #E5E8EE;
+    padding-left: 18.75%;
+    background: #ffffff;
 }
 
 /* .tabs-item{
@@ -9,55 +9,56 @@
 } */
 
 .nav-tabs {
-  border: none;
+    border: none;
 }
 
 .nav-link {
-  color: #6E7184;
-  padding: 20px !important;
-  border: none !important;
-  font-size: 14px;
-  line-height: 24px;
+    color: #6E7184;
+    padding: 20px !important;
+    border: none !important;
+    font-size: 14px;
+    line-height: 24px;
 
-  font-family: "Microsoft YaHei UI-Bold, Microsoft YaHei UI";
+    font-family: "Microsoft YaHei UI-Bold, Microsoft YaHei UI";
 }
 
+.tabs-wrapper > .nav-item>.nav-link:hover {
+    font-weight: bolder;
+    color: black;
+    border-bottom: 1px black !important;
+}
 
-
-
-
-.tabs-wrapper>.nav-item>.active {
-  color: #2A2B30 !important;
-  font-size: 14px;
-  font-family: "Microsoft YaHei UI-Bold, Microsoft YaHei UI";
-  background: #ffffff !important;
-  font-weight: bold;
-  border: none !important;
-  line-height: 24px;
-  padding: 20px !important;
-  text-decoration: none !important
+.tabs-wrapper > .nav-item > .active {
+    color: #2A2B30 !important;
+    font-size: 14px;
+    font-family: "Microsoft YaHei UI-Bold, Microsoft YaHei UI";
+    background: #ffffff !important;
+    font-weight: bold;
+    border: none !important;
+    line-height: 24px;
+    padding: 20px !important;
+    text-decoration: none !important
 }
 
 .tab-content {
-  border-top: 1px solid #E5E8EE;
-  margin-top: 1px;
+    border-top: 1px solid #E5E8EE;
+    margin-top: 1px;
 }
-
 
 
 @media screen and (max-width: 600px) {
-  .tabs-wrapper {
-    padding-left: 10px;
-  }
+    .tabs-wrapper {
+        padding-left: 10px;
+    }
 }
 
 .vertical-line {
-  width: 1px;
-  /* background: #848384; */
-  border-right: 1px solid #E5E8EE;
-  position: fixed;
-  left: 50%;
-  top: 64px;
-  z-index: 99;
-  transition: all 1s ease;
+    width: 1px;
+    /* background: #848384; */
+    border-right: 1px solid #E5E8EE;
+    position: fixed;
+    left: 50%;
+    top: 64px;
+    z-index: 99;
+    transition: all 1s ease;
 }

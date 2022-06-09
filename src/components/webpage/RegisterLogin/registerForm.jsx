@@ -971,7 +971,3 @@ export default function RegisterForm(props) {
 
     );
 }
-
-
-
-

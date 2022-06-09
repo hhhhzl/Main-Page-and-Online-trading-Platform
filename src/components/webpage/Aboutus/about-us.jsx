@@ -84,9 +84,8 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               letterSpacing: "1px",
             }}
           >
-            自成立以来，UFA全球青年汇会与中信证券、海外超过100所高校等建立起合作关系，并联合策划了名家分享会，金融系列公益讲座、全球大学生投资大赛等多个活动。“UFA金融大赛:
-            全球大学模拟投资大赛”是由 UFA
-            全球青年会牵头发起的首个汇聚全球顶尖高校大学生的大型线上模拟投资比赛。
+            自成立以来，UFA全球青年汇会与中信证券、海外超过100所高校等建立起合作关系，并联合策划了名家分享会，财经系列公益讲座、全球大学生投资大赛等多个活动。“UFA金融大赛”是由 UFA
+            全球青年汇牵头发起的首个汇聚全球顶尖高校大学生的大型线上模拟投资比赛。
           </p>
           <div className="right-icon">
             <Image
@@ -102,7 +101,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
           <br />
         </Container>
 
-        <div className="video">
+        <div className="video" style={{paddingBottom:width>650 ?"120px":"0px"}}>
           <div className="text-center">
             <Image
               src="/homeCutout/Group 175@2x.png"
@@ -127,6 +126,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                   width="100%"
                   height="100%"
                   controls={true}
+                  // light="/background1.jpg"
                 />
               </div>
             </div>
@@ -491,7 +491,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
           </div>
           <h5
             className="text-center"
-            style={{ marginTop: "-80px" }}
+            style={{ marginTop: width > 650 ?"-80px" :"0px",position:"relative",bottom:width>650 ?"0px":"180px"}}
           >
             <Button
               className="video-btn"
