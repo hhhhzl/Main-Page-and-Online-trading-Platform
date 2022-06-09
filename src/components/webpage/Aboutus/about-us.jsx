@@ -127,6 +127,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                   width="100%"
                   height="100%"
                   controls={true}
+                  // light="/background1.jpg"
                 />
               </div>
             </div>
