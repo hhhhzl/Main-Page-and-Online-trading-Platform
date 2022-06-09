@@ -4,7 +4,7 @@ import { React, useState, useEffect } from "react";
 import useWindowDimensions from "../../utils/sizewindow";
 import RulesModal from "../screen/modal/RulesModal";
 
-const Rules = () => {
+const Rules = ({changeEventKey}) => {
   const { width, height } = useWindowDimensions();
   const [current, setCurrent] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -97,6 +97,7 @@ const Rules = () => {
                 <span
                   style={{ color: "blue", cursor: "pointer" }}
                   className="button-hover"
+                  onClick={() => changeEventKey(4)}
                 >
                   如何报名
                 </span>{" "}
@@ -107,12 +108,14 @@ const Rules = () => {
               <div className="rules-title-two">六、操作平台：</div>
               <div className="rules-centent">
                 赛事报名成功后，个人/团队参赛者将在“交易平台”获得一份赛事账户，所有操作均在“{" "}
+                <a href="/competition">
                 <span
                   style={{ color: "blue", cursor: "pointer" }}
                   className="button-hover"
                 >
                   交易平台
                 </span>
+                </a>
                 ”完成。
               </div>
             </div>
@@ -157,6 +160,7 @@ const Rules = () => {
               <span
                 style={{ color: "blue", cursor: "pointer" }}
                 className="button-hover"
+                onClick={() => changeEventKey(3)}
               >
                 财经洞悉
               </span>
