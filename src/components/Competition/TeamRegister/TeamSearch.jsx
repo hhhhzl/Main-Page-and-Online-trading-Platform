@@ -9,12 +9,16 @@ import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolk
 import BootstrapTable from 'react-bootstrap-table-next';
 import { useHistory } from 'react-router';
 import  SearchData  from "../../../static/SearchStock.json"
+import { apiGetAllTeamAccounts } from 'api/main_platform/competitions';
+import { apiGetUser } from 'api/main_platform/users';
 
 const { SearchBar, ClearSearchButton } = Search;
 
 export default function TeamSearch({Pageprocess}){
     const {width,height} = useWindowDimensions();
     const [disable, setdisable] = useState(false)
+    const [load, setload] = useState(false)
+    const [teamdata,setteamdata] = useState([])
     const history= useHistory()
     const sendUserback = () => {history.push("/team/register")}
 
@@ -33,15 +37,58 @@ const searchSwitch = () => {
     }
 };
 
+
+ useEffect(() =>{
+     if (!load){
+        getteamInformation()
+        setload(true)
+     }   
+ },[load])
+
+
+
+    const getteamInformation = async ( ) =>{
+        try {
+            const response = await apiGetAllTeamAccounts()
+            const responsedata = response.data.data
+            console.log(responsedata)
+            try {
+                const newPeopleArray = await Promise.all(responsedata.map(async function(team) {
+                    const responseUser = await apiGetUser(team.leader);
+                    const Leaderdata = responseUser.data.data;
+                    console.log(Leaderdata)
+                    return Leaderdata;
+                }));
+                console.log(newPeopleArray)
+                for (i == 0; i < responsedata.length; i++) {
+
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        }catch(e){
+            console.log(e)
+        }
+    }
     const columns = [
         {
             dataField:'id',
             text:'ID',
-            hidden: true
+            headerAttrs: {
+                hidden: true
+              },
         },
         {
-            dataField: 'name',
-            text: '机构(升/降)',
+            dataField: 'avatar',
+            text: '图片',
+            sort: true,
+            headerAttrs: {
+                hidden: true
+              },
+        },
+        {
+            dataField: 'learder',
+            text: '图片',
             sort: true,
             headerAttrs: {
                 hidden: true
