@@ -141,7 +141,7 @@ export default function TeamAgreeProcessJoin(){
 
             <div style={{width:"48px",maxWidth:"18.75%"}}></div>
             <div style={{width:"1200px",minWidth:"fix-content",
-                height:height,
+                height:"max-content",marginBottom:"84px",
                 }}>
 
                 <div style={{marginTop:"64px",height:"111px", width:"100%"}}>
@@ -326,12 +326,7 @@ export default function TeamAgreeProcessJoin(){
                                     }}>
                                 确认参赛
                                 </div>
-
-
                                 </Button>
-
-
-
                         </div>
 
 

@@ -53,8 +53,8 @@ export default function TeamRegister({
                 <div style={{width: "48px", maxWidth: "18.75%"}}></div>
                 <div style={{
                     width: "1200px", minWidth: "fix-content", minHeight: "700px",
-                    minWidth: "fix-content",
-                    height: height,
+                    height: "max-content",
+                    marginBottom:"84px",
                 }}>
                     <div style={{marginTop: "64px", height: "111px", width: "100%"}}>
                         <div style={{

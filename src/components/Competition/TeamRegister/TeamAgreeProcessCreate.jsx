@@ -52,6 +52,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
     const [successSendtoC, setsuccessSendtoC] = useState(false)
     const [showExist, setshowExist] = useState(false)
     const [deadline, setdeadline] = useState(false)
+    const [teamnameDuplicate, setteamnameDuplicate] = useState(false)
 
     const createTeam = async () =>{
         try{
@@ -60,14 +61,16 @@ export default function TeamAgreeProcessCreate({toggle}) {
                 name:teamname
             }
             const dataprops = JSON.stringify(data)
-            const response = await apiCreateTeamAccount(dataprops)      
+            const response = await apiCreateTeamAccount(data)      
             const messge = response.data.msg
-            if (messge === "The user has already joined a team in this competition."){
+            if (messge == "The user has already joined a team in this competition."){
                 setshowExist(true)
             }else if (messge == "OK."){
                 setsuccessSendtoC(true)
+            }else if (messge == "The name is already in use."){
+                setteamnameDuplicate(true)     
             }else{
-                setdeadline(true)     
+                setdeadline(true)
             }
         }catch(e){
             alert("系统错误，请稍后重试..")
@@ -125,6 +128,14 @@ export default function TeamAgreeProcessCreate({toggle}) {
             {isOpen ? (<Sidebar isOpen={isOpen} toggle={toggle}/>) : null}
 
             <Modal
+                show={teamnameDuplicate}
+                onHide={() => setteamnameDuplicate(false)}
+            >
+                <Modal.Header closeButton></Modal.Header>
+                <Modal.Body style={{textAlign: "center",letterSpacing:"2px"}}>团队名称已被使用，请更改！ </Modal.Body>
+            </Modal>
+
+            <Modal
                 show={successSendtoC}
                 centered
             >
@@ -141,7 +152,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
             </Modal>
 
             <Modal
-                show={showExist}
+                show={deadline}
                 centered
             >
                 <Modal.Header></Modal.Header>
@@ -171,6 +182,12 @@ export default function TeamAgreeProcessCreate({toggle}) {
                     </div>
                 </Modal.Footer>
             </Modal>
+
+
+
+
+
+            {/* /////////////////////////////////////////////////////////////////////// */}
 
 
             {page == 0 ?
@@ -213,7 +230,8 @@ export default function TeamAgreeProcessCreate({toggle}) {
                         <div style={{
                             width: "1200px", minWidth: "fix-content", minHeight: "700px",
                             minWidth: "fix-content",
-                            height: height,
+                            height: "max-content",
+                            marginBottom:"84px",
                         }}>
 
                             <div style={{marginTop: "64px", height: "111px", width: "100%"}}>
@@ -436,7 +454,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
 
 
             }
-            <div style={{ position: "relative" }}>
+            <div style={{ position: "relative", width:"100%" }}>
                 <Footer />
             </div>
 
