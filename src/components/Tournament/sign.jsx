@@ -8,11 +8,12 @@ import AuthContext from "context/AuthContext";
 import { useHistory } from "react-router";
 import Fade from "react-reveal/Fade";
 import { setPlatformType } from "utils";
+import moment from "moment";
 
 export default function Sign() {
   const { width, height } = useWindowDimensions();
   const [bodyscrollrdTop, setbodyscrollTop] = useState(0);
-  let { user, logoutUser, apikey } = useContext(AuthContext);
+  let { user, logoutUser, apikey, competition } = useContext(AuthContext);
   const [buttonword, setbuttonword] = useState("正式报名")
   const history = useHistory();
 
@@ -21,20 +22,6 @@ export default function Sign() {
     setloginModel(false);
   };
 
-  const sendUser = () => {
-    // if (user) {
-    //   history.push("/team/register");
-    // } else {
-    //   setloginModel(true);
-    // }
-    if (buttonword == "进入比赛"){
-      setPlatformType("competition")
-      history.push("/team/register");
-    }else{
-      history.push("/team/register");
-    }
-    
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,20 +33,72 @@ export default function Sign() {
           document.documentElement.scrollTop || document.body.scrollTop
         );
       }
-      console.log("屏幕向下距离", bodyscrollrdTop);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [bodyscrollrdTop]);
 
-  useEffect(()=>{
-    if (apikey) {
-      setbuttonword("进入比赛")
-    }else{
-      setbuttonword("正式比赛")
+  const sendUser = () => {
+    // if (user) {
+    //   history.push("/team/register");
+    // } else {
+    //   history.push("/tournament");
+    // }
+    if (buttonword == "进入赛事"){
+      setPlatformType("competition")
+      history.push("/team/register");
+    }else if(buttonword == "正式报名"){
+      history.push("/team/register");
+    }else if (buttonword == "查看赛事"){
+      /////todu
     }
-  },[apikey])
+  };
+
+  useEffect(()=>{
+    if(user == null && competition){
+      var now = moment();
+      var timeInShanghai = now.tz('Asia/Shanghai').format()
+      if (timeInShanghai < competition.register){
+        setbuttonword("正式报名")
+      } else if (competition.register < timeInShanghai && timeInShanghai < competition.start){
+        setbuttonword("正式报名")
+      } else if (competition.start < timeInShanghai){
+        setbuttonword("查看赛事")
+      }
+    }
+  },[user,competition])
+
+  useEffect(()=>{
+    if(user && competition){
+      var now = moment();
+      var timeInShanghai = now.tz('Asia/Shanghai').format()
+      if (timeInShanghai < competition.register){
+        setbuttonword("正式报名")
+      } else if (competition.register < timeInShanghai && timeInShanghai < competition.start){
+        setbuttonword("正式报名")
+      } else if (competition.start < timeInShanghai){
+        setbuttonword("查看赛事")
+      }
+    }
+  },[user,competition])
+
+
+  useEffect(()=>{
+    if (apikey && competition) {
+      var now = moment();
+      var timeInShanghai = now.tz('Asia/Shanghai').format()
+      if (timeInShanghai < competition.register){
+        setbuttonword("正式报名")
+      } else if (competition.register < timeInShanghai && timeInShanghai < competition.end){
+        setbuttonword("进入赛事")
+      } else if (competition.end < timeInShanghai){
+        setbuttonword("查看赛事")
+      }
+    }
+  },[apikey, competition])
+
+  
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import "./cover.css";
@@ -9,10 +9,16 @@ import { useHistory } from "react-router";
 
 import HeaderCreate from "../../MainPage/header";
 import AuthContext from "context/AuthContext";
+import {competitionID} from "../../../constants/maps"
+import { setPlatformType } from "utils";
+import moment from "moment";
 
 export default function Cover() {
   const { width, height } = useWindowDimensions();
-  let { user, logoutUser, apikey } = useContext(AuthContext);
+  let { user, logoutUser, apikey, competition } = useContext(AuthContext);
+  const [competitiontime, setcompetitiontime] =  useState(null)
+  const [buttonword, setbuttonword] = useState("报名赛事")
+  const [load, setload] = useState(false)
 
   const history = useHistory();
 
@@ -22,8 +28,59 @@ export default function Cover() {
     // } else {
     //   history.push("/tournament");
     // }
-    history.push("/team/register");
+    if (buttonword == "进入赛事"){
+      setPlatformType("competition")
+      history.push("/team/register");
+    }else if(buttonword == "报名赛事"){
+      history.push("/team/register");
+    }else if (buttonword == "查看赛事"){
+      /////todu
+    }
   };
+
+  useEffect(()=>{
+    if(user == null && competition){
+      var now = moment();
+      var timeInShanghai = now.tz('Asia/Shanghai').format()
+      if (timeInShanghai < competition.register){
+        setbuttonword("报名赛事")
+      } else if (competition.register < timeInShanghai && timeInShanghai < competition.start){
+        setbuttonword("报名赛事")
+      } else if (competition.start < timeInShanghai){
+        setbuttonword("查看赛事")
+      }
+    }
+  },[user,competition])
+
+  useEffect(()=>{
+    if(user && competition){
+      var now = moment();
+      var timeInShanghai = now.tz('Asia/Shanghai').format()
+      if (timeInShanghai < competition.register){
+        setbuttonword("报名赛事")
+      } else if (competition.register < timeInShanghai && timeInShanghai < competition.start){
+        setbuttonword("报名赛事")
+      } else if (competition.start < timeInShanghai){
+        setbuttonword("查看赛事")
+      }
+    }
+  },[user,competition])
+
+
+  useEffect(()=>{
+    if (apikey && competition) {
+      var now = moment();
+      var timeInShanghai = now.tz('Asia/Shanghai').format()
+      if (timeInShanghai < competition.register){
+        setbuttonword("报名赛事")
+      } else if (competition.register < timeInShanghai && timeInShanghai < competition.end){
+        setbuttonword("进入赛事")
+      } else if (competition.end < timeInShanghai){
+        setbuttonword("查看赛事")
+      }
+    }
+  },[apikey, competition])
+
   return (
     <div
       id="home"
@@ -141,7 +198,7 @@ export default function Cover() {
                   fontFamily: "Microsoft YaHei UI-Bold",
                 }}
               >
-                {apikey? "进入赛事" : "报名参赛"}
+                {buttonword}
               </Button>
             </div>
           </div>
@@ -200,7 +257,7 @@ export default function Cover() {
                 size="sm"
                 onClick={() => sendUser()}
               >
-                {apikey? "进入赛事" : "报名参赛"}
+                {buttonword}
               </Button>
             </div>
           </>

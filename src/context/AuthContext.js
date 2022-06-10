@@ -4,8 +4,9 @@ import { useHistory, useLocation } from "react-router-dom";
 import { clearLocalStorage, setPlatformType } from "utils";
 import { fetchUser } from "redux/reducers/users/usersSlices";
 import { useDispatch } from "react-redux";
-import { apiGetCompetitionAPIKey } from "api/main_platform/competitions";
+import { apiGetAllCompetitions, apiGetCompetitionAPIKey, apiGetTeamAccount } from "api/main_platform/competitions";
 import { competitionID } from "constants/maps";
+import moment from "moment";
 
 const AuthContext = createContext();
 
@@ -19,6 +20,8 @@ export const AuthProvider = ({ children }) => {
       : null
   );
   const [apikey, setapikey] = useState(null);
+  const [competition, setcompetition] = useState(null)
+  const [team, setteam] = useState(null)
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens")
       ? JSON.parse(localStorage.getItem("authTokens"))
@@ -109,6 +112,8 @@ export const AuthProvider = ({ children }) => {
     apikey: apikey,
     authTokens: authTokens,
     logoutUser: logoutUser,
+    competition:competition,
+    team:team,
   };
 
   // useEffect(()=>{
@@ -126,13 +131,46 @@ export const AuthProvider = ({ children }) => {
       const response = await apiGetCompetitionAPIKey(competitionID)
       if (response.data.msg == "OK."){
         const apikey = response.data.data.api_key
-        console.log(apikey,128)
         setapikey(apikey)
       }else{
         setapikey(null)
       }
     }catch(e){
 
+    }
+  }
+
+  const GetCompetitions = async (id) =>{
+    try{
+      const response = await apiGetAllCompetitions(id)
+      if (response.data.msg == "OK."){
+        const competitions = response.data.data
+        const competition_want = competitions.filter((elem) => elem.id == competitionID)
+        let competition_time = {}
+        competition_time.register = competition_want[0].registration_time
+        competition_time.start = competition_want[0].start_time
+        competition_time.end = competition_want[0].end_time
+        setcompetition(competition_time)
+      }else{
+        setcompetition(null)
+      }
+    }catch(e){
+      console.log(e)
+    }
+  }
+
+  const GetCompetitionTeam = async (id) =>{
+    try{
+      const response = await apiGetTeamAccount(1)
+      if (response.data.msg == "OK."){
+        const teamA = response.data.data
+        console.log(teamA,163)
+        setteam(teamA)
+      }else{
+        setteam(null)
+      }
+    }catch(e){
+      console.log(e)
     }
   }
 
@@ -144,11 +182,33 @@ export const AuthProvider = ({ children }) => {
   ///////////////////////有user后自动请求apikey
   useEffect(() =>{
     if (user){
+      GetCompetitions(null)
       GetCompetitionAPIKey()
-    }else{
+    }
+  },[user])
+
+  useEffect(() =>{
+    if (!user){
+      GetCompetitions(null)
       setapikey(null)
     }
   },[user])
+
+
+  /////////////////////有apikey后自动请求team
+  useEffect(() =>{
+    if (apikey){
+      GetCompetitionTeam(null)
+      GetCompetitions(null)
+    }
+  },[apikey])
+
+  useEffect(()=>{
+    if (!apikey){
+      GetCompetitions(null)
+      setteam(null)
+    }
+  },[apikey])
 
   return (
     <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>

@@ -8,6 +8,7 @@ import { Button, Form, Image } from "react-bootstrap";
 import { useHistory } from "react-router";
 import Footer from "components/MainPage/footer";
 import AuthContext from "../../../context/AuthContext";
+import { clearLocalStorage } from "utils";
 
 export default function TeamEntry() {
   let { user, logoutUser } = useContext(AuthContext);
@@ -51,6 +52,10 @@ export default function TeamEntry() {
   }, [hovercreate, hoverjoin, joinshow, createshow]);
 
   const handleMouseLeaveJ = () => setHoverjoin(false);
+
+  useEffect(()=>{
+    clearLocalStorage()
+  })
 
   return (
     <>

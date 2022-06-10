@@ -32,6 +32,7 @@ import TeamInfo from "pages/TeamInfo";
 import { apiSymbolsAllForSearch } from "api/trading_platform/market";
 import PrivateCompetitionRoute from "utils/PrivateCompetitionRoute";
 import PrivateRegisterForCompetition from "utils/PrivateRegisterForCompetition";
+import CompetitionViewforPublic from "pages/CompetitionViewforPublic";
 
 
 const HomePage = () => {
@@ -107,6 +108,7 @@ const getSearchData = async (props) => {
         <PrivateRegisterForCompetition exact path="/team/join" component={TeamAgreeProcessJoin} />
         <Route exact path="/tournament" component={Tournament} />
         <Route exact path="/tournament/" component={RedirectComponent("/tournament")} />
+        <Route exact path="/competitionReview" component={CompetitionViewforPublic} />
 
 
 

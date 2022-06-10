@@ -151,7 +151,7 @@ export default function RegisterForm(props) {
 
     const submitregisterForm = async (e) => {
         e.preventDefault();
-        setUserState({...userState, ...{region:linkedArea.value}})
+        setUserState({...userState, ...{region:linkedArea.value},...{institution:linkedSchool.value}})
         try{
             const JsonData = JSON.stringify(userState)
             const response = await apiRegisterUser(JsonData)
@@ -378,7 +378,7 @@ export default function RegisterForm(props) {
                         style={{borderRadius: "6px", background: "white", paddingBottom: "5px"}}
                     >
                             <span className="publish-upload-file-text"
-                                  style={{color: "#1442ED", marginLeft: "0px"}}>上传头像</span>
+                                  style={{color: "#1442ED", marginLeft: "0px"}}>上传头像（选填）</span>
                         <input
                             hidden
                             ref={uploadFile}
@@ -478,8 +478,8 @@ export default function RegisterForm(props) {
                             onChange={(e) => {
                                 const confirmPassword = e.target.value;
                                 setConfirmPassword(e.target.value)
-                                const mobile_number = 13883729275
-                                setUserState({...userState, ...{mobile_number}});
+                                // const mobile_number = 13883729275
+                                // setUserState({...userState, ...{mobile_number}});
                             }}
                             pattern={IsPassword(confirmPassword)}
                         ></Form.Control>
@@ -553,7 +553,12 @@ export default function RegisterForm(props) {
                                 type = "date"
                                 required
                                 value={birthday}
-                                onChange={(e) => setbirthday(e.target.value)}
+                                onChange={(e) => {
+                                    setbirthday(e.target.value)
+                                    const birthday = e.target.value
+                                    setUserState({...userState, ...{birthday}})
+                                }
+                                }
                             >
                             </Form.Control>
                         </div>
