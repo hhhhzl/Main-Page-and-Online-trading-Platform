@@ -51,7 +51,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
 
         <Container
           className="content-center"
-          style={{ padding: "44px 20px 0px" }}
+          style={{ padding: "44px 0px 0px",margin:"0px 18.75%",width:"62.533%" }}
         >
           <div className="left-icon">
             <Image
@@ -66,11 +66,11 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               fontSize: width > 1300 ? "24px" : width > 960 ? "20px" : "16px",
               fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
               lineHeight: "48px",
-              letterSpacing: "0.2px",
+              letterSpacing: "1.5px",
+              marginBottom: "0px",
             }}
           >
-            UFA全球青年汇 (英文缩写"UFA")
-            是面向全球顶级高校（包括不限于美国排名TOP30、中国内地TOP10、中国香港四大高校等）建立的首个跨学校，跨地区，跨文化的大学生财经社团。我们的愿景是“助力祖国联结未来华人精英，共同建设祖国金融未来”。
+            UFA全球青年汇，是由世界名校密歇根大学，南加州大学，香港大学等学生联合创办创立的学生组织。目前，UFA全球青年汇已经与包括耶鲁大学，麻省理工大学，牛津大学，清华大学等校在内的80余所顶尖名校学联达成合作协议。{" "}
           </p>
           <br />
           <p
@@ -81,11 +81,10 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               textIndent: "0",
               fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
               lineHeight: "48px",
-              letterSpacing: "1px",
+              letterSpacing: "1.4px",
             }}
           >
-            自成立以来，UFA全球青年汇会与中信证券、海外超过100所高校等建立起合作关系，并联合策划了名家分享会，财经系列公益讲座、全球大学生投资大赛等多个活动。“UFA金融大赛”是由 UFA
-            全球青年汇牵头发起的首个汇聚全球顶尖高校大学生的大型线上模拟投资比赛。
+            UFA金融大赛是由UFA全球青年汇，实力携手中信证券发起的首个全球华人大学生模拟投资大赛。大赛为非盈利赛事，旨在为全球华人大学生提供金融实践与知识交流平台。大赛鼓励大学生以知践行，以行促知，助推金融行业复合型人才培养。
           </p>
           <div className="right-icon">
             <Image
@@ -101,7 +100,10 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
           <br />
         </Container>
 
-        <div className="video" style={{paddingBottom:width>650 ?"120px":"0px"}}>
+        <div
+          className="video"
+          style={{ paddingBottom: width > 650 ? "120px" : "0px" }}
+        >
           <div className="text-center">
             <Image
               src="/homeCutout/Group 175@2x.png"
@@ -149,12 +151,15 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
             className="about-center"
             style={{
               width: width > 1385 ? "68.5%" : width < 1350 ? "93%" : "71%",
-              marginTop: width < 700 ? "60%" : ''
+              marginTop: width < 700 ? "60%" : "",
             }}
           >
             {width < 680 ? (
               <>
-                <Row className="center-container" style={{flexDirection: width < 700 ? 'column' : 'row'}}>
+                <Row
+                  className="center-container"
+                  style={{ flexDirection: width < 700 ? "column" : "row" }}
+                >
                   <Col className="flex-center">
                     <div className="introduction-box">
                       <Row>
@@ -202,7 +207,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                               lineHeight: "28px",
                             }}
                           >
-                            “UFA杯”
+                            “UFA金融大赛”
                             由UFA与中信证券联合举办，旨在打造最具权威的大学生金融赛事
                           </div>
                         </div>
@@ -257,7 +262,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                               lineHeight: "28px",
                             }}
                           >
-                            “UFA杯”
+                            “UFA金融大赛”
                             荣幸邀请各界金融大咖全程参与并与参赛选手进行高效、深度沟通互动，将在线上线下同步举办大型交流、展示活动
                           </div>
                         </div>
@@ -312,7 +317,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                               lineHeight: "28px",
                             }}
                           >
-                            “UFA杯”
+                            “UFA金融大赛”
                             将面向海内外100+所大学开放赛事，旨在打造万人规模金融赛事，成为海内外金融大学生的首要聚集地
                           </div>
                         </div>
@@ -323,7 +328,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               </>
             ) : (
               <>
-                <Row style={{flexDirection: width < 700 ? 'column' : 'row'}}>
+                <Row style={{ flexDirection: width < 700 ? "column" : "row" }}>
                   <Col className="flex-center">
                     <div className="introduction-box">
                       <Row>
@@ -371,7 +376,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                               lineHeight: "28px",
                             }}
                           >
-                            “UFA杯”
+                            “UFA金融大赛”
                             由UFA与中信证券联合举办，旨在打造最具权威的大学生金融赛事
                           </div>
                         </div>
@@ -425,7 +430,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                               lineHeight: "28px",
                             }}
                           >
-                            “UFA杯”
+                            “UFA金融大赛”
                             荣幸邀请各界金融大咖全程参与并与参赛选手进行高效、深度沟通互动，将在线上线下同步举办大型交流、展示活动
                           </div>
                         </div>
@@ -479,7 +484,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                               lineHeight: "28px",
                             }}
                           >
-                            “UFA杯”
+                            “UFA金融大赛”
                             将面向海内外100+所大学开放赛事，旨在打造万人规模金融赛事，成为海内外金融大学生的首要聚集地
                           </div>
                         </div>
@@ -492,7 +497,11 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
           </div>
           <h5
             className="text-center"
-            style={{ marginTop: width > 650 ?"-80px" :"0px",position:"relative",bottom:width>650 ?"0px":"180px"}}
+            style={{
+              marginTop: width > 650 ? "-80px" : "0px",
+              position: "relative",
+              bottom: width > 650 ? "0px" : "180px",
+            }}
           >
             <Button
               className="video-btn"

@@ -87,22 +87,75 @@ const Finance = ({ profileImg, hobbyImgs }) => {
           <div className="insight-into">
             <div className="finance-title">财经洞悉</div>
             <div style={{ marginTop: "80px", position: "relative" }}>
-              <Image
-                src="/tournament/Group 797@2x.png"
-                style={{ width: " 100%", height: "100%" }}
-              />
-              <a href="/eplatform">
-                <Image
-                  className="button-hover"
-                  src="/tournament/赛事账户@2x.png"
-                  style={{
-                    position: "absolute",
-                    left: "44.7%",
-                    top: "70%",
-                    width: "8%",
-                  }}
-                />
-              </a>
+              {width > 1200 ? (
+                <>
+                  <Image
+                    src="/tournament/Group 797@2x.png"
+                    style={{ width: " 100%", height: "100%" }}
+                  />
+                  <a href="/eplatform">
+                    <Image
+                      className="button-hover"
+                      src="/tournament/赛事账户@2x.png"
+                      style={{
+                        position: "absolute",
+                        left: "44.7%",
+                        top: "70%",
+                        width: "8%",
+                      }}
+                    />
+                  </a>
+                </>
+              ) : width > 800 ? (
+                <>
+                  <Image
+                    src="/tournament/Group 1117@2x.png"
+                    style={{ width: " 100%", height: "100%" }}
+                  />
+                  <a href="/eplatform">
+                    <Image
+                      className="button-hover"
+                      src="/tournament/赛事账户-pad@2x.png"
+                      style={{
+                        position: "absolute",
+                        left: "44.7%",
+                        top: "70%",
+                        width: "8%",
+                      }}
+                    />
+                  </a>
+                </>
+              ) : (
+                <>
+                  <Image
+                    src="/tournament/Group 1127@2x.png"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      maxHeight: "248px",
+                      maxWidth: "674px",
+                      minWidth: "337px",
+                      minHeight: "124px",
+                    }}
+                  />
+                  <a href="/eplatform">
+                    <Image
+                      className="button-hover"
+                      src="/tournament/赛事账户-phone@2x.png"
+                      style={{
+                        position: "absolute",
+                        left: "24%",
+                        top: "85%",
+                        width: "17%",
+                        maxHeight: "27px",
+                        maxWidth: "113px",
+                        minWidth: "57px",
+                        minHeight: "14px",
+                      }}
+                    />
+                  </a>
+                </>
+              )}
             </div>
             <div className="finance-note">
               （“财经洞悉”撰写质量不会给予评分，此板块不影响比赛分数）

@@ -56,7 +56,7 @@ const Contacts = () => {
                                         lineHeight: "28px",
                                     }}
                                 >
-                                    “UFA杯” 由UFA与中信证券联合举办
+                                    “UFA金融大赛” 由UFA与中信证券联合举办
                                 </div>
                             </div>
                         </div>
@@ -103,7 +103,7 @@ const Contacts = () => {
                                         lineHeight: "28px",
                                     }}
                                 >
-                                    “UFA杯” 由UFA与中信证券联合举办
+                                    “UFA金融大赛” 由UFA与中信证券联合举办
                                 </div>
                             </div>
                         </div>
@@ -148,7 +148,7 @@ const Contacts = () => {
                                         lineHeight: "28px",
                                     }}
                                 >
-                                    “UFA杯” 由UFA与中信证券联合举办
+                                    “UFA金融大赛” 由UFA与中信证券联合举办
                                 </div>
                             </div>
                         </div>
@@ -195,7 +195,7 @@ const Contacts = () => {
                                         lineHeight: "28px",
                                     }}
                                 >
-                                    “UFA杯” 由UFA与中信证券联合举办
+                                    “UFA金融大赛” 由UFA与中信证券联合举办
                                 </div>
                             </div>
                         </div>
@@ -242,7 +242,7 @@ const Contacts = () => {
                                         lineHeight: "28px",
                                     }}
                                 >
-                                    “UFA杯” 由UFA与中信证券联合举办
+                                    “UFA金融大赛” 由UFA与中信证券联合举办
                                 </div>
                             </div>
                         </div>
@@ -287,7 +287,7 @@ const Contacts = () => {
                                         lineHeight: "28px",
                                     }}
                                 >
-                                    “UFA杯” 由UFA与中信证券联合举办
+                                    “UFA金融大赛” 由UFA与中信证券联合举办
                                 </div>
                             </div>
                         </div>
@@ -335,7 +335,7 @@ const Contacts = () => {
                                         lineHeight: "28px",
                                     }}
                                 >
-                                    “UFA杯” 由UFA与中信证券联合举办
+                                    “UFA金融大赛” 由UFA与中信证券联合举办
                                 </div>
                             </div>
                         </div>
@@ -382,7 +382,7 @@ const Contacts = () => {
                                         lineHeight: "28px",
                                     }}
                                 >
-                                    “UFA杯” 由UFA与中信证券联合举办
+                                    “UFA金融大赛” 由UFA与中信证券联合举办
                                 </div>
                             </div>
                         </div>
@@ -429,7 +429,7 @@ const Contacts = () => {
                                         lineHeight: "28px",
                                     }}
                                 >
-                                    “UFA杯” 由UFA与中信证券联合举办
+                                    “UFA金融大赛” 由UFA与中信证券联合举办
                                 </div>
                             </div>
                         </div>
@@ -476,7 +476,7 @@ const Contacts = () => {
                                         lineHeight: "28px",
                                     }}
                                 >
-                                    “UFA杯” 由UFA与中信证券联合举办
+                                    “UFA金融大赛” 由UFA与中信证券联合举办
                                 </div>
                             </div>
                         </div>
@@ -523,7 +523,7 @@ const Contacts = () => {
                                         lineHeight: "28px",
                                     }}
                                 >
-                                    “UFA杯” 由UFA与中信证券联合举办
+                                    “UFA金融大赛” 由UFA与中信证券联合举办
                                 </div>
                             </div>
                         </div>
@@ -570,7 +570,7 @@ const Contacts = () => {
                                         lineHeight: "28px",
                                     }}
                                 >
-                                    “UFA杯” 由UFA与中信证券联合举办
+                                    “UFA金融大赛” 由UFA与中信证券联合举办
                                 </div>
                             </div>
                         </div>
@@ -618,7 +618,7 @@ const Contacts = () => {
                           lineHeight: "28px",
                         }}
                     >
-                      “UFA杯” 由UFA与中信证券联合举办
+                      “UFA金融大赛” 由UFA与中信证券联合举办
                     </div>
                   </div>
                 </div>
@@ -665,7 +665,7 @@ const Contacts = () => {
                           lineHeight: "28px",
                         }}
                     >
-                      “UFA杯” 由UFA与中信证券联合举办
+                      “UFA金融大赛” 由UFA与中信证券联合举办
                     </div>
                   </div>
                 </div>
@@ -712,7 +712,7 @@ const Contacts = () => {
                           lineHeight: "28px",
                         }}
                     >
-                      “UFA杯” 由UFA与中信证券联合举办
+                      “UFA金融大赛” 由UFA与中信证券联合举办
                     </div>
                   </div>
                 </div>
@@ -759,7 +759,7 @@ const Contacts = () => {
                           lineHeight: "28px",
                         }}
                     >
-                      “UFA杯” 由UFA与中信证券联合举办
+                      “UFA金融大赛” 由UFA与中信证券联合举办
                     </div>
                   </div>
                 </div>
@@ -806,7 +806,7 @@ const Contacts = () => {
                           lineHeight: "28px",
                         }}
                     >
-                      “UFA杯” 由UFA与中信证券联合举办
+                      “UFA金融大赛” 由UFA与中信证券联合举办
                     </div>
                   </div>
                 </div>
@@ -853,7 +853,7 @@ const Contacts = () => {
                           lineHeight: "28px",
                         }}
                     >
-                      “UFA杯” 由UFA与中信证券联合举办
+                      “UFA金融大赛” 由UFA与中信证券联合举办
                     </div>
                   </div>
                 </div>
@@ -873,22 +873,22 @@ const Contacts = () => {
           <div className="text-center" style={{ paddingTop: "80px" }}>
             <div style={{marginBottom:"43px"}}>
               {width > 500 ? <>  <Image
-                  src="/corpo.png"
+                  src="/homeCutout/ufa-qr.jpg"
                   style={{ width: "160px", height: "160px", marginRight: "40px" }}
               />
                 <Image
-                    src="/homeCutout/Group 8100.png"
+                    src="/homeCutout/chen-qr.jpg"
                     style={{ width: "160px", height: "160px", marginLeft: "40px" }}
                 /> </>:<>
                 <div>
                   <Image
-                      src="/corpo.png"
+                      src="/homeCutout/ufa-qr.jpg"
                       style={{ width: "160px", height: "160px" }}
                   />
                 </div>
                 <div>
                   <Image
-                      src="/homeCutout/Group 8100.png"
+                      src="/homeCutout/chen-qr.jpg"
                       style={{ width: "160px", height: "160px",marginTop:"40px"}}
                   />
                 </div>

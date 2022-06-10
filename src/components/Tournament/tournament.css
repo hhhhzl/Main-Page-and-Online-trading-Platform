@@ -2,7 +2,7 @@
     padding-left: 18.75%;
     background: #ffffff;
     position: relative;
-    z-index: 999;
+    z-index: 100;
 }
 
 /* .tabs-item{

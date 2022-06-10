@@ -34,6 +34,8 @@ import PrivateCompetitionRoute from "utils/PrivateCompetitionRoute";
 import PrivateRegisterForCompetition from "utils/PrivateRegisterForCompetition";
 import CompetitionViewforPublic from "pages/CompetitionViewforPublic";
 
+import NotFound from "pages/404/404";
+
 
 const HomePage = () => {
   return (
@@ -94,6 +96,8 @@ const getSearchData = async (props) => {
   return (
     <Switch>
       <AuthProvider>
+      
+        <Route exact path="/404" component={NotFound} />
         <Route exact path="/register" component={LoginMainLayout} />
         <Route exact path="/login" component={LoginMainLayout} />
         <Route exact path="/Vlogin" component={LoginMainLayout} />
