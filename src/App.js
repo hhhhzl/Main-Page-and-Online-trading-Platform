@@ -32,6 +32,8 @@ import TeamInfo from "pages/TeamInfo";
 import { apiSymbolsAllForSearch } from "api/trading_platform/market";
 import PrivateCompetitionRoute from "utils/PrivateCompetitionRoute";
 
+import NotFound from "pages/404/404";
+
 
 const HomePage = () => {
   return (
@@ -92,6 +94,8 @@ const getSearchData = async (props) => {
   return (
     <Switch>
       <AuthProvider>
+      
+        <Route exact path="/404" component={NotFound} />
         <Route exact path="/register" component={LoginMainLayout} />
         <Route exact path="/login" component={LoginMainLayout} />
         <Route exact path="/Vlogin" component={LoginMainLayout} />
