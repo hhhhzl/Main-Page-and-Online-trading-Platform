@@ -25,6 +25,7 @@ export default ({ searchData }) => {
 
   useEffect(() => {
     if (load) {
+      console.log(user)
       dispatch(fetchUser(user.user_id));
       setload(false);
     }

@@ -54,11 +54,8 @@ export const AuthProvider = ({ children }) => {
       setAuthTokens(data.data);
       setuser(jwt_decode(data.data.access));
       localStorage.setItem("authTokens", JSON.stringify(data.data));
-      console.log(jwt_decode(data.data.access))
       dispatch(fetchUser(jwt_decode(data.data.access).user_id))
-
-      ///TO list : ask and set for apiKey
-    
+      GetCompetitionAPIKey()
       if (route.from == "/eplatform"){
          setPlatformType("eplatform")
         history.push(route.from);
@@ -66,7 +63,8 @@ export const AuthProvider = ({ children }) => {
        setPlatformType("competition")
         history.push(route.from);
       } else if (route.from == "/team/register"){
-        history.push('/team/register')
+          setPlatformType("competition")
+          history.push('/competition')        
       }else{
         history.push('/')
       }

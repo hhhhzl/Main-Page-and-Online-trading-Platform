@@ -11,10 +11,10 @@ export default function  PersonalHomepage({
 	let {user} = useContext(AuthContext)
 	let history = useHistory();
 	const [username, setUsername] = useState(user? user.username : null);
-	const [name, setname] = useState(userget? userget.last_name : null);
-	const [gender, setgender] = useState(userget? userget.gender : null);
-	const [region, setregion] = useState(userget? userget.region : null);
-	const [school, setSchool] = useState(userget? userget.institution : null);
+	const [name, setname] = useState(userget?.last_name);
+	const [gender, setgender] = useState(userget?.gender);
+	const [region, setregion] = useState(userget?.region);
+	const [school, setSchool] = useState(userget?.institution);
 	const [personalProfile,setPersonalProfile] = useState(userget.experience?.length> 0? userget.experience : [{company:"",position:"完善经历让其他小伙伴更了解你哟~~",detail:""}]);
 	return(
 		<>
@@ -22,6 +22,7 @@ export default function  PersonalHomepage({
 				<div style={{padding: "60px"}}>
 					<Image
 					  src={userget.avatar}
+					  roundedCircle
 					  style={{ width: "160px", height: "160px" }}
 					/>
 				</div>

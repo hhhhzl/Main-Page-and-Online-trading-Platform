@@ -151,7 +151,9 @@ export default function RegisterForm(props) {
 
     const submitregisterForm = async (e) => {
         e.preventDefault();
-        setUserState({...userState, ...{region:linkedArea.value},...{institution:linkedSchool.value}})
+        console.log(typeof(headPortrait),154)
+        setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value}})
+        console.log(userState,155)
         try{
             const JsonData = JSON.stringify(userState)
             const response = await apiRegisterUser(JsonData)
@@ -164,6 +166,7 @@ export default function RegisterForm(props) {
                 alert("注册失败...")
             }
         }catch(e){
+            console.log(e)
             alert("注册失败, 系统错误, 请稍后重试...")
         }
     }
@@ -271,13 +274,14 @@ export default function RegisterForm(props) {
       };
 
 
-    useEffect(()=>{
-        if (submit){
-            setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value},...{avatar:headPortrait}})
-            setsubmit(false)
-            console.log(userState)
-        }
-    }, [submit, userState])
+    // useEffect(()=>{
+    //     if (submit){
+            
+    //         setsubmit(false)
+    //         console.log(userState)
+    //         submitregisterForm(e)
+    //     }
+    // }, [submit, userState])
 
     return (
         <>
@@ -657,8 +661,8 @@ export default function RegisterForm(props) {
                     e.stopPropagation();
                     setValidated2(true)
                     }else{
-                        setsubmit(true)
                       submitregisterForm(e)
+                      
                     }
                 }}>
                     <Form.Group className="loadingusername">

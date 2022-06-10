@@ -53,10 +53,6 @@ export default function TeamEntry() {
 
   const handleMouseLeaveJ = () => setHoverjoin(false);
 
-  useEffect(()=>{
-    clearLocalStorage()
-  })
-
   return (
     <>
       <div>

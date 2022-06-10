@@ -219,7 +219,6 @@ export default function EditData({
 											{/*style={{marginLeft:"12px"}}>删除</Button>*/}
 										  <Image
 											  show={experienceList.length!=1}
-
 											  onClick={() => handleDelete(idx)}
 											  src="/Frame-delete.png"
 											  style={{

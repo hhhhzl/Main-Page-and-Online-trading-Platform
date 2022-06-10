@@ -34,7 +34,7 @@ export default function Cover() {
     }else if(buttonword == "报名赛事"){
       history.push("/team/register");
     }else if (buttonword == "查看赛事"){
-      /////todu
+      history.push("/competitionReview")
     }
   };
 

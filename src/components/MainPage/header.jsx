@@ -38,10 +38,12 @@ const HeaderCreate = ({ toggle }) => {
   };
   const sendUser = () => {
     if (!user){
+      setPlatformType("competition");
       history.push("/competition")
     }else if (user && !apikey){
       setShowNotInTeam(true)
     }else if (user && apikey){
+      setPlatformType("competition");
       history.push("/competition")
     }
   };
@@ -488,7 +490,6 @@ const HeaderCreate = ({ toggle }) => {
                 offset={-20}
                 onClick={() => {
                   changeCurrent(4);
-                  setPlatformType("competition");
                   sendUser()
                 }}
                 activeClass={
