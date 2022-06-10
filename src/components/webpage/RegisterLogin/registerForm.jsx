@@ -273,16 +273,11 @@ export default function RegisterForm(props) {
 
     useEffect(()=>{
         if (submit){
-            setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value}})
+            setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value},...{avatar:headPortrait}})
             setsubmit(false)
             console.log(userState)
         }
     }, [submit, userState])
-
-    useEffect(()=>{
-        console.log(userState)
-    })
-
 
     return (
         <>
