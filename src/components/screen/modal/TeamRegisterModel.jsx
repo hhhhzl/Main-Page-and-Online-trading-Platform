@@ -21,8 +21,8 @@ function centerAspectCrop(
   return centerCrop(
     makeAspectCrop(
       {
-        unit: '%',
-        width: 90,
+        unit: 'px',
+        width: mediaWidth,
       },
       aspect,
       mediaWidth,
@@ -49,6 +49,7 @@ export default function TeamRegisterModel({showModal,hideModal,getBase64,imgSrc}
     if (aspect) {
       const { width, height } = e.currentTarget
       setCrop(centerAspectCrop(width, height, aspect));
+	  setCompletedCrop(centerAspectCrop(width, height, aspect))
     }
   }
 
