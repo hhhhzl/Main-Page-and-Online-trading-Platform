@@ -11,13 +11,15 @@ export default function TournamentBg() {
       style={{
         background:
           width > 1920
-            ? "url('/tournament/Group 798@2x.png') center center / 100% no-repeat"
-            : "url('/tournament/Group 798.png') center center / 100%  no-repeat",
+            ? "url('/tournament/Group 798@2x.png') center center no-repeat"
+            : "url('/tournament/Group 798.png') center center no-repeat",
         width: width,
-        height: width / 2.67,
+        height: "720px",
       }}
     >
-      
+      <div className="tournament-bg">
+        
+      </div>
     </div>
   );
 }
