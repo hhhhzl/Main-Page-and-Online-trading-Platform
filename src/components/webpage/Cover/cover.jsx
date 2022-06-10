@@ -12,16 +12,17 @@ import AuthContext from "context/AuthContext";
 
 export default function Cover() {
   const { width, height } = useWindowDimensions();
-  let { user, logoutUser } = useContext(AuthContext);
+  let { user, logoutUser, apikey } = useContext(AuthContext);
 
   const history = useHistory();
 
   const sendUser = () => {
-    if (user) {
-      history.push("/team/register");
-    } else {
-      history.push("/tournament");
-    }
+    // if (user) {
+    //   history.push("/team/register");
+    // } else {
+    //   history.push("/tournament");
+    // }
+    history.push("/team/register");
   };
   return (
     <div
@@ -140,7 +141,7 @@ export default function Cover() {
                   fontFamily: "Microsoft YaHei UI-Bold",
                 }}
               >
-                报名参赛
+                {apikey? "进入赛事" : "报名参赛"}
               </Button>
             </div>
           </div>
@@ -199,7 +200,7 @@ export default function Cover() {
                 size="sm"
                 onClick={() => sendUser()}
               >
-                报名参赛
+                {apikey? "进入赛事" : "报名参赛"}
               </Button>
             </div>
           </>

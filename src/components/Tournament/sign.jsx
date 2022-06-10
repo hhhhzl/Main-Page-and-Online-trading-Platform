@@ -7,11 +7,13 @@ import useWindowDimensions from "../../utils/sizewindow";
 import AuthContext from "context/AuthContext";
 import { useHistory } from "react-router";
 import Fade from "react-reveal/Fade";
+import { setPlatformType } from "utils";
 
 export default function Sign() {
   const { width, height } = useWindowDimensions();
   const [bodyscrollrdTop, setbodyscrollTop] = useState(0);
-  let { user, logoutUser } = useContext(AuthContext);
+  let { user, logoutUser, apikey } = useContext(AuthContext);
+  const [buttonword, setbuttonword] = useState("正式报名")
   const history = useHistory();
 
   const [loginModel, setloginModel] = useState(false);
@@ -20,11 +22,18 @@ export default function Sign() {
   };
 
   const sendUser = () => {
-    if (user) {
+    // if (user) {
+    //   history.push("/team/register");
+    // } else {
+    //   setloginModel(true);
+    // }
+    if (buttonword == "进入比赛"){
+      setPlatformType("competition")
       history.push("/team/register");
-    } else {
-      setloginModel(true);
+    }else{
+      history.push("/team/register");
     }
+    
   };
 
   useEffect(() => {
@@ -43,6 +52,14 @@ export default function Sign() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [bodyscrollrdTop]);
+
+  useEffect(()=>{
+    if (apikey) {
+      setbuttonword("进入比赛")
+    }else{
+      setbuttonword("正式比赛")
+    }
+  },[apikey])
 
   return (
     <>
@@ -238,7 +255,7 @@ export default function Sign() {
               size="sm"
               onClick={() => sendUser()}
             >
-              正式报名
+              {buttonword}
             </Button>
           </div>
         </div>

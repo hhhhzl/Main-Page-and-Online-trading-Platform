@@ -13,10 +13,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default ({ searchData }) => {
   let { apikey, user } = useContext(AuthContext);
+  const [load, setload] = useState(true);
   const { width, height } = useWindowDimensions();
   const [platformType, setPlatformType] = useState(getPlatformType());
   const { data } = useSelector((state) => state.userInfo);
-  const [load, setload] = useState(true);
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {

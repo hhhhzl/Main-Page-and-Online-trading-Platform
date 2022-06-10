@@ -4,6 +4,8 @@ import { useHistory, useLocation } from "react-router-dom";
 import { clearLocalStorage, setPlatformType } from "utils";
 import { fetchUser } from "redux/reducers/users/usersSlices";
 import { useDispatch } from "react-redux";
+import { apiGetCompetitionAPIKey } from "api/main_platform/competitions";
+import { competitionID } from "constants/maps";
 
 const AuthContext = createContext();
 
@@ -16,11 +18,7 @@ export const AuthProvider = ({ children }) => {
       ? jwt_decode(localStorage.getItem("authTokens"))
       : null
   );
-  const [apikey, setapikey] = useState(() => 
-    localStorage.getItem("apikey")
-      ? localStorage.getItem("apikey")
-      : "sadsdkahk"
-  );
+  const [apikey, setapikey] = useState(null);
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens")
       ? JSON.parse(localStorage.getItem("authTokens"))
@@ -53,7 +51,8 @@ export const AuthProvider = ({ children }) => {
       setAuthTokens(data.data);
       setuser(jwt_decode(data.data.access));
       localStorage.setItem("authTokens", JSON.stringify(data.data));
-      dispatch(fetchUser())
+      console.log(jwt_decode(data.data.access))
+      dispatch(fetchUser(jwt_decode(data.data.access).user_id))
 
       ///TO list : ask and set for apiKey
     
@@ -63,7 +62,9 @@ export const AuthProvider = ({ children }) => {
       }else if (route.from == "/competition"){
        setPlatformType("competition")
         history.push(route.from);
-      } else{
+      } else if (route.from == "/team/register"){
+        history.push('/team/register')
+      }else{
         history.push('/')
       }
     } else if (data.data.detail == "No active account found with the given credentials") {
@@ -120,9 +121,34 @@ export const AuthProvider = ({ children }) => {
   //     return () => clearInterval(interval)
   // },[authTokens,loading])
 
+  const GetCompetitionAPIKey = async () =>{
+    try{
+      const response = await apiGetCompetitionAPIKey(competitionID)
+      if (response.data.msg == "OK."){
+        const apikey = response.data.data.api_key
+        console.log(apikey,128)
+        setapikey(apikey)
+      }else{
+        setapikey(null)
+      }
+    }catch(e){
+
+    }
+  }
+
   useEffect(() =>{
     setRoute((prev) => ({to: location.pathname, from: prev.to}))
   },[location])
+
+
+  ///////////////////////有user后自动请求apikey
+  useEffect(() =>{
+    if (user){
+      GetCompetitionAPIKey()
+    }else{
+      setapikey(null)
+    }
+  },[user])
 
   return (
     <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>

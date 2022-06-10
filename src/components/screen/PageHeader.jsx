@@ -82,7 +82,7 @@ export default function PageHeader({searchData, platformType, showrankingOnly,to
 
   :
 
-  platformType == "competition" && showrankingOnly != true?
+  platformType == "competition" && apikey?
   [{
     id: 0,
     title: "账户总览",
@@ -114,7 +114,8 @@ export default function PageHeader({searchData, platformType, showrankingOnly,to
     link: `/${platformType}/invest_notes`,
   },
 
-  ] : 
+  ] 
+  : 
   
   [
   {
@@ -528,7 +529,7 @@ export default function PageHeader({searchData, platformType, showrankingOnly,to
               </MenuItemLinksRouter>
               {platformType == "competition"? 
               <>
-              <MenuItemLinksRouter
+              {apikey? <MenuItemLinksRouter
                 to="/team"
                 offset={-50}
                 spy={true}
@@ -537,7 +538,7 @@ export default function PageHeader({searchData, platformType, showrankingOnly,to
                 className="menu-item"
               >
                 团队信息
-              </MenuItemLinksRouter>
+              </MenuItemLinksRouter> : null}
               </>
               :null
               }
