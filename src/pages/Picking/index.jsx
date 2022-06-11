@@ -55,7 +55,8 @@ export default ({searchData}) => {
             <PageHeader searchData = {searchData} platformType = {platformType} />
             <div
                 style={{
-                    marginTop: 0,
+                    top: 0,
+                    paddingTop:"64px",
                     width: "100%",
                     minHeight: "500px",
                     display: "flex",

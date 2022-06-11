@@ -81,5 +81,19 @@
         "region":"重庆",
         "institution":"重庆渝中",
         "major":"math"    
+    },
+    {
+        "username": "hzl测试账户",
+         "email": "hhhhzl@bu.edu", 
+         "first_name": "hhhhzl", 
+         "last_name": "hhhhzl", 
+         "password": "test1234test",
+        "birthday": "2022-06-15",
+        "degree": "2",
+        "gender": "M",
+        "institution": "Stanford University",
+        "major": "数学",
+        "region": "重庆市",
+        "wechat_id": "123"
     }    
 ]

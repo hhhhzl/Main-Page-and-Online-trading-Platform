@@ -42,15 +42,21 @@ import { IconButton } from "@material-ui/core";
 import { clearLocalStorage } from "utils";
 import { useDispatch, useSelector } from "react-redux";
 import { updateStock } from "redux/reducers/Stock/stockReducer";
+import { fetchUser } from "redux/reducers/users/usersSlices";
 
 
 
 const { SearchBar, ClearSearchButton } = Search;
 
-export default function PageHeader({searchData, platformType, showrankingOnly}) {
+export default function PageHeader({searchData, platformType, showrankingOnly,toggle}) {
   let { user, logoutUser, apikey} = useContext(AuthContext);
   const {width, height} = useWindowDimensions();
   const [note, setnote] = useState(null)
+
+
+  const [submit, setsubmit] = useState(false)
+  const [submitTeam, setsubmitTeam] = useState(false)
+  const { status } = useSelector((state) => state.userInfo);
   const dispatch = useDispatch()
   const [headermenu,setheadermenu] =  useState(
     platformType == "eplatform"? [{
@@ -82,7 +88,7 @@ export default function PageHeader({searchData, platformType, showrankingOnly}) 
 
   :
 
-  platformType == "competition" && showrankingOnly != true?
+  platformType == "competition" && apikey?
   [{
     id: 0,
     title: "账户总览",
@@ -114,7 +120,8 @@ export default function PageHeader({searchData, platformType, showrankingOnly}) 
     link: `/${platformType}/invest_notes`,
   },
 
-  ] : 
+  ] 
+  : 
   
   [
   {
@@ -286,6 +293,24 @@ export default function PageHeader({searchData, platformType, showrankingOnly}) 
   },
 ]
 
+useEffect(() =>{
+  if(submit && status == "fulfilled"){
+     if (url != "/personal"){
+      history.push("/personal")
+     }
+      setsubmit(false)
+  }
+},[submit,status])
+
+useEffect(() =>{
+  if(submitTeam && status == "fulfilled"){
+     if (url != "/personalEdit"){
+      history.push("/personalEdit")
+     }
+      setsubmitTeam(false)
+  }
+},[submitTeam,status])
+
 
   return (
     <>
@@ -319,12 +344,15 @@ export default function PageHeader({searchData, platformType, showrankingOnly}) 
 
       <div
         style={{
-          marginTop: 0,
+          position:"fixed",
+          top: 0,
           width: "100%",
           MaxHeight: "64px",
           display: "flex",
           justifyContent: "space-between",
+          backgroundColor:"#FFFFFF",
           borderBottom: "1px solid #E5E8EE",
+          zIndex:999
         }}
       >
         {width > 1200 ? (
@@ -507,7 +535,7 @@ export default function PageHeader({searchData, platformType, showrankingOnly}) 
                 src={"/homeCutout/UFA-LOGO-RED.png"}
                 style={{ width: "38px", height: "38px" }}
               />
-              <span className="header-user-name">{user.username? user.username.length > 5? <>{user.username.slice(4)}...</> : user.username : "用户名"}</span>
+              <span className="header-user-name">{user.username? user.username.length > 8? <>{user.username.slice(0,5)}...</> : user.username : "用户名"}</span>
               <ExpandMoreIcon></ExpandMoreIcon>
             </div>
             <div
@@ -517,10 +545,14 @@ export default function PageHeader({searchData, platformType, showrankingOnly}) 
               onMouseLeave={() => handleShowMenu(!showMenu)}
             >
               <MenuItemLinksRouter
+                onClick={() =>{
+                  dispatch(fetchUser(user.user_id))
+                  setsubmit(true)  
+                }}
                 offset={-50}
                 spy={true}
                 smooth={true}
-                to="/personal"
+                // to="/personal"
                 duration={700}
                 className="menu-item"
               >
@@ -528,8 +560,9 @@ export default function PageHeader({searchData, platformType, showrankingOnly}) 
               </MenuItemLinksRouter>
               {platformType == "competition"? 
               <>
-              <MenuItemLinksRouter
-                to="/team"
+              {apikey? <MenuItemLinksRouter
+               to = "/team"
+
                 offset={-50}
                 spy={true}
                 smooth={true}
@@ -537,13 +570,17 @@ export default function PageHeader({searchData, platformType, showrankingOnly}) 
                 className="menu-item"
               >
                 团队信息
-              </MenuItemLinksRouter>
+              </MenuItemLinksRouter> : null}
               </>
               :null
               }
               
               <MenuItemLinksRouter
-                to="/personalEdit"
+              onClick={() =>{
+                dispatch(fetchUser(user.user_id))
+                setsubmitTeam(true)  
+              }}
+                // to="/personalEdit"
                 offset={-50}
                 spy={true}
                 smooth={true}
@@ -577,7 +614,8 @@ export default function PageHeader({searchData, platformType, showrankingOnly}) 
           </div>
 
           <MobileIcon>
-            <ViewHeadlineTwoTone style={{ color: "black" }} fontSize="large" />
+            
+            <ViewHeadlineTwoTone onClick={() => toggle()} style={{ color: "black" }} fontSize="large" />
           </MobileIcon>
         </div>
         {width > 1200 ? (

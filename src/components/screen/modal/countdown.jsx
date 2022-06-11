@@ -1,7 +1,7 @@
 import { Modal } from "react-bootstrap";
 import React, { useState, useEffect, useRef } from "react";
 import "./countdown.css";
-import { now, end } from "../../../utils/countdownUtil";
+import { now, end, timeInShanghai, endtime } from "../../../utils/countdownUtil";
 import { ArrowBack } from "@material-ui/icons";
 import { useHistory } from "react-router";
 import moment from "moment";
@@ -11,7 +11,7 @@ export default function Countdown({ showModal, hideModal }) {
   let history = useHistory();
   const intervalRef = useRef();
 
-  let [leftTime, setLeftTime] = useState(end - now);
+  let [leftTime, setLeftTime] = useState(endtime - timeInShanghai);
   const [d, setDays] = useState(""); //天
   const [h, setHours] = useState(""); //小时
   const [m, setMinutes] = useState(""); //分钟
@@ -26,8 +26,8 @@ export default function Countdown({ showModal, hideModal }) {
     if (leftTime > 0) {
       intervalRef.current = setInterval(() => {
         // const newNow = Math.round(new Date().getTime()).toString(); // 重新获取当前时间
-        const newNow = moment().local().valueOf()
-        let newLeftTime = end - newNow;
+        const newNow = moment().tz('Asia/Shanghai').valueOf()
+        let newLeftTime = endtime - newNow;
 
         let days = Math.floor(newLeftTime / 1000 / 60 / 60 / 24);
         let hours =
@@ -73,7 +73,7 @@ export default function Countdown({ showModal, hideModal }) {
           <ArrowBack style={{color:"#ffffff"}}></ArrowBack>
           <div className="modal-back-text">返回首页</div>
         </div>
-        <div className="countdown-modal-text">距离比赛开始</div>
+        <div className="countdown-modal-text">距离比赛开始还剩</div>
         <div className="countdown-modal-time">
           {" "}
           {d > 0 && leftTime > 0 ? (
@@ -81,7 +81,7 @@ export default function Countdown({ showModal, hideModal }) {
               <span>{`${d}天${h}时`}</span>
             </>
           ) : leftTime > 0 && d <= 0 ? (
-            <>{`${h}:${m}:${s}`}</>
+            <>{`${h}小时${m}分${s}秒`}</>
           ) : (
             <>0天0小时</>
           )}

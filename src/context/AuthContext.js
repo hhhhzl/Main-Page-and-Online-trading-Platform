@@ -4,6 +4,10 @@ import { useHistory, useLocation } from "react-router-dom";
 import { clearLocalStorage, setPlatformType } from "utils";
 import { fetchUser } from "redux/reducers/users/usersSlices";
 import { useDispatch } from "react-redux";
+import { apiGetAllCompetitions, apiGetCompetitionAPIKey, apiGetTeamAccount } from "api/main_platform/competitions";
+import { competitionID } from "constants/maps";
+import moment from "moment";
+import { Modal } from "react-bootstrap";
 
 const AuthContext = createContext();
 
@@ -16,11 +20,9 @@ export const AuthProvider = ({ children }) => {
       ? jwt_decode(localStorage.getItem("authTokens"))
       : null
   );
-  const [apikey, setapikey] = useState(() => 
-    localStorage.getItem("apikey")
-      ? localStorage.getItem("apikey")
-      : "sadsdkahk"
-  );
+  const [apikey, setapikey] = useState(null);
+  const [competition, setcompetition] = useState(null)
+  const [team, setteam] = useState(null)
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens")
       ? JSON.parse(localStorage.getItem("authTokens"))
@@ -35,6 +37,9 @@ export const AuthProvider = ({ children }) => {
   });
 
   const history = useHistory();
+
+  const [show,setshow] = useState(false)
+  const [show1,setshow1] = useState(false)
 
   let loginUser = async (e) => {
     e.preventDefault();
@@ -53,23 +58,24 @@ export const AuthProvider = ({ children }) => {
       setAuthTokens(data.data);
       setuser(jwt_decode(data.data.access));
       localStorage.setItem("authTokens", JSON.stringify(data.data));
-      dispatch(fetchUser())
-
-      ///TO list : ask and set for apiKey
-    
+      dispatch(fetchUser(jwt_decode(data.data.access).user_id))
+      GetCompetitionAPIKey()
       if (route.from == "/eplatform"){
          setPlatformType("eplatform")
         history.push(route.from);
       }else if (route.from == "/competition"){
        setPlatformType("competition")
         history.push(route.from);
-      } else{
+      } else if (route.from == "/team/register"){
+          setPlatformType("competition")
+          history.push('/competition')        
+      }else{
         history.push('/')
       }
     } else if (data.data.detail == "No active account found with the given credentials") {
-      alert("密码错误/邮箱错误/用户不存在");
+      setshow(true)
     } else{
-      alert("系统错误,请稍后重试...");
+      setshow1(true)
     }
   };
 
@@ -108,6 +114,8 @@ export const AuthProvider = ({ children }) => {
     apikey: apikey,
     authTokens: authTokens,
     logoutUser: logoutUser,
+    competition:competition,
+    team:team,
   };
 
   // useEffect(()=>{
@@ -120,11 +128,112 @@ export const AuthProvider = ({ children }) => {
   //     return () => clearInterval(interval)
   // },[authTokens,loading])
 
+  const GetCompetitionAPIKey = async () =>{
+    try{
+      const response = await apiGetCompetitionAPIKey(competitionID)
+      if (response.data.msg == "OK."){
+        const apikey = response.data.data.api_key
+        setapikey(apikey)
+      }else{
+        setapikey(null)
+      }
+    }catch(e){
+
+    }
+  }
+
+  const GetCompetitions = async (id) =>{
+    try{
+      const response = await apiGetAllCompetitions(id)
+      if (response.data.msg == "OK."){
+        const competitions = response.data.data
+        const competition_want = competitions.filter((elem) => elem.id == competitionID)
+        let competition_time = {}
+        competition_time.register = competition_want[0].registration_time
+        competition_time.start = competition_want[0].start_time
+        competition_time.end = competition_want[0].end_time
+        setcompetition(competition_time)
+      }else{
+        setcompetition(null)
+      }
+    }catch(e){
+      console.log(e)
+    }
+  }
+
+  const GetCompetitionTeam = async (id) =>{
+    try{
+      const response = await apiGetTeamAccount(2)
+      if (response.data.msg == "OK."){
+        const teamA = response.data.data
+        console.log(teamA,163)
+        setteam(teamA)
+      }else{
+        setteam(null)
+      }
+    }catch(e){
+      console.log(e)
+    }
+  }
+
   useEffect(() =>{
     setRoute((prev) => ({to: location.pathname, from: prev.to}))
   },[location])
 
+
+  ///////////////////////有user后自动请求apikey
+  useEffect(() =>{
+    if (user){
+      GetCompetitions(null)
+      GetCompetitionAPIKey()
+    }
+  },[user])
+
+  useEffect(() =>{
+    if (!user){
+      GetCompetitions(null)
+      setapikey(null)
+    }
+  },[user])
+
+
+  /////////////////////有apikey后自动请求team
+  useEffect(() =>{
+    if (apikey){
+      GetCompetitionTeam(null)
+      GetCompetitions(null)
+    }
+  },[apikey])
+
+  useEffect(()=>{
+    if (!apikey){
+      GetCompetitions(null)
+      setteam(null)
+    }
+  },[apikey])
+
   return (
+    <>
+    <Modal
+        show={show}
+        centered
+        onHide={() =>setshow(false)}
+        >
+          <Modal.Header closeButton></Modal.Header>
+          <Modal.Body style={{textAlign:"center"}}>密码错误/邮箱错误/用户不存在</Modal.Body>
+        </Modal>
+
+        <Modal
+        show={show1}
+        centered
+        onHide={() =>setshow(false)}
+        >
+          <Modal.Header closeButton></Modal.Header>
+          <Modal.Body style={{textAlign:"center"}}>系统错误，请稍后重试</Modal.Body>
+        </Modal>
+
+
     <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>
+    </>
   );
 };

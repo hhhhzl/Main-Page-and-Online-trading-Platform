@@ -51,7 +51,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
 
         <Container
           className="content-center"
-          style={{ padding: "44px 20px 0px" }}
+          style={{ padding: "44px 0px 0px",margin:"0px 18.75%",width:"62.533%" }}
         >
           <div className="left-icon">
             <Image
@@ -66,11 +66,11 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               fontSize: width > 1300 ? "24px" : width > 960 ? "20px" : "16px",
               fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
               lineHeight: "48px",
-              letterSpacing: "0.2px",
+              letterSpacing: "1.5px",
+              marginBottom: "0px",
             }}
           >
-            UFA全球青年汇 (英文缩写"UFA")
-            是面向全球顶级高校（包括不限于美国排名TOP30、中国内地TOP10、中国香港四大高校等）建立的首个跨学校，跨地区，跨文化的大学生财经社团。我们的愿景是“助力祖国联结未来华人精英，共同建设祖国金融未来”。
+            UFA全球青年汇，是由世界名校密歇根大学，南加州大学，香港大学等学生联合创办创立的学生组织。目前，UFA全球青年汇已经与包括耶鲁大学，麻省理工大学，牛津大学，清华大学等校在内的80余所顶尖名校学联达成合作协议。{" "}
           </p>
           <br />
           <p
@@ -81,12 +81,10 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               textIndent: "0",
               fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
               lineHeight: "48px",
-              letterSpacing: "1px",
+              letterSpacing: "1.4px",
             }}
           >
-            自成立以来，UFA全球青年汇会与中信证券、海外超过100所高校等建立起合作关系，并联合策划了名家分享会，金融系列公益讲座、全球大学生投资大赛等多个活动。“UFA金融大赛:
-            全球大学模拟投资大赛”是由 UFA
-            全球青年会牵头发起的首个汇聚全球顶尖高校大学生的大型线上模拟投资比赛。
+            UFA金融大赛是由UFA全球青年汇，实力携手中信证券发起的首个全球华人大学生模拟投资大赛。大赛为非盈利赛事，旨在为全球华人大学生提供金融实践与知识交流平台。大赛鼓励大学生以知践行，以行促知，助推金融行业复合型人才培养。
           </p>
           <div className="right-icon">
             <Image
@@ -102,7 +100,10 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
           <br />
         </Container>
 
-        <div className="video">
+        <div
+          className="video"
+          style={{ paddingBottom: width > 650 ? "120px" : "0px" }}
+        >
           <div className="text-center">
             <Image
               src="/homeCutout/Group 175@2x.png"
@@ -127,6 +128,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                   width="100%"
                   height="100%"
                   controls={true}
+                  // light="/background1.jpg"
                 />
               </div>
             </div>
@@ -149,11 +151,15 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
             className="about-center"
             style={{
               width: width > 1385 ? "68.5%" : width < 1350 ? "93%" : "71%",
+              marginTop: width < 700 ? "60%" : "",
             }}
           >
             {width < 680 ? (
               <>
-                <Row className="center-container">
+                <Row
+                  className="center-container"
+                  style={{ flexDirection: width < 700 ? "column" : "row" }}
+                >
                   <Col className="flex-center">
                     <div className="introduction-box">
                       <Row>
@@ -201,7 +207,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                               lineHeight: "28px",
                             }}
                           >
-                            “UFA杯”
+                            “UFA金融大赛”
                             由UFA与中信证券联合举办，旨在打造最具权威的大学生金融赛事
                           </div>
                         </div>
@@ -256,7 +262,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                               lineHeight: "28px",
                             }}
                           >
-                            “UFA杯”
+                            “UFA金融大赛”
                             荣幸邀请各界金融大咖全程参与并与参赛选手进行高效、深度沟通互动，将在线上线下同步举办大型交流、展示活动
                           </div>
                         </div>
@@ -311,7 +317,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                               lineHeight: "28px",
                             }}
                           >
-                            “UFA杯”
+                            “UFA金融大赛”
                             将面向海内外100+所大学开放赛事，旨在打造万人规模金融赛事，成为海内外金融大学生的首要聚集地
                           </div>
                         </div>
@@ -322,7 +328,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               </>
             ) : (
               <>
-                <Row>
+                <Row style={{ flexDirection: width < 700 ? "column" : "row" }}>
                   <Col className="flex-center">
                     <div className="introduction-box">
                       <Row>
@@ -370,7 +376,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                               lineHeight: "28px",
                             }}
                           >
-                            “UFA杯”
+                            “UFA金融大赛”
                             由UFA与中信证券联合举办，旨在打造最具权威的大学生金融赛事
                           </div>
                         </div>
@@ -424,7 +430,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                               lineHeight: "28px",
                             }}
                           >
-                            “UFA杯”
+                            “UFA金融大赛”
                             荣幸邀请各界金融大咖全程参与并与参赛选手进行高效、深度沟通互动，将在线上线下同步举办大型交流、展示活动
                           </div>
                         </div>
@@ -478,7 +484,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                               lineHeight: "28px",
                             }}
                           >
-                            “UFA杯”
+                            “UFA金融大赛”
                             将面向海内外100+所大学开放赛事，旨在打造万人规模金融赛事，成为海内外金融大学生的首要聚集地
                           </div>
                         </div>
@@ -491,7 +497,11 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
           </div>
           <h5
             className="text-center"
-            style={{ marginTop: "-80px" }}
+            style={{
+              marginTop: width > 650 ? "-80px" : "0px",
+              position: "relative",
+              bottom: width > 650 ? "0px" : "180px",
+            }}
           >
             <Button
               className="video-btn"
@@ -536,134 +546,161 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
             </div>
 
             {width > 1100 ? (
-              <>
-                <div className="message-box">
-                  <div className="flex-between">
-                    <div className=" message-left">
-                      <div className="message-title">权威证书</div>
-                      <div className="message-content">
-                        证书由顶尖券商中信证券官方认证，排名前30％的参赛者均会授予颁发。同时，排名不是唯一评判标准，赛事期间设立300余份相关奖项等你来拿。
-                      </div>
-                      <span className="message-icon">
+                <>
+                  <div className="message-box">
+                    <div className="flex-between">
+                      <div className=" message-left">
+                        <div className="message-title">
+                          <span>职业机遇</span>
+                          <span style={{fontSize: "12px", marginLeft: "12px",fontWeight:"400"}}>(部分支持远程)</span>
+                        </div>
+                        <div className="message-content">
+                          入围决赛的选手均能获得：
+                        </div>
+                        <div className="message-Top" >
+                          <div> 中信证券实习 (或终面) 机会
+                          </div>
+                          <div> 中信证券飞鹰计划名额 (含结业证书)
+                          </div>
+                          <div> 多家公募机构决赛现场“捞人”机会
+                          </div>
+                          <div> 埔思学院录取 (或终面) 机会
+                          </div>
+                          <div> 10万奖金瓜分
+                          </div>
+                          <div> 决赛证书等：
+                          </div>
+                        </div>
+                        <span className="message-icon">
                         <Image
-                          src="/homeCutout/Group 21@2x.png"
-                          style={{ width: "49px", height: "3px" }}
+                            src="/homeCutout/Group 21@2x.png"
+                            style={{width: "49px", height: "3px"}}
                         />
                       </span>
-                      <div className="message-content-bottom">
-                        我们希望你的实力被更多知名金融企业看见；重量级证书加持，丰富你的履历，助力职场之路畅通无忧。
+                        <div className="message-content-bottom">
+                          <div>(赛事期间的优秀选手也将获得金融机构的引荐资格)</div>
+                          <div>我们希望为优秀的大学生提供被伯乐发掘的窗口与机遇。</div>
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex-center image-right">
-                      <div className="image-right-icon-top">
-                        <Image
-                          src="/homeCutout/Rectangle 21@2x.png"
-                          style={{ width: "12px", height: "12px" }}
-                        />
-                      </div>
-                      <div>
-                        <Image
-                          src="/组 50(3)@2x.png"
-                          style={{
-                            width: "600px",
-                            height: "480px",
-                            border: "1px solid #3C5E78",
-                          }}
-                        />
-                      </div>
-                      <div className="image-right-icon-bottom">
-                        <Image
-                          src="/homeCutout/Group 25@2x.png"
-                          style={{ width: "108px", height: "108px" }}
-                        />
+                      <div className="flex-center image-right">
+                        <div className="image-right-icon-top">
+                          <Image
+                              src="/homeCutout/Rectangle 21@2x.png"
+                              style={{width: "12px", height: "12px"}}
+                          />
+                        </div>
+                        <div>
+                          <Image
+                              src="/homeCutout/occupation@2x.png"
+                              style={{
+                                width: "600px",
+                                height: "480px",
+                                border: "1px dotted #3C5E78",
+                              }}
+                          />
+                        </div>
+                        <div className="image-right-icon-bottom">
+                          <Image
+                              src="/homeCutout/Group 25@2x.png"
+                              style={{width: "108px", height: "108px"}}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div style={{ marginTop: "200px", marginLeft: "71px" }}>
-                  <div className="flex-between">
-                    <div className="image-left">
-                      <div className="image-left-icon-bottom">
-                        <Image
-                          src="/homeCutout/Group 61@2x.png"
-                          style={{ width: "108px", height: "108px" }}
-                        />
-                      </div>
+                  <div style={{marginTop: "200px", marginLeft: "71px"}}>
+                    <div className="flex-between">
+                      <div className="image-left">
+                        <div className="image-left-icon-bottom">
+                          <Image
+                              src="/homeCutout/Group 61@2x.png"
+                              style={{width: "108px", height: "108px"}}
+                          />
+                        </div>
 
-                      <div
-                        style={{
-                          width: "600px",
-                          height: "480px",
-                          border: "1px solid #3C5E78",
-                        }}
-                      ></div>
-                      <div className="image-left-icon-top">
-                        <Image
-                          src="/homeCutout/Rectangle 21@2x.png"
-                          style={{ width: "12px", height: "12px" }}
-                        />
+                        <div>
+                          <Image
+                              src="/homeCutout/promote@2x.png"
+                              style={{
+                                width: "600px",
+                                height: "480px",
+                                border: "1px dotted #3C5E78",
+                              }}
+                          />
+                        </div>
+                        <div className="image-left-icon-top">
+                          <Image
+                              src="/homeCutout/Rectangle 21@2x.png"
+                              style={{width: "12px", height: "12px"}}
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div className=" message-right">
-                      <div className="message-title">学习机会</div>
-                      <div className="message-content">
-                        赛事期间，UFA为参赛者们准备了一系列高含金量的免费服务：包括百万知识博主、求职达人Lindsay的金融行业求职分析，多场干货满满的大咖讲座，以及中信高级分析师在线专题指导交流等。
-                      </div>
-                      <span className="message-icon">
+                      <div className=" message-right">
+                        <div className="message-title">提升机会</div>
+                        <div className="message-content">
+                          赛事期间, UFA为参赛者们准备了一系列高含金量的免费学习机会:
+                        </div>
+                        <div className="message-Top" >
+                          包括百万知识博主、求职达人Lindsay为你带来的线上求职规划分析, 多场干货满满的大咖讲座, 以及中信高级分析师为参赛选手带来的在线指导交流等。
+                        </div>
+                        <span className="message-icon">
                         <Image
-                          src="/homeCutout/Group 21@2x.png"
-                          style={{ width: "49px", height: "3px" }}
+                            src="/homeCutout/Group 21@2x.png"
+                            style={{width: "49px", height: "3px"}}
                         />
                       </span>
-                      <div className="message-content-bottom">
-                        我们希望通过为大学生筛选并提供优质的学习资源，帮助大学生完成提升和成长。
+                        <div className="message-content-bottom">
+                          我们希望通过为大学生筛选并提供优质的学习资源，帮助大学生完成提升和成长。
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div style={{ marginTop: "200px" }}>
-                  <div className="flex-between">
-                    <div className=" message-left">
-                      <div className="message-title">丰厚奖励</div>
-                      <div className="message-content">
-                        针对所有入围决赛的量化选手与主观多头选手，UFA将赠予决赛奖杯，数十万奖金，中信证券实习机会，以及UFA终身会员。
-                      </div>
-                      <span className="message-icon">
+                  <div style={{marginTop: "200px"}}>
+                    <div className="flex-between">
+                      <div className=" message-left">
+                        <div className="message-title">权威证书</div>
+                        <div className="message-content">
+                          证书由顶尖券商中信证券官方认证，指数排名前30％的参赛者均会授予颁发。同时，排名不是唯一评判标准，赛事期间设立300余份相关奖项等你来拿。
+                        </div>
+                        <span className="message-icon">
                         <Image
-                          src="/homeCutout/Group 21@2x.png"
-                          style={{ width: "49px", height: "3px" }}
+                            src="/homeCutout/Group 21@2x.png"
+                            style={{width: "49px", height: "3px"}}
                         />
                       </span>
-                      <div className="message-content-bottom">
-                        我们希望为优秀的大学生提供被伯乐发掘的窗口与机遇。
+                        <div className="message-content-bottom">
+                          我们希望你的实力被更多知名金融企业看见；重量级证书加持，丰富你的履历，助力职场之路畅通无忧。
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex-center image-right">
-                      <div className="image-right-icon-top">
-                        <Image
-                          src="/homeCutout/Rectangle 21@2x.png"
-                          style={{ width: "12px", height: "12px" }}
-                        />
-                      </div>
-                      <div
-                        style={{
-                          width: "600px",
-                          height: "480px",
-                          border: "1px solid #3C5E78",
-                        }}
-                      ></div>
-                      <div className="image-right-icon-bottom">
-                        <Image
-                          src="/homeCutout/Group 25@2x.png"
-                          style={{ width: "108px", height: "108px" }}
-                        />
+                      <div className="flex-center image-right">
+                        <div className="image-right-icon-top">
+                          <Image
+                              src="/homeCutout/Rectangle 21@2x.png"
+                              style={{width: "12px", height: "12px"}}
+                          />
+                        </div>
+                        <div>
+                          <Image
+                              src="/homeCutout/authority@2x.png"
+                              style={{
+                                width: "600px",
+                                height: "480px",
+                                border: "1px dotted #3C5E78",
+                              }}
+                          />
+                        </div>
+                        <div className="image-right-icon-bottom">
+                          <Image
+                              src="/homeCutout/Group 25@2x.png"
+                              style={{width: "108px", height: "108px"}}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </>
+                </>
             ) : (
               <>
                 <div className="box2">

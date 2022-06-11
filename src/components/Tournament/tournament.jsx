@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { Navbar, Tabs, Tab } from "react-bootstrap";
+import { Navbar, Tabs, Tab, Nav } from "react-bootstrap";
 import TournamentBg from "../webpage/TournamentBg/tournamentBg";
 import Footer from "../MainPage/footer";
 import HeaderCreate from "../MainPage/header";
@@ -70,7 +70,46 @@ export default function MainPage() {
       <div className="main-page-center">
         <TournamentBg />
         <div className="tourament-page">
-          <Tabs
+          <Tab.Container activeKey={eventKey} onSelect={(k) => setEventKey(k)}>
+            <Nav className="tabs-wrapper">
+              <Nav.Item>
+                <Nav.Link className="tabs-item" eventKey={1}>
+                  <span className={eventKey == 1 ? '' : 'tab-link'}>赛事介绍</span>
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey={2}>
+                  <span className={eventKey == 2 ? '' : 'tab-link'}>赛事规则</span>
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey={3}>
+                  <span className={eventKey == 3 ? '' : 'tab-link'}>财经洞悉</span>
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey={4}>
+                  <span className={eventKey == 4 ? '' : 'tab-link'}>如何报名</span>
+                </Nav.Link>
+              </Nav.Item>
+            </Nav>
+
+            <Tab.Content>
+              <Tab.Pane eventKey={1}>
+                <Introduce changeEventKey={changeEventKey} />
+              </Tab.Pane>
+              <Tab.Pane eventKey={2}>
+                <Rules changeEventKey={changeEventKey} />
+              </Tab.Pane>
+              <Tab.Pane eventKey={3}>
+                <Finance />
+              </Tab.Pane>
+              <Tab.Pane eventKey={4}>
+                <Sign />
+              </Tab.Pane>
+            </Tab.Content>
+          </Tab.Container>
+          {/* <Tabs
             className="tabs-wrapper"
             id=""
             activeKey={eventKey}
@@ -80,7 +119,7 @@ export default function MainPage() {
               <Introduce changeEventKey={changeEventKey} />
             </Tab>
             <Tab eventKey={2} title="赛事规则">
-              <Rules />
+              <Rules changeEventKey={changeEventKey} />
             </Tab>
             <Tab eventKey={3} title="财经洞悉">
               <Finance />
@@ -88,10 +127,11 @@ export default function MainPage() {
             <Tab eventKey={4} title="如何报名">
               <Sign />
             </Tab>
-          </Tabs>
+          </Tabs> */}
         </div>
       </div>
-      <Footer />
+
+      <Footer eventKey={eventKey}/>
     </>
   );
 }

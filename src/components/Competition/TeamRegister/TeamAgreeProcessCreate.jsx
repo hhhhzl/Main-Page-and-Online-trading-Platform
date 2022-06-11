@@ -24,7 +24,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
     const [lianghua, setlianghua] = useState(false)
     const [duotou, setduotou] = useState(false)
 
-    const [grade, setGrade] = useState("")
+    const [gradeAsk, setGradeAsk] = useState("")
     const [investmentTime, setInvestmentTime] = useState("")
     const [attentionIndustry, setAttentionIndustry] = useState("")
 
@@ -58,8 +58,11 @@ export default function TeamAgreeProcessCreate({toggle}) {
         try{
             const data = {
                 competition_id:competitionID,
-                name:teamname
+                name:teamname,
+                track:lianghua? "Q" : "S",
+                avatar:headPortrait
             }
+            console.log(data)
             const dataprops = JSON.stringify(data)
             const response = await apiCreateTeamAccount(data)      
             const messge = response.data.msg
@@ -69,7 +72,9 @@ export default function TeamAgreeProcessCreate({toggle}) {
                 setsuccessSendtoC(true)
             }else if (messge == "The name is already in use."){
                 setteamnameDuplicate(true)     
-            }else{
+            }else if(messge == "The queried resource is not found."){
+                alert("注册失败")
+            }else {
                 setdeadline(true)
             }
         }catch(e){
@@ -208,8 +213,8 @@ export default function TeamAgreeProcessCreate({toggle}) {
                         <TeamQuestionnaire
                             Pageprocess={Pageprocess}
                             backPageprocess={backPageprocess}
-                            grade={grade}
-                            setGrade={setGrade}
+                            gradeAsk={gradeAsk}
+                            setGradeAsk={setGradeAsk}
                             investmentTime={investmentTime}
                             setInvestmentTime={setInvestmentTime}
                             attentionIndustry={attentionIndustry}

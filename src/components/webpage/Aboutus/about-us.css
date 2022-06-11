@@ -32,6 +32,9 @@
   padding-right: 11.912%;
   padding-left: 8.785%;
 }
+.message-Top {
+  margin-top: 12px;
+}
 
 .message-title {
   font-size: 28px;
@@ -109,7 +112,6 @@
   flex-direction: column;
   width: 50%;
   right: 50%;
-  padding-right: 112px;
   padding-left: 160px;
 }
 
@@ -461,9 +463,14 @@
   }
 
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 475px) {
+  .about-center {
+    margin-top: 80% !important;
+  }
+}
+@media screen and (max-width: 450px) {
   .introduction-box {
-    margin-bottom: 30px;
+    margin-bottom: -10px;
   }
 }
 @media screen and (max-width: 800px) {
@@ -513,7 +520,7 @@
   .center-container{
     display: flex;
     flex-direction: column;
-    margin-top: 80%;
+    margin-top: 60%;
   }
 
   .about-center {

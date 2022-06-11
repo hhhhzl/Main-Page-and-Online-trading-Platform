@@ -1,4 +1,5 @@
 import React, { useEffect,useState } from 'react';
+import { Spinner } from "react-bootstrap";
 import axios from 'axios';
 import './KeyIndicator.css'
 import { changeUnit, fmoney } from 'utils';
@@ -18,7 +19,8 @@ export default function KeyIndicators({stockdata}){
 					
 					/////TO DO
 					<div style={{width:"100%",marginTop:"30px",display:"flex",justifyContent:"center"}}>	
-					"loading...." 
+					{/* "loading...."  */}
+					<Spinner animation="border"></Spinner>
 					</div>
 					:
 					<>

@@ -34,7 +34,8 @@ export default ({ searchData }) => {
       <div style={{ width: "100%", height: "100%" }}>
         <div
           style={{
-            marginTop: platformType == null ? "112px" : "48px",
+            top:"0",
+            paddingTop:"112px",
             marginLeft: width > 1500 ? "18.75%" : "5%",
             marginRight: width > 1500 ? "18.75%" : "5%",
           }}

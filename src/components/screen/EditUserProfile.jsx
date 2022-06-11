@@ -4,8 +4,9 @@ import './Personal.css'
 import { useHistory } from "react-router";
 import TeamRegisterModel from './modal/TeamRegisterModel'
 import AuthContext from "context/AuthContext";
-import { updateUser } from "redux/reducers/users/usersSlices";
+import { fetchUser, updateUser } from "redux/reducers/users/usersSlices";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 export default function EditData({
 	platformType,
@@ -14,26 +15,29 @@ export default function EditData({
 }){
 	const [userState, setUserState] = useState({})
 	let {user} = useContext(AuthContext)
+	const {status} =  useSelector((state) => state.userInfo);
 	const [lastname, setlastname] = useState(userget? userget.last_name: "");
 	const [institution, setinstitution] = useState(userget? userget.institution : "");
-	const [personalProfile,setPersonalProfile] = useState("");
+	const [personalProfile,setPersonalProfile] = useState(userget? userget.profile : "");
 	const [experienceList,setExperienceList] = useState(userget.experience?.length> 0? userget.experience : [
-		{company:"",position:""}
+		{company:"",position:"",detail:""}
 	])
 	const [successSendtoC, setsuccessSendtoC] = useState(false)
 	const history= useHistory()
 	const dispatch = useDispatch();
+	const [submit,setsubmit] = useState(false)
 
 	const addExperience=()=>{
-		let obj ={company:"",position:""};
-		experienceList.push(obj);
-		console.log(experienceList);
-		setExperienceList([...experienceList]);
+		let obj = {company:"",position:"",detail:""};
+		setExperienceList([...experienceList,obj]);
 	}
 	const handleDelete = (idx) => {
+		console.log(idx)
 	  experienceList.splice(idx,1);
+	  let experience = [...experienceList]
 	  console.log(experienceList);
 	  setExperienceList([...experienceList]);
+	  setUserState({...userState, ...{ experience }});
 	};
 
 	const uploadFile = React.createRef();
@@ -68,7 +72,16 @@ export default function EditData({
 	const getBase64 = (url) => {
 		setShowModal(false)
 		setHeadPortrait(url);
+		setUserState({...userState,...{avatar:url}})
 	}
+
+	useEffect(() =>{
+		if(submit && status == "fulfilled"){
+			history.push("/personal")
+			setsubmit(false)
+		}
+	},[submit,status])
+
 
 	return(
 		<>
@@ -83,7 +96,11 @@ export default function EditData({
                                     lineHeight:"24px"}}>个人信息已修改成功</div></Modal.Body>
         <Modal.Footer style={{marginLeft:0}} >
             <div style={{width:"100%",display:"flex",justifyContent:"center"}}>
-            <Button className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => history.push("/personal")}>
+            <Button className="modal-btn modal-btn-submit"  variant="primary"
+			 onClick ={() => {
+				 dispatch(fetchUser(user.user_id))
+				 setsubmit(true)
+			 }}>
             确定
           </Button>
         </div>
@@ -94,15 +111,14 @@ export default function EditData({
 		<TeamRegisterModel showModal={showModal} hideModal={hideModal} getBase64={getBase64} imgSrc={imgSrc}></TeamRegisterModel>
 
 
-		<div style={{backgroundColor: "#F5F6F8",display:"flex",justifyContent:"space-between"}}>
+		<div style={{top:0, paddingTop:"112px",backgroundColor: "#F5F6F8",display:"flex",justifyContent:"space-between"}}>
 			<div style={{width:"48px",maxWidth:"18.75%"}}></div>
 			<div  style={{
-				        paddingTop:"48px",
                         width: "1200px",
                         minHeight: "700px",
                         minWidth: "fix-content",
                     }}>
-				<div className="edit-title">编辑资料</div>
+				<div className="edit-title">编辑个人资料</div>
 				<div className="edit-user-person" style={{backgroundColor:"#FFFFFF",marginTop:"24px"}}>
 					<div style={{
 						display:"flex",
@@ -130,7 +146,7 @@ export default function EditData({
 						<div className="information">基本信息</div>
 						<div style={{marginTop:"35px",display: "flex"}}>
 							<FormGroup style={{width: "44%"}}>
-							  <FormLabel className="edit-form-label">用户名</FormLabel>
+							  <FormLabel className="edit-form-label">姓名</FormLabel>
 							  <FormControl
 								type="text"
 								value={lastname}
@@ -168,9 +184,9 @@ export default function EditData({
 								style={{width:"100%",height:"96px"}}
 								placeholder="完善个人简历获取更多他人关注哟~~"
 								onChange={(e) => {
-								  const personalProfile = e.target.value;
+								  const profile = e.target.value;
 								  setPersonalProfile(e.target.value)
-								  setUserState({...userState, ...{ personalProfile }});
+								  setUserState({...userState, ...{ profile }});
 								}}
 							  />
 							</FormGroup>
@@ -189,6 +205,7 @@ export default function EditData({
 										style={{width:"100%",height:"48px"}}
 										placeholder="请输入实习经历"
 										onChange={(e) => {
+											console.log(experienceList)
 										  experienceList[idx].company = e.target.value;
 										  setExperienceList(experienceList);
 										  const experience = experienceList
@@ -219,7 +236,6 @@ export default function EditData({
 											{/*style={{marginLeft:"12px"}}>删除</Button>*/}
 										  <Image
 											  show={experienceList.length!=1}
-
 											  onClick={() => handleDelete(idx)}
 											  src="/Frame-delete.png"
 											  style={{
@@ -252,11 +268,13 @@ export default function EditData({
 						<div style={{textAlign:"center",padding:"60px"}}>
 							 <Button style={{width:"26.668%",height:"48px"}} 
 							 onClick = {() => {
+								 
+								 console.log(userState,254)
 								 dispatch(
 									 updateUser({
 									 data: userState
 									}))
-
+								setsuccessSendtoC(true)
 								}
 							}>
 								确定

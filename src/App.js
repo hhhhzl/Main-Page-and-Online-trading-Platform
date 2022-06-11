@@ -31,6 +31,10 @@ import UserProfile from "pages/UserProfile";
 import TeamInfo from "pages/TeamInfo";
 import { apiSymbolsAllForSearch } from "api/trading_platform/market";
 import PrivateCompetitionRoute from "utils/PrivateCompetitionRoute";
+import PrivateRegisterForCompetition from "utils/PrivateRegisterForCompetition";
+import CompetitionViewforPublic from "pages/CompetitionViewforPublic";
+import NotFound from "pages/404/404";
+
 
 
 const HomePage = () => {
@@ -90,8 +94,10 @@ const getSearchData = async (props) => {
 
 
   return (
+    <Route>
     <Switch>
       <AuthProvider>
+
         <Route exact path="/register" component={LoginMainLayout} />
         <Route exact path="/login" component={LoginMainLayout} />
         <Route exact path="/Vlogin" component={LoginMainLayout} />
@@ -99,13 +105,16 @@ const getSearchData = async (props) => {
         <Route exact path="/changepassword" component={LoginMainLayout} />
         <Route exact path="/home" component={RedirectComponent("/")} />
         <Route exact path="/" component={MainPage} />
+        
 
         {/* ////////// */}
-        <PrivateRoute exact path="/team/register" component={TeamEntry} />
-        <PrivateRoute exact path="/team/create" component={TeamAgreeProcessCreate} />
-        <PrivateRoute exact path="/team/join" component={TeamAgreeProcessJoin} />
+        <PrivateRegisterForCompetition exact path="/team/register" component={TeamEntry} />
+        <PrivateRegisterForCompetition exact path="/team/create" component={TeamAgreeProcessCreate} />
+        <PrivateRegisterForCompetition exact path="/team/join" component={TeamAgreeProcessJoin} />
         <Route exact path="/tournament" component={Tournament} />
         <Route exact path="/tournament/" component={RedirectComponent("/tournament")} />
+        <Route exact path="/competitionReview" component={CompetitionViewforPublic} />
+        
 
 
 
@@ -219,6 +228,7 @@ const getSearchData = async (props) => {
         />
       </AuthProvider>
     </Switch>
+    </Route>
   );
 };
 

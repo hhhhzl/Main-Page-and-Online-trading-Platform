@@ -1,39 +1,29 @@
-import { useContext, React, useState, useEffect } from "react";
-import {
-  Switch,
-  Route,
-  Link,
-  useParams,
-  useRouteMatch,
-} from "react-router-dom";
-import { useHistory } from "react-router";
-import {
-  HeaderOut,
-  HeaderContianer,
-  HeaderMenu,
-  HeaderItem,
-  HeaderBtnLink,
-  HeaderLinks,
-  HeaderBtn,
-  MenuItemLinks,
-} from "./HeaderElements";
+import { IconButton } from "@material-ui/core";
 import {
   NotificationsNoneOutlined,
-  ViewHeadlineTwoTone,
+  ViewHeadlineTwoTone
 } from "@material-ui/icons";
-import { Modal, Button } from "react-bootstrap";
-import useWindowDimensions from "../../utils/sizewindow";
+import { React, useContext, useEffect, useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
-import "./header.css";
-import { MobileIcon, HomeMobileIcon } from "./NavbarElements";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-
-import AuthContext from "../../context/AuthContext";
-import { MenuItemLinksRouter } from "./HeaderElements";
-import { IconButton } from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
+import {
+  useRouteMatch
+} from "react-router-dom";
+import { fetchUser } from "redux/reducers/users/usersSlices";
 import { clearLocalStorage, setPlatformType } from "utils";
+import AuthContext from "../../context/AuthContext";
+import useWindowDimensions from "../../utils/sizewindow";
+import "./header.css";
+import {
+  HeaderBtn, HeaderBtnLink, HeaderContianer, HeaderItem, HeaderMenu, HeaderOut, MenuItemLinks, MenuItemLinksRouter
+} from "./HeaderElements";
+import { HomeMobileIcon } from "./NavbarElements";
+
+
 const HeaderCreate = ({ toggle }) => {
-  let { user, logoutUser } = useContext(AuthContext);
+  let { user, logoutUser, apikey } = useContext(AuthContext);
   const { width, height } = useWindowDimensions();
   const [showMenu, setHhowMenu] = useState(false);
   const [scrolledDownEnough, setScrolledDownEnough] = useState(false);
@@ -44,16 +34,36 @@ const HeaderCreate = ({ toggle }) => {
   const [current, setCurrent] = useState(1);
   const { url } = useRouteMatch();
   const [showLoginOutModal, setShowLoginOutModal] = useState(false);
+  const [shownotinTeam, setShowNotInTeam] = useState(false)
+
+
   const history = useHistory();
+  const dispatch = useDispatch()
+  const [submit, setsubmit] = useState(false)
+  const [submitTeam, setsubmitTeam] = useState(false)
+  const { status } = useSelector((state) => state.userInfo);
+
+
   const [note, setnote] = useState(null);
   const sendUserNews = () => {
     history.push("/chat");
   };
+  const sendUser = () => {
+    if (!user){
+      setPlatformType("competition");
+      history.push("/competition")
+    }else if (user && !apikey){
+      setShowNotInTeam(true)
+    }else if (user && apikey){
+      setPlatformType("competition");
+      history.push("/competition")
+    }
+  };
   // const [hover, setHover] = useState(false);
 
-  const handleClose = () => setShow(false);
+  // const handleClose = () => setShow(false);
+  const handleClose = () => setShowLoginOutModal(false);
   const handleShow = () => setShow(true);
-
   const handleCloseUFA = () => setShowUFA(false);
   const handleShowUFA = () => setShowUFA(true);
   const handleShowMenu = (showMenu) => {
@@ -99,6 +109,34 @@ const HeaderCreate = ({ toggle }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [scrolledDownEnough]);
 
+  useEffect(() => {
+    if (shownotinTeam){
+         const interval = setInterval(() => {
+            history.push('/competition');
+            clearInterval(interval);
+            setShowNotInTeam(false)
+        }, 3000);
+    }
+  },[shownotinTeam])
+
+  useEffect(() =>{
+    if(submit && status == "fulfilled"){
+       if (url != "/personal"){
+        history.push("/personal")
+       }
+        setsubmit(false)
+    }
+},[submit,status])
+
+useEffect(() =>{
+  if(submitTeam && status == "fulfilled"){
+     if (url != "/personalEdit"){
+      history.push("/personalEdit")
+     }
+      setsubmitTeam(false)
+  }
+},[submitTeam,status])
+
   return (
     <>
       <Modal
@@ -128,6 +166,18 @@ const HeaderCreate = ({ toggle }) => {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      <Modal
+        show={shownotinTeam}
+        centered
+      >
+        <Modal.Header>
+          您尚未报名，请先报名.....
+          {/* <Modal.Title>Modal heading</Modal.Title> */}
+        </Modal.Header>
+      </Modal>
+
+      
       <HeaderOut
         style={{
           width: width,
@@ -470,7 +520,7 @@ const HeaderCreate = ({ toggle }) => {
                 offset={-20}
                 onClick={() => {
                   changeCurrent(4);
-                  setPlatformType("competition");
+                  sendUser()
                 }}
                 activeClass={
                   scrolledDownEnough ? "active-block-scroll" : "active-block"
@@ -480,7 +530,7 @@ const HeaderCreate = ({ toggle }) => {
                 smooth={true}
                 duration={700}
                 // onMouseEnter={handleShowTransaction}
-                to="/competition"
+                // to={"/competition"}
               >
                 赛事账户
               </HeaderBtnLink>
@@ -587,16 +637,20 @@ const HeaderCreate = ({ toggle }) => {
                     // onMouseEnter={handleMouseLeave}
                   >
                     <MenuItemLinksRouter
+                     onClick={() =>{
+                       dispatch(fetchUser(user.user_id))
+                       setsubmit(true)  
+                     }}
                       offset={-50}
                       spy={true}
                       smooth={true}
-                      to="/personal"
+                      // to="/personal"
                       duration={700}
                       className="menu-item menu-item-home"
                     >
                       个人主页
                     </MenuItemLinksRouter>
-                    <MenuItemLinksRouter
+                    {apikey? <MenuItemLinksRouter
                       to="/team"
                       offset={-50}
                       spy={true}
@@ -605,9 +659,13 @@ const HeaderCreate = ({ toggle }) => {
                       className="menu-item menu-item-home"
                     >
                       团队信息
-                    </MenuItemLinksRouter>
+                    </MenuItemLinksRouter> : null}    
                     <MenuItemLinksRouter
-                      to="/personalEdit"
+                    onClick={() =>{
+                      dispatch(fetchUser(user.user_id))
+                      setsubmitTeam(true)  
+                    }}
+                      // to="/personalEdit"
                       offset={-50}
                       spy={true}
                       smooth={true}

@@ -40,7 +40,17 @@ a:active {
   font-weight: bold;
 }
 
+.tournament-bg {
+  margin: 0px 18.75%;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
 
+.tournament-challenge {
+  display: flex;
+  align-items: center;
+}
 
 
 
@@ -200,7 +210,58 @@ a:active {
   box-shadow: none !important;
 }
 
+
+.tournament-ufa-image {
+  margin-top: 160px;
+}
+
+.tournament-challenge-sm{
+  margin-top: 16px;
+}
+
+@media only screen and (max-width: 1600px) {
+
+  .tournament-ufa-image {
+    margin-top: 180px;
+  }
+}
+
+@media only screen and (max-width: 1450px) {
+
+  .tournament-ufa-image {
+    margin-top: 200px;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+
+  .tournament-ufa-image {
+    margin-top: 210px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .tournament-bg {
+    margin: 0px 16%;
+  }
+  .tournament-ufa-image {
+    margin-top: 220px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .tournament-bg {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 @media only screen and (max-width: 960px) {
+  .tournament-bg {
+    margin: 0px 12%;
+  }
+
   .projects .subheader {
     padding-left: 30px;
     padding-right: 30px;

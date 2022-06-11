@@ -27,6 +27,7 @@ export default function RegisterForm(props) {
     const [userState, setUserState] = useState({})
     const [show, setShow] = useState(false);
     const [showerror, setshowerror] = useState(false)
+    const [showfail, setshowfail] = useState(false)
     const {width, height} = useWindowDimensions();
     const history = useHistory()
 
@@ -151,7 +152,9 @@ export default function RegisterForm(props) {
 
     const submitregisterForm = async (e) => {
         e.preventDefault();
-        setUserState({...userState, ...{region:linkedArea.value}})
+        console.log(typeof(headPortrait),154)
+        setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value},...{avatar:headPortrait}})
+        console.log(userState,155)
         try{
             const JsonData = JSON.stringify(userState)
             const response = await apiRegisterUser(JsonData)
@@ -161,10 +164,11 @@ export default function RegisterForm(props) {
             }else if (response.data.msg == "OK."){
                 setShow(true)
             }else{
-                alert("注册失败...")
+                setshowfail(true)
             }
         }catch(e){
-            alert("注册失败, 系统错误, 请稍后重试...")
+            console.log(e)
+            setshowfail(true)
         }
     }
 
@@ -273,15 +277,12 @@ export default function RegisterForm(props) {
 
     useEffect(()=>{
         if (submit){
-            setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value}})
+            setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value},...{avatar:headPortrait}})
             setsubmit(false)
             console.log(userState)
+            
         }
     }, [submit, userState])
-
-    useEffect(()=>{
-        console.log(userState)
-    })
 
 
     return (
@@ -309,7 +310,16 @@ export default function RegisterForm(props) {
         onHide={() => setshowerror(false)}
         style={{textAlign:"center"}}
         >
-          <Modal.Header closeButton> 用户名/邮箱已被注册</Modal.Header>
+          <Modal.Header closeButton> 用户名/邮箱已被注册,请更改用户名/邮箱</Modal.Header>
+
+        </Modal>
+
+        <Modal
+        show={showfail}
+        onHide={() => setshowfail(false)}
+        style={{textAlign:"center"}}
+        >
+          <Modal.Header closeButton> 系统错误, 注册失败, 请稍后重试...</Modal.Header>
 
         </Modal>
 
@@ -378,7 +388,7 @@ export default function RegisterForm(props) {
                         style={{borderRadius: "6px", background: "white", paddingBottom: "5px"}}
                     >
                             <span className="publish-upload-file-text"
-                                  style={{color: "#1442ED", marginLeft: "0px"}}>上传头像</span>
+                                  style={{color: "#1442ED", marginLeft: "0px"}}>上传头像（选填）</span>
                         <input
                             hidden
                             ref={uploadFile}
@@ -478,8 +488,8 @@ export default function RegisterForm(props) {
                             onChange={(e) => {
                                 const confirmPassword = e.target.value;
                                 setConfirmPassword(e.target.value)
-                                const mobile_number = 13883729275
-                                setUserState({...userState, ...{mobile_number}});
+                                // const mobile_number = 13883729275
+                                // setUserState({...userState, ...{mobile_number}});
                             }}
                             pattern={IsPassword(confirmPassword)}
                         ></Form.Control>
@@ -553,7 +563,12 @@ export default function RegisterForm(props) {
                                 type = "date"
                                 required
                                 value={birthday}
-                                onChange={(e) => setbirthday(e.target.value)}
+                                onChange={(e) => {
+                                    setbirthday(e.target.value)
+                                    const birthday = e.target.value
+                                    setUserState({...userState, ...{birthday}})
+                                }
+                                }
                             >
                             </Form.Control>
                         </div>
@@ -657,8 +672,9 @@ export default function RegisterForm(props) {
                     e.stopPropagation();
                     setValidated2(true)
                     }else{
-                        setsubmit(true)
+                      setsubmit(true)
                       submitregisterForm(e)
+                      
                     }
                 }}>
                     <Form.Group className="loadingusername">
@@ -971,7 +987,3 @@ export default function RegisterForm(props) {
 
     );
 }
-
-
-
-

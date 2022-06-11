@@ -1,8 +1,10 @@
 import React from "react";
 import "./footer.css";
 
-const Footer = () => (
-  <footer>
+const Footer = ({eventKey}) => (
+  <footer style={{
+    borderTop:eventKey == 2 || eventKey == 4 ? 'none' : '1px solid #E5E8EE'
+  }}>
     {/* <div className="line"></div> */}
     <div>
       <br />

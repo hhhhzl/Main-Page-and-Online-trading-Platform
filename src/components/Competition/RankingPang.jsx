@@ -223,9 +223,8 @@ export default function RankingPang() {
 						style={{ marginLeft: "24px" }}
 					>量化排行榜</div>
 				</div>
-				<div className="ranking-pang-table-div">
-					{
-						current == 0 ? (
+				<div className="ranking-pang-table-div" style={{height:"max-content",minHeight:"700px",marginBottom:"84px"}}>
+					{	current == 0 ? (
 							<div>
 								<div className="ranking-pang-table" style={{overflowX: "auto"}}>
 									<BootstrapTable

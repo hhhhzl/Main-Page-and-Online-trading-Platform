@@ -10,18 +10,19 @@ export default function  PersonalHomepage({
 }){
 	let {user} = useContext(AuthContext)
 	let history = useHistory();
-	const [username, setUsername] = useState(user? user.username : null);
-	const [name, setname] = useState(userget? userget.last_name : null);
-	const [gender, setgender] = useState(userget? userget.gender : null);
-	const [region, setregion] = useState(userget? userget.region : null);
-	const [school, setSchool] = useState(userget? userget.institution : null);
-	const [personalProfile,setPersonalProfile] = useState(userget.experience?.length> 0? userget.experience : [{company:"",position:"完善经历让其他小伙伴更了解你哟~~",detail:""}]);
+	const [username, setUsername] = useState(userget? userget.username : null);
+	const [name, setname] = useState(userget?.last_name);
+	const [gender, setgender] = useState(userget?.gender);
+	const [region, setregion] = useState(userget?.region);
+	const [school, setSchool] = useState(userget?.institution);
+	const [personalProfile,setPersonalProfile] = useState(userget.experience?.length> 0? userget.experience : [{company:"",position:"",detail:""}]);
 	return(
 		<>
 			<div className="personal-homepage">
 				<div style={{padding: "60px"}}>
 					<Image
 					  src={userget.avatar}
+					  roundedCircle
 					  style={{ width: "160px", height: "160px" }}
 					/>
 				</div>
@@ -43,13 +44,10 @@ export default function  PersonalHomepage({
 							)
 						})}
 					{/* {personalProfile} */}
-					
-						
-				
-				<div style={{marginTop:"32px"}}>
 
-		
-
+					{
+						user.id == userget?.id? 
+						<div style={{marginTop:"32px"}}>
 					<Button 
 
 						size="sm" 
@@ -59,6 +57,11 @@ export default function  PersonalHomepage({
 							编辑资料
 							</Button>
 				</div>
+				:null
+					}
+						
+				
+				
 			</div>
 		</>
 	)

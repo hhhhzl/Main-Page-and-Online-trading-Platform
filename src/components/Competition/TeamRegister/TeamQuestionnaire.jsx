@@ -1,15 +1,17 @@
-import React, {useState, useEffect} from 'react'
+import { IconButton } from '@material-ui/core';
+import { ArrowBack, ArrowForward } from '@material-ui/icons';
+import React, { useEffect, useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
+import { updateUser } from 'redux/reducers/users/usersSlices';
 import useWindowDimensions from '../../../utils/sizewindow';
-import {IconButton} from '@material-ui/core';
-import {ArrowBack, ArrowForward} from '@material-ui/icons';
-import {Button, Col, Form, Image} from 'react-bootstrap';
-import {useHistory} from 'react-router';
 
 export default function TeamRegister({
                                          Pageprocess,
                                          backPageprocess,
-                                         grade,
-                                         setGrade,
+                                         gradeAsk,
+                                         setGradeAsk,
                                          investmentTime,
                                          setInvestmentTime,
                                          attentionIndustry,
@@ -17,7 +19,9 @@ export default function TeamRegister({
                                      }) {
     const {width, height} = useWindowDimensions();
     const [disable, setdisable] = useState(false)
+    const [userState, setuserState] = useState([])
     const history = useHistory()
+    const dispatch = useDispatch()
     const sendUserback = () => {
         history.push("/team/register")
     }
@@ -28,12 +32,12 @@ export default function TeamRegister({
     };
 
     useEffect(() => {
-        if (grade && investmentTime && attentionIndustry) {
+        if (gradeAsk && investmentTime && attentionIndustry) {
             setdisable(false)
         }  else {
             setdisable(true)
         }
-    }, [grade,investmentTime,attentionIndustry,disable])
+    }, [gradeAsk,investmentTime,attentionIndustry,disable])
 
     const openModel = () => {
         setShowModal(true)
@@ -104,16 +108,17 @@ export default function TeamRegister({
                                         background: "white",
                                         borderRadius: "4px 4px 4px 4px"
                                     }}
-                                    required value={grade} defaultValue={""}
-                                    onChange={(e) => setGrade(e.target.value)}>
+                                    required value={gradeAsk} defaultValue={""}
+                                    onChange={(e) => {setGradeAsk(e.target.value);
+                                    const grade = e.target.value
+                                    setuserState({...userState,...{grade}})
+                                    }}>
                                     <option value="">请选择</option>
-                                    <option value="1">大一</option>
-                                    <option value="2">大二</option>
-                                    <option value="3">大三</option>
-                                    <option value="4">大四</option>
-                                    <option value="5">研一</option>
-                                    <option value="6">研二</option>
-                                    <option value="7">博士</option>
+                                    <option value="2">硕士或以上</option>
+                                    <option value="5">大四</option>
+                                    <option value="6">大三</option>
+                                    <option value="7">大二</option>
+                                    <option value="8">大一</option>
                                 </Form.Select>
                             </Form>
                         </div>
@@ -143,10 +148,13 @@ export default function TeamRegister({
                                         borderRadius: "4px 4px 4px 4px"
                                     }}
                                     required value={investmentTime} defaultValue={""}
-                                    onChange={(e) => setInvestmentTime(e.target.value)}>
+                                    onChange={(e) => {
+                                        setInvestmentTime(e.target.value);
+                                        const investment_duration = e.target.value
+                                        setuserState({...userState, ...{investment_duration}});}}>
                                     <option value="">请选择</option>
-                                    <option value="1">小于一年</option>
-                                    <option value="2">一年至三年</option>
+                                    <option value="0">小于一年</option>
+                                    <option value="1">一年至三年</option>
                                     <option value="3">大于三年</option>
                                 </Form.Select>
                             </Form>
@@ -179,7 +187,10 @@ export default function TeamRegister({
                                                   borderRadius: "4px 4px 4px 4px"
                                               }}
                                               value={attentionIndustry}
-                                              onChange={(e) => setAttentionIndustry(e.target.value)}
+                                              onChange={(e) => {
+                                                  setAttentionIndustry(e.target.value);
+                                                const interested_field = e.target.value
+                                                setuserState({...userState, ...{interested_field}});}}
                                 />
                             </Form>
                         </div>
@@ -194,7 +205,13 @@ export default function TeamRegister({
                                         borderRadius: "4px 4px 4px 4px",
                                         boxShadow: disable ? null : "0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08)",
                                     }}
-                                    onClick={() => Pageprocess()}
+                                    onClick={() => {
+                                        dispatch(
+                                            updateUser({
+                                            data: userState
+                                           }))
+       
+                                       ;Pageprocess()}}
                             >
                                 <div style={{display: "flex", justifyContent: "right"}}>
                                     <div style={{

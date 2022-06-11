@@ -110,9 +110,10 @@ export default function InvestNotes({searchData, platformType}) {
       {/* <Countdown showModal={showModal} hideModal={hideModal}></Countdown> */}
       <div
         style={{
-          paddingTop: height * 0.075,
+          top:0,
+          paddingTop: "121px",
           width: "100%",
-          height: height * 0.925,
+          height: height,
           display: "flex",
           justifyContent: "center",
           background: "#F5F6F8",

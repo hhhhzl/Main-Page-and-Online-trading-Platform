@@ -26,59 +26,7 @@ export default function Team() {
         {width > 800 ? (
           <>
             <Row>
-              <Col xs={4}>
-                <div className="text-center">
-                  <Image
-                    src="/homeCutout/Mask group@2x.png"
-                    title="lindsay image"
-                    alt="Lindsay"
-                    roundedCircle
-                    style={{
-                      position: "relative",
-                      width: "55.559%",
-                      height: "55%",
-                    }}
-                  />
-                  <div
-                    className="text-center"
-                    style={{ color: "#6E7184", padding: "24px 10px 10px 10px" }}
-                  >
-                    <h5
-                      style={{
-                        color: "#2A2B30",
-                        fontFamily: "MicrosoftYaHeiUI",
-                        fontSize:
-                          width > 1000 ? "20px" : width > 800 ? "18px" : "16px",
-                        lineHeight: "23px",
-                        fontWeight: "bold",
-                        margin: "0px",
-                      }}
-                    >
-                      邹鲁秦 Lindsay
-                    </h5>
-                    <p
-                      style={{
-                        fontFamily: "MicrosoftYaHeiUI",
-                        fontSize:
-                          width > 1000 ? "16px" : width > 800 ? "14px" : "12px",
-                        textIndent: "0",
-                        paddingLeft: width > 750 ? "10px" : "5px",
-                        paddingRight: width > 750 ? "10px" : "5px",
-                        lineHeight: "28px",
-                        paddingTop: "16px",
-                        fontWeight: "400",
-                      }}
-                    >
-                      拥有抖音、知乎百万粉丝的求职界一姐
-                      <br />
-                      JP Morgan纽约总部工作多年并担任校招官
-                      <br />
-                      北大/哥大学霸 毕业后斩获十余份offer
-                    </p>
-                  </div>
-                </div>
-              </Col>
-              <Col xs={4}>
+            <Col xs={4}>
                 <div className="text-center">
                   <Image
                     src="/homeCutout/zhangyankui@2x.png"
@@ -134,6 +82,60 @@ export default function Team() {
                   </div>
                 </div>
               </Col>
+              <Col xs={4}>
+                <div className="text-center">
+                  <Image
+                    src="/homeCutout/Mask group@2x.png"
+                    title="lindsay image"
+                    alt="Lindsay"
+                    roundedCircle
+                    style={{
+                      position: "relative",
+                      width: "55.559%",
+                      height: "55%",
+                    }}
+                  />
+                  <div
+                    className="text-center"
+                    style={{ color: "#6E7184", padding: "24px 10px 10px 10px" }}
+                  >
+                    <h5
+                      style={{
+                        color: "#2A2B30",
+                        fontFamily: "MicrosoftYaHeiUI",
+                        fontSize:
+                          width > 1000 ? "20px" : width > 800 ? "18px" : "16px",
+                        lineHeight: "23px",
+                        fontWeight: "bold",
+                        margin: "0px",
+                      }}
+                    >
+                      邹鲁秦 Lindsay
+                    </h5>
+                    <p
+                      style={{
+                        fontFamily: "MicrosoftYaHeiUI",
+                        fontSize:
+                          width > 1000 ? "16px" : width > 800 ? "14px" : "12px",
+                        textIndent: "0",
+                        paddingLeft: width > 750 ? "10px" : "5px",
+                        paddingRight: width > 750 ? "10px" : "5px",
+                        lineHeight: "28px",
+                        paddingTop: "16px",
+                        fontWeight: "400",
+                      }}
+                    >
+                      拥有抖音、知乎百万粉丝的求职界一姐
+                      <br />
+                      JP Morgan纽约总部工作多年并担任校招官
+                      <br />
+                      北大/哥大学霸 毕业后斩获十余份offer
+                    </p>
+                  </div>
+                </div>
+              </Col>
+
+              
 
               <Col xs={4}>
                 <div className="text-center">
@@ -194,61 +196,7 @@ export default function Team() {
           </>
         ) : (
           <>
-            <Row style={{justifyContent: "center",marginTop:"20px"}}>
-              <Col xs={6}>
-                <div className="text-center">
-                  <Image
-                    src="/homeCutout/Mask group@2x.png"
-                    title="lindsay image"
-                    alt="Lindsay"
-                    roundedCircle
-                    style={{
-                      position: "relative",
-                      width: "55.559%",
-                      height: "55%",
-                    }}
-                  />
-                  <div
-                    className="text-center"
-                    style={{ color: "#6E7184", padding: "24px 10px 10px 10px" }}
-                  >
-                    <h5
-                      style={{
-                        color: "#2A2B30",
-                        fontFamily: "MicrosoftYaHeiUI",
-                        fontSize:
-                          width > 1000 ? "20px" : width > 800 ? "18px" : "16px",
-                        lineHeight: "23px",
-                        fontWeight: "bold",
-                        margin: "0px",
-                      }}
-                    >
-                      邹鲁秦 Lindsay
-                    </h5>
-                    <p
-                      style={{
-                        fontFamily: "MicrosoftYaHeiUI",
-                        fontSize:
-                          width > 1000 ? "16px" : width > 800 ? "14px" : "12px",
-                        textIndent: "0",
-                        paddingLeft: width > 750 ? "10px" : "5px",
-                        paddingRight: width > 750 ? "10px" : "5px",
-                        lineHeight: "28px",
-                        paddingTop: "16px",
-                        fontWeight: "400",
-                      }}
-                    >
-                      拥有抖音、知乎百万粉丝的求职界一姐
-                      <br />
-                      JP Morgan纽约总部工作多年并担任校招官
-                      <br />
-                      北大/哥大学霸 毕业后斩获十余份offer
-                    </p>
-                  </div>
-                </div>
-              </Col>
-            </Row>
-            <Row style={{justifyContent: "center",marginTop:"20px"}}>
+          <Row style={{justifyContent: "center",marginTop:"20px"}}>
               <Col xs={6}>
                 <div className="text-center">
                   <Image
@@ -306,6 +254,61 @@ export default function Team() {
                 </div>
               </Col>
             </Row>
+            <Row style={{justifyContent: "center",marginTop:"20px"}}>
+              <Col xs={6}>
+                <div className="text-center">
+                  <Image
+                    src="/homeCutout/Mask group@2x.png"
+                    title="lindsay image"
+                    alt="Lindsay"
+                    roundedCircle
+                    style={{
+                      position: "relative",
+                      width: "55.559%",
+                      height: "55%",
+                    }}
+                  />
+                  <div
+                    className="text-center"
+                    style={{ color: "#6E7184", padding: "24px 10px 10px 10px" }}
+                  >
+                    <h5
+                      style={{
+                        color: "#2A2B30",
+                        fontFamily: "MicrosoftYaHeiUI",
+                        fontSize:
+                          width > 1000 ? "20px" : width > 800 ? "18px" : "16px",
+                        lineHeight: "23px",
+                        fontWeight: "bold",
+                        margin: "0px",
+                      }}
+                    >
+                      邹鲁秦 Lindsay
+                    </h5>
+                    <p
+                      style={{
+                        fontFamily: "MicrosoftYaHeiUI",
+                        fontSize:
+                          width > 1000 ? "16px" : width > 800 ? "14px" : "12px",
+                        textIndent: "0",
+                        paddingLeft: width > 750 ? "10px" : "5px",
+                        paddingRight: width > 750 ? "10px" : "5px",
+                        lineHeight: "28px",
+                        paddingTop: "16px",
+                        fontWeight: "400",
+                      }}
+                    >
+                      拥有抖音、知乎百万粉丝的求职界一姐
+                      <br />
+                      JP Morgan纽约总部工作多年并担任校招官
+                      <br />
+                      北大/哥大学霸 毕业后斩获十余份offer
+                    </p>
+                  </div>
+                </div>
+              </Col>
+            </Row>
+            
             <Row style={{justifyContent: "center",marginTop:"20px"}}>
               <Col xs={6}>
                 <div className="text-center">

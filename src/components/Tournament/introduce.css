@@ -18,7 +18,7 @@
   width: "100%";
 }
 
-.line-container{
+.line-container {
   position: relative;
   margin-top: 0px;
   /* margin-bottom: 48px; */
@@ -27,13 +27,13 @@
 
 }
 
-.match-bottom-wrapper{
-  position:relative;
-	display: flex;
+.match-bottom-wrapper {
+  position: relative;
+  display: flex;
   background-color: #FFFFFF;
-	justify-content: center;
-	align-items: center;
-	margin-bottom: 120px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 120px;
   z-index: 990;
 }
 
@@ -62,7 +62,7 @@
 
 .center-content {
   font-size: 28px;
-  font-family: Songti SC-Regular, Songti SC;
+  font-family: Songti SC-Regular, Songti SC ,宋体;
   font-weight: 400;
   color: #3D3F4E;
   line-height: 60px;
@@ -92,7 +92,7 @@
 
 .match-text {
   font-size: 60px;
-  font-family: "Songti SC-Bold, Songti SC";
+  font-family: "Songti SC-Bold, Songti SC, 宋体";
   font-weight: bold;
   color: #2A2B30;
   line-height: 70px;
@@ -155,16 +155,16 @@ height: 32px; */
 }
 
 .match-begin-text {
-	font-size: 24px;
-	font-family: Songti SC-Bold, Songti SC;
-	font-weight: bold;
-	color: #2A2B30;
-	line-height: 28px;
-	letter-spacing: 1px;
+  font-size: 24px;
+  font-family: Songti SC-Bold, Songti SC, 宋体;
+  font-weight: bold;
+  color: #2A2B30;
+  line-height: 28px;
+  letter-spacing: 1px;
 }
 
 .match-begin {
-  margin-top: 372px;
+  margin-top: 505px;
   display: flex;
 }
 
@@ -182,7 +182,7 @@ height: 32px; */
 
 .match-end-text {
   font-size: 24px;
-  font-family: Songti SC-Bold, Songti SC;
+  font-family: Songti SC-Bold, Songti SC, 宋体;
   font-weight: bold;
   color: #2A2B30;
   line-height: 28px;
@@ -193,7 +193,7 @@ height: 32px; */
 .match-end-content {
   margin-top: 12px;
   font-size: 16px;
-  font-family: Songti SC-Regular, Songti SC;
+  font-family: Songti SC-Regular, Songti SC ,宋体;
   font-weight: 400;
   color: #6E7184;
   line-height: 28px;
@@ -204,26 +204,26 @@ height: 32px; */
 }
 
 .match-bottom-details {
-	font-size: 16px;
-	font-family: Songti SC-Regular, Songti SC;
-	font-weight: 400;
-	color: #2A2B30;
-	line-height: 28px;
-	text-align: end;
-	letter-spacing:2px;
+  font-size: 16px;
+  font-family: Songti SC-Regular, Songti SC ,宋体;
+  font-weight: 400;
+  color: #2A2B30;
+  line-height: 28px;
+  text-align: end;
+  letter-spacing: 2px;
 }
 
-.match-bottom-rules{
-	font-size: 16px;
-	font-family: Songti SC-Regular, Songti SC;
-	font-weight: 400;
-	color: #1442ED;
-	line-height: 28px;
-	letter-spacing:2px;
-	cursor: pointer;
+.match-bottom-rules {
+  font-size: 16px;
+  font-family: Songti SC-Regular, Songti SC ,宋体;
+  font-weight: 400;
+  color: #1442ED;
+  line-height: 28px;
+  letter-spacing: 2px;
+  cursor: pointer;
 }
 
-.match-bottom-rules:hover{
+.match-bottom-rules:hover {
   border-bottom: 1px solid;
 }
 
@@ -252,7 +252,7 @@ height: 32px; */
 
 .finals-name {
   display: flex;
-  margin-top: 120px;
+  margin-top: 145px;
 }
 
 .finals-name-container {
@@ -269,7 +269,7 @@ height: 32px; */
 
 .awards-title {
   font-size: 60px;
-  font-family: Songti SC-Bold, Songti SC;
+  font-family: Songti SC-Bold, Songti SC, 宋体;
   font-weight: bold;
   color: #2A2B30;
   line-height: 70px;
@@ -279,7 +279,7 @@ height: 32px; */
 .awards-text {
   margin-top: 12px;
   font-size: 16px;
-  font-family: Songti SC-Regular, Songti SC;
+  font-family: Songti SC-Regular, Songti SC ,宋体;
   font-weight: 400;
   color: #6E7184;
   line-height: 28px;
@@ -354,6 +354,7 @@ height: 32px; */
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -362,14 +363,14 @@ height: 32px; */
 
 
 
-.awards-card-container-small{
-	flex: 0.9;
-	margin-top: 60px;
-	background: #FFFFFF;
-	box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02);
-	border-radius: 0px 0px 0px 0px;
-	opacity: 1;
-	height: max-content;
+.awards-card-container-small {
+  flex: 0.9;
+  margin-top: 60px;
+  background: #FFFFFF;
+  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02);
+  border-radius: 0px 0px 0px 0px;
+  opacity: 1;
+  height: max-content;
 }
 
 
@@ -386,7 +387,7 @@ height: 32px; */
 
 .ranking {
   font-size: 24px;
-  font-family: Songti SC-Bold, Songti SC;
+  font-family: Songti SC-Bold, Songti SC, 宋体;
   font-weight: bold;
   color: #2A2B30;
   line-height: 28px;
@@ -403,11 +404,12 @@ height: 32px; */
 .award-content {
   margin-top: 35px;
   font-size: 16px;
-  font-family: Songti SC-Bold, Songti SC;
+  font-family: Songti SC-Bold, Songti SC, 宋体;
   /* font-weight: bold; */
-  color: #6E7184;
+  color: #3D3F4E;
   line-height: 28px;
   letter-spacing: 1px;
+  font-weight: 400
 }
 
 .other-awards {
@@ -416,7 +418,7 @@ height: 32px; */
 
 .tips-end {
   font-size: 16px;
-  font-family: Songti SC-Regular, Songti SC;
+  font-family: Songti SC-Regular, Songti SC ,宋体;
   font-weight: 400;
   color: #9C9FB0;
   line-height: 28px;
@@ -427,7 +429,7 @@ height: 32px; */
 
 .tips-center {
   font-size: 16px;
-  font-family: Songti SC-Regular, Songti SC;
+  font-family: Songti SC-Regular, Songti SC ,宋体;
   font-weight: 400;
   color: #9C9FB0;
   line-height: 28px;
@@ -437,7 +439,21 @@ height: 32px; */
 }
 
 
+.match-ranking {
+  margin-top: 80px;
+}
 
+.nine-point-nine{
+  margin-top: 138px;
+}
+
+.six-one{
+  margin-top: 221px;
+}
+
+.nine-two{
+  margin-top: 143px;
+}
 
 
 
@@ -459,7 +475,7 @@ height: 32px; */
   }
 
   .introduce-mark {
-    margin: 0px 10%;
+    margin: 0px 20%;
   }
 }
 
@@ -499,11 +515,11 @@ height: 32px; */
   }
 
   .match-begin {
-    margin-top: 340px;
+    margin-top: 467px;
   }
 
   .finals-name {
-    margin-top: 106px;
+    margin-top: 131px;
   }
 
   .awards-title {
@@ -521,6 +537,8 @@ height: 32px; */
   .center-content {
     font-size: 24px;
   }
+
+  
 }
 
 @media screen and (max-width: 1200px) {
@@ -537,7 +555,7 @@ height: 32px; */
   }
 
   .match-begin {
-    margin-top: 323px;
+    margin-top: 442px;
   }
 
   .match-end {
@@ -571,7 +589,11 @@ height: 32px; */
   }
 
   .finals-name {
-    margin-top: 140px;
+    margin-top: 137px;
+  }
+
+  .nine-point-nine{
+    margin-top: 132px
   }
 
   .awards-title {
@@ -587,7 +609,21 @@ height: 32px; */
   }
 }
 
+@media screen and (max-width: 560px) {
+  .nine-two{
+    margin-top: 130px ;
+  }
+}
+
 @media screen and (max-width: 900px) {
+
+  .nine-two{
+    margin-top: 165px;
+  }
+
+  .six-one{
+    margin-top: 204px;
+  }
 
   .center-content {
     font-size: 20px;
@@ -610,7 +646,7 @@ height: 32px; */
     line-height: 35px;
   }
 
-  .year{
+  .year {
     font-size: 18px;
   }
 
@@ -619,7 +655,7 @@ height: 32px; */
   }
 
   .match-begin {
-    margin-top: 323px;
+    margin-top: 430px;
   }
 
   .match-end {
@@ -650,7 +686,7 @@ height: 32px; */
   }
 
   .finals-name {
-    margin-top: 140px;
+    margin-top: 142px;
   }
 
   .awards-title {
@@ -665,5 +701,3 @@ height: 32px; */
     font-size: 18px;
   }
 }
-
-
