@@ -7,7 +7,7 @@ import useWindowDimensions from "../../utils/sizewindow";
 import AuthContext from "context/AuthContext";
 import { useHistory } from "react-router";
 import Fade from "react-reveal/Fade";
-import { setPlatformType } from "utils";
+import { setchoice, setPlatformType } from "utils";
 import moment from "moment";
 
 export default function Sign() {
@@ -16,6 +16,7 @@ export default function Sign() {
   let { user, logoutUser, apikey, competition } = useContext(AuthContext);
   const [buttonword, setbuttonword] = useState("正式报名")
   const history = useHistory();
+  const [showwheretogo, setshowwheretogo] = useState(false)
 
   const [loginModel, setloginModel] = useState(false);
   const handleClose = () => {
@@ -49,7 +50,11 @@ export default function Sign() {
       setPlatformType("competition")
       history.push("/team/register");
     }else if(buttonword == "正式报名"){
-      history.push("/team/register");
+      if (!user){
+        setshowwheretogo(true)
+      }else{
+        history.push("/team/register");
+      }
     }else if (buttonword == "查看赛事"){
       /////todu
     }
@@ -127,6 +132,41 @@ export default function Sign() {
             请先登录账户
           </Modal.Title>
         </Modal.Header>
+      </Modal>
+
+      <Modal
+        show={showwheretogo}
+        onHide={() => setshowwheretogo(false)}
+        centered
+        // className="page-header-modal"
+      >
+        <Modal.Header closeButton>
+          {/* <Modal.Title>Modal heading</Modal.Title> */}
+        </Modal.Header>
+        <Modal.Body style={{textAlign:"center"}}>你还没有登录哟，需要登录注册即可报名比赛！！</Modal.Body>
+        <Modal.Footer style={{display:"flex", justifyContent:"center"}}>
+          <Button
+            className="modal-btn modal-btn-cancel"
+            variant="secondary"
+            onClick={() => {
+              setchoice("/login")
+              history.push("/team/register")
+            }}
+          >
+            去登录
+          </Button>
+          <Button
+            className="modal-btn modal-btn-submit"
+            variant="primary"
+            onClick={() => {
+              setchoice("/register")
+              history.push("/team/register")
+            }  
+            }
+          >
+            去注册
+          </Button>
+        </Modal.Footer>
       </Modal>
       <div
         style={{

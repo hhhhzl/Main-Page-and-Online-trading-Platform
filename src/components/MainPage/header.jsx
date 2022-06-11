@@ -37,6 +37,7 @@ const HeaderCreate = ({ toggle }) => {
   const { url } = useRouteMatch();
   const [showLoginOutModal, setShowLoginOutModal] = useState(false);
   const [shownotinTeam, setShowNotInTeam] = useState(false)
+  const [showluntan, setshowluntan] = useState(false)
 
 
   const history = useHistory();
@@ -176,6 +177,16 @@ useEffect(() =>{
       >
         <Modal.Header>
           您尚未报名，请先报名.....
+          {/* <Modal.Title>Modal heading</Modal.Title> */}
+        </Modal.Header>
+      </Modal>
+
+      <Modal
+        show={showluntan}
+        onHide={() => setshowluntan(false)}
+      >
+        <Modal.Header closeButton>
+          即将上线.....
           {/* <Modal.Title>Modal heading</Modal.Title> */}
         </Modal.Header>
       </Modal>
@@ -443,7 +454,7 @@ useEffect(() =>{
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
                 offset={-20}
-                onClick={() => changeCurrent(2)}
+                onClick={() => {changeCurrent(2);setshowluntan(true)}}
                 activeClass={
                   scrolledDownEnough ? "active-block-scroll" : "active-block"
                 }

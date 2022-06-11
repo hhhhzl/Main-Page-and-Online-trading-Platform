@@ -24,6 +24,7 @@ const ASide = ({ isOpen, toggle }) => {
   const history = useHistory();
   const [showLoginOutModal, setShowLoginOutModal] = useState(false);
   const [shownotinTeam, setShowNotInTeam] = useState(false)
+  const [showluntan, setshowluntan] = useState(false)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -153,6 +154,16 @@ useEffect(() =>{
         </Modal.Header>
       </Modal>
      
+      <Modal
+        show={showluntan}
+        onHide={() => setshowluntan(false)}
+      >
+        <Modal.Header closeButton>
+          即将上线.....
+          {/* <Modal.Title>Modal heading</Modal.Title> */}
+        </Modal.Header>
+      </Modal>
+
        <aside
             className="aside"
             style={{
@@ -265,6 +276,19 @@ useEffect(() =>{
                   )}
 
                   <LinkR
+                  onClick={() => setshowluntan(true)}
+                    className="home-side-link"
+                    scrolledDownEnough={scrolledDownEnough}
+                    offset={-20}
+                    // to="/#"
+                    spy={true}
+                    smooth={true}
+                    // onClick={toggle}
+                  >
+                    论坛
+                  </LinkR>
+
+                  <LinkR
                     className="home-side-link"
                     scrolledDownEnough={scrolledDownEnough}
                     offset={-20}
@@ -276,17 +300,7 @@ useEffect(() =>{
                     赛事介绍
                   </LinkR>
 
-                  <LinkR
-                    className="home-side-link"
-                    scrolledDownEnough={scrolledDownEnough}
-                    offset={-20}
-                    to="/#"
-                    spy={true}
-                    smooth={true}
-                    onClick={toggle}
-                  >
-                    论坛
-                  </LinkR>
+                  
 
                   <LinkR
                   onClick={() => sendUser()}

@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import { useHistory, useLocation } from "react-router-dom";
-import { clearLocalStorage, setPlatformType } from "utils";
+import { clearLocalStorage, getautologin, setPlatformType, cleanAutologin } from "utils";
 import { fetchUser } from "redux/reducers/users/usersSlices";
 import { useDispatch } from "react-redux";
 import { apiGetAllCompetitions, apiGetCompetitionAPIKey, apiGetCompetitiongetInfo, apiGetTeamAccount } from "api/main_platform/competitions";
@@ -12,6 +12,9 @@ import { Modal } from "react-bootstrap";
 const AuthContext = createContext();
 
 export default AuthContext;
+
+
+
 
 export const AuthProvider = ({ children }) => {
   const dispatch = useDispatch();
@@ -40,6 +43,10 @@ export const AuthProvider = ({ children }) => {
 
   const [show,setshow] = useState(false)
   const [show1,setshow1] = useState(false)
+
+
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////
 
   let loginUser = async (e) => {
     e.preventDefault();
@@ -79,6 +86,52 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////
+  let autologin = async (e) =>{
+    let response = await fetch("http://82.157.18.223:10985/api/users/token/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: getautologin().email,
+          password: getautologin().password,
+        }),
+      });
+      let data = await response.json();
+      if (data.msg != "The data in request body is invalid." && data.msg != "Unauthorized." ) {
+        setAuthTokens(data.data);
+        setuser(jwt_decode(data.data.access));
+        localStorage.setItem("authTokens", JSON.stringify(data.data));
+        dispatch(fetchUser(jwt_decode(data.data.access).user_id))
+        cleanAutologin()
+         console.log(route.from)
+        if (route.from == "/eplatform"){
+           setPlatformType("eplatform")
+          history.push(route.from);
+        }else if (route.from == "/competition"){
+         setPlatformType("competition")
+          history.push(route.from);
+        } else if (route.from == "/team/register"){
+            setPlatformType("competition")
+            history.push('/competition')        
+        }else{
+          history.push('/')
+        }
+      } else if (data.data.detail == "No active account found with the given credentials") {
+        setshow(true)
+      } else{
+        setshow1(true)
+      }
+  }
+
+
+
+
+
+
   let logoutUser = () => {
     setAuthTokens(null);
     setuser(null);
@@ -116,6 +169,7 @@ export const AuthProvider = ({ children }) => {
     logoutUser: logoutUser,
     competition:competition,
     team:team,
+    autologin: autologin
   };
 
   // useEffect(()=>{

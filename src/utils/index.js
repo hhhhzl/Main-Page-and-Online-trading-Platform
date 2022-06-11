@@ -1,3 +1,30 @@
+export function setautologin(arry) {
+    localStorage.setItem("autologin", arry);
+}
+
+export function getautologin() {
+    const autologin = JSON.parse(localStorage.getItem('autologin'))
+    return autologin
+}
+
+export function cleanAutologin() {
+    localStorage.removeItem("autologin");
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+export function setchoice(arry) {
+    localStorage.setItem("Userchoice", arry);
+}
+
+export function getchoice() {
+    const autologin = localStorage.getItem('Userchoice')
+    return autologin
+}
+
+export function cleanchoice() {
+    localStorage.removeItem("Userchoice");
+}
+//////////////////////////////////////////////////////////////////////////////////////////
 export function getPlatformType() {
     const platformType = localStorage.getItem('platformType');
     return platformType;

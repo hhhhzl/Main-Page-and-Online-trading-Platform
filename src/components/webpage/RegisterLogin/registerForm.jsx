@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Button, Form, Row, Col, Badge, Modal, Collapse} from "react-bootstrap";
 import {propTypes} from "react-bootstrap/esm/Image";
 import {SentimentSatisfiedAlt} from "@material-ui/icons";
@@ -10,7 +10,7 @@ import {Nav} from 'react-bootstrap';
 import {ArrowBack} from "@material-ui/icons";
 import {connect} from "react-redux";
 import {RegisterAuthAction} from "../../../redux/actions/AuthAction";
-import {getFileName} from "../../../utils";
+import {getFileName, setautologin} from "../../../utils";
 import {useHistory} from "react-router";
 import TeamRegisterModel from "../../screen/modal/TeamRegisterModel";
 import { IconButton } from "@material-ui/core";
@@ -22,8 +22,10 @@ import schooldata from "../../../constants/学校.json"
 import areadata from "../../../constants/地区.json"
 import data from "../../../static/searchdataSmallTabel.json"
 import { SampleData } from "static/Stockdata";
+import AuthContext from "context/AuthContext";
 
 export default function RegisterForm(props) {
+    const {autologin} = useContext(AuthContext)
     const [userState, setUserState] = useState({})
     const [show, setShow] = useState(false);
     const [showerror, setshowerror] = useState(false)
@@ -164,7 +166,11 @@ export default function RegisterForm(props) {
             if (response.data.msg == "The data in request body is invalid."){
                 setshowerror(true)
             }else if (response.data.msg == "OK."){
-                setShow(true)
+                const props = {}
+                props.email = userState.email
+                props.password = userState.password
+                setautologin(JSON.stringify(props))
+                autologin()
             }else if (response.data.msg == "The password does not meet the complexity requirement.") {
                 setshowfailpassward(true)
             }else{
