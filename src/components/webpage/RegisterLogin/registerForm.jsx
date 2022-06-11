@@ -47,13 +47,13 @@ export default function RegisterForm(props) {
     const [job, setjob] = useState("")
     const [page, setpage] = useState(1)
     const [experienceList, setExperienceList] = useState([
-        {company: "", position: ""}
+        {company: "", position: "", detail:""}
     ])
     const [disable, setdisable] = useState(true)
 
 
     const addExperience = () => {
-        let obj = {company: "", experience: ""};
+        let obj = {company: "", position: "", detail:""};
         experienceList.push(obj);
         console.log(experienceList);
         setExperienceList([...experienceList]);
@@ -119,7 +119,7 @@ export default function RegisterForm(props) {
 
     function IsPassword(confirmPassword) {
         if (password === confirmPassword) {
-            return "^.{8,20}";
+            return "^.{8,15}";
         } else {
             return "^.{200,500}";
         }
@@ -152,21 +152,19 @@ export default function RegisterForm(props) {
     const submitregisterForm = async (e) => {
         e.preventDefault();
         setUserState({...userState, ...{region:linkedArea.value}})
-        console.log(userState)
         try{
-            console.log(userState,147)
             const JsonData = JSON.stringify(userState)
-            console.log(JsonData,149)
             const response = await apiRegisterUser(JsonData)
             console.log(response)
             if (response.data.msg == "The data in request body is invalid."){
                 setshowerror(true)
             }else if (response.data.msg == "OK."){
                 setShow(true)
+            }else{
+                alert("注册失败...")
             }
-
         }catch(e){
-            console.log(e)
+            alert("注册失败, 系统错误, 请稍后重试...")
         }
     }
 
@@ -462,10 +460,10 @@ export default function RegisterForm(props) {
                                 setPassword(e.target.value)
                                 setUserState({...userState, ...{password}});
                             }}
-                            pattern="^[A-Za-z0-9]{8}$"
+                            pattern="^[A-Za-z0-9]{8, 15}$"
                         ></Form.Control>
                         <Form.Control.Feedback type="invalid">
-                            请输入最多8位密码！
+                            请输入最少8位，最多15位密码！
                         </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group className="loadingusername">
@@ -759,7 +757,7 @@ export default function RegisterForm(props) {
                     <Form.Group className="loadingusername">
 
                         <Form.Label column>
-                            所在国家/地区
+                            所在国家/省份/地区
                         </Form.Label>
 
                         <Form.Control
@@ -857,7 +855,7 @@ export default function RegisterForm(props) {
                                                 style={{width: "85%", height: "48px"}}
                                                 placeholder="请输入文字"
                                                 onChange={(e) => {
-                                                    experienceList[idx].experience = e.target.value;
+                                                    experienceList[idx].position = e.target.value;
                                                     setExperienceList(experienceList);
                                                     const experience = experienceList;
                                                     setUserState({...userState, ...{experience}});
@@ -973,7 +971,3 @@ export default function RegisterForm(props) {
 
     );
 }
-
-
-
-

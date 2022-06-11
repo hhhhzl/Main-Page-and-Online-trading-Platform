@@ -6,34 +6,35 @@ import "./introduce.css";
 import useWindowDimensions from "../../utils/sizewindow";
 import Fade from "react-reveal/Fade";
 
-export default function Introduce({changeEventKey}) {
+export default function Introduce({ changeEventKey }) {
   const { width, height } = useWindowDimensions();
-  const [tobottom,setTobottom] = useState(true);
+  const [tobottom, setTobottom] = useState(true);
   const [bodyscrollrdTop, setbodyscrollTop] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      if(document.documentElement.scrollTop > bodyscrollrdTop || document.body.scrollTop > bodyscrollrdTop){
-        
+      if (
+        document.documentElement.scrollTop > bodyscrollrdTop ||
+        document.body.scrollTop > bodyscrollrdTop
+      ) {
         setbodyscrollTop(
           document.documentElement.scrollTop || document.body.scrollTop
         );
       }
-     
     };
-    console.log(bodyscrollrdTop)
+    console.log(bodyscrollrdTop);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [bodyscrollrdTop]);
 
   return (
     <>
-      <Fade top >
+      <Fade top>
         <div
           style={{
             position: "fixed",
             zIndex: 10,
-            width: "1px",
+            width: width > 800 ? "1px" : "",
             height: width / 2.9,
             background: `linear-gradient(to top, #E5E8EE ${
               ((bodyscrollrdTop / (width / 2.97)) * 100).toString() + "%"
@@ -90,6 +91,18 @@ export default function Introduce({changeEventKey}) {
             <div className="left">
               <div className="match-text">比赛流程</div>
 
+              <div className="match-ranking">
+                <Image
+                  src="/tournament/ranking@2x.png"
+                  style={{
+                    width: "81.1667%",
+                    height: "8.8334%",
+                    minHeight: "37px",
+                    minWidth: "340px",
+                  }}
+                />
+              </div>
+
               <Fade bottom when={bodyscrollrdTop > 700}>
                 <div className="left-round">
                   <div className="round">
@@ -109,7 +122,7 @@ export default function Introduce({changeEventKey}) {
               </Fade>
               <Fade bottom when={bodyscrollrdTop > 1000}>
                 <div className="match-end">
-                  <div className="match-end-text">团队组建截止</div>
+                  <div className="match-end-text">报名截止</div>
                 </div>
               </Fade>
               <Fade bottom when={bodyscrollrdTop > 1200}>
@@ -126,13 +139,23 @@ export default function Introduce({changeEventKey}) {
               </Fade>
 
               <Fade bottom when={bodyscrollrdTop > 1400}>
-                <div className="match-end" style={{ marginTop: "131px" }}>
-                  <div className="match-end-text">初赛结束，复赛开始</div>
-                  <div className="match-end-content">
+                <div
+                  className="match-end"
+                  style={{
+                    marginTop: "131px",
+                    justifyContent: "flex-end",
+                    flexDirection: "row",
+                  }}
+                >
+                  <div className="match-end-text" style={{ maxWidth: "500px" }}>
+                    <div>初赛结束，</div>
+                    <div>指标分数前100名晋级复赛 (投资报告)</div>
+                  </div>
+                  {/* <div className="match-end-content">
                     <div>
                       指标分数排名前100名的选手进入复赛，并提交一份逻辑报告(逻辑报告模版将于复赛开始时公布)
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </Fade>
 
@@ -150,17 +173,26 @@ export default function Introduce({changeEventKey}) {
               </Fade>
 
               <Fade bottom when={bodyscrollrdTop > 2000}>
-                <div className="match-end" style={{ marginTop: "161px" }}>
-                  <div className="match-end-text">决赛（全网直播）</div>
-                  <div className="match-end-content">
+                <div
+                  className="match-end"
+                  style={{
+                    marginTop: "228px",
+                    flexDirection: "row",
+                    justifyContent: "flex-end",
+                  }}
+                >
+                  <div className="match-end-text" style={{ maxWidth: "251px" }}>
+                    决赛队伍线上报告展示 (全网直播)
+                  </div>
+                  {/* <div className="match-end-content">
                     <div>
                       决赛选手将进行10-20分钟线上投资报告展示（具体展示模版将在初赛结束后公布），评委对其专业能力，以及综合素质进行打分。最终将结合初赛的指标分数（权重40%）以及决赛评委分数（权重60%）作出最终排名。
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </Fade>
             </div>
-            <div className="right">
+            <div className="right" style={{borderLeft: width <= 800 ? "1px solid #E5E8EE" : ''}}>
               <Fade bottom when={bodyscrollrdTop > 700}>
                 <div className="match-begin">
                   <div className="right-line"></div>
@@ -169,7 +201,7 @@ export default function Introduce({changeEventKey}) {
               </Fade>
 
               <Fade bottom when={bodyscrollrdTop > 1000}>
-                <div className="flex-start" style={{ marginTop: "222px" }}>
+                <div className="flex-start six-one">
                   <div className="icon-wrapper-left">
                     <Image
                       src="/tournament/Group 142@2x.png"
@@ -192,20 +224,20 @@ export default function Introduce({changeEventKey}) {
                     >
                       初赛开始：指标分数
                     </div>
-                    <div
+                    {/* <div
                       className="match-end-content"
                       style={{ textAlign: "left" }}
                     >
                       <div>
                         指标分数将根据3个月的“综合收益率”以及“夏普比率”两个指标进行打分
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </Fade>
               <Fade bottom when={bodyscrollrdTop > 1400}>
-                <div className="flex-start" style={{ marginTop: "120px" }}>
-                  <div className="icon-wrapper-left">
+                <div className="flex-start nine-point-nine">
+                  <div className="icon-wrapper-left ">
                     <Image
                       src="/tournament/Group 142@2x.png"
                       style={{ width: "24px", height: "24px" }}
@@ -218,28 +250,31 @@ export default function Introduce({changeEventKey}) {
                 </div>
               </Fade>
               <Fade bottom when={bodyscrollrdTop > 1700}>
-                <div className="finals-name" style={{ marginTop: "131px" }}>
+                <div className="finals-name" style={{ marginTop: "155px" }}>
                   <div className="right-line"></div>
                   <div className="finals-name-container">
                     <div
                       className="match-end-text"
-                      style={{ textAlign: "left" }}
+                      style={{ textAlign: "left", maxWidth: "327px" }}
                     >
-                      复赛结束，公布决赛候选名单
+                      复赛结束，公布决赛候选名单 (10支队伍)
                     </div>
-                    <div
+                    {/* <div
                       className="match-end-content"
                       style={{ textAlign: "left" }}
                     >
                       <div>
                         UFA评委将综合逻辑报告，以及指标分数筛选出15名入围决赛选手。
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </Fade>
               <Fade bottom when={bodyscrollrdTop > 2000}>
-                <div className="flex-start" style={{ marginTop: "143px" }}>
+                <div
+                  className="flex-start nine-two"
+                  style={{ marginTop: "143px" }}
+                >
                   <div className="icon-wrapper-left">
                     <Image
                       src="/tournament/Group 142@2x.png"
@@ -269,9 +304,17 @@ export default function Introduce({changeEventKey}) {
               </Fade>
             </div>
           </div>
-          <div className="match-bottom-wrapper" style={{ zIndex: 999,padding: "8px 0px"}}>
+          <div
+            className="match-bottom-wrapper"
+            style={{ zIndex: 999, padding: "8px 0px" }}
+          >
             <span className="match-bottom-details">详情请见</span>
-            <div className="match-bottom-rules" onClick={() => changeEventKey(2)}>赛事规则</div>
+            <div
+              className="match-bottom-rules"
+              onClick={() => changeEventKey(2)}
+            >
+              赛事规则
+            </div>
           </div>
         </div>
 
@@ -296,7 +339,7 @@ export default function Introduce({changeEventKey}) {
             <div
               className="awards-card-wrapper"
               style={{
-                justifyContent: width < 559 ? "space-around" : "space-between",
+                justifyContent: width < 850 ? "space-around" : "space-between",
               }}
             >
               <div
@@ -430,11 +473,31 @@ export default function Introduce({changeEventKey}) {
               ""
             )}
 
-            <div className="other-awards">
-              <Image
-                src="/tournament/Group 208@2x.png"
-                style={{ width: "86.667%", height: "100%" }}
-              />
+            <div
+              className="other-awards"
+              style={{ padding: width < 480 ? "0px 15px" : "" }}
+            >
+              {width > 1200 ? (
+                <Image
+                  src="/tournament/Group 208@2x.png"
+                  style={{ width: "86.667%", height: "100%" }}
+                />
+              ) : width > 485 ? (
+                <Image
+                  src="/tournament/Group 1118@2x.png"
+                  style={{
+                    minWidth: "410px",
+                    minHeight: "67px",
+                    width: "59.864%",
+                    height: "8.75%",
+                  }}
+                />
+              ) : (
+                <Image
+                  src="/tournament/Group 1123@2x.png"
+                  style={{ width: "100%", height: "100%" }}
+                />
+              )}
             </div>
 
             <div

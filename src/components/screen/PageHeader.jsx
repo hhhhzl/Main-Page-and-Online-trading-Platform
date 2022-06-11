@@ -47,7 +47,7 @@ import { updateStock } from "redux/reducers/Stock/stockReducer";
 
 const { SearchBar, ClearSearchButton } = Search;
 
-export default function PageHeader({searchData, platformType, showrankingOnly}) {
+export default function PageHeader({searchData, platformType, showrankingOnly,toggle}) {
   let { user, logoutUser, apikey} = useContext(AuthContext);
   const {width, height} = useWindowDimensions();
   const [note, setnote] = useState(null)
@@ -577,7 +577,8 @@ export default function PageHeader({searchData, platformType, showrankingOnly}) 
           </div>
 
           <MobileIcon>
-            <ViewHeadlineTwoTone style={{ color: "black" }} fontSize="large" />
+            
+            <ViewHeadlineTwoTone onClick={() => toggle()} style={{ color: "black" }} fontSize="large" />
           </MobileIcon>
         </div>
         {width > 1200 ? (

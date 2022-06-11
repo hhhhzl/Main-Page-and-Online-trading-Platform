@@ -1,7 +1,8 @@
 .tabs-wrapper {
-    border-bottom: 1px solid #E5E8EE;
     padding-left: 18.75%;
     background: #ffffff;
+    position: relative;
+    z-index: 100;
 }
 
 /* .tabs-item{
@@ -22,13 +23,16 @@
     font-family: "Microsoft YaHei UI-Bold, Microsoft YaHei UI";
 }
 
-.tabs-wrapper > .nav-item>.nav-link:hover {
-    font-weight: bolder;
-    color: black;
-    border-bottom: 1px black !important;
+.tabs-wrapper>.nav-item>.nav-link:hover {
+    color: #2A2B30;
 }
 
-.tabs-wrapper > .nav-item > .active {
+.tab-link:hover {
+    color: #2A2B30;
+    border-bottom: 1px solid #2A2B30;
+}
+
+.tabs-wrapper>.nav-item>.active {
     color: #2A2B30 !important;
     font-size: 14px;
     font-family: "Microsoft YaHei UI-Bold, Microsoft YaHei UI";

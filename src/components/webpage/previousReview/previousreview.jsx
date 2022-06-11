@@ -149,9 +149,9 @@ const Review = ({ projectImgs }) => {
         />
       </div>
       <div className="flex-center " style={{ marginTop: "80px" }}>
-        <div className="btn-groups">
+        <div className="btn-groups trade_tag">
           <Button
-            className={video ? "view-btn-bg" : "view-btn"}
+            className="view-btn"
             style={{
               padding: "8px 32px",
               borderRadius: " 24px",
@@ -160,11 +160,13 @@ const Review = ({ projectImgs }) => {
               boxShadow:
                 "0px 1px 2px 1px rgb(35 97 255 / 8%), 0px 2px 4px 1px rgb(35 97 255 / 8%), 0px 4px 8px 1px rgb(35 97 255 / 8%), 0px 8px 16px 1px rgb(35 97 255 / 8%), 0px 16px 32px 1px rgb(35 97 255 / 8%)",
             }}
-            onClick={Openvideo}
+            onMouseEnter={Openvideo}
           >
             <span
               className={image ? "font-hover" : ""}
               style={{
+                position: "relative",
+                zIndex: "99",
                 margin: "0px",
                 fontSize: "14px",
                 fontWeight: "bold",
@@ -180,7 +182,7 @@ const Review = ({ projectImgs }) => {
             </span>
           </Button>
           <Button
-            className={image ? "view-btn-bg" : "view-btn"}
+            className="view-btn"
             style={{
               padding: "8px 32px",
               borderRadius: " 24px",
@@ -192,11 +194,13 @@ const Review = ({ projectImgs }) => {
               // borderBlockEndWidth: "5px",
               // borderBlockEndColor: image ? "#26409A" : "white",
             }}
-            onClick={Openimage}
+            onMouseEnter={Openimage}
           >
             <span
               className={video ? "font-hover" : ""}
               style={{
+                position: "relative",
+                zIndex: "99",
                 margin: "0px",
                 fontSize: "14px",
                 fontWeight: "bold",
@@ -211,6 +215,15 @@ const Review = ({ projectImgs }) => {
               赛事图集
             </span>
           </Button>
+          <div
+            className="view-btn-bg1"
+            style={{
+              transform: video
+                ? "translateX(60px) translateX(-50%)"
+                : "translateX(180px) translateX(-50%)",
+              transitionDuration: "0.3s",
+            }}
+          ></div>
         </div>
       </div>
 

@@ -21,8 +21,8 @@ function centerAspectCrop(
   return centerCrop(
     makeAspectCrop(
       {
-        unit: '%',
-        width: 90,
+        unit: 'px',
+        width: mediaWidth,
       },
       aspect,
       mediaWidth,
@@ -49,6 +49,7 @@ export default function TeamRegisterModel({showModal,hideModal,getBase64,imgSrc}
     if (aspect) {
       const { width, height } = e.currentTarget
       setCrop(centerAspectCrop(width, height, aspect));
+	  setCompletedCrop(centerAspectCrop(width, height, aspect))
     }
   }
 
@@ -77,6 +78,18 @@ export default function TeamRegisterModel({showModal,hideModal,getBase64,imgSrc}
 	
 	function onCropComplete(e){
 		setCompletedCrop(e)
+	}
+	
+	function submit(){
+		setCrop();
+		setCompletedCrop();
+		getBase64(tailorUrl)
+	}
+	
+	function trHideModal(){
+		setCrop();
+		setCompletedCrop();
+		hideModal();
 	}
 
   // function handleToggleAspectClick() {
@@ -150,13 +163,13 @@ export default function TeamRegisterModel({showModal,hideModal,getBase64,imgSrc}
 						color:"rgb(42, 43, 48)",
 						height: "38px"
 					}}
-					 onClick={hideModal}
+					 onClick={()=> trHideModal()}
 					>取消</Button>
 					<Button 
 						style={{
 							height: "38px"
 						}}
-					onClick={() => getBase64(tailorUrl)}>确认</Button>
+					onClick={() => submit()}>确认</Button>
 				</div>
 			</div>
 		</div>
