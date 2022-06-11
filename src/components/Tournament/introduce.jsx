@@ -107,8 +107,8 @@ export default function Introduce({ changeEventKey }) {
                 <div className="left-round">
                   <div className="round">
                     <div className="time-wrapper">
-                      <div className="month">6.8</div>
-                      <div className="year">2022</div>
+                      <div className="month">7.4</div>
+                      {/*<div className="year">2022</div>*/}
                     </div>
                   </div>
                   <div className="left-line"></div>
@@ -122,12 +122,12 @@ export default function Introduce({ changeEventKey }) {
               </Fade>
               <Fade bottom when={bodyscrollrdTop > 1000}>
                 <div className="match-end">
-                  <div className="match-end-text">报名截止</div>
+                  <div className="match-end-text">初赛开始 (指标分数)</div>
                 </div>
               </Fade>
               <Fade bottom when={bodyscrollrdTop > 1200}>
                 <div className="flex-end" style={{ marginTop: "145px" }}>
-                  <div className="month">6.20</div>
+                  <div className="month">9.30</div>
                   <div className="right-line bg"></div>
                   <div className="icon-wrapper">
                     <Image
@@ -142,14 +142,13 @@ export default function Introduce({ changeEventKey }) {
                 <div
                   className="match-end"
                   style={{
-                    marginTop: "131px",
+                    marginTop: "180px",
                     justifyContent: "flex-end",
                     flexDirection: "row",
                   }}
                 >
                   <div className="match-end-text" style={{ maxWidth: "500px" }}>
-                    <div>初赛结束，</div>
-                    <div>指标分数前100名晋级复赛 (投资报告)</div>
+                    <div>复赛提交截止</div>
                   </div>
                   {/* <div className="match-end-content">
                     <div>
@@ -161,7 +160,7 @@ export default function Introduce({ changeEventKey }) {
 
               <Fade bottom when={bodyscrollrdTop > 1700}>
                 <div className="flex-end" style={{ marginTop: "143px" }}>
-                  <div className="month">9.16</div>
+                  <div className="month">10.14</div>
                   <div className="right-line bg"></div>
                   <div className="icon-wrapper">
                     <Image
@@ -176,12 +175,12 @@ export default function Introduce({ changeEventKey }) {
                 <div
                   className="match-end"
                   style={{
-                    marginTop: "228px",
+                    marginTop: "275px",
                     flexDirection: "row",
                     justifyContent: "flex-end",
                   }}
                 >
-                  <div className="match-end-text" style={{ maxWidth: "251px" }}>
+                  <div className="match-end-text" >
                     决赛队伍线上报告展示 (全网直播)
                   </div>
                   {/* <div className="match-end-content">
@@ -196,7 +195,7 @@ export default function Introduce({ changeEventKey }) {
               <Fade bottom when={bodyscrollrdTop > 700}>
                 <div className="match-begin">
                   <div className="right-line"></div>
-                  <div className="match-begin-text">赛事报名通道开放</div>
+                  <div className="match-begin-text">报名截止</div>
                 </div>
               </Fade>
 
@@ -210,7 +209,7 @@ export default function Introduce({ changeEventKey }) {
                   </div>
                   <div className="right-line bg"></div>
                   <div className="month" style={{ paddingLeft: "16px" }}>
-                    6.18
+                    7.5
                   </div>
                 </div>
               </Fade>
@@ -222,7 +221,14 @@ export default function Introduce({ changeEventKey }) {
                       className="match-end-text"
                       style={{ textAlign: "left" }}
                     >
-                      初赛开始：指标分数
+                      <div>初赛结束，复赛开始 (投资报告)</div>
+                      <div style={{fontSize: "16px",
+                        color: "#3D3F4E",
+                        fontWeight: "400",
+                        lineHeight: "28px",
+                        fontFamily: "Songti SC-Regular, Songti SC",
+                        marginTop:"12px"
+                      }}>指标分数前100支队伍晋级复赛</div>
                     </div>
                     {/* <div
                       className="match-end-content"
@@ -245,19 +251,26 @@ export default function Introduce({ changeEventKey }) {
                   </div>
                   <div className="right-line bg"></div>
                   <div className="month" style={{ paddingLeft: "16px" }}>
-                    9.9
+                    10.7
                   </div>
                 </div>
               </Fade>
               <Fade bottom when={bodyscrollrdTop > 1700}>
-                <div className="finals-name" style={{ marginTop: "155px" }}>
+                <div className="finals-name" style={{ marginTop: "125px" }}>
                   <div className="right-line"></div>
                   <div className="finals-name-container">
                     <div
                       className="match-end-text"
                       style={{ textAlign: "left", maxWidth: "327px" }}
                     >
-                      复赛结束，公布决赛候选名单 (10支队伍)
+                      <div>复赛结束，公布决赛名单</div>
+                      <div style={{fontSize: "16px",
+                        color: "#3D3F4E",
+                        fontWeight: "400",
+                        lineHeight: "28px",
+                        fontFamily: "Songti SC-Regular, Songti SC",
+                        marginTop:"12px"
+                      }}>双赛道各有8支队伍晋级决赛</div>
                     </div>
                     {/* <div
                       className="match-end-content"
@@ -289,14 +302,14 @@ export default function Introduce({ changeEventKey }) {
                         style={{
                           padding:
                             width > 1350
-                              ? "80px 20px"
+                              ? "105px 50px"
                               : width > 900
-                              ? "70px 10px"
-                              : "60px 15px",
+                              ? "90px 50px"
+                              : "80px 50px",
                         }}
                       >
-                        <div className="month">9.24</div>
-                        <div className="year">2022</div>
+                        <div className="month">10.29</div>
+                        {/*<div className="year">2022</div>*/}
                       </div>
                     </div>
                   </div>
