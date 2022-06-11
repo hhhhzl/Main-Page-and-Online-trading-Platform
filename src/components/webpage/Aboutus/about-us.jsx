@@ -546,134 +546,161 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
             </div>
 
             {width > 1100 ? (
-              <>
-                <div className="message-box">
-                  <div className="flex-between">
-                    <div className=" message-left">
-                      <div className="message-title">权威证书</div>
-                      <div className="message-content">
-                        证书由顶尖券商中信证券官方认证，排名前30％的参赛者均会授予颁发。同时，排名不是唯一评判标准，赛事期间设立300余份相关奖项等你来拿。
-                      </div>
-                      <span className="message-icon">
+                <>
+                  <div className="message-box">
+                    <div className="flex-between">
+                      <div className=" message-left">
+                        <div className="message-title">
+                          <span>职业机遇</span>
+                          <span style={{fontSize: "12px", marginLeft: "12px",fontWeight:"400"}}>(部分支持远程)</span>
+                        </div>
+                        <div className="message-content">
+                          入围决赛的选手均能获得：
+                        </div>
+                        <div className="message-Top" >
+                          <div> 中信证券实习 (或终面) 机会
+                          </div>
+                          <div> 中信证券飞鹰计划名额 (含结业证书)
+                          </div>
+                          <div> 多家公募机构决赛现场“捞人”机会
+                          </div>
+                          <div> 埔思学院录取 (或终面) 机会
+                          </div>
+                          <div> 10万奖金瓜分
+                          </div>
+                          <div> 决赛证书等：
+                          </div>
+                        </div>
+                        <span className="message-icon">
                         <Image
-                          src="/homeCutout/Group 21@2x.png"
-                          style={{ width: "49px", height: "3px" }}
+                            src="/homeCutout/Group 21@2x.png"
+                            style={{width: "49px", height: "3px"}}
                         />
                       </span>
-                      <div className="message-content-bottom">
-                        我们希望你的实力被更多知名金融企业看见；重量级证书加持，丰富你的履历，助力职场之路畅通无忧。
+                        <div className="message-content-bottom">
+                          <div>(赛事期间的优秀选手也将获得金融机构的引荐资格)</div>
+                          <div>我们希望为优秀的大学生提供被伯乐发掘的窗口与机遇。</div>
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex-center image-right">
-                      <div className="image-right-icon-top">
-                        <Image
-                          src="/homeCutout/Rectangle 21@2x.png"
-                          style={{ width: "12px", height: "12px" }}
-                        />
-                      </div>
-                      <div>
-                        <Image
-                          src="/组 50(3)@2x.png"
-                          style={{
-                            width: "600px",
-                            height: "480px",
-                            border: "1px solid #3C5E78",
-                          }}
-                        />
-                      </div>
-                      <div className="image-right-icon-bottom">
-                        <Image
-                          src="/homeCutout/Group 25@2x.png"
-                          style={{ width: "108px", height: "108px" }}
-                        />
+                      <div className="flex-center image-right">
+                        <div className="image-right-icon-top">
+                          <Image
+                              src="/homeCutout/Rectangle 21@2x.png"
+                              style={{width: "12px", height: "12px"}}
+                          />
+                        </div>
+                        <div>
+                          <Image
+                              src="/homeCutout/occupation@2x.png"
+                              style={{
+                                width: "600px",
+                                height: "480px",
+                                border: "1px dotted #3C5E78",
+                              }}
+                          />
+                        </div>
+                        <div className="image-right-icon-bottom">
+                          <Image
+                              src="/homeCutout/Group 25@2x.png"
+                              style={{width: "108px", height: "108px"}}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div style={{ marginTop: "200px", marginLeft: "71px" }}>
-                  <div className="flex-between">
-                    <div className="image-left">
-                      <div className="image-left-icon-bottom">
-                        <Image
-                          src="/homeCutout/Group 61@2x.png"
-                          style={{ width: "108px", height: "108px" }}
-                        />
-                      </div>
+                  <div style={{marginTop: "200px", marginLeft: "71px"}}>
+                    <div className="flex-between">
+                      <div className="image-left">
+                        <div className="image-left-icon-bottom">
+                          <Image
+                              src="/homeCutout/Group 61@2x.png"
+                              style={{width: "108px", height: "108px"}}
+                          />
+                        </div>
 
-                      <div
-                        style={{
-                          width: "600px",
-                          height: "480px",
-                          border: "1px solid #3C5E78",
-                        }}
-                      ></div>
-                      <div className="image-left-icon-top">
-                        <Image
-                          src="/homeCutout/Rectangle 21@2x.png"
-                          style={{ width: "12px", height: "12px" }}
-                        />
+                        <div>
+                          <Image
+                              src="/homeCutout/promote@2x.png"
+                              style={{
+                                width: "600px",
+                                height: "480px",
+                                border: "1px dotted #3C5E78",
+                              }}
+                          />
+                        </div>
+                        <div className="image-left-icon-top">
+                          <Image
+                              src="/homeCutout/Rectangle 21@2x.png"
+                              style={{width: "12px", height: "12px"}}
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div className=" message-right">
-                      <div className="message-title">学习机会</div>
-                      <div className="message-content">
-                        赛事期间，UFA为参赛者们准备了一系列高含金量的免费服务：包括百万知识博主、求职达人Lindsay的金融行业求职分析，多场干货满满的大咖讲座，以及中信高级分析师在线专题指导交流等。
-                      </div>
-                      <span className="message-icon">
+                      <div className=" message-right">
+                        <div className="message-title">提升机会</div>
+                        <div className="message-content">
+                          赛事期间, UFA为参赛者们准备了一系列高含金量的免费学习机会:
+                        </div>
+                        <div className="message-Top" >
+                          包括百万知识博主、求职达人Lindsay为你带来的线上求职规划分析, 多场干货满满的大咖讲座, 以及中信高级分析师为参赛选手带来的在线指导交流等。
+                        </div>
+                        <span className="message-icon">
                         <Image
-                          src="/homeCutout/Group 21@2x.png"
-                          style={{ width: "49px", height: "3px" }}
+                            src="/homeCutout/Group 21@2x.png"
+                            style={{width: "49px", height: "3px"}}
                         />
                       </span>
-                      <div className="message-content-bottom">
-                        我们希望通过为大学生筛选并提供优质的学习资源，帮助大学生完成提升和成长。
+                        <div className="message-content-bottom">
+                          我们希望通过为大学生筛选并提供优质的学习资源，帮助大学生完成提升和成长。
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div style={{ marginTop: "200px" }}>
-                  <div className="flex-between">
-                    <div className=" message-left">
-                      <div className="message-title">丰厚奖励</div>
-                      <div className="message-content">
-                        针对所有入围决赛的量化选手与主观多头选手，UFA将赠予决赛奖杯，数十万奖金，中信证券实习机会，以及UFA终身会员。
-                      </div>
-                      <span className="message-icon">
+                  <div style={{marginTop: "200px"}}>
+                    <div className="flex-between">
+                      <div className=" message-left">
+                        <div className="message-title">权威证书</div>
+                        <div className="message-content">
+                          证书由顶尖券商中信证券官方认证，指数排名前30％的参赛者均会授予颁发。同时，排名不是唯一评判标准，赛事期间设立300余份相关奖项等你来拿。
+                        </div>
+                        <span className="message-icon">
                         <Image
-                          src="/homeCutout/Group 21@2x.png"
-                          style={{ width: "49px", height: "3px" }}
+                            src="/homeCutout/Group 21@2x.png"
+                            style={{width: "49px", height: "3px"}}
                         />
                       </span>
-                      <div className="message-content-bottom">
-                        我们希望为优秀的大学生提供被伯乐发掘的窗口与机遇。
+                        <div className="message-content-bottom">
+                          我们希望你的实力被更多知名金融企业看见；重量级证书加持，丰富你的履历，助力职场之路畅通无忧。
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex-center image-right">
-                      <div className="image-right-icon-top">
-                        <Image
-                          src="/homeCutout/Rectangle 21@2x.png"
-                          style={{ width: "12px", height: "12px" }}
-                        />
-                      </div>
-                      <div
-                        style={{
-                          width: "600px",
-                          height: "480px",
-                          border: "1px solid #3C5E78",
-                        }}
-                      ></div>
-                      <div className="image-right-icon-bottom">
-                        <Image
-                          src="/homeCutout/Group 25@2x.png"
-                          style={{ width: "108px", height: "108px" }}
-                        />
+                      <div className="flex-center image-right">
+                        <div className="image-right-icon-top">
+                          <Image
+                              src="/homeCutout/Rectangle 21@2x.png"
+                              style={{width: "12px", height: "12px"}}
+                          />
+                        </div>
+                        <div>
+                          <Image
+                              src="/homeCutout/authority@2x.png"
+                              style={{
+                                width: "600px",
+                                height: "480px",
+                                border: "1px dotted #3C5E78",
+                              }}
+                          />
+                        </div>
+                        <div className="image-right-icon-bottom">
+                          <Image
+                              src="/homeCutout/Group 25@2x.png"
+                              style={{width: "108px", height: "108px"}}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </>
+                </>
             ) : (
               <>
                 <div className="box2">

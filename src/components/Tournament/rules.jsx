@@ -193,6 +193,21 @@ const Rules = ({changeEventKey}) => {
                     ></Image>
                     <div className="horizontal-line"></div>
                     {/* <div className="vertical-line"></div> */}
+                    <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                    >
+                      <div
+                          style={{
+                            height: "48px",
+                            background: "rgb(229, 232, 238)",
+                            width: "1px",
+                          }}
+                      ></div>
+                    </div>
                   </div>
                   <div
                     className="judge-rules-subtitle"
@@ -255,6 +270,21 @@ const Rules = ({changeEventKey}) => {
                     ></Image>
                     <div className="horizontal-line"></div>
                     {/* <div className="vertical-line"></div> */}
+                    <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                    >
+                      <div
+                          style={{
+                            height: "48px",
+                            background: "rgb(229, 232, 238)",
+                            width: "1px",
+                          }}
+                      ></div>
+                    </div>
                   </div>
                   <div
                     className="judge-rules-subtitle"
@@ -311,6 +341,21 @@ const Rules = ({changeEventKey}) => {
                     ></Image>
                     <div className="horizontal-line"></div>
                     {/* <div className="vertical-line"></div> */}
+                    <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                    >
+                      <div
+                          style={{
+                            height: "48px",
+                            background: "rgb(229, 232, 238)",
+                            width: "1px",
+                          }}
+                      ></div>
+                    </div>
                   </div>
                   <div
                     className="judge-rules-subtitle"
