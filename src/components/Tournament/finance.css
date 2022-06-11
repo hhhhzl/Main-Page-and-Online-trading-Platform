@@ -1,7 +1,7 @@
 
 .finance-title {
 	font-size: 60px;
-	font-family: Songti SC-Bold, Songti SC;
+	font-family: Songti SC-Bold, Songti SC, 宋体;
 	font-weight: bold;
 	color: #2A2B30;
 	line-height: 70px;
@@ -23,7 +23,7 @@
 
 .finance-title-span-first {
 	font-size: 30px;
-	font-family: Songti SC-Bold, Songti SC;
+	font-family: Songti SC-Bold, Songti SC, 宋体;
 	font-weight: bold;
 	color: #2A2B30;
 	line-height: 35px;
@@ -32,7 +32,7 @@
 
 .finance-title-span-two {
 	font-size: 16px;
-	font-family: Songti SC-Bold, Songti SC;
+	font-family: Songti SC-Bold, Songti SC, 宋体;
 	font-weight: bold;
 	color: #C0C3CE;
 	line-height: 19px;
@@ -46,7 +46,7 @@
 
 .finance-title-imgage-div-first {
 	font-size: 24px;
-	font-family: Songti SC-Bold, Songti SC;
+	font-family: Songti SC-Bold, Songti SC, 宋体;
 	font-weight: bold;
 	color: #2A2B30;
 	line-height: 40px;
@@ -56,7 +56,7 @@
 
 .finance-title-imgage-div-two {
 	font-size: 16px;
-	font-family: Songti SC-Regular, Songti SC;
+	font-family: Songti SC-Regular, Songti SC ,宋体;
 	font-weight: 400;
 	color: #6E7184;
 	line-height: 28px;
@@ -65,7 +65,7 @@
 
 .finance-note {
 	font-size: 16px;
-	font-family: Songti SC-Regular, Songti SC;
+	font-family: Songti SC-Regular, Songti SC ,宋体;
 	font-weight: 400;
 	color: #9C9FB0;
 	line-height: 28px;
@@ -74,7 +74,7 @@
 
 .finance-title-two {
 	font-size: 36px;
-	font-family: Songti SC-Bold, Songti SC;
+	font-family: Songti SC-Bold, Songti SC, 宋体;
 	font-weight: bold;
 	color: #2A2B30;
 	line-height: 60px;
@@ -85,7 +85,7 @@
 
 .finance-bottom-text {
 	font-size: 18px;
-	font-family: Songti SC-Regular, Songti SC;
+	font-family: Songti SC-Regular, Songti SC ,宋体;
 	font-weight: 400;
 	color: #5D5F6D;
 	line-height: 30px;

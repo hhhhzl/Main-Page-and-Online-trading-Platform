@@ -32,6 +32,9 @@
   padding-right: 11.912%;
   padding-left: 8.785%;
 }
+.message-Top {
+  margin-top: 12px;
+}
 
 .message-title {
   font-size: 28px;
@@ -109,7 +112,6 @@
   flex-direction: column;
   width: 50%;
   right: 50%;
-  padding-right: 112px;
   padding-left: 160px;
 }
 

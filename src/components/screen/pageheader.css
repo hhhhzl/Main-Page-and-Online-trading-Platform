@@ -87,9 +87,10 @@
   font-size: 14px;
   font-family: "Microsoft YaHei UI-Regular, Microsoft YaHei UI";
   font-weight: 400;
-  color: #C0C3CE;
+  /*color: #C0C3CE;*/
   line-height: 24px;
   border: 1px solid #C0C3CE;
+  color: black;
 }
 
 .form-control:hover {

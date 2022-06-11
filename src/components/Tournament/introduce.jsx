@@ -34,7 +34,7 @@ export default function Introduce({ changeEventKey }) {
           style={{
             position: "fixed",
             zIndex: 10,
-            width: "1px",
+            width: width > 800 ? "1px" : "",
             height: width / 2.9,
             background: `linear-gradient(to top, #E5E8EE ${
               ((bodyscrollrdTop / (width / 2.97)) * 100).toString() + "%"
@@ -147,8 +147,9 @@ export default function Introduce({ changeEventKey }) {
                     flexDirection: "row",
                   }}
                 >
-                  <div className="match-end-text" style={{ maxWidth: "400px" }}>
-                    初赛结束，指标分数前100名晋级复 (投资报告)
+                  <div className="match-end-text" style={{ maxWidth: "500px" }}>
+                    <div>初赛结束，</div>
+                    <div>指标分数前100名晋级复赛 (投资报告)</div>
                   </div>
                   {/* <div className="match-end-content">
                     <div>
@@ -191,7 +192,7 @@ export default function Introduce({ changeEventKey }) {
                 </div>
               </Fade>
             </div>
-            <div className="right">
+            <div className="right" style={{borderLeft: width <= 800 ? "1px solid #E5E8EE" : ''}}>
               <Fade bottom when={bodyscrollrdTop > 700}>
                 <div className="match-begin">
                   <div className="right-line"></div>
@@ -338,7 +339,7 @@ export default function Introduce({ changeEventKey }) {
             <div
               className="awards-card-wrapper"
               style={{
-                justifyContent: width < 559 ? "space-around" : "space-between",
+                justifyContent: width < 850 ? "space-around" : "space-between",
               }}
             >
               <div
@@ -472,7 +473,10 @@ export default function Introduce({ changeEventKey }) {
               ""
             )}
 
-            <div className="other-awards" style={{padding:width < 480 ? '0px 15px' : ''}}>
+            <div
+              className="other-awards"
+              style={{ padding: width < 480 ? "0px 15px" : "" }}
+            >
               {width > 1200 ? (
                 <Image
                   src="/tournament/Group 208@2x.png"
@@ -481,7 +485,12 @@ export default function Introduce({ changeEventKey }) {
               ) : width > 485 ? (
                 <Image
                   src="/tournament/Group 1118@2x.png"
-                  style={{ minWidth: "410px",minHeight:"67px",width:"59.864%",height:"8.75%" }}
+                  style={{
+                    minWidth: "410px",
+                    minHeight: "67px",
+                    width: "59.864%",
+                    height: "8.75%",
+                  }}
                 />
               ) : (
                 <Image

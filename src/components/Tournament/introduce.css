@@ -62,7 +62,7 @@
 
 .center-content {
   font-size: 28px;
-  font-family: Songti SC-Regular, Songti SC;
+  font-family: Songti SC-Regular, Songti SC ,宋体;
   font-weight: 400;
   color: #3D3F4E;
   line-height: 60px;
@@ -92,7 +92,7 @@
 
 .match-text {
   font-size: 60px;
-  font-family: "Songti SC-Bold, Songti SC";
+  font-family: "Songti SC-Bold, Songti SC, 宋体";
   font-weight: bold;
   color: #2A2B30;
   line-height: 70px;
@@ -156,7 +156,7 @@ height: 32px; */
 
 .match-begin-text {
   font-size: 24px;
-  font-family: Songti SC-Bold, Songti SC;
+  font-family: Songti SC-Bold, Songti SC, 宋体;
   font-weight: bold;
   color: #2A2B30;
   line-height: 28px;
@@ -182,7 +182,7 @@ height: 32px; */
 
 .match-end-text {
   font-size: 24px;
-  font-family: Songti SC-Bold, Songti SC;
+  font-family: Songti SC-Bold, Songti SC, 宋体;
   font-weight: bold;
   color: #2A2B30;
   line-height: 28px;
@@ -193,7 +193,7 @@ height: 32px; */
 .match-end-content {
   margin-top: 12px;
   font-size: 16px;
-  font-family: Songti SC-Regular, Songti SC;
+  font-family: Songti SC-Regular, Songti SC ,宋体;
   font-weight: 400;
   color: #6E7184;
   line-height: 28px;
@@ -205,7 +205,7 @@ height: 32px; */
 
 .match-bottom-details {
   font-size: 16px;
-  font-family: Songti SC-Regular, Songti SC;
+  font-family: Songti SC-Regular, Songti SC ,宋体;
   font-weight: 400;
   color: #2A2B30;
   line-height: 28px;
@@ -215,7 +215,7 @@ height: 32px; */
 
 .match-bottom-rules {
   font-size: 16px;
-  font-family: Songti SC-Regular, Songti SC;
+  font-family: Songti SC-Regular, Songti SC ,宋体;
   font-weight: 400;
   color: #1442ED;
   line-height: 28px;
@@ -269,7 +269,7 @@ height: 32px; */
 
 .awards-title {
   font-size: 60px;
-  font-family: Songti SC-Bold, Songti SC;
+  font-family: Songti SC-Bold, Songti SC, 宋体;
   font-weight: bold;
   color: #2A2B30;
   line-height: 70px;
@@ -279,7 +279,7 @@ height: 32px; */
 .awards-text {
   margin-top: 12px;
   font-size: 16px;
-  font-family: Songti SC-Regular, Songti SC;
+  font-family: Songti SC-Regular, Songti SC ,宋体;
   font-weight: 400;
   color: #6E7184;
   line-height: 28px;
@@ -387,7 +387,7 @@ height: 32px; */
 
 .ranking {
   font-size: 24px;
-  font-family: Songti SC-Bold, Songti SC;
+  font-family: Songti SC-Bold, Songti SC, 宋体;
   font-weight: bold;
   color: #2A2B30;
   line-height: 28px;
@@ -404,11 +404,12 @@ height: 32px; */
 .award-content {
   margin-top: 35px;
   font-size: 16px;
-  font-family: Songti SC-Bold, Songti SC;
+  font-family: Songti SC-Bold, Songti SC, 宋体;
   /* font-weight: bold; */
-  color: #6E7184;
+  color: #3D3F4E;
   line-height: 28px;
   letter-spacing: 1px;
+  font-weight: 400
 }
 
 .other-awards {
@@ -417,7 +418,7 @@ height: 32px; */
 
 .tips-end {
   font-size: 16px;
-  font-family: Songti SC-Regular, Songti SC;
+  font-family: Songti SC-Regular, Songti SC ,宋体;
   font-weight: 400;
   color: #9C9FB0;
   line-height: 28px;
@@ -428,7 +429,7 @@ height: 32px; */
 
 .tips-center {
   font-size: 16px;
-  font-family: Songti SC-Regular, Songti SC;
+  font-family: Songti SC-Regular, Songti SC ,宋体;
   font-weight: 400;
   color: #9C9FB0;
   line-height: 28px;
