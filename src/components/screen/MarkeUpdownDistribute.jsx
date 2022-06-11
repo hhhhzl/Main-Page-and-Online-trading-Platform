@@ -220,9 +220,9 @@ export default function MarketUpdownDistribute({widthRatio, searchData}) {
                         lineHeight:"28px"
                       }}
                       >
-                        下跌 
+                        下跌: {dataSource.下跌家数}
                         {/* {fmoney(dataSource.下跌家数,0)} */}
-                        {dataSource.下跌家数}
+                        
                       </div>
                     </div>
                     <div

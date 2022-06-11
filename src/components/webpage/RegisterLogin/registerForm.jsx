@@ -27,7 +27,7 @@ export default function RegisterForm(props) {
     const [userState, setUserState] = useState({})
     const [show, setShow] = useState(false);
     const [showerror, setshowerror] = useState(false)
-    const [showfail, setshowfail] = useState(true)
+    const [showfail, setshowfail] = useState(false)
     const {width, height} = useWindowDimensions();
     const history = useHistory()
 
