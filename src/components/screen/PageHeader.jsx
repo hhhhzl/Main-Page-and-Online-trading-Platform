@@ -43,6 +43,7 @@ import { clearLocalStorage } from "utils";
 import { useDispatch, useSelector } from "react-redux";
 import { updateStock } from "redux/reducers/Stock/stockReducer";
 import { fetchUser } from "redux/reducers/users/usersSlices";
+import { apiGetAdminMessage } from "api/main_platform/user_messages";
 
 
 
@@ -88,7 +89,7 @@ export default function PageHeader({searchData, platformType, showrankingOnly,to
 
   :
 
-  platformType == "competition" && apikey?
+  platformType == "competition"?
   [{
     id: 0,
     title: "账户总览",
@@ -145,6 +146,7 @@ export default function PageHeader({searchData, platformType, showrankingOnly,to
   const { username } = useParams();
   const { url } = useRouteMatch();
   const history = useHistory();
+
 
   const sendUserNews = () =>{
     history.push("/chat")

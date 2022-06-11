@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { applyMiddleware, createStore, compose } from "redux";
 import thunk from "redux-thunk";
+import { NewsSlice } from "redux/reducers/News/newsSlice";
 import { StockSlice } from "redux/reducers/Stock/stockReducer";
 import { userSlice } from "redux/reducers/users/usersSlices";
 import { watchListSlice } from "redux/reducers/WatchList/WatchListReducer";
@@ -10,7 +11,8 @@ const configurestore =  configureStore({
     reducer:{
         userInfo:userSlice.reducer,
         watchList: watchListSlice.reducer,
-        stock: StockSlice.reducer
+        stock: StockSlice.reducer,
+        news: NewsSlice.reducer
     }
 
 })

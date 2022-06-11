@@ -3,6 +3,7 @@ import {
   NotificationsNoneOutlined,
   ViewHeadlineTwoTone
 } from "@material-ui/icons";
+import { apiGetAdminMessage, apiGetSelfAdminMessages } from "api/main_platform/user_messages";
 import { React, useContext, useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
@@ -11,6 +12,7 @@ import { useHistory } from "react-router";
 import {
   useRouteMatch
 } from "react-router-dom";
+import { fetchNews } from "redux/reducers/News/newsSlice";
 import { fetchUser } from "redux/reducers/users/usersSlices";
 import { clearLocalStorage, setPlatformType } from "utils";
 import AuthContext from "../../context/AuthContext";
@@ -23,7 +25,7 @@ import { HomeMobileIcon } from "./NavbarElements";
 
 
 const HeaderCreate = ({ toggle }) => {
-  let { user, logoutUser, apikey } = useContext(AuthContext);
+  let { user, logoutUser, apikey, team } = useContext(AuthContext);
   const { width, height } = useWindowDimensions();
   const [showMenu, setHhowMenu] = useState(false);
   const [scrolledDownEnough, setScrolledDownEnough] = useState(false);
@@ -45,6 +47,8 @@ const HeaderCreate = ({ toggle }) => {
 
 
   const [note, setnote] = useState(null);
+
+
   const sendUserNews = () => {
     history.push("/chat");
   };
@@ -103,7 +107,6 @@ const HeaderCreate = ({ toggle }) => {
       const scrolledDownEnough = 85 < bodyScrollTop ? true : false;
       setScrolledDownEnough(scrolledDownEnough);
     };
-    console.log(user, "---------------user------------");
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => window.removeEventListener("scroll", handleScroll);

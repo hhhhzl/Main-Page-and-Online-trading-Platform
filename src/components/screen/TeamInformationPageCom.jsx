@@ -65,11 +65,11 @@ export default function TeamInformationPage({load, team, widthratio}) {
             {load && <PorforlioMoveGraph widthratio={widthratio}/>}
         </div>
 
-        <div style={{height:"224px", display:"flex",justifyContent:"left",padding:"36px 0% 0% 0%"}}>
+        <div style={{height:"250px", display:"flex",justifyContent:"left",padding:"36px 0% 0% 0%"}}>
 
         {members?.map((elem) => {
             return (
-        <div style ={{width:"123px",textAlign:"center",}}>
+        <div style ={{width:"125px", textAlign:"center"}}>
         <Image
         onClick={()=>{
             dispatch(fetchUser(elem.id))
@@ -100,20 +100,19 @@ export default function TeamInformationPage({load, team, widthratio}) {
         fontWeight:"400",
         color:"#6E7184",
         lineHeight:"24px",
+        marginBottom:"5px",
         }}>{elem.institution}</div>
 
-<div style={{marginTop:"0px",
+     {/* <div style={{
+         position:"relative",
         height:"24px",
         fontSize:"14px",
         fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
         fontWeight:"bold",
         color:"#6E7184",
         lineHeight:"24px",
-        }}>{elem.id == team.metadata.leader? "队长" :null}</div>
-
-
-
-</div>
+        }}>{elem.id == team.metadata.leader? "队长" :null}</div> */}
+      </div>
             )
 
         })}

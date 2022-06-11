@@ -4,7 +4,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { clearLocalStorage, setPlatformType } from "utils";
 import { fetchUser } from "redux/reducers/users/usersSlices";
 import { useDispatch } from "react-redux";
-import { apiGetAllCompetitions, apiGetCompetitionAPIKey, apiGetTeamAccount } from "api/main_platform/competitions";
+import { apiGetAllCompetitions, apiGetCompetitionAPIKey, apiGetCompetitiongetInfo, apiGetTeamAccount } from "api/main_platform/competitions";
 import { competitionID } from "constants/maps";
 import moment from "moment";
 import { Modal } from "react-bootstrap";
@@ -163,17 +163,27 @@ export const AuthProvider = ({ children }) => {
 
   const GetCompetitionTeam = async (id) =>{
     try{
-      const response = await apiGetTeamAccount(2)
+      const response =  await apiGetCompetitiongetInfo()
       if (response.data.msg == "OK."){
-        const teamA = response.data.data
-        console.log(teamA,163)
-        setteam(teamA)
-      }else{
-        setteam(null)
+        const data = response.data.data.filter(elem => elem.competition == competitionID)
+        const team_id = data[0].account
+        try{
+          const response = await apiGetTeamAccount(team_id)
+          if (response.data.msg == "OK."){
+            const teamA = response.data.data
+            console.log(teamA,163)
+            setteam(teamA)
+          }else{
+            setteam(null)
+          }
+        }catch(e){
+          console.log(e)
+        }
       }
     }catch(e){
       console.log(e)
     }
+    
   }
 
   useEffect(() =>{
@@ -226,7 +236,7 @@ export const AuthProvider = ({ children }) => {
         <Modal
         show={show1}
         centered
-        onHide={() =>setshow(false)}
+        onHide={() =>setshow1(false)}
         >
           <Modal.Header closeButton></Modal.Header>
           <Modal.Body style={{textAlign:"center"}}>系统错误，请稍后重试</Modal.Body>

@@ -28,6 +28,8 @@ export default function RegisterForm(props) {
     const [show, setShow] = useState(false);
     const [showerror, setshowerror] = useState(false)
     const [showfail, setshowfail] = useState(false)
+    const [showfailpassward, setshowfailpassward] = useState(false)
+
     const {width, height} = useWindowDimensions();
     const history = useHistory()
 
@@ -152,8 +154,8 @@ export default function RegisterForm(props) {
 
     const submitregisterForm = async (e) => {
         e.preventDefault();
-        console.log(typeof(headPortrait),154)
-        setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value},...{avatar:headPortrait}})
+        // console.log(typeof(headPortrait),154)
+        // setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value},...{avatar:headPortrait}})
         console.log(userState,155)
         try{
             const JsonData = JSON.stringify(userState)
@@ -163,6 +165,8 @@ export default function RegisterForm(props) {
                 setshowerror(true)
             }else if (response.data.msg == "OK."){
                 setShow(true)
+            }else if (response.data.msg == "The password does not meet the complexity requirement.") {
+                setshowfailpassward(true)
             }else{
                 setshowfail(true)
             }
@@ -277,12 +281,23 @@ export default function RegisterForm(props) {
 
     useEffect(()=>{
         if (submit){
-            setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value},...{avatar:headPortrait}})
-            setsubmit(false)
+            if (headPortrait === "/homeCutout/Group 1074.png"){
+                setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value}})
+                setsubmit(false)
+
+            }else{
+                setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value},...{avatar:headPortrait}})
+                setsubmit(false)
+            }
+            
             console.log(userState)
             
         }
     }, [submit, userState])
+
+    useEffect(() =>{
+        console.log(linkedSchool,linkedArea)
+    })
 
 
     return (
@@ -320,6 +335,15 @@ export default function RegisterForm(props) {
         style={{textAlign:"center"}}
         >
           <Modal.Header closeButton> 系统错误, 注册失败, 请稍后重试...</Modal.Header>
+
+        </Modal>
+
+        <Modal
+        show={showfailpassward}
+        onHide={() => setshowfailpassward(false)}
+        style={{textAlign:"center"}}
+        >
+          <Modal.Header closeButton> 密码过于简单，请修改后重试</Modal.Header>
 
         </Modal>
 
@@ -470,7 +494,7 @@ export default function RegisterForm(props) {
                                 setPassword(e.target.value)
                                 setUserState({...userState, ...{password}});
                             }}
-                            pattern="^[A-Za-z0-9]{8, 15}$"
+                            pattern="^[A-Za-z0-9]{8,15}$"
                         ></Form.Control>
                         <Form.Control.Feedback type="invalid">
                             请输入最少8位，最多15位密码！
@@ -611,7 +635,12 @@ export default function RegisterForm(props) {
             <div className="login-container"
                  style={{marginLeft: width > 800 ? "18.75%" : "10%", marginTop: height * 0.1}}>
                      <div style={{marginLeft:"-10px"}}>
-                     <IconButton onClick={() => setpage(1)}>
+                     <IconButton onClick={() => {
+                         setLinkedSchool({value:linkedSchool.value})
+                         setLinkedArea({value:linkedArea.value})
+                         console.log(linkedSchool,linkedArea)
+                         setpage(1)}
+                     }>
                          <ArrowBack style={{color:"black"}} />
                      </IconButton>
                      </div>
@@ -721,7 +750,7 @@ export default function RegisterForm(props) {
                             type="text"
                             required            
                             ref = { n => {setLinkedSchool(n)}}
-                            value={linkedSchool.value}
+                            value={linkedSchool? linkedSchool.value : userState.institution}
                             pattern="^.{4,200}"
                             onChange={(e) => {  
                                 handleSearchS({...props.searchProps});
@@ -781,7 +810,7 @@ export default function RegisterForm(props) {
                             type="text"
                             required            
                             ref = { n => {setLinkedArea(n)}}
-                            value={linkedArea.value}
+                            value={linkedArea? linkedArea.value : userState.region}
                             pattern="^.{2,200}"
                             onChange={(e) => 
                                 {

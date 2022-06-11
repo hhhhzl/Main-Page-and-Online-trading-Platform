@@ -11,7 +11,6 @@ import {
   createVerticalLinearGradient,
   hexToRGBA, last
 } from "react-stockcharts/lib/utils";
-import { SampleData } from "../../static/Stockdata";
 import { IntitialPData } from "../../constants/initialStateForPortfolio";
 
 const canvasGradient = createVerticalLinearGradient([
@@ -75,7 +74,6 @@ class LineSeriesForPorfolio extends React.Component {
 
     return (
       <ChartCanvas
-      
         ratio={1}
         width={width}
         height={width * 0.381}
@@ -91,7 +89,7 @@ class LineSeriesForPorfolio extends React.Component {
         zoomEvent={false}
         clamp={false}
       >
-        <Chart id={0} yExtents={d => d.open}>
+        <Chart id={0} yExtents={d => d.close}>
         <defs>
 						<linearGradient id="MyGradient" x1="0" y1="100%" x2="0" y2="0%">
 							<stop offset="0%" stopColor="#2B8CFF" stopOpacity={0} />
@@ -115,31 +113,13 @@ class LineSeriesForPorfolio extends React.Component {
             /> : null }
    
 
-
-        
-
-        
-          
-
-
           <AreaSeries
-            yAccessor={(d) => d.open}
-            tooltipContent={tooltipContent([])}
+            yAccessor={(d) => d.close}
             fill="url(#MyGradient)"
             strokeWidth={1}
             stroke = {"#2346FF"}
-            canvasGradient={canvasGradient}
+            // canvasGradient={canvasGradient}
           />
-          {/* <AlternatingFillAreaSeries 
-          baseAt ={data[data.length -90].open} 
-          strokeWidth={{top:1,bottom:1}} 
-          yAccessor={(d) => d.open} 
-          connectNulls ={true} 
-          stroke ={{ top: data[0].open > data[data.length -90].open? '#42E083':"#FF3541" , bottom: data[0].open > data[data.length -90].open? '#42E083':"#FF3541" }}
-          fill ={{ top: data[0].open > data[data.length -90].open? '#42E083':"#FF3541" , bottom: data[0].open > data[data.length -90].open? '#42E083':"#FF3541" }}
-          interpolation={curveMonotoneX}
-          fillOpacity ={{top:0.16, bottom:0.16}}
-          />   */}
         </Chart>
       </ChartCanvas>
     );

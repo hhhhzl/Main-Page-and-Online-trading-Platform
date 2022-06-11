@@ -4,11 +4,17 @@ import React, { useState, useEffect, useRef } from "react";
 import { Image, Button, Collapse } from "react-bootstrap";
 import useWindowDimensions from "../../../utils/sizewindow";
 import { ArrowBackIos, ArrowForwardIos } from "@material-ui/icons";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { fetchNews } from "redux/reducers/News/newsSlice";
 
 export default function Notice() {
   const { width, height } = useWindowDimensions();
   const [current, setCurrent] = useState(0);
-  const [notice, setNotice] = useState(data[0]);
+  const dispatch = useDispatch()
+  
+  const {news} = useSelector((state) => state.news)
+  const [notice, setNotice] = useState(news? news[0] : null);
   const [noticeList, setNoticeList] = useState(data);
   const [show, setShow] = useState(1);
   const [showAll, setShowAll] = useState(true);
@@ -18,9 +24,11 @@ export default function Notice() {
   };
 
   const read = (index) => {
-    data[index].status = 1;
-    setNotice(data[index]);
-    setNoticeList([...data]);
+    console.log(index)
+    const singlemessge = news.filter(elem => elem.id == index)
+    console.log(singlemessge[0])
+    setNotice(singlemessge[0]);
+    setNoticeList([...news]);
     setCurrent(index);
   };
 
@@ -30,9 +38,15 @@ export default function Notice() {
     console.log(show);
   };
 
-  useEffect(() => {
-    setShowAll(showAll);
-  }, [showAll]);
+  useEffect(()=>{
+    dispatch(fetchNews())
+  },[dispatch])
+
+  useEffect(() =>{
+    if(news){
+      setNotice(news[0])
+    }
+  },[news])
 
   return (
     <div
@@ -72,19 +86,19 @@ export default function Notice() {
               )}
             </div>
           </Collapse>
-          {data.map((item, index) => (
+          {news?.map((item, index) => (
             <div
               key={index}
               className={
-                current == index
+                current == item.id
                   ? "notice-left-div notice-left-dev-selected"
                   : "notice-left-div notice-left-dev-no-selected"
               }
-              onClick={() => read(index)}
+              onClick={() => read(item.id)}
             >
               <div style={{ marginLeft: "16px" }}>
                 <Image
-                  src={item.imgUrl}
+                  src={item.message_type? "/UFA-LOGO-1.png" :"/Group 1073.png"}
                   style={{ width: "33px", height: "33px" }}
                 ></Image>
               </div>
@@ -92,16 +106,16 @@ export default function Notice() {
               <Collapse in={showAll || width > 1200}>
                 <div style={{ marginLeft: "8px", width: "100%" }}>
                   <div className="notice-left-headline">
-                    <div className="notice-left-title">{item.title}</div>
+                    <div className="notice-left-title">{item? item.message_type? "UFA官方" : "团队信息" : null}</div>
                     <div
                       style={{ display: width > 1200 ? "" : "none" }}
                       className="notice-left-time"
                     >
-                      {item.time}
+                      {item.created_at}
                     </div>
                   </div>
                   <div className="notice-left-detail">
-                    <div className="notice-left-content">{item.content}</div>
+                    <div className="notice-left-content">{item.content == "欢迎您加入UFA全球青年汇。"? "恭喜您已成功注册UFA官网账号，请注意：您尚未完成UFA第二届模拟投资挑战赛比赛报名，请返回UFA官网首页，点击“报名参赛”完善填写团队信息后完成报名。" : item.content}</div>
                     {item.status == 0 ? (
                       <div className="notice-left-unread"></div>
                     ) : (
@@ -114,6 +128,10 @@ export default function Notice() {
           ))}
         </div>
 
+
+
+
+
         <div
           className="notice-right"
           style={{
@@ -125,10 +143,10 @@ export default function Notice() {
             style={{ margin: width > 700 ? "" : "60px 20px" }}
           >
             <div style={{ padding: "24px 0 0 36px" }}>
-              <div className="notice-right-title">{notice.title}</div>
-              <div className="notice-right-content">{notice.content}</div>
+              <div className="notice-right-title">{notice?.message_type? "UFA官方" : "团队消息"}</div>
+              <div className="notice-right-content">{notice?.content == "欢迎您加入UFA全球青年汇。"? "恭喜您已成功注册UFA官网账号，请注意：您尚未完成UFA第二届模拟投资挑战赛比赛报名，请返回UFA官网首页，点击“报名参赛”完善填写团队信息后完成报名。" : notice?.content}</div>
             </div>
-            {notice.type == 1 ? (
+            {notice?.type == 1 ? (
               <div className="notice-right-buttonGroups">
                 <Button
                   style={{

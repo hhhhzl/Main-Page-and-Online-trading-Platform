@@ -29,3 +29,9 @@ export const apiSubmitTeamAccount = (id) =>
 // competition API key
 export const apiGetCompetitionAPIKey = (competitionID) =>
     apiService.get(`competitions/get_competition_api_key/${competitionID}/`);
+
+// competions infomation && messges
+export const apiGetCompetitiongetInfo = () =>
+    apiService.get(`competitions/get_user_competition_info`);
+export const apiGetJoinTeamRequest = (id) =>
+    apiService.get(`competitions/get_team_account_join_request/${id}`);
