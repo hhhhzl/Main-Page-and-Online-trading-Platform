@@ -16,20 +16,14 @@ export default ({ searchData }) => {
   const [load, setload] = useState(true);
   const { width, height } = useWindowDimensions();
   const [platformType, setPlatformType] = useState(getPlatformType());
-  const { data } = useSelector((state) => state.userInfo);
+  const {data} = useSelector((state) => state.userInfo);
+  const [dataget, setdata] = useState(null)
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
   };
 
-  useEffect(() => {
-    if (load) {
-      console.log(user)
-      dispatch(fetchUser(user.user_id));
-      setload(false);
-    }
-  }, [load, dispatch, data]);
 
   return (
     <>
@@ -55,7 +49,8 @@ export default ({ searchData }) => {
       >
         <div
           style={{
-            marginTop: platformType == null ? "112px" : "48px",
+            top:0,
+            paddingTop: "112px",
             width: "1200px",
           }}
         >

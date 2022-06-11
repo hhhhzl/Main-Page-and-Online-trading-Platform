@@ -27,6 +27,7 @@ export default function RegisterForm(props) {
     const [userState, setUserState] = useState({})
     const [show, setShow] = useState(false);
     const [showerror, setshowerror] = useState(false)
+    const [showfail, setshowfail] = useState(true)
     const {width, height} = useWindowDimensions();
     const history = useHistory()
 
@@ -152,7 +153,7 @@ export default function RegisterForm(props) {
     const submitregisterForm = async (e) => {
         e.preventDefault();
         console.log(typeof(headPortrait),154)
-        setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value}})
+        setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value},...{avatar:headPortrait}})
         console.log(userState,155)
         try{
             const JsonData = JSON.stringify(userState)
@@ -163,11 +164,11 @@ export default function RegisterForm(props) {
             }else if (response.data.msg == "OK."){
                 setShow(true)
             }else{
-                alert("注册失败...")
+                setshowfail(true)
             }
         }catch(e){
             console.log(e)
-            alert("注册失败, 系统错误, 请稍后重试...")
+            setshowfail(true)
         }
     }
 
@@ -274,14 +275,15 @@ export default function RegisterForm(props) {
       };
 
 
-    // useEffect(()=>{
-    //     if (submit){
+    useEffect(()=>{
+        if (submit){
+            setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value},...{avatar:headPortrait}})
+            setsubmit(false)
+            console.log(userState)
             
-    //         setsubmit(false)
-    //         console.log(userState)
-    //         submitregisterForm(e)
-    //     }
-    // }, [submit, userState])
+        }
+    }, [submit, userState])
+
 
     return (
         <>
@@ -308,7 +310,16 @@ export default function RegisterForm(props) {
         onHide={() => setshowerror(false)}
         style={{textAlign:"center"}}
         >
-          <Modal.Header closeButton> 用户名/邮箱已被注册</Modal.Header>
+          <Modal.Header closeButton> 用户名/邮箱已被注册,请更改用户名/邮箱</Modal.Header>
+
+        </Modal>
+
+        <Modal
+        show={showfail}
+        onHide={() => setshowfail(false)}
+        style={{textAlign:"center"}}
+        >
+          <Modal.Header closeButton> 系统错误, 注册失败, 请稍后重试...</Modal.Header>
 
         </Modal>
 
@@ -661,6 +672,7 @@ export default function RegisterForm(props) {
                     e.stopPropagation();
                     setValidated2(true)
                     }else{
+                      setsubmit(true)
                       submitregisterForm(e)
                       
                     }

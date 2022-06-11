@@ -15,7 +15,7 @@ import ASide from "components/MainPage/ASide";
 import AuthContext from "context/AuthContext";
 
 export default ({ searchData }) => {
-  let { apikey } = useContext(AuthContext);
+  let { apikey, team } = useContext(AuthContext);
   const { width, height } = useWindowDimensions();
   const [platformType, setPlatformType] = useState(getPlatformType());
   const [isOpen, setIsOpen] = useState(false);
@@ -39,10 +39,11 @@ export default ({ searchData }) => {
       )}
       <div
         style={{
-          marginTop: platformType == null ? 0 : height * 0.075,
+          top:0,
           width: "100%",
           minHeight: "500px",
           display: "flex",
+          paddingTop: "112px",
           justifyContent: "space-between",
         }}
       >
@@ -52,13 +53,12 @@ export default ({ searchData }) => {
 
         <div
           style={{
-            width: width > 856 ? "856px" : width - 96,
+            width: width > 1200 ? "1200px" : width - 96,
             minHeight: "700px",
-            minWidth: "fix-content",
-            paddingTop: platformType == null ? "112px" : 0,
+            minWidth: "fix-content",            
           }}
         >
-          <TeamInformationPage load={true} />
+          <TeamInformationPage load={true} team ={team}  widthratio = {width>1200? 1200 : width - 96}/>
         </div>
         <div
           style={{

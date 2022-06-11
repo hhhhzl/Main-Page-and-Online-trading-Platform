@@ -6,10 +6,12 @@ import {
 import { React, useContext, useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import {
   useRouteMatch
 } from "react-router-dom";
+import { fetchUser } from "redux/reducers/users/usersSlices";
 import { clearLocalStorage, setPlatformType } from "utils";
 import AuthContext from "../../context/AuthContext";
 import useWindowDimensions from "../../utils/sizewindow";
@@ -18,6 +20,8 @@ import {
   HeaderBtn, HeaderBtnLink, HeaderContianer, HeaderItem, HeaderMenu, HeaderOut, MenuItemLinks, MenuItemLinksRouter
 } from "./HeaderElements";
 import { HomeMobileIcon } from "./NavbarElements";
+
+
 const HeaderCreate = ({ toggle }) => {
   let { user, logoutUser, apikey } = useContext(AuthContext);
   const { width, height } = useWindowDimensions();
@@ -31,7 +35,15 @@ const HeaderCreate = ({ toggle }) => {
   const { url } = useRouteMatch();
   const [showLoginOutModal, setShowLoginOutModal] = useState(false);
   const [shownotinTeam, setShowNotInTeam] = useState(false)
+
+
   const history = useHistory();
+  const dispatch = useDispatch()
+  const [submit, setsubmit] = useState(false)
+  const [submitTeam, setsubmitTeam] = useState(false)
+  const { status } = useSelector((state) => state.userInfo);
+
+
   const [note, setnote] = useState(null);
   const sendUserNews = () => {
     history.push("/chat");
@@ -106,6 +118,24 @@ const HeaderCreate = ({ toggle }) => {
         }, 3000);
     }
   },[shownotinTeam])
+
+  useEffect(() =>{
+    if(submit && status == "fulfilled"){
+       if (url != "/personal"){
+        history.push("/personal")
+       }
+        setsubmit(false)
+    }
+},[submit,status])
+
+useEffect(() =>{
+  if(submitTeam && status == "fulfilled"){
+     if (url != "/personalEdit"){
+      history.push("/personalEdit")
+     }
+      setsubmitTeam(false)
+  }
+},[submitTeam,status])
 
   return (
     <>
@@ -607,10 +637,14 @@ const HeaderCreate = ({ toggle }) => {
                     // onMouseEnter={handleMouseLeave}
                   >
                     <MenuItemLinksRouter
+                     onClick={() =>{
+                       dispatch(fetchUser(user.user_id))
+                       setsubmit(true)  
+                     }}
                       offset={-50}
                       spy={true}
                       smooth={true}
-                      to="/personal"
+                      // to="/personal"
                       duration={700}
                       className="menu-item menu-item-home"
                     >
@@ -627,7 +661,11 @@ const HeaderCreate = ({ toggle }) => {
                       团队信息
                     </MenuItemLinksRouter> : null}    
                     <MenuItemLinksRouter
-                      to="/personalEdit"
+                    onClick={() =>{
+                      dispatch(fetchUser(user.user_id))
+                      setsubmitTeam(true)  
+                    }}
+                      // to="/personalEdit"
                       offset={-50}
                       spy={true}
                       smooth={true}

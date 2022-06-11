@@ -32,7 +32,7 @@ export default function TeamAgreeProcessJoin(){
     const Pageprocess = () => {if (page!= 6){setpage(page + 1)}   }
     const Pagereduce = () => {setpage(page - 1)}
     const sendUserhome = () => {history.push("/home")}
-    const [grade, setGrade] = useState("")
+    const [gradeAsk, setGradeAsk] = useState("")
     const [investmentTime, setInvestmentTime] = useState("")
     const [attentionIndustry, setAttentionIndustry] = useState("")
     const backPageprocess = () => {
@@ -194,8 +194,8 @@ export default function TeamAgreeProcessJoin(){
                   <TeamQuestionnaire
                       Pageprocess={Pageprocess}
                       backPageprocess={backPageprocess}
-                      grade={grade}
-                      setGrade={setGrade}
+                      gradeAsk={gradeAsk}
+                     setGradeAsk={setGradeAsk}
                       investmentTime={investmentTime}
                       setInvestmentTime={setInvestmentTime}
                       attentionIndustry={attentionIndustry}

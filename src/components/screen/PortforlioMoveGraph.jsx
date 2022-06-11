@@ -1,13 +1,10 @@
-import reaat, {useEffect, useState} from 'react'
-import { Card, Collapse, Button, Row, Nav, Col, Badge, InputGroup, Form, Image } from 'react-bootstrap'
 import 'components/TradingPlatform/eplatform.css';
-import { StarBorder } from '@material-ui/icons';
-import { NotificationsNone, KeyboardArrowDown, ArrowDropUp} from '@material-ui/icons';
-import UserHolding from './UserHolding';
-import WatchListTable from './WatchListTable';
+import { useEffect, useState } from 'react';
+import { Button, Card } from 'react-bootstrap';
+import { useRouteMatch } from 'react-router';
+import { fmoney, getPlatformType } from 'utils';
 import useWindowDimensions from '../../utils/sizewindow';
 import LineSeriesForPorfolio from '../graphs/LineSeriesForPorfolio';
-import { getPlatformType } from 'utils';
 
 
 export default function PorforlioMoveGraph({
@@ -23,6 +20,7 @@ export default function PorforlioMoveGraph({
   const [id,setID] = useState(0)
   const [vertify, setvertify] = useState(true);
   const [platform, setplatform] = useState(getPlatformType())
+  const { url } = useRouteMatch();
 
   const [usersummary,setusersummary] = useState(200000.00)
 
@@ -54,7 +52,7 @@ export default function PorforlioMoveGraph({
         color:"#2A2B30",
         lineHeight:"56px",
         letterSpacing:"1px",
-        }}>¥{usersummary}</div>
+        }}>¥{fmoney(usersummary)}</div>
 
             <div style={{height:"28px",display:"flex",justifyContent:"left"}}>
             <div style={{
@@ -65,7 +63,7 @@ export default function PorforlioMoveGraph({
             color:"#2A2B30",
             marginRight:"20px",
             lineHeight:"28px",
-            }}>¥30608.26{" "}(+2.03%)</div>
+            }}>¥ 0.00{" "}(+0.00%)</div>
 
             
           
@@ -78,7 +76,7 @@ export default function PorforlioMoveGraph({
             lineHeight:"28px",
             }}>
 
-              {platform == "competition"? arraysforCompetition[id] == "全部"? "全部" : <>近{arraysforCompetition[id]}</> 
+              {platform == "competition" || url == "/team"? arraysforCompetition[id] == "全部"? "全部" : <>近{arraysforCompetition[id]}</> 
               : arrays[id] == "全部"? "全部" : <>近{arrays[id]}</> }
             
             </div>
@@ -100,7 +98,7 @@ export default function PorforlioMoveGraph({
                           padding:"0px",
                           color:"#2A2B30",
                           lineHeight:"21px",
-                          }}>1.03</div>
+                          }}>-.-</div>
                           <div style={{
                           fontSize:"14px",
                           textAlign:"center",
@@ -121,7 +119,7 @@ export default function PorforlioMoveGraph({
                           padding:"0px",
                           color:"#2A2B30",
                           lineHeight:"21px",
-                          }}>23%</div>
+                          }}>-.-</div>
                           <div style={{
                           fontSize:"14px",
                           textAlign:"center",
@@ -143,7 +141,7 @@ export default function PorforlioMoveGraph({
                           padding:"0px",
                           color:"#2A2B30",
                           lineHeight:"21px",
-                          }}>96.03</div>
+                          }}>-.-</div>
                           <div style={{
                           fontSize:"14px",
                           textAlign:"center",
@@ -161,7 +159,7 @@ export default function PorforlioMoveGraph({
       </div>
     
               <div style={{marginTop:"48px",width:"100%", borderColor:"white"}}>
-              <LineSeriesForPorfolio width={widthratio} timeperiod = {timeP}/>
+              <LineSeriesForPorfolio width={widthratio} timeperiod = {timeP} url = {url}/>
               </div>
 
 

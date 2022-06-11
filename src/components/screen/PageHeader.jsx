@@ -42,6 +42,7 @@ import { IconButton } from "@material-ui/core";
 import { clearLocalStorage } from "utils";
 import { useDispatch, useSelector } from "react-redux";
 import { updateStock } from "redux/reducers/Stock/stockReducer";
+import { fetchUser } from "redux/reducers/users/usersSlices";
 
 
 
@@ -51,6 +52,11 @@ export default function PageHeader({searchData, platformType, showrankingOnly,to
   let { user, logoutUser, apikey} = useContext(AuthContext);
   const {width, height} = useWindowDimensions();
   const [note, setnote] = useState(null)
+
+
+  const [submit, setsubmit] = useState(false)
+  const [submitTeam, setsubmitTeam] = useState(false)
+  const { status } = useSelector((state) => state.userInfo);
   const dispatch = useDispatch()
   const [headermenu,setheadermenu] =  useState(
     platformType == "eplatform"? [{
@@ -287,6 +293,24 @@ export default function PageHeader({searchData, platformType, showrankingOnly,to
   },
 ]
 
+useEffect(() =>{
+  if(submit && status == "fulfilled"){
+     if (url != "/personal"){
+      history.push("/personal")
+     }
+      setsubmit(false)
+  }
+},[submit,status])
+
+useEffect(() =>{
+  if(submitTeam && status == "fulfilled"){
+     if (url != "/personalEdit"){
+      history.push("/personalEdit")
+     }
+      setsubmitTeam(false)
+  }
+},[submitTeam,status])
+
 
   return (
     <>
@@ -320,12 +344,15 @@ export default function PageHeader({searchData, platformType, showrankingOnly,to
 
       <div
         style={{
-          marginTop: 0,
+          position:"fixed",
+          top: 0,
           width: "100%",
           MaxHeight: "64px",
           display: "flex",
           justifyContent: "space-between",
+          backgroundColor:"#FFFFFF",
           borderBottom: "1px solid #E5E8EE",
+          zIndex:999
         }}
       >
         {width > 1200 ? (
@@ -518,10 +545,14 @@ export default function PageHeader({searchData, platformType, showrankingOnly,to
               onMouseLeave={() => handleShowMenu(!showMenu)}
             >
               <MenuItemLinksRouter
+                onClick={() =>{
+                  dispatch(fetchUser(user.user_id))
+                  setsubmit(true)  
+                }}
                 offset={-50}
                 spy={true}
                 smooth={true}
-                to="/personal"
+                // to="/personal"
                 duration={700}
                 className="menu-item"
               >
@@ -530,7 +561,8 @@ export default function PageHeader({searchData, platformType, showrankingOnly,to
               {platformType == "competition"? 
               <>
               {apikey? <MenuItemLinksRouter
-                to="/team"
+               to = "/team"
+
                 offset={-50}
                 spy={true}
                 smooth={true}
@@ -544,7 +576,11 @@ export default function PageHeader({searchData, platformType, showrankingOnly,to
               }
               
               <MenuItemLinksRouter
-                to="/personalEdit"
+              onClick={() =>{
+                dispatch(fetchUser(user.user_id))
+                setsubmitTeam(true)  
+              }}
+                // to="/personalEdit"
                 offset={-50}
                 spy={true}
                 smooth={true}

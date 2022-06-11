@@ -59,7 +59,7 @@ export default ({searchData}) => {
   return (
     <>
       <PageHeader searchData = {searchData} platformType = {platformType}/>
-      <Card style={{ padding: 0, borderColor: "white" }}>
+      <Card style={{ top: 0,paddingTop:"64px", borderColor: "white" }}>
         <Collapse in={indusAll == 1}>
           <Card.Body style={{ padding: 0, borderColor: "white" }}>
             {width > 1000 ? (

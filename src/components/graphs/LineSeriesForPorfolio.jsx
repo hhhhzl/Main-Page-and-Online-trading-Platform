@@ -1,21 +1,18 @@
-import React from "react";
 import * as d3 from "d3";
 import { format } from "d3-format";
-import { curveMonotoneX } from "d3-shape";
-import { ChartCanvas, Chart } from "react-stockcharts";
-import { AreaSeries, AlternatingFillAreaSeries } from "react-stockcharts/lib/series";
-import { XAxis, YAxis } from "react-stockcharts/lib/axes";
-import { fitWidth } from "react-stockcharts/lib/helper";
-import { last } from "react-stockcharts/lib/utils";
 import { timeFormat } from "d3-time-format";
+import React from "react";
+import { Chart, ChartCanvas } from "react-stockcharts";
+import { fitWidth } from "react-stockcharts/lib/helper";
+import { discontinuousTimeScaleProviderBuilder } from "react-stockcharts/lib/scale";
+import { AreaSeries } from "react-stockcharts/lib/series";
+import HoverTooltip from "react-stockcharts/lib/tooltip/HoverTooltip";
 import {
   createVerticalLinearGradient,
-  hexToRGBA
+  hexToRGBA, last
 } from "react-stockcharts/lib/utils";
-import { discontinuousTimeScaleProviderBuilder } from "react-stockcharts/lib/scale";
 import { SampleData } from "../../static/Stockdata";
-import useWindowDimensions from "../../utils/sizewindow";
-import HoverTooltip from "react-stockcharts/lib/tooltip/HoverTooltip";
+import { IntitialPData } from "../../constants/initialStateForPortfolio";
 
 const canvasGradient = createVerticalLinearGradient([
     { stop: 0, color: hexToRGBA("#b5d0ff", 0) },
@@ -32,7 +29,7 @@ function tooltipContent(ys) {
       x: dateFormat(xAccessor(currentItem)),
       y: [
         {
-          // label: "close",
+          label: "昨收",
           value: currentItem.close && numberFormat(currentItem.close)
         }
       ]
@@ -50,14 +47,14 @@ function tooltipContent(ys) {
 
 class LineSeriesForPorfolio extends React.Component {
   render() {
-    const {width, timeperiod} = this.props;
+    const {width, timeperiod, url} = this.props;
     const dateTimeFormat = "%Y-%m-%d %H:%M:%S";
     const parseDate = d3.timeParse(dateTimeFormat);
     const ScaleProvider = discontinuousTimeScaleProviderBuilder().inputDateAccessor(
         (d) => parseDate(d.date)
       );
     const { data, xScale, xAccessor, displayXAccessor } = ScaleProvider(
-        SampleData
+           IntitialPData
       );
     
     const pricesDisplayFormat = format(".2f");
@@ -66,11 +63,11 @@ class LineSeriesForPorfolio extends React.Component {
     const xExtents = [start, end];
     
     const candleChartExtents = (data) => {
-      return data.open;
+      return data.close;
     };
     
     const yEdgeIndicator = (data) => {
-      return data.open;
+      return data.close;
 
 
     };
@@ -103,6 +100,8 @@ class LineSeriesForPorfolio extends React.Component {
 						</linearGradient>
 		</defs>
 
+
+    {url != "/team"? 
     <HoverTooltip
 						yAccessor={(d) => d}
             tooltipContent={tooltipContent([])}
@@ -113,7 +112,8 @@ class LineSeriesForPorfolio extends React.Component {
             opacity={0} 
             bgheight ={1}
 						fontSize={12}
-            />
+            /> : null }
+   
 
 
         

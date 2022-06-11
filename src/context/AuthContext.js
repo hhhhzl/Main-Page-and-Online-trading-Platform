@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { apiGetAllCompetitions, apiGetCompetitionAPIKey, apiGetTeamAccount } from "api/main_platform/competitions";
 import { competitionID } from "constants/maps";
 import moment from "moment";
+import { Modal } from "react-bootstrap";
 
 const AuthContext = createContext();
 
@@ -36,6 +37,9 @@ export const AuthProvider = ({ children }) => {
   });
 
   const history = useHistory();
+
+  const [show,setshow] = useState(false)
+  const [show1,setshow1] = useState(false)
 
   let loginUser = async (e) => {
     e.preventDefault();
@@ -69,9 +73,9 @@ export const AuthProvider = ({ children }) => {
         history.push('/')
       }
     } else if (data.data.detail == "No active account found with the given credentials") {
-      alert("密码错误/邮箱错误/用户不存在");
+      setshow(true)
     } else{
-      alert("系统错误,请稍后重试...");
+      setshow1(true)
     }
   };
 
@@ -159,7 +163,7 @@ export const AuthProvider = ({ children }) => {
 
   const GetCompetitionTeam = async (id) =>{
     try{
-      const response = await apiGetTeamAccount(1)
+      const response = await apiGetTeamAccount(2)
       if (response.data.msg == "OK."){
         const teamA = response.data.data
         console.log(teamA,163)
@@ -209,6 +213,27 @@ export const AuthProvider = ({ children }) => {
   },[apikey])
 
   return (
+    <>
+    <Modal
+        show={show}
+        centered
+        onHide={() =>setshow(false)}
+        >
+          <Modal.Header closeButton></Modal.Header>
+          <Modal.Body style={{textAlign:"center"}}>密码错误/邮箱错误/用户不存在</Modal.Body>
+        </Modal>
+
+        <Modal
+        show={show1}
+        centered
+        onHide={() =>setshow(false)}
+        >
+          <Modal.Header closeButton></Modal.Header>
+          <Modal.Body style={{textAlign:"center"}}>系统错误，请稍后重试</Modal.Body>
+        </Modal>
+
+
     <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>
+    </>
   );
 };

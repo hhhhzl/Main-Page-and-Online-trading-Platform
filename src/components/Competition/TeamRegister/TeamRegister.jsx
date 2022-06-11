@@ -19,7 +19,7 @@ export default function TeamRegister({
     lianghua,
     setlianghua,
     duotou,
-    setduotou
+    setduotou,
 }){
     const {width,height} = useWindowDimensions();
     const [disable, setdisable] = useState(true)

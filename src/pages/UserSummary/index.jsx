@@ -12,6 +12,8 @@ import { getPlatformType, getWatchList } from "utils";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchWatchList } from "redux/reducers/WatchList/WatchListReducer";
 import ASide from "../../components/screen/modal/ASide";
+import Countdown from "components/screen/modal/countdown";
+import { timeDifference } from "utils/countdownUtil";
 
 export default ({ searchData }) => {
   const { width, height } = useWindowDimensions();
@@ -25,6 +27,16 @@ export default ({ searchData }) => {
   const [load, setload] = useState(false);
   const { config, loading } = useSelector((state) => state.watchList);
   const dispatch = useDispatch();
+
+
+  const [showModal, setShowModal] = useState(
+    timeDifference() > 0 ? true : false
+  );
+  const hideModal = (leftTime) => {
+    if (leftTime <= 0) {
+      setShowModal(false);
+    }
+  };
 
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
@@ -63,11 +75,13 @@ export default ({ searchData }) => {
     <>
       <PageHeader searchData={searchData} platformType={platformType} toggle={toggle}/>
       {isOpen ? <ASide isOpen={isOpen} toggle={toggle} /> : null}
+      <Countdown showModal={showModal} hideModal={hideModal}></Countdown>
       <RulesModual showModal={showCompetitionrules} hideModal={handleClose} />
+
 
       <div
         style={{
-          marginTop: 0,
+          marginTop: "0px",
           width: "100%",
           minHeight: "500px",
           display: "flex",
@@ -87,11 +101,11 @@ export default ({ searchData }) => {
         >
           <div
             style={{
-              height: "80px",
+              height: "144px",
               width: "100%",
               display: "flex",
               justifyContent: "right",
-              paddingTop: "25px",
+              paddingTop: "89px",
               paddingBottom: "24",
             }}
           >
