@@ -1,28 +1,22 @@
-import React, {useContext, useEffect, useState} from "react";
-import {Button, Form, Row, Col, Badge, Modal, Collapse} from "react-bootstrap";
-import {propTypes} from "react-bootstrap/esm/Image";
-import {SentimentSatisfiedAlt} from "@material-ui/icons";
-import './loginpage.css';
-import Image from 'react-bootstrap/Image';
-import {Link} from 'react-router-dom';
-import useWindowDimensions from "../../../utils/sizewindow";
-import {Nav} from 'react-bootstrap';
-import {ArrowBack} from "@material-ui/icons";
-import {connect} from "react-redux";
-import {RegisterAuthAction} from "../../../redux/actions/AuthAction";
-import {getFileName, setautologin} from "../../../utils";
-import {useHistory} from "react-router";
-import TeamRegisterModel from "../../screen/modal/TeamRegisterModel";
 import { IconButton } from "@material-ui/core";
-import { mapUserDegree } from "constants/maps";
+import { ArrowBack } from "@material-ui/icons";
 import { apiRegisterUser } from "api/main_platform/users";
-import ToolkitProvider from "react-bootstrap-table2-toolkit";
-import BootstrapTable from "react-bootstrap-table-next";
-import schooldata from "../../../constants/学校.json"
-import areadata from "../../../constants/地区.json"
-import data from "../../../static/searchdataSmallTabel.json"
-import { SampleData } from "static/Stockdata";
+import { mapUserDegree } from "constants/maps";
 import AuthContext from "context/AuthContext";
+import React, { useContext, useEffect, useState } from "react";
+import { Button, Collapse, Form, Modal, Row } from "react-bootstrap";
+import BootstrapTable from "react-bootstrap-table-next";
+import ToolkitProvider from "react-bootstrap-table2-toolkit";
+import Image from 'react-bootstrap/Image';
+import { useHistory } from "react-router";
+import { Link } from 'react-router-dom';
+import areadata from "../../../constants/地区.json";
+import schooldata from "../../../constants/学校.json";
+import { getFileName, setautologin } from "../../../utils";
+import useWindowDimensions from "../../../utils/sizewindow";
+import TeamRegisterModel from "../../screen/modal/TeamRegisterModel";
+import './loginpage.css';
+const moment = require('moment-timezone');
 
 export default function RegisterForm(props) {
     const {autologin} = useContext(AuthContext)
@@ -31,7 +25,6 @@ export default function RegisterForm(props) {
     const [showerror, setshowerror] = useState(false)
     const [showfail, setshowfail] = useState(false)
     const [showfailpassward, setshowfailpassward] = useState(false)
-
     const {width, height} = useWindowDimensions();
     const history = useHistory()
 
@@ -294,15 +287,9 @@ export default function RegisterForm(props) {
                 setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value},...{avatar:headPortrait}})
                 setsubmit(false)
             }
-            
-            console.log(userState)
-
         }
     }, [submit, userState])
 
-    useEffect(() =>{
-        console.log(linkedSchool,linkedArea)
-    })
 
 
     return (
@@ -591,6 +578,8 @@ export default function RegisterForm(props) {
                                 className="loadinglogin"
                                 type = "date"
                                 required
+                                max={new Date().toISOString().split("T")[0]}
+                                min = {"1950-01-01"}
                                 value={birthday}
                                 onChange={(e) => {
                                     setbirthday(e.target.value)
