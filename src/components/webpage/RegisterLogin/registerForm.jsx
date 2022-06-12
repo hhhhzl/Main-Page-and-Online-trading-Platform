@@ -56,17 +56,15 @@ export default function RegisterForm(props) {
     const addExperience = () => {
         let obj = {company: "", position: "", detail:""};
         experienceList.push(obj);
-        console.log(experienceList);
         setExperienceList([...experienceList]);
     }
     const handleDelete = (idx) => {
         experienceList.splice(idx, 1);
-        console.log(experienceList);
         setExperienceList([...experienceList]);
     };
     const [submit, setsubmit] = useState(false)
 
-    
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -120,7 +118,7 @@ export default function RegisterForm(props) {
 
     function IsPassword(confirmPassword) {
         if (password === confirmPassword) {
-            return "^.{8,15}";
+            return "^.{1,15}";
         } else {
             return "^.{200,500}";
         }
@@ -214,7 +212,7 @@ export default function RegisterForm(props) {
 
     const Schoolcolumns = [
         {
-            dataField: "school", 
+            dataField: "school",
             text: "school",
             headerAttrs: {
                 hidden: true
@@ -224,7 +222,7 @@ export default function RegisterForm(props) {
 
     const Areacolumns = [
         {
-            dataField: "area", 
+            dataField: "area",
             text: "area",
             headerAttrs: {
                 hidden: true
@@ -248,8 +246,8 @@ export default function RegisterForm(props) {
                 setScrollswitchS(false)
             }else{
 
-            }  
-            
+            }
+
           },
       };
 
@@ -269,8 +267,8 @@ export default function RegisterForm(props) {
                 setScrollswitchA(false)
             }else{
 
-            }  
-            
+            }
+
           },
       };
 
@@ -280,7 +278,7 @@ export default function RegisterForm(props) {
             setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value},...{avatar:headPortrait}})
             setsubmit(false)
             console.log(userState)
-            
+
         }
     }, [submit, userState])
 
@@ -674,7 +672,7 @@ export default function RegisterForm(props) {
                     }else{
                       setsubmit(true)
                       submitregisterForm(e)
-                      
+
                     }
                 }}>
                     <Form.Group className="loadingusername">
@@ -704,7 +702,7 @@ export default function RegisterForm(props) {
                     <ToolkitProvider
                             keyField="school"
                             data = {schooldata}
-                            columns = { Schoolcolumns}  
+                            columns = { Schoolcolumns}
                             search
                             >
                     {props => (
@@ -719,16 +717,16 @@ export default function RegisterForm(props) {
                         <Form.Control
                             className="loadinglogin"
                             type="text"
-                            required            
+                            required
                             ref = { n => {setLinkedSchool(n)}}
                             value={linkedSchool.value}
                             pattern="^.{4,200}"
-                            onChange={(e) => {  
+                            onChange={(e) => {
                                 handleSearchS({...props.searchProps});
                                 searchSwitchS();
                                 // setOrg(e.target.value)
                                 // setLinkedSchool(e.target.value)
-                            
+
                             }}
                         ></Form.Control>
 
@@ -746,15 +744,15 @@ export default function RegisterForm(props) {
                           boxShadow: "0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02)",
 
                         }}>
-                                <BootstrapTable 
+                                <BootstrapTable
                                 {...props.baseProps}
                                  hover = {true}
-                                 condensed ={true} 
-                                 selectRow = {selectRowS}         
+                                 condensed ={true}
+                                 selectRow = {selectRowS}
                                 //  rowEvents={ rowEvents }
-                                />  
+                                />
                                 </div>
-                               </Collapse>  
+                               </Collapse>
 
                     </Form.Group>
                     </>
@@ -764,7 +762,7 @@ export default function RegisterForm(props) {
                 <ToolkitProvider
                             keyField="area"
                             data = {areadata}
-                            columns = { Areacolumns}  
+                            columns = { Areacolumns}
                             search
                             >
                     {props => (
@@ -779,11 +777,11 @@ export default function RegisterForm(props) {
                         <Form.Control
                             className="loadinglogin"
                             type="text"
-                            required            
+                            required
                             ref = { n => {setLinkedArea(n)}}
                             value={linkedArea.value}
                             pattern="^.{2,200}"
-                            onChange={(e) => 
+                            onChange={(e) =>
                                 {
                                     handleSearchA({...props.searchProps});
                                     searchSwitchA();
@@ -807,15 +805,15 @@ export default function RegisterForm(props) {
                           boxShadow: "0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02)",
 
                         }}>
-                                <BootstrapTable 
+                                <BootstrapTable
                                 { ...props.baseProps}
                                  hover = {true}
-                                 condensed ={true} 
-                                 selectRow = {selectRowA}         
+                                 condensed ={true}
+                                 selectRow = {selectRowA}
                                 //  rowEvents={ rowEvents }
-                                />  
+                                />
                                 </div>
-                               </Collapse>  
+                               </Collapse>
 
                     </Form.Group>
                     </>
@@ -867,7 +865,7 @@ export default function RegisterForm(props) {
                                         <div style={{display: "flex", alignItems: "center"}}>
                                             <Form.Control
                                                 type="text"
-                                                value={experienceList[idx].experience}
+                                                value={item.position}
                                                 style={{width: "85%", height: "48px"}}
                                                 placeholder="请输入文字"
                                                 onChange={(e) => {

@@ -33,10 +33,11 @@ export default function EditData({
 	}
 	const handleDelete = (idx) => {
 		console.log(idx)
-	  experienceList.splice(idx,1);
-	  let experience = [...experienceList]
-	  console.log(experienceList);
-	  setExperienceList([...experienceList]);
+		console.log(experienceList);
+		let newExperienceList = [...experienceList]
+		newExperienceList.splice(idx,1);
+	  let experience = [...newExperienceList]
+	  setExperienceList([...newExperienceList]);
 	  setUserState({...userState, ...{ experience }});
 	};
 
@@ -266,9 +267,9 @@ export default function EditData({
 					</div>
 					<div style={{marginTop:"60px",textAlign:"center"}}>
 						<div style={{textAlign:"center",padding:"60px"}}>
-							 <Button style={{width:"26.668%",height:"48px"}} 
+							 <Button style={{width:"26.668%",height:"48px"}}
 							 onClick = {() => {
-								 
+
 								 console.log(userState,254)
 								 dispatch(
 									 updateUser({
