@@ -26,7 +26,7 @@ import { HomeMobileIcon } from "./NavbarElements";
 
 
 const HeaderCreate = ({ toggle }) => {
-  let { user, logoutUser, apikey} = useContext(AuthContext);
+  let { user, logoutUser, apikey, team} = useContext(AuthContext);
   const { width, height } = useWindowDimensions();
   const [showMenu, setHhowMenu] = useState(false);
   const [scrolledDownEnough, setScrolledDownEnough] = useState(false);
@@ -40,21 +40,21 @@ const HeaderCreate = ({ toggle }) => {
   const [shownotinTeam, setShowNotInTeam] = useState(false)
   const [showluntan, setshowluntan] = useState(false)
 
+  const [loadself,setloadself] = useState(false)
+  const [load1, setload1] = useState(false)
+  const [load2, setload2] = useState(false)
+
 
   const history = useHistory();
   const dispatch = useDispatch()
   const [submit, setsubmit] = useState(false)
   const [submitTeam, setsubmitTeam] = useState(false)
   const { status, data } = useSelector((state) => state.userInfo);
-  const { dataself } = useSelector((state) => state.userInfoself);
+  const { dataself, state } = useSelector((state) => state.userInfoself);
+  const {news,read_or_not} = useSelector((state) => state.news)
 
   const [note, setnote] = useState(null);
 
-  useEffect(() =>{
-    if (dataself?.length == 0){
-      dispatch(fetchUserSelf(user?.user_id))
-    }
-  },[dispatch,dataself])
 
   const sendUserNews = () => {
     history.push("/chat");
@@ -139,13 +139,40 @@ const HeaderCreate = ({ toggle }) => {
 },[submit,status])
 
 useEffect(() =>{
-  if(submitTeam && status == "fulfilled"){
+  if(submitTeam && state == "fulfilled"){
      if (url != "/personalEdit"){
       history.push("/personalEdit")
      }
       setsubmitTeam(false)
   }
-},[submitTeam,status])
+},[submitTeam,state])
+
+
+
+//////////////////////////////////////////////load self data
+useEffect(() =>{
+  if (user && !loadself){
+    dispatch(fetchUserSelf(user.user_id))
+    setloadself(true)
+  }
+},[dispatch,loadself,user])
+
+
+
+//////////////////////////////////////////////////load news//////////////////////////////////////////////////////////
+  useEffect(()=>{
+  if (user && team && !load1){
+    dispatch(fetchNews(team?.metadata.leader == user.user_id? team.metadata.id :null))
+    setload1(true)
+  }
+},[dispatch, team, user, load1])
+
+  useEffect(()=>{
+    if (user && !team && !load2){
+      dispatch(fetchNews(null))
+      setload2(true)
+    }
+  },[dispatch, team, user, load2])
 
   return (
     <>
@@ -589,7 +616,7 @@ useEffect(() =>{
                     onClick={() => sendUserNews()}
                   >
                     <NotificationsNoneOutlined></NotificationsNoneOutlined>
-                    {note ? (
+                    {read_or_not ? (
                       <div
                         style={{
                           width: "7px",
@@ -636,7 +663,7 @@ useEffect(() =>{
                         marginLeft: "6px",
                       }}
                     >
-                      {dataself.username?.length>5? <>{dataself.username.slice(0,5)}...</> : dataself.username}
+                      {dataself.username?.length>5 ? <>{dataself.username.slice(0,5)}...</> : dataself.username}
                     </span>
                     {/*<ExpandMoreIcon*/}
                     {/*  style={{*/}

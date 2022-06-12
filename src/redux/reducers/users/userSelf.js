@@ -7,7 +7,7 @@ const initialState = {
     loading: false,
     error: null,
     lastUpdatedAt: null,
-    status:null
+    state:null
   };
 
   export const fetchUserSelf = createAsyncThunk(
@@ -36,19 +36,19 @@ const initialState = {
           .addCase(fetchUserSelf.pending, (state,action) => {
             state.error = null;
             state.loading = true;
-            state.status = "pending"
+            state.state = "pending"
           })
           .addCase(fetchUserSelf.fulfilled,(state,action) => {
             state.dataself = action.payload;
             state.error = null;
             state.loading = false;
             state.lastUpdatedAt = Date.now();
-            state.status = "fulfilled"
+            state.state = "fulfilled"
           })
           .addCase(fetchUserSelf.rejected,(state,action) => {
             state.error = action.error.message;
             state.loading = false;
-            state.status = "reject"
+            state.state = "reject"
           })
 
 
