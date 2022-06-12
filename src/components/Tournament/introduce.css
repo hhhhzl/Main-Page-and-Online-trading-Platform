@@ -108,7 +108,7 @@
 }
 
 .time-wrapper {
-  padding: 80px 35px;
+  padding: 80px 65px;
   display: flex;
   justify-content: center;
   align-items: baseline;
@@ -501,7 +501,7 @@ height: 32px; */
   }
 
   .time-wrapper {
-    padding: 70px 25px
+    padding: 70px 55px
   }
 
   .month {
@@ -538,7 +538,7 @@ height: 32px; */
     font-size: 24px;
   }
 
-  
+
 }
 
 @media screen and (max-width: 1200px) {
@@ -638,7 +638,7 @@ height: 32px; */
   }
 
   .time-wrapper {
-    padding: 60px 25px
+    padding: 60px 50px
   }
 
   .month {
