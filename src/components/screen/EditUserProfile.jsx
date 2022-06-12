@@ -7,6 +7,7 @@ import AuthContext from "context/AuthContext";
 import { fetchUser, updateUser } from "redux/reducers/users/usersSlices";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { fetchUserSelf, updateUserSelf } from "redux/reducers/users/userSelf";
 
 export default function EditData({
 	platformType,
@@ -101,6 +102,7 @@ export default function EditData({
 			 onClick ={() => {
 				 dispatch(fetchUser(user.user_id))
 				 setsubmit(true)
+				 dispatch(fetchUserSelf(user.user_id))
 			 }}>
             确定
           </Button>
@@ -267,15 +269,18 @@ export default function EditData({
 					</div>
 					<div style={{marginTop:"60px",textAlign:"center"}}>
 						<div style={{textAlign:"center",padding:"60px"}}>
-							 <Button style={{width:"26.668%",height:"48px"}}
+
+							<Button disabled={Object.keys(userState).length == 0? true :false} style={{width:"26.668%",height:"48px"}} 
+
 							 onClick = {() => {
 
 								 console.log(userState,254)
 								 dispatch(
-									 updateUser({
+									 updateUserSelf({
 									 data: userState
 									}))
 								setsuccessSendtoC(true)
+								dispatch(fetchUserSelf(user.user_id))
 								}
 							}>
 								确定

@@ -29,13 +29,13 @@ export default function  PersonalHomepage({
 				<div className="personal-username">{username}</div>
 				<div className="personal-other-text">{name}</div>
 				<div className="personal-other-text">{gender}</div>
-				<div className="personal-other-text  top-48">{region} {school}</div>
+				<div className="personal-other-text  top-48" style={{marginBottom:"48px"}}>{region} {school}</div>
 				
                     
 						{personalProfile?.map((elem) =>{
 							return (
 								<>
-								<div className="personal-other-text top-48" style={{display:"flex",justifyContent:"center"}}>
+								<div className="personal-other-text" style={{display:"flex",justifyContent:"center",marginBottom:"5px"}}>
 								<div style={{width:"480px", textAlign:"center",}}>
 								{elem.company} {elem.position} {elem.detail}
 								</div>
@@ -46,7 +46,7 @@ export default function  PersonalHomepage({
 					{/* {personalProfile} */}
 
 					{
-						user.id == userget?.id? 
+						user.user_id == userget.id? 
 						<div style={{marginTop:"32px"}}>
 					<Button 
 

@@ -10,8 +10,9 @@ import { useHistory } from "react-router";
 import HeaderCreate from "../../MainPage/header";
 import AuthContext from "context/AuthContext";
 import {competitionID} from "../../../constants/maps"
-import { setPlatformType } from "utils";
+import { setchoice, setPlatformType } from "utils";
 import moment from "moment";
+import { Modal } from "react-bootstrap";
 
 export default function Cover() {
   const { width, height } = useWindowDimensions();
@@ -19,6 +20,7 @@ export default function Cover() {
   const [competitiontime, setcompetitiontime] =  useState(null)
   const [buttonword, setbuttonword] = useState("报名赛事")
   const [load, setload] = useState(false)
+  const [showwheretogo, setshowwheretogo] = useState(false)
 
   const history = useHistory();
 
@@ -32,7 +34,11 @@ export default function Cover() {
       setPlatformType("competition")
       history.push("/team/register");
     }else if(buttonword == "报名赛事"){
-      history.push("/team/register");
+      if (!user){
+        setshowwheretogo(true)
+      }else{
+        history.push("/team/register");
+      }   
     }else if (buttonword == "查看赛事"){
       history.push("/competitionReview")
     }
@@ -81,7 +87,47 @@ export default function Cover() {
     }
   },[apikey, competition])
 
+  // useEffect(() =>{
+  //   if (getchoice)
+  // })
+
   return (
+    <>
+    <Modal
+        show={showwheretogo}
+        onHide={() => setshowwheretogo(false)}
+        centered
+        // className="page-header-modal"
+      >
+        <Modal.Header closeButton>
+          {/* <Modal.Title>Modal heading</Modal.Title> */}
+        </Modal.Header>
+        <Modal.Body style={{textAlign:"center"}}>你还没有登录哟，需要登录注册即可报名比赛！！</Modal.Body>
+        <Modal.Footer style={{display:"flex", justifyContent:"center"}}>
+          <Button
+            className="modal-btn modal-btn-cancel"
+            variant="secondary"
+            onClick={() => {
+              setchoice("/login")
+              history.push("/team/register")
+            }}
+          >
+            去登录
+          </Button>
+          <Button
+            className="modal-btn modal-btn-submit"
+            variant="primary"
+            onClick={() => {
+              setchoice("/register")
+              history.push("/team/register")
+            }
+              
+            }
+          >
+            去注册
+          </Button>
+        </Modal.Footer>
+      </Modal>
     <div
       id="home"
       className="cover animated"
@@ -264,5 +310,6 @@ export default function Cover() {
         )}
       </div>
     </div>
+    </>
   );
 }

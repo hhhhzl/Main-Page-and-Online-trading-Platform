@@ -7,6 +7,7 @@ import HeaderCreate from "components/MainPage/header";
 import ASide from "components/MainPage/ASide";
 import { useHistory } from "react-router-dom";
 import AuthContext from "context/AuthContext";
+import { useSelector } from "react-redux";
 
 export default ({ searchData }) => {
   const { width, height } = useWindowDimensions();

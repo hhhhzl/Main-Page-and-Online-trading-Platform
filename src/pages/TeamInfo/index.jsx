@@ -1,18 +1,11 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
-import PageHeader from "components/screen/PageHeader";
 import useWindowDimensions from "components/../utils/sizewindow";
-import StockPriceGraphSimplify from "components/screen/StockPriceGraphSimplify";
-import StockTradeBar from "components/screen/StockTradeBar";
-import StockTradeComponet from "components/screen/StockTradeComponet";
-import WatchList from "components/screen/WatchList";
-import PendingOrder from "components/screen/PendingOrder";
-import KeyIndicators from "components/screen/KeyIndicatorSimple";
-import { Dropdown } from "react-bootstrap";
-import TeamInformationPage from "components/screen/TeamInformationPageCom";
-import { getPlatformType } from "utils";
-import HeaderCreate from "components/MainPage/header";
 import ASide from "components/MainPage/ASide";
+import HeaderCreate from "components/MainPage/header";
+import PageHeader from "components/screen/PageHeader";
+import TeamInformationPage from "components/screen/TeamInformationPageCom";
 import AuthContext from "context/AuthContext";
+import React, { useContext, useState } from "react";
+import { getPlatformType } from "utils";
 
 export default ({ searchData }) => {
   let { apikey, team } = useContext(AuthContext);

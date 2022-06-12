@@ -6,6 +6,8 @@ import apiService from "./apiService";
 // note: recipients - an array of user ids, or all users if it's empty
 export const apiGetAllAdminMessages = (query_params) =>
     apiService.get(`user_messages/get_admin_message/`, { params: query_params });
+export const apiGetSelfAdminMessages = () =>
+    apiService.get(`user_messages/get_admin_message/`);
 export const apiGetAdminMessage = (id) =>
     apiService.get(`user_messages/get_admin_message/${id}/`);
 export const apiGetAdminMessageRecipient = (id) =>

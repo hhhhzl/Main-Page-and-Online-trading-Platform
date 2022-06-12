@@ -3,6 +3,7 @@ import {
   NotificationsNoneOutlined,
   ViewHeadlineTwoTone
 } from "@material-ui/icons";
+import { apiGetAdminMessage, apiGetSelfAdminMessages } from "api/main_platform/user_messages";
 import { React, useContext, useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
@@ -11,6 +12,8 @@ import { useHistory } from "react-router";
 import {
   useRouteMatch
 } from "react-router-dom";
+import { fetchNews } from "redux/reducers/News/newsSlice";
+import { fetchUserSelf } from "redux/reducers/users/userSelf";
 import { fetchUser } from "redux/reducers/users/usersSlices";
 import { clearLocalStorage, setPlatformType } from "utils";
 import AuthContext from "../../context/AuthContext";
@@ -23,7 +26,7 @@ import { HomeMobileIcon } from "./NavbarElements";
 
 
 const HeaderCreate = ({ toggle }) => {
-  let { user, logoutUser, apikey } = useContext(AuthContext);
+  let { user, logoutUser, apikey, team} = useContext(AuthContext);
   const { width, height } = useWindowDimensions();
   const [showMenu, setHhowMenu] = useState(false);
   const [scrolledDownEnough, setScrolledDownEnough] = useState(false);
@@ -35,16 +38,24 @@ const HeaderCreate = ({ toggle }) => {
   const { url } = useRouteMatch();
   const [showLoginOutModal, setShowLoginOutModal] = useState(false);
   const [shownotinTeam, setShowNotInTeam] = useState(false)
+  const [showluntan, setshowluntan] = useState(false)
+
+  const [loadself,setloadself] = useState(false)
+  const [load1, setload1] = useState(false)
+  const [load2, setload2] = useState(false)
 
 
   const history = useHistory();
   const dispatch = useDispatch()
   const [submit, setsubmit] = useState(false)
   const [submitTeam, setsubmitTeam] = useState(false)
-  const { status } = useSelector((state) => state.userInfo);
-
+  const { status, data } = useSelector((state) => state.userInfo);
+  const { dataself, state } = useSelector((state) => state.userInfoself);
+  const {news,read_or_not} = useSelector((state) => state.news)
 
   const [note, setnote] = useState(null);
+
+
   const sendUserNews = () => {
     history.push("/chat");
   };
@@ -103,7 +114,6 @@ const HeaderCreate = ({ toggle }) => {
       const scrolledDownEnough = 85 < bodyScrollTop ? true : false;
       setScrolledDownEnough(scrolledDownEnough);
     };
-    console.log(user, "---------------user------------");
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => window.removeEventListener("scroll", handleScroll);
@@ -129,13 +139,40 @@ const HeaderCreate = ({ toggle }) => {
 },[submit,status])
 
 useEffect(() =>{
-  if(submitTeam && status == "fulfilled"){
+  if(submitTeam && state == "fulfilled"){
      if (url != "/personalEdit"){
       history.push("/personalEdit")
      }
       setsubmitTeam(false)
   }
-},[submitTeam,status])
+},[submitTeam,state])
+
+
+
+//////////////////////////////////////////////load self data
+useEffect(() =>{
+  if (user && !loadself){
+    dispatch(fetchUserSelf(user.user_id))
+    setloadself(true)
+  }
+},[dispatch,loadself,user])
+
+
+
+//////////////////////////////////////////////////load news//////////////////////////////////////////////////////////
+  useEffect(()=>{
+  if (user && team && !load1){
+    dispatch(fetchNews(team?.metadata.leader == user.user_id? team.metadata.id :null))
+    setload1(true)
+  }
+},[dispatch, team, user, load1])
+
+  useEffect(()=>{
+    if (user && !team && !load2){
+      dispatch(fetchNews(null))
+      setload2(true)
+    }
+  },[dispatch, team, user, load2])
 
   return (
     <>
@@ -173,6 +210,16 @@ useEffect(() =>{
       >
         <Modal.Header>
           您尚未报名，请先报名.....
+          {/* <Modal.Title>Modal heading</Modal.Title> */}
+        </Modal.Header>
+      </Modal>
+
+      <Modal
+        show={showluntan}
+        onHide={() => setshowluntan(false)}
+      >
+        <Modal.Header closeButton>
+          即将上线.....
           {/* <Modal.Title>Modal heading</Modal.Title> */}
         </Modal.Header>
       </Modal>
@@ -440,7 +487,7 @@ useEffect(() =>{
                 scrolledDownEnough={scrolledDownEnough}
                 width={width}
                 offset={-20}
-                onClick={() => changeCurrent(2)}
+                onClick={() => {changeCurrent(2);setshowluntan(true)}}
                 activeClass={
                   scrolledDownEnough ? "active-block-scroll" : "active-block"
                 }
@@ -569,7 +616,7 @@ useEffect(() =>{
                     onClick={() => sendUserNews()}
                   >
                     <NotificationsNoneOutlined></NotificationsNoneOutlined>
-                    {note ? (
+                    {read_or_not ? (
                       <div
                         style={{
                           width: "7px",
@@ -598,7 +645,7 @@ useEffect(() =>{
                 >
                   <div className="user-av">
                     <Image
-                      src={"/loginback.jpg"}
+                      src={dataself? dataself.avatar : "/homeCutout/Group 1073.png"}
                       style={{
                         width: "24px",
                         height: "24px",
@@ -616,7 +663,7 @@ useEffect(() =>{
                         marginLeft: "6px",
                       }}
                     >
-                      {user.username}
+                      {dataself.username?.length>5 ? <>{dataself.username.slice(0,5)}...</> : dataself.username}
                     </span>
                     {/*<ExpandMoreIcon*/}
                     {/*  style={{*/}
@@ -662,7 +709,7 @@ useEffect(() =>{
                     </MenuItemLinksRouter> : null}    
                     <MenuItemLinksRouter
                     onClick={() =>{
-                      dispatch(fetchUser(user.user_id))
+                      dispatch(fetchUserSelf(user.user_id))
                       setsubmitTeam(true)  
                     }}
                       // to="/personalEdit"
