@@ -13,6 +13,7 @@ import {
   useRouteMatch
 } from "react-router-dom";
 import { fetchNews } from "redux/reducers/News/newsSlice";
+import { fetchUserSelf } from "redux/reducers/users/userSelf";
 import { fetchUser } from "redux/reducers/users/usersSlices";
 import { clearLocalStorage, setPlatformType } from "utils";
 import AuthContext from "../../context/AuthContext";
@@ -25,7 +26,7 @@ import { HomeMobileIcon } from "./NavbarElements";
 
 
 const HeaderCreate = ({ toggle }) => {
-  let { user, logoutUser, apikey, team } = useContext(AuthContext);
+  let { user, logoutUser, apikey} = useContext(AuthContext);
   const { width, height } = useWindowDimensions();
   const [showMenu, setHhowMenu] = useState(false);
   const [scrolledDownEnough, setScrolledDownEnough] = useState(false);
@@ -44,11 +45,16 @@ const HeaderCreate = ({ toggle }) => {
   const dispatch = useDispatch()
   const [submit, setsubmit] = useState(false)
   const [submitTeam, setsubmitTeam] = useState(false)
-  const { status } = useSelector((state) => state.userInfo);
-
+  const { status, data } = useSelector((state) => state.userInfo);
+  const { dataself } = useSelector((state) => state.userInfoself);
 
   const [note, setnote] = useState(null);
 
+  useEffect(() =>{
+    if (dataself?.length == 0){
+      dispatch(fetchUserSelf(user?.user_id))
+    }
+  },[dispatch,dataself])
 
   const sendUserNews = () => {
     history.push("/chat");
@@ -612,7 +618,7 @@ useEffect(() =>{
                 >
                   <div className="user-av">
                     <Image
-                      src={"/loginback.jpg"}
+                      src={dataself? dataself.avatar : "/homeCutout/Group 1073.png"}
                       style={{
                         width: "24px",
                         height: "24px",
@@ -630,7 +636,7 @@ useEffect(() =>{
                         marginLeft: "6px",
                       }}
                     >
-                      {user.username}
+                      {dataself.username?.length>5? <>{dataself.username.slice(0,5)}...</> : dataself.username}
                     </span>
                     {/*<ExpandMoreIcon*/}
                     {/*  style={{*/}
@@ -676,7 +682,7 @@ useEffect(() =>{
                     </MenuItemLinksRouter> : null}    
                     <MenuItemLinksRouter
                     onClick={() =>{
-                      dispatch(fetchUser(user.user_id))
+                      dispatch(fetchUserSelf(user.user_id))
                       setsubmitTeam(true)  
                     }}
                       // to="/personalEdit"

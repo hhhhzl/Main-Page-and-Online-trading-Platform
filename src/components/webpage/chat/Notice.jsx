@@ -7,14 +7,17 @@ import { ArrowBackIos, ArrowForwardIos } from "@material-ui/icons";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { fetchNews } from "redux/reducers/News/newsSlice";
+import LoginSuccess from "components/screen/NewsTemplate/LoginSucess";
+import JoinTeam from "components/screen/NewsTemplate/JoinTeam";
+import CreateTeam from "components/screen/NewsTemplate/CreateTeam";
 
 export default function Notice() {
   const { width, height } = useWindowDimensions();
-  const [current, setCurrent] = useState(0);
   const dispatch = useDispatch()
   
   const {news} = useSelector((state) => state.news)
   const [notice, setNotice] = useState(news? news[0] : null);
+  const [current, setCurrent] = useState(news? news[0].id : 0);
   const [noticeList, setNoticeList] = useState(data);
   const [show, setShow] = useState(1);
   const [showAll, setShowAll] = useState(true);
@@ -45,6 +48,7 @@ export default function Notice() {
   useEffect(() =>{
     if(news){
       setNotice(news[0])
+      setCurrent(news[0].id)
     }
   },[news])
 
@@ -86,6 +90,12 @@ export default function Notice() {
               )}
             </div>
           </Collapse>
+
+
+
+
+          <div>
+          <div style={{ maxHeight:"750px", overflow:"auto" }}>
           {news?.map((item, index) => (
             <div
               key={index}
@@ -104,9 +114,9 @@ export default function Notice() {
               </div>
 
               <Collapse in={showAll || width > 1200}>
-                <div style={{ marginLeft: "8px", width: "100%" }}>
+                <div style={{ marginLeft: "8px", width: "100%"}}>
                   <div className="notice-left-headline">
-                    <div className="notice-left-title">{item? item.message_type? "UFA官方" : "团队信息" : null}</div>
+                    <div className="notice-left-title">{item? item.message_type? "UFA官方信息" : "团队信息" : null}</div>
                     <div
                       style={{ display: width > 1200 ? "" : "none" }}
                       className="notice-left-time"
@@ -115,7 +125,7 @@ export default function Notice() {
                     </div>
                   </div>
                   <div className="notice-left-detail">
-                    <div className="notice-left-content">{item.content == "欢迎您加入UFA全球青年汇。"? "恭喜您已成功注册UFA官网账号，请注意：您尚未完成UFA第二届模拟投资挑战赛比赛报名，请返回UFA官网首页，点击“报名参赛”完善填写团队信息后完成报名。" : item.content}</div>
+                    <div className="notice-left-content">{item.content == "欢迎您加入UFA全球青年汇。"? (<>{"恭喜您！此封邮件确认您已成功注册UFA官网账号:"}...</>) : item.content}</div>
                     {item.status == 0 ? (
                       <div className="notice-left-unread"></div>
                     ) : (
@@ -126,6 +136,9 @@ export default function Notice() {
               </Collapse>
             </div>
           ))}
+          </div>
+          </div>
+
         </div>
 
 
@@ -143,8 +156,14 @@ export default function Notice() {
             style={{ margin: width > 700 ? "" : "60px 20px" }}
           >
             <div style={{ padding: "24px 0 0 36px" }}>
-              <div className="notice-right-title">{notice?.message_type? "UFA官方" : "团队消息"}</div>
-              <div className="notice-right-content">{notice?.content == "欢迎您加入UFA全球青年汇。"? "恭喜您已成功注册UFA官网账号，请注意：您尚未完成UFA第二届模拟投资挑战赛比赛报名，请返回UFA官网首页，点击“报名参赛”完善填写团队信息后完成报名。" : notice?.content}</div>
+              <div className="notice-right-title">{notice?.message_type? "UFA官方信息" : "团队消息"}</div>
+              <div className="notice-right-content">{notice?.content == "欢迎您加入UFA全球青年汇。"?
+               (<><LoginSuccess/></>) 
+               : 
+               notice?.content.slice(0,5) == "您加入队伍"?
+                (<><JoinTeam name = {notice?.content.split("\"")[1]}/></>) 
+                :
+               notice?.content}</div>
             </div>
             {notice?.type == 1 ? (
               <div className="notice-right-buttonGroups">

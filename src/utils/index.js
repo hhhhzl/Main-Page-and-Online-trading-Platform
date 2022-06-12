@@ -89,7 +89,7 @@ export function getFileName(name) {
     return nameStr;
 }
 
-//s为传入的数据,n为保留几位小数
+//s为传入的数据,n为保留几位小数 
 export function fmoney(s, n) {
     n = n > 0 && n <= 20 ? n : 2;
     let flag = false

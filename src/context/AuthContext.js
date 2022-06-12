@@ -8,6 +8,7 @@ import { apiGetAllCompetitions, apiGetCompetitionAPIKey, apiGetCompetitiongetInf
 import { competitionID } from "constants/maps";
 import moment from "moment";
 import { Modal } from "react-bootstrap";
+import { apiGetUser } from "api/main_platform/users";
 
 const AuthContext = createContext();
 
@@ -26,6 +27,11 @@ export const AuthProvider = ({ children }) => {
   const [apikey, setapikey] = useState(null);
   const [competition, setcompetition] = useState(null)
   const [team, setteam] = useState(null)
+  const [userdata, setuserdata] = useState(() =>
+    localStorage.getItem("userSelf")
+      ? JSON.parse(localStorage.getItem("userSelf"))
+      : null
+  );
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens")
       ? JSON.parse(localStorage.getItem("authTokens"))
@@ -65,7 +71,6 @@ export const AuthProvider = ({ children }) => {
       setAuthTokens(data.data);
       setuser(jwt_decode(data.data.access));
       localStorage.setItem("authTokens", JSON.stringify(data.data));
-      dispatch(fetchUser(jwt_decode(data.data.access).user_id))
       GetCompetitionAPIKey()
       if (route.from == "/eplatform"){
          setPlatformType("eplatform")
@@ -105,9 +110,7 @@ export const AuthProvider = ({ children }) => {
         setAuthTokens(data.data);
         setuser(jwt_decode(data.data.access));
         localStorage.setItem("authTokens", JSON.stringify(data.data));
-        dispatch(fetchUser(jwt_decode(data.data.access).user_id))
         cleanAutologin()
-         console.log(route.from)
         if (route.from == "/eplatform"){
            setPlatformType("eplatform")
           history.push(route.from);
@@ -161,6 +164,17 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+
+  let getuserdata = async (id) =>{
+    try{
+      const response = await apiGetUser(id) 
+      localStorage.setItem("userSelf", JSON.stringify(response.data.data.avatar));
+      setuserdata(response.data.data.avatar)
+    }catch(e){
+      console.log(e)
+    }
+  } 
+
   let contextData = {
     loginUser: loginUser,
     user: user,
@@ -169,7 +183,9 @@ export const AuthProvider = ({ children }) => {
     logoutUser: logoutUser,
     competition:competition,
     team:team,
-    autologin: autologin
+    autologin: autologin,
+    getuserdata: getuserdata,
+    userdata:userdata
   };
 
   // useEffect(()=>{
@@ -195,6 +211,8 @@ export const AuthProvider = ({ children }) => {
 
     }
   }
+
+  
 
   const GetCompetitions = async (id) =>{
     try{

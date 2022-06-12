@@ -53,6 +53,7 @@ export default function RegisterForm(props) {
     const [page, setpage] = useState(1)
     const [experienceList, setExperienceList] = useState([
         {company: "", position: "", detail:""}
+        //{}
     ])
     const [disable, setdisable] = useState(true)
 
