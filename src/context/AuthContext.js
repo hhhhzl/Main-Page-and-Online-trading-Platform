@@ -1,17 +1,21 @@
 import { createContext, useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import { useHistory, useLocation } from "react-router-dom";
-import { clearLocalStorage, setPlatformType } from "utils";
+import { clearLocalStorage, getautologin, setPlatformType, cleanAutologin } from "utils";
 import { fetchUser } from "redux/reducers/users/usersSlices";
 import { useDispatch } from "react-redux";
-import { apiGetAllCompetitions, apiGetCompetitionAPIKey, apiGetTeamAccount } from "api/main_platform/competitions";
+import { apiGetAllCompetitions, apiGetCompetitionAPIKey, apiGetCompetitiongetInfo, apiGetTeamAccount } from "api/main_platform/competitions";
 import { competitionID } from "constants/maps";
 import moment from "moment";
 import { Modal } from "react-bootstrap";
+import { apiGetUser } from "api/main_platform/users";
 
 const AuthContext = createContext();
 
 export default AuthContext;
+
+
+
 
 export const AuthProvider = ({ children }) => {
   const dispatch = useDispatch();
@@ -23,6 +27,11 @@ export const AuthProvider = ({ children }) => {
   const [apikey, setapikey] = useState(null);
   const [competition, setcompetition] = useState(null)
   const [team, setteam] = useState(null)
+  const [userdata, setuserdata] = useState(() =>
+    localStorage.getItem("userSelf")
+      ? JSON.parse(localStorage.getItem("userSelf"))
+      : null
+  );
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens")
       ? JSON.parse(localStorage.getItem("authTokens"))
@@ -41,6 +50,10 @@ export const AuthProvider = ({ children }) => {
   const [show,setshow] = useState(false)
   const [show1,setshow1] = useState(false)
 
+
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+
   let loginUser = async (e) => {
     e.preventDefault();
     let response = await fetch("http://82.157.18.223:10985/api/users/token/", {
@@ -58,7 +71,6 @@ export const AuthProvider = ({ children }) => {
       setAuthTokens(data.data);
       setuser(jwt_decode(data.data.access));
       localStorage.setItem("authTokens", JSON.stringify(data.data));
-      dispatch(fetchUser(jwt_decode(data.data.access).user_id))
       GetCompetitionAPIKey()
       if (route.from == "/eplatform"){
          setPlatformType("eplatform")
@@ -78,6 +90,50 @@ export const AuthProvider = ({ children }) => {
       setshow1(true)
     }
   };
+
+
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////
+  let autologin = async (e) =>{
+    let response = await fetch("http://82.157.18.223:10985/api/users/token/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: getautologin().email,
+          password: getautologin().password,
+        }),
+      });
+      let data = await response.json();
+      if (data.msg != "The data in request body is invalid." && data.msg != "Unauthorized." ) {
+        setAuthTokens(data.data);
+        setuser(jwt_decode(data.data.access));
+        localStorage.setItem("authTokens", JSON.stringify(data.data));
+        cleanAutologin()
+        if (route.from == "/eplatform"){
+           setPlatformType("eplatform")
+          history.push(route.from);
+        }else if (route.from == "/competition"){
+         setPlatformType("competition")
+          history.push(route.from);
+        } else if (route.from == "/team/register"){
+            setPlatformType("competition")
+            history.push('/competition')        
+        }else{
+          history.push('/')
+        }
+      } else if (data.data.detail == "No active account found with the given credentials") {
+        setshow(true)
+      } else{
+        setshow1(true)
+      }
+  }
+
+
+
+
+
 
   let logoutUser = () => {
     setAuthTokens(null);
@@ -108,6 +164,17 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+
+  let getuserdata = async (id) =>{
+    try{
+      const response = await apiGetUser(id) 
+      localStorage.setItem("userSelf", JSON.stringify(response.data.data.avatar));
+      setuserdata(response.data.data.avatar)
+    }catch(e){
+      console.log(e)
+    }
+  } 
+
   let contextData = {
     loginUser: loginUser,
     user: user,
@@ -116,6 +183,9 @@ export const AuthProvider = ({ children }) => {
     logoutUser: logoutUser,
     competition:competition,
     team:team,
+    autologin: autologin,
+    getuserdata: getuserdata,
+    userdata:userdata
   };
 
   // useEffect(()=>{
@@ -142,6 +212,8 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
+  
+
   const GetCompetitions = async (id) =>{
     try{
       const response = await apiGetAllCompetitions(id)
@@ -163,17 +235,27 @@ export const AuthProvider = ({ children }) => {
 
   const GetCompetitionTeam = async (id) =>{
     try{
-      const response = await apiGetTeamAccount(2)
+      const response =  await apiGetCompetitiongetInfo()
       if (response.data.msg == "OK."){
-        const teamA = response.data.data
-        console.log(teamA,163)
-        setteam(teamA)
-      }else{
-        setteam(null)
+        const data = response.data.data.filter(elem => elem.competition == competitionID)
+        const team_id = data[0].account
+        try{
+          const response = await apiGetTeamAccount(team_id)
+          if (response.data.msg == "OK."){
+            const teamA = response.data.data
+            console.log(teamA,163)
+            setteam(teamA)
+          }else{
+            setteam(null)
+          }
+        }catch(e){
+          console.log(e)
+        }
       }
     }catch(e){
       console.log(e)
     }
+    
   }
 
   useEffect(() =>{
@@ -226,7 +308,7 @@ export const AuthProvider = ({ children }) => {
         <Modal
         show={show1}
         centered
-        onHide={() =>setshow(false)}
+        onHide={() =>setshow1(false)}
         >
           <Modal.Header closeButton></Modal.Header>
           <Modal.Body style={{textAlign:"center"}}>系统错误，请稍后重试</Modal.Body>

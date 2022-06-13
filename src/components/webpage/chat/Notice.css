@@ -104,8 +104,9 @@
 
 
 .notice-right-div {
-	min-height: 650px;
-	height: max-content;
+	max-height: 650px;
+	overflow: auto;
+	height: 650px;
 	background: #FFFFFF;
 	border-radius: 4px 4px 4px 4px;
 	opacity: 1;
@@ -125,11 +126,12 @@
 .notice-right-content {
 	width: 94.917%;
 	font-size: 14px;
-	font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+	font-family: "Microsoft YaHei UI-Regular, Microsoft YaHei UI";
 	font-weight: 400;
 	color: #2A2B30;
 	line-height: 24px;
 	padding-top: 12px;
+	text-indent:2em
 }
 
 .notice-right-buttonGroups {

@@ -1,26 +1,38 @@
-import "./Notice.css";
-import data from "../../../static/Notice.json";
-import React, { useState, useEffect, useRef } from "react";
-import { Image, Button, Collapse } from "react-bootstrap";
-import useWindowDimensions from "../../../utils/sizewindow";
 import { ArrowBackIos, ArrowForwardIos } from "@material-ui/icons";
+import JoinTeam from "components/screen/NewsTemplate/JoinTeam";
+import LoginSuccess from "components/screen/NewsTemplate/LoginSucess";
+import RequestForLeader from "components/screen/NewsTemplate/RequestForLeader";
+import AuthContext from "context/AuthContext";
+import React, { useContext, useEffect, useState } from "react";
+import { Button, Collapse, Image } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchNews, updateNews } from "redux/reducers/News/newsSlice";
+import data from "../../../static/Notice.json";
+import useWindowDimensions from "../../../utils/sizewindow";
+import "./Notice.css";
 
 export default function Notice() {
   const { width, height } = useWindowDimensions();
-  const [current, setCurrent] = useState(0);
-  const [notice, setNotice] = useState(data[0]);
+  const dispatch = useDispatch()
+  const {team, user} = useContext(AuthContext)
+  
+  const {news} = useSelector((state) => state.news)
+  const [notice, setNotice] = useState(news?.length>0? news[0] : null);
+  const [current, setCurrent] = useState(1);
   const [noticeList, setNoticeList] = useState(data);
   const [show, setShow] = useState(1);
   const [showAll, setShowAll] = useState(true);
+  const [load, setload] = useState(false)
+  const [load1, setload1] = useState(false)
 
   const handleShowAll = () => {
     setShowAll(!showAll);
   };
 
   const read = (index) => {
-    data[index].status = 1;
-    setNotice(data[index]);
-    setNoticeList([...data]);
+    const singlemessge = news.filter(elem => elem.message_id == index)
+    setNotice(singlemessge[0]);
+    setNoticeList([...news]);
     setCurrent(index);
   };
 
@@ -30,9 +42,31 @@ export default function Notice() {
     console.log(show);
   };
 
-  useEffect(() => {
-    setShowAll(showAll);
-  }, [showAll]);
+  const markasRead = (item) =>{
+    if (item.content){
+      console.log("here")
+       dispatch(updateNews(item.id))
+       
+    }
+    dispatch(fetchNews(8))
+    setCurrent(item.message_id)
+    setNotice(item)
+  }
+
+  useEffect(()=>{
+    if (user && team && !load1){
+      dispatch(fetchNews(team?.metadata.leader == user.user_id? team.metadata.id :null))
+      setload1(true)
+    }
+  },[dispatch, team, user, load1])
+
+  useEffect(() =>{
+    if (!load && news?.length>0){
+        setNotice(news[0])
+        setCurrent(news[0].message_id)
+         setload(true)
+    } 
+  },[news, load])
 
   return (
     <div
@@ -72,37 +106,50 @@ export default function Notice() {
               )}
             </div>
           </Collapse>
-          {data.map((item, index) => (
+
+
+
+
+          <div>
+          <div style={{ maxHeight:"750px", overflow:"auto" }}>
+          {news?.map((item, index) => (
             <div
               key={index}
               className={
-                current == index
+                current == item.message_id
                   ? "notice-left-div notice-left-dev-selected"
                   : "notice-left-div notice-left-dev-no-selected"
               }
-              onClick={() => read(index)}
+              onClick={() => {
+                read(item.message_id)
+                markasRead(item)
+              }}
             >
               <div style={{ marginLeft: "16px" }}>
                 <Image
-                  src={item.imgUrl}
+                  src={item.message_type? "/UFA-LOGO-1.png" :"/Group 1073.png"}
                   style={{ width: "33px", height: "33px" }}
                 ></Image>
               </div>
 
               <Collapse in={showAll || width > 1200}>
-                <div style={{ marginLeft: "8px", width: "100%" }}>
+                <div style={{ marginLeft: "8px", width: "100%"}}>
                   <div className="notice-left-headline">
-                    <div className="notice-left-title">{item.title}</div>
+                    <div className="notice-left-title">{item? item.message_type? "UFA官方信息" : "团队信息" : null}</div>
                     <div
                       style={{ display: width > 1200 ? "" : "none" }}
                       className="notice-left-time"
                     >
-                      {item.time}
+                      {item.created_at}
                     </div>
                   </div>
-                  <div className="notice-left-detail">
-                    <div className="notice-left-content">{item.content}</div>
-                    {item.status == 0 ? (
+                  <div className="notice-left-detail" > 
+                    <div className="notice-left-content">{
+                    item.content? item.content == "欢迎您加入UFA全球青年汇。"? (<>{"恭喜您！此封邮件确认您已成功注册UFA官网账号:"}...</>) : item.content :
+                    item.account? "您收到一条团队加入申请验证，请点击进行验证" : null
+                
+                    }</div>
+                    {!item.is_read ? (
                       <div className="notice-left-unread"></div>
                     ) : (
                       ""
@@ -112,7 +159,14 @@ export default function Notice() {
               </Collapse>
             </div>
           ))}
+          </div>
+          </div>
+
         </div>
+
+
+
+
 
         <div
           className="notice-right"
@@ -125,10 +179,20 @@ export default function Notice() {
             style={{ margin: width > 700 ? "" : "60px 20px" }}
           >
             <div style={{ padding: "24px 0 0 36px" }}>
-              <div className="notice-right-title">{notice.title}</div>
-              <div className="notice-right-content">{notice.content}</div>
+              <div className="notice-right-title">{notice?.message_type? "UFA官方信息" : "团队消息"}</div>
+              <div className="notice-right-content">{notice?.content? notice?.content == "欢迎您加入UFA全球青年汇。"?
+               (<><LoginSuccess/></>) 
+               : 
+               notice?.content?.slice(0,5) == "您加入队伍"?
+                (<><JoinTeam name = {notice?.content.split("\"")[1]}/></>) 
+                :
+               notice?.content
+               :
+               notice?.account? (<><RequestForLeader id = {notice.requester} type = {notice.status}/></>):null
+              
+              }</div>
             </div>
-            {notice.type == 1 ? (
+            {notice?.type == 1 ? (
               <div className="notice-right-buttonGroups">
                 <Button
                   style={{

@@ -1,33 +1,30 @@
-import React, {useEffect, useState} from "react";
-import {Button, Form, Row, Col, Badge, Modal, Collapse} from "react-bootstrap";
-import {propTypes} from "react-bootstrap/esm/Image";
-import {SentimentSatisfiedAlt} from "@material-ui/icons";
-import './loginpage.css';
-import Image from 'react-bootstrap/Image';
-import {Link} from 'react-router-dom';
-import useWindowDimensions from "../../../utils/sizewindow";
-import {Nav} from 'react-bootstrap';
-import {ArrowBack} from "@material-ui/icons";
-import {connect} from "react-redux";
-import {RegisterAuthAction} from "../../../redux/actions/AuthAction";
-import {getFileName} from "../../../utils";
-import {useHistory} from "react-router";
-import TeamRegisterModel from "../../screen/modal/TeamRegisterModel";
 import { IconButton } from "@material-ui/core";
-import { mapUserDegree } from "constants/maps";
+import { ArrowBack } from "@material-ui/icons";
 import { apiRegisterUser } from "api/main_platform/users";
-import ToolkitProvider from "react-bootstrap-table2-toolkit";
+import { mapUserDegree } from "constants/maps";
+import AuthContext from "context/AuthContext";
+import React, { useContext, useEffect, useState } from "react";
+import { Button, Collapse, Form, Modal, Row } from "react-bootstrap";
 import BootstrapTable from "react-bootstrap-table-next";
-import schooldata from "../../../constants/学校.json"
-import areadata from "../../../constants/地区.json"
-import data from "../../../static/searchdataSmallTabel.json"
-import { SampleData } from "static/Stockdata";
+import ToolkitProvider from "react-bootstrap-table2-toolkit";
+import Image from 'react-bootstrap/Image';
+import { useHistory } from "react-router";
+import { Link } from 'react-router-dom';
+import areadata from "../../../constants/地区.json";
+import schooldata from "../../../constants/学校.json";
+import { getFileName, setautologin } from "../../../utils";
+import useWindowDimensions from "../../../utils/sizewindow";
+import TeamRegisterModel from "../../screen/modal/TeamRegisterModel";
+import './loginpage.css';
+const moment = require('moment-timezone');
 
 export default function RegisterForm(props) {
+    const {autologin} = useContext(AuthContext)
     const [userState, setUserState] = useState({})
     const [show, setShow] = useState(false);
     const [showerror, setshowerror] = useState(false)
     const [showfail, setshowfail] = useState(false)
+    const [showfailpassward, setshowfailpassward] = useState(false)
     const {width, height} = useWindowDimensions();
     const history = useHistory()
 
@@ -49,6 +46,7 @@ export default function RegisterForm(props) {
     const [page, setpage] = useState(1)
     const [experienceList, setExperienceList] = useState([
         {company: "", position: "", detail:""}
+        //{}
     ])
     const [disable, setdisable] = useState(true)
 
@@ -56,17 +54,15 @@ export default function RegisterForm(props) {
     const addExperience = () => {
         let obj = {company: "", position: "", detail:""};
         experienceList.push(obj);
-        console.log(experienceList);
         setExperienceList([...experienceList]);
     }
     const handleDelete = (idx) => {
         experienceList.splice(idx, 1);
-        console.log(experienceList);
         setExperienceList([...experienceList]);
     };
     const [submit, setsubmit] = useState(false)
 
-    
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -120,7 +116,7 @@ export default function RegisterForm(props) {
 
     function IsPassword(confirmPassword) {
         if (password === confirmPassword) {
-            return "^.{8,15}";
+            return "^.{1,15}";
         } else {
             return "^.{200,500}";
         }
@@ -152,8 +148,8 @@ export default function RegisterForm(props) {
 
     const submitregisterForm = async (e) => {
         e.preventDefault();
-        console.log(typeof(headPortrait),154)
-        setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value},...{avatar:headPortrait}})
+        // console.log(typeof(headPortrait),154)
+        // setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value},...{avatar:headPortrait}})
         console.log(userState,155)
         try{
             const JsonData = JSON.stringify(userState)
@@ -162,7 +158,13 @@ export default function RegisterForm(props) {
             if (response.data.msg == "The data in request body is invalid."){
                 setshowerror(true)
             }else if (response.data.msg == "OK."){
-                setShow(true)
+                const props = {}
+                props.email = userState.email
+                props.password = userState.password
+                setautologin(JSON.stringify(props))
+                autologin()
+            }else if (response.data.msg == "The password does not meet the complexity requirement.") {
+                setshowfailpassward(true)
             }else{
                 setshowfail(true)
             }
@@ -214,7 +216,7 @@ export default function RegisterForm(props) {
 
     const Schoolcolumns = [
         {
-            dataField: "school", 
+            dataField: "school",
             text: "school",
             headerAttrs: {
                 hidden: true
@@ -224,7 +226,7 @@ export default function RegisterForm(props) {
 
     const Areacolumns = [
         {
-            dataField: "area", 
+            dataField: "area",
             text: "area",
             headerAttrs: {
                 hidden: true
@@ -248,8 +250,8 @@ export default function RegisterForm(props) {
                 setScrollswitchS(false)
             }else{
 
-            }  
-            
+            }
+
           },
       };
 
@@ -269,20 +271,25 @@ export default function RegisterForm(props) {
                 setScrollswitchA(false)
             }else{
 
-            }  
-            
+            }
+
           },
       };
 
 
     useEffect(()=>{
         if (submit){
-            setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value},...{avatar:headPortrait}})
-            setsubmit(false)
-            console.log(userState)
-            
+            if (headPortrait === "/homeCutout/Group 1074.png"){
+                setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value}})
+                setsubmit(false)
+
+            }else{
+                setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value},...{avatar:headPortrait}})
+                setsubmit(false)
+            }
         }
     }, [submit, userState])
+
 
 
     return (
@@ -320,6 +327,15 @@ export default function RegisterForm(props) {
         style={{textAlign:"center"}}
         >
           <Modal.Header closeButton> 系统错误, 注册失败, 请稍后重试...</Modal.Header>
+
+        </Modal>
+
+        <Modal
+        show={showfailpassward}
+        onHide={() => setshowfailpassward(false)}
+        style={{textAlign:"center"}}
+        >
+          <Modal.Header closeButton> 密码过于简单，请修改后重试</Modal.Header>
 
         </Modal>
 
@@ -470,7 +486,7 @@ export default function RegisterForm(props) {
                                 setPassword(e.target.value)
                                 setUserState({...userState, ...{password}});
                             }}
-                            pattern="^[A-Za-z0-9]{8, 15}$"
+                            pattern="^[A-Za-z0-9]{8,15}$"
                         ></Form.Control>
                         <Form.Control.Feedback type="invalid">
                             请输入最少8位，最多15位密码！
@@ -562,6 +578,8 @@ export default function RegisterForm(props) {
                                 className="loadinglogin"
                                 type = "date"
                                 required
+                                max={new Date().toISOString().split("T")[0]}
+                                min = {"1950-01-01"}
                                 value={birthday}
                                 onChange={(e) => {
                                     setbirthday(e.target.value)
@@ -611,7 +629,12 @@ export default function RegisterForm(props) {
             <div className="login-container"
                  style={{marginLeft: width > 800 ? "18.75%" : "10%", marginTop: height * 0.1}}>
                      <div style={{marginLeft:"-10px"}}>
-                     <IconButton onClick={() => setpage(1)}>
+                     <IconButton onClick={() => {
+                         setLinkedSchool({value:linkedSchool.value})
+                         setLinkedArea({value:linkedArea.value})
+                         console.log(linkedSchool,linkedArea)
+                         setpage(1)}
+                     }>
                          <ArrowBack style={{color:"black"}} />
                      </IconButton>
                      </div>
@@ -674,7 +697,7 @@ export default function RegisterForm(props) {
                     }else{
                       setsubmit(true)
                       submitregisterForm(e)
-                      
+
                     }
                 }}>
                     <Form.Group className="loadingusername">
@@ -704,7 +727,7 @@ export default function RegisterForm(props) {
                     <ToolkitProvider
                             keyField="school"
                             data = {schooldata}
-                            columns = { Schoolcolumns}  
+                            columns = { Schoolcolumns}
                             search
                             >
                     {props => (
@@ -719,16 +742,16 @@ export default function RegisterForm(props) {
                         <Form.Control
                             className="loadinglogin"
                             type="text"
-                            required            
+                            required
                             ref = { n => {setLinkedSchool(n)}}
-                            value={linkedSchool.value}
+                            value={linkedSchool? linkedSchool.value : userState.institution}
                             pattern="^.{4,200}"
-                            onChange={(e) => {  
+                            onChange={(e) => {
                                 handleSearchS({...props.searchProps});
                                 searchSwitchS();
                                 // setOrg(e.target.value)
                                 // setLinkedSchool(e.target.value)
-                            
+
                             }}
                         ></Form.Control>
 
@@ -746,15 +769,15 @@ export default function RegisterForm(props) {
                           boxShadow: "0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02)",
 
                         }}>
-                                <BootstrapTable 
+                                <BootstrapTable
                                 {...props.baseProps}
                                  hover = {true}
-                                 condensed ={true} 
-                                 selectRow = {selectRowS}         
+                                 condensed ={true}
+                                 selectRow = {selectRowS}
                                 //  rowEvents={ rowEvents }
-                                />  
+                                />
                                 </div>
-                               </Collapse>  
+                               </Collapse>
 
                     </Form.Group>
                     </>
@@ -764,7 +787,7 @@ export default function RegisterForm(props) {
                 <ToolkitProvider
                             keyField="area"
                             data = {areadata}
-                            columns = { Areacolumns}  
+                            columns = { Areacolumns}
                             search
                             >
                     {props => (
@@ -779,11 +802,11 @@ export default function RegisterForm(props) {
                         <Form.Control
                             className="loadinglogin"
                             type="text"
-                            required            
+                            required
                             ref = { n => {setLinkedArea(n)}}
-                            value={linkedArea.value}
+                            value={linkedArea? linkedArea.value : userState.region}
                             pattern="^.{2,200}"
-                            onChange={(e) => 
+                            onChange={(e) =>
                                 {
                                     handleSearchA({...props.searchProps});
                                     searchSwitchA();
@@ -807,15 +830,15 @@ export default function RegisterForm(props) {
                           boxShadow: "0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02)",
 
                         }}>
-                                <BootstrapTable 
+                                <BootstrapTable
                                 { ...props.baseProps}
                                  hover = {true}
-                                 condensed ={true} 
-                                 selectRow = {selectRowA}         
+                                 condensed ={true}
+                                 selectRow = {selectRowA}
                                 //  rowEvents={ rowEvents }
-                                />  
+                                />
                                 </div>
-                               </Collapse>  
+                               </Collapse>
 
                     </Form.Group>
                     </>
@@ -867,7 +890,7 @@ export default function RegisterForm(props) {
                                         <div style={{display: "flex", alignItems: "center"}}>
                                             <Form.Control
                                                 type="text"
-                                                value={experienceList[idx].experience}
+                                                value={item.position}
                                                 style={{width: "85%", height: "48px"}}
                                                 placeholder="请输入文字"
                                                 onChange={(e) => {

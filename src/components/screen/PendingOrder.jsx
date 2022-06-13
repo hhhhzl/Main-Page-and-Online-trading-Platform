@@ -501,7 +501,7 @@ export default function PendingOrder({heightProp, searchwidth, modalHeight}) {
               <ToolkitProvider
                 bootstrap4
                 keyField="id"
-                data={data}
+                data={true? [] : data}
                 columns={columns}
                 search
                 key={0}

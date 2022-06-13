@@ -60,7 +60,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
                 competition_id:competitionID,
                 name:teamname,
                 track:lianghua? "Q" : "S",
-                avatar:headPortrait
+                // avatar:headPortrait
             }
             console.log(data)
             const dataprops = JSON.stringify(data)

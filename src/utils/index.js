@@ -1,3 +1,30 @@
+export function setautologin(arry) {
+    localStorage.setItem("autologin", arry);
+}
+
+export function getautologin() {
+    const autologin = JSON.parse(localStorage.getItem('autologin'))
+    return autologin
+}
+
+export function cleanAutologin() {
+    localStorage.removeItem("autologin");
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+export function setchoice(arry) {
+    localStorage.setItem("Userchoice", arry);
+}
+
+export function getchoice() {
+    const autologin = localStorage.getItem('Userchoice')
+    return autologin
+}
+
+export function cleanchoice() {
+    localStorage.removeItem("Userchoice");
+}
+//////////////////////////////////////////////////////////////////////////////////////////
 export function getPlatformType() {
     const platformType = localStorage.getItem('platformType');
     return platformType;
@@ -62,7 +89,7 @@ export function getFileName(name) {
     return nameStr;
 }
 
-//s为传入的数据,n为保留几位小数
+//s为传入的数据,n为保留几位小数 
 export function fmoney(s, n) {
     n = n >= 0 && n <= 20 ? n : 2;
     let flag = false
