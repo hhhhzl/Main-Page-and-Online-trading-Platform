@@ -530,7 +530,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
         <div className="about-intro">
           <div
             className="section"
-            style={{ paddingTop: "120px", paddingBottom: "90px" }}
+            style={{ paddingTop: "120px", paddingBottom: width < 800 ? "30px" : "90px" }}
           >
             <div className="text-center">
               {width > 800 ? (
