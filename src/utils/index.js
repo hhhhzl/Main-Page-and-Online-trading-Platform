@@ -22,28 +22,28 @@ export function clearLocalStorage() {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////
-export function setLastStock(stock){
-    localStorage.setItem("stockLastView",stock);
+export function setLastStock(stock) {
+    localStorage.setItem("stockLastView", stock);
 }
 
 export function getLastStock() {
     const stockLastView = localStorage.getItem('stockLastView');
     return stockLastView;
 }
-export function setWatchlist(list){
-    localStorage.setItem("watchlist",JSON.stringify(list));
+export function setWatchlist(list) {
+    localStorage.setItem("watchlist", JSON.stringify(list));
 }
 
 
-export function addWatchlist(symbol){
+export function addWatchlist(symbol) {
     let stocklist = getWatchList() || []
     stocklist.push(symbol)
-    localStorage.setItem("watchlist",JSON.stringify(stocklist));
+    localStorage.setItem("watchlist", JSON.stringify(stocklist));
 }
 
-export function getWatchList(){
+export function getWatchList() {
     const WatchList = JSON.parse(localStorage.getItem('watchlist'));
-    return WatchList  
+    return WatchList
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -64,7 +64,7 @@ export function getFileName(name) {
 
 //s为传入的数据,n为保留几位小数
 export function fmoney(s, n) {
-    n = n > 0 && n <= 20 ? n : 2;
+    n = n >= 0 && n <= 20 ? n : 2;
     let flag = false
     if (s < 0) {
         flag = true
@@ -79,7 +79,7 @@ export function fmoney(s, n) {
     for (let i = 0; i < l.length; i++) {
         t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "," : "");
     }
-    let str = t.split("").reverse().join("") + "." + r;
+    let str = n == 0 ? t.split("").reverse().join("") : t.split("").reverse().join("") + "." + r;
     return flag ? ('-' + str) : str;
 }
 
@@ -126,4 +126,106 @@ export function changeUnit(number, decimalDigit) {
     } else {
         return number;
     }
+}
+
+const moment = require('moment-timezone');
+
+export function showTimePipe(unixDate) {
+    var unixStamp = moment.utc(unixDate).local().valueOf()
+    var todayObj = moment.utc(new Date()).local()
+    console.log(unixStamp)
+    console.log(todayObj.date())
+    var todayObj = moment.utc(new Date()).local(),
+        todayDate = {
+            y: todayObj.year(),
+            m: (todayObj.month() + 1 < 10 ? '0' + (todayObj.month() - -1) : (todayObj.month() - -1)),
+            d: (todayObj.date() < 10 ? '0' + todayObj.date() : todayObj.date())
+        }
+
+    var todayStamp = Date.parse(todayDate.y + '/' + todayDate.m + '/' + todayDate.d + ' 00:00:00')
+
+    var stamp = []
+    stamp[0] = todayStamp + 86400000
+    stamp[1] = todayStamp
+    stamp[2] = todayStamp - 86400000
+    stamp[3] = todayStamp - 172800000
+
+    stamp[4] = todayStamp - 518400000 // 7天
+
+    stamp[5] = todayStamp - 31536000000 // 365天
+
+    var compareObj = moment.utc(moment(unixStamp).format()).local()
+    console.log(compareObj)
+    var returnStr
+
+    // debugger
+    if (unixStamp >= stamp[1] && unixStamp < stamp[0]) {
+        returnStr = compareObj.hours() + ':' + (compareObj.minutes() < 10 ? '0' + compareObj.minutes() : compareObj.minutes())
+    } else if (unixStamp >= stamp[2] && unixStamp < stamp[1]) {
+        var yesterdayText = '昨天'
+        returnStr = yesterdayText + ' ' + compareObj.hours() + ':' +
+            (compareObj.minutes() < 10 ? '0' + compareObj.minutes() : compareObj.minutes())
+    } else if (unixStamp >= stamp[3] && unixStamp < stamp[2]) {
+        var theDayBeforeYesterdayText = '前天'
+        returnStr = theDayBeforeYesterdayText + ' ' + compareObj.hours() + ':' +
+            (compareObj.minutes() < 10 ? '0' + compareObj.minutes() : compareObj.minutes())
+
+    } else if (unixStamp >= stamp[4] && unixStamp < stamp[3]) { // 7天内
+        var daynames = ['天', '一', '二', '三', '四', '五', '六']
+        var dathStr = '星期' + daynames[compareObj.get("day")]
+
+        var SundayText = '星期天'
+        var MondayText = '星期一'
+        var TuesdayText = '星期二'
+        var WednesdayText = '星期三'
+        var ThursdayText = '星期四'
+        var FridayText = '星期五'
+        var SaturdayText = '星期六'
+
+        var dathStr2
+
+        switch (dathStr) {
+            case '星期天':
+                dathStr2 = SundayText
+                break
+            case '星期一':
+                dathStr2 = MondayText
+                break
+            case '星期二':
+                dathStr2 = TuesdayText
+                break
+            case '星期三':
+                dathStr2 = WednesdayText
+                break
+            case '星期四':
+                dathStr2 = ThursdayText
+                break
+            case '星期五':
+                dathStr2 = FridayText
+                break
+            case '星期六':
+                dathStr2 = SaturdayText
+                break
+            default:
+                dathStr2 = dathStr
+                break
+        }
+
+        returnStr = dathStr2 + ' ' + compareObj.hours() + ':' +
+            (compareObj.minutes() < 10 ? '0' + compareObj.minutes() : compareObj.minutes())
+    } else if (unixStamp >= stamp[5] && unixStamp < stamp[4]) { // 365天内
+        var monthText = '月'
+        var dayText = '日'
+        returnStr = (compareObj.month() - (-1)) + monthText + compareObj.date() + dayText + ' ' +
+            compareObj.hours() + ':' + (compareObj.minutes() < 10 ? '0' + compareObj.minutes() : compareObj.minutes())
+
+    } else {
+        var yearText = '年'
+        var monthText = '月'
+        var dayText = '日'
+        returnStr = compareObj.get("year") + yearText + (compareObj.month() - (-1)) +
+            monthText + compareObj.date() + dayText + ' ' + compareObj.hours() + ':' +
+            (compareObj.minutes() < 10 ? '0' + compareObj.minutes() : compareObj.minutes())
+    }
+    return returnStr
 }

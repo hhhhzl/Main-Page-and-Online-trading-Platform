@@ -16,7 +16,7 @@ import { ClassNames } from "@emotion/react";
 import HeaderCreate from "./header";
 import Fade from "react-reveal/Fade";
 import useWindowDimensions from "../../utils/sizewindow";
-import { clearLocalStorage } from "utils";
+import { clearLocalStorage,showTimePipe } from "utils";
 
 export default function MainPage() {
   const { width, height } = useWindowDimensions();
@@ -55,6 +55,7 @@ export default function MainPage() {
 
   useEffect(() => {
     clearLocalStorage();
+    console.log(showTimePipe("Mon Jun 06 2021 08:00:00 GMT+0800"))
   });
 
   return (

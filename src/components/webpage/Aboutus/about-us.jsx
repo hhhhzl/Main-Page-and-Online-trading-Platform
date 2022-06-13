@@ -10,6 +10,7 @@ import { Bookmark } from "@material-ui/icons";
 import useWindowDimensions from "../../../utils/sizewindow";
 import { useHistory } from "react-router";
 import Fade from "react-reveal/Fade";
+import { minWidth } from "@material-ui/system";
 
 const Aboutus = ({ profileImg, hobbyImgs }) => {
   const { width, height } = useWindowDimensions();
@@ -51,7 +52,11 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
 
         <Container
           className="content-center"
-          style={{ padding: "44px 0px 0px",margin:"0px 18.75%",width:"62.533%" }}
+          style={{
+            padding: "44px 0px 0px",
+            margin: "0px 18.75%",
+            width: "62.533%",
+          }}
         >
           <div className="left-icon">
             <Image
@@ -528,7 +533,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
             style={{ paddingTop: "120px", paddingBottom: "90px" }}
           >
             <div className="text-center">
-              {width > 700 ? (
+              {width > 800 ? (
                 <>
                   <Image
                     src="/homeCutout/Group 58@2x.png"
@@ -538,350 +543,364 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               ) : (
                 <>
                   <Image
-                    src="/homeCutout/Group 58@2x.png"
-                    style={{ width: width - 10, height: "79px" }}
+                    src="/homeCutout/Group 1134-phone@2x.png"
+                    style={{ width: "343px", height:"42px"  }}
                   />
                 </>
               )}
             </div>
 
-            {width > 1100 ? (
-                <>
-                  <div className="message-box">
-                    <div className="flex-between">
-                      <div className=" message-left">
-                        <div className="message-title">
-                          <span>职业机遇</span>
-                          <span style={{fontSize: "12px", marginLeft: "12px",fontWeight:"400"}}>(部分支持远程)</span>
-                        </div>
-                        <div className="message-content">
-                          入围决赛的选手均能获得：
-                        </div>
-                        <div className="message-Top" >
-                          <div> 中信证券实习 (或终面) 机会
-                          </div>
-                          <div> 中信证券飞鹰计划名额 (含结业证书)
-                          </div>
-                          <div> 多家公募机构决赛现场“捞人”机会
-                          </div>
-                          <div> 埔思学院录取 (或终面) 机会
-                          </div>
-                          <div> 10万奖金瓜分
-                          </div>
-                          <div> 决赛证书等：
-                          </div>
-                        </div>
-                        <span className="message-icon">
+            {width > 800 ? (
+              <>
+                <div className="message-box">
+                  <div className="flex-between">
+                    <div
+                      className=" message-left"
+                      style={{
+                        paddingLeft:
+                          width > 1196 ? width * 0.061458 : width * 0.05016722,
+                        paddingRight: width * 0.08333,
+                      }}
+                    >
+                      <div className="message-title">
+                        <span>职业机遇</span>
+                        <span
+                          style={{
+                            fontSize: "12px",
+                            marginLeft: "12px",
+                            fontWeight: "400",
+                          }}
+                        >
+                          (部分支持远程)
+                        </span>
+                      </div>
+                      <div className="message-content">
+                        入围决赛的选手均能获得：
+                      </div>
+                      <div className="message-Top">
+                        <div> 中信证券实习 (或终面) 机会</div>
+                        <div> 中信证券飞鹰计划名额 (含结业证书)</div>
+                        <div> 多家公募机构决赛现场“捞人”机会</div>
+                        <div> 埔思学院录取 (或终面) 机会</div>
+                        <div> 10万奖金瓜分</div>
+                        <div> 决赛证书等：</div>
+                      </div>
+                      <span className="message-icon">
                         <Image
-                            src="/homeCutout/Group 21@2x.png"
-                            style={{width: "49px", height: "3px"}}
+                          src="/homeCutout/Group 21@2x.png"
+                          style={{ width: "49px", height: "3px" }}
                         />
                       </span>
-                        <div className="message-content-bottom">
-                          <div>(赛事期间的优秀选手也将获得金融机构的引荐资格)</div>
-                          <div>我们希望为优秀的大学生提供被伯乐发掘的窗口与机遇。</div>
-                        </div>
-                      </div>
-                      <div className="flex-center image-right">
-                        <div className="image-right-icon-top">
-                          <Image
-                              src="/homeCutout/Rectangle 21@2x.png"
-                              style={{width: "12px", height: "12px"}}
-                          />
+                      <div className="message-content-bottom">
+                        <div>
+                          (赛事期间的优秀选手也将获得金融机构的引荐资格)
                         </div>
                         <div>
-                          <Image
-                              src="/homeCutout/occupation@2x.png"
-                              style={{
-                                width: "600px",
-                                height: "480px",
-                                border: "1px dotted #3C5E78",
-                              }}
-                          />
-                        </div>
-                        <div className="image-right-icon-bottom">
-                          <Image
-                              src="/homeCutout/Group 25@2x.png"
-                              style={{width: "108px", height: "108px"}}
-                          />
+                          我们希望为优秀的大学生提供被伯乐发掘的窗口与机遇。
                         </div>
                       </div>
                     </div>
+                    <div className="flex-center image-right">
+                      <div className="image-right-icon-top">
+                        <Image
+                          src="/homeCutout/Rectangle 21@2x.png"
+                          style={{ width: "12px", height: "12px" }}
+                        />
+                      </div>
+                      <div>
+                        <Image
+                          src="/homeCutout/occupation@2x.png"
+                          style={{
+                            width: width * 0.3125,
+                            // height: width * 0.25,
+                            minWidth: "330px",
+                          }}
+                        />
+                      </div>
+                      <div className="image-right-icon-bottom">
+                        {width > 1196 ? (
+                          <>
+                            <Image
+                              src="/homeCutout/Group 25@2x.png"
+                              style={{ width: "108px", height: "108px" }}
+                            />
+                          </>
+                        ) : (
+                          <>
+                            <Image
+                              src="/homeCutout/Group 25-pad@2x.png"
+                              style={{ width: "72px", height: "72px" }}
+                            />
+                          </>
+                        )}
+                      </div>
+                    </div>
                   </div>
+                </div>
 
-                  <div style={{marginTop: "200px", marginLeft: "71px"}}>
-                    <div className="flex-between">
-                      <div className="image-left">
-                        <div className="image-left-icon-bottom">
-                          <Image
+                <div style={{ marginTop: "200px", marginLeft: "71px" }}>
+                  <div className="flex-between">
+                    <div className="image-left">
+                      <div className="image-left-icon-bottom">
+                        {width > 1196 ? (
+                          <>
+                            <Image
                               src="/homeCutout/Group 61@2x.png"
-                              style={{width: "108px", height: "108px"}}
-                          />
-                        </div>
-
-                        <div>
-                          <Image
-                              src="/homeCutout/promote@2x.png"
-                              style={{
-                                width: "600px",
-                                height: "480px",
-                                border: "1px dotted #3C5E78",
-                              }}
-                          />
-                        </div>
-                        <div className="image-left-icon-top">
-                          <Image
-                              src="/homeCutout/Rectangle 21@2x.png"
-                              style={{width: "12px", height: "12px"}}
-                          />
-                        </div>
+                              style={{ width: "108px", height: "108px" }}
+                            />
+                          </>
+                        ) : (
+                          <>
+                            <Image
+                              src="/homeCutout/Group 61-pad@2x.png"
+                              style={{ width: "72px", height: "72px" }}
+                            />
+                          </>
+                        )}
                       </div>
-                      <div className=" message-right">
-                        <div className="message-title">提升机会</div>
-                        <div className="message-content">
-                          赛事期间, UFA为参赛者们准备了一系列高含金量的免费学习机会:
-                        </div>
-                        <div className="message-Top" >
-                          包括百万知识博主、求职达人Lindsay为你带来的线上求职规划分析, 多场干货满满的大咖讲座, 以及中信高级分析师为参赛选手带来的在线指导交流等。
-                        </div>
-                        <span className="message-icon">
+
+                      <div>
                         <Image
-                            src="/homeCutout/Group 21@2x.png"
-                            style={{width: "49px", height: "3px"}}
+                          src="/homeCutout/promote@2x.png"
+                          style={{
+                            width: width * 0.3125,
+                            // height: width * 0.25,
+                            minWidth: "330px",
+                          }}
+                        />
+                      </div>
+                      <div className="image-left-icon-top">
+                        <Image
+                          src="/homeCutout/Rectangle 21@2x.png"
+                          style={{ width: "12px", height: "12px" }}
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className=" message-right"
+                      style={{
+                        paddingLeft: width > 1196 ? "160px" : width * 0.1003344,
+                      }}
+                    >
+                      <div className="message-title">提升机会</div>
+                      <div className="message-content">
+                        赛事期间,
+                        UFA为参赛者们准备了一系列高含金量的免费学习机会:
+                      </div>
+                      <div className="message-Top">
+                        包括百万知识博主、求职达人Lindsay为你带来的线上求职规划分析,
+                        多场干货满满的大咖讲座,
+                        以及中信高级分析师为参赛选手带来的在线指导交流等。
+                      </div>
+                      <span className="message-icon">
+                        <Image
+                          src="/homeCutout/Group 21@2x.png"
+                          style={{ width: "49px", height: "3px" }}
                         />
                       </span>
-                        <div className="message-content-bottom">
-                          我们希望通过为大学生筛选并提供优质的学习资源，帮助大学生完成提升和成长。
-                        </div>
+                      <div className="message-content-bottom">
+                        我们希望通过为大学生筛选并提供优质的学习资源，帮助大学生完成提升和成长。
                       </div>
                     </div>
                   </div>
+                </div>
 
-                  <div style={{marginTop: "200px"}}>
-                    <div className="flex-between">
-                      <div className=" message-left">
-                        <div className="message-title">权威证书</div>
-                        <div className="message-content">
-                          证书由顶尖券商中信证券官方认证，指数排名前30％的参赛者均会授予颁发。同时，排名不是唯一评判标准，赛事期间设立300余份相关奖项等你来拿。
-                        </div>
-                        <span className="message-icon">
+                <div style={{ marginTop: "200px" }}>
+                  <div className="flex-between">
+                    <div
+                      className="message-left"
+                      style={{
+                        paddingLeft: width * 0.061458,
+                        paddingRight: width * 0.08333,
+                      }}
+                    >
+                      <div className="message-title">权威证书</div>
+                      <div className="message-content">
+                        证书由顶尖券商中信证券官方认证，指数排名前30％的参赛者均会授予颁发。同时，排名不是唯一评判标准，赛事期间设立300余份相关奖项等你来拿。
+                      </div>
+                      <span className="message-icon">
                         <Image
-                            src="/homeCutout/Group 21@2x.png"
-                            style={{width: "49px", height: "3px"}}
+                          src="/homeCutout/Group 21@2x.png"
+                          style={{ width: "49px", height: "3px" }}
                         />
                       </span>
-                        <div className="message-content-bottom">
-                          我们希望你的实力被更多知名金融企业看见；重量级证书加持，丰富你的履历，助力职场之路畅通无忧。
-                        </div>
+                      <div className="message-content-bottom">
+                        我们希望你的实力被更多知名金融企业看见；重量级证书加持，丰富你的履历，助力职场之路畅通无忧。
                       </div>
-                      <div className="flex-center image-right">
-                        <div className="image-right-icon-top">
-                          <Image
-                              src="/homeCutout/Rectangle 21@2x.png"
-                              style={{width: "12px", height: "12px"}}
-                          />
-                        </div>
-                        <div>
-                          <Image
-                              src="/homeCutout/authority@2x.png"
-                              style={{
-                                width: "600px",
-                                height: "480px",
-                                border: "1px dotted #3C5E78",
-                              }}
-                          />
-                        </div>
-                        <div className="image-right-icon-bottom">
-                          <Image
+                    </div>
+                    <div className="flex-center image-right">
+                      <div className="image-right-icon-top">
+                        <Image
+                          src="/homeCutout/Rectangle 21@2x.png"
+                          style={{ width: "12px", height: "12px" }}
+                        />
+                      </div>
+                      <div>
+                        <Image
+                          src="/homeCutout/authority@2x.png"
+                          style={{
+                            width: width * 0.3125,
+                            height: width * 0.25,
+                            minWidth: "330px",
+                          }}
+                        />
+                      </div>
+                      <div className="image-right-icon-bottom">
+                        {width > 1196 ? (
+                          <>
+                            <Image
                               src="/homeCutout/Group 25@2x.png"
-                              style={{width: "108px", height: "108px"}}
-                          />
-                        </div>
+                              style={{ width: "108px", height: "108px" }}
+                            />
+                          </>
+                        ) : (
+                          <>
+                            <Image
+                              src="/homeCutout/Group 25-pad@2x.png"
+                              style={{ width: "72px", height: "72px" }}
+                            />
+                          </>
+                        )}
                       </div>
                     </div>
                   </div>
-                </>
+                </div>
+              </>
             ) : (
               <>
-                <div className="box2">
-                  <Row>
-                    <Col xs={6}>
-                      <Image
-                        src="/1.@2x.png"
-                        id="img-txz"
-                        alt="header"
-                        style={{
-                          position: "relative",
-                          left: "70%",
-                          top: "25%",
-                          width: "30%",
-                          height: "40%",
-                        }}
-                      />
-                    </Col>
+                {/* <div style={{ marginTop: "60px" }}> */}
+                <div className="content-wrapper">
+                  <Image
+                    src="/homeCutout/Mask group-phone@2x.png"
+                    style={{ width: "343px", height: "270px" }}
+                  />
+                  <div className="message-phone-content">
+                    <div className="message-phone-title">
+                      <span className="title-bold">职业机遇</span>
+                      <span className="title-normal">(部分支持远程)</span>
+                    </div>
 
-                    <Col xs={6}>
+                    <div className="message-introduce">
+                      <div>入围决赛的选手均能获得：</div>
+                      <div style={{ marginTop: "8px" }}>
+                        中信证券实习 (或终面) 机会、中信证券飞鹰计划名额
+                      </div>
+                      <div>
+                        (含结业证书) 、多家公募机构决赛现场“捞人”机会、埔
+                      </div>
+                      <div>
+                        思学院录取 (或终面) 机会、10万奖金瓜分、决赛证书等
+                      </div>
+                    </div>
+                    <span className="message-icon">
                       <Image
-                        src="组 50@2x(1).png"
-                        id="img-txz"
-                        alt="header"
-                        style={{
-                          position: "relative",
-                          width: "50%",
-                          height: "85%",
-                        }}
+                        src="/homeCutout/Group 21@2x.png"
+                        style={{ width: "49px", height: "3px" }}
                       />
-                    </Col>
-                  </Row>
-                  <div className="text">
-                    <h6
-                      style={{
-                        color: " #26409A ",
-                        fontSize: "22px",
-                        textAlign: "center",
-                        alignItems: "center",
-                      }}
+                    </span>
+
+                    <div
+                      className="message-introduce-gray"
+                      style={{ marginTop: "12px" }}
                     >
-                      “权威金融竞赛证书”为你加强背景与竞争力
-                    </h6>
-                    <p
-                      style={{
-                        color: "black",
-                        fontFamily: "MicrosoftYaHeiUI",
-                        fontSize: "20px",
-                        letterSpacing: "0.3px",
-                        textIndent: "0",
-                        paddingTop: width > 1000 ? "30px" : "20px",
-                        paddingLeft: width > 750 ? "10px" : "5px",
-                        paddingRight: width > 750 ? "10px" : "5px",
-                      }}
+                      (赛事期间的优秀选手也将获得金融机构的引荐资格)
+                    </div>
+
+                    <div
+                      className="message-introduce-gray"
+                      style={{ marginTop: "9px" }}
                     >
-                      赛事证书由 UFA，中信证券联合签署。表现优异的前
-                      30%参赛选手将收获主办方颁发的官方证书，为你的简历增添亮点，丰富金融专业背景，帮助你从同龄人中迅速脱颖而出！
-                    </p>
+                      我们希望为优秀的大学生提供被伯乐发掘的窗口与机遇。
+                    </div>
                   </div>
                 </div>
-                <hr />
 
-                <div className="box2">
-                  <Row>
-                    <Col xs={6}>
-                      <Image
-                        src="/2.@2x.png"
-                        id="img-txz"
-                        alt="header"
-                        style={{
-                          position: "relative",
-                          left: "70%",
-                          top: "25%",
-                          width: "30%",
-                          height: "70%",
-                        }}
-                      />
-                    </Col>
+                <div className="content-wrapper">
+                  <Image
+                    src="/homeCutout/Mask group-phone2@2x.png"
+                    style={{ width: "343px", height: "270px" }}
+                  />
+                  <div className="message-phone-content">
+                    <div className="message-phone-title">
+                      <span className="title-bold">提升机会</span>
+                    </div>
 
-                    <Col xs={6}>
+                    <div className="message-introduce">
+                      <div>赛事期间, UFA为参赛者们准备了一系列高含金量的免</div>
+                      <div>费学习机会:</div>
+                      <div style={{ marginTop: "8px" }}>
+                        包括百万知识博主、求职达人Lindsay为你带来的线上
+                      </div>
+                      <div>
+                        求职规划分析, 多场干货满满的大咖讲座, 以及中信高级
+                      </div>
+                      <div>分析师为参赛选手带来的在线指导交流等。</div>
+                    </div>
+                    <span className="message-icon">
                       <Image
-                        src="组 50(3).png"
-                        id="img-txz"
-                        alt="header"
-                        style={{
-                          position: "relative",
-                          width: "70%",
-                          height: "100%",
-                        }}
+                        src="/homeCutout/Group 21@2x.png"
+                        style={{ width: "49px", height: "3px" }}
                       />
-                    </Col>
-                  </Row>
-                  <br />
-                  <div className="text">
-                    <h6
-                      style={{
-                        color: " #26409A ",
-                        fontSize: "22px",
-                        textAlign: "center",
-                        alignItems: "center",
-                      }}
+                    </span>
+
+                    <div
+                      className="message-introduce-gray"
+                      style={{ marginTop: "12px" }}
                     >
-                      “0门槛”参与要求，帮助小白完成自我提升
-                    </h6>
-                    <p
-                      style={{
-                        color: "black",
-                        fontFamily: "MicrosoftYaHeiUI",
-                        fontSize: "20px",
-                        letterSpacing: "0.3px",
-                        textIndent: "0",
-                        paddingTop: width > 1000 ? "30px" : "20px",
-                        paddingLeft: width > 750 ? "10px" : "5px",
-                        paddingRight: width > 750 ? "10px" : "5px",
-                      }}
+                      我们希望通过为大学生筛选并提供优质的学习资源, 帮助大学
+                    </div>
+
+                    <div
+                      className="message-introduce-gray"
+                      style={{ marginTop: "9px" }}
                     >
-                      就算是没有经验的投资小白也不用担心，UFA
-                      将在比赛全程陪伴你，无论是指导撰写投资笔记并生成属于自己的投资报告，还是定期邀请金融专家深度解析市场走向，我们将会全力为你的成长助力，帮你实现人生新高度！
-                    </p>
+                      生完成提升和成长。
+                    </div>
                   </div>
                 </div>
-                <hr />
 
-                <div className="box2">
-                  <Row>
-                    <Col xs={6}>
-                      <Image
-                        src="/3.@2x.png"
-                        id="img-txz"
-                        alt="header"
-                        style={{
-                          position: "relative",
-                          left: "70%",
-                          top: "25%",
-                          width: "30%",
-                          height: "60%",
-                        }}
-                      />
-                    </Col>
+                <div className="content-wrapper">
+                  <Image
+                    src="/homeCutout/Mask group-phone3@2x.png"
+                    style={{ width: "343px", height: "270px" }}
+                  />
+                  <div className="message-phone-content">
+                    <div className="message-phone-title">
+                      <span className="title-bold">权威证书</span>
+                    </div>
 
-                    <Col xs={6}>
+                    <div className="message-introduce">
+                      <div>
+                        证书由顶尖券商中信证券官方认证，指数排名前30％的
+                      </div>
+                      <div>
+                        参赛者均会授予颁发。同时，排名不是唯一评判标准，
+                      </div>
+                      <div>赛事期间设立300余份相关奖项等你来拿。</div>
+                    </div>
+                    <span className="message-icon">
                       <Image
-                        src="组 50(2).png"
-                        id="img-txz"
-                        alt="header"
-                        style={{
-                          position: "relative",
-                          width: "80%",
-                          height: "90%",
-                        }}
+                        src="/homeCutout/Group 21@2x.png"
+                        style={{ width: "49px", height: "3px" }}
                       />
-                    </Col>
-                  </Row>
-                  <br />
-                  <div className="text">
-                    <h6
-                      style={{
-                        color: " #26409A ",
-                        fontSize: "22px",
-                        textAlign: "center",
-                        alignItems: "center",
-                      }}
+                    </span>
+
+                    <div
+                      className="message-introduce-gray"
+                      style={{ marginTop: "12px" }}
                     >
-                      免费求职指导，清晰金融职业目标与规划
-                    </h6>
-                    <p
-                      style={{
-                        color: "black",
-                        fontFamily: "MicrosoftYaHeiUI",
-                        fontSize: "20px",
-                        letterSpacing: "0.3px",
-                        textIndent: "0",
-                        paddingTop: width > 1000 ? "30px" : "20px",
-                        paddingLeft: width > 750 ? "10px" : "5px",
-                        paddingRight: width > 750 ? "10px" : "5px",
-                      }}
+                      我们希望你的实力被更多知名金融企业看见；重量级证书加持，
+                    </div>
+
+                    <div
+                      className="message-introduce-gray"
+                      style={{ marginTop: "9px" }}
                     >
-                      相遇即机遇，我们联结了来自全球最顶尖大学的华人金融精英，他们可能是你未来并肩作战的同事，或是雇主，或是可靠的商业伙伴，亦或是投资人。我们丰富的线上/线下活动将为选手间进行深度交流提供绝佳机会，帮助你快速提升软技能！
-                    </p>
+                      丰富你的履历，助力职场之路畅通无忧。
+                    </div>
                   </div>
                 </div>
+                {/* </div> */}
               </>
             )}
           </div>
