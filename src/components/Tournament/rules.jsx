@@ -4,7 +4,7 @@ import { React, useState, useEffect } from "react";
 import useWindowDimensions from "../../utils/sizewindow";
 import RulesModal from "../screen/modal/RulesModal";
 
-const Rules = ({changeEventKey}) => {
+const Rules = ({ changeEventKey }) => {
   const { width, height } = useWindowDimensions();
   const [current, setCurrent] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -24,7 +24,7 @@ const Rules = ({changeEventKey}) => {
       setbodyscrollTop(
         document.documentElement.scrollTop || document.body.scrollTop
       );
-      console.log("屏幕向下距离",bodyscrollrdTop)
+      console.log("屏幕向下距离", bodyscrollrdTop);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -109,12 +109,12 @@ const Rules = ({changeEventKey}) => {
               <div className="rules-centent">
                 赛事报名成功后，个人/团队参赛者将在“交易平台”获得一份赛事账户，所有操作均在“{" "}
                 <a href="/competition">
-                <span
-                  style={{ color: "blue", cursor: "pointer" }}
-                  className="button-hover"
-                >
-                  交易平台
-                </span>
+                  <span
+                    style={{ color: "blue", cursor: "pointer" }}
+                    className="button-hover"
+                  >
+                    交易平台
+                  </span>
                 </a>
                 ”完成。
               </div>
@@ -156,7 +156,7 @@ const Rules = ({changeEventKey}) => {
           </div>
           <div className="rules-top-30">
             <div className="rules-centent">
-              参赛个人或团队需在赛事期间提交至少3份研报模块，未交满选手则无法获得初赛入围资格。注：研报模块质量不会被进行评分，且不影响综合分数。详情见上方“
+              赛事期间，UFA将定期发布热点财经新闻话题，并邀请大学生撰写话题分析。投稿者有机会获得“杰出财经大学生”奖，以及金融机构推荐资格。详情见上方“
               <span
                 style={{ color: "blue", cursor: "pointer" }}
                 className="button-hover"
@@ -194,18 +194,18 @@ const Rules = ({changeEventKey}) => {
                     <div className="horizontal-line"></div>
                     {/* <div className="vertical-line"></div> */}
                     <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
                     >
                       <div
-                          style={{
-                            height: "48px",
-                            background: "rgb(229, 232, 238)",
-                            width: "1px",
-                          }}
+                        style={{
+                          height: "48px",
+                          background: "rgb(229, 232, 238)",
+                          width: "1px",
+                        }}
                       ></div>
                     </div>
                   </div>
@@ -271,18 +271,18 @@ const Rules = ({changeEventKey}) => {
                     <div className="horizontal-line"></div>
                     {/* <div className="vertical-line"></div> */}
                     <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
                     >
                       <div
-                          style={{
-                            height: "48px",
-                            background: "rgb(229, 232, 238)",
-                            width: "1px",
-                          }}
+                        style={{
+                          height: "48px",
+                          background: "rgb(229, 232, 238)",
+                          width: "1px",
+                        }}
                       ></div>
                     </div>
                   </div>
@@ -342,18 +342,18 @@ const Rules = ({changeEventKey}) => {
                     <div className="horizontal-line"></div>
                     {/* <div className="vertical-line"></div> */}
                     <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
                     >
                       <div
-                          style={{
-                            height: "48px",
-                            background: "rgb(229, 232, 238)",
-                            width: "1px",
-                          }}
+                        style={{
+                          height: "48px",
+                          background: "rgb(229, 232, 238)",
+                          width: "1px",
+                        }}
                       ></div>
                     </div>
                   </div>
