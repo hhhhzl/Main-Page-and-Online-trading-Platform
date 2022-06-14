@@ -231,7 +231,7 @@ const Rules = ({changeEventKey}) => {
                       初赛将围绕“收益率”及“夏普指数”进行加权打分
                     </div>
                   </div>
-                  <div className="judge-rules-li" style={{ marginTop: "12px" }}>
+                  {/* <div className="judge-rules-li" style={{ marginTop: "12px" }}>
                     <div>
                       <Image
                         className="judge-rules-dot"
@@ -244,7 +244,7 @@ const Rules = ({changeEventKey}) => {
                     >
                       初赛将围绕“收益率”及“夏普指数”进行加权打分
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <div
                   className="show-details"
@@ -318,7 +318,7 @@ const Rules = ({changeEventKey}) => {
                     className="judge-rules-content"
                     style={{ marginLeft: "6px" }}
                   >
-                    UFA评委将结合指标分数以及投资报告质量选出15名决赛入围选手。
+                    UFA评委将结合指标分数以及投资报告质量选出8名决赛入围选手。
                   </div>
                 </div>
                 <div className="show-details" onClick={() => openModal(2)}>
@@ -403,7 +403,7 @@ const Rules = ({changeEventKey}) => {
                     className="judge-rules-content"
                     style={{ marginLeft: "6px" }}
                   >
-                    最终排名将基于初赛指标分数（40%）+ 决赛分数（60%）。
+                    赛事将基于初赛指标分数（占比40%）与决赛分数（占比60%）做出最终排名。
                   </div>
                 </div>
                 <div className="show-details" onClick={() => openModal(3)}>

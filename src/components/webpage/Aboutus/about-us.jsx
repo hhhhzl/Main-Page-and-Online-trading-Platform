@@ -530,7 +530,10 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
         <div className="about-intro">
           <div
             className="section"
-            style={{ paddingTop: "120px", paddingBottom: width < 800 ? "30px" : "90px" }}
+            style={{
+              paddingTop: "120px",
+              paddingBottom: width < 800 ? "30px" : "90px",
+            }}
           >
             <div className="text-center">
               {width > 800 ? (
@@ -544,7 +547,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                 <>
                   <Image
                     src="/homeCutout/Group 1134-phone@2x.png"
-                    style={{ width: "343px", height:"42px"  }}
+                    style={{ width: "343px", height: "42px" }}
                   />
                 </>
               )}
@@ -575,15 +578,14 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                         </span>
                       </div>
                       <div className="message-content">
-                        入围决赛的选手均能获得：
+                        入围决赛的选手能获得：
                       </div>
                       <div className="message-Top">
-                        <div> 中信证券实习 (或终面) 机会</div>
+                        <div> 中信证券实习机会</div>
                         <div> 中信证券飞鹰计划名额 (含结业证书)</div>
-                        <div> 多家公募机构决赛现场“捞人”机会</div>
-                        <div> 埔思学院录取 (或终面) 机会</div>
-                        <div> 10万奖金瓜分</div>
-                        <div> 决赛证书等：</div>
+                        <div> 公募机构决赛现场面试录用机会</div>
+                        <div> 埔思学院录取机会</div>
+                        <div> 10万奖金瓜分等</div>
                       </div>
                       <span className="message-icon">
                         <Image
@@ -716,7 +718,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                     >
                       <div className="message-title">权威证书</div>
                       <div className="message-content">
-                        证书由顶尖券商中信证券官方认证，指数排名前30％的参赛者均会授予颁发。同时，排名不是唯一评判标准，赛事期间设立300余份相关奖项等你来拿。
+                        指数排名前30%的参赛者均会获得由顶尖券商中信证券的官方权威证书。此外,排名不是唯一评判标准,大赛还将设立300余份其他丰厚奖项等你来拿。
                       </div>
                       <span className="message-icon">
                         <Image
@@ -781,16 +783,14 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                     </div>
 
                     <div className="message-introduce">
-                      <div>入围决赛的选手均能获得：</div>
+                      <div>入围决赛的选手能获得：</div>
                       <div style={{ marginTop: "8px" }}>
-                        中信证券实习 (或终面) 机会、中信证券飞鹰计划名额
+                        中信证券实习机会、中信证券飞鹰计划名额(含结业证
                       </div>
                       <div>
-                        (含结业证书) 、多家公募机构决赛现场“捞人”机会、埔
+                        书) 、公募机构决赛现场面试录用机会、埔思学院录取
                       </div>
-                      <div>
-                        思学院录取 (或终面) 机会、10万奖金瓜分、决赛证书等
-                      </div>
+                      <div>机会、10万奖金瓜分等</div>
                     </div>
                     <span className="message-icon">
                       <Image
@@ -870,13 +870,11 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                     </div>
 
                     <div className="message-introduce">
+                      <div>指数排名前30%的参赛者均会获得由顶尖券商中信证券</div>
                       <div>
-                        证书由顶尖券商中信证券官方认证，指数排名前30％的
+                        的官方权威证书。此外,排名不是唯一评判标准,大赛还
                       </div>
-                      <div>
-                        参赛者均会授予颁发。同时，排名不是唯一评判标准，
-                      </div>
-                      <div>赛事期间设立300余份相关奖项等你来拿。</div>
+                      <div>将设立300余份其他丰厚奖项等你来拿。</div>
                     </div>
                     <span className="message-icon">
                       <Image

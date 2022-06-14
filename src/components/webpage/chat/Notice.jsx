@@ -7,8 +7,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { Button, Collapse, Image } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchNews, updateNews } from "redux/reducers/News/newsSlice";
+import { showTimePipe } from "utils";
 import data from "../../../static/Notice.json";
 import useWindowDimensions from "../../../utils/sizewindow";
+
 import "./Notice.css";
 
 export default function Notice() {
@@ -140,7 +142,7 @@ export default function Notice() {
                       style={{ display: width > 1200 ? "" : "none" }}
                       className="notice-left-time"
                     >
-                      {item.created_at}
+                      {showTimePipe(item.created_at)}
                     </div>
                   </div>
                   <div className="notice-left-detail" > 

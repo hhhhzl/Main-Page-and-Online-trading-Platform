@@ -122,6 +122,10 @@ export default function RegisterForm(props) {
         }
     }
 
+    function verifyPassword(password) {
+        return "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[~!@#$%^&*()_+`\\-={}:\";'<>?,./]).{8,}$"
+     }
+
     const [imgSrc, setImgSrc] = useState('')
     const [showModal, setShowModal] = useState(false);
 
@@ -486,10 +490,10 @@ export default function RegisterForm(props) {
                                 setPassword(e.target.value)
                                 setUserState({...userState, ...{password}});
                             }}
-                            pattern="^[A-Za-z0-9]{8,15}$"
+                            pattern={verifyPassword(password)}
                         ></Form.Control>
                         <Form.Control.Feedback type="invalid">
-                            请输入最少8位，最多15位密码！
+                            密码由字母,数字,特殊符号组成,长度为8-20!
                         </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group className="loadingusername">
