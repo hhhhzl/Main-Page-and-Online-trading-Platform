@@ -24,12 +24,12 @@ apiService.interceptors.request.use(
 apiService.interceptors.response.use(
   (response) => {
     // OK responses
-    console.log(response);
+    console.log('main_platform res', response);
     return response;
   },
   (error) => {
     // not OK responses
-    console.log(error.response);
+    console.error('main_platform res', error.response);
     return Promise.reject(error);
   }
 );

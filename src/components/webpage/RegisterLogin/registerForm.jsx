@@ -294,7 +294,9 @@ export default function RegisterForm(props) {
         }
     }, [submit, userState])
 
-
+    useEffect(() => { 
+        setUserState({...userState, ...{avatar: headPortrait}}) 
+    }, [headPortrait])
 
     return (
         <>

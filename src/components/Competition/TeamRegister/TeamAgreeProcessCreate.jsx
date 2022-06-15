@@ -60,9 +60,9 @@ export default function TeamAgreeProcessCreate({toggle}) {
                 competition_id:competitionID,
                 name:teamname,
                 track:lianghua? "Q" : "S",
-                // avatar:headPortrait
+                avatar:headPortrait
             }
-            console.log(data)
+            console.log('create team', data)
             const dataprops = JSON.stringify(data)
             const response = await apiCreateTeamAccount(data)      
             const messge = response.data.msg

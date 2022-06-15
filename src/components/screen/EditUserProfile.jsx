@@ -274,8 +274,8 @@ export default function EditData({
 
 							 onClick = {() => {
 
-								 console.log(userState,254)
-								 dispatch(
+								console.log('update user', userState, 254)
+								dispatch(
 									 updateUserSelf({
 									 data: userState
 									}))
