@@ -9,7 +9,7 @@ import { useHistory } from "react-router";
 import Footer from "components/MainPage/footer";
 import AuthContext from "../../../context/AuthContext";
 import { clearLocalStorage } from "utils";
-
+import "./teamEntry.css";
 export default function TeamEntry() {
   let { user, logoutUser } = useContext(AuthContext);
   const { width, height } = useWindowDimensions();
@@ -64,20 +64,19 @@ export default function TeamEntry() {
         <HeaderCreate toggle={toggle} />
         {isOpen ? <Sidebar isOpen={isOpen} toggle={toggle} /> : null}
       </div>
-      <div className="team-modal">
         <Modal
           show={showModal}
           onHide={handleClose}
           centered
           backdrop="static"
           keyboard={false}
+          className="team-modal"
         >
           <Modal.Header closeButton>
             
           </Modal.Header>
-          <Image src="/cut.png"></Image>
+          <Image src="/Group 1107@2x.png" style={{maxHeight:"780px"}}></Image>
         </Modal>
-      </div>
       <div
         style={{
           marginTop: height * 0,
