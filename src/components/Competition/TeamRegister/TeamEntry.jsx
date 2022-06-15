@@ -4,7 +4,7 @@ import useWindowDimensions from "../../../utils/sizewindow";
 import Sidebar from "../../MainPage/Sidebar";
 import { IconButton } from "@material-ui/core";
 import { ArrowBack, ArrowForward } from "@material-ui/icons";
-import { Button, Form, Image } from "react-bootstrap";
+import { Button, Form, Image, Modal } from "react-bootstrap";
 import { useHistory } from "react-router";
 import Footer from "components/MainPage/footer";
 import AuthContext from "../../../context/AuthContext";
@@ -15,6 +15,8 @@ export default function TeamEntry() {
   const { width, height } = useWindowDimensions();
   const history = useHistory();
   const [disable, setdisable] = useState(true);
+
+  const [showModal, setShowModal] = useState(false);
   const [hovercreate, setHovercreate] = useState(true);
   const [hoverjoin, setHoverjoin] = useState(false);
   const [createshow, setcreatshow] = useState(false);
@@ -24,6 +26,9 @@ export default function TeamEntry() {
   };
 
   const [isOpen, setIsOpen] = useState(false);
+  const handleClose = () => {
+    setShowModal(false);
+  };
   const toggle = () => {
     setIsOpen(!isOpen);
   };
@@ -59,7 +64,20 @@ export default function TeamEntry() {
         <HeaderCreate toggle={toggle} />
         {isOpen ? <Sidebar isOpen={isOpen} toggle={toggle} /> : null}
       </div>
-
+      <div className="team-modal">
+        <Modal
+          show={showModal}
+          onHide={handleClose}
+          centered
+          backdrop="static"
+          keyboard={false}
+        >
+          <Modal.Header closeButton>
+            
+          </Modal.Header>
+          <Image src="/cut.png"></Image>
+        </Modal>
+      </div>
       <div
         style={{
           marginTop: height * 0,
@@ -92,12 +110,33 @@ export default function TeamEntry() {
                 color: "#2A2B30",
                 lineHeight: "40px",
                 letterSpacing: "1px",
+                display: "flex",
+                justifyContent: "space-between",
               }}
             >
-              <IconButton onClick={() => sendUserhome()}>
-                <ArrowBack />
-              </IconButton>
-              选择参赛方式
+              <div>
+                <IconButton onClick={() => sendUserhome()}>
+                  <ArrowBack />
+                </IconButton>
+                选择参赛方式
+              </div>
+              <div>
+                <Button
+                  style={{
+                    padding: "6px 12px",
+                    background:
+                      "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)",
+                    boxShadow:
+                      "0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08)",
+                    borderRadius: "4px",
+                  }}
+                  variant="primary"
+                  size="sm"
+                  onClick={() => setShowModal(true)}
+                >
+                  报名规则
+                </Button>
+              </div>
             </div>
           </div>
           <div
@@ -339,7 +378,20 @@ export default function TeamEntry() {
         </div>
         <div style={{ width: "48px", maxWidth: "18.75%" }}></div>
       </div>
-
+      <div
+        style={{
+          padding: "24px 0px 36px 0px",
+          textAlign: "center",
+          fontSize: "14px",
+          fontFamily: " Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+          fontWeight: "400",
+          color: "#2A2B30",
+          lineHeight: "24px",
+          backgroundColor: " rgb(245, 246, 248)",
+        }}
+      >
+        *每位选手只能创立/加入一个赛事团队。报名成功后，无法更换团队与赛道
+      </div>
       <div style={{ position: "relative" }}>
         <Footer />
       </div>

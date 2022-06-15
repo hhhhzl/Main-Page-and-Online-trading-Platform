@@ -14,15 +14,15 @@ export default function Sign() {
   const { width, height } = useWindowDimensions();
   const [bodyscrollrdTop, setbodyscrollTop] = useState(0);
   let { user, logoutUser, apikey, competition } = useContext(AuthContext);
-  const [buttonword, setbuttonword] = useState("正式报名")
+  const [buttonword, setbuttonword] = useState("正式报名");
   const history = useHistory();
-  const [showwheretogo, setshowwheretogo] = useState(false)
+  const [showwheretogo, setshowwheretogo] = useState(false);
 
   const [loginModel, setloginModel] = useState(false);
+  const [teamActive, setTeamActive] = useState(true);
   const handleClose = () => {
     setloginModel(false);
   };
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,64 +46,70 @@ export default function Sign() {
     // } else {
     //   history.push("/tournament");
     // }
-    if (buttonword == "进入赛事"){
-      setPlatformType("competition")
+    if (buttonword == "进入赛事") {
+      setPlatformType("competition");
       history.push("/team/register");
-    }else if(buttonword == "正式报名"){
-      if (!user){
-        setshowwheretogo(true)
-      }else{
+    } else if (buttonword == "正式报名") {
+      if (!user) {
+        setshowwheretogo(true);
+      } else {
         history.push("/team/register");
       }
-    }else if (buttonword == "查看赛事"){
+    } else if (buttonword == "查看赛事") {
       /////todu
     }
   };
 
-  useEffect(()=>{
-    if(user == null && competition){
+  useEffect(() => {
+    if (user == null && competition) {
       var now = moment();
-      var timeInShanghai = now.tz('Asia/Shanghai').format()
-      if (timeInShanghai < competition.register){
-        setbuttonword("正式报名")
-      } else if (competition.register < timeInShanghai && timeInShanghai < competition.start){
-        setbuttonword("正式报名")
-      } else if (competition.start < timeInShanghai){
-        setbuttonword("查看赛事")
+      var timeInShanghai = now.tz("Asia/Shanghai").format();
+      if (timeInShanghai < competition.register) {
+        setbuttonword("正式报名");
+      } else if (
+        competition.register < timeInShanghai &&
+        timeInShanghai < competition.start
+      ) {
+        setbuttonword("正式报名");
+      } else if (competition.start < timeInShanghai) {
+        setbuttonword("查看赛事");
       }
     }
-  },[user,competition])
+  }, [user, competition]);
 
-  useEffect(()=>{
-    if(user && competition){
+  useEffect(() => {
+    if (user && competition) {
       var now = moment();
-      var timeInShanghai = now.tz('Asia/Shanghai').format()
-      if (timeInShanghai < competition.register){
-        setbuttonword("正式报名")
-      } else if (competition.register < timeInShanghai && timeInShanghai < competition.start){
-        setbuttonword("正式报名")
-      } else if (competition.start < timeInShanghai){
-        setbuttonword("查看赛事")
+      var timeInShanghai = now.tz("Asia/Shanghai").format();
+      if (timeInShanghai < competition.register) {
+        setbuttonword("正式报名");
+      } else if (
+        competition.register < timeInShanghai &&
+        timeInShanghai < competition.start
+      ) {
+        setbuttonword("正式报名");
+      } else if (competition.start < timeInShanghai) {
+        setbuttonword("查看赛事");
       }
     }
-  },[user,competition])
+  }, [user, competition]);
 
-
-  useEffect(()=>{
+  useEffect(() => {
     if (apikey && competition) {
       var now = moment();
-      var timeInShanghai = now.tz('Asia/Shanghai').format()
-      if (timeInShanghai < competition.register){
-        setbuttonword("正式报名")
-      } else if (competition.register < timeInShanghai && timeInShanghai < competition.end){
-        setbuttonword("进入赛事")
-      } else if (competition.end < timeInShanghai){
-        setbuttonword("查看赛事")
+      var timeInShanghai = now.tz("Asia/Shanghai").format();
+      if (timeInShanghai < competition.register) {
+        setbuttonword("正式报名");
+      } else if (
+        competition.register < timeInShanghai &&
+        timeInShanghai < competition.end
+      ) {
+        setbuttonword("进入赛事");
+      } else if (competition.end < timeInShanghai) {
+        setbuttonword("查看赛事");
       }
     }
-  },[apikey, competition])
-
-  
+  }, [apikey, competition]);
 
   return (
     <>
@@ -143,14 +149,16 @@ export default function Sign() {
         <Modal.Header closeButton>
           {/* <Modal.Title>Modal heading</Modal.Title> */}
         </Modal.Header>
-        <Modal.Body style={{textAlign:"center"}}>你还没有登录哟，需要登录注册即可报名比赛！！</Modal.Body>
-        <Modal.Footer style={{display:"flex", justifyContent:"center"}}>
+        <Modal.Body style={{ textAlign: "center" }}>
+          你还没有登录哟，需要登录注册即可报名比赛！！
+        </Modal.Body>
+        <Modal.Footer style={{ display: "flex", justifyContent: "center" }}>
           <Button
             className="modal-btn modal-btn-cancel"
             variant="secondary"
             onClick={() => {
-              setchoice("/login")
-              history.push("/team/register")
+              setchoice("/login");
+              history.push("/team/register");
             }}
           >
             去登录
@@ -159,10 +167,9 @@ export default function Sign() {
             className="modal-btn modal-btn-submit"
             variant="primary"
             onClick={() => {
-              setchoice("/register")
-              history.push("/team/register")
-            }  
-            }
+              setchoice("/register");
+              history.push("/team/register");
+            }}
           >
             去注册
           </Button>
@@ -184,6 +191,21 @@ export default function Sign() {
         }}
       ></div>
       <div className="sign">
+        <div className="team-or-person" style={{ marginLeft: width * 0.1875 }}>
+          <div
+            className={teamActive ? "match-active" : "match-normal"}
+            onClick={() => setTeamActive(true)}
+          >
+            团队参赛
+          </div>
+          <div
+            className={teamActive ? "match-normal" : "match-active"}
+            onClick={() => setTeamActive(false)}
+            style={{ marginLeft: "36px" }}
+          >
+            个人参赛
+          </div>
+        </div>
         <div className="sign-container">
           <div className="sign-left">
             <div className="number-container">
@@ -196,12 +218,12 @@ export default function Sign() {
               <Fade bottom when={bodyscrollrdTop > 590}>
                 <div className="number padding120">3</div>
               </Fade>
-              <Fade bottom when={bodyscrollrdTop > 790}>
+              {/* <Fade bottom when={bodyscrollrdTop > 790}>
                 <div className="number padding120">4</div>
               </Fade>
               <Fade bottom when={bodyscrollrdTop > 990}>
                 <div className="number padding120">5</div>
-              </Fade>
+              </Fade> */}
             </div>
           </div>
 
@@ -246,10 +268,26 @@ export default function Sign() {
                     />
                   </div>
 
-                  <div className="step-text">点击报名赛事</div>
+                  <div className="step-text-wrapper">
+                    <div className="step-text">点击报名赛事</div>
+                    {teamActive ? (
+                      <>
+                        <div className="step-text-instr">
+                          (由队长率先“创建团队”)
+                        </div>
+                        <div className="step-text-instr">
+                          (其他队员点击“加入团队”)
+                        </div>
+                      </>
+                    ) : (
+                      <div className="step-text-instr">
+                        (其中点击“创建团队”)
+                      </div>
+                    )}
+                  </div>
                 </div>
               </Fade>
-              <Fade bottom when={bodyscrollrdTop > 590}>
+              {/* <Fade bottom when={bodyscrollrdTop > 590}>
                 <div className="flex-start" style={{ paddingTop: "100px" }}>
                   <div className="sign-icon-wrapper">
                     <Image
@@ -290,8 +328,8 @@ export default function Sign() {
 
                   <div className="step-text">邀请其他队员入驻</div>
                 </div>
-              </Fade>
-              <Fade bottom when={bodyscrollrdTop > 990}>
+              </Fade> */}
+              <Fade bottom when={bodyscrollrdTop > 590}>
                 <div className="flex-start" style={{ paddingTop: "90px" }}>
                   <div className="sign-icon-wrapper">
                     <Image
