@@ -64,19 +64,38 @@ export default function TeamEntry() {
         <HeaderCreate toggle={toggle} />
         {isOpen ? <Sidebar isOpen={isOpen} toggle={toggle} /> : null}
       </div>
-        <Modal
-          show={showModal}
-          onHide={handleClose}
-          centered
-          backdrop="static"
-          keyboard={false}
-          className="team-modal"
-        >
-          <Modal.Header closeButton>
-            
-          </Modal.Header>
-          <Image src="/Group 1107@2x.png" style={{maxHeight:"780px"}}></Image>
-        </Modal>
+      <Modal
+        show={showModal}
+        onHide={handleClose}
+        centered
+        backdrop="static"
+        keyboard={false}
+        className="team-modal"
+      >
+        <Modal.Header closeButton></Modal.Header>
+        {width > 1200 ? (
+          <Image
+            src="/Group 1107@2x.png"
+            style={{
+              width: width * 0.546875 + "px",
+              height: width * 0.40625 + "px",
+            }}
+          ></Image>
+        ) : width > 800 ? (
+          <Image
+            src="/Group 1107-pad@2x.png"
+            style={{
+              width: width * 0.855 + "px",
+              height: width * 0.55 + "px",
+            }}
+          ></Image>
+        ) : (
+          <Image
+            src="/Group 1143@2x.png"
+            style={{ width: "343px", height: "766px" }}
+          ></Image>
+        )}
+      </Modal>
       <div
         style={{
           marginTop: height * 0,
