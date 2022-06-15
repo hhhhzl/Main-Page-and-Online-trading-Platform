@@ -46,7 +46,7 @@ export default function RegisterForm(props) {
     const [org, setOrg] = useState("");
     const [regin, setRegin] = useState("")
     const [job, setjob] = useState("")
-    const [page, setpage] = useState(1)
+    const [page, setpage] = useState(2)
     const [experienceList, setExperienceList] = useState([
         {company: "", position: "", detail:""}
         //{}
@@ -377,7 +377,8 @@ export default function RegisterForm(props) {
             {page == 1?
             <>
             <div className="login-container"
-                 style={{width: width > 420? 420 : width-60, 
+                 style={{
+                     width: width > 420? 420 : width-60, 
                     marginLeft: width > 800 ? "18.75%" : null, 
                     marginTop: height * 0.09,}}>
                 <Link className="Link-hover" style={{color: "black", textDecoration: "none"}} to="/home"><ArrowBack/></Link>
@@ -399,7 +400,7 @@ export default function RegisterForm(props) {
                         <div style={{
                             // width: "88px",
                             height: "24px",
-                            marginLeft:"24px"
+                            marginLeft:"0px"
                         }}>
                             <h6 style={{
                                 fontSize: "14px",
@@ -509,7 +510,7 @@ export default function RegisterForm(props) {
                             邮箱格式错误
                         </Form.Control.Feedback>
                     </Form.Group>
-                    <Form.Group className="mb-3">
+                    <Form.Group className="loadingusername">
                         <Form.Label column>
                             密码
                         </Form.Label>
@@ -963,7 +964,7 @@ export default function RegisterForm(props) {
                             <Button
                                 onClick={addExperience}
                                 style={{
-                                    width: "46%",
+                                    width: "50%",
                                     height: "48px",
                                     backgroundColor: "#F5F6F8",
                                     border: 0,

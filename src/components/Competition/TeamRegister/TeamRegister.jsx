@@ -183,15 +183,26 @@ export default function TeamRegister({
 
                     <div style={{marginTop:"12px",display:"flex", justifyContent:"center"}}>
                         <Form>
-                            <Form.Control placeholder={"请填写团队名称 (中文+英文最多八位字符)"}
+                            <Form.Control placeholder={"请填写团队名称"}
                             style={{width:"360px", height:"40px",textAlign:"center", paddingTop:"8px",border:"1px solid #C0C3CE", background:"white", borderRadius:"4px 4px 4px 4px"}}
                             value={teamname}
                             onChange={(e) => setteamname(e.target.value)}
                             />
                         </Form>
                     </div>
+                    <div style={{marginTop:"6px",display:"flex", justifyContent:"center"}}>
+                        <div style={{
+                            fontSize:"14px",
+                            fontFamily:"Microsoft YaHei UI-Bold, Microsoft YaHei UI;",
+                            color:"#C0C3CE",
+                            lineHeight:"24px",
+                        }}>
+                            *团队名最多为八位。
 
-                    <div style={{marginTop:"36px",display:"flex", justifyContent:"center"}}>
+                        </div>
+                    </div>
+
+                    <div style={{marginTop:"16px",display:"flex", justifyContent:"center"}}>
                         <div style={{
                         fontSize:"20px",
                         fontFamily:"Microsoft YaHei UI-Bold, Microsoft YaHei UI;",

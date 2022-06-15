@@ -1,16 +1,19 @@
-import react, {useState, useEffect} from 'react'
-import HeaderCreate from 'components/MainPage/header';
-import useWindowDimensions from 'utils/sizewindow';
-import Sidebar from 'components/MainPage/Sidebar';
-import {IconButton} from '@material-ui/core';
-import {ArrowBack, ArrowForward} from '@material-ui/icons';
-import {Button, Form, Image, Modal} from 'react-bootstrap';
-import {useHistory} from 'react-router';
-import TeamReister from './TeamRegister'
-import TeamQuestionnaire from './TeamQuestionnaire'
-import Footer from "../../MainPage/footer";
+import { IconButton } from '@material-ui/core';
+import { ArrowBack, ArrowForward } from '@material-ui/icons';
+import { Worker, Viewer } from "@react-pdf-viewer/core";
+import '@react-pdf-viewer/core/lib/styles/index.css';
 import { apiCreateTeamAccount } from 'api/main_platform/competitions';
+import HeaderCreate from 'components/MainPage/header';
+import Sidebar from 'components/MainPage/Sidebar';
 import { competitionID } from 'constants/maps';
+import { useState } from 'react';
+import { Button, Form, Image, Modal } from 'react-bootstrap';
+import { useHistory } from 'react-router';
+import useWindowDimensions from 'utils/sizewindow';
+import Footer from "../../MainPage/footer";
+import TeamQuestionnaire from './TeamQuestionnaire';
+import TeamReister from './TeamRegister';
+import samplePDF from "../../webpage/RegisterLogin/federal.pdf"
 
 export default function TeamAgreeProcessCreate({toggle}) {
     const {width, height} = useWindowDimensions();
@@ -18,6 +21,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
     const [disable, setdisable] = useState(true)
     const history = useHistory()
     const [isOpen, setIsOpen] = useState(false)
+    const [showTiaokuan, setshowTiaokuan] = useState(false)
 
     const [headPortrait, setHeadPortrait] = useState('');
     const [teamname, setteamname] = useState("")
@@ -131,6 +135,32 @@ export default function TeamAgreeProcessCreate({toggle}) {
         <>
             <HeaderCreate toggle={toggle}/>
             {isOpen ? (<Sidebar isOpen={isOpen} toggle={toggle}/>) : null}
+
+            <Modal
+        show={showTiaokuan}
+        onHide={() => setshowTiaokuan(false)}
+        size='lg'
+        // fullscreen={true}
+        aria-labelledby="example-modal-sizes-title-lg"
+        centered
+        >
+          <Modal.Header closeButton></Modal.Header>
+          <Modal.Body className="active-500" style={{textAlign:"center"}}>
+                     <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
+                     <div
+                        style={{
+                            border: '1px solid rgba(0, 0, 0, 0.3)',
+                            height: height-200,
+                            overflow:"auto",
+                        }}
+                    >
+                        <Viewer fileUrl= {samplePDF} />
+    
+                        </div>
+                         
+                    </Worker>
+               </Modal.Body>
+        </Modal>
 
             <Modal
                 show={teamnameDuplicate}
@@ -291,7 +321,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
                                     <div style={{marginTop: "12px", display: "flex", justifyContent: "center"}}>
                                         <div style={{
                                             fontSize: "14px",
-                                            fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI;",
+                                            fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
                                             fontWeight: "400",
                                             color: "#2A2B30",
                                             lineHeight: "24px",
@@ -315,7 +345,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
                                     <div style={{marginTop: "12px", display: "flex", justifyContent: "center"}}>
                                         <div style={{
                                             fontSize: "14px",
-                                            fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI;",
+                                            fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
                                             fontWeight: "400",
                                             color: "#2A2B30",
                                             lineHeight: "24px",
@@ -332,14 +362,30 @@ export default function TeamAgreeProcessCreate({toggle}) {
                                                         onClick={(e) => setdisable(!disable)}/>
                                             <div style={{
                                                 fontSize: "14px",
-                                                fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI;",
+                                                fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
                                                 fontWeight: "400",
                                                 color: "#6E7184",
                                                 lineHeight: "24px",
                                             }}>
-                                                我已同意...隐私政策和服务条款
-                                            </div>
-
+                                                我已同意...</div>
+                                               <Button 
+                                                onClick={() => setshowTiaokuan(true)}
+                                                style={{
+                                                    padding:"0",
+                                                    backgroundColor:"white",
+                                                    fontSize: "14px",
+                                                    fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                                                    fontWeight: "400",
+                                                    borderRadius:"0",
+                                                    borderLeft:0,
+                                                    borderRight:0,
+                                                    borderTop:0,
+                                                    borderBottom:"1 solid #2346FF",
+                                                    color: "#6E7184",
+                                                    lineHeight: "24px",
+                                                    marginLeft: "8px"
+                                                }}>隐私政策和服务条款</Button>
+                                            
                                         </div>
 
 

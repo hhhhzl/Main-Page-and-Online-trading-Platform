@@ -1,22 +1,25 @@
-import react, {useState, useEffect} from 'react'
-import HeaderCreate from '../../MainPage/header'
-import useWindowDimensions from '../../../utils/sizewindow';
-import Sidebar from '../../MainPage/Sidebar';
 import { IconButton } from '@material-ui/core';
 import { ArrowBack, ArrowForward } from '@material-ui/icons';
-import { Button, Form, Image,Modal } from 'react-bootstrap';
-import { useHistory } from 'react-router';
-import TeamReister from './TeamRegister'
-import TeamSearch from './TeamSearch';
-import TeamQuestionnaire from "./TeamQuestionnaire";
-import Footer from "components/MainPage/footer";
+import { Viewer, Worker } from "@react-pdf-viewer/core";
+import '@react-pdf-viewer/core/lib/styles/index.css';
 import { apiGetTeamAccount, apiJoinTeamAccount } from 'api/main_platform/competitions';
 import { apiGetUser } from 'api/main_platform/users';
+import Footer from "components/MainPage/footer";
+import { useEffect, useState } from 'react';
+import { Button, Form, Image, Modal } from 'react-bootstrap';
+import { useHistory } from 'react-router';
+import useWindowDimensions from '../../../utils/sizewindow';
+import HeaderCreate from '../../MainPage/header';
+import Sidebar from '../../MainPage/Sidebar';
+import samplePDF from "../../webpage/RegisterLogin/federal.pdf";
+import TeamQuestionnaire from "./TeamQuestionnaire";
+import TeamSearch from './TeamSearch';
 
 export default function TeamAgreeProcessJoin(){
     const {width,height} = useWindowDimensions();
     const [page, setpage] = useState(0)
     const [teamid, setteamid] = useState(null)
+    const [showTiaokuan, setshowTiaokuan] = useState(false)
 
 
     const [teamdata, setteamdata] = useState(null)
@@ -153,6 +156,32 @@ export default function TeamAgreeProcessJoin(){
       {isOpen?(<Sidebar isOpen = {isOpen} toggle={toggle}/>) : null}
       </div>
 
+      <Modal
+        show={showTiaokuan}
+        onHide={() => setshowTiaokuan(false)}
+        size='lg'
+        // fullscreen={true}
+        aria-labelledby="example-modal-sizes-title-lg"
+        centered
+        >
+          <Modal.Header closeButton></Modal.Header>
+          <Modal.Body className="active-500" style={{textAlign:"center"}}>
+                     <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
+                     <div
+                        style={{
+                            border: '1px solid rgba(0, 0, 0, 0.3)',
+                            height: height-200,
+                            overflow:"auto",
+                        }}
+                    >
+                        <Viewer fileUrl= {samplePDF} />
+    
+                        </div>
+                         
+                    </Worker>
+               </Modal.Body>
+        </Modal>
+
             <Modal
                 show={showExist}
                 centered
@@ -270,7 +299,7 @@ export default function TeamAgreeProcessJoin(){
                                 width:"125px",
                                 textAlign:"center",
                                 fontSize:"14px",
-                                fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI;",
+                                fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
                                 fontWeight:"400",
                                 color:"#2A2B30",
                                 lineHeight:"24px",
@@ -280,7 +309,7 @@ export default function TeamAgreeProcessJoin(){
                                 width:"125px",
                                 textAlign:"center",
                                 fontSize:"14px",
-                                fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI;",
+                                fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
                                 fontWeight:"400",
                                 color:"#2A2B30",
                                 lineHeight:"24px",
@@ -360,13 +389,30 @@ export default function TeamAgreeProcessJoin(){
                                 <Form.Check type ="radio" checked ={!disable} onClick ={(e) => setdisable(!disable)}/>
                             <div style={{
                                 fontSize:"14px",
-                                fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI;",
+                                fontFamily:"Microsoft YaHei UI-Regular, Microsoft YaHei UI",
                                 fontWeight:"400",
                                 color:"#6E7184",
                                 lineHeight:"24px",
                             }}>
-                                我已同意...隐私政策和服务条款
+                                我已同意
                             </div>
+                            <Button 
+                                                onClick={() => setshowTiaokuan(true)}
+                                                style={{
+                                                    padding:"0",
+                                                    backgroundColor:"white",
+                                                    fontSize: "14px",
+                                                    fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                                                    fontWeight: "400",
+                                                    borderRadius:"0",
+                                                    borderLeft:0,
+                                                    borderRight:0,
+                                                    borderTop:0,
+                                                    borderBottom:"1 solid #2346FF",
+                                                    color: "#6E7184",
+                                                    lineHeight: "24px",
+                                                    marginLeft: "8px"
+                                                }}>隐私政策和服务条款</Button>
 
                             </div>
 

@@ -69,6 +69,7 @@ export default function TeamEntry() {
           show={showModal}
           onHide={handleClose}
           centered
+          size="lg"
           backdrop="static"
           keyboard={false}
         >
@@ -227,7 +228,7 @@ export default function TeamEntry() {
                   <>
                     <Button
                       style={{
-                        width: "288px",
+                        width: width > 700? "288px" : width/2 -50,
                         height: "48px",
                         backgroundColor: "#F5F6F8",
                         border: "1px solid #F5F6F8",
@@ -245,11 +246,11 @@ export default function TeamEntry() {
                           style={{
                             fontSize: "14px",
                             fontFamily:
-                              "Microsoft YaHei UI-Bold, Microsoft YaHei UI;",
+                              "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
                             fontWeight: "bold",
                             color: "#2A2B30",
                             lineHeight: "24px",
-                            paddingRight: "95px",
+                            paddingRight: width > 700? "95px" : "60px",
                           }}
                         >
                           下一步
@@ -340,7 +341,7 @@ export default function TeamEntry() {
                   <>
                     <Button
                       style={{
-                        width: "288px",
+                        width: width > 700? "288px" : width/2 -50,
                         height: "48px",
                         backgroundColor: "#F5F6F8",
                         border: "1px solid #F5F6F8",
@@ -358,11 +359,11 @@ export default function TeamEntry() {
                           style={{
                             fontSize: "14px",
                             fontFamily:
-                              "Microsoft YaHei UI-Bold, Microsoft YaHei UI;",
+                              "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
                             fontWeight: "bold",
                             color: "#2A2B30",
                             lineHeight: "24px",
-                            paddingRight: "95px",
+                            paddingRight: width > 700? "95px" : "60px",
                           }}
                         >
                           下一步
@@ -380,7 +381,7 @@ export default function TeamEntry() {
       </div>
       <div
         style={{
-          padding: "24px 0px 36px 0px",
+          padding: "0px 0px 36px 0px",
           textAlign: "center",
           fontSize: "14px",
           fontFamily: " Microsoft YaHei UI-Regular, Microsoft YaHei UI",

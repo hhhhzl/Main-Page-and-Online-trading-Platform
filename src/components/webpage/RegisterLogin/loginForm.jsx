@@ -102,10 +102,8 @@ export default function LoginForm({ setToken }) {
         <br />
 
         <Form noValidate validated={validated} id="addProject" onSubmit={loginUser}>
-          <Form.Group >
+          <Form.Group className="loadingusername">
             <Form.Label 
-            column 
-            sm={3} 
             style={{ color: "black", fontSize: "14px",
             fontFamily: "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
             fontWeight: "400",
@@ -122,12 +120,12 @@ export default function LoginForm({ setToken }) {
             ></Form.Control>
 
           </Form.Group>
-          <Form.Group as={Row}
+          <Form.Group className="loadingusername"
           >
-            <Form.Label column sm={2} style={{ color: "black", fontSize: "14px" }}>
+            <Form.Label style={{ color: "black", fontSize: "14px" }}>
               密码
             </Form.Label>
-          </Form.Group>
+          
 
 
 
@@ -144,6 +142,7 @@ export default function LoginForm({ setToken }) {
           >
 
           </Form.Control>
+          </Form.Group>
 
           <div style={{display:"flex",justifyContent:"right"}}>
           <div style={{
