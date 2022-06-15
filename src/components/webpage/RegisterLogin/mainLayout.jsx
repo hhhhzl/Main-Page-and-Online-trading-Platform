@@ -40,7 +40,7 @@ export default function LoginMainLayout({setToken}) {
         height:"100%"
       }}
     /></> : null}
-    <div className ="login-interface" style={{width: width > 800? "50%": "100%",minHeight:height, marginLeft:width > 800 ? "50%": null}}>
+    <div className ="login-interface" style={{width: width > 800? "50%": "100%", minHeight:height, marginLeft:width > 800 ? "50%": null, display:"flex",justifyContent:width > 800? "left":"center"}}>
           <Switch>
             <Route path="/login">
                 <LoginForm/>

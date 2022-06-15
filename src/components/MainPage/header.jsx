@@ -185,7 +185,7 @@ useEffect(() =>{
         <Modal.Header closeButton>
           {/* <Modal.Title>Modal heading</Modal.Title> */}
         </Modal.Header>
-        <Modal.Body>您确定要退出吗？</Modal.Body>
+        <Modal.Body className="active-500" >您确定要退出吗？</Modal.Body>
         <Modal.Footer>
           <Button
             className="modal-btn modal-btn-cancel"
@@ -208,7 +208,7 @@ useEffect(() =>{
         show={shownotinTeam}
         centered
       >
-        <Modal.Header>
+        <Modal.Header className="active-500">
           您尚未报名，请先报名.....
           {/* <Modal.Title>Modal heading</Modal.Title> */}
         </Modal.Header>
@@ -219,7 +219,7 @@ useEffect(() =>{
         onHide={() => setshowluntan(false)}
       >
         <Modal.Header closeButton>
-          即将上线.....
+          <div className="active-500" style={{width:"100%",textAlign:"center"}}>即将上线.....</div>
           {/* <Modal.Title>Modal heading</Modal.Title> */}
         </Modal.Header>
       </Modal>

@@ -1,39 +1,36 @@
-import "./App.css";
-// import './assets/font/font.css';
-import { React, useState, useEffect, useContext } from "react";
-import "./index.css";
+import { apiSymbolsAllForSearch } from "api/trading_platform/market";
 import "bootstrap/dist/css/bootstrap.min.css";
-import MainPage from "./components/MainPage/MainPage";
-import {
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
-import TradePadmin from "./components/Admin/TradeingPlatformInterface";
-import PrivateRoute from "./utils/PrivateRoute";
-import { AuthProvider } from "./context/AuthContext";
-
-import LoginMainLayout from "./components/webpage/RegisterLogin/mainLayout";
-import UserSummary from "pages/UserSummary";
-import TradeSimple from "pages/TradeSimple";
-import TradePro from "pages/TradePro";
-import MarketView from "pages/MarketView";
-import Ranking from "pages/Ranking";
-import Picking from "pages/Picking";
-import InvestNotes from "pages/InvestNotes";
-import TeamEntry from "components/Competition/TeamRegister/TeamEntry";
 import TeamAgreeProcessCreate from "components/Competition/TeamRegister/TeamAgreeProcessCreate";
 import TeamAgreeProcessJoin from "components/Competition/TeamRegister/TeamAgreeProcessJoin";
-import Tournament from './components/Tournament/tournament';
+import TeamEntry from "components/Competition/TeamRegister/TeamEntry";
 import Chat from "pages/Chat";
+import CompetitionViewforPublic from "pages/CompetitionViewforPublic";
 import InformationEdit from "pages/InformationEdit";
-import UserProfile from "pages/UserProfile";
+import InvestNotes from "pages/InvestNotes";
+import MarketView from "pages/MarketView";
+import Picking from "pages/Picking";
+import Ranking from "pages/Ranking";
 import TeamInfo from "pages/TeamInfo";
-import { apiSymbolsAllForSearch } from "api/trading_platform/market";
+import TradePro from "pages/TradePro";
+import TradeSimple from "pages/TradeSimple";
+import UserProfile from "pages/UserProfile";
+import UserSummary from "pages/UserSummary";
+// import './assets/font/font.css';
+import { React, useEffect, useState } from "react";
+import {
+  Redirect, Route, Switch
+} from "react-router-dom";
 import PrivateCompetitionRoute from "utils/PrivateCompetitionRoute";
 import PrivateRegisterForCompetition from "utils/PrivateRegisterForCompetition";
-import CompetitionViewforPublic from "pages/CompetitionViewforPublic";
-import NotFound from "pages/404/404";
+import "./App.css";
+import TradePadmin from "./components/Admin/TradeingPlatformInterface";
+import MainPage from "./components/MainPage/MainPage";
+import Tournament from './components/Tournament/tournament';
+import LoginMainLayout from "./components/webpage/RegisterLogin/mainLayout";
+import { AuthProvider } from "./context/AuthContext";
+import "./index.css";
+import PrivateRoute from "./utils/PrivateRoute";
+
 
 
 

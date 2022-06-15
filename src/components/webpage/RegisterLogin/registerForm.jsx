@@ -1,5 +1,7 @@
 import { IconButton } from "@material-ui/core";
 import { ArrowBack } from "@material-ui/icons";
+import { Worker, Viewer } from "@react-pdf-viewer/core";
+import '@react-pdf-viewer/core/lib/styles/index.css';
 import { apiRegisterUser } from "api/main_platform/users";
 import { mapUserDegree } from "constants/maps";
 import AuthContext from "context/AuthContext";
@@ -10,18 +12,19 @@ import ToolkitProvider from "react-bootstrap-table2-toolkit";
 import Image from 'react-bootstrap/Image';
 import { useHistory } from "react-router";
 import { Link } from 'react-router-dom';
-import areadata from "../../../constants/地区.json";
 import schooldata from "../../../constants/学校.json";
 import { getFileName, setautologin } from "../../../utils";
 import useWindowDimensions from "../../../utils/sizewindow";
 import TeamRegisterModel from "../../screen/modal/TeamRegisterModel";
 import './loginpage.css';
-const moment = require('moment-timezone');
+import samplePDF from "./federal.pdf"
+
 
 export default function RegisterForm(props) {
     const {autologin} = useContext(AuthContext)
     const [userState, setUserState] = useState({})
     const [show, setShow] = useState(false);
+    const [showTiaokuan, setshowTiaokuan] = useState(false)
     const [showerror, setshowerror] = useState(false)
     const [showfail, setshowfail] = useState(false)
     const [showfailpassward, setshowfailpassward] = useState(false)
@@ -123,7 +126,7 @@ export default function RegisterForm(props) {
     }
 
     function verifyPassword(password) {
-        return "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[~!@#$%^&*()_+`\\-={}:\";'<>?,./]).{8,}$"
+        return "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[~!@#$%^&*()_+`\\-={}:\";'<>?,./]).{8,15}$"
      }
 
     const [imgSrc, setImgSrc] = useState('')
@@ -284,11 +287,11 @@ export default function RegisterForm(props) {
     useEffect(()=>{
         if (submit){
             if (headPortrait === "/homeCutout/Group 1074.png"){
-                setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value}})
+                setUserState({...userState, ...{institution:linkedSchool.value},})
                 setsubmit(false)
 
             }else{
-                setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value},...{avatar:headPortrait}})
+                setUserState({...userState, ...{institution:linkedSchool.value},...{avatar:headPortrait}})
                 setsubmit(false)
             }
         }
@@ -300,13 +303,38 @@ export default function RegisterForm(props) {
 
     return (
         <>
+        <Modal
+        show={showTiaokuan}
+        onHide={() => setshowTiaokuan(false)}
+        size='lg'
+        // fullscreen={true}
+        aria-labelledby="example-modal-sizes-title-lg"
+        centered
+        >
+          <Modal.Header closeButton></Modal.Header>
+          <Modal.Body className="active-500" style={{textAlign:"center"}}>
+                     <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
+                     <div
+                        style={{
+                            border: '1px solid rgba(0, 0, 0, 0.3)',
+                            height: height-200,
+                            overflow:"auto",
+                        }}
+                    >
+                        <Viewer fileUrl= {samplePDF} />
+    
+                        </div>
+                         
+                    </Worker>
+               </Modal.Body>
+        </Modal>
 
        <Modal
         show={show}
         centered
         >
           <Modal.Header></Modal.Header>
-          <Modal.Body style={{textAlign:"center"}}>用户已成功注册 </Modal.Body>
+          <Modal.Body className="active-500" style={{textAlign:"center"}}>用户已成功注册 </Modal.Body>
         <Modal.Footer style={{width:"100%", display:"flex",justifyContent:"center"}}  >
             <Button style={{marginRight:"20px"}} className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUser(0)}>
             回主页
@@ -349,11 +377,13 @@ export default function RegisterForm(props) {
             {page == 1?
             <>
             <div className="login-container"
-                 style={{marginLeft: width > 800 ? "18.75%" : "10%", marginTop: height * 0.09}}>
+                 style={{width: width > 420? 420 : width-60, 
+                    marginLeft: width > 800 ? "18.75%" : null, 
+                    marginTop: height * 0.09,}}>
                 <Link className="Link-hover" style={{color: "black", textDecoration: "none"}} to="/home"><ArrowBack/></Link>
                 <div style={{width: "100%"}}>
                     <div style={{
-                        width: "250px",
+                        // width: "250px",
                         height: "80px",
                         fontSize: "40px",
                         fontFamily: "Microsoft YaHei UI-Bold",
@@ -367,8 +397,9 @@ export default function RegisterForm(props) {
                 <div>
                     <div >
                         <div style={{
-                            width: "88px",
+                            // width: "88px",
                             height: "24px",
+                            marginLeft:"24px"
                         }}>
                             <h6 style={{
                                 fontSize: "14px",
@@ -444,7 +475,7 @@ export default function RegisterForm(props) {
                             className="loadinglogin"
                             required
                             value={username}
-                            pattern= "^[A-Za-z0-9_\u4e00-\u9fff]{4,12}$"
+                            pattern= "^[A-Za-z0-9_\u4e00-\u9fff]{2,8}$"
                             onChange={(e) => {
                                 const username = e.target.value
                                 setUsername(e.target.value)
@@ -453,7 +484,7 @@ export default function RegisterForm(props) {
                             }
                         ></Form.Control>
                         <Form.Control.Feedback type="invalid">
-                            用户名长度为4至12
+                            用户名长度为2至8
                         </Form.Control.Feedback>
                     </Form.Group>
 
@@ -495,7 +526,7 @@ export default function RegisterForm(props) {
                             pattern={verifyPassword(password)}
                         ></Form.Control>
                         <Form.Control.Feedback type="invalid">
-                            密码由字母,数字,特殊符号组成,长度为8-20!
+                            密码由字母,数字,特殊符号组成,长度为8-15!
                         </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group className="loadingusername">
@@ -711,7 +742,8 @@ export default function RegisterForm(props) {
                             学历
                         </Form.Label>
 
-                        <Form.Select
+                        <Form.Control
+                            as ="select"
                             className="loadinglogin"
                             required
                             value={degree}
@@ -721,13 +753,13 @@ export default function RegisterForm(props) {
                                 setUserState({...userState, ...{degree}})
                             }}
                         >
-                            <option value="">请选择学历</option>
+                            <option className="loadinglogin" value="">请选择学历</option>
                             {Object.entries(mapUserDegree).map(([icode, iname]) => (
                                             <option key={icode} value={icode}>
                                                 {iname}
                                             </option>
                             ))}
-                        </Form.Select>
+                        </Form.Control>
                     </Form.Group>
 
                     <ToolkitProvider
@@ -790,7 +822,7 @@ export default function RegisterForm(props) {
                     )}
                 </ToolkitProvider>
 
-                <ToolkitProvider
+                {/* <ToolkitProvider
                             keyField="area"
                             data = {areadata}
                             columns = { Areacolumns}
@@ -849,7 +881,7 @@ export default function RegisterForm(props) {
                     </Form.Group>
                     </>
                     )}
-                </ToolkitProvider>
+                </ToolkitProvider> */}
 
 
                     <Form.Group className="loadingusername">
@@ -875,7 +907,7 @@ export default function RegisterForm(props) {
                         {
                             experienceList.map((item, idx) => (
                                 <div key={idx} style={{marginTop: "24px", display: "flex"}}>
-                                    <Form.Group >
+                                    <Form.Group className="loadingusername" >
                                         <Form.Label className="edit-form-label">实习公司</Form.Label>
                                         <Form.Control
                                             type="text"
@@ -889,15 +921,15 @@ export default function RegisterForm(props) {
                                                 setUserState({...userState, ...{experience}});
                                             }}
                                         />
-                                    </Form.Group>
+                                    </Form.Group >
 
-                                    <Form.Group style={{marginLeft: "4%"}}>
+                                    <Form.Group className="loadingusername" style={{marginLeft: "4%"}}>
                                         <Form.Label className="edit-form-label">实习职位</Form.Label>
                                         <div style={{display: "flex", alignItems: "center"}}>
                                             <Form.Control
                                                 type="text"
                                                 value={item.position}
-                                                style={{width: "85%", height: "48px"}}
+                                                style={{width: "100%", height: "48px"}}
                                                 placeholder="请输入文字"
                                                 onChange={(e) => {
                                                     experienceList[idx].position = e.target.value;
@@ -927,7 +959,7 @@ export default function RegisterForm(props) {
                             ))
 
                         }
-                        <Form.Group style={{marginTop: "36px"}}>
+                        <Form.Group style={{marginTop: "18px"}}>
                             <Button
                                 onClick={addExperience}
                                 style={{
@@ -969,7 +1001,9 @@ export default function RegisterForm(props) {
                             }}>
                                 我已同意...
                             </div>
-                            <Button style={{
+                            <Button 
+                            onClick={() => setshowTiaokuan(true)}
+                            style={{
                                 padding:"0",
                                 backgroundColor:"white",
                                 fontSize: "14px",

@@ -29,12 +29,15 @@ export default function LoginForm({ setToken }) {
 
   return (
     <div>
-      <div className="login-container" style={{ marginLeft: width > 800 ? "18.75%" : "10%", marginTop: height * 0.1 }}>
+      <div className="login-container" style={{
+        width: width > 420? 420 : width-60,
+        marginLeft: width > 800 ? "40%" : null, 
+        marginTop: height * 0.09,}}>
         <Link className="Link-hover" style={{ color: "black", textDecoration: "none" }} to="/home"><ArrowBack /></Link>
         <div style={{ width: "100%", display:"flex",justifyContent:"left" }}>
           <div>
           <div style={{
-            width: "234px",
+            // width: "234px",
             height: "80px",
             fontSize: "40px",
             fontFamily: "Microsoft YaHei UI-Bold",
@@ -45,7 +48,11 @@ export default function LoginForm({ setToken }) {
           }}>账户登录</div>
 
         </div>
-          <div style={{ marginLeft: "0px", width: "110px", marginTop: "35px" }}>
+          <div style={{ 
+            marginLeft: "0px",
+           marginLeft:"24px", 
+          // width: "110px",
+           marginTop: "35px" }}>
 
               <Link style={{
                 height: "28px",
@@ -138,6 +145,7 @@ export default function LoginForm({ setToken }) {
 
           </Form.Control>
 
+          <div style={{display:"flex",justifyContent:"right"}}>
           <div style={{
             width: "100%",
             height: "24px",
@@ -145,6 +153,7 @@ export default function LoginForm({ setToken }) {
 
           }}>
             <Link to="/forgetpassword"><h6 style={{
+              width: "max-content",
               fontSize: "14px",
               fontFamily: "Microsoft YaHei UI-Bold",
               color: "#2A2B30",
@@ -153,7 +162,7 @@ export default function LoginForm({ setToken }) {
 
 
           </div>
-
+          </div>
           <br />
           <br />
           <Form.Group as={Row} className="loadinglogin" style={{ background: "linear-gradient(135deg,#2B8CFF 0%, #2346FF 100%)", borderRadius: "4px 4px 4px 4px" }}>
