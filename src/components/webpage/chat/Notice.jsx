@@ -2,6 +2,7 @@ import { ArrowBackIos, ArrowForwardIos } from "@material-ui/icons";
 import JoinTeam from "components/screen/NewsTemplate/JoinTeam";
 import LoginSuccess from "components/screen/NewsTemplate/LoginSucess";
 import RequestForLeader from "components/screen/NewsTemplate/RequestForLeader";
+import RequestForTeamMember from "components/screen/NewsTemplate/RequestForTeammember";
 import AuthContext from "context/AuthContext";
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Collapse, Image } from "react-bootstrap";
@@ -45,19 +46,18 @@ export default function Notice() {
   };
 
   const markasRead = (item) =>{
-    if (item.content){
-      console.log("here")
+    if (item.content && item.is_read == false){
        dispatch(updateNews(item.id))
+       dispatch(fetchNews({team: team?.metadata, user_id:user.user_id}))
        
     }
-    dispatch(fetchNews(8))
     setCurrent(item.message_id)
     setNotice(item)
   }
 
   useEffect(()=>{
     if (user && team && !load1){
-      dispatch(fetchNews(team?.metadata.leader == user.user_id? team.metadata.id :null))
+      dispatch(fetchNews({team: team?.metadata, user_id:user.user_id}))
       setload1(true)
     }
   },[dispatch, team, user, load1])
@@ -148,7 +148,7 @@ export default function Notice() {
                   <div className="notice-left-detail" > 
                     <div className="notice-left-content">{
                     item.content? item.content == "欢迎您加入UFA全球青年汇。"? (<>{"恭喜您！此封邮件确认您已成功注册UFA官网账号:"}...</>) : item.content :
-                    item.account? "您收到一条团队加入申请验证，请点击进行验证" : null
+                    item.account? "您收到一条团队信息" : null
                 
                     }</div>
                     {!item.is_read ? (
@@ -190,44 +190,15 @@ export default function Notice() {
                 :
                notice?.content
                :
-               notice?.account? (<><RequestForLeader id = {notice.requester} type = {notice.status}/></>):null
-              
+               notice?.account? 
+               team?.metadata.leader == user.user_id? 
+               (<><RequestForLeader id = {notice.requester} type = {notice.status} messagage_id={notice.id} /></>)
+               :
+               (<><RequestForTeamMember id = {notice.account}  type = {notice.status} messagage_id = {notice.id}/></>)
+               :
+               null
               }</div>
             </div>
-            {notice?.type == 1 ? (
-              <div className="notice-right-buttonGroups">
-                <Button
-                  style={{
-                    marginRight: "12px",
-                    width: "120px",
-                    height: "48px",
-                    background: "#F5F6F8",
-                    border: "0",
-                    borderRadius: "4px 4px 4px 4px",
-                    opacity: 1,
-                    color: "black",
-                  }}
-                >
-                  拒绝
-                </Button>
-                <Button
-                  style={{
-                    width: "120px",
-                    height: "48px",
-                    background:
-                      "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)",
-                    boxShadow:
-                      "0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08)",
-                    borderRadius: "4px 4px 4px 4px",
-                    opacity: 1,
-                  }}
-                >
-                  接受邀请
-                </Button>
-              </div>
-            ) : (
-              ""
-            )}
           </div>
         </div>
       </div>

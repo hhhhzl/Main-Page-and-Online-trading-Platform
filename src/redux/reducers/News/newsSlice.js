@@ -13,8 +13,8 @@ const initialState = {
 
 export const fetchNews = createAsyncThunk(
     "news/fetchNews",
-    async (team_id) => {
-        console.log(".......................................",team_id)
+    async ({team, user_id}) => {
+        console.log(".......................................",team, user_id)
         try {
             const responseR = await apiGetSelfAdminMessages()
             const messageNews = responseR.data.data
@@ -27,9 +27,6 @@ export const fetchNews = createAsyncThunk(
                     const Leaderdata = responseUser.data.data;
                     return Leaderdata;
                 }));
-
-                console.log(newNewsArray)
-
                 for (let i = 0; i < messageNews.length; i++) {
                     const readInfo = newNewsArray[i].recipient
                     if (!readInfo.is_read){
@@ -42,25 +39,32 @@ export const fetchNews = createAsyncThunk(
            
                 const requestdata = []
                 let row = []
-                if (team_id){
-                    try{
-                        const response2 = await apiGetJoinTeamRequest(team_id)
+                let before_filter = []
+                let row_before = []
+                try{
+                        const response2 = await apiGetJoinTeamRequest(team? team.id : null)
                         const requests = response2.data.data  
                             for (let i = 0; i < requests.length; i++){
-                                row = requests[i]
-                                
+                                before_filter = requests[i]
                                 if (requests[i].status == "P"){
                                     read = true
-                                    row.is_read = false   
-                                }else if(requests[i].status == "A")  {
-                                    row.is_read = true
+                                    before_filter.is_read = false   
+                                }else {
+                                    before_filter.is_read = true
                                 }      
-                                row.created_at = row.request_time              
+                                before_filter.created_at = before_filter.request_time
+                                row_before.push(before_filter)
                             }      
                     }catch(e){
                         console.log(e)
                     }
-                }  
+
+                if (team?.leader != user_id){
+                     row = row_before.filter(elem => elem.requester == user_id)
+                }else{
+                    row = row_before
+                }
+                console.log(row)
                 const messagetotal = [].concat(teamlist,row)
                 const messageSorted = messagetotal.sort((a,b) => Date.parse(b.created_at) - Date.parse(a.created_at))
                 for (let i = 0; i< messageSorted.length; i++){

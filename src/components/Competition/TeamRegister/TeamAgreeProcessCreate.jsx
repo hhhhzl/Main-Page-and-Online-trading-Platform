@@ -25,7 +25,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
     const [isOpen, setIsOpen] = useState(false)
     const [showTiaokuan, setshowTiaokuan] = useState(false)
 
-    const [headPortrait, setHeadPortrait] = useState('');
+    const [headPortrait,setHeadPortrait] = useState('/homeCutout/Group 1073@2x.png')
     const [teamname, setteamname] = useState("")
     const [lianghua, setlianghua] = useState(false)
     const [duotou, setduotou] = useState(false)
@@ -33,7 +33,6 @@ export default function TeamAgreeProcessCreate({toggle}) {
     const [gradeAsk, setGradeAsk] = useState("")
     const [investmentTime, setInvestmentTime] = useState("")
     const [attentionIndustry, setAttentionIndustry] = useState("")
-    const { getcompetionapikey } = useContext(AuthContext);
 
     const Pageprocess = (headPortrait) => {
         if (headPortrait != undefined) {
@@ -67,7 +66,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
                 competition_id:competitionID,
                 name:teamname,
                 track:lianghua? "Q" : "S",
-                avatar:headPortrait
+                // avatar:headPortrait
             }
             console.log('create team', data)
             const dataprops = JSON.stringify(data)
@@ -76,9 +75,10 @@ export default function TeamAgreeProcessCreate({toggle}) {
             if (messge == "The user has already joined a team in this competition."){
                 setshowExist(true)
             }else if (messge == "OK."){
+                localStorage.setItem("createTeam", true)
                 setsuccessSendtoC(true)
             }else if (messge == "The name is already in use."){
-                setteamnameDuplicate(true)     
+                setteamnameDuplicate(true)      
             }else if(messge == "The queried resource is not found."){
                 alert("注册失败")
             }else {
@@ -194,7 +194,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
                 centered
             >
                 <Modal.Header></Modal.Header>
-                <Modal.Body style={{textAlign: "center",letterSpacing:"2px"}}>报名失败，报名已截止 </Modal.Body>
+                <Modal.Body style={{textAlign: "center",letterSpacing:"2px"}}>报名失败 </Modal.Body>
                 <Modal.Footer style={{width: "100%", display: "flex", justifyContent: "center"}}>
                     <div>
                         <Button className="modal-btn modal-btn-submit" variant="primary" onClick={() => sendUserhome()}>
@@ -238,6 +238,8 @@ export default function TeamAgreeProcessCreate({toggle}) {
                         duotou={duotou}
                         setlianghua={setlianghua}
                         setduotou={setduotou}
+                        headPortrait = {headPortrait}
+                        setHeadPortrait = {setHeadPortrait}
 
                     />
 

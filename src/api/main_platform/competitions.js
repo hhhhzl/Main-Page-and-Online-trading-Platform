@@ -38,5 +38,7 @@ export const apiGetJoinTeamRequest = (id) =>
 
 
 //competition request
-export const apiGetCompetitionRequestForCaption = (id) =>
+export const apiGetCompetitionRequests = (id) =>
     apiService.post(`competitions/approve_join_request/${id}/`);
+    export const apiDisactiveMessgae = (id) =>
+    apiService.post(`competitions/deactivate_join_request//${id}/`);

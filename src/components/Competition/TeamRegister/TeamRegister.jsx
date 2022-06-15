@@ -20,10 +20,12 @@ export default function TeamRegister({
     setlianghua,
     duotou,
     setduotou,
+    headPortrait,
+    setHeadPortrait
 }){
     const {width,height} = useWindowDimensions();
     const [disable, setdisable] = useState(true)
-	const [headPortrait,setHeadPortrait] = useState('/homeCutout/Group 1073@2x.png')
+	// const [headPortrait,setHeadPortrait] = useState('/homeCutout/Group 1073@2x.png')
     const history= useHistory()
     const sendUserback = () => {history.push("/team/register")}
 

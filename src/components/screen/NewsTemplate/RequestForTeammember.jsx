@@ -6,56 +6,24 @@ import { useDispatch, useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router'
 import { fetchUser } from 'redux/reducers/users/usersSlices'
-import { apiGetCompetitionRequests } from 'api/main_platform/competitions'
+import { apiGetCompetitionRequests, apiGetTeamAccount } from 'api/main_platform/competitions'
 import { fetchNews } from 'redux/reducers/News/newsSlice'
 import AuthContext from 'context/AuthContext'
 
-export default function RequestForLeader({id, type, messagage_id}){
+export default function RequestForTeamMember({id, type, messagage_id}){
     const [load,setload] = useState(false)
-    const [user, setuser] = useState(null)
     const [sumbit, setsumbit] = useState(false)
     const dispatch = useDispatch()
     const history = useHistory()
+    const [teamname, setteamname] = useState(null)
     const { status } = useSelector((state) => state.userInfo);
     const [agree, setagree] = useState(false)
-    const {team} = useContext(AuthContext)
+    const {team, user} = useContext(AuthContext)
 
-    const GetUser = async (item) =>{
+
+    const disagreeJoin = async (id) =>{
         try{
-            const request = await apiGetUser(item)
-            const user_info = request.data.data
-            setuser(user_info.username)
-        }catch(e){
-
-        }
-    }
-    useEffect(()=>{
-        if (id){
-            GetUser(id)
-        } 
-    },[id])
-
-    useEffect(() =>{
-        if(sumbit && status == "fulfilled"){
-            history.push("/personal")
-            setsumbit(false)
-        }
-    },[sumbit,status])
-
-    const applicationState = async (item) =>{
-        try{
-            const response = await apiGetCompetitionRequests(item)
-            if (response.data.msg == "OK."){
-                setagree(true)
-            }
-        }catch(e){
-            console.log()
-        }
-    }
-
-    const disagreeJoin = async (item) =>{
-        try{
-            const response = await apiGetCompetitionRequests(item)
+            const response = await apiGetCompetitionRequests(id)
             if (response.data.msg == "OK."){
                 setagree(true)
             }
@@ -66,15 +34,27 @@ export default function RequestForLeader({id, type, messagage_id}){
 
     useEffect(() => {
         if (agree){
-             dispatch(fetchNews(team.metadata.id))
+             dispatch(fetchNews(null,user.user_id))
              setagree(false)
         }
     },[agree])
 
+    useEffect(()=>{
+        if (!load){
+            GetTeam(id)
+            setload(true)
+        }
+    },[load])
 
-    // useEffect(() =>{
-    //     console.log(id)
-    // })
+    const GetTeam = async (id) =>{
+        try{
+            const request = await apiGetTeamAccount(id)
+            const team_info = request.data.data
+            setteamname(team_info.metadata.name)
+        }catch(e){
+
+        }
+    }
 
 
 
@@ -82,9 +62,8 @@ export default function RequestForLeader({id, type, messagage_id}){
     return(
         <>
         <div>
-               <Link style ={{color:"black"}} onClick = {() => {
-                   dispatch(fetchUser(id));
-                  setsumbit(true)}}> <strong>{user}</strong></Link> 申请加入您的团队，等待您的通过... 请点击下方按钮同意或者拒绝对方加入团队。
+             您的报名信息已收录！您的团队加入申请已经发送团队 <strong>{teamname}</strong>。<span style={{color:"red"}}>请注意：</span>您尚未完成报名！请您联系您的队长通过您的团队申请，完成组队，即报名成功！
+                  
         </div>
         <br/>
               UFA 组委会
@@ -97,43 +76,38 @@ export default function RequestForLeader({id, type, messagage_id}){
                 type == "P"? 
                 <>
                 <Button 
-                onClick = {() => applicationState(messagage_id)} 
-                style={{marginRight:"20px"}}>
-                    同意
-                </Button>
-                
-                <Button 
                 onClick = {() => disagreeJoin(messagage_id)} 
                 style={{marginRight:"20px"}}>
-                    拒绝
+                    撤销
                 </Button>
                 </>
                 :
-                type == "A"? 
-
+                type == "A"?
                 <>
                 <Button disabled={true} style={{marginRight:"20px"}}>
                     已通过
                 </Button>
                 </>
                 :
-                type == "D"? 
+                type == "D"?
                 <>
                 <Button disabled={true} style={{marginRight:"20px"}}>
-                    已拒绝
+                    已被拒绝
                 </Button>
                 </>
                 :
-                type == "W"? 
+                type == "W"?
                 <>
                 <Button disabled={true} style={{marginRight:"20px"}}>
-                    用户已撤销
+                    已撤销
                 </Button>
                 </>
                 :
+                <>
                 <Button disabled={true} style={{marginRight:"20px"}}>
-                    已过期
+                    已过期，请重新申请
                 </Button>
+                </>
             }
             
         </div>

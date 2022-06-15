@@ -3,7 +3,6 @@ import {
   NotificationsNoneOutlined,
   ViewHeadlineTwoTone
 } from "@material-ui/icons";
-import { apiGetAdminMessage, apiGetSelfAdminMessages } from "api/main_platform/user_messages";
 import { React, useContext, useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
@@ -26,7 +25,7 @@ import { HomeMobileIcon } from "./NavbarElements";
 
 
 const HeaderCreate = ({ toggle }) => {
-  let { user, logoutUser, apikey, team} = useContext(AuthContext);
+  let { user, logoutUser, apikey, team, getcompetionapikey} = useContext(AuthContext);
   const { width, height } = useWindowDimensions();
   const [showMenu, setHhowMenu] = useState(false);
   const [scrolledDownEnough, setScrolledDownEnough] = useState(false);
@@ -148,6 +147,15 @@ useEffect(() =>{
 },[submitTeam,state])
 
 
+/////////////////////////////////////////////load apikey after create team
+useEffect(() =>{
+  if (localStorage.getItem("createTeam")){
+    getcompetionapikey()
+    localStorage.removeItem("createTeam")
+  }
+},[localStorage.getItem("createTeam")])
+
+
 
 //////////////////////////////////////////////load self data
 useEffect(() =>{
@@ -162,7 +170,7 @@ useEffect(() =>{
 //////////////////////////////////////////////////load news//////////////////////////////////////////////////////////
   useEffect(()=>{
   if (user && team && !load1){
-    dispatch(fetchNews(team?.metadata.leader == user.user_id? team.metadata.id :null))
+    dispatch(fetchNews({team:team.metadata.id, user: user.user_id}))
     setload1(true)
   }
 },[dispatch, team, user, load1])
