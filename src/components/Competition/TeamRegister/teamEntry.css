@@ -1,0 +1,16 @@
+@media (min-width: 801px) {
+  .team-modal>.modal-dialog {
+    max-width: 1050px;
+    margin: 1.75rem auto;
+    
+    width: max-content
+    /* margin: auto; */
+  }
+}
+
+@media (max-width: 800px) {
+  .team-modal>.modal-dialog {
+    max-width: 343px;
+    margin: 1.75rem auto;
+  }
+}

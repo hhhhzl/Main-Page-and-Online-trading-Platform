@@ -218,10 +218,13 @@ export default function Sign() {
               <Fade bottom when={bodyscrollrdTop > 590}>
                 <div className="number padding120">3</div>
               </Fade>
-              {/* <Fade bottom when={bodyscrollrdTop > 790}>
-                <div className="number padding120">4</div>
-              </Fade>
-              <Fade bottom when={bodyscrollrdTop > 990}>
+              {teamActive ? (
+                <Fade bottom when={bodyscrollrdTop > 790}>
+                  <div className="number padding120">4</div>
+                </Fade>
+              ) : null}
+
+              {/* <Fade bottom when={bodyscrollrdTop > 990}>
                 <div className="number padding120">5</div>
               </Fade> */}
             </div>
@@ -287,69 +290,78 @@ export default function Sign() {
                   </div>
                 </div>
               </Fade>
-              {/* <Fade bottom when={bodyscrollrdTop > 590}>
-                <div className="flex-start" style={{ paddingTop: "100px" }}>
-                  <div className="sign-icon-wrapper">
-                    <Image
-                      src="/tournament/Group 142@2x.png"
-                      style={{ width: "24px", height: "24px" }}
-                    />
+              {teamActive ? (
+                <>
+                  <Fade bottom when={bodyscrollrdTop > 590}>
+                    <div className="flex-start" style={{ paddingTop: "100px" }}>
+                      <div className="sign-icon-wrapper">
+                        <Image
+                          src="/tournament/Group 142@2x.png"
+                          style={{ width: "24px", height: "24px" }}
+                        />
+                      </div>
+
+                      <div className="sign-line"></div>
+
+                      <div className="step-icon">
+                        <Image
+                          src="/tournament/Group 182@2x.png"
+                          style={{ width: "94px", height: "94px" }}
+                        />
+                      </div>
+                      <div className="step-text-wrapper">
+                        <div className="step-text">队长通过队员入队申请</div>
+                        <div className="step-text-instr">
+                          (在网站的右上角小铃铛处查看申请)
+                        </div>
+                      </div>
+                    </div>
+                  </Fade>
+                  <Fade bottom when={bodyscrollrdTop > 790}>
+                    <div className="flex-start" style={{ paddingTop: "90px" }}>
+                      <div className="sign-icon-wrapper">
+                        <Image
+                          src="/tournament/Group 142@2x.png"
+                          style={{ width: "24px", height: "24px" }}
+                        />
+                      </div>
+
+                      <div className="sign-line"></div>
+
+                      <div className="step-icon">
+                        <Image
+                          src="/tournament/Group 188@2x.png"
+                          style={{ width: "94px", height: "94px" }}
+                        />
+                      </div>
+
+                      <div className="step-text">收到邮件，报名成功！</div>
+                    </div>
+                  </Fade>
+                </>
+              ) : (
+                <Fade bottom when={bodyscrollrdTop > 590}>
+                  <div className="flex-start" style={{ paddingTop: "90px" }}>
+                    <div className="sign-icon-wrapper">
+                      <Image
+                        src="/tournament/Group 142@2x.png"
+                        style={{ width: "24px", height: "24px" }}
+                      />
+                    </div>
+
+                    <div className="sign-line"></div>
+
+                    <div className="step-icon">
+                      <Image
+                        src="/tournament/Group 188@2x.png"
+                        style={{ width: "94px", height: "94px" }}
+                      />
+                    </div>
+
+                    <div className="step-text">收到邮件，报名成功！</div>
                   </div>
-
-                  <div className="sign-line"></div>
-
-                  <div className="step-icon">
-                    <Image
-                      src="/tournament/Group 182@2x.png"
-                      style={{ width: "94px", height: "94px" }}
-                    />
-                  </div>
-
-                  <div className="step-text">队长录入个人/团队信息</div>
-                </div>
-              </Fade>
-              <Fade bottom when={bodyscrollrdTop > 790}>
-                <div className="flex-start" style={{ paddingTop: "90px" }}>
-                  <div className="sign-icon-wrapper">
-                    <Image
-                      src="/tournament/Group 142@2x.png"
-                      style={{ width: "24px", height: "24px" }}
-                    />
-                  </div>
-
-                  <div className="sign-line"></div>
-
-                  <div className="step-icon">
-                    <Image
-                      src="/tournament/Group 186@2x.png"
-                      style={{ width: "94px", height: "94px" }}
-                    />
-                  </div>
-
-                  <div className="step-text">邀请其他队员入驻</div>
-                </div>
-              </Fade> */}
-              <Fade bottom when={bodyscrollrdTop > 590}>
-                <div className="flex-start" style={{ paddingTop: "90px" }}>
-                  <div className="sign-icon-wrapper">
-                    <Image
-                      src="/tournament/Group 142@2x.png"
-                      style={{ width: "24px", height: "24px" }}
-                    />
-                  </div>
-
-                  <div className="sign-line"></div>
-
-                  <div className="step-icon">
-                    <Image
-                      src="/tournament/Group 188@2x.png"
-                      style={{ width: "94px", height: "94px" }}
-                    />
-                  </div>
-
-                  <div className="step-text">收到邮件，报名成功！</div>
-                </div>
-              </Fade>
+                </Fade>
+              )}
             </div>
           </div>
         </div>
