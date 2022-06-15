@@ -14,6 +14,8 @@ import Footer from "../../MainPage/footer";
 import TeamQuestionnaire from './TeamQuestionnaire';
 import TeamReister from './TeamRegister';
 import samplePDF from "../../webpage/RegisterLogin/federal.pdf"
+import { useContext } from 'react';
+import AuthContext from 'context/AuthContext';
 
 export default function TeamAgreeProcessCreate({toggle}) {
     const {width, height} = useWindowDimensions();
@@ -31,6 +33,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
     const [gradeAsk, setGradeAsk] = useState("")
     const [investmentTime, setInvestmentTime] = useState("")
     const [attentionIndustry, setAttentionIndustry] = useState("")
+    const { getcompetionapikey } = useContext(AuthContext);
 
     const Pageprocess = (headPortrait) => {
         if (headPortrait != undefined) {

@@ -46,7 +46,7 @@ export default function RegisterForm(props) {
     const [org, setOrg] = useState("");
     const [regin, setRegin] = useState("")
     const [job, setjob] = useState("")
-    const [page, setpage] = useState(2)
+    const [page, setpage] = useState(1)
     const [experienceList, setExperienceList] = useState([
         {company: "", position: "", detail:""}
         //{}
@@ -476,7 +476,7 @@ export default function RegisterForm(props) {
                             className="loadinglogin"
                             required
                             value={username}
-                            pattern= "^[A-Za-z0-9_\u4e00-\u9fff]{2,8}$"
+                            pattern= "^[A-Za-z0-9_\u4e00-\u9fff]{2,10}$"
                             onChange={(e) => {
                                 const username = e.target.value
                                 setUsername(e.target.value)
@@ -485,7 +485,7 @@ export default function RegisterForm(props) {
                             }
                         ></Form.Control>
                         <Form.Control.Feedback type="invalid">
-                            用户名长度为2至8
+                            用户名长度为2至10
                         </Form.Control.Feedback>
                     </Form.Group>
 
@@ -988,7 +988,7 @@ export default function RegisterForm(props) {
                              checked={!disable}
                              onClick = {(e) => setdisable(!disable)}
                             // type="radio"
-                             feedback="注册前请先同意"
+                            //  feedback="注册前请先同意"
                              feedbackType="invalid"
                              />
                             </Form.Group>

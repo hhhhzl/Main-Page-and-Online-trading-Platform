@@ -175,29 +175,6 @@ export const AuthProvider = ({ children }) => {
     }
   } 
 
-  let contextData = {
-    loginUser: loginUser,
-    user: user,
-    apikey: apikey,
-    authTokens: authTokens,
-    logoutUser: logoutUser,
-    competition:competition,
-    team:team,
-    autologin: autologin,
-    getuserdata: getuserdata,
-    userdata:userdata
-  };
-
-  // useEffect(()=>{
-  //     let fourMinutes = 1000 * 60 *4
-  //     let interval = setInterval(() => {
-  //         if (authTokens){
-  //             updataToken()
-  //         }
-  //     }, fourMinutes)
-  //     return () => clearInterval(interval)
-  // },[authTokens,loading])
-
   const GetCompetitionAPIKey = async () =>{
     try{
       const response = await apiGetCompetitionAPIKey(competitionID)
@@ -212,7 +189,29 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
-  
+  let contextData = {
+    loginUser: loginUser,
+    user: user,
+    apikey: apikey,
+    authTokens: authTokens,
+    logoutUser: logoutUser,
+    competition: competition,
+    team: team,
+    autologin: autologin,
+    getuserdata: getuserdata,
+    userdata: userdata,
+    getcompetionapikey: GetCompetitionAPIKey
+  };
+
+  // useEffect(()=>{
+  //     let fourMinutes = 1000 * 60 *4
+  //     let interval = setInterval(() => {
+  //         if (authTokens){
+  //             updataToken()
+  //         }
+  //     }, fourMinutes)
+  //     return () => clearInterval(interval)
+  // },[authTokens,loading])  
 
   const GetCompetitions = async (id) =>{
     try{

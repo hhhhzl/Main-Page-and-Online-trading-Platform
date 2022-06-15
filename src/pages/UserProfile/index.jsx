@@ -23,12 +23,12 @@ export default ({ searchData }) => {
     setIsOpen(!isOpen);
   };
 
-  useEffect(()=>{
-    if (user && !load){
-      dispatch(fetchUser(user.user_id))
-      setload(true)
-    }
-  },[dispatch,user,load])
+  // useEffect(()=>{
+  //   if (user && !load){
+  //     dispatch(fetchUser(user.user_id))
+  //     setload(true)
+  //   }
+  // },[dispatch,user,load])
 
 
   return (
@@ -60,7 +60,7 @@ export default ({ searchData }) => {
             width: "1200px",
           }}
         >
-          <PersonalHomepage userget={data && status == "fulfilled" ? data: []} />
+          <PersonalHomepage userget={data ? data: []} />
         </div>
       </div>
     </>
