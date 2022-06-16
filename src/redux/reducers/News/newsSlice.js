@@ -70,8 +70,6 @@ const getRequests = async (team, user_id) =>{
     }
 }
 
-
-
 const initialState = {
     news: [],
     state: null,
@@ -82,30 +80,27 @@ const initialState = {
 export const fetchNews = createAsyncThunk(
     "news/fetchNews",
     async ({team, user_id}) => {
-        const read = false
-        try{
+        let read = false
+        try{   
             const newArrays = await Promise.all([getAdminMessage(),getRequests(team, user_id)])
             let unsortArray = []
             let mergedArray = []
+            let sortedArray = []
             console.log("newArrays",newArrays)
             for (let i = 0; i < newArrays.length; i++){
-                console.log(newArrays[i].length)
                     for (let j = 0; j < newArrays[i].length; j++) {
                         mergedArray = newArrays[i][j]
-                        console.log(mergedArray)
-                        console.log(mergedArray.status)
                         if (mergedArray.is_read == false || mergedArray.status != "A"){
                                 read = true
                         }    
-                        console.log("unsortArray",unsortArray,mergedArray)      
                         unsortArray.push(mergedArray)
-                        console.log(unsortArray)
                     }       
             } 
-            console.log(unsortArray)
-            return {unsortArray,read}
+            sortedArray = unsortArray.sort((a,b) => Date.parse(b.created_at) - Date.parse(a.created_at))
+            console.log(sortedArray)
+            return {sortedArray,read}
         }catch(e){
-
+            console.log(e)
         }
 });
 
@@ -128,7 +123,7 @@ export const NewsSlice = createSlice({
             state.loading = true;
         })
         .addCase(fetchNews.fulfilled, (state,action) =>{
-            state.news = action.payload.unsortArray;
+            state.news = action.payload.sortedArray;
             state.state = "fulfilled";
             state.loading = false;
             state.read_or_not = action.payload.read

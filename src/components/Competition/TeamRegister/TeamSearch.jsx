@@ -52,7 +52,6 @@ const searchSwitch = () => {
         try {
             const response = await apiGetAllTeamAccounts()
             const responsedata = response.data.data
-            console.log(responsedata)
             try {
                 const newPeopleArray = await Promise.all(responsedata.map(async function(team) {
                     const responseUser = await apiGetUser(team.leader);
@@ -61,6 +60,7 @@ const searchSwitch = () => {
                 }));
                 console.log(newPeopleArray)
                 const teamlist = []
+                
                 for (let i = 0; i < responsedata.length; i++) {
                     const LeaderInfo = newPeopleArray[i]
                     const teamInfo = responsedata[i]
@@ -68,7 +68,8 @@ const searchSwitch = () => {
                     teamInfo.leaderemail = LeaderInfo.email
                     teamlist.push(teamInfo)
                   }
-                setteamdata(teamlist)
+                const teamfilter = teamlist.filter(elem => elem.members_count <4 && elem.finalized == false)
+                setteamdata(teamfilter)
 
             } catch (e) {
                 console.log(e);
