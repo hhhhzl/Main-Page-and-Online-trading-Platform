@@ -13,7 +13,7 @@ import useWindowDimensions from 'utils/sizewindow';
 import Footer from "../../MainPage/footer";
 import TeamQuestionnaire from './TeamQuestionnaire';
 import TeamReister from './TeamRegister';
-import samplePDF from "../../webpage/RegisterLogin/federal.pdf"
+import samplePDF from "assets/pdf/参赛协议.pdf";
 import { useContext } from 'react';
 import AuthContext from 'context/AuthContext';
 

@@ -168,8 +168,13 @@
   width: 348px;
 }
 
-.page-header-modal > .modal-dialog-centered {
+.modal-dialog-centered {
   justify-content: center;
+}
+
+.general-modal > .modal-dialog > .modal-content {
+  border: none;
+  width: 348px;
 }
 
 .modal-header {
@@ -180,6 +185,7 @@
   padding: 0;
   margin-bottom: 24px;
   margin-left: 48px;
+  margin-right: 48px;
   font-size: 14px;
   font-weight: 400;
   color: black;
@@ -205,8 +211,9 @@
   box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02);
   border-radius: 22px;
   opacity: 1;
-  padding: 10px 46px;
+  padding: 10px 0px;
   border: none;
+  width: 120px;
 }
 
 .modal-btn-cancel {

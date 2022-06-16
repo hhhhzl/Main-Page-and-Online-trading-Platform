@@ -11,7 +11,7 @@ import { useHistory } from 'react-router';
 import useWindowDimensions from '../../../utils/sizewindow';
 import HeaderCreate from '../../MainPage/header';
 import Sidebar from '../../MainPage/Sidebar';
-import samplePDF from "../../webpage/RegisterLogin/federal.pdf";
+import samplePDF from "assets/pdf/参赛协议.pdf";
 import TeamQuestionnaire from "./TeamQuestionnaire";
 import TeamSearch from './TeamSearch';
 

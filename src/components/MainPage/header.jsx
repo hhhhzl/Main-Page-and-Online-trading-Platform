@@ -215,6 +215,7 @@ useEffect(() =>{
       <Modal
         show={shownotinTeam}
         centered
+        className="general-modal"
       >
         <Modal.Header className="active-500">
           您尚未报名，请先报名.....
