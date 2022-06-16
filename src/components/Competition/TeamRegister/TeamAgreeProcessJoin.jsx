@@ -114,7 +114,8 @@ export default function TeamAgreeProcessJoin(){
     const getTeamInformation = async () =>{
         try{
             const response = await apiGetTeamAccount(teamid)
-            setteamdata(response.data.data.metadata)
+            setteamdata(response.data.data.metadata);
+            console.log('teamdata', response.data.data.metadata);
             const member = response.data.data.members
             try {
                 const newPeopleArray = await Promise.all(member.map(async function(user) {
@@ -201,15 +202,14 @@ export default function TeamAgreeProcessJoin(){
        <Modal
         show={successSendtoC}
         centered
+        className="general-modal"
         >
           <Modal.Header></Modal.Header>
-          <Modal.Body style={{textAlign:"center"}}>请求已发送至队长，请耐心等待通过，首页点击团队信息查看加入团队状态 </Modal.Body>
-        <Modal.Footer style={{marginLeft:0}} >
-            <div style={{width:"100%",display:"flex",justifyContent:"center"}}>
+          <Modal.Body>恭喜您报名成功！请联系队长尽快通过您的入队申请。</Modal.Body>
+        <Modal.Footer style={{justifyContent: "center"}}>
             <Button className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUserhome()}>
-            回主页
+            返回主页
           </Button>
-        </div>
 
           </Modal.Footer>
         </Modal>
@@ -258,7 +258,7 @@ export default function TeamAgreeProcessJoin(){
 
                             <div style={{display:"flex", justifyContent:"center"}}>
                             <div style={{width:"160px", height:"160px"}}>
-                            <Image src="/homeCutout/Group 1073@2x.png" roundedCircle style={{position: "relative", width: "100%",height: "100%"}}/>
+                            <Image src={teamdata ? teamdata.avatar : "/homeCutout/Group 1073@2x.png"} roundedCircle style={{position: "relative", width: "100%",height: "100%"}}/>
                             </div>
 
 
@@ -313,11 +313,9 @@ export default function TeamAgreeProcessJoin(){
                                 fontWeight:"400",
                                 color:"#2A2B30",
                                 lineHeight:"24px",
-                            }}>主观赛道</div>
+                            }}>{teamdata ? teamdata.track === "S" ? "主观赛道" : "量化赛道" : "loading...."}</div>
                             </div>
                         </div>
-
-
 
                         <div style={{marginTop:"36px",display:"flex", justifyContent:"center"}}>
                             <div style={{
@@ -339,7 +337,7 @@ export default function TeamAgreeProcessJoin(){
 
                                     {members?.map((elem) => {
                                         return (
-                                    <div style ={{width:"max-content",marginRight:"24px",textAlign:"center",}}>
+                                    <div style ={{width:"max-content",marginRight:"12px",marginLeft:"12px",textAlign:"center",}}>
                                     <Image
                                     src={elem.avatar}
                                     roundedCircle

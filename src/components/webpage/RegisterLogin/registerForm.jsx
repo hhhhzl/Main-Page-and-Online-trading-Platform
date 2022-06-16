@@ -126,7 +126,8 @@ export default function RegisterForm(props) {
     }
 
     function verifyPassword(password) {
-        return "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[~!@#$%^&*()_+`\\-={}:\";'<>?,./]).{8,15}$"
+        // return "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[~!@#$%^&*()_+`\\-={}:\";'<>?,./]).{8,15}$"
+        return "^(?=.*[a-zA-Z])(?=.*\\d).{8,15}$"
      }
 
     const [imgSrc, setImgSrc] = useState('')
@@ -296,8 +297,10 @@ export default function RegisterForm(props) {
         }
     }, [submit, userState])
 
-    useEffect(() => { 
-        setUserState({...userState, ...{avatar: headPortrait}}) 
+    useEffect(() => {
+        if (headPortrait !== "/homeCutout/Group 1074.png") {
+            setUserState({...userState, ...{avatar: headPortrait}}) 
+        }
     }, [headPortrait])
 
     return (
@@ -340,7 +343,7 @@ export default function RegisterForm(props) {
             请点击下方“报名赛事”进行大赛报名。
           </Modal.Body>
         <Modal.Footer>
-            <Button className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUser(0)}>
+            <Button className="modal-btn modal-btn-cancel"  variant="primary" onClick ={() => sendUser(0)}>
             返回首页
           </Button>
           <Button className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUser(1)}>
@@ -528,10 +531,10 @@ export default function RegisterForm(props) {
                                 setPassword(e.target.value)
                                 setUserState({...userState, ...{password}});
                             }}
-                            pattern={verifyPassword(password)}
+                            pattern="^(?=.*[a-zA-Z])(?=.*\\d).{8,15}$"
                         ></Form.Control>
                         <Form.Control.Feedback type="invalid">
-                            密码由字母,数字,特殊符号组成,长度为8-15!
+                            密码由字母,数字组成,长度为8-15!
                         </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group className="loadingusername">

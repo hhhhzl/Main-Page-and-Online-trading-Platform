@@ -97,13 +97,13 @@ export default function Cover() {
         show={showwheretogo}
         onHide={() => setshowwheretogo(false)}
         centered
-        // className="page-header-modal"
+        className="general-modal"
       >
         <Modal.Header closeButton>
           {/* <Modal.Title>Modal heading</Modal.Title> */}
         </Modal.Header>
-        <Modal.Body style={{textAlign:"center"}}>你还没有登录哟，需要登录注册即可报名比赛！！</Modal.Body>
-        <Modal.Footer style={{display:"flex", justifyContent:"center"}}>
+        <Modal.Body>您还没有登录，请先登录或者注册再报名参加比赛。</Modal.Body>
+        <Modal.Footer>
           <Button
             className="modal-btn modal-btn-cancel"
             variant="secondary"

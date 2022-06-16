@@ -43,4 +43,4 @@ export const apiGetCompetitionRequestsMemeber = () =>
 export const apiApproveCompetitionRequest = (id) =>
     apiService.post(`competitions/approve_join_request/${id}/`);
 export const apiDisactiveMessgae = (id) =>
-    apiService.post(`competitions/deactivate_join_request//${id}/`);
+    apiService.post(`competitions/deactivate_join_request/${id}/`);
