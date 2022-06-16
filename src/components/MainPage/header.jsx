@@ -25,7 +25,7 @@ import { HomeMobileIcon } from "./NavbarElements";
 
 
 const HeaderCreate = ({ toggle }) => {
-  let { user, logoutUser, apikey, team, getcompetionapikey} = useContext(AuthContext);
+  const { user, logoutUser, apikey, team, getcompetionapikey} = useContext(AuthContext);
   const { width, height } = useWindowDimensions();
   const [showMenu, setHhowMenu] = useState(false);
   const [scrolledDownEnough, setScrolledDownEnough] = useState(false);
@@ -168,19 +168,20 @@ useEffect(() =>{
 
 
 //////////////////////////////////////////////////load news//////////////////////////////////////////////////////////
-  useEffect(()=>{
+useEffect(()=>{
   if (user && team && !load1){
-    dispatch(fetchNews({team:team.metadata.id, user: user.user_id}))
+    console.log(user)
+    dispatch(fetchNews({team: team?.metadata, user_id:user.user_id}))
     setload1(true)
   }
 },[dispatch, team, user, load1])
 
-  useEffect(()=>{
-    if (user && !team && !load2){
-      dispatch(fetchNews(null))
-      setload2(true)
-    }
-  },[dispatch, team, user, load2])
+// useEffect(()=>{
+//   if (user && !team && !load2){
+//     dispatch(fetchNews({team: null, user_id:user.user_id}))
+//     setload2(true)
+//   }
+// },[dispatch, team, user, load2])
 
   return (
     <>

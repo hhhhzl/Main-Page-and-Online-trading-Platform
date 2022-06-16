@@ -6,7 +6,7 @@ import { useDispatch, useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router'
 import { fetchUser } from 'redux/reducers/users/usersSlices'
-import { apiGetCompetitionRequests } from 'api/main_platform/competitions'
+import { apiApproveCompetitionRequest, apiDisactiveMessgae, apiGetCompetitionRequests } from 'api/main_platform/competitions'
 import { fetchNews } from 'redux/reducers/News/newsSlice'
 import AuthContext from 'context/AuthContext'
 
@@ -44,7 +44,7 @@ export default function RequestForLeader({id, type, messagage_id}){
 
     const applicationState = async (item) =>{
         try{
-            const response = await apiGetCompetitionRequests(item)
+            const response = await apiApproveCompetitionRequest(item)
             if (response.data.msg == "OK."){
                 setagree(true)
             }
@@ -55,7 +55,7 @@ export default function RequestForLeader({id, type, messagage_id}){
 
     const disagreeJoin = async (item) =>{
         try{
-            const response = await apiGetCompetitionRequests(item)
+            const response = await apiDisactiveMessgae(item)
             if (response.data.msg == "OK."){
                 setagree(true)
             }

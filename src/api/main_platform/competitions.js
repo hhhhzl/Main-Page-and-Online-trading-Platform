@@ -35,10 +35,12 @@ export const apiGetCompetitiongetInfo = () =>
     apiService.get(`competitions/get_user_competition_info`);
 export const apiGetJoinTeamRequest = (id) =>
     apiService.get(`competitions/get_team_account_join_request/${id}/`);
+export const apiGetCompetitionRequestsMemeber = () =>
+    apiService.get(`competitions/get_join_request`);
 
 
 //competition request
-export const apiGetCompetitionRequests = (id) =>
+export const apiApproveCompetitionRequest = (id) =>
     apiService.post(`competitions/approve_join_request/${id}/`);
-    export const apiDisactiveMessgae = (id) =>
+export const apiDisactiveMessgae = (id) =>
     apiService.post(`competitions/deactivate_join_request//${id}/`);

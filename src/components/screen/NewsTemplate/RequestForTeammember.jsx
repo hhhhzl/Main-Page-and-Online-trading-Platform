@@ -6,7 +6,7 @@ import { useDispatch, useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router'
 import { fetchUser } from 'redux/reducers/users/usersSlices'
-import { apiGetCompetitionRequests, apiGetTeamAccount } from 'api/main_platform/competitions'
+import { apiDisactiveMessgae, apiGetCompetitionRequests, apiGetTeamAccount } from 'api/main_platform/competitions'
 import { fetchNews } from 'redux/reducers/News/newsSlice'
 import AuthContext from 'context/AuthContext'
 
@@ -23,7 +23,7 @@ export default function RequestForTeamMember({id, type, messagage_id}){
 
     const disagreeJoin = async (id) =>{
         try{
-            const response = await apiGetCompetitionRequests(id)
+            const response = await apiDisactiveMessgae(id)
             if (response.data.msg == "OK."){
                 setagree(true)
             }

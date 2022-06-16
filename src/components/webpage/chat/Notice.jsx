@@ -1,4 +1,5 @@
 import { ArrowBackIos, ArrowForwardIos } from "@material-ui/icons";
+import CreateTeam from "components/screen/NewsTemplate/CreateTeam";
 import JoinTeam from "components/screen/NewsTemplate/JoinTeam";
 import LoginSuccess from "components/screen/NewsTemplate/LoginSucess";
 import RequestForLeader from "components/screen/NewsTemplate/RequestForLeader";
@@ -27,6 +28,7 @@ export default function Notice() {
   const [showAll, setShowAll] = useState(true);
   const [load, setload] = useState(false)
   const [load1, setload1] = useState(false)
+  const [load2, setload2] = useState(false)
 
   const handleShowAll = () => {
     setShowAll(!showAll);
@@ -61,6 +63,14 @@ export default function Notice() {
       setload1(true)
     }
   },[dispatch, team, user, load1])
+
+  useEffect(()=>{
+    if (user && !team && !load2){
+      dispatch(fetchNews({team: null, user_id:user.user_id}))
+      setload2(true)
+    }
+  },[dispatch, team, user, load2])
+
 
   useEffect(() =>{
     if (!load && news?.length>0){
@@ -147,9 +157,17 @@ export default function Notice() {
                   </div>
                   <div className="notice-left-detail" > 
                     <div className="notice-left-content">{
-                    item.content? item.content == "欢迎您加入UFA全球青年汇。"? (<>{"恭喜您！此封邮件确认您已成功注册UFA官网账号:"}...</>) : item.content :
-                    item.account? "您收到一条团队信息" : null
-                
+                    item.content? 
+                    item.content == "欢迎您加入UFA全球青年汇。"? 
+                    (<>{"恭喜您！此封邮件确认您已成功注册UFA官网账号; 请注意：您尚未完成UFA第二届"}...</>) : 
+                    item.content.slice(0,6) == "您已成功创建"?
+                    
+                     <>恭喜您！您的团队{item.content.split("\"")[1]}已创建成功，此封邮件确认您以队长身份:...</>
+                    :
+                    item.content.slice(0,6) == "您已加入队伍"?
+                    (<>恭喜您！您的申请已经得到 <strong>{item.content.split("\"")[1]}</strong> 队长的确认，您将以队员</>)
+                    :
+                    item.account? "您收到一条团队信息" : null : null
                     }</div>
                     {!item.is_read ? (
                       <div className="notice-left-unread"></div>
@@ -182,11 +200,15 @@ export default function Notice() {
           >
             <div style={{ padding: "24px 0 0 36px" }}>
               <div className="notice-right-title">{notice?.message_type? "UFA官方信息" : "团队消息"}</div>
-              <div className="notice-right-content">{notice?.content? notice?.content == "欢迎您加入UFA全球青年汇。"?
+              <div className="notice-right-content">{
+              notice?.content? notice?.content == "欢迎您加入UFA全球青年汇。"?
                (<><LoginSuccess/></>) 
                : 
-               notice?.content?.slice(0,5) == "您加入队伍"?
+               notice?.content?.slice(0,6) == "您已加入队伍"?
                 (<><JoinTeam name = {notice?.content.split("\"")[1]}/></>) 
+                :
+                notice?.content?.slice(0,6) == "您已成功创建"?
+                (<><CreateTeam name = {notice?.content.split("\"")[1]}/></>) 
                 :
                notice?.content
                :

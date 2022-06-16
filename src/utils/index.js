@@ -160,8 +160,8 @@ const moment = require('moment-timezone');
 export function showTimePipe(unixDate) {
     var unixStamp = moment.utc(unixDate).local().valueOf()
     var todayObj = moment.utc(new Date()).local()
-    console.log(unixStamp)
-    console.log(todayObj.date())
+    // console.log(unixStamp)
+    // console.log(todayObj.date())
     var todayObj = moment.utc(new Date()).local(),
         todayDate = {
             y: todayObj.year(),
@@ -182,7 +182,7 @@ export function showTimePipe(unixDate) {
     stamp[5] = todayStamp - 31536000000 // 365天
 
     var compareObj = moment.utc(moment(unixStamp).format()).local()
-    console.log(compareObj)
+    // console.log(compareObj)
     var returnStr
 
     // debugger
