@@ -80,12 +80,12 @@ export default function Notice() {
     } 
   },[news, load])
 
-  useEffect(()=>{
-    if(user && !load1){
-    dispatch(fetchNews({team: null, user_id:user.user_id}))
-    setload1(true)
-  }
-  },[dispatch, user, load1])
+  // useEffect(()=>{
+  //   if(user && !load1){
+  //   dispatch(fetchNews({team: null, user_id:user.user_id}))
+  //   setload1(true)
+  // }
+  // },[dispatch, user, load1])
 
   return (
     <div

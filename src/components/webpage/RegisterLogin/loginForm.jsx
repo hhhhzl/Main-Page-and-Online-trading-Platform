@@ -54,7 +54,7 @@ export default function LoginForm({ setToken }) {
           // width: "110px",
            marginTop: "35px" }}>
 
-              <Link style={{
+              {/* <Link style={{
                 height: "28px",
                 fontSize: "14px",
                 fontFamily: "Microsoft YaHei UI-Bold",
@@ -62,7 +62,7 @@ export default function LoginForm({ setToken }) {
                 color: "#6E7184",
                 lineHeight: "28px",
                 letterSpacing: "1px",
-              }} to="/Vlogin">验证码登录</Link>
+              }} to="/Vlogin">验证码登录</Link> */}
 
           </div></div>
         <div style={{display:"flex",justifyContent:"left"}}>

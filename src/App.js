@@ -97,7 +97,7 @@ const getSearchData = async (props) => {
 
         <Route exact path="/register" component={LoginMainLayout} />
         <Route exact path="/login" component={LoginMainLayout} />
-        <Route exact path="/Vlogin" component={LoginMainLayout} />
+        {/* <Route exact path="/Vlogin" component={LoginMainLayout} /> */}
         <Route exact path="/forgetpassword" component={LoginMainLayout} />
         <Route exact path="/changepassword" component={LoginMainLayout} />
         <Route exact path="/home" component={RedirectComponent("/")} />

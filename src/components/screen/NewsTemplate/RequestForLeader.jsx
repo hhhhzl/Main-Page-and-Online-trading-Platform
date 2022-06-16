@@ -67,7 +67,7 @@ export default function RequestForLeader({id, type, messagage_id}){
 
     useEffect(() => {
         if (agree){
-             dispatch(fetchNews({team:team.metadata.id,user:user.user_id}))
+             dispatch(fetchNews({team:team.metadata.id, user:user.user_id}))
              getteamnumber()
              setagree(false)
         }

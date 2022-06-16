@@ -34,6 +34,7 @@ const getAdminMessage = async () =>{
 const getRequests = async (team, user_id) =>{
     let before_filter= [] 
     let row_before = []
+    console.log(team,user_id)
     try{
         if (!team || team.leader != user_id){
             const response2 = await apiGetCompetitionRequestsMemeber()
@@ -53,6 +54,7 @@ const getRequests = async (team, user_id) =>{
         }else if (team && team.leader == user_id){
             const response2 = await apiGetJoinTeamRequest(team.id)
             const requests = response2.data.data
+            console.log("//////////////////////////////////////////////",requests)
             for (let i = 0; i < requests.length; i++){
                 before_filter = requests[i]   
                 before_filter.created_at = before_filter.request_time
@@ -81,6 +83,7 @@ export const fetchNews = createAsyncThunk(
     "news/fetchNews",
     async ({team, user_id}) => {
         let read = false
+        console.log(team,user_id)
         try{   
             const newArrays = await Promise.all([getAdminMessage(),getRequests(team, user_id)])
             let unsortArray = []
