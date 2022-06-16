@@ -176,12 +176,12 @@ useEffect(()=>{
   }
 },[dispatch, team, user, load1])
 
-// useEffect(()=>{
-//   if (user && !team && !load2){
-//     dispatch(fetchNews({team: null, user_id:user.user_id}))
-//     setload2(true)
-//   }
-// },[dispatch, team, user, load2])
+useEffect(()=>{
+  if (user && !team && !load2){
+    dispatch(fetchNews({team: null, user_id:user.user_id}))
+    setload2(true)
+  }
+},[dispatch, team, user, load2])
 
   return (
     <>

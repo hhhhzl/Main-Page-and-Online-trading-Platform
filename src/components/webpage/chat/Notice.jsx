@@ -156,7 +156,8 @@ export default function Notice() {
                     </div>
                   </div>
                   <div className="notice-left-detail" > 
-                    <div className="notice-left-content">{
+                    <div className="notice-left-content">
+                      {
                     item.content? 
                     item.content == "欢迎您加入UFA全球青年汇。"? 
                     (<>{"恭喜您！此封邮件确认您已成功注册UFA官网账号; 请注意：您尚未完成UFA第二届"}...</>) : 
@@ -164,11 +165,14 @@ export default function Notice() {
                     
                      <>恭喜您！您的团队{item.content.split("\"")[1]}已创建成功，此封邮件确认您以队长身份:...</>
                     :
-                    item.content.slice(0,6) == "您已加入队伍"?
+                    item.content.slice(0,6) == "您已加入队伍" || item.content.slice(0,5) == "您加入队伍"?
                     (<>恭喜您！您的申请已经得到 <strong>{item.content.split("\"")[1]}</strong> 队长的确认，您将以队员</>)
                     :
-                    item.account? "您收到一条团队信息" : null : null
-                    }</div>
+                    null
+                    :
+                    "您收到一条团队信息，请点击进行确认....."
+                    }
+                    </div>
                     {!item.is_read ? (
                       <div className="notice-left-unread"></div>
                     ) : (
@@ -183,9 +187,6 @@ export default function Notice() {
           </div>
 
         </div>
-
-
-
 
 
         <div

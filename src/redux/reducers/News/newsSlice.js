@@ -56,10 +56,10 @@ const getRequests = async (team, user_id) =>{
             for (let i = 0; i < requests.length; i++){
                 before_filter = requests[i]   
                 before_filter.created_at = before_filter.request_time
-                if (before_filter.status == "A"){
-                    before_filter.is_read = true
-                }else{
+                if (before_filter.status == "P"){
                     before_filter.is_read = false
+                }else{
+                    before_filter.is_read = true
                 }
                 row_before.push(before_filter)
             } 
@@ -90,13 +90,16 @@ export const fetchNews = createAsyncThunk(
             for (let i = 0; i < newArrays.length; i++){
                     for (let j = 0; j < newArrays[i].length; j++) {
                         mergedArray = newArrays[i][j]
-                        if (mergedArray.is_read == false || mergedArray.status != "A"){
+                        if (mergedArray.is_read == false){
                                 read = true
                         }    
                         unsortArray.push(mergedArray)
                     }       
             } 
             sortedArray = unsortArray.sort((a,b) => Date.parse(b.created_at) - Date.parse(a.created_at))
+            for (let i = 0; i< sortedArray.length; i++){
+                sortedArray[i].message_id = i + 1
+           }
             console.log(sortedArray)
             return {sortedArray,read}
         }catch(e){
