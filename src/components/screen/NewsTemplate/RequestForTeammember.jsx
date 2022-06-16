@@ -21,9 +21,9 @@ export default function RequestForTeamMember({id, type, messagage_id}){
     const {team, user} = useContext(AuthContext)
 
 
-    const disagreeJoin = async (id) =>{
+    const disagreeJoin = async (item) =>{
         try{
-            const response = await apiDisactiveMessgae(id)
+            const response = await apiDisactiveMessgae(item)
             if (response.data.msg == "OK."){
                 setagree(true)
             }
@@ -34,7 +34,7 @@ export default function RequestForTeamMember({id, type, messagage_id}){
 
     useEffect(() => {
         if (agree){
-             dispatch(fetchNews(null,user.user_id))
+             dispatch(fetchNews({team:null, user:user.user_id}))
              setagree(false)
         }
     },[agree])

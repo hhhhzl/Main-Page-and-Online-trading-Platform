@@ -6,25 +6,26 @@ import { useDispatch, useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router'
 import { fetchUser } from 'redux/reducers/users/usersSlices'
-import { apiApproveCompetitionRequest, apiDisactiveMessgae, apiGetCompetitionRequests } from 'api/main_platform/competitions'
+import { apiApproveCompetitionRequest, apiDisactiveMessgae, apiGetCompetitionRequests, apiGetTeamAccount, apiSubmitTeamAccount } from 'api/main_platform/competitions'
 import { fetchNews } from 'redux/reducers/News/newsSlice'
 import AuthContext from 'context/AuthContext'
 
 export default function RequestForLeader({id, type, messagage_id}){
     const [load,setload] = useState(false)
-    const [user, setuser] = useState(null)
+    const [username, setusername] = useState(null)
     const [sumbit, setsumbit] = useState(false)
     const dispatch = useDispatch()
     const history = useHistory()
     const { status } = useSelector((state) => state.userInfo);
     const [agree, setagree] = useState(false)
-    const {team} = useContext(AuthContext)
+    const [disagree, setdisagree] = useState(false)
+    const {team, user} = useContext(AuthContext)
 
     const GetUser = async (item) =>{
         try{
             const request = await apiGetUser(item)
             const user_info = request.data.data
-            setuser(user_info.username)
+            setusername(user_info.username)
         }catch(e){
 
         }
@@ -57,7 +58,7 @@ export default function RequestForLeader({id, type, messagage_id}){
         try{
             const response = await apiDisactiveMessgae(item)
             if (response.data.msg == "OK."){
-                setagree(true)
+                setdisagree(true)
             }
         }catch(e){
             console.log()
@@ -66,10 +67,37 @@ export default function RequestForLeader({id, type, messagage_id}){
 
     useEffect(() => {
         if (agree){
-             dispatch(fetchNews(team.metadata.id))
+             dispatch(fetchNews({team:team.metadata.id,user:user.user_id}))
+             getteamnumber()
              setagree(false)
         }
     },[agree])
+
+    useEffect(() => {
+        if (disagree){
+             dispatch(fetchNews({team:team.metadata.id,user:user.user_id}))
+             setdisagree(false)
+        }
+    },[disagree])
+
+
+    const getteamnumber = async () =>{
+        try
+        {
+            const response = await apiGetTeamAccount(team.metadata.id)
+            const teamnumber = response.data.data.metadata.members_count
+            const teamStatus = response.data.data.metadata.finalized
+            if (teamnumber == 4 && teamStatus == false){
+                try{
+                    const response = await apiSubmitTeamAccount(team.metadata.id)
+                }catch(e){
+                    console.error(e);
+                }   
+            }
+        }catch(e){
+            console.log(e)
+        }
+    }
 
 
     // useEffect(() =>{
@@ -84,7 +112,7 @@ export default function RequestForLeader({id, type, messagage_id}){
         <div>
                <Link style ={{color:"black"}} onClick = {() => {
                    dispatch(fetchUser(id));
-                  setsumbit(true)}}> <strong>{user}</strong></Link> 申请加入您的团队，等待您的通过... 请点击下方按钮同意或者拒绝对方加入团队。
+                  setsumbit(true)}}> <strong>{username}</strong></Link> 申请加入您的团队，等待您的通过... 请点击下方按钮同意或者拒绝对方加入团队。
         </div>
         <br/>
               UFA 组委会
