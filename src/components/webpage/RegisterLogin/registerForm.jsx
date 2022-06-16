@@ -17,7 +17,7 @@ import { getFileName, setautologin } from "../../../utils";
 import useWindowDimensions from "../../../utils/sizewindow";
 import TeamRegisterModel from "../../screen/modal/TeamRegisterModel";
 import './loginpage.css';
-import samplePDF from "./federal.pdf"
+import samplePDF from "assets/pdf/用户协议.pdf"
 
 
 export default function RegisterForm(props) {
@@ -169,7 +169,8 @@ export default function RegisterForm(props) {
                 props.email = userState.email
                 props.password = userState.password
                 setautologin(JSON.stringify(props))
-                autologin()
+                // autologin()
+                setShow(true);
             }else if (response.data.msg == "The password does not meet the complexity requirement.") {
                 setshowfailpassward(true)
             }else{
@@ -182,14 +183,12 @@ export default function RegisterForm(props) {
     }
 
     const sendUser = (id) =>{
-        if (id == 1){
-            history.push("/login")
-        }else{
-            history.push("/")
+        if (id == 0){
+            autologin("/");
+        } else if (id == 1) {
+            autologin("/team/register");
         }
-
     }
-
 
     const [linkedSchool, setLinkedSchool] = useState("")
     const [linkedArea, setLinkedArea] = useState("")
@@ -332,15 +331,20 @@ export default function RegisterForm(props) {
        <Modal
         show={show}
         centered
+        className="general-modal"
         >
           <Modal.Header></Modal.Header>
-          <Modal.Body className="active-500" style={{textAlign:"center"}}>用户已成功注册 </Modal.Body>
-        <Modal.Footer style={{width:"100%", display:"flex",justifyContent:"center"}}  >
-            <Button style={{marginRight:"20px"}} className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUser(0)}>
-            回主页
+          <Modal.Body className="active-500">
+            恭喜您注册成功！请根据邮件指示，扫描二维码加入赛事交流微信群。
+            <br />
+            请点击下方“报名赛事”进行大赛报名。
+          </Modal.Body>
+        <Modal.Footer>
+            <Button className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUser(0)}>
+            返回首页
           </Button>
-          <Button style={{marginLeft:"20px"}} className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUser(1)}>
-            去登录
+          <Button className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUser(1)}>
+            报名赛事
           </Button>
           </Modal.Footer>
         </Modal>

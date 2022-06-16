@@ -94,7 +94,7 @@ export const AuthProvider = ({ children }) => {
 
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////
-  let autologin = async (e) =>{
+  let autologin = async (dest='') =>{
     let response = await fetch("http://82.157.18.223:10985/api/users/token/", {
         method: "POST",
         headers: {
@@ -111,18 +111,22 @@ export const AuthProvider = ({ children }) => {
         setuser(jwt_decode(data.data.access));
         localStorage.setItem("authTokens", JSON.stringify(data.data));
         cleanAutologin()
-        if (route.from == "/eplatform"){
-           setPlatformType("eplatform")
-          history.push(route.from);
-        }else if (route.from == "/competition"){
-         setPlatformType("competition")
-          history.push(route.from);
-        } else if (route.from == "/team/register"){
-            setPlatformType("competition")
-            history.push('/competition')        
-        }else{
-          history.push('/')
+
+        if(dest != "") {
+          history.push(dest)
         }
+        // if (route.from == "/eplatform"){
+        //    setPlatformType("eplatform")
+        //   history.push(route.from);
+        // }else if (route.from == "/competition"){
+        //  setPlatformType("competition")
+        //   history.push(route.from);
+        // } else if (route.from == "/team/register"){
+        //     setPlatformType("competition")
+        //     history.push('/competition')        
+        // }else{
+        //   history.push('/')
+        // }
       } else if (data.data.detail == "No active account found with the given credentials") {
         setshow(true)
       } else{

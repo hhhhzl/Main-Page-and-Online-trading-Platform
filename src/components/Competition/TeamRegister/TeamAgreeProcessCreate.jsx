@@ -13,7 +13,7 @@ import useWindowDimensions from 'utils/sizewindow';
 import Footer from "../../MainPage/footer";
 import TeamQuestionnaire from './TeamQuestionnaire';
 import TeamReister from './TeamRegister';
-import samplePDF from "../../webpage/RegisterLogin/federal.pdf"
+import samplePDF from "assets/pdf/参赛协议.pdf";
 import { useContext } from 'react';
 import AuthContext from 'context/AuthContext';
 
@@ -54,7 +54,6 @@ export default function TeamAgreeProcessCreate({toggle}) {
         history.push("/home")
     }
     
-
     const [successSendtoC, setsuccessSendtoC] = useState(false)
     const [showExist, setshowExist] = useState(false)
     const [deadline, setdeadline] = useState(false)
@@ -66,7 +65,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
                 competition_id:competitionID,
                 name:teamname,
                 track:lianghua? "Q" : "S",
-                // avatar:headPortrait
+                avatar:headPortrait
             }
             console.log('create team', data)
             const dataprops = JSON.stringify(data)
@@ -168,6 +167,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
             <Modal
                 show={teamnameDuplicate}
                 onHide={() => setteamnameDuplicate(false)}
+                className="general-modal"
             >
                 <Modal.Header closeButton></Modal.Header>
                 <Modal.Body style={{textAlign: "center",letterSpacing:"2px"}}>团队名称已被使用，请更改！ </Modal.Body>
@@ -176,25 +176,24 @@ export default function TeamAgreeProcessCreate({toggle}) {
             <Modal
                 show={successSendtoC}
                 centered
+                className="general-modal"
             >
                 <Modal.Header></Modal.Header>
-                <Modal.Body style={{textAlign: "center",letterSpacing:"2px"}}>恭喜您报名成功！后续请根据邮件指示，扫描二维码加入选手微信群（若您是团队形式报名，请联系其他团员前往网站报名进入团队） </Modal.Body>
+                <Modal.Body>恭喜您报名成功！如果您是以团队形式参赛，请联系团员报名赛事，提交入队申请。 </Modal.Body>
                 <Modal.Footer style={{width: "100%", display: "flex", justifyContent: "center"}}>
-                    <div>
-                        <Button className="modal-btn modal-btn-submit" variant="primary" onClick={() => sendUserhome()}>
-                            回主页
-                        </Button>
-
-                    </div>
+                    <Button className="modal-btn modal-btn-submit" variant="primary" onClick={() => sendUserhome()}>
+                        返回主页
+                    </Button>
                 </Modal.Footer>
             </Modal>
 
             <Modal
                 show={deadline}
                 centered
+                className="general-modal"
             >
                 <Modal.Header></Modal.Header>
-                <Modal.Body style={{textAlign: "center",letterSpacing:"2px"}}>报名失败 </Modal.Body>
+                <Modal.Body style={{textAlign: "center",letterSpacing:"2px"}}>报名失败</Modal.Body>
                 <Modal.Footer style={{width: "100%", display: "flex", justifyContent: "center"}}>
                     <div>
                         <Button className="modal-btn modal-btn-submit" variant="primary" onClick={() => sendUserhome()}>
@@ -208,22 +207,19 @@ export default function TeamAgreeProcessCreate({toggle}) {
             <Modal
                 show={showExist}
                 centered
+                className="general-modal"
             >
                 <Modal.Header></Modal.Header>
-                <Modal.Body style={{textAlign: "center",letterSpacing:"2px"}}>注册失败, 您已存在于一个队伍当中 </Modal.Body>
+                <Modal.Body>注册失败, 您已存在于一个队伍当中。</Modal.Body>
                 <Modal.Footer style={{width: "100%", display: "flex", justifyContent: "center"}}>
                     <div>
                         <Button className="modal-btn modal-btn-submit" variant="primary" onClick={() => sendUserhome()}>
-                            回主页
+                            返回主页
                         </Button>
 
                     </div>
                 </Modal.Footer>
             </Modal>
-
-
-
-
 
             {/* /////////////////////////////////////////////////////////////////////// */}
 
