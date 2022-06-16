@@ -66,16 +66,17 @@ export default function RequestForLeader({id, type, messagage_id}){
     }
 
     useEffect(() => {
-        if (agree){
-             dispatch(fetchNews({team:team.metadata.id, user:user.user_id}))
+        if (agree && team && user){
+            console.log(team, user)
+             dispatch(fetchNews({team:team.metadata, user_id:user.user_id}))
              getteamnumber()
              setagree(false)
         }
-    },[agree])
+    },[agree, team, user])
 
     useEffect(() => {
-        if (disagree){
-             dispatch(fetchNews({team:team.metadata.id,user:user.user_id}))
+        if (disagree && team && user){
+             dispatch(fetchNews({team:team.metadata,user:user.user_id}))
              setdisagree(false)
         }
     },[disagree])

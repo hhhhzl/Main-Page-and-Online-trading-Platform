@@ -73,9 +73,9 @@ export default function TeamAgreeProcessCreate({toggle}) {
             const messge = response.data.msg
             if (messge == "The user has already joined a team in this competition."){
                 setshowExist(true)
-            }else if (messge == "OK."){
-                localStorage.setItem("createTeam", true)
+            }else if (messge == "OK."){  
                 setsuccessSendtoC(true)
+                localStorage.setItem("createTeam", "true")
             }else if (messge == "The name is already in use."){
                 setteamnameDuplicate(true)      
             }else if(messge == "The queried resource is not found."){

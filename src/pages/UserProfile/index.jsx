@@ -11,7 +11,9 @@ import AuthContext from "context/AuthContext";
 import { fetchUser } from "redux/reducers/users/usersSlices";
 import { useDispatch, useSelector } from "react-redux";
 
-export default ({ searchData }) => {
+export default ({ 
+  searchData,
+ }) => {
   let { apikey, user } = useContext(AuthContext);
   const [load, setload] = useState(false);
   const { width, height } = useWindowDimensions();
@@ -23,12 +25,12 @@ export default ({ searchData }) => {
     setIsOpen(!isOpen);
   };
 
-  // useEffect(()=>{
-  //   if (user && !load){
-  //     dispatch(fetchUser(user.user_id))
-  //     setload(true)
-  //   }
-  // },[dispatch,user,load])
+  useEffect(()=>{
+    if (user && !load && data.length == 0){
+      dispatch(fetchUser(user.user_id))
+      setload(true)
+    }
+  },[dispatch,user,load, data])
 
 
   return (

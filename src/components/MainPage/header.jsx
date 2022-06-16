@@ -149,11 +149,11 @@ useEffect(() =>{
 
 /////////////////////////////////////////////load apikey after create team
 useEffect(() =>{
-  if (localStorage.getItem("createTeam")){
+  if (localStorage.getItem("createTeam") == "true" && url == "/"){
     getcompetionapikey()
     localStorage.removeItem("createTeam")
   }
-},[localStorage.getItem("createTeam")])
+},[localStorage.getItem("createTeam"), url])
 
 
 

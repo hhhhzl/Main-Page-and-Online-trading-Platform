@@ -28,7 +28,7 @@ export default function RequestForTeamMember({id, type, messagage_id}){
                 setagree(true)
             }
         }catch(e){
-            console.log(e)
+            console.error('cancel join', e)
         }
     }
 

@@ -10,12 +10,7 @@ export default function  PersonalHomepage({
 }){
 	let {user} = useContext(AuthContext)
 	let history = useHistory();
-	const [username, setUsername] = useState(userget? userget.username : null);
-	const [name, setname] = useState(userget?.last_name);
-	const [gender, setgender] = useState(userget?.gender);
-	const [region, setregion] = useState(userget?.region);
-	const [school, setSchool] = useState(userget?.institution);
-	const [personalProfile,setPersonalProfile] = useState(userget.experience?.length> 0? userget.experience : [{company:"",position:"",detail:""}]);
+	const personalProfile= userget.experience?.length> 0? userget.experience : [{company:"",position:"",detail:""}]
 	return(
 		<>
 			<div className="personal-homepage">
@@ -26,10 +21,10 @@ export default function  PersonalHomepage({
 					  style={{ width: "160px", height: "160px" }}
 					/>
 				</div>
-				<div className="personal-username">{username}</div>
-				<div className="personal-other-text">{name}</div>
-				<div className="personal-other-text">{gender}</div>
-				<div className="personal-other-text  top-48" style={{marginBottom:"48px"}}>{region} {school}</div>
+				<div className="personal-username">{userget? userget.username : null}</div>
+				<div className="personal-other-text">{userget? userget.last_name: null}</div>
+				<div className="personal-other-text">{userget? userget.gender == "M"? "男" : "女" : null}</div>
+				<div className="personal-other-text  top-48" style={{marginBottom:"48px"}}>{userget? userget?.institution : null}</div>
 				
                     
 						{personalProfile?.map((elem) =>{

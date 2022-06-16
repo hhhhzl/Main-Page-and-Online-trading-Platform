@@ -36,29 +36,28 @@ const getRequests = async (team, user_id) =>{
     let row_before = []
     console.log(team,user_id)
     try{
+        // member
         if (!team || team.leader != user_id){
             const response2 = await apiGetCompetitionRequestsMemeber()
             const requests = response2.data.data
             for (let i = 0; i < requests.length; i++){
                 before_filter = requests[i]   
                 before_filter.created_at = before_filter.request_time
-                if (before_filter.status == "A"){
-                    before_filter.is_read = true
-                }else{
+                if (["P"].includes(before_filter.status)){
                     before_filter.is_read = false
+                }else{
+                    before_filter.is_read = true
                 }
                 row_before.push(before_filter)
             } 
             return row_before
-
-        }else if (team && team.leader == user_id){
+        } else if (team && team.leader == user_id){
             const response2 = await apiGetJoinTeamRequest(team.id)
             const requests = response2.data.data
-            console.log("//////////////////////////////////////////////",requests)
             for (let i = 0; i < requests.length; i++){
                 before_filter = requests[i]   
                 before_filter.created_at = before_filter.request_time
-                if (before_filter.status == "P"){
+                if (["P"].includes(before_filter.status)){
                     before_filter.is_read = false
                 }else{
                     before_filter.is_read = true
@@ -83,13 +82,11 @@ export const fetchNews = createAsyncThunk(
     "news/fetchNews",
     async ({team, user_id}) => {
         let read = false
-        console.log(team,user_id)
         try{   
             const newArrays = await Promise.all([getAdminMessage(),getRequests(team, user_id)])
             let unsortArray = []
             let mergedArray = []
             let sortedArray = []
-            console.log("newArrays",newArrays)
             for (let i = 0; i < newArrays.length; i++){
                     for (let j = 0; j < newArrays[i].length; j++) {
                         mergedArray = newArrays[i][j]
@@ -103,7 +100,6 @@ export const fetchNews = createAsyncThunk(
             for (let i = 0; i< sortedArray.length; i++){
                 sortedArray[i].message_id = i + 1
            }
-            console.log(sortedArray)
             return {sortedArray,read}
         }catch(e){
             console.log(e)

@@ -144,15 +144,15 @@ export default function Sign() {
         show={showwheretogo}
         onHide={() => setshowwheretogo(false)}
         centered
-        // className="page-header-modal"
+        className="general-modal"
       >
         <Modal.Header closeButton>
           {/* <Modal.Title>Modal heading</Modal.Title> */}
         </Modal.Header>
-        <Modal.Body style={{ textAlign: "center" }}>
+        <Modal.Body>
           你还没有登录哟，需要登录注册即可报名比赛！！
         </Modal.Body>
-        <Modal.Footer style={{ display: "flex", justifyContent: "center" }}>
+        <Modal.Footer>
           <Button
             className="modal-btn modal-btn-cancel"
             variant="secondary"
@@ -161,7 +161,7 @@ export default function Sign() {
               history.push("/team/register");
             }}
           >
-            去登录
+            前往登录
           </Button>
           <Button
             className="modal-btn modal-btn-submit"
@@ -171,7 +171,7 @@ export default function Sign() {
               history.push("/team/register");
             }}
           >
-            去注册
+            前往注册
           </Button>
         </Modal.Footer>
       </Modal>

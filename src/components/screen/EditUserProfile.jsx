@@ -89,6 +89,8 @@ export default function EditData({
 		<>
 		<Modal
         show={successSendtoC}
+		className="general-modal"
+		centered
         >
           <Modal.Header></Modal.Header>
           <Modal.Body style={{textAlign:"center"}}><div style={{fontSize: "14px",
@@ -96,8 +98,7 @@ export default function EditData({
                                     fontWeight: "bold",
                                     color: "#2A2B30",
                                     lineHeight:"24px"}}>个人信息已修改成功</div></Modal.Body>
-        <Modal.Footer style={{marginLeft:0}} >
-            <div style={{width:"100%",display:"flex",justifyContent:"center"}}>
+        <Modal.Footer style={{justifyContent: "center"}} >
             <Button className="modal-btn modal-btn-submit"  variant="primary"
 			 onClick ={() => {
 				 dispatch(fetchUser(user.user_id))
@@ -106,8 +107,6 @@ export default function EditData({
 			 }}>
             确定
           </Button>
-        </div>
-
           </Modal.Footer>
         </Modal>
 
@@ -217,7 +216,7 @@ export default function EditData({
 									  />
 									</FormGroup>
 
-									<FormGroup style={{width: "44%",marginLeft:"4%"}}>
+									<FormGroup style={{width: "48%",marginLeft:"4%"}}>
 									  <FormLabel className="edit-form-label">实习职位</FormLabel>
 									  <div style={{display:"flex",alignItems: "center"}}>
 										  <FormControl

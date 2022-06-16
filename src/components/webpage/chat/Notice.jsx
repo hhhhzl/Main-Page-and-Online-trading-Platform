@@ -71,12 +71,11 @@ export default function Notice() {
     }
   },[dispatch, team, user, load2])
 
-
   useEffect(() =>{
     if (!load && news?.length>0){
         setNotice(news[0])
         setCurrent(news[0].message_id)
-         setload(true)
+        setload(true)
     } 
   },[news, load])
 
