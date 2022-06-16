@@ -39,7 +39,7 @@ export default function RegisterForm(props) {
     const [realName, setrealName] = useState("");
     const [wechat, setwechat] = useState("");
     const [sex, setSex] = useState("");
-    const [birthday, setbirthday] = useState("")
+    const [birthday, setbirthday] = useState("2000-01-01")
     const [mobileNumber, setMobileNumber] = useState("");
 
     const [degree, setDegree] = useState("");

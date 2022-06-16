@@ -31,13 +31,13 @@ export default function LoginMainLayout({setToken}) {
     <div>
       {width > 800? <>
       <Image
-      src = "/loginback.jpg"
+      src = "https://test1-1311825037.cos.ap-nanjing.myqcloud.com/public/register_page_banner.png"
       style={{
         position: "fixed",
-        left: -450,
+        // left: -450,
         top: 0,
-        width:width,
-        height:"100%"
+        width: 960,
+        height: 1080
       }}
     /></> : null}
     <div className ="login-interface" style={{width: width > 800? "50%": "100%", minHeight:height, marginLeft:width > 800 ? "50%": null, display:"flex",justifyContent:width > 800? "left":"center"}}>

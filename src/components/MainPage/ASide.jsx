@@ -382,7 +382,7 @@ useEffect(() =>{
                   >
                     <div>
                       <Image
-                        src={"/loginback.jpg"}
+                        src={"https://test1-1311825037.cos.ap-nanjing.myqcloud.com/public/register_page_banner.png"}
                         style={{
                           width: "30px",
                           height: "30px",

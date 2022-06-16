@@ -100,7 +100,7 @@
   font-size: 14px;
   font-family: "Microsoft YaHei UI-Regular, Microsoft YaHei UI";
   font-weight: 400;
-  color: #C0C3CE;
+  color: black;
   line-height: 24px;
   border: 1px solid #2A2B30;
   /* background: #FFFFFF;
@@ -109,8 +109,10 @@
 }
 
 .form-control:focus {
-  border: none;
+  /* border: none; */
   box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02);
+  border: 1px solid #1442ED;
+  color: black;
 }
 
 @media screen and (max-width: 1350px) {
@@ -163,7 +165,6 @@
 
 .page-header-modal > .modal-dialog > .modal-content {
   border: none;
-  padding-left: 48px;
   width: 348px;
 }
 
@@ -175,13 +176,27 @@
   border-bottom: none;
 }
 
+.modal-body {
+  padding: 0;
+  margin-bottom: 24px;
+  margin-left: 48px;
+  font-size: 14px;
+  font-weight: 400;
+  color: black;
+  line-height: 24px;
+}
+
 .modal-footer {
   border-top: none;
-  justify-content: flex-start;
+  justify-content: space-between;
+  padding: 0;
   padding-bottom: 36px;
+  width: 300px;
+  padding-left: 48px;
 }
 
 .modal-btn {
+  margin: 0;
   font-size: 14px;
   font-family: Microsoft YaHei UI-Bold, Microsoft YaHei UI;
   font-weight: bold;
@@ -202,4 +217,8 @@
 .modal-btn-submit {
   color: #FFFFFF;
   background: linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%);
+}
+
+.btn-close {
+  
 }

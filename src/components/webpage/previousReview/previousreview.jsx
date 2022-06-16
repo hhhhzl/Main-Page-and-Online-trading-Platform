@@ -248,7 +248,7 @@ const Review = ({ projectImgs }) => {
             <div id="example-collapse-text">
               <ReactPlayer
                 className="player-wrapper"
-                url="https://test1-1311825037.cos.ap-nanjing.myqcloud.com/public/competition_intro_video.mp4"
+                url="https://test1-1311825037.cos.ap-nanjing.myqcloud.com/public/summary_video_v1.mp4"
                 width="100%"
                 height="100%"
                 controls={true}
