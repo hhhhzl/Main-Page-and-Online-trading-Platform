@@ -257,7 +257,7 @@ export default function EditData({
 						<FormGroup style={{marginTop:"36px"}}>
 							<Button
 								onClick={addExperience}
-								style={{width:"26.668%",height:"48px",backgroundColor: "#F5F6F8",border:0,color:"black"}}>
+								style={{width:"26.668%",height:"48px",backgroundColor: "#F5F6F8",border:0,color:"black",minWidth:"max-content"}}>
 								<Image
 								  src="/homeCutout/Group 864.png"
 								  style={{ width: "16px", height: "16px" }}
@@ -269,7 +269,7 @@ export default function EditData({
 					<div style={{marginTop:"60px",textAlign:"center"}}>
 						<div style={{textAlign:"center",padding:"60px"}}>
 
-							<Button disabled={Object.keys(userState).length == 0? true :false} style={{width:"26.668%",height:"48px"}} 
+							<Button disabled={Object.keys(userState).length == 0? true :false} style={{width:"26.668%",height:"48px",minWidth:"262px"}} 
 
 							 onClick = {() => {
 
