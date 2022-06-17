@@ -325,8 +325,8 @@ useEffect(() =>{
         <Modal.Header closeButton>
           {/* <Modal.Title>Modal heading</Modal.Title> */}
         </Modal.Header>
-        <Modal.Body>您确定要退出吗？</Modal.Body>
-        <Modal.Footer>
+        <Modal.Body className="active-500">您确定要退出吗？</Modal.Body>
+        <Modal.Footer style={{width:"100%",display:"flex",justifyContent:"space-evenly"}}>
           <Button
             className="modal-btn modal-btn-cancel"
             variant="secondary"

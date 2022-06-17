@@ -11,6 +11,7 @@ import { useDebounceEffect } from './useDebounceEffect'
 
 import 'react-image-crop/dist/ReactCrop.css'
 import { Modal,Image,Button } from "react-bootstrap";
+import useWindowDimensions from 'utils/sizewindow'
 // This is to demonstate how to make and center a % aspect crop
 // which is a bit trickier so we use some helper functions.
 function centerAspectCrop(
@@ -34,6 +35,7 @@ function centerAspectCrop(
 }
 
 export default function TeamRegisterModel({showModal,hideModal,getBase64,imgSrc}) {
+	const {width, height} = useWindowDimensions()
   const previewCanvasRef = useRef(null)
   const imgRef = useRef(null)
   const [crop, setCrop] = useState()
@@ -109,7 +111,8 @@ export default function TeamRegisterModel({showModal,hideModal,getBase64,imgSrc}
 	  className="rules-model"
 	>
 		<div style={{
-			background: "#FFFFFF"
+			background: "#FFFFFF",
+			width:width>800? "max-content" : 250
 		}}>
 			<div>
 				{Boolean(imgSrc) && (
@@ -167,7 +170,8 @@ export default function TeamRegisterModel({showModal,hideModal,getBase64,imgSrc}
 					>取消</Button>
 					<Button 
 						style={{
-							height: "38px"
+							height: "38px",
+							marginLeft:"20px"
 						}}
 					onClick={() => submit()}>确认</Button>
 				</div>

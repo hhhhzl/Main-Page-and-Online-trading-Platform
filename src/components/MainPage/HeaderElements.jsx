@@ -2,7 +2,7 @@ import { Link as LinkR } from "react-router-dom";
 import styled from "styled-components";
 import { Link as LinkS } from "react-scroll";
 
-export const HeaderOut = styled.nav`
+export const HeaderOut = styled.div`
   background: ${(props) =>
     props.scrolledDownEnough
       ? "#FFFFFF"
@@ -31,7 +31,7 @@ export const HeaderOut = styled.nav`
   //   border: none;
   // }
 
-  @media screen and (max-width: 426px) {
+  @media screen and (max-width: 467px) {
     padding: 0px 16px;
   }
 `;

@@ -1,22 +1,23 @@
-import { React, useState, useEffect, useContext } from "react";
 import { CloseOutlined, ExpandLess, ExpandMore } from "@material-ui/icons";
-import { Link as LinkS } from "react-scroll";
-import { Link as LinkR, useRouteMatch } from "react-router-dom";
-import Image from "react-bootstrap/Image";
-import { useHistory } from "react-router";
-import AuthContext from "../../context/AuthContext";
-import "./aside.css";
-import { MenuItemLinksRouter, HeaderBtnLink } from "./HeaderElements";
-import { clearLocalStorage, setPlatformType } from "utils";
-import useWindowDimensions from "../../utils/sizewindow";
-import { useDispatch, useSelector } from "react-redux";
+import { React, useContext, useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
+import Image from "react-bootstrap/Image";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
+import { Link as LinkR, useRouteMatch } from "react-router-dom";
+import { Link as LinkS } from "react-scroll";
+import { fetchUserSelf } from "redux/reducers/users/userSelf";
 import { fetchUser } from "redux/reducers/users/usersSlices";
+import { clearLocalStorage, setPlatformType } from "utils";
+import AuthContext from "../../context/AuthContext";
+import useWindowDimensions from "../../utils/sizewindow";
+import "./aside.css";
+import { HeaderBtnLink } from "./HeaderElements";
 
 const ASide = ({ isOpen, toggle }) => {
   const { width, height } = useWindowDimensions();
+  let { user, logoutUser, apikey, team, getcompetionapikey} = useContext(AuthContext);
   const { url } = useRouteMatch();
-  let { user, logoutUser, apikey } = useContext(AuthContext);
   const [scrolledDownEnough, setScrolledDownEnough] = useState(false);
   const [showContent, setShowContent] = useState(true);
   const [showFooterContent, setShowFooterContent] = useState(false);
@@ -26,7 +27,7 @@ const ASide = ({ isOpen, toggle }) => {
   const [shownotinTeam, setShowNotInTeam] = useState(false)
   const [showluntan, setshowluntan] = useState(false)
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => setShowLoginOutModal(false);
   const handleShow = () => setShow(true);
 
   const handleShowContent = () => {
@@ -76,7 +77,13 @@ const ASide = ({ isOpen, toggle }) => {
   const dispatch = useDispatch()
   const [submit, setsubmit] = useState(false)
   const [submitTeam, setsubmitTeam] = useState(false)
-  const { status } = useSelector((state) => state.userInfo);
+  const { status, data } = useSelector((state) => state.userInfo);
+  const { dataself, state } = useSelector((state) => state.userInfoself);
+  // const {news,read_or_not} = useSelector((state) => state.news)
+
+  const [loadself,setloadself] = useState(false)
+  const [load1, setload1] = useState(false)
+  const [load2, setload2] = useState(false)
 
   useEffect(() => {
     if (shownotinTeam){
@@ -106,6 +113,32 @@ useEffect(() =>{
   }
 },[submitTeam,status])
 
+//////////////////////////////////////////////load self data
+useEffect(() =>{
+  if (user && !loadself){
+    dispatch(fetchUserSelf(user.user_id))
+    setloadself(true)
+  }
+},[dispatch,loadself,user])
+
+
+
+//////////////////////////////////////////////////load news//////////////////////////////////////////////////////////
+// useEffect(()=>{
+//   if (user && team && !load1){
+//     console.log(user)
+//     dispatch(fetchNews({team: team?.metadata, user_id:user.user_id}))
+//     setload1(true)
+//   }
+// },[dispatch, team, user, load1])
+
+// useEffect(()=>{
+//   if (user && !team && !load2){
+//     dispatch(fetchNews({team: null, user_id:user.user_id}))
+//     setload2(true)
+//   }
+// },[dispatch, team, user, load2])
+
 
   useEffect(() => {
     if(width > 800){
@@ -125,8 +158,8 @@ useEffect(() =>{
         <Modal.Header closeButton>
           {/* <Modal.Title>Modal heading</Modal.Title> */}
         </Modal.Header>
-        <Modal.Body>您确定要退出吗？</Modal.Body>
-        <Modal.Footer>
+        <Modal.Body className="active-500">您确定要退出吗？</Modal.Body>
+        <Modal.Footer style={{width:"100%",display:"flex",justifyContent:"space-evenly"}}>
           <Button
             className="modal-btn modal-btn-cancel"
             variant="secondary"
@@ -159,7 +192,7 @@ useEffect(() =>{
         onHide={() => setshowluntan(false)}
       >
         <Modal.Header closeButton>
-          即将上线.....
+        <div className="active-500" style={{width:"100%",textAlign:"center"}}>即将上线.....</div>
           {/* <Modal.Title>Modal heading</Modal.Title> */}
         </Modal.Header>
       </Modal>
@@ -382,7 +415,7 @@ useEffect(() =>{
                   >
                     <div>
                       <Image
-                        src={"/loginback.jpg"}
+                        src={dataself? dataself.avatar : "/homeCutout/Group 1073.png"}
                         style={{
                           width: "30px",
                           height: "30px",
@@ -390,7 +423,7 @@ useEffect(() =>{
                         roundedCircle
                       />
                       <span className="sidebar-footer-username">
-                        {user.username}
+                      {dataself.username?.length>5 ? <>{dataself.username.slice(0,5)}...</> : dataself.username}
                       </span>
                     </div>
                     <span>

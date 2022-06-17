@@ -1,7 +1,7 @@
-import { Route, Redirect, useParams } from "react-router-dom";
 import React, { useContext } from "react";
-import AuthContext from "../context/AuthContext";
+import { Redirect, Route, useRouteMatch } from "react-router-dom";
 import { getchoice } from "utils";
+import AuthContext from "../context/AuthContext";
 
 const PrivateRegisterForCompetition = ({ children, ...rest }) => {
   let { user, apikey } = useContext(AuthContext);

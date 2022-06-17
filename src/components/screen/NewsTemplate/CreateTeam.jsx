@@ -1,4 +1,5 @@
 
+import { officialEmail } from 'constants/maps'
 import React, { Component } from 'react'
 import { Image } from 'react-bootstrap'
 
@@ -10,20 +11,21 @@ export default function CreateTeam({name, id}){
         </div>
         <br/>
         <div>
-        请扫码加入UFA赛事微信群:
+        请扫码添加UFA赛事小助手:
         </div>
         <br/>
 
         <div style={{display:"flex",justifyContent:"center"}}>
         <Image
-         src ={"/合作添加背景图.png"}
+         src ={"/小助手.jpg"}
          style={{width:"200px", height:"200px"}}
          />
          </div>
         <br/>
         <br/>
         <div>
-          <span style={{color:"blue"}}>如若无法加入请联系小助手</span> 或发送邮箱至 <span style={{color:"red"}}>ufa33ufa@gmail.com</span>
+          {/* <span style={{color:"blue"}}>如若无法加入请联系小助手</span>  */}
+          或发送邮箱至 <span style={{color:"red"}}>{officialEmail}</span>
         </div>
 
         <hr/>

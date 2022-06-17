@@ -56,24 +56,24 @@
   letter-spacing: 2px;
 }
 
-.step-icon{
+.step-icon {
   position: relative;
   top: 16px;
 }
 
-.footer-btn-container{
+.footer-btn-container {
   padding-bottom: 120px;
 }
 
-.footer-btn{
+.footer-btn {
   text-align: center;
   margin-top: 48px;
 }
 
-.sign-join-match-btn{
+.sign-join-match-btn {
   background: linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%);
   padding: 10px 32px;
-  font-family:"MicrosoftYaHei ";
+  font-family: "MicrosoftYaHei ";
   color: #FFFFFF;
   line-height: 24px;
   font-size: 14px;
@@ -84,33 +84,83 @@
 
 }
 
+.team-or-person {
+  padding-top: 120px;
+  display: flex;
+}
+
+.person {
+  margin-left: 36px;
+}
+
+.match-active {
+  cursor: pointer;
+  font-size: 60px;
+  font-family: Songti SC-Bold, Songti SC;
+  font-weight: bold;
+  color: #2A2B30;
+  line-height: 70px;
+  letter-spacing: 3px;
+}
+
+.match-normal {
+  cursor: pointer;
+  font-size: 24px;
+  font-family: Songti SC-Regular, Songti SC;
+  font-weight: 400;
+  color: #6E7184;
+  line-height: 48px;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.step-text-wrapper{
+  position: relative;
+  top: 16px;
+}
+
+.step-text-instr {
+  margin-left: -18px;
+  font-size: 16px;
+  font-family: Songti SC-Regular, Songti SC;
+  font-weight: 400;
+  color: #6E7184;
+  line-height: 28px;
+}
+
 @media screen and (max-width: 1200px) {
-  .step-text{
+  .step-text {
     font-size: 18px;
   }
-  .number{
+
+  .number {
     font-size: 50px;
   }
-  .sign-left{
-    width:50%;
+
+  .sign-left {
+    width: 50%;
   }
-  .sign-line{
+
+  .sign-line {
     width: 100px;
   }
 }
 
 @media screen and (max-width: 900px) {
-  .step-text{
+  .step-text {
     font-size: 16px;
   }
-  .number{
+
+  .number {
     font-size: 40px;
   }
-  .sign-left{
-    width:50%;
+
+  .sign-left {
+    width: 50%;
   }
 
-  .sign-line{
+  .sign-line {
     width: 80px;
   }
 }

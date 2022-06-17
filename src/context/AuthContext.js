@@ -4,6 +4,9 @@ import { useHistory, useLocation } from "react-router-dom";
 import { clearLocalStorage, getautologin, setPlatformType, cleanAutologin } from "utils";
 import { fetchUser } from "redux/reducers/users/usersSlices";
 import { useDispatch } from "react-redux";
+import {
+  useRouteMatch
+} from "react-router-dom";
 import { apiGetAllCompetitions, apiGetCompetitionAPIKey, apiGetCompetitiongetInfo, apiGetTeamAccount } from "api/main_platform/competitions";
 import { competitionID } from "constants/maps";
 import moment from "moment";
@@ -19,14 +22,17 @@ export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
   const dispatch = useDispatch();
+  const { url } = useRouteMatch();
   const [user, setuser] = useState(() =>
     localStorage.getItem("authTokens")
       ? jwt_decode(localStorage.getItem("authTokens"))
       : null
   );
-  const [apikey, setapikey] = useState(null);
-  const [competition, setcompetition] = useState(null)
-  const [team, setteam] = useState(null)
+  
+  const [team, setteam] = useState(() =>
+  localStorage.getItem("Team")
+    ? JSON.parse(localStorage.getItem("Team"))
+    : null)
   const [userdata, setuserdata] = useState(() =>
     localStorage.getItem("userSelf")
       ? JSON.parse(localStorage.getItem("userSelf"))
@@ -37,6 +43,9 @@ export const AuthProvider = ({ children }) => {
       ? JSON.parse(localStorage.getItem("authTokens"))
       : null
   );
+  const [apikey, setapikey] = useState(null);
+  const [competition, setcompetition] = useState(null)
+  
   const [loading, setloading] = useState(true);
 
   const location = useLocation()
@@ -94,7 +103,7 @@ export const AuthProvider = ({ children }) => {
 
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////
-  let autologin = async (e) =>{
+  let autologin = async (dest='') =>{
     let response = await fetch("http://82.157.18.223:10985/api/users/token/", {
         method: "POST",
         headers: {
@@ -111,18 +120,22 @@ export const AuthProvider = ({ children }) => {
         setuser(jwt_decode(data.data.access));
         localStorage.setItem("authTokens", JSON.stringify(data.data));
         cleanAutologin()
-        if (route.from == "/eplatform"){
-           setPlatformType("eplatform")
-          history.push(route.from);
-        }else if (route.from == "/competition"){
-         setPlatformType("competition")
-          history.push(route.from);
-        } else if (route.from == "/team/register"){
-            setPlatformType("competition")
-            history.push('/competition')        
-        }else{
-          history.push('/')
+
+        if(dest != "") {
+          history.push(dest)
         }
+        // if (route.from == "/eplatform"){
+        //    setPlatformType("eplatform")
+        //   history.push(route.from);
+        // }else if (route.from == "/competition"){
+        //  setPlatformType("competition")
+        //   history.push(route.from);
+        // } else if (route.from == "/team/register"){
+        //     setPlatformType("competition")
+        //     history.push('/competition')        
+        // }else{
+        //   history.push('/')
+        // }
       } else if (data.data.detail == "No active account found with the given credentials") {
         setshow(true)
       } else{
@@ -139,30 +152,32 @@ export const AuthProvider = ({ children }) => {
     setAuthTokens(null);
     setuser(null);
     localStorage.removeItem("authTokens");
+    localStorage.removeItem("Team");
+    localStorage.removeItem("Userchoice");
     clearLocalStorage();
     history.push("/");
   };
 
   
 
-  let updataToken = async () => {
-    console.log("update");
-    let response = await fetch("http://59.110.238.142:8000/api/users/token/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ refresh: authTokens.refresh }),
-    });
-    let data = await response.json();
-    if (data.msg != "The data in request body is invalid") {
-      setAuthTokens(data);
-      setuser(jwt_decode(data.access));
-      localStorage.setItem("authTokens", JSON.stringify(data));
-    } else {
-      loginUser();
-    }
-  };
+  // let updataToken = async () => {
+  //   console.log("update");
+  //   let response = await fetch("http://59.110.238.142:8000/api/users/token/", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ refresh: authTokens.refresh }),
+  //   });
+  //   let data = await response.json();
+  //   if (data.msg != "The data in request body is invalid") {
+  //     setAuthTokens(data);
+  //     setuser(jwt_decode(data.access));
+  //     localStorage.setItem("authTokens", JSON.stringify(data));
+  //   } else {
+  //     loginUser();
+  //   }
+  // };
 
 
   let getuserdata = async (id) =>{
@@ -175,17 +190,34 @@ export const AuthProvider = ({ children }) => {
     }
   } 
 
+  const GetCompetitionAPIKey = async () =>{
+    try{
+      console.log('>>> Geting APIKEY');
+      const response = await apiGetCompetitionAPIKey(competitionID)
+      console.log('>>> APIKEY', response.data)
+      if (response.data.msg == "OK."){
+        const apikey = response.data.data.api_key
+        setapikey(apikey)
+      }else{
+        setapikey(null)
+      }
+    }catch(e){
+      console.error('GetCompetitionAPIKey', e)
+    }
+  }
+
   let contextData = {
     loginUser: loginUser,
     user: user,
     apikey: apikey,
     authTokens: authTokens,
     logoutUser: logoutUser,
-    competition:competition,
-    team:team,
+    competition: competition,
+    team: team,
     autologin: autologin,
     getuserdata: getuserdata,
-    userdata:userdata
+    userdata: userdata,
+    getcompetionapikey: GetCompetitionAPIKey
   };
 
   // useEffect(()=>{
@@ -196,23 +228,7 @@ export const AuthProvider = ({ children }) => {
   //         }
   //     }, fourMinutes)
   //     return () => clearInterval(interval)
-  // },[authTokens,loading])
-
-  const GetCompetitionAPIKey = async () =>{
-    try{
-      const response = await apiGetCompetitionAPIKey(competitionID)
-      if (response.data.msg == "OK."){
-        const apikey = response.data.data.api_key
-        setapikey(apikey)
-      }else{
-        setapikey(null)
-      }
-    }catch(e){
-
-    }
-  }
-
-  
+  // },[authTokens,loading])  
 
   const GetCompetitions = async (id) =>{
     try{
@@ -243,8 +259,8 @@ export const AuthProvider = ({ children }) => {
           const response = await apiGetTeamAccount(team_id)
           if (response.data.msg == "OK."){
             const teamA = response.data.data
-            console.log(teamA,163)
             setteam(teamA)
+            localStorage.setItem("Team",JSON.stringify(teamA))
           }else{
             setteam(null)
           }
@@ -265,11 +281,12 @@ export const AuthProvider = ({ children }) => {
 
   ///////////////////////有user后自动请求apikey
   useEffect(() =>{
-    if (user){
+    if (user && (url != "/team/join" || url != "/team/create" || url != "/team/register")){
+      console.log("'''''''''''''''''here'''''''''''''''''")
       GetCompetitions(null)
       GetCompetitionAPIKey()
     }
-  },[user])
+  }, [user, url])
 
   useEffect(() =>{
     if (!user){
@@ -282,10 +299,12 @@ export const AuthProvider = ({ children }) => {
   /////////////////////有apikey后自动请求team
   useEffect(() =>{
     if (apikey){
-      GetCompetitionTeam(null)
       GetCompetitions(null)
+      if (!team){
+        GetCompetitionTeam(null)
+      }   
     }
-  },[apikey])
+  },[apikey,team])
 
   useEffect(()=>{
     if (!apikey){

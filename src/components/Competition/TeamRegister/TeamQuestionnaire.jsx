@@ -100,7 +100,7 @@ export default function TeamRegister({
                             <Form>
                                 <Form.Select
                                     style={{
-                                        width: "360px",
+                                        width: width > 360?  360 : 250,
                                         height: "40px",
                                         textAlign: "center",
                                         paddingTop: "8px",
@@ -139,7 +139,7 @@ export default function TeamRegister({
                             <Form>
                                 <Form.Select
                                     style={{
-                                        width: "360px",
+                                        width: width > 360?  360 : 250,
                                         height: "40px",
                                         textAlign: "center",
                                         paddingTop: "8px",
@@ -178,7 +178,7 @@ export default function TeamRegister({
                             <Form>
                                 <Form.Control placeholder={"请填写行业"}
                                               style={{
-                                                  width: "360px",
+                                                  width: width > 360?  360 : 250,
                                                   height: "40px",
                                                   textAlign: "center",
                                                   paddingTop: "8px",
@@ -198,7 +198,7 @@ export default function TeamRegister({
 
                             <Button disabled={disable}
                                     style={{
-                                        width: "288px",
+                                        width: width > 288?  288 : "90%",
                                         height: "48px",
                                         background: disable ? "#F5F6F8" : "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)",
                                         border: "1px solid #F5F6F8",

@@ -28,7 +28,6 @@ export default function Executive() {
                             <Image
                                 className="bottom-shadow-people-image"
                                 src="/homeCutout/chenbolin@2x.png"
-                                title="head image"
                                 id="img-txz"
                                 alt="header"
                                 style={{
@@ -40,7 +39,6 @@ export default function Executive() {
                                 <Image
                                     className="bottom-shadow-image-son"
                                     src="/homeCutout/Rectangle 656@2x.png"
-                                    title="head image"
                                     id="img-txz"
                                     alt="header"
                                 />
@@ -54,7 +52,6 @@ export default function Executive() {
                             <Image
                                 className="bottom-shadow-people-image"
                                 src="/homeCutout/helitong@2x.png"
-                                title="head image"
                                 id="img-txz"
                                 alt="header"
                                 style={{
@@ -65,7 +62,6 @@ export default function Executive() {
                                 <Image
                                     className="bottom-shadow-image-son"
                                     src="/homeCutout/Rectangle 656@2x.png"
-                                    title="head image"
                                     id="img-txz"
                                     alt="header"
                                 />
@@ -79,7 +75,7 @@ export default function Executive() {
                             <Image
                                 className="bottom-shadow-people-image"
                                 src="/homeCutout/hezhilin@2x.png"
-                                title="head image"
+                                
                                 id="img-txz"
                                 alt="header"
                                 style={{
@@ -90,7 +86,7 @@ export default function Executive() {
                                 <Image
                                     className="bottom-shadow-image-son"
                                     src="/homeCutout/Rectangle 656@2x.png"
-                                    title="head image"
+                                    
                                     id="img-txz"
                                     alt="header"
                                 />
@@ -106,7 +102,7 @@ export default function Executive() {
                             <Image
                                 className="bottom-shadow-people-image"
                                 src="/homeCutout/heruohang@2x.png"
-                                title="head image"
+                                
                                 id="img-txz"
                                 alt="header"
                                 style={{
@@ -117,7 +113,7 @@ export default function Executive() {
                                 <Image
                                     className="bottom-shadow-image-son"
                                     src="/homeCutout/Rectangle 656@2x.png"
-                                    title="head image"
+                                    
                                     id="img-txz"
                                     alt="header"
                                 />
@@ -131,7 +127,7 @@ export default function Executive() {
                             <Image
                                 className="bottom-shadow-people-image"
                                 src="/homeCutout/chenhaonan@2x.png"
-                                title="head image"
+                                
                                 id="img-txz"
                                 alt="header"
                                 style={{
@@ -142,7 +138,7 @@ export default function Executive() {
                                 <Image
                                     className="bottom-shadow-image-son"
                                     src="/homeCutout/Rectangle 656@2x.png"
-                                    title="head image"
+                                    
                                     id="img-txz"
                                     alt="header"
                                 />
@@ -156,7 +152,7 @@ export default function Executive() {
                             <Image
                                 className="bottom-shadow-people-image"
                                 src="/homeCutout/Jerry@2x.png"
-                                title="head image"
+                                
                                 id="img-txz"
                                 alt="header"
                                 style={{
@@ -167,7 +163,7 @@ export default function Executive() {
                                 <Image
                                     className="bottom-shadow-image-son"
                                     src="/homeCutout/Rectangle 656@2x.png"
-                                    title="head image"
+                                    
                                     id="img-txz"
                                     alt="header"
                                 />
@@ -182,7 +178,7 @@ export default function Executive() {
                     <div className="small-bottom">
                         <Image
                             src="/homeCutout/chenbolin.png"
-                            title="head image"
+                            
                             id="img-txz"
                             alt="header"
                             style={{
@@ -192,7 +188,7 @@ export default function Executive() {
                         <Image
                             className="bottom-shadow-image-son"
                             src="/homeCutout/Rectangle 656.png"
-                            title="head image"
+                            
                             id="img-txz"
                             alt="header"
                         />
@@ -204,7 +200,7 @@ export default function Executive() {
                     <div className="small-bottom">
                         <Image
                             src="/homeCutout/helitong.png"
-                            title="head image"
+                            
                             id="img-txz"
                             alt="header"
                             style={{
@@ -214,7 +210,7 @@ export default function Executive() {
                         <Image
                             className="bottom-shadow-image-son"
                             src="/homeCutout/Rectangle 656.png"
-                            title="head image"
+                            
                             id="img-txz"
                             alt="header"
                         />
@@ -226,7 +222,7 @@ export default function Executive() {
                     <div className="small-bottom">
                         <Image
                             src="/homeCutout/hezhilin.png"
-                            title="head image"
+                            
                             id="img-txz"
                             alt="header"
                             style={{
@@ -236,7 +232,7 @@ export default function Executive() {
                         <Image
                             className="bottom-shadow-image-son"
                             src="/homeCutout/Rectangle 656.png"
-                            title="head image"
+                            
                             id="img-txz"
                             alt="header"
                         />
@@ -248,7 +244,7 @@ export default function Executive() {
                     <div className="small-bottom">
                         <Image
                             src="/homeCutout/heruohang.png"
-                            title="head image"
+                            
                             id="img-txz"
                             alt="header"
                             style={{
@@ -258,7 +254,7 @@ export default function Executive() {
                         <Image
                             className="bottom-shadow-image-son"
                             src="/homeCutout/Rectangle 656.png"
-                            title="head image"
+                            
                             id="img-txz"
                             alt="header"
                         />
@@ -270,7 +266,7 @@ export default function Executive() {
                     <div className="small-bottom">
                         <Image
                             src="/homeCutout/chenhaonan.png"
-                            title="head image"
+                            
                             id="img-txz"
                             alt="header"
                             style={{
@@ -280,7 +276,7 @@ export default function Executive() {
                         <Image
                             className="bottom-shadow-image-son"
                             src="/homeCutout/Rectangle 656.png"
-                            title="head image"
+                            
                             id="img-txz"
                             alt="header"
                         />
@@ -292,7 +288,7 @@ export default function Executive() {
                     <div className="small-bottom">
                         <Image
                             src="/homeCutout/Jerry.png"
-                            title="head image"
+                            
                             id="img-txz"
                             alt="header"
                             style={{
@@ -302,7 +298,7 @@ export default function Executive() {
                         <Image
                             className="bottom-shadow-image-son"
                             src="/homeCutout/Rectangle 656.png"
-                            title="head image"
+                            
                             id="img-txz"
                             alt="header"
                         />

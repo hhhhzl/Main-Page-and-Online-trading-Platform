@@ -27,7 +27,10 @@ export default function ForgetPassword() {
 
   return (
     <div>
-    <div className="login-container" style={{marginLeft: width > 800? "18.75%": "10%", marginTop: height *0.1}}>
+    <div className="login-container" style={{
+      width: width > 420? 420 : width-60, 
+      marginLeft: width > 800 ? "40%" : null, 
+      marginTop: height *0.1}}>
      <Link style ={{color:"black",textDecoration:"none"}} to="/login"><ArrowBack/></Link>
       <Row style={{width:"100%"}}><Col xs = {7}>
       <h2 style={{
@@ -50,10 +53,13 @@ export default function ForgetPassword() {
         height:"24px",
         width:"100%"
         }}>
-      <h6 style={{ fontSize:"14px",
+      <h6 style={{ 
+        fontSize:"14px",
         fontFamily:"Microsoft YaHei UI-Bold",
         color:"#2A2B30",
-        lineHeight:"24px"}}>输入与您的帐户关联的电子邮件地址，我们将向您发送一个链接以重置您的密码。如忘记邮件地址，请联系管理员。</h6>
+        lineHeight:"24px",
+        textIndent:"2em"
+        }}>输入与您的帐户关联的电子邮件地址，我们将向您发送一个链接以重置您的密码。如忘记邮件地址，请联系管理员。</h6>
       </div>
         </Col>
         <Col xs={0}>
@@ -64,7 +70,7 @@ export default function ForgetPassword() {
       <br/>
      
       <Form noValidate validated={validated} id="addProject" >
-      <Form.Group as={Row}  className="loadinglogin">
+      <Form.Group as={Row}  className="loadingusername">
         <Form.Label column sm={3} style={{color:"black",fontSize:"14px"}} >
           邮箱
         </Form.Label>

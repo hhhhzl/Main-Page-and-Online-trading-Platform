@@ -52,7 +52,6 @@ const searchSwitch = () => {
         try {
             const response = await apiGetAllTeamAccounts()
             const responsedata = response.data.data
-            console.log(responsedata)
             try {
                 const newPeopleArray = await Promise.all(responsedata.map(async function(team) {
                     const responseUser = await apiGetUser(team.leader);
@@ -61,6 +60,7 @@ const searchSwitch = () => {
                 }));
                 console.log(newPeopleArray)
                 const teamlist = []
+                
                 for (let i = 0; i < responsedata.length; i++) {
                     const LeaderInfo = newPeopleArray[i]
                     const teamInfo = responsedata[i]
@@ -68,7 +68,8 @@ const searchSwitch = () => {
                     teamInfo.leaderemail = LeaderInfo.email
                     teamlist.push(teamInfo)
                   }
-                setteamdata(teamlist)
+                const teamfilter = teamlist.filter(elem => elem.members_count <4 && elem.finalized == false)
+                setteamdata(teamfilter)
 
             } catch (e) {
                 console.log(e);
@@ -90,7 +91,7 @@ const searchSwitch = () => {
                 return (
                     <>
                     <div style={{display:"flex",justifyContent:"right"}}>
-                    <Image src={value} rounded style={{width:"36px",height:"36px"}}/>
+                    <Image src={value} roundedCircle style={{width:"36px",height:"36px"}}/>
                     </div>
                     </>
                 )
@@ -240,7 +241,7 @@ const searchSwitch = () => {
                     </div>
 
                     <div style={{marginTop:"12px",display:"flex", justifyContent:"center"}}>
-                    <Form style={{width:"360px",height:"48px"}} >
+                    <Form style={{width:width>360? 360 :250,height:"48px"}} >
         <ToolkitProvider  
                       keyField="name"
                       data={ teamdata? teamdata :null }
@@ -265,7 +266,7 @@ const searchSwitch = () => {
                         />   
                         </InputGroup>          
                         <Collapse in= {scrollswitch}>
-                         <div style={{position:"absolute",height:"250px",marginLeft:"0px",zIndex:999, width:"360px",background: "white", overflow:"scroll",borderRadius: "4px 4px 4px 4px",border: "1px solid #C0C3CE"}}>
+                         <div style={{position:"absolute",height:"250px",marginLeft:"0px",zIndex:999, width:width>360? 360 :250,background: "white", overflow:"scroll",borderRadius: "4px 4px 4px 4px",border: "1px solid #C0C3CE"}}>
                         <BootstrapTable 
                         { ...props.baseProps}
                          hover = {true}
@@ -289,7 +290,7 @@ const searchSwitch = () => {
 
                     <div style={{marginTop:"312px",display:"flex", justifyContent:"center"}}>
 
-                    <Button disabled={disable} style ={{width:"288px",height:"48px", backgroundColor:disable? "#F5F6F8" : "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)", 
+                    <Button disabled={disable} style ={{width:width>288? 288 :"90%",height:"48px", backgroundColor:disable? "#F5F6F8" : "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)", 
                         border:"1px solid #F5F6F8", borderRadius:"4px 4px 4px 4px",
                         boxShadow:disable? null : "0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08)",
                         }}

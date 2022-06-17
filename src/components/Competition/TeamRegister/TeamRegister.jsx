@@ -20,10 +20,12 @@ export default function TeamRegister({
     setlianghua,
     duotou,
     setduotou,
+    headPortrait,
+    setHeadPortrait
 }){
     const {width,height} = useWindowDimensions();
     const [disable, setdisable] = useState(true)
-	const [headPortrait,setHeadPortrait] = useState('/homeCutout/Group 1073@2x.png')
+	// const [headPortrait,setHeadPortrait] = useState('/homeCutout/Group 1073@2x.png')
     const history= useHistory()
     const sendUserback = () => {history.push("/team/register")}
 
@@ -108,7 +110,7 @@ export default function TeamRegister({
                      填写团队信息
                     </div>
                 </div>
-                <div style={{height:"max-content",minHeight:"700px",width:"100%", backgroundColor:"white"}}>
+                <div style={{height:"max-content",minHeight:"700px",width:"100%", backgroundColor:"white", paddingBottom:"60px"}}>
 
                     <div style={{marginLeft:"24px", height:"8.57%"}}>
                         <IconButton onClick={() => sendUserback()} style={{paddingTop:"24px", paddingBottom:"16px"}}>
@@ -137,7 +139,7 @@ export default function TeamRegister({
 
 							<Button
 								style={{
-									width: "120px",
+									width: "150px",
 									height: "40px",
 									background: "#F5F6F8",
 									borderRadius: "4px 4px 4px 4px",
@@ -148,12 +150,12 @@ export default function TeamRegister({
 								onClick={chooseFile}
 							><div style={{
                                 fontSize:"14px",
-                                fontFamily:"Microsoft YaHei UI-Bold, Microsoft YaHei UI;",
+                                fontFamily:"Microsoft YaHei UI-Bold, Microsoft YaHei UI",
                                 fontWeight:"bold",
                                 color:"#2A2B30",
                                 lineHeight:"24px",
 
-                            }}>上传头像</div></Button>
+                            }}>上传头像（选填）</div></Button>
 							<input
 								hidden
 								ref={uploadFile}
@@ -170,7 +172,7 @@ export default function TeamRegister({
                     <div style={{marginTop:"36px",display:"flex", justifyContent:"center"}}>
                         <div style={{
                         fontSize:"20px",
-                        fontFamily:"Microsoft YaHei UI-Bold, Microsoft YaHei UI;",
+                        fontFamily:"Microsoft YaHei UI-Bold, Microsoft YaHei UI",
                         fontWeight:"bold",
                         color:"#2A2B30",
                         lineHeight:"40px",
@@ -183,18 +185,29 @@ export default function TeamRegister({
 
                     <div style={{marginTop:"12px",display:"flex", justifyContent:"center"}}>
                         <Form>
-                            <Form.Control placeholder={"请填写团队名称 (中文+英文最多八位字符)"}
-                            style={{width:"360px", height:"40px",textAlign:"center", paddingTop:"8px",border:"1px solid #C0C3CE", background:"white", borderRadius:"4px 4px 4px 4px"}}
+                            <Form.Control placeholder={"请填写团队名称"}
+                            style={{width:width>360? 360 : 250, height:"40px",textAlign:"center", paddingTop:"8px",border:"1px solid #C0C3CE", background:"white", borderRadius:"4px 4px 4px 4px"}}
                             value={teamname}
                             onChange={(e) => setteamname(e.target.value)}
                             />
                         </Form>
                     </div>
+                    <div style={{marginTop:"6px",display:"flex", justifyContent:"center"}}>
+                        <div style={{
+                            fontSize:"14px",
+                            fontFamily:"Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+                            color:"#C0C3CE",
+                            lineHeight:"24px",
+                        }}>
+                            *团队名最多为八位。
 
-                    <div style={{marginTop:"36px",display:"flex", justifyContent:"center"}}>
+                        </div>
+                    </div>
+
+                    <div style={{marginTop:"16px",display:"flex", justifyContent:"center"}}>
                         <div style={{
                         fontSize:"20px",
-                        fontFamily:"Microsoft YaHei UI-Bold, Microsoft YaHei UI;",
+                        fontFamily:"Microsoft YaHei UI-Bold, Microsoft YaHei UI",
                         fontWeight:"bold",
                         color:"#2A2B30",
                         lineHeight:"40px",
@@ -211,12 +224,22 @@ export default function TeamRegister({
                         <Form>
                             <Form.Check type="radio" checked={lianghua} value={lianghua} onClick ={(e) => selectionTracklianghua(e)}/>
                         </Form>
-                        <div style={{marginLeft:"8px", marginRight:"24px"}}>量化赛道</div>
+                        <div style={{
+                            fontSize:"14px",
+                            fontFamily:"Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+                            fontWeight:"500",
+                            color:"#2A2B30",
+                            marginLeft:"8px", marginRight:"24px"}}>量化赛道（通过代码交易）</div>
 
                         <Form>
                             <Form.Check type="radio"  checked={duotou} value={duotou} onClick ={(e) => selectionTrackduotou(e)}/>
                         </Form>
-                        <div style={{marginLeft:"8px", marginRight:"24px"}}>主观赛道</div>
+                        <div style={{
+                        fontSize:"14px",
+                        fontFamily:"Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+                        fontWeight:"500",
+                        color:"#2A2B30",
+                        marginLeft:"8px", marginRight:"24px"}}>主观赛道 （普通投资者）</div>
 
                         </div>
 
@@ -224,7 +247,7 @@ export default function TeamRegister({
                     <div style={{marginTop:"12px",display:"flex", justifyContent:"center"}}>
                         <div style={{
                             fontSize:"14px",
-                            fontFamily:"Microsoft YaHei UI-Bold, Microsoft YaHei UI;",
+                            fontFamily:"Microsoft YaHei UI-Bold, Microsoft YaHei UI",
                             color:"#C0C3CE",
                             lineHeight:"24px",
                         }}>
@@ -236,7 +259,7 @@ export default function TeamRegister({
                     <div style={{marginTop:"60px",display:"flex", justifyContent:"center"}}>
 
                         <Button disabled={disable}
-                        style ={{width:"288px",height:"48px", background:disable? "#F5F6F8" : "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)",
+                        style ={{width:width > 288?  288 : "90%",height:"48px", background:disable? "#F5F6F8" : "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)",
                         border:"1px solid #F5F6F8", borderRadius:"4px 4px 4px 4px",
                         boxShadow:disable? null : "0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08)",
                         }}

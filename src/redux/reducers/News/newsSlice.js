@@ -1,75 +1,109 @@
+import { ControlCameraOutlined } from "@material-ui/icons";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { apiGetJoinTeamRequest } from "api/main_platform/competitions";
+import { apiGetCompetitionRequestsMemeber, apiGetJoinTeamRequest } from "api/main_platform/competitions";
 import { apiGetAdminMessageRecipient, apiGetSelfAdminMessages, apiReadAdminMessage } from "api/main_platform/user_messages";
 
 
+const getAdminMessage = async () =>{
+    try {
+        const responseR = await apiGetSelfAdminMessages()
+        const messageNews = responseR.data.data
+        const row_before = []
+        try {
+            const newNewsArray = await Promise.all(messageNews.map(async function(message) {
+                const responseUser = await apiGetAdminMessageRecipient(message.id);
+                const Leaderdata = responseUser.data.data;
+                return Leaderdata;
+            }));
+            for (let i = 0; i < messageNews.length; i++) {
+                const readInfo = newNewsArray[i].recipient
+                const messageFinal = messageNews[i]
+                messageFinal.is_read = readInfo.is_read
+                messageFinal.status = "Message"
+                row_before.push(messageFinal)
+                }
+            return row_before
+        }catch(e){
+
+        }
+    }catch(e){
+
+    }
+}
+
+const getRequests = async (team, user_id) =>{
+    let before_filter= [] 
+    let row_before = []
+    console.log("fetchingNews",team,user_id)
+    try{
+        // member
+        if (!team || team.leader != user_id){
+            const response2 = await apiGetCompetitionRequestsMemeber()
+            const requests = response2.data.data
+            for (let i = 0; i < requests.length; i++){
+                before_filter = requests[i]   
+                before_filter.created_at = before_filter.request_time
+                if (["P"].includes(before_filter.status)){
+                    before_filter.is_read = false
+                }else{
+                    before_filter.is_read = true
+                }
+                row_before.push(before_filter)
+            } 
+            return row_before
+        } else if (team && team.leader == user_id){
+            const response2 = await apiGetJoinTeamRequest(team.id)
+            const requests = response2.data.data
+            for (let i = 0; i < requests.length; i++){
+                before_filter = requests[i]   
+                before_filter.created_at = before_filter.request_time
+                if (["P"].includes(before_filter.status)){
+                    before_filter.is_read = false
+                }else{
+                    before_filter.is_read = true
+                }
+                row_before.push(before_filter)
+            } 
+            return row_before
+        }
+    }catch(e){
+        console.log(e)
+    }
+}
 
 const initialState = {
     news: [],
     state: null,
     loading: true,
-    read_or_not:null
+    read_or_not:null,
+    need_to_reload: false
 }
 
 export const fetchNews = createAsyncThunk(
     "news/fetchNews",
-    async (team_id) => {
-        console.log(".......................................",team_id)
-        try {
-            const responseR = await apiGetSelfAdminMessages()
-            const messageNews = responseR.data.data
-            const teamlist = []
-            let read = false
-
-            try {
-                const newNewsArray = await Promise.all(messageNews.map(async function(message) {
-                    const responseUser = await apiGetAdminMessageRecipient(message.id);
-                    const Leaderdata = responseUser.data.data;
-                    return Leaderdata;
-                }));
-
-                console.log(newNewsArray)
-
-                for (let i = 0; i < messageNews.length; i++) {
-                    const readInfo = newNewsArray[i].recipient
-                    if (!readInfo.is_read){
-                        read = true
-                    } 
-                    const messageFinal = messageNews[i]
-                    messageFinal.is_read = readInfo.is_read
-                    teamlist.push(messageFinal)
-                    }
-           
-                const requestdata = []
-                let row = []
-                if (team_id){
-                    try{
-                        const response2 = await apiGetJoinTeamRequest(team_id)
-                        const requests = response2.data.data  
-                            for (let i = 0; i < requests.length; i++){
-                                row = requests[i]
-                                
-                                if (requests[i].status == "P"){
-                                    read = true
-                                    row.is_read = false   
-                                }else if(requests[i].status == "A")  {
-                                    row.is_read = true
-                                }      
-                                row.created_at = row.request_time              
-                            }      
-                    }catch(e){
-                        console.log(e)
-                    }
-                }  
-                const messagetotal = [].concat(teamlist,row)
-                const messageSorted = messagetotal.sort((a,b) => Date.parse(b.created_at) - Date.parse(a.created_at))
-                for (let i = 0; i< messageSorted.length; i++){
-                    messageSorted[i].message_id = i + 1
-                }
-                return {messageSorted, read}
-            } catch (e) {
-                console.log(e);
-            }
+    async ({team, user_id, reload}) => {
+        let read = false
+        console.log("fetchingNews",team,user_id)
+        try{   
+            const newArrays = await Promise.all([getRequests(team, user_id),getAdminMessage()])
+            let unsortArray = []
+            let mergedArray = []
+            let sortedArray = []
+            for (let i = 0; i < newArrays.length; i++){
+                    for (let j = 0; j < newArrays[i].length; j++) {
+                        mergedArray = newArrays[i][j]
+                        if (mergedArray.is_read == false){
+                                read = true
+                        }    
+                        unsortArray.push(mergedArray)
+                    }       
+            } 
+            sortedArray = unsortArray.sort((a,b) => Date.parse(b.created_at) - Date.parse(a.created_at))
+            for (let i = 0; i< sortedArray.length; i++){
+                sortedArray[i].message_id = i + 1
+           }
+           console.log("getallnews",sortedArray)
+            return {sortedArray,read, reload}
         }catch(e){
             console.log(e)
         }
@@ -94,7 +128,8 @@ export const NewsSlice = createSlice({
             state.loading = true;
         })
         .addCase(fetchNews.fulfilled, (state,action) =>{
-            state.news = action.payload.messageSorted;
+            state.news = action.payload.sortedArray;
+            state.need_to_reload = action.payload.reload
             state.state = "fulfilled";
             state.loading = false;
             state.read_or_not = action.payload.read

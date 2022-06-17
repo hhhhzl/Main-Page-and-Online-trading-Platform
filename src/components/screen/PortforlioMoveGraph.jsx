@@ -204,7 +204,7 @@ export default function PorforlioMoveGraph({
                 }} variant="outline-primary"
                 onClick={() => {setTimeP(platform == "competition"? 11 : 21);setID(1)}}
                 >
-                {platform == "competition"? "15D" : "1M"}
+                {platform == "competition" || url == "/team"? "15D" : "1M"}
                 </Button>
 
                 <Button style={{height:"36px",borderBottom: id == 2? "3px solid #26409A" : "0px",
@@ -224,7 +224,7 @@ export default function PorforlioMoveGraph({
                 }} variant="outline-primary"
                 onClick={() => {setTimeP(platform == "competition"? 21 : 63);setID(2)}}
                 >
-                {platform == "competition"? "1M" : "3M"}
+                {platform == "competition" || url == "/team"? "1M" : "3M"}
                 </Button>
 
                 <Button style={{height:"36px",borderBottom: id == 3? "3px solid #26409A" : "0px",
@@ -244,7 +244,7 @@ export default function PorforlioMoveGraph({
                 }} variant="outline-primary"
                 onClick={() => {setTimeP(platform == "competition"? 42 : 126);setID(3)}}
                 >
-                {platform == "competition"? "2M" : "6M"}
+                {platform == "competition" || url == "/team"? "2M" : "6M"}
                 </Button>
 
                 <Button style={{height:"36px",borderBottom: id == 4? "3px solid #26409A" : "0px",
@@ -264,7 +264,7 @@ export default function PorforlioMoveGraph({
                 }} variant="outline-primary"
                 onClick={() => {setTimeP(platform == "competition"? 126 : 250);setID(4)}}
                 >
-                {platform == "competition"? "3M" : "1Y"}
+                {platform == "competition" || url == "/team"? "3M" : "1Y"}
                 </Button>
 
                 <Button style={{height:"36px",borderBottom: id == 5? "3px solid #26409A" : "0px",

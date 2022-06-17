@@ -23,6 +23,7 @@ export default function EditData({
 	const [experienceList,setExperienceList] = useState(userget.experience?.length> 0? userget.experience : [
 		{company:"",position:"",detail:""}
 	])
+	const [headPortrait,setHeadPortrait] = useState(userget? userget.avatar : null)
 	const [successSendtoC, setsuccessSendtoC] = useState(false)
 	const history= useHistory()
 	const dispatch = useDispatch();
@@ -45,7 +46,7 @@ export default function EditData({
 	const uploadFile = React.createRef();
 	const [showModal, setShowModal] = useState(false);
 	const [imgSrc, setImgSrc] = useState('')
-	const [headPortrait,setHeadPortrait] = useState(userget? userget.avatar :'/Lindsay.jpg')
+	
 
 	const hideModal = () => {
 	  setShowModal(false);
@@ -84,11 +85,22 @@ export default function EditData({
 		}
 	},[submit,status])
 
+	useEffect(() => {
+		setlastname(userget? userget.last_name: "");
+		setinstitution(userget? userget.institution : "");
+		setPersonalProfile(userget? userget.profile : "");
+		setExperienceList(userget.experience?.length> 0? userget.experience : [
+		{company:"",position:"",detail:""}])
+		setHeadPortrait(userget? userget.avatar : null)	
+	},[userget])
+
 
 	return(
 		<>
 		<Modal
         show={successSendtoC}
+		className="general-modal"
+		centered
         >
           <Modal.Header></Modal.Header>
           <Modal.Body style={{textAlign:"center"}}><div style={{fontSize: "14px",
@@ -96,8 +108,7 @@ export default function EditData({
                                     fontWeight: "bold",
                                     color: "#2A2B30",
                                     lineHeight:"24px"}}>个人信息已修改成功</div></Modal.Body>
-        <Modal.Footer style={{marginLeft:0}} >
-            <div style={{width:"100%",display:"flex",justifyContent:"center"}}>
+        <Modal.Footer style={{justifyContent: "center"}} >
             <Button className="modal-btn modal-btn-submit"  variant="primary"
 			 onClick ={() => {
 				 dispatch(fetchUser(user.user_id))
@@ -106,8 +117,6 @@ export default function EditData({
 			 }}>
             确定
           </Button>
-        </div>
-
           </Modal.Footer>
         </Modal>
 
@@ -217,7 +226,7 @@ export default function EditData({
 									  />
 									</FormGroup>
 
-									<FormGroup style={{width: "44%",marginLeft:"4%"}}>
+									<FormGroup style={{width: "48%",marginLeft:"4%"}}>
 									  <FormLabel className="edit-form-label">实习职位</FormLabel>
 									  <div style={{display:"flex",alignItems: "center"}}>
 										  <FormControl
@@ -258,7 +267,7 @@ export default function EditData({
 						<FormGroup style={{marginTop:"36px"}}>
 							<Button
 								onClick={addExperience}
-								style={{width:"26.668%",height:"48px",backgroundColor: "#F5F6F8",border:0,color:"black"}}>
+								style={{width:"26.668%",height:"48px",backgroundColor: "#F5F6F8",border:0,color:"black",minWidth:"max-content"}}>
 								<Image
 								  src="/homeCutout/Group 864.png"
 								  style={{ width: "16px", height: "16px" }}
@@ -270,12 +279,12 @@ export default function EditData({
 					<div style={{marginTop:"60px",textAlign:"center"}}>
 						<div style={{textAlign:"center",padding:"60px"}}>
 
-							<Button disabled={Object.keys(userState).length == 0? true :false} style={{width:"26.668%",height:"48px"}} 
+							<Button disabled={Object.keys(userState).length == 0? true :false} style={{width:"26.668%",height:"48px",minWidth:"262px"}} 
 
 							 onClick = {() => {
 
-								 console.log(userState,254)
-								 dispatch(
+								console.log('update user', userState, 254)
+								dispatch(
 									 updateUserSelf({
 									 data: userState
 									}))

@@ -97,13 +97,13 @@ export default function Cover() {
         show={showwheretogo}
         onHide={() => setshowwheretogo(false)}
         centered
-        // className="page-header-modal"
+        className="general-modal"
       >
         <Modal.Header closeButton>
           {/* <Modal.Title>Modal heading</Modal.Title> */}
         </Modal.Header>
-        <Modal.Body style={{textAlign:"center"}}>你还没有登录哟，需要登录注册即可报名比赛！！</Modal.Body>
-        <Modal.Footer style={{display:"flex", justifyContent:"center"}}>
+        <Modal.Body>您还没有登录，请先登录或者注册再报名参加比赛。</Modal.Body>
+        <Modal.Footer style={{width:"100%",display:"flex",justifyContent:"space-evenly"}}>
           <Button
             className="modal-btn modal-btn-cancel"
             variant="secondary"
@@ -112,7 +112,7 @@ export default function Cover() {
               history.push("/team/register")
             }}
           >
-            去登录
+            前往登录
           </Button>
           <Button
             className="modal-btn modal-btn-submit"
@@ -124,7 +124,7 @@ export default function Cover() {
               
             }
           >
-            去注册
+            前往注册
           </Button>
         </Modal.Footer>
       </Modal>

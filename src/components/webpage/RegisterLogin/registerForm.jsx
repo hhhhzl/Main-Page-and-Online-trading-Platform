@@ -1,5 +1,7 @@
 import { IconButton } from "@material-ui/core";
 import { ArrowBack } from "@material-ui/icons";
+import { Worker, Viewer } from "@react-pdf-viewer/core";
+import '@react-pdf-viewer/core/lib/styles/index.css';
 import { apiRegisterUser } from "api/main_platform/users";
 import { mapUserDegree } from "constants/maps";
 import AuthContext from "context/AuthContext";
@@ -10,18 +12,19 @@ import ToolkitProvider from "react-bootstrap-table2-toolkit";
 import Image from 'react-bootstrap/Image';
 import { useHistory } from "react-router";
 import { Link } from 'react-router-dom';
-import areadata from "../../../constants/地区.json";
 import schooldata from "../../../constants/学校.json";
 import { getFileName, setautologin } from "../../../utils";
 import useWindowDimensions from "../../../utils/sizewindow";
 import TeamRegisterModel from "../../screen/modal/TeamRegisterModel";
 import './loginpage.css';
-const moment = require('moment-timezone');
+import samplePDF from "assets/pdf/用户协议.pdf"
+
 
 export default function RegisterForm(props) {
     const {autologin} = useContext(AuthContext)
     const [userState, setUserState] = useState({})
     const [show, setShow] = useState(false);
+    const [showTiaokuan, setshowTiaokuan] = useState(false)
     const [showerror, setshowerror] = useState(false)
     const [showfail, setshowfail] = useState(false)
     const [showfailpassward, setshowfailpassward] = useState(false)
@@ -36,7 +39,7 @@ export default function RegisterForm(props) {
     const [realName, setrealName] = useState("");
     const [wechat, setwechat] = useState("");
     const [sex, setSex] = useState("");
-    const [birthday, setbirthday] = useState("")
+    const [birthday, setbirthday] = useState("2000-01-01")
     const [mobileNumber, setMobileNumber] = useState("");
 
     const [degree, setDegree] = useState("");
@@ -110,20 +113,30 @@ export default function RegisterForm(props) {
         e.target.value = "";
     };
 
-    const handleSubmit = () => {
-        setValidated1(true);
-    };
-
-    function IsPassword(confirmPassword) {
-        if (password === confirmPassword) {
-            return "^.{1,15}";
-        } else {
-            return "^.{200,500}";
-        }
-    }
-
     const [imgSrc, setImgSrc] = useState('')
     const [showModal, setShowModal] = useState(false);
+    const [passwordErrors, setPasswordErrors] = useState([]);
+
+    useEffect(() => {
+        const errors = [];
+        if (password.length < 8) {
+            errors.push("Your password must be at least 8 characters");
+        }
+        if (password.length > 15) {
+            errors.push("Your password must be less than 15 characters");
+        }
+
+        if (password.search(/[a-zA-Z]/i) < 0) {
+            errors.push("Your password must contain at least one letter.");
+        }
+
+        if (password.search(/[0-9]/) < 0) {
+            errors.push("Your password must contain at least one digit."); 
+        }
+
+        console.log('password errors', errors);
+        setPasswordErrors(errors);
+    }, [password])
 
     function onSelectFile(e: React.ChangeEvent<HTMLInputElement>) {
         if (e.target.files && e.target.files.length > 0) {
@@ -162,7 +175,8 @@ export default function RegisterForm(props) {
                 props.email = userState.email
                 props.password = userState.password
                 setautologin(JSON.stringify(props))
-                autologin()
+                // autologin()
+                setShow(true);
             }else if (response.data.msg == "The password does not meet the complexity requirement.") {
                 setshowfailpassward(true)
             }else{
@@ -175,14 +189,12 @@ export default function RegisterForm(props) {
     }
 
     const sendUser = (id) =>{
-        if (id == 1){
-            history.push("/login")
-        }else{
-            history.push("/")
+        if (id == 0){
+            autologin("/");
+        } else if (id == 1) {
+            autologin("/team/register");
         }
-
     }
-
 
     const [linkedSchool, setLinkedSchool] = useState("")
     const [linkedArea, setLinkedArea] = useState("")
@@ -280,33 +292,67 @@ export default function RegisterForm(props) {
     useEffect(()=>{
         if (submit){
             if (headPortrait === "/homeCutout/Group 1074.png"){
-                setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value}})
+                setUserState({...userState, ...{institution:linkedSchool.value},})
                 setsubmit(false)
 
             }else{
-                setUserState({...userState, ...{institution:linkedSchool.value},...{region:linkedArea.value},...{avatar:headPortrait}})
+                setUserState({...userState, ...{institution:linkedSchool.value},...{avatar:headPortrait}})
                 setsubmit(false)
             }
         }
     }, [submit, userState])
 
-
+    useEffect(() => {
+        if (headPortrait !== "/homeCutout/Group 1074.png") {
+            setUserState({...userState, ...{avatar: headPortrait}}) 
+        }
+    }, [headPortrait])
 
     return (
         <>
+        <Modal
+        show={showTiaokuan}
+        onHide={() => setshowTiaokuan(false)}
+        size='lg'
+        // fullscreen={true}
+        aria-labelledby="example-modal-sizes-title-lg"
+        centered
+        >
+          <Modal.Header closeButton></Modal.Header>
+          <Modal.Body className="active-500" style={{textAlign:"center"}}>
+                     <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
+                     <div
+                        style={{
+                            border: '1px solid rgba(0, 0, 0, 0.3)',
+                            height: height-200,
+                            overflow:"auto",
+                        }}
+                    >
+                        <Viewer fileUrl= {samplePDF} />
+    
+                        </div>
+                         
+                    </Worker>
+               </Modal.Body>
+        </Modal>
 
        <Modal
         show={show}
         centered
+        className="general-modal"
         >
           <Modal.Header></Modal.Header>
-          <Modal.Body style={{textAlign:"center"}}>用户已成功注册 </Modal.Body>
-        <Modal.Footer style={{width:"100%", display:"flex",justifyContent:"center"}}  >
-            <Button style={{marginRight:"20px"}} className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUser(0)}>
-            回主页
+          <Modal.Body className="active-500">
+            恭喜您注册成功！请根据邮件指示，扫描二维码加入赛事交流微信群。
+            <br />
+            请点击下方“报名赛事”进行大赛报名。
+          </Modal.Body>
+        <Modal.Footer style={{width:"100%", display:"flex", justifyContent:"space-evenly"}}>
+            <Button className="modal-btn modal-btn-cancel"  variant="primary" onClick ={() => sendUser(0)}>
+            返回首页
           </Button>
-          <Button style={{marginLeft:"20px"}} className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUser(1)}>
-            去登录
+          <Button className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUser(1)}>
+            报名赛事
           </Button>
           </Modal.Footer>
         </Modal>
@@ -343,11 +389,14 @@ export default function RegisterForm(props) {
             {page == 1?
             <>
             <div className="login-container"
-                 style={{marginLeft: width > 800 ? "18.75%" : "10%", marginTop: height * 0.09}}>
+                 style={{
+                     width: width > 420? 420 : width-60, 
+                    marginLeft: width > 800 ? "18.75%" : null, 
+                    marginTop: height * 0.09,}}>
                 <Link className="Link-hover" style={{color: "black", textDecoration: "none"}} to="/home"><ArrowBack/></Link>
                 <div style={{width: "100%"}}>
                     <div style={{
-                        width: "250px",
+                        // width: "250px",
                         height: "80px",
                         fontSize: "40px",
                         fontFamily: "Microsoft YaHei UI-Bold",
@@ -361,8 +410,9 @@ export default function RegisterForm(props) {
                 <div>
                     <div >
                         <div style={{
-                            width: "88px",
+                            // width: "88px",
                             height: "24px",
+                            marginLeft:"0px"
                         }}>
                             <h6 style={{
                                 fontSize: "14px",
@@ -417,11 +467,11 @@ export default function RegisterForm(props) {
                 <Form noValidate validated={validated1} id="addProject" onSubmit={(event) => {
                     const form = event.currentTarget;
                     if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    setValidated1(true)
+                        event.preventDefault();
+                        event.stopPropagation();
+                        setValidated1(true)
                     }else{
-                       setpage(2)
+                        setpage(2)
                     }
                 }}>
 
@@ -438,7 +488,7 @@ export default function RegisterForm(props) {
                             className="loadinglogin"
                             required
                             value={username}
-                            pattern= "^[A-Za-z0-9_\u4e00-\u9fff]{4,12}$"
+                            pattern= "^[A-Za-z0-9_\u4e00-\u9fff]{2,10}$"
                             onChange={(e) => {
                                 const username = e.target.value
                                 setUsername(e.target.value)
@@ -447,7 +497,7 @@ export default function RegisterForm(props) {
                             }
                         ></Form.Control>
                         <Form.Control.Feedback type="invalid">
-                            用户名长度为4至12
+                            用户名长度为2至10
                         </Form.Control.Feedback>
                     </Form.Group>
 
@@ -466,13 +516,13 @@ export default function RegisterForm(props) {
                                 setUserState({...userState, ...{email}});
                             }
                             }
-                            pattern="^([a-zA-Z\d][\w-]{2,})@(\w{2,})\.([a-z]{2,})(\.[a-z]{2,})?$"
+                            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
                         ></Form.Control>
                         <Form.Control.Feedback type="invalid">
                             邮箱格式错误
                         </Form.Control.Feedback>
                     </Form.Group>
-                    <Form.Group className="mb-3">
+                    <Form.Group className="loadingusername">
                         <Form.Label column>
                             密码
                         </Form.Label>
@@ -486,10 +536,12 @@ export default function RegisterForm(props) {
                                 setPassword(e.target.value)
                                 setUserState({...userState, ...{password}});
                             }}
-                            pattern="^[A-Za-z0-9]{8,15}$"
+                            pattern="^(?=.*\d)(?=.*[a-zA-Z]).{8,15}$"
+                            isValid={!passwordErrors.length}
+                            isInvalid={password.length && passwordErrors.length}
                         ></Form.Control>
                         <Form.Control.Feedback type="invalid">
-                            请输入最少8位，最多15位密码！
+                            密码由字母,数字组成,长度为8-15!
                         </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group className="loadingusername">
@@ -502,12 +554,12 @@ export default function RegisterForm(props) {
                             type="password"
                             value={confirmPassword}
                             onChange={(e) => {
-                                const confirmPassword = e.target.value;
+                                // const confirmPassword = e.target.value;
                                 setConfirmPassword(e.target.value)
-                                // const mobile_number = 13883729275
-                                // setUserState({...userState, ...{mobile_number}});
                             }}
-                            pattern={IsPassword(confirmPassword)}
+                            pattern = {(confirmPassword.length && confirmPassword === password) ? "^{1,15}$" : "^{600,700}$"}
+                            isValid={confirmPassword.length && confirmPassword === password}
+                            isInvalid={confirmPassword.length && confirmPassword !== password}
                         ></Form.Control>
                         <Form.Control.Feedback type="invalid">
                             两次输入密码不一致！
@@ -691,13 +743,12 @@ export default function RegisterForm(props) {
             <Form style= {{marginTop:"60px"}} noValidate validated={validated2} id="addProject" onSubmit={(e) => {
                     const form = e.currentTarget;
                     if (form.checkValidity() === false) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setValidated2(true)
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setValidated2(true)
                     }else{
-                      setsubmit(true)
-                      submitregisterForm(e)
-
+                        setsubmit(true)
+                        submitregisterForm(e)
                     }
                 }}>
                     <Form.Group className="loadingusername">
@@ -705,7 +756,8 @@ export default function RegisterForm(props) {
                             学历
                         </Form.Label>
 
-                        <Form.Select
+                        <Form.Control
+                            as ="select"
                             className="loadinglogin"
                             required
                             value={degree}
@@ -715,13 +767,13 @@ export default function RegisterForm(props) {
                                 setUserState({...userState, ...{degree}})
                             }}
                         >
-                            <option value="">请选择学历</option>
+                            <option className="loadinglogin" value="">请选择学历</option>
                             {Object.entries(mapUserDegree).map(([icode, iname]) => (
                                             <option key={icode} value={icode}>
                                                 {iname}
                                             </option>
                             ))}
-                        </Form.Select>
+                        </Form.Control>
                     </Form.Group>
 
                     <ToolkitProvider
@@ -784,7 +836,7 @@ export default function RegisterForm(props) {
                     )}
                 </ToolkitProvider>
 
-                <ToolkitProvider
+                {/* <ToolkitProvider
                             keyField="area"
                             data = {areadata}
                             columns = { Areacolumns}
@@ -843,7 +895,7 @@ export default function RegisterForm(props) {
                     </Form.Group>
                     </>
                     )}
-                </ToolkitProvider>
+                </ToolkitProvider> */}
 
 
                     <Form.Group className="loadingusername">
@@ -869,7 +921,7 @@ export default function RegisterForm(props) {
                         {
                             experienceList.map((item, idx) => (
                                 <div key={idx} style={{marginTop: "24px", display: "flex"}}>
-                                    <Form.Group >
+                                    <Form.Group className="loadingusername" >
                                         <Form.Label className="edit-form-label">实习公司</Form.Label>
                                         <Form.Control
                                             type="text"
@@ -883,15 +935,15 @@ export default function RegisterForm(props) {
                                                 setUserState({...userState, ...{experience}});
                                             }}
                                         />
-                                    </Form.Group>
+                                    </Form.Group >
 
-                                    <Form.Group style={{marginLeft: "4%"}}>
+                                    <Form.Group className="loadingusername" style={{marginLeft: "4%"}}>
                                         <Form.Label className="edit-form-label">实习职位</Form.Label>
                                         <div style={{display: "flex", alignItems: "center"}}>
                                             <Form.Control
                                                 type="text"
                                                 value={item.position}
-                                                style={{width: "85%", height: "48px"}}
+                                                style={{width: "100%", height: "48px"}}
                                                 placeholder="请输入文字"
                                                 onChange={(e) => {
                                                     experienceList[idx].position = e.target.value;
@@ -921,11 +973,11 @@ export default function RegisterForm(props) {
                             ))
 
                         }
-                        <Form.Group style={{marginTop: "36px"}}>
+                        <Form.Group style={{marginTop: "18px"}}>
                             <Button
                                 onClick={addExperience}
                                 style={{
-                                    width: "46%",
+                                    width: "50%",
                                     height: "48px",
                                     backgroundColor: "#F5F6F8",
                                     border: 0,
@@ -949,7 +1001,7 @@ export default function RegisterForm(props) {
                              checked={!disable}
                              onClick = {(e) => setdisable(!disable)}
                             // type="radio"
-                             feedback="注册前请先同意"
+                            //  feedback="注册前请先同意"
                              feedbackType="invalid"
                              />
                             </Form.Group>
@@ -963,7 +1015,9 @@ export default function RegisterForm(props) {
                             }}>
                                 我已同意...
                             </div>
-                            <Button style={{
+                            <Button 
+                            onClick={() => setshowTiaokuan(true)}
+                            style={{
                                 padding:"0",
                                 backgroundColor:"white",
                                 fontSize: "14px",

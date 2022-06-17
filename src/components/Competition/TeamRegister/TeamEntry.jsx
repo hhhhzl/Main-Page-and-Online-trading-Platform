@@ -4,17 +4,19 @@ import useWindowDimensions from "../../../utils/sizewindow";
 import Sidebar from "../../MainPage/Sidebar";
 import { IconButton } from "@material-ui/core";
 import { ArrowBack, ArrowForward } from "@material-ui/icons";
-import { Button, Form, Image } from "react-bootstrap";
+import { Button, Form, Image, Modal } from "react-bootstrap";
 import { useHistory } from "react-router";
 import Footer from "components/MainPage/footer";
 import AuthContext from "../../../context/AuthContext";
 import { clearLocalStorage } from "utils";
-
+import "./teamEntry.css";
 export default function TeamEntry() {
   let { user, logoutUser } = useContext(AuthContext);
   const { width, height } = useWindowDimensions();
   const history = useHistory();
   const [disable, setdisable] = useState(true);
+
+  const [showModal, setShowModal] = useState(false);
   const [hovercreate, setHovercreate] = useState(true);
   const [hoverjoin, setHoverjoin] = useState(false);
   const [createshow, setcreatshow] = useState(false);
@@ -24,6 +26,9 @@ export default function TeamEntry() {
   };
 
   const [isOpen, setIsOpen] = useState(false);
+  const handleClose = () => {
+    setShowModal(false);
+  };
   const toggle = () => {
     setIsOpen(!isOpen);
   };
@@ -60,6 +65,39 @@ export default function TeamEntry() {
         {isOpen ? <Sidebar isOpen={isOpen} toggle={toggle} /> : null}
       </div>
 
+      <Modal
+        show={showModal}
+        onHide={handleClose}
+        centered
+        backdrop="static"
+        keyboard={false}
+        className="team-modal"
+      >
+        <Modal.Header closeButton></Modal.Header>
+        {width > 1200 ? (
+          <Image
+            src="/Group 1107@2x.png"
+            style={{
+              width: width * 0.546875 + "px",
+              height: width * 0.40625 + "px",
+            }}
+          ></Image>
+        ) : width > 800 ? (
+          <Image
+            src="/Group 1107-pad@2x.png"
+            style={{
+              width: width * 0.855 + "px",
+              height: width * 0.55 + "px",
+            }}
+          ></Image>
+        ) : (
+          <Image
+            src="/Group 1143@2x.png"
+            style={{ width: "343px", height: "766px" }}
+          ></Image>
+        )}
+      </Modal>
+
       <div
         style={{
           marginTop: height * 0,
@@ -92,12 +130,33 @@ export default function TeamEntry() {
                 color: "#2A2B30",
                 lineHeight: "40px",
                 letterSpacing: "1px",
+                display: "flex",
+                justifyContent: "space-between",
               }}
             >
-              <IconButton onClick={() => sendUserhome()}>
-                <ArrowBack />
-              </IconButton>
-              选择参赛方式
+              <div>
+                <IconButton onClick={() => sendUserhome()}>
+                  <ArrowBack />
+                </IconButton>
+                选择参赛方式
+              </div>
+              <div>
+                <Button
+                  style={{
+                    padding: "6px 12px",
+                    background:
+                      "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)",
+                    boxShadow:
+                      "0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08)",
+                    borderRadius: "4px",
+                  }}
+                  variant="primary"
+                  size="sm"
+                  onClick={() => setShowModal(true)}
+                >
+                  报名规则
+                </Button>
+              </div>
             </div>
           </div>
           <div
@@ -188,7 +247,7 @@ export default function TeamEntry() {
                   <>
                     <Button
                       style={{
-                        width: "288px",
+                        width: width > 700? "288px" : width/2 -50,
                         height: "48px",
                         backgroundColor: "#F5F6F8",
                         border: "1px solid #F5F6F8",
@@ -206,11 +265,11 @@ export default function TeamEntry() {
                           style={{
                             fontSize: "14px",
                             fontFamily:
-                              "Microsoft YaHei UI-Bold, Microsoft YaHei UI;",
+                              "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
                             fontWeight: "bold",
                             color: "#2A2B30",
                             lineHeight: "24px",
-                            paddingRight: "95px",
+                            paddingRight: width > 700? "95px" : "60px",
                           }}
                         >
                           下一步
@@ -301,7 +360,7 @@ export default function TeamEntry() {
                   <>
                     <Button
                       style={{
-                        width: "288px",
+                        width: width > 700? "288px" : width/2 -50,
                         height: "48px",
                         backgroundColor: "#F5F6F8",
                         border: "1px solid #F5F6F8",
@@ -319,11 +378,11 @@ export default function TeamEntry() {
                           style={{
                             fontSize: "14px",
                             fontFamily:
-                              "Microsoft YaHei UI-Bold, Microsoft YaHei UI;",
+                              "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
                             fontWeight: "bold",
                             color: "#2A2B30",
                             lineHeight: "24px",
-                            paddingRight: "95px",
+                            paddingRight: width > 700? "95px" : "60px",
                           }}
                         >
                           下一步
@@ -339,7 +398,20 @@ export default function TeamEntry() {
         </div>
         <div style={{ width: "48px", maxWidth: "18.75%" }}></div>
       </div>
-
+      <div
+        style={{
+          padding: "0px 0px 36px 0px",
+          textAlign: "center",
+          fontSize: "14px",
+          fontFamily: " Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+          fontWeight: "400",
+          color: "#2A2B30",
+          lineHeight: "24px",
+          backgroundColor: " rgb(245, 246, 248)",
+        }}
+      >
+        *每位选手只能创立/加入一个赛事团队。报名成功后，无法更换团队与赛道
+      </div>
       <div style={{ position: "relative" }}>
         <Footer />
       </div>

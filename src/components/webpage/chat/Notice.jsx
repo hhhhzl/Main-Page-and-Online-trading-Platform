@@ -1,14 +1,18 @@
 import { ArrowBackIos, ArrowForwardIos } from "@material-ui/icons";
+import CreateTeam from "components/screen/NewsTemplate/CreateTeam";
 import JoinTeam from "components/screen/NewsTemplate/JoinTeam";
 import LoginSuccess from "components/screen/NewsTemplate/LoginSucess";
 import RequestForLeader from "components/screen/NewsTemplate/RequestForLeader";
+import RequestForTeamMember from "components/screen/NewsTemplate/RequestForTeammember";
 import AuthContext from "context/AuthContext";
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Collapse, Image } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchNews, updateNews } from "redux/reducers/News/newsSlice";
+import { showTimePipe } from "utils";
 import data from "../../../static/Notice.json";
 import useWindowDimensions from "../../../utils/sizewindow";
+
 import "./Notice.css";
 
 export default function Notice() {
@@ -16,14 +20,15 @@ export default function Notice() {
   const dispatch = useDispatch()
   const {team, user} = useContext(AuthContext)
   
-  const {news} = useSelector((state) => state.news)
-  const [notice, setNotice] = useState(news?.length>0? news[0] : null);
+  const {news, state, read_or_not, need_to_reload} = useSelector((state) => state.news)
+  const [notice, setNotice] = useState(null);
   const [current, setCurrent] = useState(1);
   const [noticeList, setNoticeList] = useState(data);
   const [show, setShow] = useState(1);
   const [showAll, setShowAll] = useState(true);
   const [load, setload] = useState(false)
   const [load1, setload1] = useState(false)
+  const [load2, setload2] = useState(false)
 
   const handleShowAll = () => {
     setShowAll(!showAll);
@@ -43,30 +48,55 @@ export default function Notice() {
   };
 
   const markasRead = (item) =>{
-    if (item.content){
-      console.log("here")
+    if (item.content && item.is_read == false){
        dispatch(updateNews(item.id))
+       dispatch(fetchNews({team: team?.metadata, user_id:user.user_id, reload:false}))
        
     }
-    dispatch(fetchNews(8))
     setCurrent(item.message_id)
     setNotice(item)
   }
 
-  useEffect(()=>{
-    if (user && team && !load1){
-      dispatch(fetchNews(team?.metadata.leader == user.user_id? team.metadata.id :null))
-      setload1(true)
-    }
-  },[dispatch, team, user, load1])
+  // useEffect(()=>{
+  //   if (user && localStorage.getItem("Team") && !load1){
+  //     console.log(localStorage.getItem("Team"))
+  //     let team = JSON.parse(localStorage.getItem("Team"))
+  //     dispatch(fetchNews({team: team.metadata, user_id:user.user_id}))
+  //     setload1(true)
+  //   }
+  // },[dispatch, user, load1])
+  
+  // useEffect(()=>{
+  //   if (user && !localStorage.getItem("Team") && !load2){
+  //     dispatch(fetchNews({team: null, user_id:user.user_id}))
+  //     setload2(true)
+  //   }
+  // },[dispatch, user, load2])
 
   useEffect(() =>{
     if (!load && news?.length>0){
+        console.log("runhere''''''''''''''''''''''''''''''")
         setNotice(news[0])
         setCurrent(news[0].message_id)
-         setload(true)
+        setload(true)
     } 
   },[news, load])
+
+  useEffect(() =>{
+    if (need_to_reload && news?.length>0){
+        console.log("runhere也是''''''''''''''''''''''''''''''")
+        setNotice(news[current-1])
+        setCurrent(news[current-1].message_id)
+        setload(true)
+    } 
+  },[news, need_to_reload])
+
+  // useEffect(()=>{
+  //   if(user && !load1){
+  //   dispatch(fetchNews({team: null, user_id:user.user_id}))
+  //   setload1(true)
+  // }
+  // },[dispatch, user, load1])
 
   return (
     <div
@@ -140,15 +170,27 @@ export default function Notice() {
                       style={{ display: width > 1200 ? "" : "none" }}
                       className="notice-left-time"
                     >
-                      {item.created_at}
+                      {showTimePipe(item.created_at)}
                     </div>
                   </div>
                   <div className="notice-left-detail" > 
-                    <div className="notice-left-content">{
-                    item.content? item.content == "欢迎您加入UFA全球青年汇。"? (<>{"恭喜您！此封邮件确认您已成功注册UFA官网账号:"}...</>) : item.content :
-                    item.account? "您收到一条团队加入申请验证，请点击进行验证" : null
-                
-                    }</div>
+                    <div className="notice-left-content">
+                      {
+                    item.content? 
+                    item.content == "欢迎您加入UFA全球青年汇。"? 
+                    (<>{"恭喜您！此封邮件确认您已成功注册UFA官网账号; 请注意：您尚未完成UFA第二届"}...</>) : 
+                    item.content.slice(0,6) == "您已成功创建"?
+                    
+                     <>恭喜您！您的团队{item.content.split("\"")[1]}已创建成功，此封邮件确认您以队长身份:...</>
+                    :
+                    item.content.slice(0,6) == "您已加入队伍" || item.content.slice(0,5) == "您加入队伍"?
+                    (<>恭喜您！您的申请已经得到 <strong>{item.content.split("\"")[1]}</strong> 队长的确认，您将以队员</>)
+                    :
+                    null
+                    :
+                    "您收到一条团队信息，请点击进行确认....."
+                    }
+                    </div>
                     {!item.is_read ? (
                       <div className="notice-left-unread"></div>
                     ) : (
@@ -165,9 +207,6 @@ export default function Notice() {
         </div>
 
 
-
-
-
         <div
           className="notice-right"
           style={{
@@ -180,52 +219,27 @@ export default function Notice() {
           >
             <div style={{ padding: "24px 0 0 36px" }}>
               <div className="notice-right-title">{notice?.message_type? "UFA官方信息" : "团队消息"}</div>
-              <div className="notice-right-content">{notice?.content? notice?.content == "欢迎您加入UFA全球青年汇。"?
+              <div className="notice-right-content">{
+              notice?.content? notice?.content == "欢迎您加入UFA全球青年汇。"?
                (<><LoginSuccess/></>) 
                : 
-               notice?.content?.slice(0,5) == "您加入队伍"?
+               notice?.content?.slice(0,6) == "您已加入队伍"?
                 (<><JoinTeam name = {notice?.content.split("\"")[1]}/></>) 
+                :
+                notice?.content?.slice(0,6) == "您已成功创建"?
+                (<><CreateTeam name = {notice?.content.split("\"")[1]}/></>) 
                 :
                notice?.content
                :
-               notice?.account? (<><RequestForLeader id = {notice.requester} type = {notice.status}/></>):null
-              
+               notice?.account? 
+               team?.metadata.leader == user.user_id? 
+               (<><RequestForLeader id = {notice.requester} type = {notice.status} messagage_id={notice.id} /></>)
+               :
+               (<><RequestForTeamMember id = {notice.account}  type = {notice.status} messagage_id = {notice.id}/></>)
+               :
+               null
               }</div>
             </div>
-            {notice?.type == 1 ? (
-              <div className="notice-right-buttonGroups">
-                <Button
-                  style={{
-                    marginRight: "12px",
-                    width: "120px",
-                    height: "48px",
-                    background: "#F5F6F8",
-                    border: "0",
-                    borderRadius: "4px 4px 4px 4px",
-                    opacity: 1,
-                    color: "black",
-                  }}
-                >
-                  拒绝
-                </Button>
-                <Button
-                  style={{
-                    width: "120px",
-                    height: "48px",
-                    background:
-                      "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)",
-                    boxShadow:
-                      "0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08)",
-                    borderRadius: "4px 4px 4px 4px",
-                    opacity: 1,
-                  }}
-                >
-                  接受邀请
-                </Button>
-              </div>
-            ) : (
-              ""
-            )}
           </div>
         </div>
       </div>

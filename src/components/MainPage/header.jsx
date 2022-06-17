@@ -3,7 +3,6 @@ import {
   NotificationsNoneOutlined,
   ViewHeadlineTwoTone
 } from "@material-ui/icons";
-import { apiGetAdminMessage, apiGetSelfAdminMessages } from "api/main_platform/user_messages";
 import { React, useContext, useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
@@ -26,7 +25,7 @@ import { HomeMobileIcon } from "./NavbarElements";
 
 
 const HeaderCreate = ({ toggle }) => {
-  let { user, logoutUser, apikey, team} = useContext(AuthContext);
+  let { user, logoutUser, apikey, team, getcompetionapikey} = useContext(AuthContext);
   const { width, height } = useWindowDimensions();
   const [showMenu, setHhowMenu] = useState(false);
   const [scrolledDownEnough, setScrolledDownEnough] = useState(false);
@@ -148,6 +147,15 @@ useEffect(() =>{
 },[submitTeam,state])
 
 
+/////////////////////////////////////////////load apikey after create team
+useEffect(() =>{
+  if (localStorage.getItem("createTeam") == "true" && url == "/"){
+    getcompetionapikey()
+    localStorage.removeItem("createTeam")
+  }
+},[localStorage.getItem("createTeam"), url])
+
+
 
 //////////////////////////////////////////////load self data
 useEffect(() =>{
@@ -160,19 +168,21 @@ useEffect(() =>{
 
 
 //////////////////////////////////////////////////load news//////////////////////////////////////////////////////////
-  useEffect(()=>{
-  if (user && team && !load1){
-    dispatch(fetchNews(team?.metadata.leader == user.user_id? team.metadata.id :null))
+useEffect(()=>{
+  if (user && localStorage.getItem("Team") && !load1){
+    console.log(localStorage.getItem("Team"))
+    let team = JSON.parse(localStorage.getItem("Team"))
+    dispatch(fetchNews({team: team.metadata, user_id:user.user_id, reload:false}))
     setload1(true)
   }
-},[dispatch, team, user, load1])
+},[dispatch, user, load1])
 
-  useEffect(()=>{
-    if (user && !team && !load2){
-      dispatch(fetchNews(null))
-      setload2(true)
-    }
-  },[dispatch, team, user, load2])
+useEffect(()=>{
+  if (user && !localStorage.getItem("Team") && !load2){
+    dispatch(fetchNews({team: null, user_id:user.user_id, reload:false}))
+    setload2(true)
+  }
+},[dispatch, user, load2])
 
   return (
     <>
@@ -185,8 +195,8 @@ useEffect(() =>{
         <Modal.Header closeButton>
           {/* <Modal.Title>Modal heading</Modal.Title> */}
         </Modal.Header>
-        <Modal.Body>您确定要退出吗？</Modal.Body>
-        <Modal.Footer>
+        <Modal.Body className="active-500">您确定要退出吗？</Modal.Body>
+        <Modal.Footer style={{width:"100%",display:"flex",justifyContent:"space-evenly"}}>
           <Button
             className="modal-btn modal-btn-cancel"
             variant="secondary"
@@ -207,8 +217,9 @@ useEffect(() =>{
       <Modal
         show={shownotinTeam}
         centered
+        className="general-modal"
       >
-        <Modal.Header>
+        <Modal.Header className="active-500">
           您尚未报名，请先报名.....
           {/* <Modal.Title>Modal heading</Modal.Title> */}
         </Modal.Header>
@@ -219,7 +230,7 @@ useEffect(() =>{
         onHide={() => setshowluntan(false)}
       >
         <Modal.Header closeButton>
-          即将上线.....
+          <div className="active-500" style={{width:"100%",textAlign:"center"}}>即将上线.....</div>
           {/* <Modal.Title>Modal heading</Modal.Title> */}
         </Modal.Header>
       </Modal>
@@ -227,7 +238,7 @@ useEffect(() =>{
       
       <HeaderOut
         style={{
-          width: width,
+          width: "100%",
           borderBottom:
             url == "/personal" ||
             url == "/team" ||

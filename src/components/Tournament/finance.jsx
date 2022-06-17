@@ -25,8 +25,8 @@ const Finance = ({ profileImg, hobbyImgs }) => {
         style={{
           position: "fixed",
           zIndex: 10,
-          width: "1px",
-          height: width / 2.97,
+          width: width > 800 ? "1px" : "",
+            height: "662px",
           background: `linear-gradient(to top, #E5E8EE ${
             ((bodyscrollrdTop / (width / 2.97)) * 100).toString() + "%"
           }, rgba(255, 255, 255, 0.5) ${
@@ -93,13 +93,13 @@ const Finance = ({ profileImg, hobbyImgs }) => {
                     src="/tournament/Group 797@2x.png"
                     style={{ width: " 100%", height: "100%" }}
                   />
-                  <a href="/eplatform">
+                  <a href="/competition/summary">
                     <Image
                       className="button-hover"
                       src="/tournament/赛事账户@2x.png"
                       style={{
                         position: "absolute",
-                        left: "44.7%",
+                        left: "65.6%",
                         top: "70%",
                         width: "8%",
                       }}
@@ -112,13 +112,13 @@ const Finance = ({ profileImg, hobbyImgs }) => {
                     src="/tournament/Group 1117@2x.png"
                     style={{ width: " 100%", height: "100%" }}
                   />
-                  <a href="/eplatform">
+                  <a href="/competition/summary">
                     <Image
                       className="button-hover"
                       src="/tournament/赛事账户-pad@2x.png"
                       style={{
                         position: "absolute",
-                        left: "44.7%",
+                        left: "65.6%",
                         top: "70%",
                         width: "8%",
                       }}
@@ -132,19 +132,19 @@ const Finance = ({ profileImg, hobbyImgs }) => {
                     style={{
                       width: "100%",
                       height: "100%",
-                      maxHeight: "248px",
-                      maxWidth: "674px",
+                      // maxHeight: "248px",
+                      // maxWidth: "674px",
                       minWidth: "337px",
                       minHeight: "124px",
                     }}
                   />
-                  <a href="/eplatform">
+                  <a href="/competition/summary">
                     <Image
                       className="button-hover"
                       src="/tournament/赛事账户-phone@2x.png"
                       style={{
                         position: "absolute",
-                        left: "24%",
+                        left:  "67%",
                         top: "85%",
                         width: "17%",
                         maxHeight: "27px",
@@ -165,7 +165,7 @@ const Finance = ({ profileImg, hobbyImgs }) => {
                 style={{
                   display: "flex",
                   justifyContent: "center",
-                  flexDirection: width < 791 ? "column" : "inherit",
+                  flexDirection: width < 800 ? "column" : "inherit",
                 }}
               >
                 <div className="finance-date-div-first">
@@ -295,19 +295,19 @@ const Finance = ({ profileImg, hobbyImgs }) => {
                 className="finance-bottom-text"
                 style={{ paddingTop: "30px" }}
               >
-                在每一次财经新闻话题截止后，UFA组委会会阅览并筛选50个优秀的选手分析，并发布由UFA及中信证券官方签署的优秀证书。
+                在每一次财经新闻话题截止后，UFA组委会会阅览并筛选50个优秀分析，并对其作者颁发“杰出财经大学生”的荣誉证书；
               </div>
               <div
                 className="finance-bottom-text"
                 style={{ paddingTop: "20px" }}
               >
-                对于部分优秀分析，UFA会对选手做独家采访，并将其分析及选手采访刊登在UFA官网以及UFA公众号【UFA视野全球】。
+                对于部分优秀分析，UFA会对其作者进行独家采访并刊登在UFA公众号【UFA全球青年汇】。
               </div>
               <div
                 className="finance-bottom-text"
                 style={{ paddingTop: "20px" }}
               >
-                同时，UFA每周会将优秀选手向多个金融机构进行推荐。
+                同时，UFA会将优秀作者向多个金融机构进行推荐。
               </div>
             </div>
 
