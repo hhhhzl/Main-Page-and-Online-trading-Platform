@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { Link as LinkR, useRouteMatch } from "react-router-dom";
 import { Link as LinkS } from "react-scroll";
+import { fetchNews } from "redux/reducers/News/newsSlice";
 import { fetchUserSelf } from "redux/reducers/users/userSelf";
 import { fetchUser } from "redux/reducers/users/usersSlices";
 import { clearLocalStorage, setPlatformType } from "utils";
@@ -113,6 +114,15 @@ useEffect(() =>{
   }
 },[submitTeam,status])
 
+/////////////////////////////////////////////load apikey after create team
+useEffect(() =>{
+  if (localStorage.getItem("createTeam") == "true" && url == "/"){
+    getcompetionapikey()
+    localStorage.removeItem("createTeam")
+  }
+},[localStorage.getItem("createTeam"), url])
+
+
 //////////////////////////////////////////////load self data
 useEffect(() =>{
   if (user && !loadself){
@@ -124,20 +134,21 @@ useEffect(() =>{
 
 
 //////////////////////////////////////////////////load news//////////////////////////////////////////////////////////
-// useEffect(()=>{
-//   if (user && team && !load1){
-//     console.log(user)
-//     dispatch(fetchNews({team: team?.metadata, user_id:user.user_id}))
-//     setload1(true)
-//   }
-// },[dispatch, team, user, load1])
+useEffect(()=>{
+  if (user && localStorage.getItem("Team") && !load1){
+    console.log(localStorage.getItem("Team"))
+    let team = JSON.parse(localStorage.getItem("Team"))
+    dispatch(fetchNews({team: team.metadata, user_id:user.user_id, reload:false}))
+    setload1(true)
+  }
+},[dispatch, user, load1])
 
-// useEffect(()=>{
-//   if (user && !team && !load2){
-//     dispatch(fetchNews({team: null, user_id:user.user_id}))
-//     setload2(true)
-//   }
-// },[dispatch, team, user, load2])
+useEffect(()=>{
+  if (user && !localStorage.getItem("Team") && !load2){
+    dispatch(fetchNews({team: null, user_id:user.user_id, reload:false}))
+    setload2(true)
+  }
+},[dispatch, user, load2])
 
 
   useEffect(() => {
@@ -423,7 +434,7 @@ useEffect(() =>{
                         roundedCircle
                       />
                       <span className="sidebar-footer-username">
-                      {dataself.username?.length>5 ? <>{dataself.username.slice(0,5)}...</> : dataself.username}
+                      {dataself.username?.length>5 ? <>{dataself.username.slice(0,4)}...</> : dataself.username}
                       </span>
                     </div>
                     <span>

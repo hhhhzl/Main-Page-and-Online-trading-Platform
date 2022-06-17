@@ -108,7 +108,7 @@ export default function EditData({
                                     fontWeight: "bold",
                                     color: "#2A2B30",
                                     lineHeight:"24px"}}>个人信息已修改成功</div></Modal.Body>
-        <Modal.Footer style={{justifyContent: "center"}} >
+        <Modal.Footer style={{width:"100%",display:"flex",justifyContent: "center"}} >
             <Button className="modal-btn modal-btn-submit"  variant="primary"
 			 onClick ={() => {
 				 dispatch(fetchUser(user.user_id))

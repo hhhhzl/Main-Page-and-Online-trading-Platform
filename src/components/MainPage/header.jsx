@@ -52,9 +52,6 @@ const HeaderCreate = ({ toggle }) => {
   const { dataself, state } = useSelector((state) => state.userInfoself);
   const {news,read_or_not} = useSelector((state) => state.news)
 
-  const [note, setnote] = useState(null);
-
-
   const sendUserNews = () => {
     history.push("/chat");
   };
@@ -316,7 +313,7 @@ useEffect(()=>{
                     onClick={() => sendUserNews()}
                   >
                     <NotificationsNoneOutlined></NotificationsNoneOutlined>
-                    {note ? (
+                    {read_or_not ? (
                       <div
                         style={{
                           width: "7px",
