@@ -154,9 +154,9 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
           <br />
 
           <div
-            className="about-center"
+            className="about-center difference-width"
             style={{
-              width: width > 1385 ? "68.5%" : width < 1350 ? "93%" : "71%",
+              width: width > 1385 ? "73.5%" : width < 1350 ? "96%" : "76%",
               marginTop: width < 700 ? "60%" : "",
             }}
           >
