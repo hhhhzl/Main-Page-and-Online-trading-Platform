@@ -113,25 +113,30 @@ export default function RegisterForm(props) {
         e.target.value = "";
     };
 
-    const handleSubmit = () => {
-        setValidated1(true);
-    };
-
-    function IsPassword(confirmPassword) {
-        if (password === confirmPassword) {
-            return "^.{1,15}";
-        } else {
-            return "^.{200,500}";
-        }
-    }
-
-    function verifyPassword(password) {
-        // return "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[~!@#$%^&*()_+`\\-={}:\";'<>?,./]).{8,15}$"
-        return "^(?=.*[a-zA-Z])(?=.*\\d).{8,15}$"
-     }
-
     const [imgSrc, setImgSrc] = useState('')
     const [showModal, setShowModal] = useState(false);
+    const [passwordErrors, setPasswordErrors] = useState([]);
+
+    useEffect(() => {
+        const errors = [];
+        if (password.length < 8) {
+            errors.push("Your password must be at least 8 characters");
+        }
+        if (password.length > 15) {
+            errors.push("Your password must be less than 15 characters");
+        }
+
+        if (password.search(/[a-zA-Z]/i) < 0) {
+            errors.push("Your password must contain at least one letter.");
+        }
+
+        if (password.search(/[0-9]/) < 0) {
+            errors.push("Your password must contain at least one digit."); 
+        }
+
+        console.log('password errors', errors);
+        setPasswordErrors(errors);
+    }, [password])
 
     function onSelectFile(e: React.ChangeEvent<HTMLInputElement>) {
         if (e.target.files && e.target.files.length > 0) {
@@ -462,11 +467,11 @@ export default function RegisterForm(props) {
                 <Form noValidate validated={validated1} id="addProject" onSubmit={(event) => {
                     const form = event.currentTarget;
                     if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    setValidated1(true)
+                        event.preventDefault();
+                        event.stopPropagation();
+                        setValidated1(true)
                     }else{
-                       setpage(2)
+                        setpage(2)
                     }
                 }}>
 
@@ -511,7 +516,7 @@ export default function RegisterForm(props) {
                                 setUserState({...userState, ...{email}});
                             }
                             }
-                            pattern="^([a-zA-Z\d][\w-]{2,})@(\w{2,})\.([a-z]{2,})(\.[a-z]{2,})?$"
+                            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
                         ></Form.Control>
                         <Form.Control.Feedback type="invalid">
                             邮箱格式错误
@@ -531,7 +536,9 @@ export default function RegisterForm(props) {
                                 setPassword(e.target.value)
                                 setUserState({...userState, ...{password}});
                             }}
-                            pattern={verifyPassword(password)}
+                            pattern="^(?=.*\d)(?=.*[a-zA-Z]).{8,15}$"
+                            isValid={!passwordErrors.length}
+                            isInvalid={password.length && passwordErrors.length}
                         ></Form.Control>
                         <Form.Control.Feedback type="invalid">
                             密码由字母,数字组成,长度为8-15!
@@ -549,10 +556,9 @@ export default function RegisterForm(props) {
                             onChange={(e) => {
                                 const confirmPassword = e.target.value;
                                 setConfirmPassword(e.target.value)
-                                // const mobile_number = 13883729275
-                                // setUserState({...userState, ...{mobile_number}});
                             }}
-                            pattern={IsPassword(confirmPassword)}
+                            isValid={confirmPassword.length && confirmPassword === password}
+                            isInvalid={confirmPassword.length && confirmPassword !== password}
                         ></Form.Control>
                         <Form.Control.Feedback type="invalid">
                             两次输入密码不一致！
@@ -736,13 +742,12 @@ export default function RegisterForm(props) {
             <Form style= {{marginTop:"60px"}} noValidate validated={validated2} id="addProject" onSubmit={(e) => {
                     const form = e.currentTarget;
                     if (form.checkValidity() === false) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setValidated2(true)
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setValidated2(true)
                     }else{
-                      setsubmit(true)
-                      submitregisterForm(e)
-
+                        setsubmit(true)
+                        submitregisterForm(e)
                     }
                 }}>
                     <Form.Group className="loadingusername">

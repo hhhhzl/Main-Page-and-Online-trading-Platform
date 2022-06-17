@@ -252,6 +252,7 @@ const Review = ({ projectImgs }) => {
                 width="100%"
                 height="100%"
                 controls={true}
+                // light="https://test1-1311825037.cos.ap-nanjing.myqcloud.com/public/video_cover_1.png"
               />
             </div>
           </Collapse>

@@ -133,7 +133,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
                   width="100%"
                   height="100%"
                   controls={true}
-                  // light="/background1.jpg"
+                  // light="https://test1-1311825037.cos.ap-nanjing.myqcloud.com/public/video_cover_2.png"
                 />
               </div>
             </div>
