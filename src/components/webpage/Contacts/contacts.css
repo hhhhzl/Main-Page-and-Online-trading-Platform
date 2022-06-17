@@ -6,9 +6,9 @@
     color: #337ab7;
 }
 
-.flex-center-margin {
+/* .flex-center-margin {
     margin-right: 12.5%;
-}
+} */
 
 .btn-social-icon {
     font-size: 20px;
@@ -29,6 +29,23 @@
     border-radius: 0px 0px 0px 0px;
     opacity: 1;
 }
+
+/* .introduction-box1>.flex-center {
+    margin-top: 0px;
+} */
+
+@media screen and (max-width: 650px) {
+    .box-image {
+        margin-top: 0px !important;
+    }
+}
+
+/* @media screen and (max-width: 470px) {
+    .introduction-box1>.flex-center {
+        margin-top: 20px !important;
+    }
+} */
+
 
 .contact-center {
     position: relative;
@@ -60,10 +77,12 @@
 
 }
 
+
+
 .bottom-cover-picture {
-    width: 62.5%;
+    /* width: 62.5%; */
     height: max-content;
-    margin-left: 18.75%;
+    /* margin-left: 18.75%; */
     margin-top: 80px;
     padding-bottom: 120px;
 }
@@ -90,54 +109,66 @@
 
 
 @media screen and (max-width: 1500px) {
-    .bottom-cover-picture {
+
+    /* .bottom-cover-picture {
         width: 85%;
         margin-left: 10%;
+    } */
+    .margin-left-right {
+        margin: 0px 15% !important;
     }
 }
 
 @media screen and (max-width: 1350px) {
-    .flex-center-margin {
+    /* .flex-center-margin {
         margin-right: 12%;
+    } */
+
+    .margin-left-right {
+        margin: 0px 12% !important;
     }
 }
 
 @media screen and (max-width: 1150px) {
-    .flex-center-margin {
+    /* .flex-center-margin {
         margin-right: 10%;
-    }
+    } */
 }
 
 @media screen and (max-width: 1050px) {
-    .flex-center-margin {
+
+    /* .flex-center-margin {
         margin-right: 6%;
+    } */
+    .margin-left-right {
+        margin: 0px 8% !important;
     }
 }
 
 
 @media screen and (max-width: 750px) {
-    .flex-center-margin {
+    /* .flex-center-margin {
         margin: 5%;
-    }
+    } */
 }
 
 @media screen and (max-width: 470px) {
-    .flex-center-margin {
+    /* .flex-center-margin {
         margin: 8%;
-    }
+    } */
 }
 
 
 @media screen and (max-width: 1300px) {
-    .bottom-cover-picture {
+    /* .bottom-cover-picture {
         width: 85%;
         margin-left: 10%;
-    }
+    } */
 }
 
 @media screen and (max-width: 900px) {
-    .bottom-cover-picture {
+    /* .bottom-cover-picture {
         width: 100%;
         margin-left: 13%;
-    }
+    } */
 }

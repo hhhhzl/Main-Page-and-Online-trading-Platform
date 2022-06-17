@@ -15,47 +15,56 @@ const Contacts = () => {
           style={{ width: "248px", height: "79px" }}
         />
       </div>
-        {width > 750 ? (<> 
-        <div className="bottom-cover-picture animated">
-            <div style={{display: "flex"}}>
-                <div className="flex-center flex-center-margin">
-                    <div className="introduction-box1">
-                        <div>
-                            <div className="box-image flex-center">
-                                <Image
-                                    src="/homeCutout/Offerbang.png"
-                                    title="https://offerbang.io/?wpm=2.32.2.1"
-                                    style={{
-                                        marginTop:
-                                            width > 1500
-                                                ? "110px"
-                                                : width > 1350
-                                                ? "110px"
-                                                : width > 960
-                                                    ? "93.35px"
-                                                    : "67.5px",
-                                        width:
-                                            width > 1500
-                                                ? "240px"
-                                                : width > 1350
-                                                ? "240px"
-                                                : width > 960
-                                                    ? "190px"
-                                                    : "140px",
-                                        height:
-                                            width > 1500
-                                                ? "80px"
-                                                : width > 1350
-                                                ? "80px"
-                                                : width > 960
-                                                    ? "63.3px"
-                                                    : "45.16px",
-                                    }}
-                                />
-                            </div>
+      {width > 750 ? (
+        <>
+          <div className="bottom-cover-picture animated">
+            <div
+              className="margin-left-right"
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginLeft: width * 0.1875 + "px",
+                marginRight: width * 0.1875 + "px",
+              }}
+            >
+              <div className="flex-center flex-center-margin" >
+                <div className="introduction-box1">
+                  <div>
+                    <div className="box-image flex-center">
+                      <Image
+                        src="/homeCutout/Offerbang.png"
+                        title="https://offerbang.io/?wpm=2.32.2.1"
+                        style={{
+                          marginTop:
+                            width > 1500
+                              ? "110px"
+                              : width > 1350
+                              ? "110px"
+                              : width > 960
+                              ? "93.35px"
+                              : "67.5px",
+                          width:
+                            width > 1500
+                              ? "240px"
+                              : width > 1350
+                              ? "240px"
+                              : width > 960
+                              ? "190px"
+                              : "140px",
+                          height:
+                            width > 1500
+                              ? "80px"
+                              : width > 1350
+                              ? "80px"
+                              : width > 960
+                              ? "63.3px"
+                              : "45.16px",
+                        }}
+                      />
+                    </div>
 
-                            <div>
-                                {/* <div
+                    <div>
+                      {/* <div
                                     style={{
                                         color: "#6E7184",
                                         fontWeight: "400",
@@ -68,50 +77,48 @@ const Contacts = () => {
                                 >
                                     “UFA金融大赛” 由UFA与中信证券联合举办
                                 </div> */}
-                            </div>
-                        </div>
                     </div>
+                  </div>
                 </div>
-                <div
-                    className="flex-center flex-center-margin"
-                >
-                    <div className="introduction-box1">
-                        <div>
-                            <div className="box-image flex-center">
-                                <Image
-                                    src="/homeCutout/CUSSA.png"
-                                    title = "https://www.cussa.org/"
-                                    style={{
-                                        marginTop:
-                                            width > 1500
-                                                ? "50px"
-                                                : width > 1350
-                                                ? "50px"
-                                                : width > 960
-                                                    ? "50px"
-                                                    : "50px",
-                                        width:
-                                            width > 1500
-                                                ? "200px"
-                                                : width > 1350
-                                                ? "200px"
-                                                : width > 960
-                                                    ? "150px"
-                                                    : "80px",
-                                        height:
-                                            width > 1500
-                                                ? "200px"
-                                                : width > 1350
-                                                ? "200px"
-                                                : width > 960
-                                                    ? "150px"
-                                                    : "80px",
-                                    }}
-                                />
-                            </div>
-                            <div className="title"></div>
-                            <div>
-                                {/* <div
+              </div>
+              <div className="flex-center flex-center-margin">
+                <div className="introduction-box1">
+                  <div>
+                    <div className="box-image flex-center">
+                      <Image
+                        src="/homeCutout/CUSSA.png"
+                        title="https://www.cussa.org/"
+                        style={{
+                          marginTop:
+                            width > 1500
+                              ? "50px"
+                              : width > 1350
+                              ? "50px"
+                              : width > 960
+                              ? "50px"
+                              : "50px",
+                          width:
+                            width > 1500
+                              ? "200px"
+                              : width > 1350
+                              ? "200px"
+                              : width > 960
+                              ? "150px"
+                              : "80px",
+                          height:
+                            width > 1500
+                              ? "200px"
+                              : width > 1350
+                              ? "200px"
+                              : width > 960
+                              ? "150px"
+                              : "80px",
+                        }}
+                      />
+                    </div>
+                    <div className="title"></div>
+                    <div>
+                      {/* <div
                                     style={{
                                         color: "#6E7184",
                                         fontWeight: "400",
@@ -124,48 +131,48 @@ const Contacts = () => {
                                 >
                                     “UFA金融大赛” 由UFA与中信证券联合举办
                                 </div> */}
-                            </div>
-                        </div>
                     </div>
+                  </div>
                 </div>
-                <div className="flex-center flex-center-margin">
-                    <div className="introduction-box1">
-                        <div>
-                            <div className="box-image flex-center">
-                                <Image
-                                    src="/homeCutout/ACCEPTU.png"
-                                    title= "https://acceptu.com/"        
-                                    style={{
-                                        marginTop:
-                                            width > 1500
-                                                ? "110px"
-                                                : width > 1350
-                                                ? "110px"
-                                                : width > 960
-                                                    ? "93.35px"
-                                                    : "67.5px",
-                                        width:
-                                            width > 1500
-                                                ? "240px"
-                                                : width > 1350
-                                                ? "240px"
-                                                : width > 960
-                                                    ? "190px"
-                                                    : "140px",
-                                        height:
-                                            width > 1500
-                                                ? "80px"
-                                                : width > 1350
-                                                ? "80px"
-                                                : width > 960
-                                                    ? "63.3px"
-                                                    : "45.16px",
-                                    }}
-                                />
-                            </div>
+              </div>
+              <div className="flex-center flex-center-margin">
+                <div className="introduction-box1">
+                  <div>
+                    <div className="box-image flex-center">
+                      <Image
+                        src="/homeCutout/ACCEPTU.png"
+                        title="https://acceptu.com/"
+                        style={{
+                          marginTop:
+                            width > 1500
+                              ? "110px"
+                              : width > 1350
+                              ? "110px"
+                              : width > 960
+                              ? "93.35px"
+                              : "67.5px",
+                          width:
+                            width > 1500
+                              ? "240px"
+                              : width > 1350
+                              ? "240px"
+                              : width > 960
+                              ? "190px"
+                              : "140px",
+                          height:
+                            width > 1500
+                              ? "80px"
+                              : width > 1350
+                              ? "80px"
+                              : width > 960
+                              ? "63.3px"
+                              : "45.16px",
+                        }}
+                      />
+                    </div>
 
-                            <div>
-                                {/* <div
+                    <div>
+                      {/* <div
                                     style={{
                                         color: "#6E7184",
                                         fontWeight: "400",
@@ -178,10 +185,10 @@ const Contacts = () => {
                                 >
                                     “UFA金融大赛” 由UFA与中信证券联合举办
                                 </div> */}
-                            </div>
-                        </div>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
             {/* <div style={{ marginTop: width > 800 ? "120px" : "0px" ,display: "flex"}}>
                 <div className="flex-center flex-center-margin">
@@ -322,351 +329,356 @@ const Contacts = () => {
                     </div>
                 </div>
             </div> */}
-        </div></>): width > 470 ?(<>
-            <div style={{display: "flex",justifyContent: "center"}}>
-                <div className="flex-center flex-center-margin">
-                    <div className="introduction-box1">
-                        <div>
-                            <div className="box-image flex-center">
-                                <Image
-                                   src="/homeCutout/Offerbang.png"
-                                   title="https://offerbang.io/?wpm=2.32.2.1"
-                                   style={{
-                                       marginTop:
-                                           width > 1500
-                                               ? "110px"
-                                               : width > 1350
-                                               ? "110px"
-                                               : width > 960
-                                                   ? "93.35px"
-                                                   : "65.5px",
-                                       width:
-                                           width > 1500
-                                               ? "240px"
-                                               : width > 1350
-                                               ? "240px"
-                                               : width > 960
-                                                   ? "190px"
-                                                   : "140px",
-                                       height:
-                                           width > 1500
-                                               ? "80px"
-                                               : width > 1350
-                                               ? "80px"
-                                               : width > 960
-                                                   ? "63.3px"
-                                                   : "45.16px",
-                                   }}
-                                />
-                            </div>
-
-                            {/* <div>
-                                <div
-                                    style={{
-                                        color: "#6E7184",
-                                        fontWeight: "400",
-                                        fontFamily:
-                                            "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
-                                        fontSize: width > 960 ? "16px" : "14px",
-                                        paddingTop: width > 1000 ? "92px" : "70px",
-                                        lineHeight: "28px",
-                                    }}
-                                >
-                                    “UFA金融大赛” 由UFA与中信证券联合举办
-                                </div>
-                            </div> */}
-                        </div>
-                    </div>
-                </div>
-                {/* <div
-                    className="flex-center flex-center-margin"
-                >
-                    <div className="introduction-box">
-                        <div>
-                            <div className="box-image flex-center">
-                                <Image
-                                    src="/homeCutout/Group 1020.png"
-                                    style={{
-                                        width:
-                                            width > 1500
-                                                ? "160px"
-                                                : width > 1350
-                                                ? "140px"
-                                                : width > 960
-                                                    ? "120px"
-                                                    : "100px",
-                                        height:
-                                            width > 1500
-                                                ? "160px"
-                                                : width > 1350
-                                                ? "140px"
-                                                : width > 960
-                                                    ? "120px"
-                                                    : "100px",
-                                    }}
-                                />
-                            </div>
-                            <div className="title"></div>
-                            <div>
-                                <div
-                                    style={{
-                                        color: "#6E7184",
-                                        fontWeight: "400",
-                                        fontFamily:
-                                            "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
-                                        fontSize: width > 960 ? "16px" : "14px",
-                                        paddingTop: width > 1000 ? "92px" : "70px",
-                                        lineHeight: "28px",
-                                    }}
-                                >
-                                    “UFA金融大赛” 由UFA与中信证券联合举办
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
-            </div>
-            <div style={{display: "flex",justifyContent: "center"}}>
-                <div className="flex-center flex-center-margin">
-                    <div className="introduction-box1">
-                        <div>
-                            <div className="box-image flex-center">
-                                <Image
-                                    src="/homeCutout/CUSSA.png"
-                                    title = "https://www.cussa.org/"
-                                    style={{
-                                        marginTop:
-                                            width > 1500
-                                                ? "50px"
-                                                : width > 1350
-                                                ? "50px"
-                                                : width > 960
-                                                    ? "50px"
-                                                    : "30px",
-                                        width:
-                                            width > 1500
-                                                ? "200px"
-                                                : width > 1350
-                                                ? "200px"
-                                                : width > 960
-                                                    ? "150px"
-                                                    : "100px",
-                                        height:
-                                            width > 1500
-                                                ? "200px"
-                                                : width > 1350
-                                                ? "200px"
-                                                : width > 960
-                                                    ? "150px"
-                                                    : "100px",
-                                    }}
-                                />
-                            </div>
-
-                            {/* <div>
-                                <div
-                                    style={{
-                                        color: "#6E7184",
-                                        fontWeight: "400",
-                                        fontFamily:
-                                            "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
-                                        fontSize: width > 960 ? "16px" : "14px",
-                                        paddingTop: width > 1000 ? "92px" : "70px",
-                                        lineHeight: "28px",
-                                    }}
-                                >
-                                    “UFA金融大赛” 由UFA与中信证券联合举办
-                                </div>
-                            </div> */}
-                        </div>
-                    </div>
-                </div>
-                {/* <div
-                    className="flex-center flex-center-margin"
-                >
-                    <div className="introduction-box">
-                        <div>
-                            <div className="box-image flex-center">
-                                <Image
-                                    src="/homeCutout/Group 1020.png"
-                                    style={{
-                                        width:
-                                            width > 1500
-                                                ? "160px"
-                                                : width > 1350
-                                                ? "140px"
-                                                : width > 960
-                                                    ? "120px"
-                                                    : "100px",
-                                        height:
-                                            width > 1500
-                                                ? "160px"
-                                                : width > 1350
-                                                ? "140px"
-                                                : width > 960
-                                                    ? "120px"
-                                                    : "100px",
-                                    }}
-                                />
-                            </div>
-                            <div className="title"></div>
-                            <div>
-                                <div
-                                    style={{
-                                        color: "#6E7184",
-                                        fontWeight: "400",
-                                        fontFamily:
-                                            "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
-                                        fontSize: width > 960 ? "16px" : "14px",
-                                        paddingTop: width > 1000 ? "92px" : "70px",
-                                        lineHeight: "28px",
-                                    }}
-                                >
-                                    “UFA金融大赛” 由UFA与中信证券联合举办
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
-            </div>
-            <div style={{display: "flex",justifyContent: "center"}}>
-                <div className="flex-center flex-center-margin">
-                    <div className="introduction-box1">
-                        <div>
-                            <div className="box-image flex-center">
-                                <Image
-                                    src="/homeCutout/ACCEPTU.png"
-                                    title= "https://acceptu.com/"        
-                                    style={{
-                                        marginTop:
-                                            width > 1500
-                                                ? "110px"
-                                                : width > 1350
-                                                ? "110px"
-                                                : width > 960
-                                                    ? "93.35px"
-                                                    : "67.5px",
-                                        width:
-                                            width > 1500
-                                                ? "240px"
-                                                : width > 1350
-                                                ? "240px"
-                                                : width > 960
-                                                    ? "190px"
-                                                    : "140px",
-                                        height:
-                                            width > 1500
-                                                ? "80px"
-                                                : width > 1350
-                                                ? "80px"
-                                                : width > 960
-                                                    ? "63.3px"
-                                                    : "45.16px",
-                                    }}
-                                />
-                            </div>
-
-                            {/* <div>
-                                <div
-                                    style={{
-                                        color: "#6E7184",
-                                        fontWeight: "400",
-                                        fontFamily:
-                                            "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
-                                        fontSize: width > 960 ? "16px" : "14px",
-                                        paddingTop: width > 1000 ? "92px" : "70px",
-                                        lineHeight: "28px",
-                                    }}
-                                >
-                                    “UFA金融大赛” 由UFA与中信证券联合举办
-                                </div>
-                            </div> */}
-                        </div>
-                    </div>
-                </div>
-                {/* <div
-                    className="flex-center flex-center-margin"
-                >
-                    <div className="introduction-box">
-                        <div>
-                            <div className="box-image flex-center">
-                                <Image
-                                    src="/homeCutout/Group 1020.png"
-                                    style={{
-                                        width:
-                                            width > 1500
-                                                ? "160px"
-                                                : width > 1350
-                                                ? "140px"
-                                                : width > 960
-                                                    ? "120px"
-                                                    : "100px",
-                                        height:
-                                            width > 1500
-                                                ? "160px"
-                                                : width > 1350
-                                                ? "140px"
-                                                : width > 960
-                                                    ? "120px"
-                                                    : "100px",
-                                    }}
-                                />
-                            </div>
-                            <div className="title"></div>
-                            <div>
-                                <div
-                                    style={{
-                                        color: "#6E7184",
-                                        fontWeight: "400",
-                                        fontFamily:
-                                            "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
-                                        fontSize: width > 960 ? "16px" : "14px",
-                                        paddingTop: width > 1000 ? "92px" : "70px",
-                                        lineHeight: "28px",
-                                    }}
-                                >
-                                    “UFA金融大赛” 由UFA与中信证券联合举办
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
-            </div>
-     </>) :<>
-          <div style={{display: "flex",justifyContent: "center"}}>
+          </div>
+        </>
+      ) : width > 470 ? (
+        <>
+          <div style={{ display: "flex", justifyContent: "center",marginTop:"40px" }}>
             <div className="flex-center flex-center-margin">
               <div className="introduction-box1">
                 <div>
                   <div className="box-image flex-center">
                     <Image
-                        src="/homeCutout/Offerbang.png"
-                        title="https://offerbang.io/?wpm=2.32.2.1"
-                        style={{
-                            marginTop:
-                                width > 1500
-                                    ? "110px"
-                                    : width > 1350
-                                    ? "110px"
-                                    : width > 960
-                                        ? "93.35px"
-                                        : "50px",
-                            width:
-                                width > 1500
-                                    ? "240px"
-                                    : width > 1350
-                                    ? "240px"
-                                    : width > 960
-                                        ? "190px"
-                                        : "140px",
-                            height:
-                                width > 1500
-                                    ? "80px"
-                                    : width > 1350
-                                    ? "80px"
-                                    : width > 960
-                                        ? "63.3px"
-                                        : "45.16px",
-                        }}
+                      src="/homeCutout/Offerbang.png"
+                      title="https://offerbang.io/?wpm=2.32.2.1"
+                      style={{
+                        marginTop:
+                          width > 1500
+                            ? "110px"
+                            : width > 1350
+                            ? "110px"
+                            : width > 960
+                            ? "93.35px"
+                            : "65.5px",
+                        width:
+                          width > 1500
+                            ? "240px"
+                            : width > 1350
+                            ? "240px"
+                            : width > 960
+                            ? "190px"
+                            : "140px",
+                        height:
+                          width > 1500
+                            ? "80px"
+                            : width > 1350
+                            ? "80px"
+                            : width > 960
+                            ? "63.3px"
+                            : "45.16px",
+                      }}
+                    />
+                  </div>
+
+                  {/* <div>
+                                <div
+                                    style={{
+                                        color: "#6E7184",
+                                        fontWeight: "400",
+                                        fontFamily:
+                                            "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                                        fontSize: width > 960 ? "16px" : "14px",
+                                        paddingTop: width > 1000 ? "92px" : "70px",
+                                        lineHeight: "28px",
+                                    }}
+                                >
+                                    “UFA金融大赛” 由UFA与中信证券联合举办
+                                </div>
+                            </div> */}
+                </div>
+              </div>
+            </div>
+            {/* <div
+                    className="flex-center flex-center-margin"
+                >
+                    <div className="introduction-box">
+                        <div>
+                            <div className="box-image flex-center">
+                                <Image
+                                    src="/homeCutout/Group 1020.png"
+                                    style={{
+                                        width:
+                                            width > 1500
+                                                ? "160px"
+                                                : width > 1350
+                                                ? "140px"
+                                                : width > 960
+                                                    ? "120px"
+                                                    : "100px",
+                                        height:
+                                            width > 1500
+                                                ? "160px"
+                                                : width > 1350
+                                                ? "140px"
+                                                : width > 960
+                                                    ? "120px"
+                                                    : "100px",
+                                    }}
+                                />
+                            </div>
+                            <div className="title"></div>
+                            <div>
+                                <div
+                                    style={{
+                                        color: "#6E7184",
+                                        fontWeight: "400",
+                                        fontFamily:
+                                            "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                                        fontSize: width > 960 ? "16px" : "14px",
+                                        paddingTop: width > 1000 ? "92px" : "70px",
+                                        lineHeight: "28px",
+                                    }}
+                                >
+                                    “UFA金融大赛” 由UFA与中信证券联合举办
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> */}
+          </div>
+          <div style={{ display: "flex", justifyContent: "center",marginTop:"40px" }}>
+            <div className="flex-center flex-center-margin">
+              <div className="introduction-box1">
+                <div>
+                  <div className="box-image flex-center">
+                    <Image
+                      src="/homeCutout/CUSSA.png"
+                      title="https://www.cussa.org/"
+                      style={{
+                        marginTop:
+                          width > 1500
+                            ? "50px"
+                            : width > 1350
+                            ? "50px"
+                            : width > 960
+                            ? "50px"
+                            : "30px",
+                        width:
+                          width > 1500
+                            ? "200px"
+                            : width > 1350
+                            ? "200px"
+                            : width > 960
+                            ? "150px"
+                            : "100px",
+                        height:
+                          width > 1500
+                            ? "200px"
+                            : width > 1350
+                            ? "200px"
+                            : width > 960
+                            ? "150px"
+                            : "100px",
+                      }}
+                    />
+                  </div>
+
+                  {/* <div>
+                                <div
+                                    style={{
+                                        color: "#6E7184",
+                                        fontWeight: "400",
+                                        fontFamily:
+                                            "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                                        fontSize: width > 960 ? "16px" : "14px",
+                                        paddingTop: width > 1000 ? "92px" : "70px",
+                                        lineHeight: "28px",
+                                    }}
+                                >
+                                    “UFA金融大赛” 由UFA与中信证券联合举办
+                                </div>
+                            </div> */}
+                </div>
+              </div>
+            </div>
+            {/* <div
+                    className="flex-center flex-center-margin"
+                >
+                    <div className="introduction-box">
+                        <div>
+                            <div className="box-image flex-center">
+                                <Image
+                                    src="/homeCutout/Group 1020.png"
+                                    style={{
+                                        width:
+                                            width > 1500
+                                                ? "160px"
+                                                : width > 1350
+                                                ? "140px"
+                                                : width > 960
+                                                    ? "120px"
+                                                    : "100px",
+                                        height:
+                                            width > 1500
+                                                ? "160px"
+                                                : width > 1350
+                                                ? "140px"
+                                                : width > 960
+                                                    ? "120px"
+                                                    : "100px",
+                                    }}
+                                />
+                            </div>
+                            <div className="title"></div>
+                            <div>
+                                <div
+                                    style={{
+                                        color: "#6E7184",
+                                        fontWeight: "400",
+                                        fontFamily:
+                                            "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                                        fontSize: width > 960 ? "16px" : "14px",
+                                        paddingTop: width > 1000 ? "92px" : "70px",
+                                        lineHeight: "28px",
+                                    }}
+                                >
+                                    “UFA金融大赛” 由UFA与中信证券联合举办
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> */}
+          </div>
+          <div style={{ display: "flex", justifyContent: "center",marginTop:"40px",marginBottom:"60px" }}>
+            <div className="flex-center flex-center-margin">
+              <div className="introduction-box1">
+                <div>
+                  <div className="box-image flex-center">
+                    <Image
+                      src="/homeCutout/ACCEPTU.png"
+                      title="https://acceptu.com/"
+                      style={{
+                        marginTop:
+                          width > 1500
+                            ? "110px"
+                            : width > 1350
+                            ? "110px"
+                            : width > 960
+                            ? "93.35px"
+                            : "67.5px",
+                        width:
+                          width > 1500
+                            ? "240px"
+                            : width > 1350
+                            ? "240px"
+                            : width > 960
+                            ? "190px"
+                            : "140px",
+                        height:
+                          width > 1500
+                            ? "80px"
+                            : width > 1350
+                            ? "80px"
+                            : width > 960
+                            ? "63.3px"
+                            : "45.16px",
+                      }}
+                    />
+                  </div>
+
+                  {/* <div>
+                                <div
+                                    style={{
+                                        color: "#6E7184",
+                                        fontWeight: "400",
+                                        fontFamily:
+                                            "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                                        fontSize: width > 960 ? "16px" : "14px",
+                                        paddingTop: width > 1000 ? "92px" : "70px",
+                                        lineHeight: "28px",
+                                    }}
+                                >
+                                    “UFA金融大赛” 由UFA与中信证券联合举办
+                                </div>
+                            </div> */}
+                </div>
+              </div>
+            </div>
+            {/* <div
+                    className="flex-center flex-center-margin"
+                >
+                    <div className="introduction-box">
+                        <div>
+                            <div className="box-image flex-center">
+                                <Image
+                                    src="/homeCutout/Group 1020.png"
+                                    style={{
+                                        width:
+                                            width > 1500
+                                                ? "160px"
+                                                : width > 1350
+                                                ? "140px"
+                                                : width > 960
+                                                    ? "120px"
+                                                    : "100px",
+                                        height:
+                                            width > 1500
+                                                ? "160px"
+                                                : width > 1350
+                                                ? "140px"
+                                                : width > 960
+                                                    ? "120px"
+                                                    : "100px",
+                                    }}
+                                />
+                            </div>
+                            <div className="title"></div>
+                            <div>
+                                <div
+                                    style={{
+                                        color: "#6E7184",
+                                        fontWeight: "400",
+                                        fontFamily:
+                                            "Microsoft YaHei UI-Regular, Microsoft YaHei UI",
+                                        fontSize: width > 960 ? "16px" : "14px",
+                                        paddingTop: width > 1000 ? "92px" : "70px",
+                                        lineHeight: "28px",
+                                    }}
+                                >
+                                    “UFA金融大赛” 由UFA与中信证券联合举办
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> */}
+          </div>
+        </>
+      ) : (
+        <>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <div className="flex-center flex-center-margin">
+              <div className="introduction-box1">
+                <div>
+                  <div className="box-image flex-center">
+                    <Image
+                      src="/homeCutout/Offerbang.png"
+                      title="https://offerbang.io/?wpm=2.32.2.1"
+                      style={{
+                        marginTop:
+                          width > 1500
+                            ? "110px"
+                            : width > 1350
+                            ? "110px"
+                            : width > 960
+                            ? "93.35px"
+                            : "65px",
+                        width:
+                          width > 1500
+                            ? "240px"
+                            : width > 1350
+                            ? "240px"
+                            : width > 960
+                            ? "190px"
+                            : "140px",
+                        height:
+                          width > 1500
+                            ? "80px"
+                            : width > 1350
+                            ? "80px"
+                            : width > 960
+                            ? "63.3px"
+                            : "45.16px",
+                      }}
                     />
                   </div>
 
@@ -689,41 +701,40 @@ const Contacts = () => {
               </div>
             </div>
           </div>
-          <div style={{display: "flex",justifyContent: "center"}}>
+          <div style={{ display: "flex", justifyContent: "center" }}>
             <div className="flex-center flex-center-margin">
               <div className="introduction-box1">
                 <div>
                   <div className="box-image flex-center">
                     <Image
-                        src="/homeCutout/CUSSA.png"
-                        title = "https://www.cussa.org/"
-                        style={{
-                            marginTop:
-                                width > 1500
-                                    ? "50px"
-                                    : width > 1350
-                                    ? "50px"
-                                    : width > 960
-                                        ? "50px"
-                                        : "25px",
-                            width:
-                                width > 1500
-                                    ? "200px"
-                                    : width > 1350
-                                    ? "200px"
-                                    : width > 960
-                                        ? "150px"
-                                        : "100px",
-                            height:
-                                width > 1500
-                                    ? "200px"
-                                    : width > 1350
-                                    ? "200px"
-                                    : width > 960
-                                        ? "150px"
-                                        : "100px",
-                        }}
-                
+                      src="/homeCutout/CUSSA.png"
+                      title="https://www.cussa.org/"
+                      style={{
+                        marginTop:
+                          width > 1500
+                            ? "50px"
+                            : width > 1350
+                            ? "50px"
+                            : width > 960
+                            ? "50px"
+                            : "35px",
+                        width:
+                          width > 1500
+                            ? "200px"
+                            : width > 1350
+                            ? "200px"
+                            : width > 960
+                            ? "150px"
+                            : "100px",
+                        height:
+                          width > 1500
+                            ? "200px"
+                            : width > 1350
+                            ? "200px"
+                            : width > 960
+                            ? "150px"
+                            : "100px",
+                      }}
                     />
                   </div>
 
@@ -746,40 +757,40 @@ const Contacts = () => {
               </div>
             </div>
           </div>
-          <div style={{display: "flex",justifyContent: "center"}}>
+          <div style={{ display: "flex", justifyContent: "center",marginBottom:"60px" }}>
             <div className="flex-center flex-center-margin">
               <div className="introduction-box1">
                 <div>
                   <div className="box-image flex-center">
                     <Image
-                        src="/homeCutout/ACCEPTU.png"
-                        title= "https://acceptu.com/"        
-                        style={{
-                            marginTop:
-                                width > 1500
-                                    ? "110px"
-                                    : width > 1350
-                                    ? "110px"
-                                    : width > 960
-                                        ? "93.35px"
-                                        : "50px",
-                            width:
-                                width > 1500
-                                    ? "240px"
-                                    : width > 1350
-                                    ? "240px"
-                                    : width > 960
-                                        ? "190px"
-                                        : "140px",
-                            height:
-                                width > 1500
-                                    ? "80px"
-                                    : width > 1350
-                                    ? "80px"
-                                    : width > 960
-                                        ? "63.3px"
-                                        : "45.16px",
-                        }}
+                      src="/homeCutout/ACCEPTU.png"
+                      title="https://acceptu.com/"
+                      style={{
+                        marginTop:
+                          width > 1500
+                            ? "110px"
+                            : width > 1350
+                            ? "110px"
+                            : width > 960
+                            ? "93.35px"
+                            : "70px",
+                        width:
+                          width > 1500
+                            ? "240px"
+                            : width > 1350
+                            ? "240px"
+                            : width > 960
+                            ? "190px"
+                            : "140px",
+                        height:
+                          width > 1500
+                            ? "80px"
+                            : width > 1350
+                            ? "80px"
+                            : width > 960
+                            ? "63.3px"
+                            : "45.16px",
+                      }}
                     />
                   </div>
 
@@ -943,7 +954,8 @@ const Contacts = () => {
               </div>
             </div>
           </div> */}
-        </>}
+        </>
+      )}
       <div style={{ background: "#F5F6F8" }}>
         <div className="section" style={{ padding: " 120px 0px" }}>
           <div className="text-center">
@@ -954,28 +966,47 @@ const Contacts = () => {
           </div>
 
           <div className="text-center" style={{ paddingTop: "80px" }}>
-            <div style={{marginBottom:"43px"}}>
-              {width > 500 ? <>  <Image
-                  src="/homeCutout/ufa-qr.jpg"
-                  style={{ width: "160px", height: "160px", marginRight: "40px" }}
-              />
-                <Image
-                    src="/homeCutout/chen-qr.jpg"
-                    style={{ width: "160px", height: "160px", marginLeft: "40px" }}
-                /> </>:<>
-                <div>
+            <div style={{ marginBottom: "43px" }}>
+              {width > 500 ? (
+                <>
+                  {" "}
                   <Image
+                    src="/homeCutout/ufa-qr.jpg"
+                    style={{
+                      width: "160px",
+                      height: "160px",
+                      marginRight: "40px",
+                    }}
+                  />
+                  <Image
+                    src="/homeCutout/chen-qr.jpg"
+                    style={{
+                      width: "160px",
+                      height: "160px",
+                      marginLeft: "40px",
+                    }}
+                  />{" "}
+                </>
+              ) : (
+                <>
+                  <div>
+                    <Image
                       src="/homeCutout/ufa-qr.jpg"
                       style={{ width: "160px", height: "160px" }}
-                  />
-                </div>
-                <div>
-                  <Image
+                    />
+                  </div>
+                  <div>
+                    <Image
                       src="/homeCutout/chen-qr.jpg"
-                      style={{ width: "160px", height: "160px",marginTop:"40px"}}
-                  />
-                </div>
-              </>}
+                      style={{
+                        width: "160px",
+                        height: "160px",
+                        marginTop: "40px",
+                      }}
+                    />
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
