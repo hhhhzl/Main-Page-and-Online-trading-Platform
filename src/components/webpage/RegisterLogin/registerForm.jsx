@@ -554,9 +554,10 @@ export default function RegisterForm(props) {
                             type="password"
                             value={confirmPassword}
                             onChange={(e) => {
-                                const confirmPassword = e.target.value;
+                                // const confirmPassword = e.target.value;
                                 setConfirmPassword(e.target.value)
                             }}
+                            pattern = {(confirmPassword.length && confirmPassword === password) ? "^{1,15}$" : "^{600,700}$"}
                             isValid={confirmPassword.length && confirmPassword === password}
                             isInvalid={confirmPassword.length && confirmPassword !== password}
                         ></Form.Control>

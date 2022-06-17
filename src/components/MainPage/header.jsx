@@ -237,7 +237,7 @@ useEffect(()=>{
       
       <HeaderOut
         style={{
-          width: width,
+          width: "100%",
           borderBottom:
             url == "/personal" ||
             url == "/team" ||

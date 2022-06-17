@@ -339,6 +339,23 @@
   background: #FFFFFF;
 }
 
+.introduction-box1 {
+  min-width: 180px;
+  min-height: 180px;
+  align-items: center;
+  /* margin: 3% 0 30px 0%; */
+  width: 300px;
+  height: 300px;
+  transform: translate(0%, 0%);
+  z-index: 2;
+  /* padding: 30px 36px 36px; */
+  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02);
+  box-sizing: border-box;
+  background: #FFFFFF;
+}
+
+
+
 .flex-center {
   display: flex;
   justify-content: center;
@@ -482,6 +499,19 @@
     background: #FFFFFF;
   }
 
+  .introduction-box1 {
+    align-items: center;
+    width: 250px;
+    height: 250px;
+    transform: translate(0%, 0%);
+    z-index: 2;
+    /* padding: 20px; */
+    box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02);
+    box-sizing: border-box;
+    background: #FFFFFF;
+  }
+
+
   .title {
     text-align: center;
     align-items: center;
@@ -547,6 +577,18 @@
     transform: translate(0%, 0%);
     z-index: 2;
     padding: 15px;
+    box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02);
+    box-sizing: border-box;
+    background: #FFFFFF;
+  }
+
+  .introduction-box1 {
+    align-items: center;
+    width: 180px;
+    height: 180px;
+    transform: translate(0%, 0%);
+    z-index: 2;
+    /* padding: 15px; */
     box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.02), 0px 2px 4px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 1px rgba(0, 0, 0, 0.02), 0px 8px 16px 1px rgba(0, 0, 0, 0.02), 0px 16px 32px 1px rgba(0, 0, 0, 0.02), 0px 32px 64px 1px rgba(0, 0, 0, 0.02);
     box-sizing: border-box;
     background: #FFFFFF;

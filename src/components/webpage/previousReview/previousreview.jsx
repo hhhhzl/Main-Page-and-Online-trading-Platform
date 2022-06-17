@@ -14,7 +14,6 @@ import Carousel from "react-bootstrap/Carousel";
 const Review = ({ projectImgs }) => {
   const { width, height } = useWindowDimensions();
   const React = require("react");
-  const { BilibiliVideo } = require("react-bilibili-video");
   const [type, setType] = useState("front-end");
   const [image, setimage] = useState(false);
   const [video, setvideo] = useState(true);
@@ -230,12 +229,14 @@ const Review = ({ projectImgs }) => {
       <div className="video-container" style={{ position: "relative" }}>
         <div className="review-icon-wrapper">
           <div className="review-icon">
-            {width > 700 ? (
+            {width > 700 ? 
+            (
               <Image
                 src="/homeCutout/Group 143.png"
                 style={{ width: "108px", height: "108px" }}
               />
-            ) : (
+            ) 
+            : (
               <>
                 <br />
                 <br />
@@ -243,16 +244,19 @@ const Review = ({ projectImgs }) => {
             )}
           </div>
         </div>
-        <div style={{ minHeight: "150px" }}>
+        <div style={{ 
+          minHeight: "150px"
+           }}>
           <Collapse in={video} dimension="width">
             <div id="example-collapse-text">
               <ReactPlayer
                 className="player-wrapper"
-                url="https://test1-1311825037.cos.ap-nanjing.myqcloud.com/public/summary_video_v1.mp4"
+                // playIcon={<></>}
+                url="https://test1-1311825037.cos.ap-nanjing.myqcloud.com/public/competition_intro_video.mp4"
                 width="100%"
-                height="100%"
+                height= {width > 960 ? width *0.5/1.78 : width > 650? width * 0.85/1.78 : width * 0.9/1.78 }
                 controls={true}
-                // light="https://test1-1311825037.cos.ap-nanjing.myqcloud.com/public/video_cover_1.png"
+                light="https://test1-1311825037.cos.ap-nanjing.myqcloud.com/public/video_cover_2.png"
               />
             </div>
           </Collapse>

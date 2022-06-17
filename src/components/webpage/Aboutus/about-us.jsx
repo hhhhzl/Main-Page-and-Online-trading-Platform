@@ -35,7 +35,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
 
   return (
     <div
-      className="section"
+      // className="section"
       style={{ paddingTop: "20px", paddingBottom: "90px" }}
     >
       <Fade bottom duration={150} delay={150} fraction={0.1}>
@@ -50,7 +50,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
         <br />
         <br /> */}
 
-        <Container
+        <div
           className="content-center"
           style={{
             padding: "44px 0px 0px",
@@ -103,7 +103,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
 
           <h5 className="text-center"></h5>
           <br />
-        </Container>
+        </div>
 
         <div
           className="video"
@@ -129,11 +129,12 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
               <div className="player-wrapper">
                 <ReactPlayer
                   className="player-wrapper"
-                  url="https://test1-1311825037.cos.ap-nanjing.myqcloud.com/public/competition_intro_video.mp4"
+                  url="https://test1-1311825037.cos.ap-nanjing.myqcloud.com/public/summary_video_v1.mp4"
                   width="100%"
-                  height="100%"
+                  height= {width > 960 ? width *0.5/2.111 : width > 650? width * 0.85/2.111 : width * 0.9/2.111 }
                   controls={true}
-                  // light="https://test1-1311825037.cos.ap-nanjing.myqcloud.com/public/video_cover_2.png"
+                  light="https://test1-1311825037.cos.ap-nanjing.myqcloud.com/public/video_cover_1.png"
+                  
                 />
               </div>
             </div>
