@@ -366,15 +366,18 @@ export default function Introduce({ changeEventKey }) {
                   <div className="ranking awards-center">第一名</div>
                   <div className="awards-pic awards-center">
                     <Image
-                      src="/homeCutout/10086.png"
-                      style={{ width: "220px", height: "220px" }}
+                      src="/homeCutout/赛事介绍获奖.png"
+                      style={{ width: "178px", height: "178px" }}
                     />
                   </div>
 
                   <div className="award-content awards-center">
                     <div>团队获得10000元人民币</div>
-                    <div>每位团员获得官方制定的冠军证书 </div>
                     <div>中信证券实习机会</div>
+                    <div>中信证券飞鹰计划名额（含结业证书）</div>
+                    <div>埔思学院直接录取</div>
+                    <div>由中信证券认证的冠军证书</div>
+                    
                   </div>
                 </div>
               </div>
@@ -390,15 +393,18 @@ export default function Introduce({ changeEventKey }) {
                   <div className="ranking awards-center">第二名</div>
                   <div className="awards-pic awards-center">
                     <Image
-                      src="/homeCutout/10086.png"
-                      style={{ width: "220px", height: "220px" }}
+                      src="/homeCutout/赛事介绍获奖.png"
+                      style={{ width: "178px", height: "178px" }}
                     />
                   </div>
 
                   <div className="award-content awards-center">
-                    <div>团队获得8500元人民币</div>
-                    <div>每位团员获得官方制定的冠军证书 </div>
-                    <div>中信证券实习机会</div>
+                    <div>团队获得8000元人民币</div>
+                    <div>中信证券实习/面试机会</div>
+                    <div>中信证券飞鹰计划名额（含结业证书）</div>
+                    <div>埔思学院终面机会</div>
+                    <div>由中信证券认证的亚军证书</div>
+                    
                   </div>
                 </div>
               </div>
@@ -414,15 +420,17 @@ export default function Introduce({ changeEventKey }) {
                   <div className="ranking awards-center">第三名</div>
                   <div className="awards-pic awards-center">
                     <Image
-                      src="/homeCutout/10086.png"
-                      style={{ width: "220px", height: "220px" }}
+                      src="/homeCutout/赛事介绍获奖.png"
+                      style={{ width: "178px", height: "178px" }}
                     />
                   </div>
 
                   <div className="award-content awards-center">
                     <div>团队获得7000元人民币</div>
-                    <div>每位团员获得官方制定的冠军证书 </div>
-                    <div>中信证券实习机会</div>
+                    <div>中信证券实习/面试机会</div>
+                    <div>中信证券飞鹰计划名额（含结业证书）</div>
+                    <div>埔思学院终面机会</div>
+                    <div>由中信证券认证的季军证书</div>
                   </div>
                 </div>
               </div>
@@ -439,15 +447,17 @@ export default function Introduce({ changeEventKey }) {
                     <div className="ranking awards-center">第四至十名</div>
                     <div className="awards-pic awards-center">
                       <Image
-                        src="/homeCutout/10086.png"
-                        style={{ width: "220px", height: "220px" }}
+                        src="/homeCutout/赛事介绍获奖.png"
+                        style={{ width: "178px", height: "178px" }}
                       />
                     </div>
 
                     <div className="award-content awards-center">
-                      <div>团队获得6000元人民币</div>
-                      <div>每位团员获得官方制定的冠军证书 </div>
-                      <div>中信证券实习机会</div>
+                      <div>团队获得5000元人民币</div>
+                    <div>有机会获得中信证券面试机会</div>
+                    <div>中信证券飞鹰计划面试机会（含结业证书）</div>
+                    <div>公募机构决赛现场终面机会</div>
+                    <div>由中信证券认证的决赛证书</div>
                     </div>
                   </div>
                 </div>
@@ -469,15 +479,17 @@ export default function Introduce({ changeEventKey }) {
                     <div className="ranking awards-center">第四至十名</div>
                     <div className="awards-pic awards-center">
                       <Image
-                        src="/homeCutout/10086.png"
-                        style={{ width: "220px", height: "220px" }}
+                        src="/homeCutout/赛事介绍获奖.png"
+                        style={{ width: "178px", height: "178px" }}
                       />
                     </div>
 
                     <div className="award-content awards-center">
-                      <div>团队获得6000元人民币</div>
-                      <div>每位团员获得官方制定的冠军证书 </div>
-                      <div>中信证券实习机会</div>
+                    <div>团队获得5000元人民币</div>
+                    <div>有机会获得中信证券面试机会</div>
+                    <div>中信证券飞鹰计划面试机会（含结业证书）</div>
+                    <div>公募机构决赛现场终面机会</div>
+                    <div>由中信证券认证的决赛证书</div>
                     </div>
                   </div>
                 </div>
@@ -529,14 +541,15 @@ export default function Introduce({ changeEventKey }) {
                   <div className="awards-pic awards-center">
                     <Image
                       src="/homeCutout/10086.png"
-                      style={{ width: "220px", height: "220px" }}
+                      style={{ width: "178px", height: "178px" }}
                     />
                   </div>
 
                   <div className="award-content awards-center">
-                    <div>团队获得5000元人民币</div>
-                    <div>每位团员获得官方制定的冠军证书 </div>
-                    <div>中信证券实习机会</div>
+                  <div>获得“模范财经人”证书</div>
+                      <div>有机会获得金融机构实习机会 </div>
+                      <div>有机会获得UFA独家采访机会</div>
+                      <div>进入“UFA精英群”，获得一手信息</div>
                   </div>
                 </div>
               </div>
