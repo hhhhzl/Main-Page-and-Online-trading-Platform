@@ -179,8 +179,8 @@ export default function Sign() {
         style={{
           position: "fixed",
           zIndex: 10,
-          width: "1px",
-          height: width / 2.97,
+          width: width > 800 ? "1px" : "",
+            height: "662px",
           background: `linear-gradient(to top, #E5E8EE ${
             ((bodyscrollrdTop / (width / 2.97)) * 100).toString() + "%"
           }, rgba(255, 255, 255, 0.5) ${

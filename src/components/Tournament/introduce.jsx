@@ -35,7 +35,7 @@ export default function Introduce({ changeEventKey }) {
             position: "fixed",
             zIndex: 10,
             width: width > 800 ? "1px" : "",
-            height: width / 2.9,
+            height: "662px",
             background: `linear-gradient(to top, #E5E8EE ${
               ((bodyscrollrdTop / (width / 2.97)) * 100).toString() + "%"
             }, rgba(255, 255, 255, 0.5) ${
