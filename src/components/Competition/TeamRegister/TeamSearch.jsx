@@ -52,6 +52,8 @@ const searchSwitch = () => {
         try {
             const response = await apiGetAllTeamAccounts()
             const responsedata = response.data.data
+            // const teamfilter = responsedata.filter(elem => elem.members_count <4 && elem.finalized == false)
+            // setteamdata(teamfilter)
             try {
                 const newPeopleArray = await Promise.all(responsedata.map(async function(team) {
                     const responseUser = await apiGetUser(team.leader);
@@ -70,7 +72,6 @@ const searchSwitch = () => {
                   }
                 const teamfilter = teamlist.filter(elem => elem.members_count <4 && elem.finalized == false)
                 setteamdata(teamfilter)
-
             } catch (e) {
                 console.log(e);
             }
@@ -134,6 +135,7 @@ const searchSwitch = () => {
         },
         {
             dataField: 'leadername',
+            // dataField: 'leader_username',
             text: '队长名称',
             sort: true,
             style: { width: "0%" },
@@ -151,6 +153,7 @@ const searchSwitch = () => {
         },
         {
             dataField: 'leaderemail',
+            // dataField: 'leader_email',
             text: '队长邮箱',
             sort: true,
             style: { width: "0%" },
