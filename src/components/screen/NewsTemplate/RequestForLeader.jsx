@@ -14,15 +14,12 @@ export default function RequestForLeader({
     id, 
     type,
     messagage_id,
-    setload
 }){
-    const [loadafter, setloadafter] = useState(false)
     const [username, setusername] = useState(null)
     const [sumbit, setsumbit] = useState(false)
     const dispatch = useDispatch()
     const history = useHistory()
     const { status } = useSelector((state) => state.userInfo);
-    const { state } = useSelector((state) => state.news);
     const [agree, setagree] = useState(false)
     const [disagree, setdisagree] = useState(false)
     const {team, user} = useContext(AuthContext)
@@ -74,8 +71,7 @@ export default function RequestForLeader({
     useEffect(() => {
         if (agree && team && user){
             console.log(team, user)
-             dispatch(fetchNews({team:team.metadata, user_id:user.user_id}))
-             setloadafter(true)
+             dispatch(fetchNews({team:team.metadata, user_id:user.user_id,reload:true}))
              getteamnumber()
              setagree(false)
         }
@@ -83,8 +79,7 @@ export default function RequestForLeader({
 
     useEffect(() => {
         if (disagree && team && user){
-             dispatch(fetchNews({team:team.metadata,user:user.user_id}))
-             setloadafter(true)
+             dispatch(fetchNews({team:team.metadata,user:user.user_id, reload:true}))
              setdisagree(false)
         }
     },[disagree])

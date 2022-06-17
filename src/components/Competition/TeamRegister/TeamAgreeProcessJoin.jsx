@@ -202,7 +202,7 @@ export default function TeamAgreeProcessJoin(){
         className="general-modal"
         >
           <Modal.Header></Modal.Header>
-          <Modal.Body>恭喜您报名成功！请联系队长尽快通过您的入队申请。</Modal.Body>
+          <Modal.Body>恭喜您成功提交入队申请！请联系队长尽快通过您的入队申请。</Modal.Body>
         <Modal.Footer style={{width: "100%", display: "flex", justifyContent:"center"}}>
             <Button className="modal-btn modal-btn-submit"  variant="primary" onClick ={() => sendUserhome()}>
             返回主页

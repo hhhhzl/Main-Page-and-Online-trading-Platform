@@ -23,6 +23,7 @@ export default function EditData({
 	const [experienceList,setExperienceList] = useState(userget.experience?.length> 0? userget.experience : [
 		{company:"",position:"",detail:""}
 	])
+	const [headPortrait,setHeadPortrait] = useState(userget? userget.avatar : null)
 	const [successSendtoC, setsuccessSendtoC] = useState(false)
 	const history= useHistory()
 	const dispatch = useDispatch();
@@ -45,7 +46,7 @@ export default function EditData({
 	const uploadFile = React.createRef();
 	const [showModal, setShowModal] = useState(false);
 	const [imgSrc, setImgSrc] = useState('')
-	const [headPortrait,setHeadPortrait] = useState(userget? userget.avatar :'/Lindsay.jpg')
+	
 
 	const hideModal = () => {
 	  setShowModal(false);
@@ -83,6 +84,15 @@ export default function EditData({
 			setsubmit(false)
 		}
 	},[submit,status])
+
+	useEffect(() => {
+		setlastname(userget? userget.last_name: "");
+		setinstitution(userget? userget.institution : "");
+		setPersonalProfile(userget? userget.profile : "");
+		setExperienceList(userget.experience?.length> 0? userget.experience : [
+		{company:"",position:"",detail:""}])
+		setHeadPortrait(userget? userget.avatar : null)	
+	},[userget])
 
 
 	return(

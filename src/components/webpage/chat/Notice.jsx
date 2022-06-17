@@ -20,7 +20,7 @@ export default function Notice() {
   const dispatch = useDispatch()
   const {team, user} = useContext(AuthContext)
   
-  const {news, state, read_or_not} = useSelector((state) => state.news)
+  const {news, state, read_or_not, need_to_reload} = useSelector((state) => state.news)
   const [notice, setNotice] = useState(null);
   const [current, setCurrent] = useState(1);
   const [noticeList, setNoticeList] = useState(data);
@@ -50,35 +50,46 @@ export default function Notice() {
   const markasRead = (item) =>{
     if (item.content && item.is_read == false){
        dispatch(updateNews(item.id))
-       dispatch(fetchNews({team: team?.metadata, user_id:user.user_id}))
+       dispatch(fetchNews({team: team?.metadata, user_id:user.user_id, reload:false}))
        
     }
     setCurrent(item.message_id)
     setNotice(item)
   }
 
-  useEffect(()=>{
-    if (user && team && !load1){
-      dispatch(fetchNews({team: team?.metadata, user_id:user.user_id}))
-      setload1(true)
-    }
-  },[dispatch, team, user, load1])
-
-  useEffect(()=>{
-    if (user && !team && !load2){
-      dispatch(fetchNews({team: null, user_id:user.user_id}))
-      setload2(true)
-    }
-  },[dispatch, team, user, load2])
+  // useEffect(()=>{
+  //   if (user && localStorage.getItem("Team") && !load1){
+  //     console.log(localStorage.getItem("Team"))
+  //     let team = JSON.parse(localStorage.getItem("Team"))
+  //     dispatch(fetchNews({team: team.metadata, user_id:user.user_id}))
+  //     setload1(true)
+  //   }
+  // },[dispatch, user, load1])
+  
+  // useEffect(()=>{
+  //   if (user && !localStorage.getItem("Team") && !load2){
+  //     dispatch(fetchNews({team: null, user_id:user.user_id}))
+  //     setload2(true)
+  //   }
+  // },[dispatch, user, load2])
 
   useEffect(() =>{
-    if (!load && news?.length>0  && read_or_not != null){
+    if (!load && news?.length>0){
         console.log("runhere''''''''''''''''''''''''''''''")
         setNotice(news[0])
         setCurrent(news[0].message_id)
         setload(true)
     } 
-  },[news, load, read_or_not])
+  },[news, load])
+
+  useEffect(() =>{
+    if (need_to_reload && news?.length>0){
+        console.log("runhere也是''''''''''''''''''''''''''''''")
+        setNotice(news[current-1])
+        setCurrent(news[current-1].message_id)
+        setload(true)
+    } 
+  },[news, need_to_reload])
 
   // useEffect(()=>{
   //   if(user && !load1){
@@ -222,9 +233,9 @@ export default function Notice() {
                :
                notice?.account? 
                team?.metadata.leader == user.user_id? 
-               (<><RequestForLeader id = {notice.requester} type = {notice.status} messagage_id={notice.id} setload = {setload} /></>)
+               (<><RequestForLeader id = {notice.requester} type = {notice.status} messagage_id={notice.id} /></>)
                :
-               (<><RequestForTeamMember id = {notice.account}  type = {notice.status} messagage_id = {notice.id} setload = {setload}/></>)
+               (<><RequestForTeamMember id = {notice.account}  type = {notice.status} messagage_id = {notice.id}/></>)
                :
                null
               }</div>

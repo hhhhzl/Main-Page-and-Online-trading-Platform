@@ -169,19 +169,20 @@ useEffect(() =>{
 
 //////////////////////////////////////////////////load news//////////////////////////////////////////////////////////
 useEffect(()=>{
-  if (user && team && !load1){
-    console.log(user)
-    dispatch(fetchNews({team: team?.metadata, user_id:user.user_id}))
+  if (user && localStorage.getItem("Team") && !load1){
+    console.log(localStorage.getItem("Team"))
+    let team = JSON.parse(localStorage.getItem("Team"))
+    dispatch(fetchNews({team: team.metadata, user_id:user.user_id, reload:false}))
     setload1(true)
   }
-},[dispatch, team, user, load1])
+},[dispatch, user, load1])
 
 useEffect(()=>{
-  if (user && !team && !load2){
-    dispatch(fetchNews({team: null, user_id:user.user_id}))
+  if (user && !localStorage.getItem("Team") && !load2){
+    dispatch(fetchNews({team: null, user_id:user.user_id, reload:false}))
     setload2(true)
   }
-},[dispatch, team, user, load2])
+},[dispatch, user, load2])
 
   return (
     <>

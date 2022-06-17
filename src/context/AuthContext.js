@@ -28,9 +28,11 @@ export const AuthProvider = ({ children }) => {
       ? jwt_decode(localStorage.getItem("authTokens"))
       : null
   );
-  const [apikey, setapikey] = useState(null);
-  const [competition, setcompetition] = useState(null)
-  const [team, setteam] = useState(null)
+  
+  const [team, setteam] = useState(() =>
+  localStorage.getItem("Team")
+    ? JSON.parse(localStorage.getItem("Team"))
+    : null)
   const [userdata, setuserdata] = useState(() =>
     localStorage.getItem("userSelf")
       ? JSON.parse(localStorage.getItem("userSelf"))
@@ -41,6 +43,9 @@ export const AuthProvider = ({ children }) => {
       ? JSON.parse(localStorage.getItem("authTokens"))
       : null
   );
+  const [apikey, setapikey] = useState(null);
+  const [competition, setcompetition] = useState(null)
+  
   const [loading, setloading] = useState(true);
 
   const location = useLocation()
@@ -147,6 +152,8 @@ export const AuthProvider = ({ children }) => {
     setAuthTokens(null);
     setuser(null);
     localStorage.removeItem("authTokens");
+    localStorage.removeItem("Team");
+    localStorage.removeItem("Userchoice");
     clearLocalStorage();
     history.push("/");
   };
@@ -252,8 +259,8 @@ export const AuthProvider = ({ children }) => {
           const response = await apiGetTeamAccount(team_id)
           if (response.data.msg == "OK."){
             const teamA = response.data.data
-            console.log(teamA,163)
             setteam(teamA)
+            localStorage.setItem("Team",JSON.stringify(teamA))
           }else{
             setteam(null)
           }
@@ -292,10 +299,12 @@ export const AuthProvider = ({ children }) => {
   /////////////////////有apikey后自动请求team
   useEffect(() =>{
     if (apikey){
-      GetCompetitionTeam(null)
       GetCompetitions(null)
+      if (!team){
+        GetCompetitionTeam(null)
+      }   
     }
-  },[apikey])
+  },[apikey,team])
 
   useEffect(()=>{
     if (!apikey){

@@ -75,13 +75,15 @@ const initialState = {
     news: [],
     state: null,
     loading: true,
-    read_or_not:null
+    read_or_not:null,
+    need_to_reload: false
 }
 
 export const fetchNews = createAsyncThunk(
     "news/fetchNews",
-    async ({team, user_id}) => {
+    async ({team, user_id, reload}) => {
         let read = false
+        console.log("fetchingNews",team,user_id)
         try{   
             const newArrays = await Promise.all([getRequests(team, user_id),getAdminMessage()])
             let unsortArray = []
@@ -100,7 +102,8 @@ export const fetchNews = createAsyncThunk(
             for (let i = 0; i< sortedArray.length; i++){
                 sortedArray[i].message_id = i + 1
            }
-            return {sortedArray,read}
+           console.log("getallnews",sortedArray)
+            return {sortedArray,read, reload}
         }catch(e){
             console.log(e)
         }
@@ -126,6 +129,7 @@ export const NewsSlice = createSlice({
         })
         .addCase(fetchNews.fulfilled, (state,action) =>{
             state.news = action.payload.sortedArray;
+            state.need_to_reload = action.payload.reload
             state.state = "fulfilled";
             state.loading = false;
             state.read_or_not = action.payload.read

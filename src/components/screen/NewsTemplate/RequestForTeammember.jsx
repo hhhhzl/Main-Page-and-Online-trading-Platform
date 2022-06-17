@@ -10,7 +10,11 @@ import { apiDisactiveMessgae, apiGetCompetitionRequests, apiGetTeamAccount } fro
 import { fetchNews } from 'redux/reducers/News/newsSlice'
 import AuthContext from 'context/AuthContext'
 
-export default function RequestForTeamMember({id, type, messagage_id}){
+export default function RequestForTeamMember({
+    id, 
+    type, 
+    messagage_id,
+}){
     const [load,setload] = useState(false)
     const [sumbit, setsumbit] = useState(false)
     const dispatch = useDispatch()
@@ -33,18 +37,17 @@ export default function RequestForTeamMember({id, type, messagage_id}){
     }
 
     useEffect(() => {
-        if (agree){
-             dispatch(fetchNews({team:null, user:user.user_id}))
+        if (agree && user){
+             dispatch(fetchNews({team:null, user:user.user_id, reload: true}))
              setagree(false)
         }
-    },[agree])
+    },[agree, user])
 
     useEffect(()=>{
-        if (!load){
+        if (id){
             GetTeam(id)
-            setload(true)
         }
-    },[load])
+    },[id])
 
     const GetTeam = async (id) =>{
         try{
