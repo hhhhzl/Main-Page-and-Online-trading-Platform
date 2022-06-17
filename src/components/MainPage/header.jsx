@@ -25,7 +25,7 @@ import { HomeMobileIcon } from "./NavbarElements";
 
 
 const HeaderCreate = ({ toggle }) => {
-  const { user, logoutUser, apikey, team, getcompetionapikey} = useContext(AuthContext);
+  let { user, logoutUser, apikey, team, getcompetionapikey} = useContext(AuthContext);
   const { width, height } = useWindowDimensions();
   const [showMenu, setHhowMenu] = useState(false);
   const [scrolledDownEnough, setScrolledDownEnough] = useState(false);
@@ -194,8 +194,8 @@ useEffect(()=>{
         <Modal.Header closeButton>
           {/* <Modal.Title>Modal heading</Modal.Title> */}
         </Modal.Header>
-        <Modal.Body className="active-500" >您确定要退出吗？</Modal.Body>
-        <Modal.Footer>
+        <Modal.Body className="active-500">您确定要退出吗？</Modal.Body>
+        <Modal.Footer style={{width:"100%",display:"flex",justifyContent:"space-evenly"}}>
           <Button
             className="modal-btn modal-btn-cancel"
             variant="secondary"

@@ -34,7 +34,7 @@ const getAdminMessage = async () =>{
 const getRequests = async (team, user_id) =>{
     let before_filter= [] 
     let row_before = []
-    console.log(team,user_id)
+    console.log("fetchingNews",team,user_id)
     try{
         // member
         if (!team || team.leader != user_id){
@@ -83,7 +83,7 @@ export const fetchNews = createAsyncThunk(
     async ({team, user_id}) => {
         let read = false
         try{   
-            const newArrays = await Promise.all([getAdminMessage(),getRequests(team, user_id)])
+            const newArrays = await Promise.all([getRequests(team, user_id),getAdminMessage()])
             let unsortArray = []
             let mergedArray = []
             let sortedArray = []

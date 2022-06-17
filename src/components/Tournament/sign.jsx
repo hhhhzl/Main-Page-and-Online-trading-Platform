@@ -150,9 +150,9 @@ export default function Sign() {
           {/* <Modal.Title>Modal heading</Modal.Title> */}
         </Modal.Header>
         <Modal.Body>
-          你还没有登录哟，需要登录注册即可报名比赛！！
+            您还没有登录，请先登录或者注册再报名参加比赛。
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer style={{width:"100%",display:"flex",justifyContent:"space-evenly"}}>
           <Button
             className="modal-btn modal-btn-cancel"
             variant="secondary"

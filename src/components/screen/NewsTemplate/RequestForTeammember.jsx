@@ -77,35 +77,111 @@ export default function RequestForTeamMember({id, type, messagage_id}){
                 <>
                 <Button 
                 onClick = {() => disagreeJoin(messagage_id)} 
-                style={{marginRight:"20px"}}>
-                    撤销
+                style={{
+                    height: "48px",
+                    background: "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)",
+                    boxShadow: "0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08)",
+                    borderRadius: "4px 4px 4px 4px",
+                    marginRight:"36px"}}>
+                    <div
+                    style={{
+                        height: "24px",
+                        fontSize: "14px",
+                        fontFamily: "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+                        fontWeight: "bold",
+                        color: "#FFFFFF",
+                        lineHeight: "24px",
+                    }}
+                    >撤销请求</div>
                 </Button>
                 </>
                 :
                 type == "A"?
                 <>
-                <Button disabled={true} style={{marginRight:"20px"}}>
-                    已通过
+                <Button disabled={true} 
+                
+                style={{
+                    height: "48px",
+                    background: "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)",
+                    boxShadow: "0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08)",
+                    borderRadius: "4px 4px 4px 4px",
+                    marginRight:"36px"}}>
+                    <div
+                    style={{
+                        height: "24px",
+                        fontSize: "14px",
+                        fontFamily: "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+                        fontWeight: "bold",
+                        color: "#FFFFFF",
+                        lineHeight: "24px",
+                    }}
+                    >请求已通过</div>
                 </Button>
                 </>
                 :
                 type == "D"?
                 <>
-                <Button disabled={true} style={{marginRight:"20px"}}>
-                    已被拒绝
+                <Button 
+                disabled={true} 
+                style={{ 
+                    height: "48px",
+                    background: "#F5F6F8",
+                    border:0,
+                    borderRadius: "4px 4px 4px 4px",
+                    marginRight:"36px"}}>
+                    <div
+                    style={{
+                        height: "24px",
+                        fontSize: "14px",
+                        fontFamily: "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+                        fontWeight: "bold",
+                        color: "#2A2B30",
+                        lineHeight: "24px",
+                    }}
+                    >请求已被拒绝</div>
                 </Button>
                 </>
                 :
                 type == "W"?
                 <>
-                <Button disabled={true} style={{marginRight:"20px"}}>
-                    已撤销
+                <Button disabled={true} 
+                style={{ 
+                    height: "48px",
+                    background: "#F5F6F8",
+                    border:0,
+                    borderRadius: "4px 4px 4px 4px",
+                    marginRight:"36px"}}>
+                    <div
+                    style={{
+                        height: "24px",
+                        fontSize: "14px",
+                        fontFamily: "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+                        fontWeight: "bold",
+                        color: "#2A2B30",
+                        lineHeight: "24px",
+                    }}
+                    >请求已撤销</div>
                 </Button>
                 </>
                 :
                 <>
-                <Button disabled={true} style={{marginRight:"20px"}}>
-                    已过期，请重新申请
+                <Button disabled={true} 
+                style={{ 
+                    height: "48px",
+                    background: "#F5F6F8",
+                    border:0,
+                    borderRadius: "4px 4px 4px 4px",
+                    marginRight:"36px"}}>
+                    <div
+                    style={{
+                        height: "24px",
+                        fontSize: "14px",
+                        fontFamily: "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+                        fontWeight: "bold",
+                        color: "#2A2B30",
+                        lineHeight: "24px",
+                    }}
+                    >请求已过期，请重新申请</div>
                 </Button>
                 </>
             }

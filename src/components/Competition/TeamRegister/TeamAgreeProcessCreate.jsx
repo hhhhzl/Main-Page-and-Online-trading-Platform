@@ -61,14 +61,23 @@ export default function TeamAgreeProcessCreate({toggle}) {
 
     const createTeam = async () =>{
         try{
-            const data = {
-                competition_id:competitionID,
-                name:teamname,
-                track:lianghua? "Q" : "S",
-                avatar:headPortrait
+            let data = {}
+            if (headPortrait === "/homeCutout/Group 1073@2x.png"){
+                data = {
+                    competition_id:competitionID,
+                    name:teamname,
+                    track:lianghua? "Q" : "S",
+                    // avatar:headPortrait
+                }
+            }else{
+                data = {
+                    competition_id:competitionID,
+                    name:teamname,
+                    track:lianghua? "Q" : "S",
+                    avatar:headPortrait
+                }
             }
             console.log('create team', data)
-            const dataprops = JSON.stringify(data)
             const response = await apiCreateTeamAccount(data)      
             const messge = response.data.msg
             if (messge == "The user has already joined a team in this competition."){
@@ -84,6 +93,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
                 setdeadline(true)
             }
         }catch(e){
+            console.error(e)
             alert("系统错误，请稍后重试..")
         }    
     }
@@ -93,41 +103,40 @@ export default function TeamAgreeProcessCreate({toggle}) {
         {
             id: 1,
             title: "参赛通知",
-            pagename: "报名限制",
+            pagename: "报名规则",
             pagetext: "每位选手只能创立/加入一个赛事团队。报名成功后，无法更换团队与赛道。"
         },
         {
             id: 2,
             title: "参赛通知",
-            pagename: "报名限制",
+            pagename: "报名规则",
             pagetext: "每位选手只能创立/加入一个赛事团队。报名成功后，无法更换团队与赛道。"
         },
         {
             id: 3,
             title: "参赛通知",
-            pagename: "交易规则",
-            pagetext: "大赛交易规则模拟A股交易规则；其中，每支证券买入时不得超过账户总资产的25%。"
+            pagename: "报名规则",
+            pagetext: "每位选手只能创立/加入一个赛事团队。报名成功后，无法更换团队与赛道。"
 
         },
         {
             id: 4,
             title: "参赛通知",
-            pagename: "排名规则",
-            pagetext: "初赛复赛决赛... 我同意大赛选拔机制，并对评委筛选结果无异议。"
+            pagename: "交易规则",
+            pagetext: "大赛交易规则模拟A股交易规则；其中，每支证券买入时不得超过账户总资产的25%。量化选手无法手动交易股票；主观投资选手无法通过代码交易股票。"
 
         },
         {
             id: 5,
             title: "参赛通知",
-            pagename: "财经洞悉",
-            pagetext: "初赛复赛决赛... 我同意大赛选拔机制，并对评委筛选结果无异议。"
-
+            pagename: "交易规则",
+            pagetext: "赛事期间，UFA将定期抛出热点财经新闻话题，并邀请大学生基于新闻话题撰写独立分析。“财经洞悉”将每两周举行一次，共计六次。 优秀的分析作者将获得杰出证书，独家采访与刊登，以及金融机构推荐机会等。（“财经洞悉”作为投资比赛的附属活动，此板块不影响比赛分数）"
         },
         {
             id: 6,
             title: "总览/回顾",
-            pagename: "财经洞悉",
-            pagetext: "赛事期间，UFA将定期抛出热点财经新闻话题，并邀请大学生基于新闻话题撰写独立分析。<br/>“财经洞悉”将每两周举行一次，共计六次。 奖励：每次财经洞悉提交截止后，UFA组委会将对50份优秀分析通过邮件形式发放奖状，并对数个优秀学生进行独家采访。<br/>“财经洞悉”作为投资比赛的附属活动，此板块不影响比赛分数。"
+            pagename: "大赛流程",
+            pagetext: <>大赛分为初赛（指标分数）、复赛（投资报告）、决赛（线上展示）；量化选手与主观投资选手分开竞争与排名。<br/>我同意大赛选拔机制，并对评委筛选结果无异议。</>
 
         },
     ]
@@ -151,12 +160,13 @@ export default function TeamAgreeProcessCreate({toggle}) {
                      <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
                      <div
                         style={{
-                            border: '1px solid rgba(0, 0, 0, 0.3)',
+                            width:"100%",
+                            // border: '1px solid rgba(0, 0, 0, 0.3)',
                             height: height-200,
-                            overflow:"auto",
+                            overflow:"scroll"
                         }}
                     >
-                        <Viewer fileUrl= {samplePDF} />
+                        <Viewer style={{width: "100%"}} fileUrl= {samplePDF} />
     
                         </div>
                          
@@ -167,7 +177,8 @@ export default function TeamAgreeProcessCreate({toggle}) {
             <Modal
                 show={teamnameDuplicate}
                 onHide={() => setteamnameDuplicate(false)}
-                className="general-modal"
+                // className="general-modal"
+                centered
             >
                 <Modal.Header closeButton></Modal.Header>
                 <Modal.Body style={{textAlign: "center",letterSpacing:"2px"}}>团队名称已被使用，请更改！ </Modal.Body>
@@ -195,12 +206,9 @@ export default function TeamAgreeProcessCreate({toggle}) {
                 <Modal.Header></Modal.Header>
                 <Modal.Body style={{textAlign: "center",letterSpacing:"2px"}}>报名失败</Modal.Body>
                 <Modal.Footer style={{width: "100%", display: "flex", justifyContent: "center"}}>
-                    <div>
                         <Button className="modal-btn modal-btn-submit" variant="primary" onClick={() => sendUserhome()}>
                             回主页
                         </Button>
-
-                    </div>
                 </Modal.Footer>
             </Modal>
 
@@ -211,13 +219,10 @@ export default function TeamAgreeProcessCreate({toggle}) {
             >
                 <Modal.Header></Modal.Header>
                 <Modal.Body>注册失败, 您已存在于一个队伍当中。</Modal.Body>
-                <Modal.Footer style={{width: "100%", display: "flex", justifyContent: "center"}}>
-                    <div>
+                <Modal.Footer style={{width: "100%", display: "flex", justifyContent: "center"}}>      
                         <Button className="modal-btn modal-btn-submit" variant="primary" onClick={() => sendUserhome()}>
                             返回主页
                         </Button>
-
-                    </div>
                 </Modal.Footer>
             </Modal>
 
@@ -285,7 +290,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
                                 </div>
                             </div>
 
-                            <div style={{height: "700px", width: "100%", backgroundColor: "white"}}>
+                            <div style={{minHeight: "700px", height:"max-content", width: "100%", backgroundColor: "white",paddingBottom:"60px"}}>
 
                                 <div style={{marginLeft: "24px", height: "8.57%"}}>
                                     <IconButton style={{paddingTop: "24px", paddingBottom: "16px"}}
@@ -368,7 +373,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
                                                 color: "#6E7184",
                                                 lineHeight: "24px",
                                             }}>
-                                                我已同意...</div>
+                                                我已同意</div>
                                                <Button 
                                                 onClick={() => setshowTiaokuan(true)}
                                                 style={{
@@ -396,7 +401,8 @@ export default function TeamAgreeProcessCreate({toggle}) {
                                     <div style={{marginTop: "12px", display: "flex", justifyContent: "center"}}>
 
                                         <Button disabled={disable} style={{
-                                            width: "288px", height: "48px",
+                                            width: width > 288?  288 : "90%",
+                                            height: "48px",
                                             border: "1px solid #F5F6F8", borderRadius: "4px 4px 4px 4px",
                                             boxShadow: disable ? null : "0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08)",
                                             textAlign: "center",
@@ -424,7 +430,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
                                 </> : <>
 
                                     <div style={{marginTop: "135px", display: "flex", justifyContent: "center"}}>
-                                        <div style={{width: width > 1200 ? "700px" : "100%"}}>
+                                        <div style={{width: width > 800 ? "700px" : "90%"}}>
                                             <div style={{
                                                 fontSize: "28px",
                                                 fontFamily: "Microsoft YaHei U-Bold, Microsoft YaHei UI",
@@ -443,7 +449,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
                                                 color: "#2A2B30",
                                                 lineHeight: "32px"
                                             }}>
-                                                {page != 4 ? (<>{process[page - 1].pagetext}</>) :
+                                                {page != 4 ? (<>{process[page].pagetext}</>) :
                                                     <>
                                                         赛事期间，UFA将定期抛出热点财经新闻话题，并邀请大学生基于新闻话题撰写独立分析。
                                                         <br/>“财经洞悉”将每两周举行一次，共计六次。
@@ -459,13 +465,13 @@ export default function TeamAgreeProcessCreate({toggle}) {
                                     </div>
 
                                     <div style={{
-                                        marginTop: page == 4 ? "150px" : "280px",
+                                        marginTop: page == 4 ? width> 600? "150px" : "110px" : width> 800? "280px" : "180px",
                                         display: "flex",
                                         justifyContent: "center"
                                     }}>
 
                                         <Button style={{
-                                            width: "288px",
+                                            width: width > 288?  288 : "90%",
                                             height: "48px",
                                             backgroundColor: "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)",
                                             border: "1px solid #F5F6F8",
@@ -481,7 +487,7 @@ export default function TeamAgreeProcessCreate({toggle}) {
                                                     fontWeight: "bold",
                                                     color: "white",
                                                     lineHeight: "24px",
-                                                    paddingRight: "65px"
+                                                    paddingRight: width > 288?  65 : 25,
                                                 }}>
                                                     同意（{page - 1}/4）
                                                 </div>

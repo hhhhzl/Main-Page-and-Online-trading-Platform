@@ -20,8 +20,8 @@ export default function Notice() {
   const dispatch = useDispatch()
   const {team, user} = useContext(AuthContext)
   
-  const {news} = useSelector((state) => state.news)
-  const [notice, setNotice] = useState(news?.length>0? news[0] : null);
+  const {news, state, read_or_not} = useSelector((state) => state.news)
+  const [notice, setNotice] = useState(null);
   const [current, setCurrent] = useState(1);
   const [noticeList, setNoticeList] = useState(data);
   const [show, setShow] = useState(1);
@@ -72,12 +72,13 @@ export default function Notice() {
   },[dispatch, team, user, load2])
 
   useEffect(() =>{
-    if (!load && news?.length>0){
+    if (!load && news?.length>0  && read_or_not != null){
+        console.log("runhere''''''''''''''''''''''''''''''")
         setNotice(news[0])
         setCurrent(news[0].message_id)
         setload(true)
     } 
-  },[news, load])
+  },[news, load, read_or_not])
 
   // useEffect(()=>{
   //   if(user && !load1){
@@ -221,9 +222,9 @@ export default function Notice() {
                :
                notice?.account? 
                team?.metadata.leader == user.user_id? 
-               (<><RequestForLeader id = {notice.requester} type = {notice.status} messagage_id={notice.id} /></>)
+               (<><RequestForLeader id = {notice.requester} type = {notice.status} messagage_id={notice.id} setload = {setload} /></>)
                :
-               (<><RequestForTeamMember id = {notice.account}  type = {notice.status} messagage_id = {notice.id}/></>)
+               (<><RequestForTeamMember id = {notice.account}  type = {notice.status} messagage_id = {notice.id} setload = {setload}/></>)
                :
                null
               }</div>

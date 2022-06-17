@@ -10,13 +10,19 @@ import { apiApproveCompetitionRequest, apiDisactiveMessgae, apiGetCompetitionReq
 import { fetchNews } from 'redux/reducers/News/newsSlice'
 import AuthContext from 'context/AuthContext'
 
-export default function RequestForLeader({id, type, messagage_id}){
-    const [load,setload] = useState(false)
+export default function RequestForLeader({
+    id, 
+    type,
+    messagage_id,
+    setload
+}){
+    const [loadafter, setloadafter] = useState(false)
     const [username, setusername] = useState(null)
     const [sumbit, setsumbit] = useState(false)
     const dispatch = useDispatch()
     const history = useHistory()
     const { status } = useSelector((state) => state.userInfo);
+    const { state } = useSelector((state) => state.news);
     const [agree, setagree] = useState(false)
     const [disagree, setdisagree] = useState(false)
     const {team, user} = useContext(AuthContext)
@@ -69,6 +75,7 @@ export default function RequestForLeader({id, type, messagage_id}){
         if (agree && team && user){
             console.log(team, user)
              dispatch(fetchNews({team:team.metadata, user_id:user.user_id}))
+             setloadafter(true)
              getteamnumber()
              setagree(false)
         }
@@ -77,9 +84,17 @@ export default function RequestForLeader({id, type, messagage_id}){
     useEffect(() => {
         if (disagree && team && user){
              dispatch(fetchNews({team:team.metadata,user:user.user_id}))
+             setloadafter(true)
              setdisagree(false)
         }
     },[disagree])
+
+    // useEffect(() =>{
+    //     if (state == "fulfilled" && loadafter){
+    //         setload(false)
+    //         setloadafter(false)
+    //     }
+    // },[loadafter,state])
 
 
     const getteamnumber = async () =>{
@@ -126,42 +141,131 @@ export default function RequestForLeader({id, type, messagage_id}){
                 type == "P"? 
                 <>
                 <Button 
+
                 onClick = {() => applicationState(messagage_id)} 
-                style={{marginRight:"20px"}}>
-                    同意
+                style={{
+                    height: "48px",
+                    background: "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)",
+                    boxShadow: "0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08)",
+                    borderRadius: "4px 4px 4px 4px",
+                    marginRight:"12px"}}>
+                    <div
+                    style={{
+                        height: "24px",
+                        fontSize: "14px",
+                        fontFamily: "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+                        fontWeight: "bold",
+                        color: "#FFFFFF",
+                        lineHeight: "24px",
+                    }}
+                    >接受请求</div>
                 </Button>
                 
                 <Button 
                 onClick = {() => disagreeJoin(messagage_id)} 
-                style={{marginRight:"20px"}}>
-                    拒绝
+                style={{ 
+                    height: "48px",
+                    background: "#F5F6F8",
+                    borderRadius: "4px 4px 4px 4px",
+                    border:0,
+                    marginRight:"36px"}}>
+                    <div
+                    style={{
+                        height: "24px",
+                        fontSize: "14px",
+                        fontFamily: "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+                        fontWeight: "bold",
+                        color: "#2A2B30",
+                        lineHeight: "24px",
+                    }}
+                    >拒绝请求</div>
                 </Button>
                 </>
                 :
                 type == "A"? 
 
                 <>
-                <Button disabled={true} style={{marginRight:"20px"}}>
-                    已通过
+                <Button disabled={true}
+                 style={{
+                    height: "48px",
+                    background: "linear-gradient(135deg, #2B8CFF 0%, #2346FF 100%)",
+                    boxShadow: "0px 1px 2px 1px rgba(35, 97, 255, 0.08), 0px 2px 4px 1px rgba(35, 97, 255, 0.08), 0px 4px 8px 1px rgba(35, 97, 255, 0.08), 0px 8px 16px 1px rgba(35, 97, 255, 0.08), 0px 16px 32px 1px rgba(35, 97, 255, 0.08)",
+                    borderRadius: "4px 4px 4px 4px",
+                    marginRight:"36px"}}>
+                    <div
+                    style={{
+                        height: "24px",
+                        fontSize: "14px",
+                        fontFamily: "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+                        fontWeight: "bold",
+                        color: "#FFFFFF",
+                        lineHeight: "24px",
+                    }}
+                    >请求已通过</div>
                 </Button>
                 </>
                 :
                 type == "D"? 
                 <>
-                <Button disabled={true} style={{marginRight:"20px"}}>
-                    已拒绝
+                <Button disabled={true} 
+                style={{ 
+                    height: "48px",
+                    background: "#F5F6F8",
+                    border:0,
+                    borderRadius: "4px 4px 4px 4px",
+                    marginRight:"36px"}}>
+                    <div
+                    style={{
+                        height: "24px",
+                        fontSize: "14px",
+                        fontFamily: "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+                        fontWeight: "bold",
+                        color: "#2A2B30",
+                        lineHeight: "24px",
+                    }}
+                    >请求已拒绝</div>
                 </Button>
                 </>
                 :
                 type == "W"? 
                 <>
-                <Button disabled={true} style={{marginRight:"20px"}}>
-                    用户已撤销
+                <Button disabled={true} 
+                style={{ 
+                    height: "48px",
+                    background: "#F5F6F8",
+                    borderRadius: "4px 4px 4px 4px",
+                    border:0,
+                    marginRight:"36px"}}>
+                    <div
+                    style={{
+                        height: "24px",
+                        fontSize: "14px",
+                        fontFamily: "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+                        fontWeight: "bold",
+                        color: "#2A2B30",
+                        lineHeight: "24px",
+                    }}
+                    >用户已撤销</div>
                 </Button>
                 </>
                 :
-                <Button disabled={true} style={{marginRight:"20px"}}>
-                    已过期
+                <Button disabled={true} 
+                style={{ 
+                    height: "48px",
+                    background: "#F5F6F8",
+                    border:0,
+                    borderRadius: "4px 4px 4px 4px",
+                    marginRight:"36px"}}>
+                    <div
+                    style={{
+                        height: "24px",
+                        fontSize: "14px",
+                        fontFamily: "Microsoft YaHei UI-Bold, Microsoft YaHei UI",
+                        fontWeight: "bold",
+                        color: "#2A2B30",
+                        lineHeight: "24px",
+                    }}
+                    >请求已过期</div>
                 </Button>
             }
             

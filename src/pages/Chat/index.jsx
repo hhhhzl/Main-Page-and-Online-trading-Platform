@@ -32,18 +32,39 @@ export default ({ searchData }) => {
           showrankingOnly={apikey ? null : true}
         />
       )}
-      <div style={{ width: "100%", height: "100%" }}>
+      <div
+        style={{
+          marginTop: "0px",
+          width: "100%",
+          minHeight: "500px",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <div
+          style={{ width: "48px", minHeight: "500px", maxWidth: "18.75%" }}
+        ></div>
+
         <div
           style={{
             top:"0",
             paddingTop:"112px",
-            marginLeft: width > 1500 ? "18.75%" : "5%",
-            marginRight: width > 1500 ? "18.75%" : "5%",
+            width: width > 1200 ? "1200px" : width - 96,
+            minHeight: "500px",
+            minWidth: "fix-content",
           }}
         >
           <Notice />
         </div>
+
+
+
+         <div
+          style={{ width: "48px", minHeight: "500px", maxWidth: "18.75%" }}
+        ></div>
       </div>
+        
+
     </>
   );
 };

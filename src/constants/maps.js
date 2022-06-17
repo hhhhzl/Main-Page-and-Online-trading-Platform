@@ -13,3 +13,5 @@ export const mapUserDegree = {
 };
 
 export const competitionID = 1
+
+export const officialEmail = "ufa33ufa@gmail.com"

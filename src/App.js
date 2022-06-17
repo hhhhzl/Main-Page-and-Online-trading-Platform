@@ -106,8 +106,8 @@ const getSearchData = async (props) => {
 
         {/* ////////// */}
         <PrivateRegisterForCompetition exact path="/team/register" component={TeamEntry} />
-        <PrivateRegisterForCompetition exact path="/team/create" component={TeamAgreeProcessCreate} />
-        <PrivateRegisterForCompetition exact path="/team/join" component={TeamAgreeProcessJoin} />
+        <Route exact path="/team/create" component={TeamAgreeProcessCreate} />
+        <Route exact path="/team/join" component={TeamAgreeProcessJoin} />
         <Route exact path="/tournament" component={Tournament} />
         <Route exact path="/tournament/" component={RedirectComponent("/tournament")} />
         <Route exact path="/competitionReview" component={CompetitionViewforPublic} />

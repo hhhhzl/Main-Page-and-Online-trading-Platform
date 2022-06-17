@@ -342,7 +342,7 @@ export default function RegisterForm(props) {
             <br />
             请点击下方“报名赛事”进行大赛报名。
           </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer style={{width:"100%", display:"flex", justifyContent:"space-evenly"}}>
             <Button className="modal-btn modal-btn-cancel"  variant="primary" onClick ={() => sendUser(0)}>
             返回首页
           </Button>
