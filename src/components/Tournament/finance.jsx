@@ -25,8 +25,8 @@ const Finance = ({ profileImg, hobbyImgs }) => {
         style={{
           position: "fixed",
           zIndex: 10,
-          width: "1px",
-          height: width / 2.97,
+          width: width > 800 ? "1px" : "",
+            height: "662px",
           background: `linear-gradient(to top, #E5E8EE ${
             ((bodyscrollrdTop / (width / 2.97)) * 100).toString() + "%"
           }, rgba(255, 255, 255, 0.5) ${
@@ -93,7 +93,7 @@ const Finance = ({ profileImg, hobbyImgs }) => {
                     src="/tournament/Group 797@2x.png"
                     style={{ width: " 100%", height: "100%" }}
                   />
-                  <a href="/eplatform">
+                  <a href="/competition/summary">
                     <Image
                       className="button-hover"
                       src="/tournament/赛事账户@2x.png"
@@ -112,7 +112,7 @@ const Finance = ({ profileImg, hobbyImgs }) => {
                     src="/tournament/Group 1117@2x.png"
                     style={{ width: " 100%", height: "100%" }}
                   />
-                  <a href="/eplatform">
+                  <a href="/competition/summary">
                     <Image
                       className="button-hover"
                       src="/tournament/赛事账户-pad@2x.png"
@@ -138,7 +138,7 @@ const Finance = ({ profileImg, hobbyImgs }) => {
                       minHeight: "124px",
                     }}
                   />
-                  <a href="/eplatform">
+                  <a href="/competition/summary">
                     <Image
                       className="button-hover"
                       src="/tournament/赛事账户-phone@2x.png"

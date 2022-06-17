@@ -112,7 +112,7 @@ const Aboutus = ({ profileImg, hobbyImgs }) => {
           <div className="text-center">
             <Image
               src="/homeCutout/Group 175@2x.png"
-              style={{ width: "427px", height: "79px" }}
+              style={{ width: width * 0.222395 + "px", height: width * 0.0411458 + "px",minWidth:"320px",minHeight:"60px" }}
             />
           </div>
 

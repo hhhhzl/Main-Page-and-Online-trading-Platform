@@ -238,8 +238,8 @@ const Review = ({ projectImgs }) => {
             ) 
             : (
               <>
-                <br />
-                <br />
+                {/* <br />
+                <br /> */}
               </>
             )}
           </div>

@@ -42,6 +42,10 @@
   background: #FFFFFF
 }
 
+.view-btn:focus {
+  background: #FFFFFF
+}
+
 .view-btn:hover {
   background: #FFFFFF;
 }
