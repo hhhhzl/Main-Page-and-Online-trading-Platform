@@ -31,6 +31,10 @@ const Contacts = () => {
                 <div className="introduction-box1">
                   <div>
                     <div className="box-image flex-center">
+                      <a
+                      target="_blank"
+                      href ="https://offerbang.io/?wpm=2.32.2.1"
+                      >
                       <Image
                         src="/homeCutout/Offerbang.png"
                         title="https://offerbang.io/?wpm=2.32.2.1"
@@ -61,6 +65,7 @@ const Contacts = () => {
                               : "45.16px",
                         }}
                       />
+                      </a>
                     </div>
 
                     <div>
@@ -85,9 +90,9 @@ const Contacts = () => {
                 <div className="introduction-box1">
                   <div>
                     <div className="box-image flex-center">
+                      <a href="https://www.cussa.org/" target="_blank">
                       <Image
                         src="/homeCutout/CUSSA.png"
-                        title="https://www.cussa.org/"
                         style={{
                           marginTop:
                             width > 1500
@@ -115,6 +120,7 @@ const Contacts = () => {
                               : "80px",
                         }}
                       />
+                      </a>
                     </div>
                     <div className="title"></div>
                     <div>
@@ -139,9 +145,9 @@ const Contacts = () => {
                 <div className="introduction-box1">
                   <div>
                     <div className="box-image flex-center">
+                    <a href ="https://acceptu.com/" target="_blank">
                       <Image
                         src="/homeCutout/ACCEPTU.png"
-                        title="https://acceptu.com/"
                         style={{
                           marginTop:
                             width > 1500
@@ -169,6 +175,7 @@ const Contacts = () => {
                               : "45.16px",
                         }}
                       />
+                      </a>
                     </div>
 
                     <div>
@@ -338,6 +345,10 @@ const Contacts = () => {
               <div className="introduction-box1">
                 <div>
                   <div className="box-image flex-center">
+                  <a
+                      target="_blank"
+                      href ="https://offerbang.io/?wpm=2.32.2.1"
+                      >
                     <Image
                       src="/homeCutout/Offerbang.png"
                       title="https://offerbang.io/?wpm=2.32.2.1"
@@ -368,6 +379,7 @@ const Contacts = () => {
                             : "45.16px",
                       }}
                     />
+                    </a>
                   </div>
 
                   {/* <div>
@@ -441,9 +453,9 @@ const Contacts = () => {
               <div className="introduction-box1">
                 <div>
                   <div className="box-image flex-center">
+                  <a href="https://www.cussa.org/" target="_blank">
                     <Image
                       src="/homeCutout/CUSSA.png"
-                      title="https://www.cussa.org/"
                       style={{
                         marginTop:
                           width > 1500
@@ -471,6 +483,7 @@ const Contacts = () => {
                             : "100px",
                       }}
                     />
+                    </a>
                   </div>
 
                   {/* <div>
@@ -544,9 +557,9 @@ const Contacts = () => {
               <div className="introduction-box1">
                 <div>
                   <div className="box-image flex-center">
+                  <a href ="https://acceptu.com/" target="_blank">
                     <Image
                       src="/homeCutout/ACCEPTU.png"
-                      title="https://acceptu.com/"
                       style={{
                         marginTop:
                           width > 1500
@@ -574,6 +587,7 @@ const Contacts = () => {
                             : "45.16px",
                       }}
                     />
+                    </a>
                   </div>
 
                   {/* <div>
@@ -650,6 +664,10 @@ const Contacts = () => {
               <div className="introduction-box1">
                 <div>
                   <div className="box-image flex-center">
+                  <a
+                      target="_blank"
+                      href ="https://offerbang.io/?wpm=2.32.2.1"
+                      >
                     <Image
                       src="/homeCutout/Offerbang.png"
                       title="https://offerbang.io/?wpm=2.32.2.1"
@@ -680,6 +698,7 @@ const Contacts = () => {
                             : "45.16px",
                       }}
                     />
+                    </a>
                   </div>
 
                   {/* <div>
@@ -706,9 +725,9 @@ const Contacts = () => {
               <div className="introduction-box1">
                 <div>
                   <div className="box-image flex-center">
+                  <a href="https://www.cussa.org/" target="_blank">
                     <Image
                       src="/homeCutout/CUSSA.png"
-                      title="https://www.cussa.org/"
                       style={{
                         marginTop:
                           width > 1500
@@ -736,6 +755,7 @@ const Contacts = () => {
                             : "100px",
                       }}
                     />
+                    </a>
                   </div>
 
                   {/* <div>
@@ -762,9 +782,9 @@ const Contacts = () => {
               <div className="introduction-box1">
                 <div>
                   <div className="box-image flex-center">
+                    <a href ="https://acceptu.com/" target="_blank">
                     <Image
                       src="/homeCutout/ACCEPTU.png"
-                      title="https://acceptu.com/"
                       style={{
                         marginTop:
                           width > 1500
@@ -792,6 +812,7 @@ const Contacts = () => {
                             : "45.16px",
                       }}
                     />
+                    </a>
                   </div>
 
                   {/* <div>

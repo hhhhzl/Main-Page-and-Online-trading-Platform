@@ -378,7 +378,8 @@ height: 32px; */
 
 
 .awards-card {
-  padding: 36px;
+  padding-top: 36px;
+  padding-bottom: 36px;
 }
 
 .awards-center {

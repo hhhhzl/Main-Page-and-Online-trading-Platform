@@ -361,8 +361,9 @@ export default function Introduce({ changeEventKey }) {
                     ? "awards-card-container-small"
                     : "awards-card-container"
                 }
+                
               >
-                <div className="awards-card">
+                <div className = "awards-card">
                   <div className="ranking awards-center">第一名</div>
                   <div className="awards-pic awards-center">
                     <Image
