@@ -37,7 +37,6 @@ const Contacts = () => {
                       >
                       <Image
                         src="/homeCutout/Offerbang.png"
-                        title="https://offerbang.io/?wpm=2.32.2.1"
                         style={{
                           marginTop:
                             width > 1500
